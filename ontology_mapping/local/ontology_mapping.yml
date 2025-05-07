@@ -1,0 +1,35 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+
+type: command
+name:  ontology-mapping
+display_name: ontology-mapping
+description: Ontology Mapping
+
+version: 1
+
+inputs:
+  ontology_path:
+    type: uri_folder
+  input_data:
+    type: uri_folder
+  connection_id:
+    type: string
+  deployment_name:
+    type: string
+  embedding_model:
+    type: string
+outputs:
+  processed_output:
+    type: uri_folder
+
+code: ./../src/
+command: >-
+  python ontology_mapping.py
+  --ontology_path ${{inputs.ontology_path}}
+  --markdown_dir ${{inputs.input_data}}
+  --output_dir ${{outputs.processed_output}}
+  --connection_id ${{inputs.connection_id}}
+
+environment:
+  build:
+    path: ../../../environments/kg/local_context/

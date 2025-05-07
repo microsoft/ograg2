@@ -1,0 +1,57 @@
+model:
+  api_base: 
+  api_key: 
+  deployment_name: gpt-4-32k
+  api_type: openai
+  api_version: '2024-02-01' 
+  # MODEL_NAME: gpt-4-32k
+
+# model:
+#   RESOURCE_ENDPOINT: 
+#   api_base: 
+#   api_key: 
+#   deployment_name: chatgpt432k
+#   api_type: openai
+#   api_version: '2024-02-01' 
+#   # MODEL_NAME: gpt-4-32k
+  
+embedding_model:
+  api_base: 
+  api_key: 
+  deployment_name: text-embedding-3-small # sentence-transformers/all-mpnet-base-v2
+  api_type: openai # huggingface #
+  api_version: '2024-02-01' 
+
+data:
+  documents_dir: data/md/
+  ontology_path: data/ontology/farm_cropcultivation_schema_ontology_jsonld.json
+  kg_storage_path: data/kg/wheat_soybean
+  index_dir: index/vector_wheat_soybean
+  subdir: False
+  smart_pdf: True
+  
+query:
+  method: snippet-rag #kg-rag
+  batch_size: 10
+  mode: json
+  questions_file: 
+    - data/md/questions/gold/itc.json
+  answers_file: results/gold/json/itc_llm.json
+
+question_generator:
+  framework: ragas
+  test_size: 10
+  distr: 
+    simple: 1.0
+    reasoning: 0.0
+    multi_context: 0.0 
+
+evaluator:
+  eval_file: results/gold/json/itc_llm.json
+  reference_free: True
+  type: single
+  metrics: 
+    - Comprehensiveness
+    - Diversity
+    - Empowerment
+    - Directness

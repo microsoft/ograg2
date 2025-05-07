@@ -1,0 +1,49 @@
+model:
+  api_base: 
+  deployment_name: gpt-4-32k #-32k
+  api_key: 
+  api_type: openai
+  api_version: '2024-02-01' 
+
+embedding_model:
+  api_base: 
+  api_key: 
+  deployment_name: text-embedding-3-small # sentence-transformers/all-mpnet-base-v2
+  api_type: openai #huggingface
+  api_version: '2024-02-01' 
+
+data:
+  documents_dir: data/indiampop_sampled_42_10
+  ontology_path: data/ontology/farm_cropcultivation_schema_ontology_jsonld.json
+  kg_storage_path: data/kg/indiampop_sampled_42_10
+  index_dir: index/vector_indiampop_sampled_42_10
+  subdir: False
+  smart_pdf: True
+  full_text: False
+  # chunk_size: 4096
+  
+query:
+  method: kg-rag #kg-rag
+  batch_size: 10
+  mode: json
+  questions_file: 
+    - data/indiampop_sampled_42_10/questions/ragas/testset100_0p5_0p25_0p25.csv
+  answers_file: results/indiampop_sampled_42_10/ragas_answers_0p5_0p25_0p25_rag.json
+
+question_generator:
+  framework: ragas
+  test_size: 100
+  distr: 
+    simple: 0.5
+    reasoning: 0.25
+    multi_context: 0.25 
+
+evaluator:
+  eval_file: results/indiampop_sampled_42_10/ragas_answers_0p5_0p25_0p25.json
+  reference_free: True
+  type: single
+  metrics: 
+    - Comprehensiveness
+    - Diversity
+    - Empowerment
+    - Directness

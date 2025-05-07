@@ -1,0 +1,86 @@
+# model:
+#   api_base: 
+#   api_key: 
+#   # deployment_name: gpt-35-turbo-16k
+#   deployment_name: gpt-4-32k
+#   api_type: openai
+#   api_version: '2024-02-01' 
+#   # MODEL_NAME: gpt-4-32k
+
+model:
+  # api_base: 
+  # api_key: 
+  api_base: 
+  api_key: 
+  deployment_name: gpt-4o
+  # deployment_name: gpt-35-turbo-16k
+  api_type: openai
+  api_version: '2024-02-01'
+
+# model:
+#   RESOURCE_ENDPOINT: 
+#   api_base: 
+#   api_key: 
+#   deployment_name: chatgpt432k
+#   api_type: openai
+#   api_version: '2024-02-01' 
+#   # MODEL_NAME: gpt-4-32k
+
+#   api_base: 
+#   api_key: 
+embedding_model:
+  api_base: 
+  api_key: 
+  # api_base: 
+  # api_key: 
+  deployment_name: text-embedding-3-small #sentence-transformers/all-mpnet-base-v2
+  api_type: openai #huggingface
+  api_version: '2024-02-01' 
+
+data:
+  documents_dir: data/md/wheat
+  ontology_path: data/ontology/farm_cropcultivation_schema_ontology_jsonld.json
+  kg_storage_path: data/kg/wheat
+  index_dir: index/vector_wheat
+  subdir: False
+  smart_pdf: True
+  
+query:
+  method: llm #kg-rag
+  batch_size: 10
+  questions_file: 
+    # - data/md/wheat/questions/ragas/testset_10_0p0,0p0,1p0.csv 
+    # - data/md/wheat/questions/ragas/testset_10_0p0,1p0,0p0.csv 
+    # - data/md/wheat/questions/ragas/testset_10_0p5,0p25,0p25.csv 
+    # - data/md/wheat/questions/ragas/testset_10_0p25,0p5,0p25.csv 
+    # - data/md/wheat/questions/ragas/testset_10_0p25,0p25,0p5.csv 
+    # - data/md/wheat/questions/ragas/testset_10_1p0,0p0,0p0.csv
+    # - data/kg/wheat/questions/ontodoc_ragas/testset100_0p34_0p33_0p33.csv
+    - data/kg/wheat/questions/ontodoc_ragas/testset_reasoning.csv
+  answers_file: results/wheat/ontodocragas_reasoning_answers_llm.json
+    
+question_generator:
+  framework: ragas
+  test_size: 10
+  distr: 
+    simple: 1.0
+    reasoning: 0.0
+    multi_context: 0.0 
+
+evaluator:
+  eval_file: results/wheat/ontodocragas_reasoning_answers_llm.json #results/gold/json/itc.json
+  reference_free: True
+  type: single
+  metrics: 
+    # - Comprehensiveness
+    # - Diversity
+    # - Empowerment
+    # - Directness
+    - answer_correctness
+    - faithfulness
+    - answer_similarity
+    - answer_relevancy
+    - context_relevancy
+    - context_precision
+    - context_recall
+    - context_entity_recall
