@@ -1,0 +1,163 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:person",
+      "name": "Kelenic",
+      "dateOfBirth": "1999-01-01",
+      "comment": "Headliner of the deal, former No. 6 overall pick in the 2018 MLB Draft",
+      "summary": "24-year-old with 32 home runs, 109 RBI, and 24 stolen bases in 974 plate appearances."
+    },
+    {
+      "@type": "snap:person",
+      "name": "Gonzales",
+      "dateOfBirth": "1992-01-01",
+      "comment": "Decent rotation arm with 65 wins, 665 strikeouts and a 4.14 ERA over 893.0 innings pitched."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Giants emerging as possible frontrunners for Yoshinobu Yamamoto",
+      "eventSummary": "The Giants are looking to turn around their past misses with big names.",
+      "created": "2023-12-03",
+      "byline": "Susan Slusser, San Francisco Chronicle"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Dylan Cease trade market heating up",
+      "eventSummary": "White Sox ace Dylan Cease is in trade talks with several teams.",
+      "created": "2023-12-03",
+      "byline": "Jon Morosi, MLB Network"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Rays, Mariners talking trades in winter meetings",
+      "eventSummary": "The teams are discussing trades involving Isaac Paredes and Randy Arozarena.",
+      "created": "2023-12-03",
+      "byline": "Jon Morosi, MLB Network"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Jays unlikely to land both Ohtani, Soto",
+      "eventSummary": "The Blue Jays are active in the Ohtani and Soto markets but unlikely to land both.",
+      "created": "2023-12-03",
+      "byline": "Jon Morosi, MLB Network"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Ohtani has already received several $500+ million offers",
+      "eventSummary": "Ohtani is expected to sign soon with offers topping $500 million.",
+      "created": "2023-12-03",
+      "byline": "Jon Heyman, NY Post"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Decision near for Ohtani",
+      "eventSummary": "Shohei Ohtani is likely to decide on a team within the next week.",
+      "created": "2023-12-03",
+      "byline": "Jon Morosi, MLB Network"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Status quo on Yankees' Juan Soto trade talks",
+      "eventSummary": "Yankees are pushing hard to acquire Juan Soto but talks have stalled.",
+      "created": "2023-12-03",
+      "byline": "Jon Heyman, New York Post"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Shohei Ohtani field growing smaller",
+      "eventSummary": "Ohtani's potential suitors are narrowing down.",
+      "created": "2023-12-01",
+      "byline": "Jeff Passan, ESPN"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Star players could be traded",
+      "eventSummary": "Several big-name players could be on the move this offseason.",
+      "created": "2023-12-01",
+      "byline": "Jeff Passan, ESPN"
+    }
+  ]
+}
+```

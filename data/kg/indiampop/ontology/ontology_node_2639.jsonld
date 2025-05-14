@@ -1,0 +1,55 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "IntercroppingSystem": {
+            "@id": "cropCult:IntercroppingSystem",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_intercrop_combinations": "cropCult:InterCropCombinationList"
+            }
+        },
+        "InterCropCombination": {
+            "@id": "cropCult:InterCropCombination",
+            "@type": "schema:Thing",
+            "@context": {
+                "combination_name": "schema:Text",
+                "ratio": "schema:Text"
+            }
+        },
+        "InterCropCombinationList": {
+            "@id": "cropCult:InterCropCombinationList",
+            "@type": "schema:ItemList",
+            "@context": {
+                "InterCropCombination": "cropCult:InterCropCombination"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:IntercroppingSystem",
+            "name": "Intercropping system",
+            "has_intercrop_combinations": {
+                "@type": "cropCult:InterCropCombinationList",
+                "InterCropCombination": [
+                    {
+                        "@type": "cropCult:InterCropCombination",
+                        "combination_name": "Linseed + chickpea",
+                        "ratio": "3:1"
+                    },
+                    {
+                        "@type": "cropCult:InterCropCombination",
+                        "combination_name": "Linseed + lentil",
+                        "ratio": "3:1"
+                    },
+                    {
+                        "@type": "cropCult:InterCropCombination",
+                        "combination_name": "Linseed + mustard",
+                        "ratio": "5:1"
+                    }
+                ]
+            }
+        }
+    ]
+}

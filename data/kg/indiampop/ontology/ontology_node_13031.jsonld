@@ -1,0 +1,62 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are": "schema:Text"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "PostHarvestTechnology": {
+            "@id": "cropCult:PostHarvestTechnology",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "process": "schema:Text",
+                "products": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "DRY SEEDED UPLAND RICE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "AEROBIC RICE",
+                "used_for": "POST HARVEST TECHNOLOGY OF RICE"
+            },
+            "harvesting_guidelines_are": "PROCESSING OF RICE",
+            "storage_guidelines_are": {
+                "@type": "PostHarvestTechnology",
+                "name": "PROCESSED PRODUCTS",
+                "process": "Parched rice * It is prepared by throwing rice in sand heated to a high temperature in an iron or mud pan. On stirring, rice begins to crackle and swell. Then the content of the pan are removed and sieved to separate the parched rice from sand. Parboiled rice is used for making grayish to brilliant white colour parched rice and sold either salted or unsalted.",
+                "products": "It is eaten as such or mixed with butter milk or milk."
+            }
+        }
+    ]
+}

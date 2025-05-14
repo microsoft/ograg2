@@ -1,0 +1,134 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "title": "Dangerous 'superbugs' are a growing threat, and antibiotics can't stop their rise. What can?",
+      "byline": "None",
+      "published": "2023-10-01T11:00:46+00:00",
+      "summary": "Bacteria's rising resistance to antibiotics is making the drugs obsolete. Scientists are fighting back with viruses (pictured), CRISPR, designer molecules and cell-slicing enzymes.",
+      "associatedAsset": {
+        "@type": "snap:imageAsset",
+        "image": "https://www.livescience.com/health/medicine-drugs/dangerous-superbugs-are-a-growing-threat-and-antibiotics-cant-stop-their-rise-what-can"
+      },
+      "derivedFrom": {
+        "@type": "snap:asset",
+        "comment": "Live Science: The Most Interesting Articles"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Antibiotic Resistance",
+      "eventSummary": "The misuse of antibiotics in health care, as well as in agriculture, has given bacteria endless opportunities to develop resistance, raising the chance that once-treatable infections will become life-threatening.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Antibiotic resistance and superbugs"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Centers for Disease Control and Prevention (CDC)"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "World Health Organization (WHO)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Chase Beisel",
+      "alias": "Leader of the RNA synthetic biology research group at the Helmholtz Institute for RNA-based Infection Research"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Paul Turner",
+      "alias": "Director of the Center for Phage Biology and Therapy at Yale University"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Dr. Shruti Gohil",
+      "alias": "Lead investigator of four INSPIRE-ASP Trials"
+    }
+  ]
+}
+```

@@ -1,0 +1,127 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Dangerous 'superbugs' are a growing threat, and antibiotics can't stop their rise. What can?",
+            "author": "None",
+            "published": "2023-10-01T11:00:46+00:00",
+            "summary": "Bacteria's rising resistance to antibiotics is making the drugs obsolete. Scientists are fighting back with viruses, CRISPR, designer molecules and cell-slicing enzymes.",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Brussels Airport Bombing",
+                        "eventSummary": "The woman had survived a terrorist attack but was held hostage by drug-resistant Klebsiella pneumoniae.",
+                        "hasLocation": {
+                            "@id": "geo:location",
+                            "name": "Brussels Airport"
+                        },
+                        "mentions_persons": {
+                            "Person": {
+                                "name": "Chase Beisel",
+                                "alias": "None",
+                                "dateOfBirth": "None",
+                                "dateOfDeath": "None",
+                                "placeOfBirth": "None"
+                            }
+                        },
+                        "mentions_organizations": {
+                            "Organization": {
+                                "name": "Centers for Disease Control and Prevention",
+                                "alias": "CDC",
+                                "hasLocation": {
+                                    "@id": "geo:location",
+                                    "name": "United States"
+                                }
+                            }
+                        }
+                    }
+                ]
+            },
+            "derivedFrom": {
+                "@id": "snap:asset",
+                "title": "Live Science: The Most Interesting Articles",
+                "url": "https://www.livescience.com/health/medicine-drugs/dangerous-superbugs-are-a-growing-threat-and-antibiotics-cant-stop-their-rise-what-can"
+            }
+        }
+    ]
+}

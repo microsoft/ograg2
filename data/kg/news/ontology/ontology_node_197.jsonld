@@ -1,0 +1,377 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Top 25 MLB offseason trade candidates",
+            "author": "Anthony Franco, MLB Trade Rumors",
+            "published": "2023-11-13T23:16:32+00:00",
+            "summary": "While the offseason has gotten rolling, trade season hasn’t quite arrived. The Tigers acquired Mark Canha from Milwaukee in the biggest swap of the first couple weeks. Otherwise, the GM Meetings simply served to set the stage for future transactions.",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Juan Soto Trade Speculation",
+                        "eventSummary": "Discussion around Juan Soto's future in San Diego and potential trade.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "A.J. Preller"
+                                },
+                                {
+                                    "name": "Alden González"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "San Diego Padres"
+                                },
+                                {
+                                    "name": "Washington Nationals"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Corbin Burnes Trade Speculation",
+                        "eventSummary": "Corbin Burnes is projected for a noteworthy arbitration salary and is a potential trade candidate.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Milwaukee Brewers"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Willy Adames Trade Speculation",
+                        "eventSummary": "Willy Adames is also a potential trade candidate alongside Corbin Burnes.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Milwaukee Brewers"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Shane Bieber Trade Speculation",
+                        "eventSummary": "Shane Bieber is projected for a notable arbitration salary and could be traded.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Cleveland Guardians"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Tyler Glasnow Trade Speculation",
+                        "eventSummary": "Tyler Glasnow's future with the Rays is uncertain due to his high salary.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Tampa Bay Rays"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Dylan Cease Trade Speculation",
+                        "eventSummary": "Dylan Cease's trade value is high due to an extra year of control.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Chicago White Sox"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Alex Verdugo Trade Speculation",
+                        "eventSummary": "Alex Verdugo's name has been floated in trade rumors for a few seasons.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Boston Red Sox"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Trent Grisham Trade Speculation",
+                        "eventSummary": "Trent Grisham could be traded to trim payroll.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "San Diego Padres"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Ha-Seong Kim Trade Speculation",
+                        "eventSummary": "Ha-Seong Kim's trade value is high due to his defensive skills.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "San Diego Padres"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Gleyber Torres Trade Speculation",
+                        "eventSummary": "Gleyber Torres is projected for a notable salary and could be traded.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "New York Yankees"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Jonathan India Trade Speculation",
+                        "eventSummary": "Jonathan India is a trade candidate due to the Reds' infield surplus.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Cincinnati Reds"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Eloy Jiménez Trade Speculation",
+                        "eventSummary": "Eloy Jiménez's injuries have raised questions about his future with the White Sox.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Chicago White Sox"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Max Kepler Trade Speculation",
+                        "eventSummary": "Max Kepler could be traded to clear payroll for the Twins.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Minnesota Twins"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Jorge Polanco Trade Speculation",
+                        "eventSummary": "Jorge Polanco is another candidate for trade to manage payroll.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Minnesota Twins"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Randy Arozarena Trade Speculation",
+                        "eventSummary": "Randy Arozarena's trade value is significant due to his performance.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Tampa Bay Rays"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Dylan Carlson Trade Speculation",
+                        "eventSummary": "Dylan Carlson's trade value has decreased due to a mediocre season.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "St. Louis Cardinals"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Paul Blackburn Trade Speculation",
+                        "eventSummary": "Paul Blackburn is a desirable trade candidate for the A's.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Oakland Athletics"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

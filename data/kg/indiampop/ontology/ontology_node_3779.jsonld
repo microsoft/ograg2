@@ -1,0 +1,87 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Autumn Cane",
+                "used_for": "Crop Rotation"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "Zone 1",
+                "has_regions": ["Region 1", "Region 2"],
+                "has_seed_recommendations": {
+                    "@type": "SeedList",
+                    "variety_name": ["Variety 1", "Variety 2"],
+                    "has_early_sowing_time": {
+                        "@type": "SowingTime",
+                        "start_date": "2022-09-01",
+                        "end_date": "2022-09-30"
+                    },
+                    "has_late_sowing_time": {
+                        "@type": "SowingTime",
+                        "start_date": "2022-10-01",
+                        "end_date": "2022-10-31"
+                    },
+                    "has_seeding_rate": {
+                        "@type": "QuantitativeValue",
+                        "value": "400 - 500 q/ha (11 - 12 months plant-crop), 600 - 700 q/ha (18 months crop Autumn Cane)"
+                    },
+                    "has_fertilizer_application_requirements": {
+                        "@type": "Fertilization",
+                        "nutrient_name": "Nitrogen",
+                        "quantity": "100 kg/ha",
+                        "stage_of_application": "At sowing"
+                    }
+                }
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Yield",
+                "disease_symptoms": "400 – 500 q/ha (11 – 12 months plant-crop) 600 – 700 q/ha (18 months crop Autumn Cane)",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Herbicide 1",
+                    "quantity": "100 ml/ha",
+                    "stage": "At sowing"
+                }
+            }
+        }
+    ]
+}

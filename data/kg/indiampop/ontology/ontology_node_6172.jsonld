@@ -1,0 +1,63 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are": "schema:Text"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "needs_irrigation_schedule": [
+                {
+                    "@type": "IrrigationRequirement",
+                    "stage_of_application": "Vegetative phase(Nursery)",
+                    "quantity": "1 to 16 irrigations for 80 days, 1 to 18 irrigations for 100 days, 1 to 20 irrigations for 120 days"
+                },
+                {
+                    "@type": "IrrigationRequirement",
+                    "stage_of_application": "Vegetative phase (in main field)",
+                    "quantity": "1 to 18 irrigations for 80 days, 1 to 20 irrigations for 100 days, 1 to 22 irrigations for 120 days"
+                },
+                {
+                    "@type": "IrrigationRequirement",
+                    "stage_of_application": "Flowering phase",
+                    "quantity": "19 to 40 irrigations for 80 days, 21 to 55 irrigations for 100 days, 23 to 69 irrigations for 120 days"
+                },
+                {
+                    "@type": "IrrigationRequirement",
+                    "stage_of_application": "Maturity phase",
+                    "quantity": "Beyond 40 days for 80 days, Beyond 55 days for 100 days, Beyond 69 days for 120 days"
+                }
+            ]
+        }
+    ]
+}

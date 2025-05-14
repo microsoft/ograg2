@@ -1,0 +1,97 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "SERICULTURE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "A. MULBERRY (Morus spp",
+                "used_for": "1. IRRIGATED > 1.4 MAIN FIELD > 1.4.1. Planting"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "In situ growing and incorporation of sunnhemp, combined with bio-fertilizer can save 50% of N."
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "1. IRRIGATED > 1.4 MAIN FIELD > 1.4.1. Planting"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "stage_of_application": "1. IRRIGATED > 1.4 MAIN FIELD > 1.4.1. Planting"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Nitrogen",
+                "disease_symptoms": "In situ growing and incorporation of sunnhemp, combined with bio-fertilizer can save 50% of N."
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Nitrogen",
+                "pest_symptoms": "In situ growing and incorporation of sunnhemp, combined with bio-fertilizer can save 50% of N."
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "for_nutrients": "Nitrogen"
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "negative_effect": "In situ growing and incorporation of sunnhemp, combined with bio-fertilizer can save 50% of N."
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Nitrogen"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Nitrogen"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "1. IRRIGATED > 1.4 MAIN FIELD > 1.4.1. Planting"
+                }
+            }
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Nitrogen",
+            "quantity": "50%",
+            "stage_of_application": "1. IRRIGATED > 1.4 MAIN FIELD > 1.4.1. Planting"
+        }
+    ]
+}

@@ -1,0 +1,108 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "title": "54 Best Apple Black Friday Deals (2023): iPad, Apple Watch, AirPods",
+      "byline": "Brenda Stolyar",
+      "published": "2023-11-25T00:00:29+00:00",
+      "summary": "Looking for a new Apple device? There's no time better than now. Whether you're on the hunt for a new iPad, MacBook, Apple Watch, or just a new iPhone case, there are more Apple products on sale for Cyber Monday than you'll typically find at any other time of year. Here are some of our favorites. For more gadgets on sale, be sure to check out our Best Cyber Monday Deals roundup.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://www.wired.com/story/best-apple-black-friday-deals-2023-2/"
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Apple's Cyber Monday Promotion",
+      "eventSummary": "Apple notoriously doesn't run sales on its own storefront. However, it does usually throw in a gift card for Apple Store credit if you purchase select items. This year, now through November 27, you can get up to $200 in Apple Store credit to use later if you purchase certain items. For example, if you buy an iPhone 14 or iPhone SE, you can get up to $75 in store credit. Buy a MacBook Air and you'll get up to $200. You can find the full list here."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Amazon Apple Gift Card Sale",
+      "eventSummary": "Separately, there's also a sale on Apple gift cards on Amazon. Each one has a unique corresponding coupon code that you can see on this page. For example, you can get a $100 Apple Gift Card and a free $15 Amazon credit with code APPLET5USAP. There are tons of cards to choose from. You can browse them all here."
+    }
+  ]
+}
+```

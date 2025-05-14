@@ -1,0 +1,80 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Whitefly",
+            "pest_symptoms": "Bemisia tabaci",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Methyl demeton 25 EC",
+                "quantity": "500 ml/ha",
+                "stage": "Spray fluid 250 l /ha"
+            }
+        },
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Mite",
+            "pest_symptoms": "Tetranychus urticae",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Wettable sulphur",
+                "quantity": "1.5 kg/ha",
+                "stage": "Spray"
+            }
+        },
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Tobacco cut worm",
+            "pest_symptoms": "Spodoptera litura",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Sex pheromone traps",
+                "quantity": "12/ha",
+                "stage": "Monitor activity of the pest and synchronise the pesticide"
+            }
+        }
+    ]
+}

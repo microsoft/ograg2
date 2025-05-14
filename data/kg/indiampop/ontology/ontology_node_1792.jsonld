@@ -1,0 +1,117 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "COCONUT (Cocos nucifera Linn.)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Coconut",
+                "used_for": "The coconut palm is the most useful palm in the world. Every part of the tree is useful to human life for some purpose or the other."
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical",
+                    "has_regions": ["Asia", "Africa", "South America"]
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Warm",
+                "for_flowering": "Warm",
+                "for_grain_filling": "Warm",
+                "negative_effect": "Cold"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Sandy",
+                "avoid_soil_type": "Clay",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Clear land of debris and prepare holes for planting",
+                "with_soil_moisture": "Moist"
+            },
+            "seed_germination_test_requirements_are": "Plant in warm, moist soil",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "None",
+                "quantity": "None"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Spring",
+                "value": "15-20 feet apart",
+                "depth": "1 inch",
+                "method": "Direct sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Grass",
+                "weed_types": ["Bermuda grass", "Crab grass"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "As per label instructions",
+                    "stage": "Pre-emergent"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "1-1.5 inches per week",
+                "stage_of_application": "All stages"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Bud rot",
+                "disease_symptoms": "Wilting, yellowing leaves",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Fungicide",
+                    "quantity": "As per label instructions",
+                    "stage": "At first sign of disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Coconut beetle",
+                "pest_symptoms": "Holes in trunk, wilting leaves",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Insecticide",
+                    "quantity": "As per label instructions",
+                    "stage": "At first sign of pests"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when fruit is brown and husk is dry",
+            "storage_guidelines_are": "Store in a cool, dry place"
+        }
+    ]
+}

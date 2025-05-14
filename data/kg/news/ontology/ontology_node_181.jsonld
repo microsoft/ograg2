@@ -1,0 +1,275 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "NFL Game Recap: Bears vs. Vikings",
+                "author": "NFL",
+                "theme": "Sports",
+                "summary": "Recap of the Chicago Bears vs. Minnesota Vikings game on November 27, 2023.",
+                "created": "2023-11-27T20:15:00",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "2023-11-28T00:00:00",
+                "modified": "2023-11-28T00:00:00",
+                "published": "2023-11-27T20:15:00",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "Bears vs. Vikings Game Highlights",
+                    "eventSummary": "Highlights and key moments from the Bears vs. Vikings game.",
+                    "theme": "Sports",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "1999-03-05",
+                    "dateOfDeath": null,
+                    "name": "Justin Fields",
+                    "placeOfBirth": "geo:location",
+                    "alias": "Fields"
+                }
+            },
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "1993-07-05",
+                    "dateOfDeath": null,
+                    "name": "Josh Dobbs",
+                    "placeOfBirth": "geo:location",
+                    "alias": "Dobbs"
+                }
+            },
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "1992-04-10",
+                    "dateOfDeath": null,
+                    "name": "D.J. Moore",
+                    "placeOfBirth": "geo:location",
+                    "alias": "Moore"
+                }
+            },
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "1999-01-15",
+                    "dateOfDeath": null,
+                    "name": "Jordan Addison",
+                    "placeOfBirth": "geo:location",
+                    "alias": "Addison"
+                }
+            },
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "1998-01-18",
+                    "dateOfDeath": null,
+                    "name": "Jaylon Johnson",
+                    "placeOfBirth": "geo:location",
+                    "alias": "Johnson"
+                }
+            },
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "1998-03-10",
+                    "dateOfDeath": null,
+                    "name": "Cairo Santos",
+                    "placeOfBirth": "geo:location",
+                    "alias": "Santos"
+                }
+            },
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "1999-05-15",
+                    "dateOfDeath": null,
+                    "name": "T.J. Hockenson",
+                    "placeOfBirth": "geo:location",
+                    "alias": "Hockenson"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "Chicago Bears",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "Bears",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            },
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "Minnesota Vikings",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "Vikings",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            },
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "ESPN",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "ESPN",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            },
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "NFL",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "NFL",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "NFL Game Recap: Bears vs. Vikings",
+            "author": "NFL",
+            "theme": "Sports",
+            "summary": "Recap of the Chicago Bears vs. Minnesota Vikings game on November 27, 2023.",
+            "created": "2023-11-27T20:15:00",
+            "hasThumbnail": "snap:imageAsset",
+            "embargoedUntil": "2023-11-28T00:00:00",
+            "modified": "2023-11-28T00:00:00",
+            "published": "2023-11-27T20:15:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "@type": "schema:ItemList",
+                "@container": "@list",
+                "Event": {
+                    "@id": "snap:event",
+                    "eventTitle": "Bears vs. Vikings Game Highlights",
+                    "eventSummary": "Highlights and key moments from the Bears vs. Vikings game.",
+                    "theme": "Sports",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": {
+                        "@id": "snap:personList",
+                        "Person": [
+                            {
+                                "name": "Justin Fields",
+                                "dateOfBirth": "1999-03-05",
+                                "placeOfBirth": "geo:location",
+                                "alias": "Fields"
+                            },
+                            {
+                                "name": "Josh Dobbs",
+                                "dateOfBirth": "1993-07-05",
+                                "placeOfBirth": "geo:location",
+                                "alias": "Dobbs"
+                            },
+                            {
+                                "name": "D.J. Moore",
+                                "dateOfBirth": "1992-04-10",
+                                "placeOfBirth": "geo:location",
+                                "alias": "Moore"
+                            },
+                            {
+                                "name": "Jordan Addison",
+                                "dateOfBirth": "1999-01-15",
+                                "placeOfBirth": "geo:location",
+                                "alias": "Addison"
+                            },
+                            {
+                                "name": "Jaylon Johnson",
+                                "dateOfBirth": "1998-01-18",
+                                "placeOfBirth": "geo:location",
+                                "alias": "Johnson"
+                            },
+                            {
+                                "name": "Cairo Santos",
+                                "dateOfBirth": "1998-03-10",
+                                "placeOfBirth": "geo:location",
+                                "alias": "Santos"
+                            },
+                            {
+                                "name": "T.J. Hockenson",
+                                "dateOfBirth": "1999-05-15",
+                                "placeOfBirth": "geo:location",
+                                "alias": "Hockenson"
+                            }
+                        ]
+                    },
+                    "mentions_organizations": {
+                        "@id": "snap:organizationList",
+                        "Organization": [
+                            {
+                                "name": "Chicago Bears",
+                                "hasLocation": "geo:SpatialThing",
+                                "alias": "Bears"
+                            },
+                            {
+                                "name": "Minnesota Vikings",
+                                "hasLocation": "geo:SpatialThing",
+                                "alias": "Vikings"
+                            },
+                            {
+                                "name": "ESPN",
+                                "hasLocation": "geo:SpatialThing",
+                                "alias": "ESPN"
+                            },
+                            {
+                                "name": "NFL",
+                                "hasLocation": "geo:SpatialThing",
+                                "alias": "NFL"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    ]
+}

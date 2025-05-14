@@ -1,0 +1,137 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Bears vs. Vikings live score, updates, highlights from NFL 'Monday Night Football' game",
+            "author": "Dan Treacy",
+            "published": "2023-11-27T23:32:04+00:00",
+            "summary": "The honeymoon period is over for Joshua Dobbs in Minnesota. The folk hero quarterback threw four interceptions in the Vikings' 12-10 'Monday Night Football' loss to the Bears, leading a sluggish offense that didn't find its footing until the fourth quarter in a game that Minnesota wouldn't have needed many points to win.",
+            "has_events": {
+                "@list": [
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Bears vs. Vikings Final Score",
+                        "eventSummary": "Bears 12, Vikings 10",
+                        "theme": "sports",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "name": "Joshua Dobbs",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Passtronaut"
+                                },
+                                {
+                                    "name": "Justin Fields",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Fields"
+                                },
+                                {
+                                    "name": "Cairo Santos",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Santos"
+                                },
+                                {
+                                    "name": "D.J. Moore",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Moore"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Sporting News",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Sporting News"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

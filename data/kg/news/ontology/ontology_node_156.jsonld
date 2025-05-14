@@ -1,0 +1,216 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "Inter Miami vs FC Cincinnati Match Update",
+                "author": "Franco Panizo",
+                "theme": "Sports",
+                "summary": "A detailed update on the Inter Miami vs FC Cincinnati match, including protests over ticket prices and player availability.",
+                "created": "2023-10-07T19:30:00Z",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "2023-10-07T19:30:00Z",
+                "modified": "2023-10-07T19:30:00Z",
+                "published": "2023-10-07T19:30:00Z",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "Inter Miami vs FC Cincinnati Match",
+                    "eventSummary": "A match between Inter Miami and FC Cincinnati with significant implications for playoff contention.",
+                    "theme": "Sports",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "Franco Panizo",
+                    "placeOfBirth": "geo:location",
+                    "alias": "Franco"
+                }
+            },
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "Michelle Kaufman",
+                    "placeOfBirth": "geo:location",
+                    "alias": "Michelle"
+                }
+            },
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "Luciano Acosta",
+                    "placeOfBirth": "geo:location",
+                    "alias": "LuchoAcosta94"
+                }
+            },
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "Gaston Edul",
+                    "placeOfBirth": "geo:location",
+                    "alias": "Gastón"
+                }
+            },
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "Roman Celentano",
+                    "placeOfBirth": "geo:location",
+                    "alias": "Roman"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "Inter Miami CF",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "Inter Miami"
+                }
+            },
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "FC Cincinnati",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "Cincinnati"
+                }
+            },
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "Miami Herald",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "Herald"
+                }
+            },
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "CBS Sports",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "CBS"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Inter Miami vs FC Cincinnati Match Update",
+            "author": "Franco Panizo",
+            "theme": "Sports",
+            "summary": "A detailed update on the Inter Miami vs FC Cincinnati match, including protests over ticket prices and player availability.",
+            "created": "2023-10-07T19:30:00Z",
+            "hasThumbnail": "snap:imageAsset",
+            "embargoedUntil": "2023-10-07T19:30:00Z",
+            "modified": "2023-10-07T19:30:00Z",
+            "published": "2023-10-07T19:30:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "Inter Miami vs FC Cincinnati Match",
+                    "eventSummary": "A match between Inter Miami and FC Cincinnati with significant implications for playoff contention.",
+                    "theme": "Sports",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "name": "Franco Panizo",
+                            "alias": "Franco"
+                        },
+                        {
+                            "name": "Michelle Kaufman",
+                            "alias": "Michelle"
+                        },
+                        {
+                            "name": "Luciano Acosta",
+                            "alias": "LuchoAcosta94"
+                        },
+                        {
+                            "name": "Gaston Edul",
+                            "alias": "Gastón"
+                        },
+                        {
+                            "name": "Roman Celentano",
+                            "alias": "Roman"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "name": "Inter Miami CF",
+                            "alias": "Inter Miami"
+                        },
+                        {
+                            "name": "FC Cincinnati",
+                            "alias": "Cincinnati"
+                        },
+                        {
+                            "name": "Miami Herald",
+                            "alias": "Herald"
+                        },
+                        {
+                            "name": "CBS Sports",
+                            "alias": "CBS"
+                        }
+                    ]
+                }
+            ],
+            "followUp": "snap:asset",
+            "derivedFrom": "snap:asset"
+        }
+    ]
+}

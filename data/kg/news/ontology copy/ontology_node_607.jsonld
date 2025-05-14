@@ -1,0 +1,111 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "byline": "Sloan Piva",
+            "published": "2023-12-07T22:09:00+00:00",
+            "title": "Fantasy Football RB PPR Rankings Week 14: Who to start, best sleepers at running back",
+            "summary": "Happy December, fantasy friends! We have somehow reached the final week of the fantasy football regular season, so the running back decisions we make in our PPR leagues this week could very well impact our playoff fate. Our Week 14 fantasy RB PPR rankings will help you optimize your lineup at RB1, RB2, and flex heading into this crucial weekend. It hasn't been all holly, jolly this season — in fact, it has often been a bumpy sleigh ride. We've suffered a plethora of injuries to stud RBs the past few weeks, but we keep rolling with the punches and always do our best to stay two steps ahead of our opponents. One major positive is that only two teams will be on bye this week, a welcome relief after the six-team byepocalypse that was Week 13. Still, the injury-ravaged teams will have trouble replacing their studs and the deep squads will have difficult start 'em, sit 'em decisions to make. As we do every week, we're deep-diving the running back position and analyzing all the stats, matchups, and injuries before breaking down our rankings. So, let's get to it and survey the RB landscape for the final week of the fantasy regular season.",
+            "associatedAsset": {
+                "@type": "TextAsset",
+                "image": "https://www.sportingnews.com/us/fantasy/news/fantasy-football-rb-ppr-rankings-week-14-running-back/4b39f2badd158eabb6c1d104"
+            }
+        },
+        {
+            "@type": "Organization",
+            "name": "Sporting News"
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "Fantasy Football RB PPR Rankings Week 14",
+            "eventSummary": "Rankings based on full-point PPR scoring formats",
+            "theme": {
+                "@type": "intangibleStuff",
+                "comment": "sports"
+            }
+        }
+    ]
+}
+```

@@ -1,0 +1,138 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Kazuma Hashimoto",
+      "published": "2023-10-19T16:01:50+00:00",
+      "title": "VTubers have reached their inevitable conclusion",
+      "summary": "Twitch has always allowed for various forms of expression, so it was no surprise when VTubing found a home on the platform, quickly gaining popularity among English-speaking audiences in 2019. Since then, the novelty of avatar-based content may have worn off, but the format has stuck around. And VTubing agencies, which continue to introduce new talents and offer one of the more financially secure methods of pursuing this sort of content, are still holding on in an attempt to harness new talent.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://www.polygon.com/23919506/vtuber-hololive-gawr-gura-nijisanji-agency-model"
+      }
+    },
+    {
+      "@type": "Organization",
+      "name": "Polygon"
+    },
+    {
+      "@type": "Organization",
+      "name": "Twitch"
+    },
+    {
+      "@type": "Organization",
+      "name": "Hololive"
+    },
+    {
+      "@type": "Organization",
+      "name": "Nijisanji"
+    },
+    {
+      "@type": "Organization",
+      "name": "Cover Corporation"
+    },
+    {
+      "@type": "Person",
+      "name": "Gawr Gura"
+    },
+    {
+      "@type": "Person",
+      "name": "Ninomae Ina’nis"
+    },
+    {
+      "@type": "Person",
+      "name": "Pokimane"
+    },
+    {
+      "@type": "Person",
+      "name": "Mysta Rias"
+    },
+    {
+      "@type": "Person",
+      "name": "NagamiMugi"
+    }
+  ]
+}
+```

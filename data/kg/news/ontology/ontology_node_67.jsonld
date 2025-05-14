@@ -1,0 +1,156 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Epic v. Google, explained",
+            "author": "Sean Hollister",
+            "theme": "technology",
+            "summary": "On Monday, Fortnite publisher Epic Games will drag a tech giant into court, alleging that its mobile app store is an illegal monopoly. Epic argues that Google makes it so difficult for developers and users to get around its Android app store, and that app store’s standard fees, that it’s created an illegal monopoly that unjustly enriches Google while artificially driving up app prices because other stores can’t compete.",
+            "created": "2023-11-05T11:00:00+00:00",
+            "published": "2023-11-05T11:00:00+00:00",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Epic v. Google Trial",
+                        "eventSummary": "Epic v. Google will finally go to trial on November 6th, 2023.",
+                        "theme": "legal",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Courtroom"
+                        },
+                        "mentions_persons": {
+                            "Person": [
+                                {
+                                    "name": "Tim Sweeney",
+                                    "dateOfBirth": "1970-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "United States"
+                                    },
+                                    "alias": "Epic CEO"
+                                },
+                                {
+                                    "name": "Sundar Pichai",
+                                    "dateOfBirth": "1972-06-10",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "India"
+                                    },
+                                    "alias": "Google CEO"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "Organization": [
+                                {
+                                    "name": "Epic Games",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Cary, North Carolina"
+                                    },
+                                    "alias": "Epic"
+                                },
+                                {
+                                    "name": "Google",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Mountain View, California"
+                                    },
+                                    "alias": "Google LLC"
+                                },
+                                {
+                                    "name": "Apple",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Cupertino, California"
+                                    },
+                                    "alias": "Apple Inc."
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

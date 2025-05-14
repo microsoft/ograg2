@@ -1,0 +1,356 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "title": "Layoffs in Tech Companies",
+            "author": "Natasha Mascarenhas",
+            "summary": "A compilation of recent layoffs across various tech companies.",
+            "created": "2023-01-30T00:00:00Z",
+            "published": "2023-01-30T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Impossible Foods Layoffs",
+                        "eventSummary": "Reportedly affecting 20% of its staff, over 100 employees, Bloomberg reported first.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Impossible Foods"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "PayPal Layoffs",
+                        "eventSummary": "Announced on January 30, about 2,000 full-time employees, or 7% of its workforce, were affected.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "PayPal"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Arrival Layoffs",
+                        "eventSummary": "Announced on January 30, with a newly appointed CEO, slashing 50% of its workforce — 800 employees globally.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Arrival"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Waymo Layoffs",
+                        "eventSummary": "The self-driving technology unit under Alphabet quietly laid off workers on January 24, according to The Information and several posts on LinkedIn and Blind. It’s not yet clear how many of Waymo’s staff will be affected.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Waymo"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Spotify Layoffs",
+                        "eventSummary": "Announced on January 23, impacting around 6% of its global workforce — around 600 employees.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Spotify"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Alphabet Layoffs",
+                        "eventSummary": "Google’s parent company announced laying off 6% of its global workforce on January 21, equating to 12,000 employees.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Alphabet"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Fandom Layoffs",
+                        "eventSummary": "The entertainment company announced an unspecified number of employees impacted across multiple properties on January 20.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Fandom"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Swiggy Layoffs",
+                        "eventSummary": "Announced plans to lay off 380 jobs on January 20 and shut down its meat marketplace.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Swiggy"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Sophos Layoffs",
+                        "eventSummary": "Announced on January 18, 10% of its global workforce, about 450 people were let go.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Sophos"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Microsoft Layoffs",
+                        "eventSummary": "As announced on January 18, 10,000 employees will be impacted.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Microsoft"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "GoMechanic Layoffs",
+                        "eventSummary": "Laid off 70% of its workforce on January 18.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "GoMechanic"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Clearco Layoffs",
+                        "eventSummary": "Announced on January 17, impacting 30% of staff across all teams.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Clearco"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "ShareChat Layoffs",
+                        "eventSummary": "Announced on January 15, ShareChat laid off 20% of its workforce — or over 400 employees.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "ShareChat"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "SmartNews Layoffs",
+                        "eventSummary": "Announced on January 12 a 40% reduction of its U.S. and China workforce, or around 120 people.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "SmartNews"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Intrinsic Layoffs",
+                        "eventSummary": "Alphabet’s robot software firm, Intrinsic, is laying off 40 employees TechCrunch confirmed on January 12.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Intrinsic"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Greenlight Layoffs",
+                        "eventSummary": "The fintech startup offering debit cards to kids laid off 104 employees on January 12, or over 21% of its total headcount of 485 employees.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Greenlight"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Career Karma Layoffs",
+                        "eventSummary": "Learning navigation platform Career Karma laid off another 22 people on January 12 across its global and domestic workforce.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Career Karma"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "DirectTV Layoffs",
+                        "eventSummary": "Announced on January 12 plans to lay off about 10% of its management staff on January 20.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "DirectTV"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Informatica Layoffs",
+                        "eventSummary": "Reported on January 11 that it will lay off 7% of its workforce, or 450 staffers globally.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Informatica"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Carta Layoffs",
+                        "eventSummary": "Announced on January 11, the equity management platform cut 10% of its staff.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Carta"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Citizen Layoffs",
+                        "eventSummary": "Impacting 33 staff members on January 11.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Citizen"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Coinbase Layoffs",
+                        "eventSummary": "To cut 950 jobs, or about 20% of its workforce, and shut down “several” projects, announced on January 10.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Coinbase"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "SuperRare Layoffs",
+                        "eventSummary": "The NFT marketplace is cutting 30% of its staff, announced on January 6.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "SuperRare"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Amazon Layoffs",
+                        "eventSummary": "Announced on January 5, eliminating more than 18,000 roles.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Amazon"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Salesforce Layoffs",
+                        "eventSummary": "Announced on January 4 that it’s cutting 10% of its workforce, impacting more than 7,000 employees.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Salesforce"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Vimeo Layoffs",
+                        "eventSummary": "Announced on January 4, cutting 11% of its workforce.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": {
+                                "name": "Vimeo"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

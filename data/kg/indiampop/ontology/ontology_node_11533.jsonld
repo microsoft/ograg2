@@ -1,0 +1,66 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text",
+                "function": "schema:Text",
+                "deficiency_symptoms": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Oil Palm",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Oil Palm",
+                "used_for": "Oil Production"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Top Soil",
+                "for_nutrients": "Potassium"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Heavy rates of K applications induce Mg-deficiency, particularly on poor acid soils."
+            }
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Potassium",
+            "quantity": "Large",
+            "stage_of_application": "Production",
+            "function": "Required for the production of more number of bunches, maximum number of female inflorescences, increased bunch weight and also for increasing the total dry matter production and yield.",
+            "deficiency_symptoms": "In adult oil palm and in seedlings in the field, severe Mg deficiency symptoms are most striking and have been named as ‘orange frond’. While the lower most leaves are dead, those above them show a gradation of colouring from bright orange on the lower leaves to faint yellow on leaves of young and intermediate age. The youngest leaves do not show any discolouration. The most typical Mgdeficiency symptom is the shading effect in which the shaded portion of the leaflet will be dark green while the exposed portion of the same leaflet is chlorotic."
+        }
+    ]
+}

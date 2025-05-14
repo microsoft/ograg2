@@ -1,0 +1,63 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "IrrigationSystem": {
+            "@id": "cropCult:IrrigationSystem",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "description": "schema:description",
+                "dripper_types": "cropCult:DripperTypes",
+                "dripper_placement": "cropCult:DripperPlacement",
+                "emitter_types": "cropCult:EmitterTypes"
+            }
+        },
+        "DripperTypes": {
+            "@id": "cropCult:DripperTypes",
+            "@type": "schema:Thing",
+            "@context": {
+                "inline_drippers": "schema:Text",
+                "on_line_drippers": "schema:Text",
+                "micro_tubes": "schema:Text",
+                "pressed_compensated_drippers": "schema:Text"
+            }
+        },
+        "DripperPlacement": {
+            "@id": "cropCult:DripperPlacement",
+            "@type": "schema:Thing",
+            "@context": {
+                "placement_method": "schema:Text"
+            }
+        },
+        "EmitterTypes": {
+            "@id": "cropCult:EmitterTypes",
+            "@type": "schema:Thing",
+            "@context": {
+                "available_emitters": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:IrrigationSystem",
+            "name": "MICRO IRRIGATION",
+            "description": "In this system water is applied drop by drop nearer the root zone area of the crop. The drippers are fixed based on the spacing of crop.",
+            "dripper_types": {
+                "@type": "cropCult:DripperTypes",
+                "inline_drippers": "Available",
+                "on_line_drippers": "Available",
+                "micro_tubes": "Available",
+                "pressed_compensated_drippers": "Available"
+            },
+            "dripper_placement": {
+                "@type": "cropCult:DripperPlacement",
+                "placement_method": "The drippers are fixed based on the spacing of crop."
+            },
+            "emitter_types": {
+                "@type": "cropCult:EmitterTypes",
+                "available_emitters": "Many different types of emitters are available in the market."
+            }
+        }
+    ]
+}

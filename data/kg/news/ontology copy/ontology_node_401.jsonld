@@ -1,0 +1,170 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "byline": "Andrew Tarantola",
+      "published": "2023-10-30T09:00:08+00:00",
+      "title": "Sweeping White House AI executive order takes aim at the technology's toughest challenges",
+      "summary": "The Biden Administration unveiled its ambitious next steps in addressing and regulating artificial intelligence development on Monday. Its expansive new executive order (EO) seeks to establish further protections for the public as well as improve best practices for federal agencies and their contractors.",
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "image": "https://www.engadget.com/sweeping-white-house-ai-executive-order-takes-aim-at-the-technologys-toughest-challenges-090008655.html?src=rss"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Engadget"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "White House"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Bruce Reed"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Adobe"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Department of Commerce"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "C2PA"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "CAI"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Department of Justice"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Department of Health and Human Services"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Department of Labor"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Council of Economic Advisors"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "US Digital Service"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Presidential Innovation Fellowship"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "USA jobs"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Senate"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Kamala Harris"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Rishi Sunak"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Chuck Schumer"
+    }
+  ]
+}
+```

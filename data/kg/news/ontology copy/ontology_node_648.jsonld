@@ -1,0 +1,131 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "byline": "Tina Hesman Saey",
+      "published": "2023-10-04T21:11:57+00:00",
+      "title": "Creation of quantum dots wins 2023 chemistry Nobel",
+      "summary": "Quantum dots, tiny specks with unique properties, have won the 2023 Nobel Prize in chemistry. The prize honors Moungi Bawendi, Louis Brus, and Alexei Ekimov for their groundbreaking work.",
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "image": "https://www.snexplores.org/article/quantum-dots-technology-2023-nobel-prize-chemistry"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Moungi Bawendi",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "Massachusetts Institute of Technology"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Louis Brus",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "Columbia University"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Alexei Ekimov",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "Nanocrystals Technology, Inc."
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Royal Swedish Academy of Sciences"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "2023 Nobel Prize in Chemistry",
+      "eventSummary": "Awarded to Moungi Bawendi, Louis Brus, and Alexei Ekimov for their work on quantum dots."
+    }
+  ]
+}
+```

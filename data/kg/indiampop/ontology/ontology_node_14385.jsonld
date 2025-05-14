@@ -1,0 +1,356 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "SeedList": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List",
+                "has_early_sowing_time": "cropCult:SowingTime",
+                "has_late_sowing_time": "cropCult:SowingTime",
+                "has_seeding_rate": "schema:QuantitativeValue",
+                "has_fertilizer_application_requirements": "cropCult:Fertilization"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CropGrowingZones":{
+                "@container": "@list",
+                "@id": "cropCult:CropGrowingZones",
+                "@type": "schema:ItemList",
+                "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List",
+                    "has_seed_recommendations": "cropCult:SeedList"
+                }
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "for_flowering": "schema:Text",
+                "for_grain_filling": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "seedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "PULSES",
+            "has_types": [
+                {
+                    "@type": "cropCult:CropType",
+                    "name": "Variety",
+                    "used_for": "Pre-rabi (Sept-Oct), Rabi* (Nov-Dec), Summer (Mid Feb to 1st week of March)"
+                }
+            ],
+            "has_growing_zones": [
+                {
+                    "@type": "cropCult:CropGrowingZones",
+                    "CropGrowingZone": [
+                        {
+                            "@type": "cropCult:CropGrowingZone",
+                            "name": "Greengram",
+                            "has_regions": [
+                                "Pre-rabi (Sept-Oct)",
+                                "Rabi* (Nov-Dec)",
+                                "Summer (Mid Feb to 1st week of March)"
+                            ],
+                            "has_seed_recommendations": [
+                                {
+                                    "@type": "cropCult:SeedList",
+                                    "variety_name": [
+                                        "TARM 1",
+                                        "TARM 2",
+                                        "Pusa 9531",
+                                        "Pusa 9072",
+                                        "Pusa Bold 1",
+                                        "Sujata (Hyb 12-4)",
+                                        "Jyoti (Hyb 4-3)",
+                                        "Kamdev(OUM 11-5)",
+                                        "Dhauli",
+                                        "PDM 11",
+                                        "SML 668",
+                                        "PDM 54",
+                                        "HUM 12",
+                                        "LGG 410",
+                                        "LGG 460",
+                                        "Pragyan (RUM 1-20)",
+                                        "Durga(OBGG 52)",
+                                        "Samrat(PDM84-139)",
+                                        "K 851"
+                                    ],
+                                    "has_early_sowing_time": [
+                                        {
+                                            "@type": "cropCult:SowingTime",
+                                            "start_date": "60-65",
+                                            "end_date": "65-70"
+                                        }
+                                    ],
+                                    "has_late_sowing_time": [
+                                        {
+                                            "@type": "cropCult:SowingTime",
+                                            "start_date": "60-65",
+                                            "end_date": "65-70"
+                                        }
+                                    ],
+                                    "has_seeding_rate": {
+                                        "@type": "schema:QuantitativeValue",
+                                        "value": "1"
+                                    },
+                                    "has_fertilizer_application_requirements": [
+                                        {
+                                            "@type": "cropCult:Fertilization",
+                                            "nutrient_name": "Nitrogen",
+                                            "quantity": "50kg/ha",
+                                            "stage_of_application": "At sowing"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "has_temperature_requirements": [
+                {
+                    "@type": "cropCult:TemperatureRequirements",
+                    "for_germination": "25-30°C",
+                    "for_flowering": "20-25°C",
+                    "for_grain_filling": "20-25°C",
+                    "negative_effect": "Below 15°C and above 35°C"
+                }
+            ],
+            "has_soil_requirements": [
+                {
+                    "@type": "cropCult:SoilRequirements",
+                    "soil_type_name": "Loamy soil",
+                    "avoid_soil_type": "Clayey soil",
+                    "for_water": "Well drained",
+                    "for_nutrients": "Rich in organic matter"
+                }
+            ],
+            "has_land_preperation_requirements": [
+                {
+                    "@type": "cropCult:LandPreparation",
+                    "instructions": "Plough the field 2-3 times and level it. Add well decomposed FYM 10t/ha at the time of last ploughing.",
+                    "with_soil_moisture": "Moist"
+                }
+            ],
+            "has_seed_fungicide_requirements": [
+                {
+                    "@type": "cropCult:Fungicide",
+                    "name": "Thiram",
+                    "quantity": "2g/kg of seed"
+                }
+            ],
+            "needs_seed_sowing_spacing": [
+                {
+                    "@type": "cropCult:SeedSpacing",
+                    "sowing_time": "Pre-rabi (Sept-Oct), Rabi* (Nov-Dec), Summer (Mid Feb to 1st week of March)",
+                    "value": "30cm x 10cm",
+                    "depth": "3-4cm",
+                    "method": "Line sowing"
+                }
+            ],
+            "weed_management_needs_are": [
+                {
+                    "@type": "cropCult:WeedManagement",
+                    "weed_name": "Phalaris minor, Chenopodium album, Melilotus alba",
+                    "weed_types": [
+                        "Grass",
+                        "Broadleaf",
+                        "Sedge"
+                    ],
+                    "herbicides": [
+                        {
+                            "@type": "cropCult:HerbicideList",
+                            "name": "Isoproturon",
+                            "quantity": "1kg a.i/ha",
+                            "stage": "Post-emergence"
+                        }
+                    ]
+                }
+            ],
+            "needs_irrigation_schedule": [
+                {
+                    "@type": "cropCult:IrrigationRequirement",
+                    "quantity": "3-4",
+                    "stage_of_application": "At critical stages of crop growth"
+                }
+            ],
+            "needs_disease_treatements": [
+                {
+                    "@type": "cropCult:DiseaseTreatements",
+                    "disease_name": "Yellow mosaic virus",
+                    "disease_symptoms": "Yellowing and reduction in size of leaves",
+                    "disease_control": [
+                        {
+                            "@type": "cropCult:HerbicideList",
+                            "name": "Imidacloprid",
+                            "quantity": "0.5ml/litre of water",
+                            "stage": "At the time of disease appearance"
+                        }
+                    ]
+                }
+            ],
+            "needs_pest_treatements": [
+                {
+                    "@type": "cropCult:PestTreatements",
+                    "pest_name": "Aphids",
+                    "pest_symptoms": "Sucking of sap resulting in yellowing and wilting",
+                    "pest_control": [
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Imidacloprid",
+                            "quantity": "0.5ml/litre of water",
+                            "stage": "At the time of pest appearance"
+                        }
+                    ]
+                }
+            ],
+            "harvesting_guidelines_are": "Harvest when 80-85% pods turn black and dry",
+            "storage_guidelines_are":"Store in cool and dry place"
+        }
+    ]
+}

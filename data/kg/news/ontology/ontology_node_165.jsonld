@@ -1,0 +1,172 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Jamaica vs Canada live score, result, updates, highlights from CONCACAF Nations League quarterfinal first leg",
+            "author": "Kyle Bonn",
+            "published": "2023-11-17T21:48:03+00:00",
+            "summary": "Canada took a major step towards Copa America 2024 qualification as Stephen Eustaquio's 85th-minute strike gave them victory in their CONCACAF Nations League quarterfinal first leg and a first win in Jamaica for 35 years.",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Jamaica vs Canada Match",
+                        "eventSummary": "Canada defeats Jamaica 2-1 in the first leg of the CONCACAF Nations League quarterfinal.",
+                        "theme": "sports",
+                        "hasLocation": {
+                            "@type": "geo:SpatialThing",
+                            "name": "Independence Park, Kingston, Jamaica"
+                        },
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Kyle Bonn"
+                                },
+                                {
+                                    "name": "Stephen Eustaquio"
+                                },
+                                {
+                                    "name": "Jonathan David"
+                                },
+                                {
+                                    "name": "Shamar Nicholson"
+                                },
+                                {
+                                    "name": "Leon Bailey"
+                                },
+                                {
+                                    "name": "Milan Borjan"
+                                },
+                                {
+                                    "name": "Cyle Larin"
+                                },
+                                {
+                                    "name": "Richie Laryea"
+                                },
+                                {
+                                    "name": "Ethan Pinnock"
+                                },
+                                {
+                                    "name": "Ismaël Koné"
+                                },
+                                {
+                                    "name": "Mark-Anthony Kaye"
+                                },
+                                {
+                                    "name": "Daniel Johnson"
+                                },
+                                {
+                                    "name": "Sam Adekugbe"
+                                },
+                                {
+                                    "name": "Trivante Stewart"
+                                },
+                                {
+                                    "name": "Heimir Hallgrimsson"
+                                },
+                                {
+                                    "name": "Steven Vitoria"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Sporting News"
+                                },
+                                {
+                                    "name": "Canada Soccer"
+                                },
+                                {
+                                    "name": "Concacaf Nations League"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "modified": "2023-11-18T21:48:03+00:00"
+        }
+    ]
+}

@@ -1,0 +1,115 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "GROUNDNUT (Arachis hypogaea L.)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Groundnut",
+                "used_for": "Oil production"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical and subtropical regions",
+                    "has_regions": ["Africa", "Asia", "South America"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Arachis hypogaea L."]
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "20-30°C",
+                "for_flowering": "20-30°C",
+                "for_grain_filling": "20-30°C",
+                "negative_effect": "Below 15°C and above 35°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Sandy loam",
+                "avoid_soil_type": "Clayey soil",
+                "for_water": "Well-drained soil",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the land to a fine tilth and form ridges and furrows at a spacing of 45 cm.",
+                "with_soil_moisture": "Moist but well-drained"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Early summer",
+                "value": "10 cm",
+                "depth": "5-6 cm",
+                "method": "Dibbling"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Broadleaf weeds",
+                "weed_types": ["Amaranthus", "Chenopodium"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Atrazine",
+                    "quantity": "1.0 kg a.i./ha",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "500-600 mm",
+                "stage_of_application": "Flowering and pegging stage"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Tikka disease",
+                "disease_symptoms": "Small, dark brown spots on leaves",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Mancozeb",
+                    "quantity": "2.0 kg a.i./ha",
+                    "stage": "At the onset of disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Aphids",
+                "pest_symptoms": "Yellowing and curling of leaves",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Imidacloprid",
+                    "quantity": "0.5 ml/litre of water",
+                    "stage": "At the onset of pest"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when the leaves turn yellow and start shedding.",
+            "storage_guidelines_are":"Store in a cool, dry place."
+        }
+    ]
+}

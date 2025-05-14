@@ -1,0 +1,128 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "6 VCs explain how startups can capture and defend marketshare in the AI era",
+      "author": "Alex Wilhelm",
+      "theme": "technology",
+      "content": "You cannot escape conversations about AI no matter how far or fast you run. Hyperbole abounds around what current AI tech will be able to do (revolutionize every industry!) and what current AI tech will be able to do (take over the world!). Closer to the ground, TechCrunch+ is working to understand where startups might find footholds in the market by levering large language models (LLMs), a recent and impactful new method of creating artificially intelligent software. How AI will play in startup land is not a new topic of conversation. A few years back, one venture firm asked how AI-focused startups would monetize and whether they would suffer from impaired margins due to costs relating to running models on behalf of customers. That conversation died down, only to come roaring back in recent quarters as it became clear that while LLM technology is quickly advancing, it’s hardly cheap to run in its present form. But costs are only one area where we have unanswered questions. We are also incredibly curious about how startups should approach building tools for AI technologies, how defensible startup-focused AI work will prove, and how upstart tech companies should charge for AI-powered tooling. With the amount of capital flowing to startups working with and building AI today, it’s critical that we understand the market as best we can. So we asked a number of venture capitalists who are active in the AI investing space to walk us through what they are seeing in the market today. What we learned from the investing side of the house was useful. Rick Grinnell, founder and managing partner at Glasswing Ventures, said that within the new AI tech stack, “most of the opportunity lies in the application layer,” where “the best applications will harness their in-house expertise to build specialized middle-layer tooling and blend them with the appropriate foundational models.” Startups, he added, can use speed to their advantage as they work to “innovate, iterate and deploy solutions” to customers. Will that work prove defensible in the long run? Edward Tsai, a managing partner at Alumni Ventures, told us that he had a potentially “controversial opinion that VCs and startups may want to temporarily reduce their focus on defensibility and increase their focus on products that deliver compelling value and focusing on speed to market.” Presuming massive TAM, that could work! Read on for answers to all our questions from: Rick Grinnell, founder and managing partner, Glasswing Ventures There are several layers to the emerging LLM stack, including models, pre-training solutions and fine-tuning tools. Do you expect startups to build striated solutions for individual layers of the LLM stack, or pursue a more vertical approach? In our proprietary view of the GenAI tech stack, we categorize the landscape into four distinct layers: foundation model providers, middle-tier companies, end-market or top-layer applications, and full stack or end-to-end vertical companies. We think that most of the opportunity lies in the application layer, and within that layer, we believe that in the near future, the best applications will harness their in-house expertise to build specialized middle-layer tooling and blend them with the appropriate foundational models. These are “vertically integrated” or “full-stack” applications. For startups, this approach means a shorter time-to-market. Without negotiating or integrating with external entities, startups can innovate, iterate and deploy solutions at an accelerated pace. This speed and agility can often be the differentiating factor in capturing market share or meeting a critical market need before competitors. On the other hand, we view the middle layer as a conduit, connecting the foundational aspects of AI with the refined specialized application layer. This part of the stack includes cutting-edge capabilities, encompassing model fine-tuning, prompt engineering and agile model orchestration. It’s here that we anticipate the rise of entities akin to Databricks. Yet, the competitive dynamics of this layer present a unique challenge. Primarily, the emergence of foundation model providers expanding into middle-layer tools heightens commoditization risks. Additionally, established market leaders venturing into this space further intensify the competition. Consequently, despite a surge in startups within this domain, clear winners still need to be discovered. Companies like Datadog are building products to support the expanding AI market, including releasing an LLM observability tool. Will efforts like what Datadog has built (and similar output from large/incumbent tech powers) curtail the market area where startups can build and compete? LLM observability falls within the “middle layer” category, acting as a catalyst for specialized business applications to use foundational models. Incumbents like Datadog, New Relic and Splunk have all produced LLM observability tools and do appear to be putting a lot of R&D dollars behind this, which may curtail the market area in the short-term. However, as we have seen before with the inceptions of the internet and cloud computing, incumbents tend to innovate until innovation becomes stagnant. With AI becoming a household name that finds use cases in every vertical, startups have the chance to come in with innovative solutions that disrupt and reimagine the work of incumbents. It’s still too early to say with certainty who the winners will be, as every day reveals new gaps in existing AI frameworks. Therein lie major opportunities for startups. How much room in the market do the largest tech companies’ services leave for smaller companies and startups tooling for LLM deployment? When considering the landscape of foundational layer model providers like Alphabet/Google’s Bard, Microsoft/OpenAI’s GPT-4, and Anthropic’s Claude, it’s evident that the more significant players possess inherent advantages regarding data accessibility, talent pool and computational resources. We expect this layer to settle into an oligopolistic structure like the cloud provider market, albeit with the addition of a strong open source contingency that will drive considerable third-party adoption. As we look at the generative AI tech stack, the largest market opportunity lies above the model itself. Companies that introduce AI-powered APIs and operational layers for specific industries will create brand-new use cases and transform workflows. By embracing this technology to revolutionize workflows, these companies stand to unlock substantial value. However, it’s essential to recognize that the market is still far from being crystallized. LLMs are still in their infancy, with adoption at large corporations and startups lacking full maturity and refinement. We need robust tools and platforms to enable broader utilization among businesses and individuals. Startups have the opportunity here to act quickly, find novel solutions to emerging problems, and define new categories. Interestingly, even large tech companies recognize the gaps in their services and have begun investing heavily in startups alongside VCs. These companies apply AI to their internal processes and thus see the value startups bring to LLM deployment and integration. Consider the recent investments from Microsoft, Nvidia, and Salesforce into companies like Inflection AI and Cohere. What can be done to ensure industry-specific startups that tune generative AI models for a specific niche will prove defensible? To ensure industry-specific startups will prove defensible in the rising climate of AI integration, startups must prioritize collecting proprietary data, integrating a sophisticated application layer and assuring output accuracy. We have established a framework to assess the defensibility of application layers of AI companies. First, the application must address a real enterprise pain point prioritized by executives. Second, to provide tangible benefits and long-term differentiation, the application should be composed of cutting-edge models that fit the specific and unique needs of the software. It’s not enough to simply plug into OpenAI; rather, applications should choose their models intentionally while balancing cost, compute, and performance. Third, the application is only as sophisticated as the data that it is fed. Proprietary data is necessary for specific and relevant insights and to ensure others cannot replicate the final product. To this end, in-house middle-layer capabilities provide a competitive edge while harnessing the power of foundational models. Finally, due to the inevitable margin of error of generative AI, the niche market must tolerate imprecision, which is inherently found in subjective and ambiguous content, like sales or marketing. How much technical competence can startups presume that their future enterprise AI customers will have in-house, and how much does that presumed expertise guide startup product selection and go-to-market motion? Within the enterprise sector, there’s a clear recognition of the value of AI. However, many lack the internal capabilities to develop AI solutions. This gap presents a significant opportunity for startups specializing in AI to engage with enterprise clients. As the business landscape matures, proficiency in leveraging AI is becoming a strategic imperative. McKinsey reports that generative AI alone can add up to $4.4 trillion in value across industries through writing code, analyzing consumer trends, personalizing customer service, improving operating efficiencies, and more. Ninety-four percent of business leaders agree AI will be critical to all businesses’ success over the next five years, and total global spending on AI is expected to reach $154 billion by the end of this year, a 27% increase from 2022. The next three years are also expected to see a compound annual growth rate of 27% — the annual AI spending in 2026 will be over $300 billion. Despite cloud computing remaining critical, AI budgets are now more than double that of cloud computing. Eighty-two percent of business leaders believe the integration of AI solutions will increase their employee performance and job satisfaction, and startups should expect a high level of desire for and experience with AI solutions in their future customers. Finally, we’ve seen consumption, or usage-based priced tech products’ growth slow in recent quarters. Will that fact lead startups building modern AI tools to pursue more traditional SaaS pricing? (The OpenAI pricing schema based on tokens and usage led us to this question.) The trajectory of usage-based pricing has organically aligned with the needs of large language models, given that there is significant variation in prompt/output sizes and resource utilization per user. OpenAI itself racks upward of $700,000 per day on compute, so to achieve profitability, these operation costs need to be allocated effectively. Nevertheless, we’ve seen the sentiment that tying all costs to volume is generally unpopular with end users, who prefer predictable systems that allow them to budget more effectively. Furthermore, it’s important to note that many applications of AI don’t rely on LLMs as a backbone and can provide conventional periodic SaaS pricing. Without direct token calls to the model provider, companies engaged in establishing infrastructural or value-added layers for AI are likely to gravitate toward such pricing strategies. The technology is still nascent, and many companies will likely find success with both kinds of pricing models. Another possibility as LLM adoption becomes widespread is the adoption of hybrid structures, with tiered periodic payments and usage limits for SMBs and uncapped usage-based tiers tailored to larger enterprises. However, as long as large language technology remains heavily dependent on the inflow of data, usage-based pricing will unlikely go away completely. The interdependence between data flow and cost structure will maintain the relevance of usage-based pricing in the foreseeable future. Lisa Calhoun, founding managing partner, Valor VC There are several layers to the emerging LLM stack, including models, pre-training solutions, and fine-tuning tools. Do you expect startups to build striated solutions for individual layers of the LLM stack, or pursue a more vertical approach? While there are startups specializing in parts of the stack (like Pinecone), Valor’s focus is on applied AI, which we define as AI that is solving a customer problem. Saile.ai is a good example — it uses AI to generate closeable leads for the Fortune 500. Or Funding U using its own trained dataset to create a more useful credit risk score. Or Allelica, using AI on treatment solutions applied to individual DNA to find the best medical treatment for you personally in a given situation. Companies like Datadog are building products to support the expanding AI market, including releasing an LLM observability tool. Will efforts like what Datadog has built (and similar output from large/incumbent tech powers) curtail the market area where startups can build and compete? Tools like Datadog can only help the acceptance of AI tools if they succeed in monitoring AI performance bottlenecks. That in and of itself is probably still largely unexplored territory that will see a lot of change and maturing in the next few years. One key aspect there might be cost monitoring as well since companies like OpenAI charge largely “by the token,” which is a very different metric than most cloud computing.",
+      "published": "2023-10-13T20:01:40+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "AI in Startups",
+          "eventSummary": "Discussion on how startups can capture and defend market share in the AI era.",
+          "theme": "technology",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Rick Grinnell"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Edward Tsai"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Lisa Calhoun"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Glasswing Ventures"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Alumni Ventures"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Valor VC"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

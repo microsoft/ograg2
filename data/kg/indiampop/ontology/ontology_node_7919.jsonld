@@ -1,0 +1,135 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "NIGER (Guizotia abyssinica)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "OILSEEDS",
+                "used_for": "RICE FALLOW COTTON"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "2.12. WATER MANAGEMENT",
+                "stage_of_application": [
+                    {
+                        "stage": "Vegetative Phase",
+                        "irrigations": [
+                            {
+                                "number": 1,
+                                "old_delta": "One wetting on the 30th to 35th day of sowing after the application of fertilisers",
+                                "new_delta": "One irrigation on the 20th day after the application of fertilisers"
+                            },
+                            {
+                                "number": 2,
+                                "new_delta": "One irrigation on the 40th day after the application of N"
+                            }
+                        ]
+                    },
+                    {
+                        "stage": "Flowering Phase",
+                        "irrigations": [
+                            {
+                                "number": 1,
+                                "old_delta": "45th day of sowing after the application of 2nd dose of N",
+                                "new_delta": "45th day after the application of 2nd dose of N"
+                            },
+                            {
+                                "number": 2,
+                                "old_delta": "55th day",
+                                "new_delta": "51st day"
+                            },
+                            {
+                                "number": 3,
+                                "old_delta": "65th day",
+                                "new_delta": "56th day"
+                            },
+                            {
+                                "number": 4,
+                                "old_delta": "75th day",
+                                "new_delta": "61st day"
+                            },
+                            {
+                                "number": 5,
+                                "old_delta": "85th day",
+                                "new_delta": "66th day"
+                            },
+                            {
+                                "number": 6,
+                                "new_delta": "71st day"
+                            },
+                            {
+                                "number": 7,
+                                "new_delta": "76th day"
+                            },
+                            {
+                                "number": 8,
+                                "new_delta": "81st day"
+                            },
+                            {
+                                "number": 9,
+                                "new_delta": "86th day"
+                            },
+                            {
+                                "number": 10,
+                                "new_delta": "91st day"
+                            }
+                        ]
+                    },
+                    {
+                        "stage": "Control Irrigation during maturity phase",
+                        "irrigations": [
+                            {
+                                "number": 1,
+                                "old_delta": "99th day",
+                                "new_delta": "98th day"
+                            },
+                            {
+                                "number": 2,
+                                "old_delta": "113th day",
+                                "new_delta": "105th day"
+                            },
+                            {
+                                "number": 3,
+                                "new_delta": "112th day"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

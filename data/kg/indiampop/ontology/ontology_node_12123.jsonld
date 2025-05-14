@@ -1,0 +1,61 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "SeedProduction": {
+            "@id": "cropCult:SeedProduction",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "drying": "cropCult:Drying"
+            }
+        },
+        "Drying": {
+            "@id": "cropCult:Drying",
+            "@type": "schema:Thing",
+            "@context": {
+                "expose_seeds": "schema:Text",
+                "co2_percentage": "schema:QuantitativeValue",
+                "duration": "schema:Duration",
+                "container_size": "schema:QuantitativeValue",
+                "moisture_content": "schema:QuantitativeValue",
+                "interval": "schema:Duration"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:SeedProduction",
+            "name": "SEED PRODUCTION",
+            "drying": {
+                "@type": "cropCult:Drying",
+                "expose_seeds": "Expose the seeds thrice",
+                "co2_percentage": {
+                    "@type": "schema:QuantitativeValue",
+                    "value": "50",
+                    "unitText": "%"
+                },
+                "duration": {
+                    "@type": "schema:Duration",
+                    "value": "4",
+                    "unitText": "days"
+                },
+                "container_size": {
+                    "@type": "schema:QuantitativeValue",
+                    "value": "50",
+                    "unitText": "kg"
+                },
+                "moisture_content": {
+                    "@type": "schema:QuantitativeValue",
+                    "value": "8",
+                    "unitText": "%"
+                },
+                "interval": {
+                    "@type": "schema:Duration",
+                    "value": "15",
+                    "unitText": "days"
+                }
+            }
+        }
+    ]
+}

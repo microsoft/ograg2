@@ -1,0 +1,150 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "title": "Dolphins vs. Eagles live score, updates, highlights from NFL 'Sunday Night Football' game",
+      "author": "Dan Treacy",
+      "theme": "sports",
+      "content": "Deion Sanders once said, “If you look good, you feel good, and if you feel good, you play good.\" The Eagles looked good on Sunday night, donning Kelly Green jerseys and helmets for their matchup with the Dolphins. And their play absolutely matched the look. Philadelphia rolled to a 31-17 win over Miami on \"Sunday Night Football,\" keeping the Dolphins' offense off the scoreboard in the second half and playing smart football every step of the way down the stretch. The Dolphins quickly made up a 17-3 deficit, scoring a touchdown just before halftime and finding the end zone again in the third quarter when Jerome Baker intercepted a deflected pass from Jalen Hurts for a pick-six. MORE: How Mike McDaniel overcame alcoholism to become rising NFL coach The defining series of the game came right after the pick-six when Hurts shrugged off the turnover and led a surgical touchdown drive. After the Eagles' defense clamped down on Tagovailoa and the Dolphins, the offense pieced together a touchdown drive spanning nearly seven minutes to ice the game. A.J. Brown overcame a slow start and shined for the Eagles, posting 137 yards and a touchdown in the win. Brown has now ripped off five consecutive games of at least 125 yards and seems to be on his way to a career-best season. Hurts, Brown and the Eagles have higher goals than just individual success, and a win over one of the AFC's best teams is one way to make a statement. Philadelphia moves to 6-1, while the Dolphins miss a chance to open up a two-game lead in the AFC East and fall to 5-2 ahead of a matchup with the Patriots. MORE: Latest injury updates on Dolphins WR Jaylen Waddle The Sporting News tracked live scoring updates and highlights from \"Sunday Night Football\" between the Dolphins and Eagles. Check out all of the key moments you might have missed.",
+      "published": "2023-10-22T23:28:04+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event",
+          "@type": "schema:Thing",
+          "eventTitle": "Dolphins vs. Eagles Game",
+          "eventSummary": "Philadelphia rolled to a 31-17 win over Miami on 'Sunday Night Football.'",
+          "theme": "sports",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "geo:location": "Lincoln Financial Field, Philadelphia, Penn."
+          },
+          "mentions_persons": [
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Jalen Hurts"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "A.J. Brown"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Jerome Baker"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Tua Tagovailoa"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Tyreek Hill"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Jaylen Waddle"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization",
+              "@type": "schema:Thing",
+              "name": "Philadelphia Eagles"
+            },
+            {
+              "@id": "snap:organization",
+              "@type": "schema:Thing",
+              "name": "Miami Dolphins"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

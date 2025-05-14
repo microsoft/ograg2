@@ -1,0 +1,130 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "DRY SEEDED RAINFED UN-PUDDLED LOWLAND RICE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "RAIN FED RICE",
+                "used_for": "CROP MANAGEMENT"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tamil Nadu",
+                    "has_regions": ["Tropical Climate"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Rainfed Rice"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Depends on rainfall",
+                            "end_date": "Depends on rainfall"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "Depends on rainfall"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Depends on soil condition",
+                            "quantity": "Depends on soil condition",
+                            "stage_of_application": "Depends on crop growth stage"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Depends on rainfall",
+                "for_flowering": "Depends on rainfall",
+                "for_grain_filling": "Depends on rainfall",
+                "negative_effect": "Lack of rainfall"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Unsaturated (dry) soil",
+                "avoid_soil_type": "Saturated soil",
+                "for_water": "Depends on rainfall",
+                "for_nutrients": "Depends on soil condition"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Prepare land based on rainfall",
+                "with_soil_moisture": "Depends on rainfall"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Depends on rainfall",
+                "value": "Depends on rainfall",
+                "depth": "Depends on rainfall",
+                "method": "Dry seeding"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Depends on region",
+                "weed_types": ["Depends on region"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Depends on weed type",
+                    "quantity": "Depends on weed type",
+                    "stage": "Depends on crop growth stage"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Depends on rainfall",
+                "stage_of_application": "Depends on crop growth stage"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Depends on region",
+                "disease_symptoms": "Depends on disease type",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Depends on disease type",
+                    "quantity": "Depends on disease type",
+                    "stage": "Depends on crop growth stage"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Depends on region",
+                "pest_symptoms": "Depends on pest type",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Depends on pest type",
+                    "quantity": "Depends on pest type",
+                    "stage": "Depends on crop growth stage"
+                }
+            },
+            "harvesting_guidelines_are": "Depends on crop maturity",
+            "storage_guidelines_are": "Store in dry and cool place"
+        }
+    ]
+}

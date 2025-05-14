@@ -1,0 +1,52 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "NUTMEG (Myristica fragrans)"
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "NUTMEG AND PEPPER126",
+            "disease_symptoms": [
+                "Fruit rot and seed are the main symptoms of the disease.",
+                "The internal tissues are found rotten.",
+                "The fallen fruits become enveloped with the growth of the organism."
+            ],
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Bordeaux mixture",
+                "quantity": "1 per cent",
+                "stage": "spraying"
+            }
+        }
+    ]
+}

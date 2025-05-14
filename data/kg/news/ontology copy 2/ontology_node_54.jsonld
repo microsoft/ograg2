@@ -1,0 +1,160 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "Jets vs. Raiders Game Summary",
+            "author": "NFL",
+            "theme": "Sports",
+            "content": "Summary of the Jets vs. Raiders game on November 13, 2023.",
+            "created": "2023-11-13T22:47:00",
+            "published": "2023-11-13T22:47:00",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Raiders Scoring Play",
+                    "eventSummary": "O'Connell fakes a sweep to Jacobs and throws a touchdown pass to Mayer.",
+                    "theme": "Sports",
+                    "hasLocation": "geo:Allegiant Stadium",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person1",
+                            "@type": "schema:Thing",
+                            "name": "Aidan O'Connell"
+                        },
+                        {
+                            "@id": "snap:person2",
+                            "@type": "schema:Thing",
+                            "name": "Josh Jacobs"
+                        },
+                        {
+                            "@id": "snap:person3",
+                            "@type": "schema:Thing",
+                            "name": "Michael Mayer"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "schema:Thing",
+                            "name": "Las Vegas Raiders"
+                        },
+                        {
+                            "@id": "snap:organization2",
+                            "@type": "schema:Thing",
+                            "name": "New York Jets"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event2",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Jets Scoring Play",
+                    "eventSummary": "Wilson attempts a checkdown to Michael Carter, but the ball is tipped.",
+                    "theme": "Sports",
+                    "hasLocation": "geo:Allegiant Stadium",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person4",
+                            "@type": "schema:Thing",
+                            "name": "Zach Wilson"
+                        },
+                        {
+                            "@id": "snap:person5",
+                            "@type": "schema:Thing",
+                            "name": "Michael Carter"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization2",
+                            "@type": "schema:Thing",
+                            "name": "New York Jets"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

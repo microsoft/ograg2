@@ -1,0 +1,125 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:BetRivers",
+            "@type": "snap:organization",
+            "name": "BetRivers Sportsbook",
+            "comment": "BetRivers Sportsbook is another site that has launched in many states and could be among those coming to Vermont.",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "BetRivers has a lot to offer and many have found it a great choice elsewhere."
+            }
+        },
+        {
+            "@id": "snap:BetRiversPromo",
+            "@type": "snap:event",
+            "eventTitle": "BetRivers Vermont Promo Code",
+            "eventSummary": "BetRivers has a 'second chance' welcome offer that gives new sign-ups a free bet refund worth up to $500 should they lose their first wager.",
+            "theme": "snap:intangibleStuff"
+        },
+        {
+            "@id": "snap:VermontSportsbookBonuses",
+            "@type": "snap:event",
+            "eventTitle": "Vermont Sportsbook Bonuses",
+            "eventSummary": "Thousands of dollars in value will be up for grabs. Refunds are site credit or bonus bets, not cash.",
+            "theme": "snap:intangibleStuff"
+        },
+        {
+            "@id": "snap:VermontPromoTypes",
+            "@type": "snap:event",
+            "eventTitle": "Types of Vermont Sportsbook Promo and Bonus Offers",
+            "eventSummary": "The welcome bonuses and ongoing promotions coming soon from new online betting sites in Vermont will fall into the following categories.",
+            "theme": "snap:intangibleStuff"
+        },
+        {
+            "@id": "snap:VermontPromoConditions",
+            "@type": "snap:event",
+            "eventTitle": "Important Vermont Sportsbook Bonus and Promo Conditions",
+            "eventSummary": "Terms and conditions will be attached to every bonus and promo offer from Vermont online sports betting sites.",
+            "theme": "snap:intangibleStuff"
+        }
+    ]
+}
+```

@@ -1,0 +1,321 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Poland opens an investigation against OpenAI",
+      "author": "Unknown",
+      "theme": "Legal",
+      "content": "The Polish authority publically announced it has opened an investigation regarding ChatGPT — accusing the company of a string of breaches of the EU’s General Data Protection Regulation (GDPR).",
+      "created": "2023-08-01T00:00:00Z",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Investigation against OpenAI",
+          "eventSummary": "Poland opens an investigation against OpenAI for GDPR breaches.",
+          "theme": "Legal",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "geo:lat": "52.2297",
+            "geo:long": "21.0122"
+          },
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "OpenAI"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "OpenAI unveils DALL-E 3",
+      "author": "Unknown",
+      "theme": "Technology",
+      "content": "The upgraded text-to-image tool, DALL-E 3, uses ChatGPT to help fill in prompts.",
+      "created": "2023-08-01T00:00:00Z",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "DALL-E 3 Unveiling",
+          "eventSummary": "OpenAI unveils DALL-E 3, an upgraded text-to-image tool.",
+          "theme": "Technology",
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "OpenAI"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Opera GX integrates ChatGPT-powered AI",
+      "author": "Unknown",
+      "theme": "Technology",
+      "content": "Opera GX integrates ChatGPT-powered AI to enhance user experience.",
+      "created": "2023-08-01T00:00:00Z",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Opera GX AI Integration",
+          "eventSummary": "Opera GX integrates ChatGPT-powered AI.",
+          "theme": "Technology",
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "OpenAI"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Opera"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "OpenAI releases a guide for teachers using ChatGPT in the classroom",
+      "author": "Unknown",
+      "theme": "Education",
+      "content": "OpenAI releases a guide to help teachers use ChatGPT in the classroom.",
+      "created": "2023-08-01T00:00:00Z",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Guide for Teachers",
+          "eventSummary": "OpenAI releases a guide for teachers using ChatGPT.",
+          "theme": "Education",
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "OpenAI"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "OpenAI launches ChatGPT Enterprise",
+      "author": "Unknown",
+      "theme": "Business",
+      "content": "OpenAI launches ChatGPT Enterprise with enhanced privacy and data analysis capabilities.",
+      "created": "2023-08-01T00:00:00Z",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "ChatGPT Enterprise Launch",
+          "eventSummary": "OpenAI launches ChatGPT Enterprise.",
+          "theme": "Business",
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "OpenAI"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Survey finds relatively few Americans use ChatGPT",
+      "author": "Unknown",
+      "theme": "Research",
+      "content": "Pew Research finds only about 18% of Americans have used ChatGPT.",
+      "created": "2023-08-01T00:00:00Z",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "ChatGPT Usage Survey",
+          "eventSummary": "Survey finds relatively few Americans use ChatGPT.",
+          "theme": "Research",
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Pew Research"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "OpenAI brings fine-tuning to GPT-3.5 Turbo",
+      "author": "Unknown",
+      "theme": "Technology",
+      "content": "OpenAI introduces fine-tuning for GPT-3.5 Turbo.",
+      "created": "2023-08-01T00:00:00Z",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "GPT-3.5 Turbo Fine-Tuning",
+          "eventSummary": "OpenAI brings fine-tuning to GPT-3.5 Turbo.",
+          "theme": "Technology",
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "OpenAI"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Scale AI"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "OpenAI acquires Global Illumination",
+      "author": "Unknown",
+      "theme": "Business",
+      "content": "OpenAI acquires Global Illumination to enhance its core products.",
+      "created": "2023-08-01T00:00:00Z",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Acquisition of Global Illumination",
+          "eventSummary": "OpenAI acquires Global Illumination.",
+          "theme": "Business",
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "OpenAI"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Global Illumination"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "The ‘custom instructions’ feature is extended to free ChatGPT users",
+      "author": "Unknown",
+      "theme": "Technology",
+      "content": "OpenAI extends custom instructions to all ChatGPT users.",
+      "created": "2023-08-01T00:00:00Z",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Custom Instructions Extension",
+          "eventSummary": "OpenAI extends custom instructions to free ChatGPT users.",
+          "theme": "Technology",
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "OpenAI"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "China requires AI apps to obtain an administrative license",
+      "author": "Unknown",
+      "theme": "Regulation",
+      "content": "China mandates AI apps to secure a license from MIIT.",
+      "created": "2023-08-01T00:00:00Z",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "AI Licensing in China",
+          "eventSummary": "China requires AI apps to obtain an administrative license.",
+          "theme": "Regulation",
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Ministry of Industry and Information Technology"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

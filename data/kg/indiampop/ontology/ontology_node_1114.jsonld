@@ -1,0 +1,121 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "has_types": {
+                "name": "Cereal",
+                "used_for": "Food"
+            },
+            "has_growing_zones": {
+                "name": "Temperate",
+                "has_regions": ["North America", "Europe"],
+                "has_seed_recommendations": {
+                    "variety_name": "Hard Red Winter",
+                    "has_early_sowing_time": {
+                        "start_date": "September",
+                        "end_date": "October"
+                    },
+                    "has_late_sowing_time": {
+                        "start_date": "November",
+                        "end_date": "December"
+                    },
+                    "has_seeding_rate": {
+                        "value": "75",
+                        "unitText": "kg/ha"
+                    },
+                    "has_fertilizer_application_requirements": {
+                        "nutrient_name": "Nitrogen",
+                        "quantity": "100",
+                        "stage_of_application": "Tillering"
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "for_germination": "4-12°C",
+                "for_flowering": "15-20°C",
+                "for_grain_filling": "15-20°C",
+                "negative_effect": "Above 35°C"
+            },
+            "has_soil_requirements": {
+                "soil_type_name": "Loam",
+                "avoid_soil_type": "Sandy",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "instructions": "Plough to a fine tilth",
+                "with_soil_moisture": "Moist but not waterlogged"
+            },
+            "seed_germination_test_requirements_are": "85% germination rate",
+            "has_seed_fungicide_requirements": {
+                "name": "Thiram",
+                "quantity": "3g/kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "sowing_time": "Autumn",
+                "value": "15cm",
+                "depth": "4cm",
+                "method": "Drill sowing"
+            },
+            "weed_management_needs_are": {
+                "weed_name": "Blackgrass",
+                "weed_types": ["Annual", "Perennial"],
+                "herbicides": {
+                    "name": "Glyphosate",
+                    "quantity": "1.5 L/ha",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "quantity": "500mm",
+                "stage_of_application": "Flowering"
+            },
+            "needs_disease_treatements": {
+                "disease_name": "Fusarium head blight",
+                "disease_symptoms": "White to pink mold on grains",
+                "disease_control": {
+                    "name": "Tebuconazole",
+                    "quantity": "1 L/ha",
+                    "stage": "Flowering"
+                }
+            },
+            "needs_pest_treatements": {
+                "pest_name": "Aphids",
+                "pest_symptoms": "Yellowing and curling of leaves",
+                "pest_control": {
+                    "name": "Imidacloprid",
+                    "quantity": "0.5 L/ha",
+                    "stage": "Tillering"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when grains are hard and firm",
+            "storage_guidelines_are": "Store in a cool, dry place"
+        }
+    ]
+}

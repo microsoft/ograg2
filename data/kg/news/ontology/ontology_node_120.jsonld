@@ -1,0 +1,139 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Canelo Alvarez vs Jermell Charlo live fight updates, results, highlights from 2023 boxing fight",
+            "author": "Andreas Hale",
+            "theme": "sports",
+            "summary": "Canelo Alvarez retained his undisputed super middleweight title by dominating Jermell Charlo in a one-sided fight.",
+            "created": "2023-09-30T23:44:09+00:00",
+            "published": "2023-09-30T23:44:09+00:00",
+            "has_events": [
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "Canelo Alvarez vs Jermell Charlo",
+                    "eventSummary": "Canelo Alvarez dominated Jermell Charlo in a boxing match.",
+                    "theme": "boxing",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "T-Mobile Arena, Las Vegas"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Canelo Alvarez",
+                            "dateOfBirth": "1990-07-18",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Guadalajara, Mexico"
+                            },
+                            "alias": "Saul Alvarez"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Jermell Charlo",
+                            "dateOfBirth": "1990-05-19",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Lousiana, USA"
+                            },
+                            "alias": "Jermell"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization",
+                            "name": "Sporting News",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "USA"
+                            },
+                            "alias": "Sporting News"
+                        }
+                    ]
+                }
+            ],
+            "followUp": "snap:asset",
+            "derivedFrom": "snap:asset"
+        }
+    ]
+}

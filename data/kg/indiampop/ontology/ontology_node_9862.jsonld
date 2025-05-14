@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Cabbage butterfly (Pieris brassicae), cabbage borer (Hellula undalis), Diamond black moth (Plutella maculipennis)",
+            "pest_symptoms": "Not provided",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Baccillus thuringiensis",
+                "quantity": "100 ml/litre of water",
+                "stage": "Repeat 1 to 3 times in twelve to twenty days"
+            }
+        }
+    ]
+}

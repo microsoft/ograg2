@@ -1,0 +1,48 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Termite",
+            "pest_symptoms": "Wood damage, mud tubes, discarded wings",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Termidor",
+                "quantity": "4 liters per 100 square meters",
+                "stage": "Post-planting"
+            }
+        },
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Oligonychus oryzae",
+            "pest_symptoms": "Yellow spots on leaves, leaf drop",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Avid",
+                "quantity": "1 liter per 100 square meters",
+                "stage": "Pre-flowering"
+            }
+        }
+    ]
+}

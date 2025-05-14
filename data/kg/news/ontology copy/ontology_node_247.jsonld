@@ -1,0 +1,140 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "byline": "Harri Weber",
+            "published": "2023-12-19T15:08:55+00:00",
+            "title": "The small and affordable EVs we lost in 2023",
+            "summary": "Several would-be antidotes to the supersized and high-priced EV trend kicked the bucket this year. That’s bad news for everyone, even if you’d pick a beefy Cybertruck over something resembling a teeny Kei car.",
+            "associatedAsset": {
+                "@type": "TextAsset",
+                "image": "https://techcrunch.com/2023/12/19/the-small-and-affordable-evs-we-lost-in-2023/"
+            }
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "ElectraMeccanica Solo",
+            "eventSummary": "Legally a motorcycle, ElectraMeccanica’s tiny EV featured one seat, 100 miles of range and an $18,500 price tag. The automaker pitched the three-wheeled vehicle to city dwellers and delivery fleet managers alike.",
+            "subEventOf": "snap:event"
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "Honda e",
+            "eventSummary": "The Honda e debuted in Europe and Japan in 2020 with a 100-mile range and a $36,000-$43,000 price tag. The vehicle charmed reviewers with its city-friendly size and sweet-yet-vacant stare.",
+            "subEventOf": "snap:event"
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "Sono Sion",
+            "eventSummary": "German automaker Sono once led the charge to bring solar panels to electric cars with the five-seater Sono Sion hatchback. Sono priced the Sion at $25,000 and intended to kick off production in 2023.",
+            "subEventOf": "snap:event"
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "GM, Honda’s affordable EVs",
+            "eventSummary": "General Motors and Honda said in April 2022 that they’d co-develop millions of small and affordable EVs. They teased sub-$30,000 electrics for North America, aiming to deliver them in 2027.",
+            "subEventOf": "snap:event"
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "Mazda MX-30 (U.S.)",
+            "eventSummary": "The Mazda MX-30 is small by Cybertruck standards, but the only truly diminutive thing about the MX-30 is its 100-mile range and availability.",
+            "subEventOf": "snap:event"
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "Revel mopeds",
+            "eventSummary": "Revel — the Blackrock- and Shell-backed moped-sharing business — dumped its two-wheeled EVs this year in favor of regular-old electric cars.",
+            "subEventOf": "snap:event"
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "VanMoof",
+            "eventSummary": "Dutch e-bike startup VanMoof rode the high of the COVID-19-era bike boom into a $128 million Series C funding round.",
+            "subEventOf": "snap:event"
+        }
+    ]
+}
+```

@@ -1,0 +1,58 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_soil_requirements": "cropCult:SoilRequirements"
+            }
+        },
+        "CropGrowingZones": {
+            "@container": "@list",
+            "@id": "cropCult:CropGrowingZones",
+            "@type": "schema:ItemList",
+            "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List"
+                }
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "JACK (Artocarpus heterophyllus)",
+            "has_growing_zones": [
+                {
+                    "@type": "cropCult:CropGrowingZone",
+                    "name": "Humid regions",
+                    "has_regions": [
+                        "Up to an elevation of 1000 m"
+                    ]
+                }
+            ],
+            "has_soil_requirements": {
+                "@type": "cropCult:SoilRequirements",
+                "soil_type_name": "Deep and well drained",
+                "avoid_soil_type": "Any rise in water table or poor aeration of the soil",
+                "for_water": "Detrimental to the crop"
+            }
+        }
+    ]
+}

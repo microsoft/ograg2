@@ -1,0 +1,188 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Toussaint Egan",
+      "published": "2023-09-28T15:26:41+00:00",
+      "title": "The best horror movies you can watch right now",
+      "summary": "Your time is precious, and your options are endless. The good news: We watch it all so you don’t have to. Polygon’s What to Watch highlights the best, the funniest, the scariest, and the most exciting in movies, TV, and everything in between. Stop scrolling, start watching!",
+      "associatedAsset": [
+        {
+          "@type": "snap:textAsset",
+          "title": "Encounters of the Spooky Kind",
+          "byline": "Pete Volk",
+          "summary": "This Halloween, I had one goal: Finally watch Sammo Hung’s jiangshi (Chinese hopping vampire) martial arts comedy Encounters of the Spooky Kind. It was finally added to streaming via the Criterion Channel earlier this fall after years of being unavailable digitally. And reader, my priorities were correct, because this movie is an absolute blast.",
+          "associatedAsset": [
+            {
+              "@type": "snap:textAsset",
+              "title": "Alone",
+              "byline": "Pete Volk",
+              "summary": "A taut spine-chiller from John Hyams (Universal Soldier: Day of Reckoning), Alone is your classic woman-on-the-run thriller. Jessica (Jules Willcox), a recent widow, is in the midst of moving. If that wasn’t enough stress, a creepy man (Marc Menchaca) appears to be following her on the road. After he slashes her tires, she crashes and wakes up in his basement. What follows is a tightly crafted thriller with great performances, outstanding direction, and enough tension to keep your heart pounding throughout the 98-minute running time."
+            },
+            {
+              "@type": "snap:textAsset",
+              "title": "Annihilation",
+              "byline": "Austen Goslin",
+              "summary": "Annihilation might be the creepiest movie about plants ever made (with all due respect to The Ruins.) Annihilation follows a group of scientists (played by a phenomenal group of actors) investigating an area struck by a meteor. The area that was hit has slowly spread and grown into what’s now known as The Shimmer, an area where nature seems to be taking over everything around it, but it’s a different kind of nature; strange, unnaturally green plants grow over everything, and creatures (animals and humans) slowly merge with the vegetation around them."
+            },
+            {
+              "@type": "snap:textAsset",
+              "title": "Climax",
+              "byline": "AG",
+              "summary": "Climax isn’t for the faint-of-heart — and we’re saying that in the context of a horror movies list. The movie is set at an all-night dance party inside a gymnasium, which turns sour after someone spikes the sangria with a little too much LSD. Climax is told in beautifully disorienting long takes that go from dozens of minutes of uninterrupted and propulsive dance sequences to hazy walks through hallways as the camera mimics the dizzy stumbling of the movie’s characters."
+            },
+            {
+              "@type": "snap:textAsset",
+              "title": "Crimes of the Future",
+              "byline": "Toussaint Egan",
+              "summary": "Microplastics: They’re everywhere! They’re in our lungs, our blood, our food and drinking water; even the air we breathe. What the fuck is it doing to our bodies? We don’t really know, but David Cronenberg’s 2022 body horror drama sure has an idea of what it might mean for our children. Crimes of the Future imagines a world where humans have lost the ability to feel pain."
+            },
+            {
+              "@type": "snap:textAsset",
+              "title": "Cure",
+              "byline": "TE",
+              "summary": "Kiyoshi Kurosawa’s 1997 horror masterpiece Cure follows Kenichi Takabe (Kōji Yakusho), a Japanese detective frustrated by an inexplicable rash of seemingly unconnected murders that nevertheless all appear to be connected, despite none of the perpetrators having known each other or having any recollection as to what possessed them to do it."
+            },
+            {
+              "@type": "snap:textAsset",
+              "title": "Eyes Without a Face",
+              "byline": "PV",
+              "summary": "Georges Franju’s influential 1960 film is a master class in supernatural fantasy horror. An unsettling tale about a plastic surgeon (played by Pierre Brasseur) who kidnaps young women and performs surgery on them to try and find a face replacement for his daughter (Édith Scob), Eyes Without a Face is equal parts haunting and beautiful."
+            },
+            {
+              "@type": "snap:textAsset",
+              "title": "Hellraiser",
+              "byline": "TE",
+              "summary": "Clive Barker’s 1987 directorial debut adapts his 1986 novella The Hellbound Heart to tell the story of Larry (Andrew Robinson) and Julia Cotton (Clare Higgins). The Cottons are a married couple who move into the home of Larry’s recently deceased brother, Frank (Sean Chapman), with whom Julia had a previous affair."
+            },
+            {
+              "@type": "snap:textAsset",
+              "title": "Hereditary",
+              "byline": "Austen Goslin",
+              "summary": "Hereditary is a victim of its own success. The poster child for the misguided term “elevated horror,” and the subject of more than a few memes (particularly around telephone poles), the thing that often gets lost about Hereditary is that it’s actually really fucking good. And it’s damn scary too."
+            },
+            {
+              "@type": "snap:textAsset",
+              "title": "The Host",
+              "byline": "PV",
+              "summary": "The Host was Bong Joon-ho’s follow-up to the smash success serial killer drama Memories of Murder. A critical and commercial success, it was the highest-grossing South Korean film ever after its release and won Best Film at the Asian Film Awards and the Blue Dragon Film Awards."
+            },
+            {
+              "@type": "snap:textAsset",
+              "title": "House",
+              "byline": "AG",
+              "summary": "Few movies are as weird and excellent as Nobuhiko Obayashi’s House. The bizarre ghost story follows a group of school girls who take a vacation to a haunted mansion in the countryside of Japan. Everything starts off well enough, but before long the kids are being attacked by demonic gates, getting eaten by pianos, or opening portals to hell."
+            },
+            {
+              "@type": "snap:textAsset",
+              "title": "In the Mouth of Madness",
+              "byline": "AG",
+              "summary": "Among the wildest movies John Carpenter has ever made (and that’s saying something), In the Mouth of Madness follows insurance investigator John Trent (Sam Neill), who is hired to find a missing fame horror novelist. Things become increasingly unhinged as the plots of the author’s books and the various monsters seem to invade the real world."
+            },
+            {
+              "@type": "snap:textAsset",
+              "title": "Let the Right One In",
+              "byline": "Chris Plante",
+              "summary": "A 12-year-old Swedish boy finds a friend in a vampire who looks roughly his age, but is actually an old vampire permanently trapped in the body of a young child. The film is kaleidoscopic, each viewing revealing something different than the last."
+            },
+            {
+              "@type": "snap:textAsset",
+              "title": "Malignant",
+              "byline": "Matt Patches",
+              "summary": "There was just no way to see it coming. After the Conjuring and Insidious franchises, plus blockbuster turns with Furious 7 and Aquaman, James Wan could have cashed in chips to make another moody franchise-starter to stretch his jump-scare muscles. Instead, he made Malignant, a high-emotion giallo stuffed into dingy ’90s direct-to-video pastiche like some kind of horror-movie turducken."
+            },
+            {
+              "@type": "snap:textAsset",
+              "title": "The Mist",
+              "byline": "TE",
+              "summary": "Any fan of Stephen King worth their salt knows that the so-called king of horror has a lot of movie adaptations of his work."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```

@@ -1,0 +1,115 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "Wheat",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "Cereal",
+                "used_for": "Food"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "name": "Temperate",
+                "has_regions": ["North America", "Europe"]
+            },
+            "has_temperature_requirements": {
+                "@type": "cropCult:TemperatureRequirements",
+                "for_germination": "4-12°C",
+                "for_flowering": "15-20°C",
+                "for_grain_filling": "15-20°C",
+                "negative_effect": "Above 35°C"
+            },
+            "has_soil_requirements": {
+                "@type": "cropCult:SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Sandy",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "cropCult:LandPreparation",
+                "instructions": "Ploughing, Harrowing, Leveling",
+                "with_soil_moisture": "Moist but not waterlogged"
+            },
+            "seed_germination_test_requirements_are": "Moisture and warmth",
+            "has_seed_fungicide_requirements": {
+                "@type": "cropCult:Fungicide",
+                "name": "Mancozeb",
+                "quantity": "2 kg per hectare"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "cropCult:SeedSpacing",
+                "sowing_time": "Autumn",
+                "value": "15 cm",
+                "depth": "3-4 cm",
+                "method": "Drilling"
+            },
+            "weed_management_needs_are": {
+                "@type": "cropCult:WeedManagement",
+                "weed_name": "Blackgrass",
+                "weed_types": ["Annual", "Perennial"],
+                "herbicides": {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1.5 L per hectare",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "cropCult:IrrigationRequirement",
+                "quantity": "500-600 mm per year",
+                "stage_of_application": "Tillering, Booting, Heading"
+            },
+            "needs_disease_treatements": {
+                "@type": "cropCult:DiseaseTreatements",
+                "disease_name": "Fusarium Head Blight",
+                "disease_symptoms": "Bleached spikelets, Pink/orange spore masses",
+                "disease_control": {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Tebuconazole",
+                    "quantity": "1 L per hectare",
+                    "stage": "Flowering"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "cropCult:PestTreatements",
+                "pest_name": "Aphids",
+                "pest_symptoms": "Yellowing, Stunted growth",
+                "pest_control": {
+                    "@type": "cropCult:PesticideList",
+                    "name": "Imidacloprid",
+                    "quantity": "0.5 L per hectare",
+                    "stage": "Seedling"
+                }
+            },
+            "harvesting_guidelines_are": "When grain moisture is below 20%",
+            "storage_guidelines_are": "In a cool, dry place"
+        }
+    ]
+}

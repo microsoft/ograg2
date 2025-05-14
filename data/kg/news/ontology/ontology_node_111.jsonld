@@ -1,0 +1,217 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "NewsAsset",
+            "title": "Pan’s Labyrinth",
+            "author": "Joshua Rivera",
+            "theme": "Film Analysis",
+            "summary": "It is both a refuge from a turbulent time and an attempt to understand it, a parable that becomes timeless in its specificity with new meaning to discover every time it’s revisited. Widely considered to be writer-director Guillermo del Toro’s magnum opus, it shows the director operating at the peak of his powers, with lavish production design, evocative colors, and naturalistic performances juxtaposed with quiet, dangerous magic.",
+            "created": "2023-10-23T00:00:00Z",
+            "published": "2023-10-23T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList1",
+                "Event": [
+                    {
+                        "eventTitle": "Eyes Without a Face",
+                        "eventSummary": "The late 1950s weren’t exactly a booming era for French horror films. While Henri-Georges Clouzot’s psychological thriller Diabolique received an effusive reception upon its release in 1955, the prevailing attitude of French critics at the time was that horror was antithetical to the high-minded standard of what French cinema should aspire to. Eyes Without a Face bucked against this perception, taking what would otherwise be a standard mad scientist tale and turning it into a dark horror fable about love, guilt, and madness.",
+                        "hasLocation": "Criterion Channel, Max",
+                        "mentions_persons": {
+                            "@id": "snap:personList1",
+                            "Person": [
+                                {
+                                    "name": "Henri-Georges Clouzot"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Overlord",
+                        "eventSummary": "This slept-on genre-mashing gem takes a cast of excellent actors about to do bigger things and an up-and-coming director and places them behind Nazi lines during World War II. The Nazis are up to more than usual this time: There be zombies in these labs.",
+                        "hasLocation": "Paramount Plus, Pluto TV",
+                        "mentions_persons": {
+                            "@id": "snap:personList2",
+                            "Person": [
+                                {
+                                    "name": "Jovan Adepo"
+                                },
+                                {
+                                    "name": "Wyatt Russell"
+                                },
+                                {
+                                    "name": "John Magaro"
+                                },
+                                {
+                                    "name": "Pilou Asbæk"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Curve",
+                        "eventSummary": "Tim Egan’s 2016 horror short inspires the same visceral physical response as watching an episode of Squid Game. A young woman wakes to discover her twisted body perched precariously on the slope of a strange cliff overlooking a bottomless pit.",
+                        "hasLocation": "YouTube",
+                        "mentions_persons": {
+                            "@id": "snap:personList3",
+                            "Person": [
+                                {
+                                    "name": "Tim Egan"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "The Texas Chainsaw Massacre 2",
+                        "eventSummary": "The Texas Chain Saw Massacre is a nauseating smoothie of rural horror, outré indie experimentation, and wannabe snuff film. Its murders aren’t real, but you’d be forgiven for being convinced the film’s actors are in genuine trouble.",
+                        "hasLocation": "Max"
+                    },
+                    {
+                        "eventTitle": "Possessor",
+                        "eventSummary": "My first Brandon Cronenberg movie was Infinity Pool, his latest messed-up meditation on the rich and powerful. I vividly remember telling friends how exciting and debauched the movie was.",
+                        "hasLocation": "Hulu",
+                        "mentions_persons": {
+                            "@id": "snap:personList4",
+                            "Person": [
+                                {
+                                    "name": "Brandon Cronenberg"
+                                },
+                                {
+                                    "name": "Andrea Riseborough"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Opera",
+                        "eventSummary": "You can’t get more than five minutes into a conversation about Italian horror without mentioning Dario Argento, the giallo master.",
+                        "hasLocation": "Shudder, Tubi, Vudu",
+                        "mentions_persons": {
+                            "@id": "snap:personList5",
+                            "Person": [
+                                {
+                                    "name": "Dario Argento"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "House of 1000 Corpses",
+                        "eventSummary": "House of 1000 Corpses may be the true answer to the question 'What is the best The Texas Chain Saw Massacre sequel?'",
+                        "hasLocation": "AMC Plus, Pluto TV, Tubi"
+                    },
+                    {
+                        "eventTitle": "Thirst",
+                        "eventSummary": "Park Chan-wook has never missed. And Thirst, his most overt foray into horror, may also be his steamiest movie.",
+                        "hasLocation": "Peacock",
+                        "mentions_persons": {
+                            "@id": "snap:personList6",
+                            "Person": [
+                                {
+                                    "name": "Park Chan-wook"
+                                },
+                                {
+                                    "name": "Song Kang-ho"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "The Exorcist III",
+                        "eventSummary": "Nearly 50 years since it was first released in theaters, William Friedkin’s The Exorcist has withstood the test of time as one of the most terrifying and influential horror films in American cinema.",
+                        "hasLocation": "Prime Video, Criterion Channel",
+                        "mentions_persons": {
+                            "@id": "snap:personList7",
+                            "Person": [
+                                {
+                                    "name": "William Friedkin"
+                                },
+                                {
+                                    "name": "William Peter Blatty"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

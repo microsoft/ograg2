@@ -1,0 +1,130 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "These Are Our Favorite Walmart Cyber Monday Deals",
+            "author": "Matt Jancer",
+            "theme": "technology",
+            "content": "Remember when people would break down the doors to get inside Walmart to score the best deals? Isn't civilization nice? Fill up your digital shopping cart instead with these Walmart Cyber Monday deals on some of the best devices we've tested this year—no door-breaking necessary. We test products year-round and handpicked these deals. The discounts we show are based on actual street prices at retailers in the past few months. Products that are sold out or no longer discounted as of publishing will be crossed out. We'll update this guide periodically. If you buy something using links in our stories, we may earn a commission. This helps support our journalism. Learn more.",
+            "published": "2023-11-27T14:22:26+00:00",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "schema:Thing",
+                    "eventTitle": "PC and Gaming Deals",
+                    "eventSummary": "Need a new laptop? We test dozens throughout the year. Check out our Best Laptops, Best Cheap Laptops, Best Linux Laptops, and Best Gaming Laptops guides for more options.",
+                    "theme": "technology"
+                },
+                {
+                    "@id": "snap:event2",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Home and Kitchen Deals",
+                    "eventSummary": "We've got the kitchen covered with our Best Blenders, Best Juicers, and Best Chef's Knives guides.",
+                    "theme": "technology"
+                },
+                {
+                    "@id": "snap:event3",
+                    "@type": "schema:Thing",
+                    "eventTitle": "TV Deals",
+                    "eventSummary": "Be sure to check out our guides to the best TVs, best projectors, and best soundbars.",
+                    "theme": "technology"
+                },
+                {
+                    "@id": "snap:event4",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Watch and Fitness Tracker Deals",
+                    "eventSummary": "Not sure which is for you? We can help with guides to the best fitness trackers, best Apple Watch, and best Garmin watch.",
+                    "theme": "technology"
+                },
+                {
+                    "@id": "snap:event5",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Headphone and Earbud Deals",
+                    "eventSummary": "Have a look through our Best Wireless Earbuds, Best Wireless Headphones, and Best Workout Headphones guides for some help making the right purchase.",
+                    "theme": "technology"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,155 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Associated Press",
+      "published": "2023-12-03T22:11:26+00:00",
+      "title": "NFL roundup: Pats hit new low as Lions reach 9-3 for first time since 1962",
+      "summary": "Brock Purdy threw for 314 yards and four touchdowns, Deebo Samuel scored three TDs and Eagles quarterback Jalen Hurts was checked for a concussion in the San Francisco 49ers’ 42-19 win over Philadelphia on Sunday. The fiery NFC championship game rematch also featured 49ers’ touchdowns on six straight possessions and a pair of ejections that showed this year’s title game may not run again through Philly, after all.",
+      "associatedAsset": [
+        {
+          "@type": "TextAsset",
+          "image": "https://www.theguardian.com/sport/2023/dec/03/nfl-roundup-sunday-scores-football"
+        }
+      ]
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "San Francisco 49ers vs Philadelphia Eagles",
+      "eventSummary": "The 49ers (9-3) left Philly 10 months ago battered in the NFC championship game behind injuries to Purdy and his backup, and they never stood a chance in a 31-7 loss. The 49ers spent an offseason chirping at the Birds – Samuel called one Eagles cornerback “trash” – and then entered the Linc as a rare betting favorite against a 10-win team at home."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Los Angeles Chargers vs New England Patriots",
+      "eventSummary": "Justin Herbert threw for 212 yards and set up a pair of Cameron Dicker field goals that were all the Los Angeles Chargers (5-7) needed for their first shutout in six years. Keenan Allen came back from a thigh injury to catch five passes for 58 yards."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Miami Dolphins vs Washington Commanders",
+      "eventSummary": "Tyreek Hill had two touchdowns among his 157 yards receiving to help the Miami Dolphins rout the Washington Commanders 45-15. The AFC East-leading Dolphins are 9-3 for the first time since 2001."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Detroit Lions vs New Orleans Saints",
+      "eventSummary": "Sam LaPorta had career highs of nine catches for 140 yards, including an early touchdown and a crucial first-down snag in the final minutes, and the Detroit Lions beat the reeling New Orleans Saints."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Kansas City Chiefs vs Green Bay Packers",
+      "eventSummary": "The Green Bay Packers picked up their fourth win in five games as they beat the defending Super Bowl champions."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Denver Broncos vs Houston Texans",
+      "eventSummary": "Nico Collins had a career-high 191 yards receiving and a fourth-quarter touchdown, and Jimmie Ward intercepted Denver’s Russell Wilson in the end zone with nine seconds left to help the Houston Texans hold on for a win over the Broncos."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Indianapolis Colts vs Tennessee Titans",
+      "eventSummary": "Gardner Minshew threw a four-yard touchdown pass to Michael Pittman with 2:31 left in overtime and the Indianapolis Colts beat the Tennessee Titans for their fourth straight victory."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Atlanta Falcons vs New York Jets",
+      "eventSummary": "Desmond Ridder threw a 20-yard touchdown pass to MyCole Pruitt and the Atlanta Falcons took over sole possession of first place in the NFC South by slogging their way to an ugly victory over the punchless New York Jets."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Cleveland Browns vs Los Angeles Rams",
+      "eventSummary": "Matthew Stafford threw three touchdown passes, Puka Nacua became the first Rams rookie wide receiver to reach 1,000 yards in a season, and Los Angeles extended their winning streak to three games."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Arizona Cardinals vs Pittsburgh Steelers",
+      "eventSummary": "James Conner ran for 105 yards and a pair of touchdowns against his old team as the Arizona Cardinals beat the Pittsburgh Steelers."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Carolina Panthers vs Tampa Bay Buccaneers",
+      "eventSummary": "Tampa Bay’s Mike Evans scored on a 75-yard reception and joined Jerry Rice as the only players in NFL history to string together 10 consecutive seasons with 1,000-plus yards receiving."
+    }
+  ]
+}
+```

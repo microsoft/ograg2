@@ -1,0 +1,45 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Apiculture": {
+            "@id": "cropCult:Apiculture",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_beehive": "cropCult:Beehive",
+                "has_honey_extractor": "cropCult:HoneyExtractor"
+            }
+        },
+        "Beehive": {
+            "@id": "cropCult:Beehive",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name"
+            }
+        },
+        "HoneyExtractor": {
+            "@id": "cropCult:HoneyExtractor",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Apiculture",
+            "name": "APICULTURE",
+            "has_beehive": {
+                "@type": "cropCult:Beehive",
+                "name": "Beehive"
+            },
+            "has_honey_extractor": {
+                "@type": "cropCult:HoneyExtractor",
+                "name": "Honey extractor",
+                "used_for": "extraction of honey"
+            }
+        }
+    ]
+}

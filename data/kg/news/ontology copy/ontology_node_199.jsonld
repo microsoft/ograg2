@@ -1,0 +1,134 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Sheena Vasani",
+      "title": "Here are over 40 last-minute gifts you can still nab before Christmas",
+      "published": "2023-12-24T19:15:58+00:00",
+      "summary": "Yes, Christmas is tomorrow — and yes, we know you have yet to buy a gift. We understand that life gets busy, though, and sometimes it feels like the holidays creep up on you out of nowhere. But before you spiral into a full-blown panic attack, take a deep breath. Luckily for you, the internet is filled with a treasure trove of gift cards, subscriptions, and other great digital gifts you can buy as late as Christmas Day itself.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Gifts for film and TV buffs",
+        "summary": "The Disney Bundle (monthly subscription, with ads) $15 The Disney Bundle caters to all kinds of passions as it grants ad-supported access to Disney Plus, Hulu, and ESPN Plus for $14.99 a month."
+      },
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Gifts for the gamers",
+        "summary": "PlayStation Plus memberships start at $9.99 a month, and you can subscribe directly via PlayStation or buy a three-month subscription with a PlayStation Plus gift card."
+      },
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Gifts for the adventurers and globe-trotters",
+        "summary": "A GetYourGuide gift card provides an easy way to take advantage of guided tours and fun tourist attractions at various destinations around the world."
+      },
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Gifts for health and wellness fans",
+        "summary": "Peloton subscription (monthly subscription) $13 Peloton’s $12.99 monthly subscription offers thousands of streamable fitness classes."
+      },
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Gifts for foodies",
+        "summary": "Eater Wine Club $70 With a subscription to Eater’s Wine Club, your giftee will automatically receive either two or four bottles of wine carefully chosen by an Eater expert every month."
+      },
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Gifts for music lovers",
+        "summary": "Apple Music $25 Apple Music is a great gift for the casual listener, offering more than 100 million ad-free songs."
+      },
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Gifts for the bookworms",
+        "summary": "Comixology Unlimited subscription is perfect. For $5.99 a month, they’ll be able to enjoy over 45,000 comics and graphic novels."
+      },
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Gifts for the creatives",
+        "summary": "A MasterClass membership (which starts at $10 a month) provides access to classes taught by world leaders and other subject matter experts."
+      }
+    }
+  ]
+}
+```

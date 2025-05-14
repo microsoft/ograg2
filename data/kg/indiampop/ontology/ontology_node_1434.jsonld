@@ -1,0 +1,141 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "RAGI",
+            "has_types": {
+                "@type": "CropType",
+                "name": "RAINFED",
+                "used_for": "Rainfall"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Rainfed Zone",
+                    "has_regions": ["Rainfed Region"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Ragi Variety"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Early Sowing Start Date",
+                            "end_date": "Early Sowing End Date"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Late Sowing Start Date",
+                            "end_date": "Late Sowing End Date"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "Seeding Rate"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Fertilizer Nutrient Name",
+                            "quantity": "Fertilizer Quantity",
+                            "stage_of_application": "Fertilizer Application Stage"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Temperature for Germination",
+                "for_flowering": "Temperature for Flowering",
+                "for_grain_filling": "Temperature for Grain Filling",
+                "negative_effect": "Temperature Negative Effect"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Soil Type Name",
+                "avoid_soil_type": "Avoid Soil Type",
+                "for_water": "Soil for Water",
+                "for_nutrients": "Soil for Nutrients"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Land Preparation Instructions",
+                "with_soil_moisture": "Land Preparation with Soil Moisture"
+            },
+            "seed_germination_test_requirements_are": "Seed Germination Test Requirements",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Fungicide Name",
+                "quantity": "Fungicide Quantity"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Seed Sowing Time",
+                "value": "Seed Spacing Value",
+                "depth": "Seed Spacing Depth",
+                "method": "Seed Spacing Method"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Weed Name",
+                "weed_types": ["Weed Types"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Herbicide Name",
+                    "quantity": "Herbicide Quantity",
+                    "stage": "Herbicide Stage"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Irrigation Quantity",
+                "stage_of_application": "Irrigation Stage of Application"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Disease Name",
+                "disease_symptoms": "Disease Symptoms",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Disease Control Name",
+                    "quantity": "Disease Control Quantity",
+                    "stage": "Disease Control Stage"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Pest Name",
+                "pest_symptoms": "Pest Symptoms",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Pest Control Name",
+                    "quantity": "Pest Control Quantity",
+                    "stage": "Pest Control Stage"
+                }
+            },
+            "harvesting_guidelines_are": "Harvesting Guidelines",
+            "storage_guidelines_are": "Storage Guidelines"
+        }
+    ]
+}

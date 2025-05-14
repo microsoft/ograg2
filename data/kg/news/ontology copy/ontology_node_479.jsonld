@@ -1,0 +1,102 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:NewsAsset",
+            "byline": "Will Unwin",
+            "published": "2023-11-27T22:30:42+00:00",
+            "title": "Manchester United face Galatasaray with high hopes but bad memories",
+            "summary": "It is 30 years since Manchester United’s most famous trip to Istanbul with Champions League elimination on the line. Galatasaray created an unwelcome hell that Cerberus would have been proud of and a night of sin ended with Alex Ferguson’s side being dumped out of Europe. United, realistically, required a win to progress after drawing 3‑3 in the first leg of the second‑round tie at Old Trafford but the atmosphere in Turkey subdued the visitors and the second leg stuttered to a goalless draw. Eric Cantona was sent off late on for his frustrations with the referee and the home team’s addiction to timewasting. There was a post-match melee in the tunnel involving the United squad and riot police as the trip ended like it began – with intimidation. Many of United’s team froze, unable to deal with the ferocious and vociferous atmosphere they faced. The match on Wednesday is not a knockout game but in truth the scenario is not much different. Defeat against Galatasaray would again end United’s Champions League’s campaign prematurely while a win, assuming Copenhagen lose against Bayern Munich, would put qualifying for the latter stages back in their hands. United will face the same atmosphere as they did 30 years ago because the home fans know victory would turn their subsequent trip to Denmark into a potential shootout for who goes through with Bayern, with the achievement of knocking out a club with the storied history of United only adding to the pleasure. In 1993 everyone was on a learning curve at United. It was their first return to Europe’s top table after an absence of 24 years. Much of the squad had won the European Cup Winners’ Cup in 1990‑91 but this was a clear step up. They defeated Honved before needing a late intervention from Cantona to avoid a deficit heading to Istanbul, where they were greeted at the airport by a horde of Galatasaray supporters providing a wall of noise and the infamous “Welcome to Hell” banner. “That was our first foray in the Champions League and we were expected to go through,” says the former United defender Gary Pallister, who was injured for the game and so had to watch proceedings from the stands. “The hostility is something [to learn from] – I never experienced anything like that in the rest of my career. You look at that and think it can’t get any worse.” Thirty years on United head to Turkey knowing they have rarely been convincing in the Champions League in recent years. A 3-1 away win against Paris Saint-Germain in the 2018-19 round of 16 after losing the home leg 2-0 was the last time they won a crunch match. In 2020‑21, they lost their final two group games and were eliminated, while back in 2015-16, Wolfsburg won the deciding group match to knock out United. Mauro Icardi celebrates scoring the winner for Galatasaray in their 3-2 win at Old Trafford in early October. Photograph: Darren Staples/AFP/Getty Images When it comes to pressure in the Champions League of late, United do not cope well and there are few events trickier than a night in Istanbul. Pallister smiled at a bell boy at the team hotel and got a finger across the throat in response, Brian McClair had a cleaner bang on his bedroom ceiling in the night and other players received numerous phone calls to disrupt their sleep. The current squad could face the same level of malevolence and need to be prepared. United have done little learning in recent times, repeating the same failures in Europe’s elite competition. It would not be a disgrace to lose against a good Galatasaray team, especially given Erik ten Hag is missing key players, but if the worst does happen, everyone will need to come out of the experience stronger. Regardless of the result, it should be a night of education when it comes to the demands of the Champions League. Six of United’s squad that failed in 1993 went on to win the competition six years later. “It did galvanise us,” says Mike Phelan, who started in central midfield 30 years ago. “Winning the Cup Winners’ Cup took us to another level and we felt pretty comfortable with each other and felt we could develop into a serious team, and I think going into the Champions League was one of those moments where we expected to do well – the experiences along the way were great and took us to the next level further down the line. skip past newsletter promotion Sign up to Football Daily Free daily newsletter Kick off your evenings with the Guardian's take on the world of football Privacy Notice: Newsletters may contain info about charities, online ads, and content funded by outside parties. For more information see our Newsletters may contain info about charities, online ads, and content funded by outside parties. For more information see our Privacy Policy . We use Google reCaptcha to protect our website and the Google Privacy Policy and Terms of Service apply. after newsletter promotion “I think that it is important sometimes that you have to go through those moments to realise what it takes. There are elements that happen in a football match and elements that happen in the buildup to a football match, so you have to experience all those things if you want to be successful.” The win against Everton on Sunday was defined by two teenagers, Alejandro Garnacho and Kobbie Mainoo. Garnacho scored with an incredible overhead kick and Mainoo impressed on what was his full Premier League debut, which could earn him a start in Turkey and an education in European football. Around them are players who have succeeded on hostile nights. But if they thought Goodison Park was unwelcoming, they will be in for a surprise on Wednesday and will need to find communal coping mechanisms. Fail to do so and they will just have to live and learn for next time.",
+            "associatedAsset": {
+                "@type": "snap:TextAsset",
+                "image": "https://www.theguardian.com/football/2023/nov/27/manchester-united-head-for-istanbul-with-good-intentions-but-bad-memories-galatasaray-champions-league"
+            }
+        },
+        {
+            "@type": "snap:Organization",
+            "name": "The Guardian"
+        }
+    ]
+}
+```

@@ -1,0 +1,123 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "AfroFuture’s vision is to bring African art, cuisine, fashion, and music to a global audience.",
+      "byline": "Murray Stassen",
+      "published": "2023-10-30T20:29:31+00:00",
+      "summary": "Trailblazers is an MBW interview series that turns the spotlight on music entrepreneurs with the potential to become the global business’s power players of tomorrow. This time, we speak to Abdul Karim Abdullah, Co-Founder and CEO of Ghana-based cultural entertainment platform AfroFuture. Trailblazers is supported by TuneCore.",
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "image": "https://www.musicbusinessworldwide.com/afrofutures-vision-is-to-bring-african-art-cuisine-fashion-and-music-to-a-global-audience/"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Abdul Karim Abdullah",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "AfroFuture"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "AfroFuture",
+      "hasLocation": {
+        "@type": "geo:SpatialThing",
+        "geo:location": "Accra, Ghana"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "AfroFuture Festival",
+      "eventSummary": "The music, art, and culture festival (formerly known as Afrochella) was launched in Accra in 2017, and in addition to the core music festival, it offers travel experiences and runs various non-profit initiatives.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "African art, cuisine, fashion, and music"
+      }
+    }
+  ]
+}
+```

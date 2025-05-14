@@ -1,0 +1,62 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "FIELD LAB-LAB (MOCHAI) > SWORD BEAN ( Canavalia gladiata L.) > CROP IMPROVEMENT > III. MANAGEMENT OF FIELD OPERATIONS > IPM",
+            "storage_guidelines_are": "Dry the seeds adequately to reduce moisture level to 10 %. Use pitfall traps or two in one model trap to assess the time of emergence of field carried over pulse beetle in storage and accordingly sun-dry the produce. Pack in polythene lined gunny bags for storage",
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Storage pests",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Activated kaolin, Malathion 5D, TNAU Neem oil 60 EC (C), Pungam oil, Monocrotophos 36 SL",
+                    "quantity": "1 kg, 1 kg, 1 lit, 1 lit, 400 ml",
+                    "stage": "Storage"
+                }
+            }
+        }
+    ]
+}

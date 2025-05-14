@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "GINGER",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "After harvesting clean and wash the rhizome by dipping it in water for 6 hours. Peel the skin lightly from the rhizome by using a bamboo knife. Dry it for 8-10 days till the moisture content reduces to 11%. Polish the dry ginger by rubbing on a rough surface.",
+                "with_soil_moisture": "In this process 10 kg fresh ginger rhizomes gives 2 kg dry ginger."
+            },
+            "harvesting_guidelines_are": "After harvesting clean and wash the rhizome by dipping it in water for 6 hours. Peel the skin lightly from the rhizome by using a bamboo knife.",
+            "storage_guidelines_are": "Dry it for 8-10 days till the moisture content reduces to 11%. Polish the dry ginger by rubbing on a rough surface."
+        }
+    ]
+}

@@ -1,0 +1,140 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "COCONUT (Cocos nucifera)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "OILSEEDS",
+                "used_for": "CROP PROTECTION"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "SPECIAL PROBLEMS IN COCONUT",
+                "has_regions": ["Region1", "Region2"],
+                "has_seed_recommendations": {
+                    "@type": "SeedList",
+                    "variety_name": ["Variety1", "Variety2"],
+                    "has_early_sowing_time": {
+                        "@type": "SowingTime",
+                        "start_date": "2022-01-01",
+                        "end_date": "2022-02-01"
+                    },
+                    "has_late_sowing_time": {
+                        "@type": "SowingTime",
+                        "start_date": "2022-02-01",
+                        "end_date": "2022-03-01"
+                    },
+                    "has_seeding_rate": {
+                        "@type": "schema:QuantitativeValue",
+                        "value": "10",
+                        "unitText": "kg/ha"
+                    },
+                    "has_fertilizer_application_requirements": {
+                        "@type": "Fertilization",
+                        "nutrient_name": "Nitrogen",
+                        "quantity": "50 kg/ha",
+                        "stage_of_application": "Pre-sowing"
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "25-30°C",
+                "for_flowering": "20-25°C",
+                "for_grain_filling": "15-20°C",
+                "negative_effect": "Below 15°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Clayey",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the land to a depth of 15-20 cm and level it",
+                "with_soil_moisture": "Ensure the soil is moist but not waterlogged"
+            },
+            "seed_germination_test_requirements_are": "Seeds should be tested for germination before sowing",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Mancozeb",
+                "quantity": "2 g/kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Early morning or late evening",
+                "value": "15 cm",
+                "depth": "5 cm",
+                "method": "Drill sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Parthenium",
+                "weed_types": ["Annual", "Perennial"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1.5 l/ha",
+                    "stage": "Post-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "500-600 mm/year",
+                "stage_of_application": "Throughout the growing season"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Leaf spot",
+                "disease_symptoms": "Brown spots on leaves",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Mancozeb",
+                    "quantity": "2 g/l of water",
+                    "stage": "At the onset of disease symptoms"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Aphids",
+                "pest_symptoms": "Yellowing and curling of leaves",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Imidacloprid",
+                    "quantity": "0.5 ml/l of water",
+                    "stage": "At the onset of pest symptoms"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when the nuts turn brown and start to fall off the tree",
+            "storage_guidelines_are":"Store in a cool, dry place away from direct sunlight"
+        }
+    ]
+}

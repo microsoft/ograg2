@@ -1,0 +1,111 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "byline": "Nick Musial",
+            "published": "2023-12-07T22:06:00+00:00",
+            "title": "Fantasy Football QB Rankings Week 14: Who to start, best sleepers at quarterback",
+            "summary": "Alas, we've reached the final week of the fantasy football regular season. Although fantasy's highest-scoring position has been beaten and battered this year, there are serviceable signal-callers out there capable of leading your team to victory in a pivotal week. Our Week 14 fantasy QB rankings will help you make the right start 'em, sit 'em moves to cap off the regular season. We're still dealing with byes -- and we had two more QB injuries last week -- but the position remains deep with high-scoring studs and potential sleepers. As we saw last week, we're at the point in the season where weather could factor into start-sit decisions, but finding quarterback production shouldn't be a problem in 10- and 12-team leagues. With that in mind, let's dissect this week's QB rankings and put you on a path to end your season with a 'W.'",
+            "associatedAsset": {
+                "@type": "TextAsset",
+                "image": "https://www.sportingnews.com/us/fantasy/news/fantasy-football-qb-rankings-week-14-quarterback-sleepers/800a53cfcb378f32c12b80cd"
+            }
+        },
+        {
+            "@type": "Organization",
+            "name": "Sporting News"
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "Fantasy Football QB Rankings Week 14",
+            "eventSummary": "Fantasy QB Rankings Week 14: Who to start, sit at quarterback. These rankings are based on four-point passing TD scoring.",
+            "theme": {
+                "@type": "intangibleStuff",
+                "comment": "sports"
+            }
+        }
+    ]
+}
+```

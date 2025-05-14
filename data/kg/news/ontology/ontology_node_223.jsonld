@@ -1,0 +1,136 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Identifying Strategic Surprises in Military Intelligence",
+            "author": "Barnea",
+            "theme": "Military Intelligence",
+            "summary": "An analysis of the importance of recognizing weak signals in military intelligence and the consequences of failing to act on them.",
+            "created": "2023-11-05T00:00:00Z",
+            "modified": "2023-11-05T00:00:00Z",
+            "published": "2023-11-05T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "Suspicious Movement in Gaza",
+                    "eventSummary": "On October 7, suspicious movement in Gaza led to a special team being sent to the southern border.",
+                    "theme": "Military Operations",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "Gaza"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Eiland",
+                            "dateOfBirth": "xmls:date",
+                            "placeOfBirth": "geo:location",
+                            "alias": "Military Analyst"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization",
+                            "name": "Shin Bet",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Israel"
+                            },
+                            "alias": "Israel Security Agency"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "IDF",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Israel"
+                            },
+                            "alias": "Israel Defense Forces"
+                        }
+                    ]
+                }
+            ],
+            "followUp": "snap:asset",
+            "derivedFrom": "snap:asset"
+        }
+    ]
+}

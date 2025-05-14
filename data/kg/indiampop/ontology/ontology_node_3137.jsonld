@@ -1,0 +1,142 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "LIME (Citrus aurantifoilia Swing)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Citrus",
+                "used_for": "Fruit"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical",
+                    "has_regions": ["South America", "Central America", "Southeast Asia"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": "Citrus aurantifoilia Swing",
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "January",
+                            "end_date": "March"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "September",
+                            "end_date": "November"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "1",
+                            "unitText": "seed per hole"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Nitrogen",
+                            "quantity": "50g",
+                            "stage_of_application": "Pre-planting"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "20-30°C",
+                "for_flowering": "25-35°C",
+                "for_grain_filling": "30-40°C",
+                "negative_effect": "Below 15°C and above 45°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Clayey",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the land to a fine tilth. Apply well decomposed farmyard manure at 25 tonnes per hectare and mix well with the soil.",
+                "with_soil_moisture": "Moist but well-drained"
+            },
+            "seed_germination_test_requirements_are": "Seeds should be viable and free from any disease.",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Mancozeb",
+                "quantity": "2g per litre of water"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Early morning or late evening",
+                "value": "5m x 5m",
+                "depth": "2-3cm",
+                "method": "Direct sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Grass weeds",
+                "weed_types": ["Annual", "Perennial"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1.5 litres per hectare",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "1-1.5 inches of water per week",
+                "stage_of_application": "Throughout the growing season"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Citrus canker",
+                "disease_symptoms": "Raised, corky lesions on leaves, stems and fruits",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Copper fungicides",
+                    "quantity": "2g per litre of water",
+                    "stage": "At the onset of disease symptoms"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Citrus leafminer",
+                "pest_symptoms": "Serpentine mines on leaves",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Imidacloprid",
+                    "quantity": "1ml per litre of water",
+                    "stage": "At the onset of pest symptoms"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when fruits are fully mature and have attained full colour. Use sharp and clean harvesting tools to avoid injury to the fruits.",
+            "storage_guidelines_are": "Store at a temperature of 10-15°C with a relative humidity of 85-90%. Do not store with ethylene producing fruits like apples and bananas."
+        }
+    ]
+}

@@ -1,0 +1,70 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Rice",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Rice – Pulses/Oilseed",
+                "used_for": "Green manuring with S. aculeata, S. rostrata or green leaf manuring for the rice crop is beneficial in the establishment of rabi crops after rice."
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Specific Systems",
+                    "has_regions": ["TECHNOLOGIES FOR MANAGEMENT OF SPECIFIC SYSTEMS"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["S. aculeata", "S. rostrata"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Not specified",
+                            "end_date": "Not specified"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Not specified",
+                            "end_date": "Not specified"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "Not specified",
+                            "unitText": "Not specified"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Green manure",
+                            "quantity": "Not specified",
+                            "stage_of_application": "Before rabi crops"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

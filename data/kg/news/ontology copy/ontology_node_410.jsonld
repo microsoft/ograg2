@@ -1,0 +1,141 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Sit Him (Lineup Decisions) Projections powered by Sportsline Najee Harris RB PIT Pittsburgh • #22",
+      "summary": "The Steelers' lack of scoring opportunities really crushes the upside for Harris, who admittedly has improved this season and could be on his way to being a reliable RB2.",
+      "created": "2023-10-05T00:00:00Z",
+      "modified": "2023-10-05T00:00:00Z",
+      "published": "2023-10-05T00:00:00Z",
+      "byline": "Sportsline"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Sit Him (Lineup Decisions) Projections powered by Sportsline Miles Sanders RB CAR Carolina • #6",
+      "summary": "If you start Sanders, you're hoping he finds room for a few long plays, perhaps through the air, and a touchdown.",
+      "created": "2023-10-05T00:00:00Z",
+      "modified": "2023-10-05T00:00:00Z",
+      "published": "2023-10-05T00:00:00Z",
+      "byline": "Sportsline"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Sit Him (Lineup Decisions) Projections powered by Sportsline Jared Goff QB DET Detroit • #16",
+      "summary": "Any quarterback with upside is a better pick than Goff, who shouldn't have to do too much to help the Lions pull down a win.",
+      "created": "2023-10-05T00:00:00Z",
+      "modified": "2023-10-05T00:00:00Z",
+      "published": "2023-10-05T00:00:00Z",
+      "byline": "Sportsline"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Sit Him (Lineup Decisions) Projections powered by Sportsline Rhamondre Stevenson RB NE New England • #38",
+      "summary": "The workload is nice for Stevenson, but this feels like a week where he once again won't do too much with it.",
+      "created": "2023-10-05T00:00:00Z",
+      "modified": "2023-10-05T00:00:00Z",
+      "published": "2023-10-05T00:00:00Z",
+      "byline": "Sportsline"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Bust Candidate (Lineup Decisions) Projections powered by Sportsline Raheem Mostert RB MIA Miami • #31",
+      "summary": "If you're starting Mostert, you're hoping he hasn't fumbled away his half of the touches he's had over the past two weeks AND can have the chance at scoring.",
+      "created": "2023-10-05T00:00:00Z",
+      "modified": "2023-10-05T00:00:00Z",
+      "published": "2023-10-05T00:00:00Z",
+      "byline": "Sportsline"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Start Him (Lineup Decisions) Projections powered by Sportsline DeAndre Hopkins WR TEN Tennessee • #10",
+      "summary": "It's been cool to bench Hopkins so far this season but we're staring at a terrific matchup for him to take advantage of.",
+      "created": "2023-10-05T00:00:00Z",
+      "modified": "2023-10-05T00:00:00Z",
+      "published": "2023-10-05T00:00:00Z",
+      "byline": "Sportsline"
+    }
+  ]
+}
+```

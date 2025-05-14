@@ -1,0 +1,290 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "SeedList": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List",
+                "has_early_sowing_time": "cropCult:SowingTime",
+                "has_late_sowing_time": "cropCult:SowingTime",
+                "has_seeding_rate": "schema:QuantitativeValue",
+                "has_fertilizer_application_requirements": "cropCult:Fertilization"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CropGrowingZones":{
+            "@container": "@list",
+            "@id": "cropCult:CropGrowingZones",
+            "@type": "schema:ItemList",
+            "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List",
+                    "has_seed_recommendations": "cropCult:SeedList"
+                }
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "for_flowering": "schema:Text",
+                "for_grain_filling": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "SeedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "Paddy Straw Mushroom",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "Volvarella volvacea",
+                "used_for": "Economics"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "White Button Mushroom",
+                    "has_regions": ["Agaricus bisporus"],
+                    "has_seed_recommendations": {
+                        "@type": "cropCult:SeedList",
+                        "variety_name": ["Depreciation @ 15% for 240 days", "Sub total", "C. Working capital 1. Rice straw (to tons) @ 1000/-per ton", "2. Span : 180 kg @ 50/- per kg", "3. Polythene bags (60 × 40 cm) @ Rs. 100/- per kg – 10 kg", "4. Firewood @ 1000/- per ton – 3 tons", "5. Jute/plastic thread @ 100/- per kg – 3 kg", "6. Fungicide/insecticide", "7. Labour : 240 mandays @ 100/- per day", "Sub-total", "D. Cost of mushroom production 1. Working capital + interest on fixed capital", "2. Cost of production of 1 kg mushroom (46273/1400)", "E. Income 1. Gross return from 1400 kg mushroom @ Rs. 80/- per kg in 240 days", "2. Net income for 240 days"],
+                        "has_early_sowing_time": {
+                            "@type": "cropCult:SowingTime",
+                            "start_date": "3,884.00",
+                            "end_date": "6,473.00"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "cropCult:SowingTime",
+                            "start_date": "2,000.00",
+                            "end_date": "9,000.00"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "1,000.00"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "cropCult:Fertilization",
+                            "nutrient_name": "Firewood",
+                            "quantity": "3,000.00",
+                            "stage_of_application": "Jute/plastic thread"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "cropCult:TemperatureRequirements",
+                "for_germination": "300.00",
+                "for_flowering": "500.00",
+                "for_grain_filling": "24,000.00",
+                "negative_effect": "39,800.00"
+            },
+            "has_soil_requirements": {
+                "@type": "cropCult:SoilRequirements",
+                "soil_type_name": "Working capital + interest on fixed capital",
+                "avoid_soil_type": "46,273.00",
+                "for_water": "Cost of production of 1 kg mushroom",
+                "for_nutrients": "33.00"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "cropCult:LandPreparation",
+                "instructions": "Gross return from 1400 kg mushroom @ Rs. 80/- per kg in 240 days",
+                "with_soil_moisture": "1,12,000.00"
+            },
+            "seed_germination_test_requirements_are": "Net income for 240 days",
+            "has_seed_fungicide_requirements": {
+                "@type": "cropCult:Fungicide",
+                "name": "Fungicide/insecticide",
+                "quantity": "500.00"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "cropCult:SeedSpacing",
+                "sowing_time": "Labour : 240 mandays @ 100/- per day",
+                "value": "24,000.00",
+                "depth": "Sub-total",
+                "method": "39,800.00"
+            },
+            "weed_management_needs_are": {
+                "@type": "cropCult:WeedManagement",
+                "weed_name": "Working capital + interest on fixed capital",
+                "weed_types": ["46,273.00"],
+                "herbicides": {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Cost of production of 1 kg mushroom",
+                    "quantity": "33.00",
+                    "stage": "E. Income 1. Gross return from 1400 kg mushroom @ Rs. 80/- per kg in 240 days"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "cropCult:IrrigationRequirement",
+                "quantity": "1,12,000.00",
+                "stage_of_application": "2. Net income for 240 days"
+            },
+            "needs_disease_treatements": {
+                "@type": "cropCult:DiseaseTreatements",
+                "disease_name": "Fungicide/insecticide",
+                "disease_symptoms": "500.00",
+                "disease_control": {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Labour : 240 mandays @ 100/- per day",
+                    "quantity": "24,000.00",
+                    "stage": "Sub-total"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "cropCult:PestTreatements",
+                "pest_name": "Working capital + interest on fixed capital",
+                "pest_symptoms": "46,273.00",
+                "pest_control": {
+                    "@type": "cropCult:PesticideList",
+                    "name": "Cost of production of 1 kg mushroom",
+                    "quantity": "33.00",
+                    "stage": "E. Income 1. Gross return from 1400 kg mushroom @ Rs. 80/- per kg in 240 days"
+                }
+            },
+            "harvesting_guidelines_are": "1,12,000.00",
+            "storage_guidelines_are": "2. Net income for 240 days"
+        }
+    ]
+}

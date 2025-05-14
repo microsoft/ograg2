@@ -1,0 +1,598 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "The future of DC movies in 2022 and beyond",
+            "author": "Tasha Robinson",
+            "theme": "entertainment",
+            "summary": "The DC Extended Universe has gone through some major growing pains since it launched with Zack Snyder’s Man of Steel in 2013. The Snyderverse is coming to an end, and new projects are being planned to reboot or reshape DC’s best-known heroes.",
+            "created": "2023-10-24T15:00:36+00:00",
+            "published": "2023-10-24T15:00:36+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Aquaman and The Lost Kingdom",
+                        "eventSummary": "Sequel to James Wan’s Aquaman, featuring Jason Momoa and Nicole Kidman.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Jason Momoa",
+                                    "alias": "Aquaman"
+                                },
+                                {
+                                    "name": "Nicole Kidman",
+                                    "alias": "Atlanna"
+                                },
+                                {
+                                    "name": "Ben Affleck",
+                                    "alias": "Bruce Wayne/Batman"
+                                },
+                                {
+                                    "name": "Patrick Wilson",
+                                    "alias": "Orm the Ocean Master"
+                                },
+                                {
+                                    "name": "Yahya Abdul-Mateen II",
+                                    "alias": "Black Manta"
+                                },
+                                {
+                                    "name": "Amber Heard",
+                                    "alias": "Mera"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Warner Bros.",
+                                    "alias": "Warner Bros. DC Projects"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "Joker: Folie à Deux",
+                        "eventSummary": "Sequel to the 2019 drama Joker, featuring Joaquin Phoenix and Lady Gaga.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Joaquin Phoenix",
+                                    "alias": "Arthur Fleck/The Joker"
+                                },
+                                {
+                                    "name": "Lady Gaga",
+                                    "alias": "Harley Quinn"
+                                },
+                                {
+                                    "name": "Zazie Beetz",
+                                    "alias": "Sophie"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Warner Bros.",
+                                    "alias": "Warner Bros. DC Projects"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "Creature Commandos",
+                        "eventSummary": "An adult animated series written by James Gunn featuring a black ops team.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "James Gunn",
+                                    "alias": "Writer"
+                                },
+                                {
+                                    "name": "David Harbour",
+                                    "alias": "Eric Frankenstein"
+                                },
+                                {
+                                    "name": "Frank Grillo",
+                                    "alias": "Rick Flag Sr."
+                                },
+                                {
+                                    "name": "Maria Bakalova",
+                                    "alias": "Princess Ilana Rostovic"
+                                },
+                                {
+                                    "name": "Indira Varma",
+                                    "alias": "Bride of Frankenstein"
+                                },
+                                {
+                                    "name": "Alan Tudyk",
+                                    "alias": "Doctor Phosphorus"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Warner Bros.",
+                                    "alias": "Warner Bros. DC Projects"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "Waller",
+                        "eventSummary": "A spinoff series centered on Amanda Waller, featuring Team Peacemaker.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Viola Davis",
+                                    "alias": "Amanda Waller"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Warner Bros.",
+                                    "alias": "Warner Bros. DC Projects"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "Superman: Legacy",
+                        "eventSummary": "A new vision for Superman, scripted by James Gunn.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "James Gunn",
+                                    "alias": "Writer"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Warner Bros.",
+                                    "alias": "Warner Bros. DC Projects"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "The Batman Part II",
+                        "eventSummary": "A sequel to The Batman, featuring Robert Pattinson.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Robert Pattinson",
+                                    "alias": "Batman"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Warner Bros.",
+                                    "alias": "Warner Bros. DC Projects"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "The Penguin",
+                        "eventSummary": "A TV spinoff of The Batman focusing on Penguin's rise in Gotham.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Colin Farrell",
+                                    "alias": "Penguin"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Warner Bros.",
+                                    "alias": "Warner Bros. DC Projects"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "Arkham Asylum",
+                        "eventSummary": "A prequel series to The Batman exploring Arkham's origins.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Warner Bros.",
+                                    "alias": "Warner Bros. DC Projects"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "A ‘Black Superman’ movie",
+                        "eventSummary": "A reboot of Superman with a Black lead, produced by J.J. Abrams.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Ta-Nehisi Coates",
+                                    "alias": "Writer"
+                                },
+                                {
+                                    "name": "J.J. Abrams",
+                                    "alias": "Producer"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Warner Bros.",
+                                    "alias": "Warner Bros. DC Projects"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "Brave and the Bold",
+                        "eventSummary": "Introducing Batman’s biological son Damian to the DCU.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Warner Bros.",
+                                    "alias": "Warner Bros. DC Projects"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "The Authority",
+                        "eventSummary": "The first appearance of WildStorm canon in live-action film.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Warner Bros.",
+                                    "alias": "Warner Bros. DC Projects"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "Supergirl: Woman of Tomorrow",
+                        "eventSummary": "A science fiction adventure presenting a new view of Supergirl.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Warner Bros.",
+                                    "alias": "Warner Bros. DC Projects"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "Swamp Thing",
+                        "eventSummary": "A movie investigating the dark origins of Swamp Thing.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Warner Bros.",
+                                    "alias": "Warner Bros. DC Projects"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "Booster Gold",
+                        "eventSummary": "A TV series featuring Booster Gold's adventures.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Warner Bros.",
+                                    "alias": "Warner Bros. DC Projects"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "Lanterns",
+                        "eventSummary": "An intergalactic-cop TV series featuring Hal Jordan and John Stewart.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Warner Bros.",
+                                    "alias": "Warner Bros. DC Projects"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "Paradise Lost",
+                        "eventSummary": "A series set in Themyscira focusing on its genesis and political intrigue.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Warner Bros.",
+                                    "alias": "Warner Bros. DC Projects"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "Sandman season 2",
+                        "eventSummary": "The second season of Netflix's Sandman series.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Netflix",
+                                    "alias": "Netflix Sandman Series"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "Dead Boy Detectives",
+                        "eventSummary": "A spinoff series based on Neil Gaiman's Sandman comics.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Neil Gaiman",
+                                    "alias": "Creator"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Netflix",
+                                    "alias": "Netflix Sandman Series"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "Peacemaker season 2",
+                        "eventSummary": "The return of Christopher Smith in Peacemaker's second season.",
+                        "theme": "DC Movies",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "James Gunn",
+                                    "alias": "Director"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Warner Bros.",
+                                    "alias": "Warner Bros. DC Projects"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    }
+                ]
+            }
+        }
+    ]
+}

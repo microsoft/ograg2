@@ -1,0 +1,254 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:person1",
+      "@type": "snap:person",
+      "name": "Archer Reid",
+      "dateOfBirth": "2005-09-19",
+      "placeOfBirth": {
+        "@type": "geo:SpatialThing",
+        "geo:location": "Victoria Country"
+      },
+      "alias": "Younger brother of Essendon defender Zach",
+      "height": "203cm",
+      "weapon": "Height and overhead marking",
+      "AFLPlayerComparison": "Ben King (Gold Coast Suns)"
+    },
+    {
+      "@id": "snap:person2",
+      "@type": "snap:person",
+      "name": "Harley Reid",
+      "dateOfBirth": "2005-04-17",
+      "placeOfBirth": {
+        "@type": "geo:SpatialThing",
+        "geo:location": "Victoria Country"
+      },
+      "height": "187cm",
+      "weapon": "Power and contested ball-winning ability",
+      "AFLPlayerComparison": "Dustin Martin (Richmond)"
+    },
+    {
+      "@id": "snap:person3",
+      "@type": "snap:person",
+      "name": "Archie Roberts",
+      "dateOfBirth": "2005-11-18",
+      "placeOfBirth": {
+        "@type": "geo:SpatialThing",
+        "geo:location": "Victoria Metro"
+      },
+      "height": "184cm",
+      "weapon": "Clean hands and ball use",
+      "AFLPlayerComparison": "Daniel Rioli (Richmond)"
+    },
+    {
+      "@id": "snap:person4",
+      "@type": "snap:person",
+      "name": "Jake Rogers",
+      "dateOfBirth": "2005-03-02",
+      "placeOfBirth": {
+        "@type": "geo:SpatialThing",
+        "geo:location": "Queensland"
+      },
+      "height": "170cm",
+      "weapon": "One-touch hands and creativity",
+      "AFLPlayerComparison": "Touk Miller (Gold Coast Suns)"
+    },
+    {
+      "@id": "snap:person5",
+      "@type": "snap:person",
+      "name": "Ryley Sanders",
+      "dateOfBirth": "2005-01-21",
+      "placeOfBirth": {
+        "@type": "geo:SpatialThing",
+        "geo:location": "Tasmania"
+      },
+      "height": "185cm",
+      "weapon": "Consistent high-level performances",
+      "AFLPlayerComparison": "Andrew Brayshaw (Fremantle)"
+    },
+    {
+      "@id": "snap:person6",
+      "@type": "snap:person",
+      "name": "Ari Schoenmaker",
+      "dateOfBirth": "2005-01-07",
+      "placeOfBirth": {
+        "@type": "geo:SpatialThing",
+        "geo:location": "Tasmania"
+      },
+      "height": "194cm",
+      "weapon": "Intercept ability and long kick",
+      "AFLPlayerComparison": "Callum Wilkie (St Kilda)"
+    },
+    {
+      "@id": "snap:person7",
+      "@type": "snap:person",
+      "name": "Cooper Simpson",
+      "dateOfBirth": "2005-02-13",
+      "placeOfBirth": {
+        "@type": "geo:SpatialThing",
+        "geo:location": "Victoria Country"
+      },
+      "height": "181cm",
+      "weapon": "Composure and step through congestion",
+      "AFLPlayerComparison": "Adam Cerra (Carlton)"
+    },
+    {
+      "@id": "snap:person8",
+      "@type": "snap:person",
+      "name": "George Stevens",
+      "dateOfBirth": "2005-04-14",
+      "placeOfBirth": {
+        "@type": "geo:SpatialThing",
+        "geo:location": "Victoria Country"
+      },
+      "height": "189cm",
+      "weapon": "Contested ball-winning and ball use",
+      "AFLPlayerComparison": "Tom Green (GWS Giants)"
+    },
+    {
+      "@id": "snap:person9",
+      "@type": "snap:person",
+      "name": "Koltyn Tholstrup",
+      "dateOfBirth": "2005-06-28",
+      "placeOfBirth": {
+        "@type": "geo:SpatialThing",
+        "geo:location": "Western Australia"
+      },
+      "height": "186cm",
+      "weapon": "Power and clean hands",
+      "AFLPlayerComparison": "Cameron Rayner (Brisbane Lions)"
+    },
+    {
+      "@id": "snap:person10",
+      "@type": "snap:person",
+      "name": "Jed Walter",
+      "dateOfBirth": "2005-06-08",
+      "placeOfBirth": {
+        "@type": "geo:SpatialThing",
+        "geo:location": "Queensland"
+      },
+      "height": "194cm",
+      "weapon": "Aerial ability and second efforts at ground level",
+      "AFLPlayerComparison": "Charlie Curnow (Carlton)"
+    },
+    {
+      "@id": "snap:person11",
+      "@type": "snap:person",
+      "name": "Nick Watson",
+      "dateOfBirth": "2005-02-24",
+      "placeOfBirth": {
+        "@type": "geo:SpatialThing",
+        "geo:location": "Victoria Metro"
+      },
+      "height": "170cm",
+      "weapon": "Speed, agility and leap",
+      "AFLPlayerComparison": "Shai Bolton (Richmond)"
+    },
+    {
+      "@id": "snap:person12",
+      "@type": "snap:person",
+      "name": "Darcy Wilson",
+      "dateOfBirth": "2005-08-18",
+      "placeOfBirth": {
+        "@type": "geo:SpatialThing",
+        "geo:location": "Victoria Country"
+      },
+      "height": "186cm",
+      "weapon": "Elite running and ball-winning ability",
+      "AFLPlayerComparison": "Sam Walsh (Carlton)"
+    },
+    {
+      "@id": "snap:person13",
+      "@type": "snap:person",
+      "name": "Caleb Windsor",
+      "dateOfBirth": "2005-06-09",
+      "placeOfBirth": {
+        "@type": "geo:SpatialThing",
+        "geo:location": "Victoria Metro"
+      },
+      "height": "184cm",
+      "weapon": "Elite speed and ball use",
+      "AFLPlayerComparison": "Nick Martin (Essendon)"
+    }
+  ]
+}

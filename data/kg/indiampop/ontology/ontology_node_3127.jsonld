@@ -1,0 +1,35 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_soil_requirements": "cropCult:SoilRequirements"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "LIME (Citrus aurantifoilia Swing)",
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Citrus can grow well in wide range of soils. Soil properties like soil reaction, soil fertility, drainage, free lime and salt concentrations, etc. are some important factors that determine the success of citrus plantation. Citrus fruits flourish well on light soils with a good drainage. Deep soils with pH range of 5.5 to 7.5 are considered good. However, they can grow in pH range of 4 to 9. Presence of calcium carbonate concentration within feeding zone may adversely affect the growth.",
+                "for_water": "Good drainage",
+                "for_nutrients": "Soil fertility"
+            }
+        }
+    ]
+}

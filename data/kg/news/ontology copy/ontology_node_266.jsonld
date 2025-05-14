@@ -1,0 +1,151 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Christy Doran",
+      "published": "2023-10-26T22:19:21+00:00",
+      "title": "Legacy vs ego: The Springboks are playing for South Africa, the All Blacks are playing for themselves",
+      "summary": "Four years ago, Rassie Erasmus delivered one of the great rugby speeches ahead of the 2019 World Cup final...",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "url": "https://www.theroar.com.au/2023/10/27/legacy-vs-ego-the-springboks-are-playing-for-south-africa-the-all-blacks-are-playing-for-themselves/"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "The Roar | Sports Writers Blog"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "2019 World Cup Final",
+      "eventSummary": "Rassie Erasmus delivered a speech before the Springboks' victory over England."
+    },
+    {
+      "@type": "snap:person",
+      "name": "Rassie Erasmus"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jacques Nienaber"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Dalton Papali’i"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Ian Foster"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Dane Coles"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Brodie Retallick"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Sam Whitelock"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Aaron Smith"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Beauden Barrett"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Samisoni Taukei’aho"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Scott Robertson"
+    }
+  ]
+}
+```

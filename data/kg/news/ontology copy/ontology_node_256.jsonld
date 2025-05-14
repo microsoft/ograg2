@@ -1,0 +1,98 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "byline": "Natasha Lomas",
+            "published": "2023-10-13T12:43:45+00:00",
+            "title": "Meta says it’s prioritizing livestreaming checks during Israel-Hamas war",
+            "summary": "Following a content moderation warning from European Union regulators earlier this week, Meta has published an overview of how its responding to risks on its social media platforms stemming from the Israel-Hamas war. Its blog post covers what it frames as “ongoing efforts”, with some existing policies and tools for users rehashed. But the company confirms it’s made some changes in light of fast moving events in Israel and Gaza. These include what it says is a temporary expansion of its Violence and Incitement policy in order to prioritize the safety of Israelis kidnapped by Hamas. Under this change Meta says it will be removing content that “clearly identifies hostages when we’re made aware of it, even if it’s being done to condemn or raise awareness of their situation”. “We are allowing content with blurred images of the victims but, in line with standards established by the Geneva Convention, we will prioritize the safety and privacy of kidnapping victims if we are unsure or unable to make a clear assessment,” it added. Meta also says it’s prioritizing checks on livestreaming functions on Facebook and Instagram — including watching for any attempts by Hamas to use the tools to broadcast footage of captured Israelis or other hostages. In a particularly disturbing report on Israeli media this week, which was widely recirculated on social media, a girl recounted how she and her family had learnt about the death of her grandmother after Hamas militants had uploaded a video of her dead body to Facebook, apparently using her own mobile phone to post the graphic content to the dead woman’s Facebook page. “We recognize that the immediacy of Live brings unique challenges, so we have restrictions in place on the use of Live for people who have previously violated certain policies. We’re prioritizing livestream reports related to this crisis, above and beyond our existing prioritization of Live videos,” Meta wrote, highlighting measure it took in the wake of the 2019 Christchurch attacks in New Zealand when a single shooter livestreamed a killing spree that targeted two mosques on Facebook. “We’re also aware of Hamas’ threats to broadcast footage of the hostages and we’re taking these threats extremely seriously. Our teams are monitoring this closely, and would swiftly remove any such content (and the accounts behind it), banking the content in our systems to prevent copies being re-shared,” it added. Other steps taken by Meta to respond to the situation in Israel and Gaza include making it less likely that its systems will actively recommend potentially violating or borderline content and to reduce the visibility of potentially offensive comments; and applying hashtag blocking to render certain terms related to the conflict non-searchable on its platforms. Its blog post does not specify which hashtags Meta is blocking in relation to the Israel-Hamas war. Meta’s blog post also says it established a special operations center staffed with experts, including Arabic and Hebrew speakers, to dial up its ability to quickly respond to content report. It also says it’s taking feedback from local partners (such as NGOs) on emerging risks — and claiming to be “moving quickly to address them”. “In the three days following October 7, we removed or marked as disturbing more than 795,000 pieces of content for violating these policies in Hebrew and Arabic,” it wrote. “As compared to the two months prior, in the three days following October 7, we have removed seven times as many pieces of content on a daily basis for violating our Dangerous Organizations and Individuals policy in Hebrew and Arabic alone.” In light of the dialled up attention on and concern about the situation, Meta says it’s possible non-violating content may be removed “in error”. “To mitigate this, for some violations we are temporarily removing content without strikes, meaning these content removals won’t cause accounts to be disabled,” it notes. “We also continue to provide tools for users to appeal our decisions if they think we made a mistake.” Compliance with the bloc’s Digital Services Act (DSA) kicked in for Meta in August as the owner of a so-called very large online platform (VLOP). The Commission designated 19 VLOPs back in April — including Meta owned Facebook and Instagram. The designation puts obligations on VLOPs to respond diligently to reports of illegal content, as well as clearly communicate their T&Cs to users and properly enforce their terms. But it also ranges more widely — requiring these larger platforms to take steps to identify and mitigate systemic risks such as disinformation. The regulation also contains a “crisis response” mechanism which the Commission may adopt on VLOPs in situations where use of their platforms could contribute to serious threats such as war. Although this aspect of the regulation won’t start operating until early next year (Feburary 17) as it requires an advisory body, called the European Board for Digital Services, to be operational so it can recommend the Commission to adopt a crisis response mechanism (and the set up of the Board is waiting on Member States to establish national Digital Services Coordinators, aka the bodies that will oversee DSA compliance for non-VLOPs). Penalties for failing to comply with the pan-EU regulation can reach as high as 6% of global annual turnover — which, in Meta’s case, could run to multiple billions. The social media giant is not alone in being warned by the bloc over content concerns attached to the Israel-Hamas war: Elon Musk’s X has been singled out for even greater attention here — with the bloc issuing both an “urgent” warning earlier this week and following that with a formal request for information about its compliance approach. TikTok has also received a warning from the EU about DSA content risks related to the conflict. This report was updated with details about the operational timeline for the DSA crisis response mechanism coming into operation",
+            "associatedAsset": {
+                "@type": "TextAsset",
+                "image": "https://techcrunch.com/2023/10/13/meta-israel-hamas-war-response/"
+            }
+        }
+    ]
+}
+```

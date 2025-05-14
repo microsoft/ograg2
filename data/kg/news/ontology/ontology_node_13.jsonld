@@ -1,0 +1,427 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "NewsAsset",
+            "title": "Michigan's Violation of Big Ten Sportsmanship Policy",
+            "author": "Chris Vannini",
+            "summary": "Michigan has been found in violation of the Big Ten Sportsmanship Policy for conducting an impermissible, in-person scouting operation over multiple years.",
+            "created": "2023-11-10T00:00:00Z",
+            "published": "2023-11-10T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "eventTitle": "Jim Harbaugh joins Michigan for trip to State College",
+                    "eventSummary": "Jim Harbaugh is on the team bus and heading to the airport with his team as Michigan awaits word on a potential suspension.",
+                    "hasLocation": {
+                        "@id": "geo:location1",
+                        "name": "State College"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person1",
+                            "name": "Jim Harbaugh"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "name": "Michigan"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event2",
+                    "eventTitle": "Michigan still awaiting word from Big Ten",
+                    "eventSummary": "Michigan's administration has not heard from the Big Ten as of this hour, per sources.",
+                    "hasLocation": {
+                        "@id": "geo:location2",
+                        "name": "Big Ten Headquarters"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person2",
+                            "name": "Adam Rittenberg"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization2",
+                            "name": "Big Ten"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event3",
+                    "eventTitle": "Harbaugh still expected to fly to State College",
+                    "eventSummary": "Harbaugh's attorney, Tom Mars, reportedly told ESPN the coach will be headed to State College.",
+                    "hasLocation": {
+                        "@id": "geo:location3",
+                        "name": "State College"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person3",
+                            "name": "Tom Mars"
+                        },
+                        {
+                            "@id": "snap:person4",
+                            "name": "Jim Harbaugh"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization3",
+                            "name": "ESPN"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event4",
+                    "eventTitle": "Punishment options for Michigan",
+                    "eventSummary": "Dinich has reported the punishment could be anything, ranging from indefinite suspension to public reprimand or lofty fine.",
+                    "hasLocation": {
+                        "@id": "geo:location4",
+                        "name": "Big Ten Headquarters"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person5",
+                            "name": "Heather Dinich"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization4",
+                            "name": "Big Ten"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event5",
+                    "eventTitle": "Punishment expected on Friday",
+                    "eventSummary": "The college football world will wait with bated breath on Friday as it awaits what Michigan and Jim Harbaugh will face from the Big Ten.",
+                    "hasLocation": {
+                        "@id": "geo:location5",
+                        "name": "State College"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person6",
+                            "name": "Heather Dinich"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization5",
+                            "name": "Big Ten"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event6",
+                    "eventTitle": "Michigan's 10-page letter to Big Ten released",
+                    "eventSummary": "Michigan's full 10-page letter to the Big Ten outlines its belief that the Big Ten would be acting too hastily in suspending Harbaugh.",
+                    "hasLocation": {
+                        "@id": "geo:location6",
+                        "name": "Big Ten Headquarters"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person7",
+                            "name": "Dan Wetzel"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization6",
+                            "name": "Michigan"
+                        },
+                        {
+                            "@id": "snap:organization7",
+                            "name": "Big Ten"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event7",
+                    "eventTitle": "No timetable for Big Ten decision",
+                    "eventSummary": "The Big Ten is reviewing the lengthy official response from Michigan and Jim Harbaugh.",
+                    "hasLocation": {
+                        "@id": "geo:location7",
+                        "name": "Big Ten Headquarters"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person8",
+                            "name": "Pete Thamel"
+                        },
+                        {
+                            "@id": "snap:person9",
+                            "name": "Adam Rittenberg"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization8",
+                            "name": "Big Ten"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event8",
+                    "eventTitle": "Big Ten commissioner to miss College Football Playoff meeting Thursday",
+                    "eventSummary": "Tony Pettiti is set to be absent from the College Football Playoff meeting set to take place in Dallas on Thursday.",
+                    "hasLocation": {
+                        "@id": "geo:location8",
+                        "name": "Dallas"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person10",
+                            "name": "Tony Pettiti"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization9",
+                            "name": "College Football Playoff"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event9",
+                    "eventTitle": "Ohio State denies having shared Michigan's play signals with Purdue",
+                    "eventSummary": "Ohio State coach Ryan Day was asked about the allegations that Ohio State had given information about Michigan's signs to Purdue before the Big Ten championship game in 2022.",
+                    "hasLocation": {
+                        "@id": "geo:location9",
+                        "name": "Ohio State"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person11",
+                            "name": "Ryan Day"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization10",
+                            "name": "Ohio State"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event10",
+                    "eventTitle": "Michigan submits response to Big Ten",
+                    "eventSummary": "Michigan has submitted its response to the Big Ten's notice of discipline.",
+                    "hasLocation": {
+                        "@id": "geo:location10",
+                        "name": "Big Ten Headquarters"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person12",
+                            "name": "Adam Rittenberg"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization11",
+                            "name": "Big Ten"
+                        },
+                        {
+                            "@id": "snap:organization12",
+                            "name": "Michigan"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event11",
+                    "eventTitle": "Michigan says three other Big Ten schools shared decoded Wolverines signals",
+                    "eventSummary": "Michigan has shared evidence with the Big Ten and NCAA showing staff members at Ohio State, Purdue and Rutgers shared intelligence on the Wolverines' signals.",
+                    "hasLocation": {
+                        "@id": "geo:location11",
+                        "name": "Big Ten Headquarters"
+                    },
+                    "mentions_persons": [],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization13",
+                            "name": "Ohio State"
+                        },
+                        {
+                            "@id": "snap:organization14",
+                            "name": "Purdue"
+                        },
+                        {
+                            "@id": "snap:organization15",
+                            "name": "Rutgers"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event12",
+                    "eventTitle": "No connection between Buckeyes coach, Michigan investigation",
+                    "eventSummary": "Ohio State coach Ryan Day and his family have no connection to the Big Ten and NCAA investigations into Michigan.",
+                    "hasLocation": {
+                        "@id": "geo:location12",
+                        "name": "Ohio State"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person11",
+                            "name": "Ryan Day"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization10",
+                            "name": "Ohio State"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event13",
+                    "eventTitle": "NCAA shares findings with Big Ten as Harbaugh suspension looms",
+                    "eventSummary": "The NCAA shared its investigation findings with the Big Ten, noting that the findings do not connect the in-person scouting and recording of opponents’ sidelines to Harbaugh.",
+                    "hasLocation": {
+                        "@id": "geo:location13",
+                        "name": "Big Ten Headquarters"
+                    },
+                    "mentions_persons": [],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization16",
+                            "name": "NCAA"
+                        },
+                        {
+                            "@id": "snap:organization17",
+                            "name": "Big Ten"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event14",
+                    "eventTitle": "Harbaugh 'likely' to be suspended",
+                    "eventSummary": "The Big Ten might be getting closer to handing down a suspension for Harbaugh.",
+                    "hasLocation": {
+                        "@id": "geo:location14",
+                        "name": "Big Ten Headquarters"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person8",
+                            "name": "Pete Thamel"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization18",
+                            "name": "Big Ten"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event15",
+                    "eventTitle": "Suspended football analyst Connor Stalions resigns",
+                    "eventSummary": "Michigan football analyst Connor Stalions resigned on Friday night, the university confirmed.",
+                    "hasLocation": {
+                        "@id": "geo:location15",
+                        "name": "Michigan"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person13",
+                            "name": "Connor Stalions"
+                        }
+                    ],
+                    "mentions_organizations": [
+            {
+                "@id": "snap:organization19",
+                "name": "Michigan"
+            }
+        ]
+                }
+            ]
+        }
+    ]
+}

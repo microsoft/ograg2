@@ -1,0 +1,65 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "SeedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "BRINJAL (Solanum melongena)",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Make the soil fine, add 5- 10 kg compost or well rotten cowdung per square meter. Prepare raised seed beds of 1 m wide, 15 cm high and of convenient length. Cover the bed with thin transparent polythene (solarrisation).",
+                "with_soil_moisture": "Water the seedlings after transplanting."
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Trichoderma viridae",
+                "quantity": "4 g/kg of seed"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "SeedSpacing",
+                "sowing_time": "Sow seeds thinly in rows 10 cm apart and 0.5 cm deep. Transplanting of seedlings should be done during afternoon to evening.",
+                "value": "10 cm",
+                "depth": "0.5 cm",
+                "method": "Flat beds or raised beds are prepared and the seedlings are transplanted."
+            }
+        }
+    ]
+}

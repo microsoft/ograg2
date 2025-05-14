@@ -1,0 +1,58 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "TURMERIC (Curcuma longa)",
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Boiling",
+                "disease_control": {
+                    "instructions": [
+                        "Fingers and mother rhizomes will have to be boiled separately.",
+                        "Boiling is usually done in MS pans of suitable size.",
+                        "Cleaned rhizomes (approximately 50 kg) are taken in a perforated trough of size 0.9 m x 0.55 m x 0.4 m made of GI or MS sheet with extended handle.",
+                        "The trough containing the rhizomes is then immersed in MS pan (1 m x 0.62 m x 0.48 m) containing clean water sufficient to immerse the rhizomes.",
+                        "The whole mass is boiled till the rhizomes become soft.",
+                        "The correct stage of cooking can be judged by piercing a wooden needle through the rhizome.",
+                        "If the rhizomes are properly cooked, the needle will pass through the rhizome without resistance.",
+                        "The cooked rhizomes are taken out of the pan by lifting the trough and draining the solution into the pan."
+                    ]
+                }
+            }
+        }
+    ]
+}

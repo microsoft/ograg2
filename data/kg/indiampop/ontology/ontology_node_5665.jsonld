@@ -1,0 +1,117 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Rice",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Dry Seeded Irrigated Un-Puddled Lowland Rice",
+                "used_for": "Post Harvest Technology of Rice Processing"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Parboiling",
+                    "has_regions": ["Milling of Paddy"]
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "N/A",
+                "for_flowering": "N/A",
+                "for_grain_filling": "N/A",
+                "negative_effect": "N/A"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "N/A",
+                "avoid_soil_type": "N/A",
+                "for_water": "N/A",
+                "for_nutrients": "N/A"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "N/A",
+                "with_soil_moisture": "N/A"
+            },
+            "seed_germination_test_requirements_are": "N/A",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "N/A",
+                "quantity": "N/A"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "N/A",
+                "value": "N/A",
+                "depth": "N/A",
+                "method": "N/A"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "N/A",
+                "weed_types": [],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "N/A",
+                    "quantity": "N/A",
+                    "stage": "N/A"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "N/A",
+                "stage_of_application": "N/A"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "N/A",
+                "disease_symptoms": "N/A",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "N/A",
+                    "quantity": "N/A",
+                    "stage": "N/A"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "N/A",
+                "pest_symptoms": "N/A",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "N/A",
+                    "quantity": "N/A",
+                    "stage": "N/A"
+                }
+            },
+            "harvesting_guidelines_are": "N/A",
+            "storage_guidelines_are": "Maximum Dose"
+        }
+    ]
+}

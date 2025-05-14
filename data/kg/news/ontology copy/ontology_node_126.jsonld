@@ -1,0 +1,217 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Sonos Gear Sale",
+      "summary": "Deals on any Sonos gear are fairly uncommon, so this is a good chance to save if you're looking to build out your own system. Sonos says this sale will run through November 27."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Google Nest Thermostat",
+      "summary": "Google’s Nest Thermostat is on sale for $90 right now, which is $40 off and close to a record low. It’s a pared-down version of the Nest Learning Thermostat, but it has plenty of smart features and should help you save on energy costs over time."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Google Pixel 8 Pro",
+      "summary": "Google’s latest flagship smartphones are up to $200 off for Black Friday, including the Pixel 8 Pro, which you can snag for $799."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Google Pixel Buds Pro",
+      "summary": "The Google Pixel Buds Pro are on sale for $115 at Wellbots. That’s the best price we’ve ever seen on what we consider to be the best wireless earbuds for Android users."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Google Pixel Tablet",
+      "summary": "The Google Pixel Tablet is on sale for an all-time low of $399 at several retailers, including Amazon, Target, Best Buy and Google's own online store."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "iRobot Roomba Combo j5+",
+      "summary": "You can save $300 on the Roomba Combo j5+ robot vacuum and mop at Amazon, spending $500 for the machine and its self-emptying base."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Breville Smart Oven Air Fryer Pro",
+      "summary": "Breville’s Smart Oven Air Fryer Pro is 29 percent off and down to $320 for Black Friday."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Fitbit Charge 6",
+      "summary": "Fitbit’s newest fitness tracker, the Charge 6, is $60 off right now and down to a record low of $100."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Amazon Fire TV Stick Lite",
+      "summary": "Amazon’s most affordable Fire TV Stick is down to $16 for Black Friday, which is only $1 more than its record-low price."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Sony WH-1000XM5",
+      "summary": "The Sony WH-1000XM5 is down to $328 at Amazon, B&H and others."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Sony WF-1000XM5",
+      "summary": "Sony's WF-1000XM5, meanwhile, is the top choice in our guide to the best wireless earbuds, and it's now down to a new low of $248 at Amazon, B&H and other retailers."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Bose QuietComfort Ultra",
+      "summary": "The latest flagship noise-cancelling headphones from Bose, the QuietComfort Ultra is seeing a $50 discount at Amazon, Walmart and Bose direct, among others."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Anker Soundcore Space A40",
+      "summary": "The Anker Soundcore Space A40 is down to $54 for Black Friday, matching the lowest price we’ve seen."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Dyson Black Friday deals",
+      "summary": "Dyson Black Friday deals include a $200 discount on the Dyson V15 Detect Absolute, bringing the cordless vacuum down to $550."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Amazon Echo Black Friday sale",
+      "summary": "Almost the entirety of Amazon's Echo speaker lineup is on sale for Black Friday, with most bundled alongside a TP-Link Kasa smart bulb for no extra cost."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Amazon Echo Show Black Friday sale",
+      "summary": "Along those lines, most of Amazon's Echo Show smart displays are also discounted."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Google Nest Hub",
+      "summary": "If you're partial to the Google Assistant, Google's Nest Hub is also on sale for $50 at Target and Walmart."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Samsung T9 SSD",
+      "summary": "The latest Samsung T9 portable SSD is on sale for $110 right now for a 1TB drive, which is the best price it’s been since it came out last month."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Samsung microSD card sale",
+      "summary": "If you need a new microSD card for your Nintendo Switch, Steam Deck or GoPro, a trio of Samsung microSD cards we recommend are also down their lowest prices to date."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "PlayStation DualSense Wireless Controller",
+      "summary": "Amazon, Walmart, PlayStation Direct and several other retailers have discounted a bunch of PlayStation DualSense controllers ahead of Black Friday."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Xbox Wireless Controller",
+      "summary": "If you need a spare gamepad for your Xbox, meanwhile, official Xbox Series X/S Wireless Controllers are as low as $40 at Microsoft and Best Buy."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "PS5 + Marvel’s Spider-Man 2 bundle",
+      "summary": "If you or someone you love hasn’t gotten their hands on a PS5 yet, a new Black Friday bundle pairs the $500 console with the new (and critically acclaimed) Spider-Man 2 game for no extra cost."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "PS5 Slim + Call of Duty: Modern Warfare III bundle",
+      "summary": "You can get Call of Duty: Modern Warfare III for free with this $499 PS5 Slim bundle that’s roughly $60 off the price of buying each separately and available at multiple retailers."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Nintendo Switch OLED + Super Smash Bros. Ultimate bundle",
+      "summary": "The main Nintendo Switch deal for Black Friday bundles the $350 Nintendo Switch OLED with a digital copy of Super Smash Bros. Ultimate and a three-month individual subscription to Nintendo Switch Online for no extra cost."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Backbone One",
+      "summary": "The Backbone One mobile game controller is down to $70 at Amazon, Target, Backbone's online store and other retailers."
+    },
+    {
+      "@type": "snap:asset",
+      "title": "PlayStation, Xbox and Switch video game sales",
+      "summary": "If you're all set on the hardware front, a truckload of PlayStation 5, Xbox Series X/S and Nintendo Switch games have dropped in price for Black Friday too."
+    }
+  ]
+}
+```

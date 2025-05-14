@@ -1,0 +1,130 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "OILSEEDS > CASTOR (Ricinus communis) > CROP PROTECTION > SEED PRODUCTION > Season",
+            "has_types": {
+                "@type": "CropType",
+                "name": "OILSEEDS",
+                "used_for": "SEED PRODUCTION"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "CASTOR (Ricinus communis)",
+                "has_regions": ["CROP PROTECTION"]
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Season",
+                "for_flowering": "Season",
+                "for_grain_filling": "Season",
+                "negative_effect": "Season"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Season",
+                "avoid_soil_type": "Season",
+                "for_water": "Season",
+                "for_nutrients": "Season"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Season",
+                "with_soil_moisture": "Season"
+            },
+            "seed_germination_test_requirements_are": "Season",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Season",
+                "quantity": "Season"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Season",
+                "value": "Season",
+                "depth": "Season",
+                "method": "Season"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Season",
+                "weed_types": ["Season"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Season",
+                    "quantity": "Season",
+                    "stage": "Season"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Season",
+                "stage_of_application": "Season"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Season",
+                "disease_symptoms": "Season",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Season",
+                    "quantity": "Season",
+                    "stage": "Season"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Season",
+                "pest_symptoms": "Season",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Season",
+                    "quantity": "Season",
+                    "stage": "Season"
+                }
+            },
+            "harvesting_guidelines_are": "Season",
+            "storage_guidelines_are": "Season"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Fertilizer requirement",
+            "quantity": "Season",
+            "stage_of_application": "Season"
+        }
+    ]
+}

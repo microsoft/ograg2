@@ -1,0 +1,98 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "byline": "Alicia Haddick",
+            "published": "2023-11-23T18:00:00+00:00",
+            "title": "Pokémon is no longer just a game — it’s a lifestyle",
+            "summary": "A normal person in a rural town has dreams of becoming a master. As they come of age and spring approaches, it’s time for them to begin their journey to chase that dream. After saying goodbye to their mother and hometown, adventure awaits. They open the front door and take their first steps into a world full of new experiences and things to uncover. That’s right: it’s time to enter the workforce! The Pokémon that existed when Game Freak and series creator Satoshi Tajiri kick-started a phenomenon in 1996, and the one that premiered its first live-action TV series in Japan with Pack Your Pocket With Adventure (Pocket ni Bouken o Tsumekonde, or PokéTsume for short) last month, are almost unrecognizable. Which makes sense when you go from creating a game in a home office to a franchise more lucrative than the Marvel Cinematic Universe, Harry Potter, and Nintendo’s own Mario combined. More than 25 years since the original game’s release, multiple generations of kids have become adults under the watchful eyes of Pikachu and friends, and the series has grown to encompass everything from anime and merchandise to card games and Hollywood blockbusters. Perhaps most surprisingly of all, with the growth in popularity of trading card games like Pokémon in a postpandemic world and the record-breaking sales of the recent generation of titles despite quality concerns, it only seems to get more popular by the year. For a franchise to retain relevance for as long as Pokémon, it must evolve — and not just evolve but interweave its ideals into the fabric of daily life. Those early generations of kids need to pass on their love of Pokémon like how Disney animated classics often serve as a formative childhood introduction to film. Perhaps nothing encapsulates Pokémon’s successful transformation from video game to a way of life quite like PokéTsume. PokéTsume. Image: TV Tokyo But what even is PokéTsume? Prior to the premiere of the series in Japan last month, there had only been one prior attempt at live-action storytelling within the world of Pokémon: 2019’s Detective Pikachu. Unlike Ryan Reynolds’ wisecracking gumshoe Pikachu, PokéTsume was the first Japanese live-action foray into Pokémon and doesn’t even take place within the universe of the games. In this series, we follow Madoka Akagi, portrayed by popular Japanese idol Nanase Nishino of Nogizaka46, a recent graduate moving out of her childhood home to live in the city and follow her dream of becoming a creator with an upstart company called ADventure. She played Pokémon Red and Blue (Red and Green in Japan) when she was a kid but has long since grown distant from the franchise. Illustration by Sarah Oh / The Verge Read next: Pokémon Sleep helped me catch ’em all — all the z’s, that is Much of the opening episode of the series plays out as a nostalgic parallel between the trials of working life and the journey to become a Pokémon Master. The childhood friend who works for another company is your rival. The product presentation to an investment CEO with the company’s status on the line is a gym battle. She rediscovers Pokémon in a box of items sent from her mother and begins to replay this formative adventure; there are clips of the game or shots where we see the joy on the faces of both child and adult Madoka from the dim glow of the Game Boy screen. Pokémon love even intertwines with the music scoring the series: a relaxing bar plays a slow jazz-infused rendition of the Pokémon Center theme, just like how a synth rendition of Pallet Town marks the start of Madoka’s journey. As the show develops, the lessons from the game form the basis of a pseudo-episodic tale about Madoka’s life at the company. The struggle to connect with a new client is paralleled by the way pokémon won’t listen to you until you’ve proven your worth with gym badges. Learning and improving on the job is the experience that turns a flailing, floundering Magikarp into a job-leading Gyarados. And so on. The show can come across a bit silly in places, and it struggles with communicating itself by making its Pokémon overlay at times difficult to take seriously. But there’s heart: there are plenty of touches that represent a series made with love, such as how characters have their own sprites integrated into the gameplay of Pokémon Red. With PokéTsume, Pokémon isn’t just a virtual journey to become a champion. It’s a lesson we take with us into our daily lives long after our adventure is at an end. It’s an integration of the morals of the franchise into our daily lives that epitomizes a 15-year transformation of the Pokémon brand. The 2021 remake of Pokémon Diamond and Pearl. Image: Nintendo To understand this, we must first cast an eye back to 2006. During the preparation for the launch of Pokémon Diamond and Pearl for the Nintendo DS, developer Game Freak found the series at a crossroads. Sales had been on a steady decline since the original release, with the Hoenn GBA games at the time holding the distinction as the worst-selling mainline titles in the series. The reality was that the original generation of players had graduated from playing Pokémon, and new generations simply weren’t interested. Something had to change. In response, the company launched the Japan-only Pokémon Garden via the country’s online Yahoo! Kids portal, an interactive experience taking you on a live tour through the history of Pokémon, featuring mini-games and new information on the yet to be released Diamond and Pearl. Over 5 million unique users accessed Yahoo! Kids every month at this time, all within the series’ core target demographic. In the end, the project proved successful, with Diamond and Pearl selling one-third more copies than its predecessors Ruby and Sapphire before eventually eclipsing the lifetime sales of those titles. Notably, at the time, it was one of the company’s biggest attempts at diversifying the brand since its initial launch. Following the initial multimedia blitz, and the introduction of a World Championships and competitive circuit for the video games and TCG, the series remained relatively static. At this point, Pokémon was yet to truly experiment with online distribution and promotion, nor had attempts been made to branch out beyond the series’ core audience and multimedia properties following the initial surge in popularity. As such, Pokémon Garden was the first real attempt at expanding the core experience of Pokémon to other platforms and audiences. While it’s easy to mark 2016’s Pokémon Go as the key turning point for Pokémon in its appeal to older demographics — and it certainly was significant — the framework for this success was paved far earlier by experiments in diversifying what Pokémon could be, whether that be through experiences like Garden or the transformation of the anime to tell a greater array of stories within this ever-expanding universe. For the first time, external partners were being brought in to expand the world of Pokémon beyond Ash Ketchum. OLM, long-term Pokémon animation studio since 1998, passed the baton to other studios with the production of a spinoff series: Pokémon Origins. While the studio did assist in production and animated the finale for the four-episode series, the rest of production was a collaborative effort led by Production I.G and Xebec, and proved to be a hit with audiences craving something new from the world of Pokémon. Pokémon Concierge. Image: Netflix This was just the beginning. Since then, no fewer than six unique web series have been produced by various external partners from around the world, each set in different regions within the world of Pokémon. The most recent of these, this summer’s Path to the Peak, was unique for taking place in the real world with a focus on the experience of competing in the TCG. Meanwhile, the upcoming Netflix series Pokémon Concierge is another unique addition to this ever-expanding animation portfolio, marking the franchise’s series debut in stop motion. This is on top of a slew of one-off short films and music videos as well as a refocus of priorities for the long-running movie franchise. In 2017, the annual film franchise abandoned continuity with the TV anime in order to tell its own original stories without being confined by external events, allowing them to experiment with CG animation, remake the early episodes of the Pokémon TV series in movie form, and allow Wit Studio, animators on the original series Attack on Titan, to helm their own movie with 2018’s The Power of Us. The company did more than simply introduce dynamism into an anime that had long since gone stale in the eyes of many. Greater efforts were made to integrate Pokémon into the lives of communities in Japan and further afield, both through relief efforts and merchandising campaigns that provided more than toys and light relief to an aging audience. Following the March 2011 earthquake and tsunami in Tohoku and Fukushima, The Pokémon Company joined many others in rushing to the aid of those affected. These efforts led to the establishment of the Pokémon With You Foundation, aiming to provide support for disadvantaged communities even beyond this initial tragedy, expanding to everything from providing free educational materials and food drives for struggling children to funding scholarships. This was soon followed by partnerships with local governments across Japan for tourism initiatives, seen everywhere from Yokohama’s yearly Pikachu Outbreak to the Pokémon Local Acts initiative, which loans pokémon out to flog local delicacies and hotspots, while serving as the origin of the country’s charming Pokémon-themed manhole covers. Pikachu appears on a manhole cover in Yokohama. Photo by Stanislav Kogiku / SOPA Images / LightRocket via Getty Images This diversification naturally included merchandising. Many of the 10-year-olds who played the initial games were now adults with families of their own. This led to the launch of monpoke, a special line of Pokémon-themed items for infants, as well as the now-discontinued Pokémon Shirts, which sold button-up shirts and formal workwear based on various pokémon. With each of these efforts, alongside the launch of Pokémon Go — which gave lapsed older audiences an accessible reentry point that could fit around their busy schedules — the franchise was suddenly less of a gaming curio and more an ingrained facet of modern life. By the time the 2023 Pokémon World Championships rolled around, the first to be held in Japan in Yokohama, the aforementioned Pikachu Outbreaks were transformed into a city-wide takeover. Beyond the competition and Pikachu marches were drone shows, pop-up Pokémon Centers, an orchestral concert, an entire cruise ship transformed into the SS Anne, food collaborations, photo spots, station takeovers, and more. Yokohama felt less like a typical Japanese city and more like a location ripped directly from the world of Pokémon itself. Within all that were families, often two or three generations, sharing in a mutual love of Pokémon. The results speak for themselves. In recent years The Pokémon Company has recorded record profits and revenue, while the games, anime, and TCG are more popular than ever, with both new mainline Switch entries selling over 20 million copies. The phenomenon of growing out of Pokémon is no longer a concern. Even if young kids stop playing the video games as they grow, that doesn’t mean they won’t still engage with this world via other means. Nor does it mean they won’t introduce their own children to the series in the future. PokéTsume is a series that’s only possible because of a reinvention of what Pokémon can be. While, in reality, it’s a mostly light, inoffensive promotional tool to sell games (it’s no coincidence the second episode has a scene of a young kid playing the latest entries in the series on his Nintendo Switch), it represents everything the franchise has aimed to be in recent years. Rather than a series for children, Pokémon now promises something for everyone. And those new adults seeking direction in life might find a fellow directionless 20-something employee more relatable than a kid wanting to be a Pokémon Champion. Frankly, it’s a way to see they aren’t alone, no different from how your party of pokémon kept you company through the deepest caverns of Mt. Moon.",
+            "associatedAsset": {
+                "@type": "ImageAsset",
+                "image": "https://www.theverge.com/23970890/pokemon-poketsume-transformation-games-brand"
+            }
+        }
+    ]
+}
+```

@@ -1,0 +1,171 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Carabao Cup fixtures, draws, results, TV channel, and live streams for every round of EFL League Cup 2023/24",
+            "author": "Kyle Bonn",
+            "theme": "sports",
+            "summary": "The 64th edition of the League Cup (also known as the Carabao Cup after its sponsor) got underway on August 8 and we're now at the semifinal stage. After the Community Shield won by Arsenal on August 6, the League Cup will be the first domestic trophy of the 2023/24 season awarded with the final to take place on Sunday, February 25, 2024 at Wembley Stadium in London. Manchester United are the holders of the trophy after defeating Newcastle United in the 2023 final. Last season's finalists met in round four after being drawn against one another, with the Magpies gaining revenge. In addition to silverware, the winner of the EFL Cup earns a place in the 2024/25 UEFA Conference League playoffs with a chance to qualify for the group stage of that European cup competition.",
+            "created": "2023-12-19T22:08:00+00:00",
+            "published": "2023-12-19T22:08:00+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Carabao Cup semifinal draw, fixtures",
+                        "eventSummary": "The semifinal draw for the Carabao Cup was carried out at Anfield following Liverpool's quarterfinal thrashing of West Ham. These ties are two-legged matchups. The first legs will be played in the week commencing January 8, 2024, with the return legs in the week beginning January 22, 2024.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Anfield"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Semifinal first leg",
+                        "eventSummary": "Date Match W/C Jan. 8, 2024 Middlesbrough vs. Chelsea W/C Jan. 8, 2024 Liverpool vs. Fulham",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Stadiums"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Semifinal second leg",
+                        "eventSummary": "Date Match W/C Jan. 22, 2024 Middlesbrough vs. Chelsea W/C Jan. 22, 2024 Liverpool vs. Fulham",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Stadiums"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Carabao Cup quarterfinal results",
+                        "eventSummary": "The quarterfinal draw for the 2023/24 Carabao Cup was held at Old Trafford on Wednesday, November 1, after the conclusion of the final match in round four between Manchester United and Newcastle United. All matches will take place in the week beginning December 18, 2023.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Old Trafford"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    }
+                ]
+            },
+            "followUp": {
+                "@id": "snap:asset",
+                "title": "Carabao Cup live streams, TV channel 2023/24",
+                "summary": "UK: Sky Sports is the exclusive broadcaster of the Carabao Cup in the UK. USA: ESPN's streaming platform ESPN+ is the home of the Carabao Cup in the USA. Select matches from early rounds are available to be streamed, followed by all matches from the Round of 16 through to the final. Canada: DAZN has the Carabao Cup streaming rights in Canada with select matches carried from the early rounds. Australia: The Carabao Cup broadcaster for fans in Australia is beIN Sports."
+            },
+            "derivedFrom": {
+                "@id": "snap:asset",
+                "title": "Why is it called Carabao Cup?",
+                "summary": "This knockout tournament has historically been called the League Cup or EFL Cup, which unlike the FA Cup which is overseen by the English Football Association (FA), is instead organised by the English Football League (EFL). The EFL in the past incorporated each of the top four divisions of English football before the formation of the Premier League in 1992/93. Today, the EFL is comprised of the second-tier Championship, third-tier League One, and fourth-tier League Two. But Premier League clubs are still invited to participate in the League Cup (EFL Cup) every season."
+            }
+        }
+    ]
+}

@@ -1,0 +1,168 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Elizabeth Lopatto",
+      "title": "In the end, the FTX trial was about the friends screwed along the way",
+      "published": "2023-10-26T12:00:00+00:00",
+      "summary": "Sure, Sam Bankman-Fried’s trial has revealed that FTX was basically a seething mass of scams. But it has also revealed how Bankman-Fried blew up the lives of the people who are closest to him.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "url": "https://www.theverge.com/2023/10/26/23931777/ftx-sam-bankman-fried-prosecution-case-friends-family"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Sam Bankman-Fried",
+      "notablyAssociatedWith": [
+        {
+          "@type": "snap:organization",
+          "name": "FTX"
+        },
+        {
+          "@type": "snap:organization",
+          "name": "Alameda Research"
+        }
+      ]
+    },
+    {
+      "@type": "snap:person",
+      "name": "Adam Yedidia",
+      "notablyAssociatedWith": {
+        "@type": "snap:person",
+        "name": "Sam Bankman-Fried"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Gary Wang",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "FTX"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Nishad Singh",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "FTX"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Caroline Ellison",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "Alameda Research"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Joe Bankman",
+      "notablyAssociatedWith": {
+        "@type": "snap:person",
+        "name": "Sam Bankman-Fried"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Mind the Gap",
+      "notablyAssociatedWith": {
+        "@type": "snap:person",
+        "name": "Barbara Fried"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Guarding Against Pandemics",
+      "notablyAssociatedWith": {
+        "@type": "snap:person",
+        "name": "Gabe Bankman-Fried"
+      }
+    }
+  ]
+}
+```

@@ -1,0 +1,41 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Citrus Pests",
+            "pest_symptoms": "Not specified",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "IPM Schedule",
+                "quantity": "Not specified",
+                "stage": "Control Measures"
+            }
+        },
+        {
+            "@type": "schema:Text",
+            "schema:description": "To check the quality of the mixture, dip a polished knife in the solution for two minutes. If the knife gets a reddish stain, then the mixture is acidic and harmful to the plant, if sprayed. To neutralize the mixture, add more limewater, till the non-deposition of the reddish stain on the knife."
+        }
+    ]
+}

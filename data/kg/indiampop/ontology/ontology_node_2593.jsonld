@@ -1,0 +1,47 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PhysiologicalDisorder": {
+            "@id": "cropCult:PhysiologicalDisorder",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "description": "schema:Text",
+                "prevention": "schema:Text",
+                "temperature_requirements": "cropCult:TemperatureRequirements",
+                "irrigation_requirements": "cropCult:IrrigationRequirement"
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "minimum_night_temperature": "schema:Text",
+                "avoid_extreme_fluctuation": "schema:Text"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "avoid_irregular_irrigation": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "PhysiologicalDisorder",
+            "name": "Calyx - splitting",
+            "description": "Calyx - splitting is a physiological disorder in crops.",
+            "prevention": "Use rubber bands to prevent Calyx-splitting.",
+            "temperature_requirements": {
+                "minimum_night_temperature": "Night temperature should not be below 10oC",
+                "avoid_extreme_fluctuation": "Extreme fluctuation of temperature should be avoided."
+            },
+            "irrigation_requirements": {
+                "avoid_irregular_irrigation": "Irregular irrigation should be avoided."
+            }
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "striga",
+            "weed_types": ["parasitic"],
+            "herbicides": {
+                "@type": "cropCult:HerbicideList",
+                "name": ["2,4-D sodium salt", "20% urea"],
+                "quantity": ["1.25 kg/ha in 500 litre of water/ha", "direct spray"],
+                "stage": ["post-emergence", "control of striga"]
+            }
+        }
+    ]
+}

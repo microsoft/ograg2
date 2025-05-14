@@ -1,0 +1,198 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "The inside story of Dave Clark's tumultuous last days at Flexport",
+            "author": "None",
+            "published": "2023-10-02T17:46:00+00:00",
+            "summary": "An in-depth look at the events surrounding Dave Clark's departure from Flexport, including insights from key figures and the implications for the company.",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Flexport CEO Transition",
+                        "eventSummary": "Ryan Petersen takes the stage at a supply chain conference after ousting Dave Clark.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Phoenix, Arizona"
+                        },
+                        "mentions_persons": {
+                            "Person": [
+                                {
+                                    "name": "Ryan Petersen"
+                                },
+                                {
+                                    "name": "Dave Clark"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "Organization": [
+                                {
+                                    "name": "Flexport"
+                                },
+                                {
+                                    "name": "Amazon"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Deliverr Acquisition Announcement",
+                        "eventSummary": "Announcement of Flexport's acquisition of Deliverr from Shopify.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Miami, Florida"
+                        },
+                        "mentions_persons": {
+                            "Person": [
+                                {
+                                    "name": "Ryan Petersen"
+                                },
+                                {
+                                    "name": "Dave Clark"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "Organization": [
+                                {
+                                    "name": "Flexport"
+                                },
+                                {
+                                    "name": "Shopify"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "modified": "2023-10-02T17:46:00+00:00"
+        },
+        {
+            "@type": "PersonList",
+            "Person": [
+                {
+                    "name": "Dave Clark",
+                    "dateOfBirth": "xmls:date",
+                    "placeOfBirth": "geo:location",
+                    "alias": "None"
+                },
+                {
+                    "name": "Ryan Petersen",
+                    "dateOfBirth": "xmls:date",
+                    "placeOfBirth": "geo:location",
+                    "alias": "None"
+                }
+            ]
+        },
+        {
+            "@type": "OrganizationList",
+            "Organization": [
+                {
+                    "name": "Flexport",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "San Francisco, California"
+                    },
+                    "alias": "None"
+                },
+                {
+                    "name": "Amazon",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "Seattle, Washington"
+                    },
+                    "alias": "None"
+                },
+                {
+                    "name": "Shopify",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "Ottawa, Canada"
+                    },
+                    "alias": "None"
+                }
+            ]
+        }
+    ]
+}

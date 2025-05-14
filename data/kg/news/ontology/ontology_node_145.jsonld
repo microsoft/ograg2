@@ -1,0 +1,185 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Jaguars vs. Saints Game Summary",
+            "author": "NFL",
+            "theme": "Sports",
+            "summary": "The Jaguars faced the Saints in a thrilling game with multiple touchdowns and key plays.",
+            "created": "2023-10-19T20:15:00Z",
+            "modified": "2023-10-20T00:00:00Z",
+            "published": "2023-10-20T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "eventTitle": "Touchdown by Etienne Jr.",
+                        "eventSummary": "Etienne Jr. takes a pitch and races 17 yards down the sideline for the score.",
+                        "theme": "Touchdown",
+                        "hasLocation": {
+                            "@id": "geo:location",
+                            "name": "Saints End Zone"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "@id": "snap:person1",
+                                    "name": "Travis Etienne Jr.",
+                                    "dateOfBirth": "1999-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Camden, New Jersey"
+                                    },
+                                    "alias": "Etienne"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "name": "Jacksonville Jaguars",
+                                    "hasLocation": {
+                                        "@id": "geo:location",
+                                        "name": "TIAA Bank Field, Jacksonville"
+                                    },
+                                    "alias": "Jaguars"
+                                },
+                                {
+                                    "@id": "snap:organization2",
+                                    "name": "New Orleans Saints",
+                                    "hasLocation": {
+                                        "@id": "geo:location",
+                                        "name": "Caesars SuperDome, New Orleans"
+                                    },
+                                    "alias": "Saints"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event2",
+                        "eventTitle": "Field Goal by Grupe",
+                        "eventSummary": "Grupe knocks down the 23-yard chip shot, and New Orleans is on the board.",
+                        "theme": "Field Goal",
+                        "hasLocation": {
+                            "@id": "geo:location",
+                            "name": "Saints Field Goal Area"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "@id": "snap:person2",
+                                    "name": "Blake Grupe",
+                                    "dateOfBirth": "1999-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Mishawaka, Indiana"
+                                    },
+                                    "alias": "Grupe"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization2",
+                                    "name": "New Orleans Saints",
+                                    "hasLocation": {
+                                        "@id": "geo:location",
+                                        "name": "Caesars SuperDome, New Orleans"
+                                    },
+                                    "alias": "Saints"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,85 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "OILSEEDS",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Rapeseed-mustard",
+                "used_for": "Fertilizer Management"
+            },
+            "has_fertilizer_application_requirements": [
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "NPK",
+                    "quantity": "60:40:40 kg/ha",
+                    "stage_of_application": "For higher yield"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "NPK",
+                    "quantity": "40:35:15 kg/ha",
+                    "stage_of_application": "For farmers who cannot afford a higher dose"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "NPK",
+                    "quantity": "40:20:20kg/ha",
+                    "stage_of_application": "For farmers who cannot afford a higher dose"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "Borax",
+                    "quantity": "10 kg/ha",
+                    "stage_of_application": "For North Bank Plains Zone"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "Borax",
+                    "quantity": "5-10 kg/ha",
+                    "stage_of_application": "For Upper Brahmaputra Valley Zone"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "Borax",
+                    "quantity": "7.5kg/ha",
+                    "stage_of_application": "For Central Brahmaputra Valley Zone"
+                }
+            ]
+        }
+    ]
+}

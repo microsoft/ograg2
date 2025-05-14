@@ -1,0 +1,462 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Taylor Swift-Travis Kelce timeline: Everything to know about rumored romance between pop star, Chiefs TE",
+            "author": "Shanna McCarriston",
+            "published": "2023-10-12T23:21:52+00:00",
+            "theme": "sports",
+            "summary": "An extensive timeline of the rumored romance between Taylor Swift and Travis Kelce, including events and media coverage.",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "eventTitle": "Kelce makes friendship bracelets for fellow TEs",
+                    "eventSummary": "Kelce made a friendship bracelet to give to the newcomers at a camp for NFL tight ends.",
+                    "theme": "friendship",
+                    "mentions_persons": [],
+                    "mentions_organizations": [],
+                    "published": "2023-06-29"
+                },
+                {
+                    "@id": "snap:event2",
+                    "eventTitle": "Kelce makes friendship bracelet for Swift",
+                    "eventSummary": "Kelce announced that he went to Swift's concert but did not meet her.",
+                    "theme": "concert",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Travis Kelce"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Taylor Swift"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-07-26"
+                },
+                {
+                    "@id": "snap:event3",
+                    "eventTitle": "Kelce names his celebrity crush",
+                    "eventSummary": "Kelce was asked about his crush, and the answer was given for him.",
+                    "theme": "celebrity",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Travis Kelce"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-08-05"
+                },
+                {
+                    "@id": "snap:event4",
+                    "eventTitle": "Rumors aren't denied",
+                    "eventSummary": "Jason Kelce did not confirm or deny the rumors about Travis and Taylor.",
+                    "theme": "rumors",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Jason Kelce"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Travis Kelce"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-09-14"
+                },
+                {
+                    "@id": "snap:event5",
+                    "eventTitle": "The references begin",
+                    "eventSummary": "Commentators began making Swift references during NFL games.",
+                    "theme": "NFL",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Travis Kelce"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-09-17"
+                },
+                {
+                    "@id": "snap:event6",
+                    "eventTitle": "Kelce sends Swift an invite",
+                    "eventSummary": "Kelce invited Swift to one of his games during an interview.",
+                    "theme": "invitation",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Travis Kelce"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Taylor Swift"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-09-21"
+                },
+                {
+                    "@id": "snap:event7",
+                    "eventTitle": "Another bracelet",
+                    "eventSummary": "Kelce was spotted wearing a bracelet with a Swift song title.",
+                    "theme": "fashion",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Travis Kelce"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-09-22"
+                },
+                {
+                    "@id": "snap:event8",
+                    "eventTitle": "Swift attends Chiefs game",
+                    "eventSummary": "Swift attended the Chiefs' Week 3 game against the Chicago Bears.",
+                    "theme": "attendance",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Taylor Swift"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Travis Kelce"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-09-24"
+                },
+                {
+                    "@id": "snap:event9",
+                    "eventTitle": "Swift mingles with Donna Kelce",
+                    "eventSummary": "Swift was seen talking and laughing with Donna Kelce during the game.",
+                    "theme": "family",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Taylor Swift"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Donna Kelce"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-09-24"
+                },
+                {
+                    "@id": "snap:event10",
+                    "eventTitle": "Postgame interviews turn into Swiftie talk",
+                    "eventSummary": "Media focused on Swift's attendance rather than the game.",
+                    "theme": "media",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Patrick Mahomes"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Travis Kelce"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-09-24"
+                },
+                {
+                    "@id": "snap:event11",
+                    "eventTitle": "Kelce and Swift leave stadium together",
+                    "eventSummary": "The two were photographed leaving the stadium side by side.",
+                    "theme": "photography",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Taylor Swift"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Travis Kelce"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-09-24"
+                },
+                {
+                    "@id": "snap:event12",
+                    "eventTitle": "The two leave in a convertible",
+                    "eventSummary": "Swift and Kelce were spotted in a convertible after the game.",
+                    "theme": "celebrity",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Taylor Swift"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Travis Kelce"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-09-24"
+                },
+                {
+                    "@id": "snap:event13",
+                    "eventTitle": "Kelce jersey sales skyrocket",
+                    "eventSummary": "There was a 400% increase in Kelce jersey sales after Swift's attendance.",
+                    "theme": "sales",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Travis Kelce"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-09-25"
+                },
+                {
+                    "@id": "snap:event14",
+                    "eventTitle": "Belichick weighs in on the matter",
+                    "eventSummary": "Bill Belichick commented on the Kelce-Swift situation.",
+                    "theme": "commentary",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Bill Belichick"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Travis Kelce"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-09-25"
+                },
+                {
+                    "@id": "snap:event15",
+                    "eventTitle": "Chiefs games get even more popular",
+                    "eventSummary": "The popularity of Chiefs games surged after Swift's appearance.",
+                    "theme": "popularity",
+                    "mentions_persons": [],
+                    "mentions_organizations": [],
+                    "published": "2023-09-26"
+                },
+                {
+                    "@id": "snap:event16",
+                    "eventTitle": "Mahomes confirms he met Swift",
+                    "eventSummary": "Patrick Mahomes confirmed he met Swift at an afterparty.",
+                    "theme": "meeting",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Patrick Mahomes"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Taylor Swift"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-09-27"
+                },
+                {
+                    "@id": "snap:event17",
+                    "eventTitle": "Kelce breaks his silence",
+                    "eventSummary": "Kelce addressed Swift's attendance on his podcast.",
+                    "theme": "podcast",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Travis Kelce"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-09-27"
+                },
+                {
+                    "@id": "snap:event18",
+                    "eventTitle": "Jerry Jones comments on the Swift effect",
+                    "eventSummary": "Jerry Jones commented on the impact of Swift's presence.",
+                    "theme": "commentary",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Jerry Jones"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-09-27"
+                },
+                {
+                    "@id": "snap:event19",
+                    "eventTitle": "Swift attends Chiefs-Jets",
+                    "eventSummary": "Swift attended her second consecutive Chiefs game.",
+                    "theme": "attendance",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Taylor Swift"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-10-01"
+                },
+                {
+                    "@id": "snap:event20",
+                    "eventTitle": "NFL defends itself",
+                    "eventSummary": "The NFL changed their social media bios to reflect Swift's impact.",
+                    "theme": "social media",
+                    "mentions_persons": [],
+                    "mentions_organizations": [],
+                    "published": "2023-10-05"
+                },
+                {
+                    "@id": "snap:event21",
+                    "eventTitle": "Travis and Jason think the NFL is doing too much",
+                    "eventSummary": "Travis and Jason Kelce expressed their thoughts on the NFL's coverage.",
+                    "theme": "commentary",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Travis Kelce"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Jason Kelce"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-10-06"
+                },
+                {
+                    "@id": "snap:event22",
+                    "eventTitle": "Swift attends Chiefs-Broncos",
+                    "eventSummary": "Swift attended the Chiefs' divisional matchup against the Broncos.",
+                    "theme": "attendance",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Taylor Swift"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-10-12"
+                },
+                {
+                    "@id": "snap:event23",
+                    "eventTitle": "Kelce, Swift make 'SNL' cameos",
+                    "eventSummary": "The two made surprise appearances on 'Saturday Night Live.'",
+                    "theme": "television",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Travis Kelce"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Taylor Swift"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-10-15"
+                },
+                {
+                    "@id": "snap:event24",
+                    "eventTitle": "Swift attends fifth Chiefs game",
+                    "eventSummary": "Swift attended her fifth Chiefs game, sporting a Chiefs sweatshirt.",
+                    "theme": "attendance",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Taylor Swift"
+                        }
+                    ],
+                    "mentions_organizations": [],
+                    "published": "2023-10-22"
+                }
+            ]
+        }
+    ]
+}

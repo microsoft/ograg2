@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "OILPALM",
+            "weed_types": ["WEED CONTROL"],
+            "herbicides": {
+                "@type": "cropCult:HerbicideList",
+                "name": ["Paraquat", "2, 4-D", "2, 4-5-T", "Dalapon", "TCA", "Atrazine Monuron", "Diuron"],
+                "quantity": ["2 kg a.i.", "3-4 kg per ha"],
+                "stage": ["sprayed/ground applied twice a year"]
+            }
+        }
+    ]
+}

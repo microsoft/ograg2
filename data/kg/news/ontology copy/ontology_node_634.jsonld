@@ -1,0 +1,135 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:NewsAsset",
+            "byline": "David Keyton, Christina Larson, Rodrique Ngowi, The Associated Press",
+            "published": "2023-10-04T21:15:43+00:00",
+            "title": "Nobel Prize winner shocked by early morning phone call from Sweden",
+            "summary": "Three scientists won the Nobel Prize in chemistry Wednesday for their work on quantum dots — tiny particles just a few nanometers in diameter that can release very bright colored light and whose applications in everyday life include electronics and medical imaging.",
+            "associatedAsset": {
+                "@type": "snap:TextAsset",
+                "image": "https://fortune.com/2023/10/04/nobel-prize-winner-shocked-phone-call-sweden-columbia-professor-chemistry/"
+            }
+        },
+        {
+            "@type": "snap:Event",
+            "eventTitle": "Nobel Prize in Chemistry 2023",
+            "eventSummary": "Awarded for the discovery and synthesis of quantum dots.",
+            "theme": {
+                "@type": "snap:intangibleStuff",
+                "comment": "Quantum dots, chemistry, Nobel Prize"
+            }
+        },
+        {
+            "@type": "snap:Person",
+            "name": "Moungi Bawendi",
+            "notablyAssociatedWith": {
+                "@type": "snap:Organization",
+                "name": "MIT"
+            }
+        },
+        {
+            "@type": "snap:Person",
+            "name": "Louis Brus",
+            "notablyAssociatedWith": {
+                "@type": "snap:Organization",
+                "name": "Columbia University"
+            }
+        },
+        {
+            "@type": "snap:Person",
+            "name": "Alexei Ekimov",
+            "notablyAssociatedWith": {
+                "@type": "snap:Organization",
+                "name": "Nanocrystals Technology Inc."
+            }
+        },
+        {
+            "@type": "snap:Organization",
+            "name": "Royal Swedish Academy of Sciences"
+        }
+    ]
+}
+```

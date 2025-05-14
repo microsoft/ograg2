@@ -1,0 +1,276 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "AFL Draft Prospects",
+            "author": "AFL",
+            "summary": "Overview of promising AFL draft prospects from various states.",
+            "created": "2023-11-06T00:00:00Z",
+            "published": "2023-11-06T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "eventTitle": "AFL Draft Combine",
+                        "eventSummary": "Showcasing the top AFL draft prospects.",
+                        "theme": "AFL Draft",
+                        "hasLocation": {
+                            "@id": "geo:location1",
+                            "schema:name": "Melbourne"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "@id": "snap:person1",
+                                    "name": "Taylor Goad",
+                                    "dateOfBirth": "2000-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location2",
+                                        "schema:name": "South Australia"
+                                    },
+                                    "alias": "T. Goad"
+                                },
+                                {
+                                    "@id": "snap:person2",
+                                    "name": "Phoenix Gothard",
+                                    "dateOfBirth": "2005-09-07",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location3",
+                                        "schema:name": "NSW/ACT"
+                                    },
+                                    "alias": "P. Gothard"
+                                },
+                                {
+                                    "@id": "snap:person3",
+                                    "name": "Will Graham",
+                                    "dateOfBirth": "2005-07-27",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location4",
+                                        "schema:name": "Queensland"
+                                    },
+                                    "alias": "W. Graham"
+                                },
+                                {
+                                    "@id": "snap:person4",
+                                    "name": "Will Green",
+                                    "dateOfBirth": "2005-09-08",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location5",
+                                        "schema:name": "Victoria Metro"
+                                    },
+                                    "alias": "W. Green"
+                                },
+                                {
+                                    "@id": "snap:person5",
+                                    "name": "Clay Hall",
+                                    "dateOfBirth": "2005-05-12",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location6",
+                                        "schema:name": "Western Australia"
+                                    },
+                                    "alias": "C. Hall"
+                                },
+                                {
+                                    "@id": "snap:person6",
+                                    "name": "Riley Hardeman",
+                                    "dateOfBirth": "2005-02-27",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location7",
+                                        "schema:name": "Western Australia"
+                                    },
+                                    "alias": "R. Hardeman"
+                                },
+                                {
+                                    "@id": "snap:person7",
+                                    "name": "Angus Hastie",
+                                    "dateOfBirth": "2005-09-19",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location8",
+                                        "schema:name": "Victoria Country"
+                                    },
+                                    "alias": "A. Hastie"
+                                },
+                                {
+                                    "@id": "snap:person8",
+                                    "name": "Tew Jiath",
+                                    "dateOfBirth": "2005-03-02",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location9",
+                                        "schema:name": "Victoria Country"
+                                    },
+                                    "alias": "T. Jiath"
+                                },
+                                {
+                                    "@id": "snap:person9",
+                                    "name": "James Leake",
+                                    "dateOfBirth": "2005-10-02",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location10",
+                                        "schema:name": "Tasmania"
+                                    },
+                                    "alias": "J. Leake"
+                                },
+                                {
+                                    "@id": "snap:person10",
+                                    "name": "Kane McAuliffe",
+                                    "dateOfBirth": "2005-03-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location11",
+                                        "schema:name": "South Australia"
+                                    },
+                                    "alias": "K. McAuliffe"
+                                },
+                                {
+                                    "@id": "snap:person11",
+                                    "name": "Will McCabe",
+                                    "dateOfBirth": "2005-09-29",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location12",
+                                        "schema:name": "South Australia"
+                                    },
+                                    "alias": "W. McCabe"
+                                },
+                                {
+                                    "@id": "snap:person12",
+                                    "name": "Colby McKercher",
+                                    "dateOfBirth": "2005-04-12",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location13",
+                                        "schema:name": "Tasmania"
+                                    },
+                                    "alias": "C. McKercher"
+                                },
+                                {
+                                    "@id": "snap:person13",
+                                    "name": "Ashton Moya",
+                                    "dateOfBirth": "2005-04-15",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location14",
+                                        "schema:name": "South Australia"
+                                    },
+                                    "alias": "A. Moya"
+                                },
+                                {
+                                    "@id": "snap:person14",
+                                    "name": "Ollie Murphy",
+                                    "dateOfBirth": "2005-09-16",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location15",
+                                        "schema:name": "Victoria Metro"
+                                    },
+                                    "alias": "O. Murphy"
+                                },
+                                {
+                                    "@id": "snap:person15",
+                                    "name": "Connor O’Sullivan",
+                                    "dateOfBirth": "2005-05-19",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location16",
+                                        "schema:name": "NSW/ACT"
+                                    },
+                                    "alias": "C. O’Sullivan"
+                                },
+                                {
+                                    "@id": "snap:person16",
+                                    "name": "Ethan Read",
+                                    "dateOfBirth": "2005-07-07",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location17",
+                                        "schema:name": "Queensland"
+                                    },
+                                    "alias": "E. Read"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

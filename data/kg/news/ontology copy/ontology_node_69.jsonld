@@ -1,0 +1,107 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "title": "Patterns of Surface Warming Matter for Climate Sensitivity",
+      "byline": "Maria Rugenstein, Mark Zelinka, Kristopher B. Karnauskas, Paulo Ceppi and Timothy Andrews",
+      "published": "2023-10-31T12:03:09+00:00",
+      "summary": "One of the grand challenges in climate science is to reduce uncertainty in estimates of climate sensitivity, which quantifies how much Earth’s surface warms in response to a doubling of carbon dioxide relative to preindustrial levels. This uncertainty is large because climate sensitivity aggregates myriad processes, from microscale aerosol-cloud interactions to planetary-scale atmospheric and ocean circulations, into one number. Clouds, which are notoriously difficult to measure and simulate, are the main driver of the uncertainty.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "url": "https://eos.org/features/patterns-of-surface-warming-matter-for-climate-sensitivity"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Eos: Earth And Space Science News"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "US CLIVAR Workshop",
+      "eventSummary": "140 scientists from around the world and from different disciplines gathered for a US CLIVAR (U.S. Climate Variability and Predictability Program) workshop in May 2022 in Boulder, Colo."
+    }
+  ]
+}
+```

@@ -1,0 +1,99 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Robin Buller in Oakland, California",
+      "published": "2023-10-18T10:00:21+00:00",
+      "title": "Their kids died after buying drugs on Snapchat. Now the parents are suing",
+      "summary": "Hanh Badger was working from home the morning of 17 June 2021. She went to the kitchen to grab a second cup of coffee and noticed her daughter’s bedroom door was still shut. Badger found Brooke, 17, pale and motionless in bed. Soon, the sheriff arrived and immediately administered Naloxone, a nasal spray that reverses the effects of an opioid overdose. But Badger, a pharmacist, was confused. Brooke was a talented student who couldn’t wait to begin college that fall. “She had the whole world in her hands,” Badger said through tears. “There was no way in my mind that [Brooke] had died of a drug overdose.” In the ensuing days, Badger’s husband and son were able to gain access to Brooke’s computer and, with it, her Snapchat account. They found screenshots of what looked like a menu of narcotics, and conversations with a drug dealer showing Brooke had purchased what she believed to be Roxicet, a prescription medication containing acetaminophen and oxycodone typically prescribed for pain relief. Instead, the substance was a counterfeit pill that held a lethal dose of fentanyl. Across the US, young people are dying from fentanyl in record numbers, even as overall drug use is on the decline. Nationally, the number of opioid overdose deaths for people 24 and under nearly doubled from 2019-2021. And according to the National Institute on Drug Abuse, the number of overdoses attributed to synthetic opioids like fentanyl dwarfs that of any other substance. Brooke Badger, 17, died of an overdose at her California home. Photograph: Courtesy In California, where Brooke lived, fentanyl-related overdose deaths among 15- to 19-year-olds surged by nearly 800% between 2018 and 2021, according to data from the California Overdose Surveillance Dashboard. Many are young victims poisoned by counterfeit pills that have been pressed to look like legitimate prescription drugs, but that are laced with fentanyl, an opioid that is deadly even in granular quantities. Typically, those teenagers acquired what they believed to be Percocet, Xanax or other pharmaceuticals online through social media. In their grief, victims’ parents are motivated to end this crisis to prevent another family’s suffering while also giving meaning to their loss. Many have launched awareness campaigns, founded educational programs and advocated for legislative change. And now, some parents are taking to the civil courts, targeting the tech giants whose platforms facilitated their children’s purchases of pills that killed them. In April, the relatives of more than 65 victims, represented by the Social Media Victims Law Center, filed lawsuits against Snap, the parent company of Snapchat – an app known for its disappearing messages features, and the platform used by the vast majority of the suit’s victims. The suit claims Snapchat’s features facilitate practices like drug sales by connecting dealers to young customers while promising safety from legal repercussions through anonymity. Chief among those designs is the promise that a message will disappear not only to fellow users, but also on the software’s back end, says Matthew Bergman, the lead attorney on the case. It prevents law enforcement officials from seeing the activity of a dealer even after they have been identified. Other problematic features include notifying individuals when another person screenshots their post, the ability to geolocate fellow users and algorithms that suggest new connections based on demographics. In response, Snapchat filed a motion to dismiss the complaint, citing Section 230 of the Communications Decency Act, which protects online platforms from being held responsible for the illegal actions of their users. A hearing for that motion has been scheduled for 18 October. But Section 230 only offers immunity to companies that have acted responsibly and taken precautions to prevent illegal activity from taking place on their platforms, which Bergman says Snap hasn’t done. “It’s the world’s largest open-air drug market,” he said. “It was clearly designed with the intention of allowing and encouraging nefarious activity with a lack of record.” Snap did not respond to the Guardian’s request seeking comment prior to this story’s release. After publication, a spokesperson said that Snap works to “block search results for drug-related terms” and redirects at-risk users to resources on the dangers of fentanyl. “We have great empathy for families who have suffered unimaginable losses. At Snap, we are working hard to stop dealers from abusing our platform,” the spokesperson said. Perla Mendoza, a parent in the suit, found that Snap did little to prevent illegal drug sales in the weeks and months after the death of her son, Daniel (Elijah) Figueroa, who bought fentanyl-laced pills from a dealer on Snapchat. Even after she created her own account and found her son’s dealer posting images with hundreds of pills, Mendoza’s reports to the help center went unanswered, and it took eight months for them to flag his account. “It was really disheartening,” she said. For Badger, removing a dealer’s account alone is insufficient. “They’ll just create another,” she said, emphasizing the need for structural reforms that clearly warn young users of dealers’ predatory practices, or that make it so that drugs can’t be peddled to kids on the platform in the first place. “Snapchat perpetuated this crisis,” she said. Amy Neville, another parent in the suit, believes that Snapchat creates an aura of safety around an otherwise dangerous activity. She described her son Alexander, who died at 14 after taking a counterfeit Oxycontin tablet he procured through the app, as sensitive, impulsive and curious about many things – including drugs. But he was also hesitant about putting himself in dangerous situations. And by using Snapchat, he was able to avoid an in-person meetup and have the pills delivered straight to his door. “The old way of scary back-alley type transactions – Alexander would have never done that,” she said. Not every parent feels the same way. Ed Ternan, whose 21-year-old son Charlie died in April 2020 after taking a counterfeit Percocet he bought on Snapchat, sees suing the platform as counterproductive. “It feels like looking backwards,” he said. Ternan, who did not join the suit, goes on to explain that losing his son – an energetic and fun-loving young man who was weeks away from graduating from UC Santa Cruz – has forced himself to come to terms with the factors that came together to cause Charlie’s death. Ranging from the app and the dealer, to the friends Charlie bought drugs alongside, to himself as a father. “What was my role as a parent?” Ternan asked. A screenshot of pills being sold on Snapchat. Photograph: Courtesy The conclusion he reached is one that looks beyond blame. With his wife, Ternan now works full time on initiatives to educate parents on the dangers of fentanyl. He has even worked with Snap to promote awareness campaigns and find ways to make the app safer. “It’s been a very successful partnership,” Ternan said. Even for Neville, who is a plaintiff, going through the process of filing a lawsuit has been re-traumatizing. It forces her to relive horrifying moments again and again. “I don’t know what is worse, getting out and talking about it, or not talking about it,” she said. But for her, as it does for many parents, suing Snap represents just one iron in the fire. While Mendoza works to spread awareness of the risks of fentanyl to Spanish-speaking families, Neville travels to schools to share Alexander’s story and hosts monthly online meetings that empower young people to do peer-to-peer youth outreach. In doing so, she has learned that many parents and young people alike don’t know about the existence of counterfeit pills – something she desperately wishes she had been aware of when her son was still alive. The night he died, Alexander had told his parents that he had been taking Oxycontin he got online, and that he wanted help. Neville and her husband immediately called a rehab facility and made plans to take him there the following day, but didn’t think to take the pills away. “We thought we were doing everything right,” Neville said. “A little bit of information would have gone a long way in our household.”",
+      "associatedAsset": {
+        "@type": "ImageAsset",
+        "image": "Photograph: Courtesy"
+      },
+      "url": "https://www.theguardian.com/technology/2023/oct/18/snapchat-sued-overdose-deaths"
+    }
+  ]
+}
+```

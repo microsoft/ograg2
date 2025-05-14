@@ -1,0 +1,259 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "Twilight (1998)",
+            "author": "TR",
+            "theme": "Crime Drama",
+            "summary": "Featuring Cynthia Erivo in a star-making role, Chris Hemsworth in a part that makes the most of his sex appeal, and plenty of other familiar names (Jon Hamm, Dakota Johnson, Nick Offerman, Jeff Bridges) doing what they do, this one’s a powder keg of a movie that assembles a motley crew of unrelated guests (or are they?) at a seedy motel, then keeps revealing secrets in a deliriously dizzy way as it all comes together.",
+            "created": "1998-01-01T00:00:00Z",
+            "modified": "2023-10-01T00:00:00Z",
+            "published": "1998-01-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Twilight Screening",
+                        "eventSummary": "A screening of the movie Twilight featuring a discussion on its themes.",
+                        "theme": "Film Screening",
+                        "hasLocation": {
+                            "@id": "geo:location1",
+                            "@type": "geo:SpatialThing",
+                            "name": "Local Theater"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "@id": "snap:person1",
+                                    "@type": "schema:Thing",
+                                    "name": "Cynthia Erivo",
+                                    "dateOfBirth": "1987-01-08",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location2",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "London, UK"
+                                    }
+                                },
+                                {
+                                    "@id": "snap:person2",
+                                    "@type": "schema:Thing",
+                                    "name": "Chris Hemsworth",
+                                    "dateOfBirth": "1983-08-11",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location3",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Melbourne, Australia"
+                                    }
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "@type": "schema:Thing",
+                                    "name": "Hoopla",
+                                    "hasLocation": {
+                                        "@id": "geo:location4",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Online"
+                                    }
+                                },
+                                {
+                                    "@id": "snap:organization2",
+                                    "@type": "schema:Thing",
+                                    "name": "Amazon",
+                                    "hasLocation": {
+                                        "@id": "geo:location5",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Online"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "followUp": "snap:asset2",
+            "derivedFrom": "snap:asset3"
+        },
+        {
+            "@id": "snap:asset2",
+            "@type": "schema:Thing",
+            "title": "Twilight (1998) - Review",
+            "author": "TR",
+            "theme": "Film Review",
+            "summary": "No, not that Twilight. There isn’t a sparkle-vampire in sight in this celebrity-crammed, steamy crime drama. But if you have a Noirvember buddy or viewing group, we recommend springing this on them at the last minute: 'Hey, we’re watching Twilight tonight!' If they don’t break your neck and throw you under a train, Double Indemnity-style, they’ll probably thank you after watching this one, a surprisingly winning (and winningly surprising) crime drama starring Paul Newman, Susan Sarandon, Gene Hackman, Reese Witherspoon, Stockard Channing, James Garner, Giancarlo Esposito, Liev Schreiber, Margo Martindale, M. Emmet Walsh… It’s the kind of movie where you can play 'Oh wow, they’re in this movie too?' in almost every scene.",
+            "created": "2023-10-01T00:00:00Z",
+            "modified": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList2",
+                "Event": [
+                    {
+                        "@id": "snap:event2",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Twilight Review Discussion",
+                        "eventSummary": "A discussion on the review of the movie Twilight.",
+                        "theme": "Film Review Discussion",
+                        "hasLocation": {
+                            "@id": "geo:location6",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online Forum"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList2",
+                            "Person": [
+                                {
+                                    "@id": "snap:person3",
+                                    "@type": "schema:Thing",
+                                    "name": "Paul Newman",
+                                    "dateOfBirth": "1925-01-26",
+                                    "dateOfDeath": "2008-09-26",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location7",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Shaker Heights, Ohio, USA"
+                                    }
+                                },
+                                {
+                                    "@id": "snap:person4",
+                                    "@type": "schema:Thing",
+                                    "name": "Susan Sarandon",
+                                    "dateOfBirth": "1946-10-04",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location8",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "New York City, New York, USA"
+                                    }
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList2",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization3",
+                                    "@type": "schema:Thing",
+                                    "name": "Vudu",
+                                    "hasLocation": {
+                                        "@id": "geo:location9",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Online"
+                                    }
+                                },
+                                {
+                                    "@id": "snap:organization4",
+                                    "@type": "schema:Thing",
+                                    "name": "YouTube",
+                                    "hasLocation": {
+                                        "@id": "geo:location10",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Online"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "followUp": "snap:asset1",
+            "derivedFrom": "snap:asset3"
+        },
+        {
+            "@id": "snap:asset3",
+            "@type": "schema:Thing",
+            "title": "Twilight (1998) - Related Movies",
+            "author": "TR",
+            "theme": "Film Recommendations",
+            "summary": "More in this category: Bound, Fargo, Lost Highway, U-Turn, Body Heat, The Drowning Pool, Memento, Shutter Island, Blade Runner, Nightmare Alley (2021).",
+            "created": "2023-10-01T00:00:00Z",
+            "modified": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z"
+        }
+    ]
+}

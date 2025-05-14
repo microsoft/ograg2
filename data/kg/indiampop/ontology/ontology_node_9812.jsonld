@@ -1,0 +1,57 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "WeedManagement",
+            "weed_name": "Kharif pulses",
+            "weed_types": [
+                "areas adjacent to hills and forests"
+            ],
+            "herbicides": {
+                "@type": "HerbicideList",
+                "name": [
+                    "alachlor",
+                    "butachlor",
+                    "benthiocarb",
+                    "pendimethalin",
+                    "metolachlor",
+                    "oxadiazone",
+                    "quizalofop ethyl 5 EC"
+                ],
+                "quantity": [
+                    "1 kg/ha",
+                    "0.75 kg/ha",
+                    "2ml/litre"
+                ],
+                "stage": [
+                    "15 to 20 days after sowing",
+                    "50 days after sowing (DAS) in arhar",
+                    "35 days after sowing for other pulses",
+                    "10-30 days after sowing",
+                    "4 weeks after the first one"
+                ]
+            }
+        }
+    ]
+}

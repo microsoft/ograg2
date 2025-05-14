@@ -1,0 +1,147 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Rose",
+            "has_types": {
+                "name": "Climate Rose",
+                "used_for": "Decoration"
+            },
+            "has_growing_zones": {
+                "CropGrowingZone": [
+                    {
+                        "name": "Northern Plains",
+                        "has_regions": ["North"],
+                        "has_seed_recommendations": {
+                            "variety_name": ["Climate Rose"],
+                            "has_early_sowing_time": {
+                                "start_date": "Winter Start",
+                                "end_date": "Winter End"
+                            },
+                            "has_late_sowing_time": {
+                                "start_date": "Winter Start",
+                                "end_date": "Winter End"
+                            },
+                            "has_seeding_rate": {
+                                "value": "Standard"
+                            },
+                            "has_fertilizer_application_requirements": {
+                                "nutrient_name": "Standard",
+                                "quantity": "Standard",
+                                "stage_of_application": "Standard"
+                            }
+                        }
+                    },
+                    {
+                        "name": "Temperate Hilly Region",
+                        "has_regions": ["Hills"],
+                        "has_seed_recommendations": {
+                            "variety_name": ["Climate Rose"],
+                            "has_early_sowing_time": {
+                                "start_date": "Summer Start",
+                                "end_date": "Summer End"
+                            },
+                            "has_late_sowing_time": {
+                                "start_date": "Summer Start",
+                                "end_date": "Summer End"
+                            },
+                            "has_seeding_rate": {
+                                "value": "Standard"
+                            },
+                            "has_fertilizer_application_requirements": {
+                                "nutrient_name": "Standard",
+                                "quantity": "Standard",
+                                "stage_of_application": "Standard"
+                            }
+                        }
+                    }
+                ]
+            },
+            "has_temperature_requirements": {
+                "for_germination": "Full Sun",
+                "for_flowering": "Full Sun",
+                "for_grain_filling": "Full Sun",
+                "negative_effect": "None"
+            },
+            "has_soil_requirements": {
+                "soil_type_name": "Standard",
+                "avoid_soil_type": "None",
+                "for_water": "Standard",
+                "for_nutrients": "Standard"
+            },
+            "has_land_preperation_requirements": {
+                "instructions": "Standard",
+                "with_soil_moisture": "Standard"
+            },
+            "seed_germination_test_requirements_are": "Standard",
+            "has_seed_fungicide_requirements": {
+                "name": "Standard",
+                "quantity": "Standard"
+            },
+            "needs_seed_sowing_spacing": {
+                "sowing_time": "Standard",
+                "value": "Standard",
+                "depth": "Standard",
+                "method": "Standard"
+            },
+            "weed_management_needs_are": {
+                "weed_name": "None",
+                "weed_types": ["None"],
+                "herbicides": {
+                    "name": "None",
+                    "quantity": "None",
+                    "stage": "None"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "quantity": "Standard",
+                "stage_of_application": "Standard"
+            },
+            "needs_disease_treatements": {
+                "disease_name": "None",
+                "disease_symptoms": "None",
+                "disease_control": {
+                    "name": "None",
+                    "quantity": "None",
+                    "stage": "None"
+                }
+            },
+            "needs_pest_treatements": {
+                "pest_name": "None",
+                "pest_symptoms": "None",
+                "pest_control": {
+                    "name": "None",
+                    "quantity": "None",
+                    "stage": "None"
+                }
+            },
+            "harvesting_guidelines_are": "Standard",
+            "storage_guidelines_are": "Standard"
+        }
+    ]
+}

@@ -1,0 +1,88 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "Wheat",
+            "needs_disease_treatements": {
+                "@type": "cropCult:DiseaseTreatements",
+                "disease_name": "Grassy shoot disease (GSD)",
+                "disease_symptoms": "Aleurodids,Aleurolobus barodensis > Smut (Ustilago scitaminea)",
+                "disease_control": {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "dimethoate",
+                    "quantity": "0.1 %",
+                    "stage": "Spray to control insect vector"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "cropCult:PestTreatements",
+                "pest_name": "Aleurodids,Aleurolobus barodensis",
+                "pest_symptoms": "Smut (Ustilago scitaminea)",
+                "pest_control": {
+                    "@type": "cropCult:PesticideList",
+                    "name": "dimethoate",
+                    "quantity": "0.1 %",
+                    "stage": "Spray to control insect vector"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "cropCult:IrrigationRequirement",
+                "quantity": "14",
+                "stage_of_application": "WATER MANAGEMENT"
+            },
+            "weed_management_needs_are": {
+                "@type": "cropCult:WeedManagement",
+                "weed_name": "Grassy shoot disease (GSD)",
+                "weed_types": [
+                    "Rogue out infected plants in the secondary and commercial seed nursery",
+                    "Treat setts with aerated steam at 50°C for 1 hour to control primary infection",
+                    "Growing resistant varieties viz., Co 86249, CoG 93076 and Coc 22",
+                    "Avoid ratooning if GSD incidence is more than 15 % in the plant crop"
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,156 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "title": "USC vs. Notre Dame live score, updates, highlights from Week 7 college football game",
+      "author": "Edward Sutelan",
+      "theme": "sports",
+      "content": "In a game with names like Caleb Williams, Sam Hartman, Zachariah Branch and Audric Estime, it felt like there might be no more room for anyone else to play the role of hero. Enter Xavier Watts. The Notre Dame safety was a wrecking ball against Williams and the USC offense, picking off Williams twice, forcing a fumble and taking another fumble in for a score. Williams finished the contest with arguably the worst game of his career as No. 21 Notre Dame rode the crucial turnovers and a relentless pass-rush to an overwhelming 48-20 win at home against No. 10 USC. \"I think the entire team was hungry,\" Notre Dame coach Marcus Freeman said after the game. \"We had a sour taste in our mouth. But the reality is that I've told those guys just compete against [Williams]. He's gonna make plays, he's a great football player, but be relentless in terms of your effort, your attitude, how you attack that guy and to come up big with five turnovers is really impressive.\" MORE: Watch college football live with Fubo (free trial) Right from the start, it was cleat Notre Dame was going to make things hard on the reigning Heisman Trophy winner. Just four plays into the game, Williams over-threw Lake McRee and Watts picked it off, returning it 38 yards to USC's 12 and setting Notre Dame up for a quick three-play scoring drive. Midway through the third quarter, with Notre Dame leading 10-3, Williams again threw a pick to Watts, this time Watts nearly returned it to the end zone before he was stopped at the USC 2. Audric Estime finished the job, scoring the first of two touchdowns to give USC the 17-3 lead. Williams threw another interception on the following drive, the first time he had ever thrown three picks in a single game in his career, and Notre Dame again cashed in the turnover for seven more points. Late in the fourth quarter, with USC desperately trying to stay in the game, Watts recovered a fumble after a reception by Mario Williams and raced it into the end zone. Following that turnover, with his team trailing 48-20, Lincoln Riley pulled the starters. The backup running back fumbled the ball on USC's final drive, forced by — guess who — Watts, and Notre Dame ran down the clock from there. \"Just thank you to all my teammates,\" Watts said after the game. \"None of that would have happened without them. All the pressure they brought, the good coverage down the field.\" In a season in which so much has been made of USC's defensive woes holding back the offense, it was the other way around on Saturday. USC's defense held Notre Dame to just 251 total yards of offense, 51 fewer than the offensive yards by the Trojans. Notre Dame was only three-for-10 on third down compared to six-of-13 by USC. But a 5-0 turnover margin will be difficult for any team to overcome, and it frequently helped Notre Dame have only a short field to work with. The Fighting Irish, on average, started drives at their own 47, while the Trojans began drives on average at their own 28. Watts made the headline-grabbing plays, but a massive part of the Fighting Irish's defensive success came in the trenches. The defensive line by Notre Dame tallied six sacks of Williams and three more hits as it frequently pressed the Trojan quarterback. Williams finished the game just 23-for-37 with 199 passing yards with one passing touchdown and three picks. The Sporting News tracked updates and highlights from Saturday's Week 7 game between USC and Notre Dame. USC vs. Notre Dame score Q1 Q2 Q3 Q4 Final USC 3 3 7 7 20 Notre Dame 7 17 7 17 48",
+      "published": "2023-10-14T22:00:05+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event",
+          "@type": "schema:Thing",
+          "eventTitle": "USC vs. Notre Dame Week 7 Game",
+          "eventSummary": "Notre Dame defeats USC 48-20 with key plays by Xavier Watts.",
+          "theme": "sports",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "geo:lat": "41.6986",
+            "geo:long": "-86.2353"
+          },
+          "mentions_persons": [
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Caleb Williams"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Sam Hartman"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Zachariah Branch"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Audric Estime"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Xavier Watts"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Marcus Freeman"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Lincoln Riley"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization",
+              "@type": "schema:Thing",
+              "name": "Notre Dame"
+            },
+            {
+              "@id": "snap:organization",
+              "@type": "schema:Thing",
+              "name": "USC"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

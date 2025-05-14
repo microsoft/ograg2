@@ -1,0 +1,101 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PostHarvestTechnology": {
+            "@id": "cropCult:PostHarvestTechnology",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "process_steps": "schema:ItemList",
+                "processed_products": "schema:Text"
+            }
+        },
+        "ProcessStep": {
+            "@id": "cropCult:ProcessStep",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "description": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "DRY SEEDED UPLAND RICE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "AEROBIC RICE"
+            },
+            "harvesting_guidelines_are": "POST HARVEST TECHNOLOGY OF RICE PROCESSING OF RICE",
+            "storage_guidelines_are": "PROCESSED PRODUCTS"
+        },
+        {
+            "@type": "PostHarvestTechnology",
+            "name": "Rice Processing",
+            "process_steps": {
+                "@type": "ItemList",
+                "itemListElement": [
+                    {
+                        "@type": "ProcessStep",
+                        "name": "Paddy",
+                        "description": "Soaking in water (30% m.c)"
+                    },
+                    {
+                        "@type": "ProcessStep",
+                        "name": "Parboiled rice",
+                        "description": "(14% m.c)"
+                    },
+                    {
+                        "@type": "ProcessStep",
+                        "name": "Milling",
+                        "description": "(15% m.c)"
+                    },
+                    {
+                        "@type": "ProcessStep",
+                        "name": "Dry heat parboiled rice in pans",
+                        "description": "(110oC)"
+                    },
+                    {
+                        "@type": "ProcessStep",
+                        "name": "Salting",
+                        "description": "(Sodium chloride 10g/100ml water per kg of rice)"
+                    },
+                    {
+                        "@type": "ProcessStep",
+                        "name": "Roasting in hot sand",
+                        "description": "(250oC)"
+                    },
+                    {
+                        "@type": "ProcessStep",
+                        "name": "Expanded rice",
+                        "description": "(0.5% m.c)"
+                    }
+                ]
+            },
+            "processed_products": "Puffing / Popping * Puffed rice : (using rice) This popular ready-to-eat snack product is obtained by puffing milled parboiled rice. In the traditional process rice is gently heated on the furnace without sand to reduce the moisture content slightly. It is then mixed with salt solution and again roasted on furnace in small batches with sand on a strong fire for a few seconds to produce the expanded rice. Rice expands about 8 times retaining the grain shape and is highly porous and crisp."
+        }
+    ]
+}

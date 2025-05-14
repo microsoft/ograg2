@@ -1,0 +1,60 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "BioFertilizerProduction": {
+            "@id": "cropCult:BioFertilizerProduction",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "description": "schema:description",
+                "biofertilizer_agents": "cropCult:BioFertilizerAgents",
+                "production_materials": "schema:Text",
+                "production_steps": "schema:Text",
+                "cultivation_temperature": "cropCult:TemperatureRequirements",
+                "growth_medium": "schema:Text"
+            }
+        },
+        "BioFertilizerAgents": {
+            "@id": "cropCult:BioFertilizerAgents",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "description": "schema:description"
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "temperature": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:BioFertilizerProduction",
+            "name": "COMMERCIAL PRODUCTION OF BIO-FERTILIZER",
+            "description": "The two biofertilizer agents in Azospirillum and PSB group, Azospirillum amazonense A10 and Bacillus megaterium P5 have been found to be superior and their utility as biofertilizer in integrated nutrient management of rice has been demonstrated. The material and steps involved in production of biofertilizers of these microorganisms are presented.",
+            "biofertilizer_agents": [
+                {
+                    "@type": "cropCult:BioFertilizerAgents",
+                    "name": "Azospirillum amazonense A10",
+                    "description": "A biofertilizer agent found to be superior in the integrated nutrient management of rice."
+                },
+                {
+                    "@type": "cropCult:BioFertilizerAgents",
+                    "name": "Bacillus megaterium P5",
+                    "description": "A biofertilizer agent found to be superior in the integrated nutrient management of rice."
+                }
+            ],
+            "production_materials": "These two strains can be cultivated in broth at 30±2oC.",
+            "production_steps": "Potato dextrose agar can be used for growing the organisms in broth.",
+            "cultivation_temperature": {
+                "@type": "cropCult:TemperatureRequirements",
+                "temperature": "30±2oC"
+            },
+            "growth_medium": "Potato dextrose agar"
+        }
+    ]
+}

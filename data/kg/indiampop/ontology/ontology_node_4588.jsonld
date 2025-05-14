@@ -1,0 +1,50 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Nursery",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Seed Nursery"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Before sowing in the nursery, seeds are to be placed in a germination pit filled with a thin layer of clean moist sand. On cracking, seeds should be transferred to the nursery. Seedling may be raised in “beds” (1.2m wide and of convenient length laid in EastWest direction in fertile soil) or in ‘polythene sleeves’ {20-25 cm long 17 cm (lay flat) wide & 150 gauge thickness}. Sleeves should be filled up with a mixture of good jungle soil and well rotten cattle manure (3:1 ratio) along with super phosphate @ 500 g/cubic meter soil mixture at least 3-4 weeks before sowing.",
+                "with_soil_moisture": "Moist"
+            }
+        }
+    ]
+}

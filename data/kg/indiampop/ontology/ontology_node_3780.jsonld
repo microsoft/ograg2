@@ -1,0 +1,49 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "RATOONING",
+            "disease_symptoms": "Ratooning is the method of allowing stubbles of the harvested crop to sprout and form the basis for the next crop. Varieties having high regeneration capacity are required for rationing. The optimum temperature for quick sprouting of stubbles is around 27˚ C, hence plant – crop should be harvested from Mid – February to Mid – March. Only first ratoon is recommended in most of the States in India. The crop to be ratooned is cut at 3 – 5 cm below the ground, the stubble is shaved , at that level and the trash is burnt or mulched. At the proper stage the inter rows are ploughed to encourage fresh roots. However the ratoon crop requires 25% more nitrogen than the plant – crop and gives lower yield than the plant – crop. But they mature early, less cost of cultivation such as tillage, seed and planting etc. So practically they are more renumerative than the plant crop. Sugarcane cultivation suffering from disease or excessive population of pest should not be ratooned.",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Not specified",
+                "quantity": "Not specified",
+                "stage": "Not specified"
+            }
+        }
+    ]
+}

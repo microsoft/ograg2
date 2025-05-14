@@ -1,0 +1,349 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "title": "The three schemes",
+            "author": "Unknown",
+            "theme": "Tabletop Role-Playing Games",
+            "summary": "The three schemes are presented as both traditional adventures and as collections of facts — about the setting, about the people living there and their motivations, about the desires of the god and the machinations of its agents. Events will quickly throw a small village, a monastery, and a necropolis into chaos. Two gazetteers and a sourcebook on the roaches follow, giving the GM ample material to expand the campaign. All this is wrapped in Munkao’s fantastically disgusting artwork. His vistas and cultural portraits are gorgeous, but when he brings his talents to bear on feelers and chitin and filth, the results are revolting in the best possible way. Sadly, this is likely the final installment in the ATTI series and unlikely to be reprinted, so get this book while you can!",
+            "created": "2023-01-01T00:00:00Z",
+            "published": "2023-01-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList1",
+                "Event": [
+                    {
+                        "eventTitle": "Monsterhearts",
+                        "eventSummary": "Figuring out what to talk about proved trickier than I expected. A lot of the things I played this year were playtests or previews for things not out yet, which would feel more like a humblebrag than a recommendation, or were my own games which were great to play but would feel a bit weird and self-indulgent to suggest as the 'best.'",
+                        "theme": "Tabletop Role-Playing Games",
+                        "hasLocation": "Unknown",
+                        "mentions_persons": {
+                            "@id": "snap:personList1",
+                            "Person": [
+                                {
+                                    "name": "Unknown",
+                                    "dateOfBirth": "Unknown",
+                                    "dateOfDeath": "Unknown",
+                                    "placeOfBirth": "Unknown",
+                                    "alias": "Unknown"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList1",
+                            "Organization": [
+                                {
+                                    "name": "Unknown",
+                                    "hasLocation": "Unknown",
+                                    "alias": "Unknown"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Mörk Borg",
+                        "eventSummary": "Jasmine Bhullar, writer, content creator, executive producer of DesiQuest. Of the games I delved into this year, although several afforded hours of entertainment, I felt myself repeatedly returning to one in particular. Although Mörk Borg was released in 2020, it was only in 2023 that I happily stumbled upon it and was able to somehow get a table together to run a game.",
+                        "theme": "Tabletop Role-Playing Games",
+                        "hasLocation": "Unknown",
+                        "mentions_persons": {
+                            "@id": "snap:personList2",
+                            "Person": [
+                                {
+                                    "name": "Jasmine Bhullar",
+                                    "dateOfBirth": "Unknown",
+                                    "dateOfDeath": "Unknown",
+                                    "placeOfBirth": "Unknown",
+                                    "alias": "Unknown"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList2",
+                            "Organization": [
+                                {
+                                    "name": "DesiQuest",
+                                    "hasLocation": "Unknown",
+                                    "alias": "Unknown"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "I’m Sorry Did You Say Street Magic",
+                        "eventSummary": "Madison Durham, writer and journalist, staff writer at Reviewed. To me, some of the most joyful moments in tabletop gaming come from the experience of creative collaboration — the magic of making something new with friends, be it a narrative, a character, a world, or in this case, a city.",
+                        "theme": "Tabletop Role-Playing Games",
+                        "hasLocation": "Unknown",
+                        "mentions_persons": {
+                            "@id": "snap:personList3",
+                            "Person": [
+                                {
+                                    "name": "Madison Durham",
+                                    "dateOfBirth": "Unknown",
+                                    "dateOfDeath": "Unknown",
+                                    "placeOfBirth": "Unknown",
+                                    "alias": "Unknown"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList3",
+                            "Organization": [
+                                {
+                                    "name": "Reviewed",
+                                    "hasLocation": "Unknown",
+                                    "alias": "Unknown"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Triangle Agency",
+                        "eventSummary": "I laughed so hard my face hurt. —me, 10 minutes after my first session of Triangle Agency. I love a game with style and a clear, fun point of view, so I’ve been a fan of Triangle Agency since I picked up its player guide in beta form earlier this year.",
+                        "theme": "Tabletop Role-Playing Games",
+                        "hasLocation": "Unknown",
+                        "mentions_persons": {
+                            "@id": "snap:personList4",
+                            "Person": [
+                                {
+                                    "name": "Unknown",
+                                    "dateOfBirth": "Unknown",
+                                    "dateOfDeath": "Unknown",
+                                    "placeOfBirth": "Unknown",
+                                    "alias": "Unknown"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList4",
+                            "Organization": [
+                                {
+                                    "name": "Unknown",
+                                    "hasLocation": "Unknown",
+                                    "alias": "Unknown"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Twilight: 2000",
+                        "eventSummary": "Charlie Hall, senior editor, tabletop. I firmly believe that tabletop role-play should always take into account the audience that sits down at the table to play.",
+                        "theme": "Tabletop Role-Playing Games",
+                        "hasLocation": "Unknown",
+                        "mentions_persons": {
+                            "@id": "snap:personList5",
+                            "Person": [
+                                {
+                                    "name": "Charlie Hall",
+                                    "dateOfBirth": "Unknown",
+                                    "dateOfDeath": "Unknown",
+                                    "placeOfBirth": "Unknown",
+                                    "alias": "Unknown"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList5",
+                            "Organization": [
+                                {
+                                    "name": "Unknown",
+                                    "hasLocation": "Unknown",
+                                    "alias": "Unknown"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Project ECCO",
+                        "eventSummary": "It’s a near-impossible task to get a consistent group together, so solo TTRPGs have become my primary method of gaming. However, the barrier for me is finding a game with a balance of narrative and mechanics that isn’t overwhelmingly crunchy, but also isn’t open-ended to the point of choice paralysis.",
+                        "theme": "Tabletop Role-Playing Games",
+                        "hasLocation": "Unknown",
+                        "mentions_persons": {
+                            "@id": "snap:personList6",
+                            "Person": [
+                                {
+                                    "name": "Unknown",
+                                    "dateOfBirth": "Unknown",
+                                    "dateOfDeath": "Unknown",
+                                    "placeOfBirth": "Unknown",
+                                    "alias": "Unknown"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList6",
+                            "Organization": [
+                                {
+                                    "name": "Unknown",
+                                    "hasLocation": "Unknown",
+                                    "alias": "Unknown"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "The Quiet Year",
+                        "eventSummary": "Em Friedman, associate professor of English at Auburn University and Polygon contributor. Look, The Quiet Year appeared not once but twice on last year’s roundup, I know.",
+                        "theme": "Tabletop Role-Playing Games",
+                        "hasLocation": "Unknown",
+                        "mentions_persons": {
+                            "@id": "snap:personList7",
+                            "Person": [
+                                {
+                                    "name": "Em Friedman",
+                                    "dateOfBirth": "Unknown",
+                                    "dateOfDeath": "Unknown",
+                                    "placeOfBirth": "Unknown",
+                                    "alias": "Unknown"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList7",
+                            "Organization": [
+                                {
+                                    "name": "Polygon",
+                                    "hasLocation": "Unknown",
+                                    "alias": "Unknown"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "What Dust Remains",
+                        "eventSummary": "Danny Quach, Digital Thiccness, TTRPG writer, designer, and performer. Despite my generally sunny disposition, big smile, and boisterous laughter (as well as being deemed the internet’s emotional support himbo), I love all of my emotions — the good, bad, and ugly.",
+                        "theme": "Tabletop Role-Playing Games",
+                        "hasLocation": "Unknown",
+                        "mentions_persons": {
+                            "@id": "snap:personList8",
+                            "Person": [
+                                {
+                                    "name": "Danny Quach",
+                                    "dateOfBirth": "Unknown",
+                                    "dateOfDeath": "Unknown",
+                                    "placeOfBirth": "Unknown",
+                                    "alias": "Unknown"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList8",
+                            "Organization": [
+                                {
+                                    "name": "Digital Thiccness",
+                                    "hasLocation": "Unknown",
+                                    "alias": "Unknown"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "The Wildsea",
+                        "eventSummary": "Earlier this year, I searched for the perfect system to kickstart my new actual-play campaign with three 'must-haves' in mind: a vivid world, rich character options, and simple but punchy rules.",
+                        "theme": "Tabletop Role-Playing Games",
+                        "hasLocation": "Unknown",
+                        "mentions_persons": {
+                            "@id": "snap:personList9",
+                            "Person": [
+                                {
+                                    "name": "Unknown",
+                                    "dateOfBirth": "Unknown",
+                                    "dateOfDeath": "Unknown",
+                                    "placeOfBirth": "Unknown",
+                                    "alias": "Unknown"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList9",
+                            "Organization": [
+                                {
+                                    "name": "Mythworks",
+                                    "hasLocation": "Unknown",
+                                    "alias": "Unknown"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

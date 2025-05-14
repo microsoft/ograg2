@@ -1,0 +1,97 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Wes Goldberg, RealGM",
+            "published": "2023-11-29T20:41:32+00:00",
+            "title": "Golden State's draft misses are starting to add up",
+            "summary": "In June of 2021, Jonathan Kuminga and Moses Moody sat on a stage on the Chase Center court, with then-GM Bob Myers to their left, as the Warriors introduced their newest first-round draft picks. “We’re excited,” Myers said. “I talk about the character first because that’s what’s going to make that A-grade stick or not. It’s gonna be on what they do from here on out, not what they've done so far.” It’s true that the Warriors received glowing grades from draft analysts following their selections of Kuminga, out of the G-League Ignite program, at No. 7, and Arkansas’ Moody at No. 14. Unfortunately for them, that A-grade has not stuck. Fast-forward more than two years and both players are struggling to make the sort of impact the Warriors had hoped when they flaunted their two-timeline plan. Kuminga, though he’s had flashes and is only 21, is almost as raw as he was as an 18-year-old. He plays nearly 20 minutes per game for a thin Warriors team, but his shooting percentages (43.8% overall, 19.4% on 3s) have dipped to career lows. Moody has been the more stable of the two. He’s a reliable catch-and-shoot threat (38.2% shooting from 3) and earnest defender but doesn’t do much outside the limits of his job description. The Warriors are 8-10 following Tuesday’s disastrous collapse to the Kings in Sacramento. Leading by five with 58 seconds to go and a spot in the next round of the In-Season Tournament on the line, Andrew Wiggins fouled De’Aaron Fox, Stephen Curry passed the ball straight to Malik Monk on his own side of the court, Draymond Green threw the ball out of bounds and Monk scored five points in the final 37 seconds to send the Warriors back to San Francisco forced to ask some tough questions. On the floor for these minutes were Curry, Klay Thompson, Green, Wiggins and Kevon Looney. Four of the five were drafted by the Warriors. Steph, Klay and Draymond are the bedrock of four championship teams and perhaps the NBA’s greatest dynasty this century. But a franchise built through the draft has had very little success selecting players over the past decade. If the Warriors seem old, it’s because they are. Curry (35) can still play at an MVP level, but Green (33) and Thompson (33) are not the players they were during Golden State’s run to five straight Finals. Green (when he isn’t suspended) can still uncork vintage defensive performances, but his offensive game has not aged well as the league trends toward more shooting. The typically affable Thompson, having suffered two major leg injuries since 2019, is bristling at questions about the starting lineup. The Warriors’ starting five – a dominant unit over the last decade – is being outscored by an alarming 10.6 points every 100 possessions this season. The Warriors have had a hard time reinventing themselves. The two-timeline approach was supposed to infuse the team with youth and athleticism. Instead, Kuminga and Moody can’t crack the rotation some nights, and 2020’s No. 2 overall pick James Wiseman now plays in Detroit. If anything, the Warriors got older. Over the last nine months, they traded 24-year-old Jordan Poole to the Wizards in a deal that netted 38-year-old Chris Paul, unloaded Wiseman to bring back 30-year-old Gary Payton II and signed 29-year-old Dario Saric to help anchor the second unit. Behind the Bucks and Clippers, the Warriors are the league’s third-oldest team. It’s easy to point to the 2020 and 2021 drafts as the problem. The Warriors – during a two-year, injury-riddled drought that separated Finals runs – in 2021 selected Kuminga one pick ahead of Franz Wagner and Moody over Alperen Sengun and Trey Murphy III. The year before, they drafted Wiseman over LaMelo Ball and Tyrese Haliburton. (At the risk of saying I told you so, a certain Warriors beat reporter at the time argued for the better picks here and here. There was something to be said of drafting the more NBA-ready players, even at the risk of missing out on Wiseman’s and Kuminga’s ceilings.) But Golden State’s original sins run deeper than that. Here’s a look at their recent draft history. Looney, picked in 2015 (when “Uptown Funk” and “Trap Queen” were topping music charts) is the only indisputable success. Beyond that, Poole is the only other draft pick to have signed another contract with the Warriors beyond his rookie deal. Poole, at 28, helped power the Warriors to the 2022 championship but was in equal amounts part of the problem the next season. (And based on his season in Washington, his 2022 playoff run is looking more and more like an outlier.) Four draft picks are now on other teams: Patrick Baldwin, Wiseman, Poole and Damian Jones; and four are no longer in the league: Nico Mannion, Justinian Jessup, Eric Paschall, Jacob Evans. June’s 19th overall pick Brandin Podziemski seems like a base hit right now, but it’s been a month. Do I need to remind you of the brief flashes we saw from Paschall? To be fair, it’s hard to nail the draft when you’re always selecting at 28 and 30. But using three lottery picks and coming away with maybe one fringe rotation player would doom any franchise that doesn’t have Steph Curry. For years, these picks and players have been a luxury for the Warriors, but the age problem is coming to a head. Thompson will be a free agent in seven months, Paul’s contract for next season is not guaranteed and Green’s new contract, though a bargain now, might not look as great when he’s 37 years old. Maximizing what’s left of Curry’s championship window will prompt some tough decisions. The Warriors might have to cut bait on the two remaining lottery picks who shared a stage two years ago, Kuminga and Moody. Either one could have value as a “second draft” candidate for a younger team. For instance, Kuminga’s $6 million salary can be added to Payton to build $14.7 million in outgoing salary. Moody’s $3.9 million is some sugar to sweeten a deal for any of Golden State’s higher-priced players. Available big names like Zach LaVine might not make a ton of sense given his age and contract, but everything from All-Star acquisitions to trading for helpful role players should be on the table. If the Warriors decide to reorient the roster around Curry between now and February’s trade deadline, new GM Mike Dunleavy Jr. would be tasked with rebuilding a jet mid-flight. Whether it’s before the trade deadline or next summer, it feels like something is bound to change in Golden State. The draft picks haven’t panned out and Curry’s supporting cast is showing its age, but finding solutions in the middle is easier said than done.",
+            "associatedAsset": {
+                "asset": "https://www.yardbarker.com/nba/articles/golden_states_draft_misses_are_starting_to_add_up/s1_8276_39602204"
+            }
+        }
+    ]
+}
+```

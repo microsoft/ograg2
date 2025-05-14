@@ -1,0 +1,162 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Sex, Signal messages, and sabotaging FTX's code: SBF execs and Bahamas roommates tell all in court",
+            "author": "None",
+            "published": "2023-10-06T20:17:00+00:00",
+            "summary": "Witness Adam Yedidia answers questions during Sam Bankman-Fried fraud trial over the collapse of FTX, the bankrupt cryptocurrency exchange, at Federal Court in New York City, October 5, 2023, in this courtroom sketch.",
+            "has_events": [
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "Sam Bankman-Fried Fraud Trial",
+                    "eventSummary": "Testimonies from former FTX executives regarding the collapse of the cryptocurrency exchange.",
+                    "theme": "business",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Gary Wang",
+                            "dateOfBirth": "xmls:date",
+                            "placeOfBirth": "geo:location",
+                            "alias": "Co-founder of FTX"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Sam Bankman-Fried",
+                            "dateOfBirth": "xmls:date",
+                            "placeOfBirth": "geo:location",
+                            "alias": "SBF"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Nishad Singh",
+                            "dateOfBirth": "xmls:date",
+                            "placeOfBirth": "geo:location",
+                            "alias": "Ex-engineering head of FTX"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Caroline Ellison",
+                            "dateOfBirth": "xmls:date",
+                            "placeOfBirth": "geo:location",
+                            "alias": "Former girlfriend of SBF"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Adam Yedidia",
+                            "dateOfBirth": "xmls:date",
+                            "placeOfBirth": "geo:location",
+                            "alias": "Prosecution witness"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Matt Huang",
+                            "dateOfBirth": "xmls:date",
+                            "placeOfBirth": "geo:location",
+                            "alias": "Co-founder of Paradigm"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization",
+                            "name": "FTX",
+                            "hasLocation": "geo:location",
+                            "alias": "Bankrupt cryptocurrency exchange"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Alameda Research",
+                            "hasLocation": "geo:location",
+                            "alias": "Sister hedge fund of FTX"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Paradigm Operations LP",
+                            "hasLocation": "geo:location",
+                            "alias": "Crypto venture capital firm"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,313 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "The best tabletop RPGs we played in 2023",
+            "author": "Charlie Hall",
+            "published": "2023-12-13T15:00:00+00:00",
+            "summary": "A comprehensive overview of the best tabletop RPGs played in 2023, featuring insights from various game designers and players.",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "City of Winter",
+                        "eventSummary": "A game about characters traveling along a cloth map, focusing on themes of assimilation and diaspora.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Linda Codega",
+                                    "alias": "Ennie Award-winning entertainment journalist"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Dead After Dinner",
+                        "eventSummary": "A hilarious murder mystery game combining procedural revelation with family drama.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Jason Morningstar",
+                                    "alias": "Owner, creative director, and lead designer at Bully Pulpit Games"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Desperation",
+                        "eventSummary": "A card-driven TTRPG with a unique mechanic for storytelling.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Tim Hutchings",
+                                    "alias": "Game designer and academic"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Dungeon Crawl Classics",
+                        "eventSummary": "An RPG system with a focus on player skill and volatile magic.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Thilo Graf",
+                                    "alias": "AAW Games"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Dungeons & Dragons",
+                        "eventSummary": "A homebrew campaign set in a unique world, emphasizing player creativity.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Mike Haracz",
+                                    "alias": "Corporate R&D chef and host of Heroes’ Feast"
+                                },
+                                {
+                                    "name": "Petrana Radulovic",
+                                    "alias": "Entertainment reporter"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Eating Oranges in the Shower",
+                        "eventSummary": "A LARP about the experience of eating an orange while showering.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Sam Dunnewold",
+                                    "alias": "Dice Exploder podcast"
+                                }
+                                ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Exquisite Biome",
+                        "eventSummary": "A world-building TTRPG focusing on ecological biomes.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Everest Pipkin",
+                                    "alias": "Game and software developer"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Fetch My Blade",
+                        "eventSummary": "A solo journaling RPG where you play as a dog of a retired sword master.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Kelly Tran",
+                                    "alias": "Game creator"
+                                },
+                                {
+                                    "name": "Ethan Yen",
+                                    "alias": "Game creator"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Home",
+                        "eventSummary": "A haunted house exploration simulator that can be played solo or with a group.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Wesley “Nox” Crowe",
+                                    "alias": "Creative director for Hunters Entertainment"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "The Luminant Age",
+                        "eventSummary": "A Pathfinder 2nd edition-compatible setting with unique ancestries and a rich world.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Unknown",
+                                    "alias": "Contributor"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Marvel Multiverse Role-playing Game",
+                        "eventSummary": "A lightweight superhero RPG that allows players to create their own heroes.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Unknown",
+                                    "alias": "Role-player"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Masks of the Masks",
+                        "eventSummary": "A tabletop RPG presented as a comic book, exploring violence in superhero stories.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Hazel Amber Goswick",
+                                    "alias": "Game creator"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "The Monster Overhaul",
+                        "eventSummary": "A reimagining of the bestiary concept with unique categories and themes.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Skerples",
+                                    "alias": "Game designer"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Reach of the Roach God",
+                        "eventSummary": "A system-agnostic setting inspired by Southeast Asian folklore.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Unknown",
+                                    "alias": "Creator"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Monsterhearts",
+                        "eventSummary": "A game exploring teenage monsters and their relationships.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Unknown",
+                                    "alias": "Game designer"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

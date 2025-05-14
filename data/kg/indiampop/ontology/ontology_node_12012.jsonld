@@ -1,0 +1,49 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "SeedProduction": {
+            "@id": "cropCult:SeedProduction",
+            "@type": "schema:Thing",
+            "@context": {
+                "isolation": "schema:Text",
+                "fortify_seeds_with": "cropCult:Fertilization"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:SeedProduction",
+            "isolation": "In blackgram, fortify the seeds with ZnSO4 0.2%, MnSO4 0.2% and Na2MO4 0.1% in 1/3 volume to enhance the field establishment under irrigated conditions (or)",
+            "fortify_seeds_with": [
+                {
+                    "@type": "cropCult:Fertilization",
+                    "nutrient_name": "ZnSO4",
+                    "quantity": "0.2%",
+                    "stage_of_application": "seed fortification"
+                },
+                {
+                    "@type": "cropCult:Fertilization",
+                    "nutrient_name": "MnSO4",
+                    "quantity": "0.2%",
+                    "stage_of_application": "seed fortification"
+                },
+                {
+                    "@type": "cropCult:Fertilization",
+                    "nutrient_name": "Na2MO4",
+                    "quantity": "0.1%",
+                    "stage_of_application": "seed fortification"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,57 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement"
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_root_development": "schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "planting_time": "schema:Text"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "duration": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "APPLE (Malus sylvestris)",
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_root_development": "7ºC"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Apples are planted in the ground free of weeds",
+                "planting_time": "late in winter"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "duration": "regularly for about two years in the beginning"
+            }
+        }
+    ]
+}

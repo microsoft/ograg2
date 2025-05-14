@@ -1,0 +1,153 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Malignant",
+      "summary": "Strung together with a melodramatic cover of The Pixies’ “Where Is My Mind,” reveling in horror tropes to the point of parody, the final twists of Malignant are some of the most gratifying lunacy of the year, and the acrobatic actor Marina Mazepa brings it all home in a display of gruesome ballet.",
+      "byline": "Matt Patches"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "The Mist",
+      "summary": "Darabont’s third adaptation of a Stephen King story, the film stars Thomas Jane as a Hollywood poster artist living in Maine who, along with his wife and son and the rest of his neighbors, takes shelter in a supermarket in the wake of a mysterious storm that covers the town in a deadly mist.",
+      "byline": "TE"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Night of the Living Dead",
+      "summary": "The movie that launched the modern zombie film in the United States, George A. Romero’s debut feature was written, directed, photographed, and edited by the nascent zombie film master on a shoestring budget, which only adds to the eerie atmosphere and grounded terror.",
+      "byline": "PV"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Possession",
+      "summary": "Set in Cold War-era West Berlin, Żuławski’s film stars Jurassic Park’s Sam Neill as Mark, a Russian spy who returns home to find that his wife, Anna, has left him and wants a divorce.",
+      "byline": "TE"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "[REC]",
+      "summary": "One of the best and most disturbing found-footage movies ever, [REC] follows a TV reporter and camera person who follow emergency workers into an apartment building, only to discover the dark truth inside.",
+      "byline": "AG"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Sputnik",
+      "summary": "Set during 1983 at the height of Cold War tensions, Sputnik centers on Tatyana, an uncompromising young psychiatrist with a staunch attitude with regard to the ends justifying the means.",
+      "byline": "TE"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Suspiria",
+      "summary": "Dario Argento’s Suspiria tells the story of Suzy Bannion, an American dancer who moves to Germany to study at the prestigious Tanz Akademie.",
+      "byline": "AG"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "The Texas Chain Saw Massacre",
+      "summary": "Another shoestring production gone huge, Tobe Hooper’s 1974 masterpiece made over $30 million at the box office on a budget of around $140,000.",
+      "byline": "PV"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "The Thing",
+      "summary": "John Carpenter’s postmodern creature feature takes the idea of alien monsters and makes them simultaneously more recognizable and more gross and unworldly than in any other movie in history.",
+      "byline": "AG"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "The Unfriended movies",
+      "summary": "A masterfully contained horror movie that makes full use of its (at the time) groundbreaking gimmick, Unfriended is a tense teen horror movie that takes place entirely on a character’s laptop screen.",
+      "byline": "PV"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Us",
+      "summary": "Jordan Peele’s already a horror master just three movies into his career, but Us probably still doesn’t have the reputation it deserves.",
+      "byline": "AG"
+    }
+  ]
+}
+```

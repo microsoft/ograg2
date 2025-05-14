@@ -1,0 +1,252 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "How to choose the best class for you in Baldur’s Gate 3",
+            "author": "Jeffrey Parkin",
+            "published": "2023-12-18T17:14:20+00:00",
+            "theme": "entertainment",
+            "summary": "Picking the best class in Baldurs Gate 3 is one of the most important decisions you’ll make in the game — and you have to do it right at the start, with minimal context to work off.",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Best melee class for beginners: Fighter",
+                        "eventSummary": "Fighters start out as a very straightforward melee class. With high strength, they get all armors and shields, and choose a method of combat to focus on (and get buffs to).",
+                        "theme": "combat",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Best ranged class for beginners: Ranger",
+                        "eventSummary": "Rangers are agile hunters that focus on Dexterity as their primary Ability. Rangers are an interesting mix of melee, stealth, skills, and magic.",
+                        "theme": "combat",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Best class for damage: Barbarian",
+                        "eventSummary": "Barbarians are all about combat. They get light and medium armor (and shields), but they’ve also got the option to keep their AC up even without wearing armor.",
+                        "theme": "combat",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Best class for magic: Druid",
+                        "eventSummary": "Druids are the nature-based casters of Baldur’s Gate 3. Most of their magic is nature- or animal-themed and they get Skills to match.",
+                        "theme": "magic",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Best class for stealth: Rogue",
+                        "eventSummary": "Rogues are Dexterity-based, sneaky fighters. They only get Light Armor, so they have to focus on staying unseen and quick.",
+                        "theme": "stealth",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Best class for melee and magic: Paladin",
+                        "eventSummary": "Paladins start out mixing in (Divine) magic with their melee abilities. They’re the most magic-focused of the melee classes.",
+                        "theme": "magic",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Best class for speed: Monk",
+                        "eventSummary": "Monks are a melee class kind of like Fighters, but with a lot more pizzazz. Their best Ability is Dexterity, so their combat is more martial arts than swordplay.",
+                        "theme": "combat",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Best magic class for beginners: Warlock",
+                        "eventSummary": "Warlocks are casters that made a deal with a higher power for their magic. They play a lot like Sorcerers, but with a slight emphasis on more academic Skills and fewer spells.",
+                        "theme": "magic",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Best healer class: Cleric",
+                        "eventSummary": "Clerics are the other side of the Paladin’s mix of magic and melee. They’re not quite as frontline in combat with only Light and Medium armors, but they get more (and more powerful) spells.",
+                        "theme": "healing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Best support class: Bard",
+                        "eventSummary": "Bards are a specialized kind of caster class that focus more on performance and charm than a weighty list of spells.",
+                        "theme": "support",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Best class for magic damage: Wizard",
+                        "eventSummary": "Wizards are the archetypical caster class. They are the only Intelligence-based class in Baldur’s Gate 3 and have the most spells — and the most spell slots to cast them — of all of the casters.",
+                        "theme": "magic",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Best class for social interactions: Sorcerer",
+                        "eventSummary": "Sorcerers get their magic from within themselves. Sorcerers are the most flexible and varied in the spells they can use.",
+                        "theme": "social",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

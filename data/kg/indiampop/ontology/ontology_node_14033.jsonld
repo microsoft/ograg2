@@ -1,0 +1,76 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "has_growing_zones": [
+                {
+                    "@type": "CropGrowingZones",
+                    "name": "Western region",
+                    "has_seed_recommendations": [
+                        {
+                            "@type": "SeedList",
+                            "variety_name": "Basin irrigation",
+                            "has_early_sowing_time": {
+                                "@type": "SowingTime",
+                                "start_date": "September"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "@type": "CropGrowingZones",
+                    "name": "Eastern region",
+                    "has_seed_recommendations": [
+                        {
+                            "@type": "SeedList",
+                            "variety_name": "Basin irrigation",
+                            "has_early_sowing_time": {
+                                "@type": "SowingTime",
+                                "start_date": "September"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "For drip irrigation, open four pits size of 30 x 30 x 30 cm opposite to each other at one meter distance from the trunk. Place 40 cm long PVC conduit pipe (16 mm) in a slanting position in each pit and place the drippers inside the conduit tube and allow the water to drip 30 cm below the soil surface. Fill the pits with coir pith to prevent evaporation.",
+                "stage_of_application": "Planting seasons > e. Water management"
+            }
+        }
+    ]
+}

@@ -1,0 +1,89 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Bruchid- Callosobruchus chinensis",
+            "pest_symptoms": "Apids",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Talc formulation of T. viride",
+                "quantity": "4g/kg seed",
+                "stage": "Seed treatment"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Rust: Uromyces appendiculatus",
+            "disease_symptoms": "Two sprays of chlorothalonil 0.1% or one spray with 0.1% chlorothalonil followed by 3% Neem oil after the appearance of disease",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "chlorothalonil",
+                "quantity": "0.1%",
+                "stage": "After the appearance of disease"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Root rot: Macrophomina phaseolina (Rhizoctonia bataticola)",
+            "disease_symptoms": "Soil application P. fluorescens or T. viride– 2.5 kg / ha + 50 kg of well decomposed FYM or sand",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "P. fluorescens or T. viride",
+                "quantity": "2.5 kg / ha + 50 kg of well decomposed FYM or sand",
+                "stage": "Soil application"
+            }
+        }
+    ]
+}

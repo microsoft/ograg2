@@ -1,0 +1,64 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement"
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "for_flowering": "schema:Text",
+                "for_grain_filling": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Oil Palm",
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Stomata will remain closed and the development and opening of spear will be inhibited under water deficiency.",
+                "for_flowering": "Water deficiency adversely affects flower initiation, sex differentiation and results in low sex ratio due to production of more male inflorescences.",
+                "negative_effect": "Water deficiency"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "for_water": "Continuous soil moisture availability encourages vigorous growth and increased yield of oil palm. Adequate supply of water, good soil depth and water holding capacity contribute to water availability."
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Oil palm needs 120 - 150 mm of water to meet its monthly evapo-transpiration needs. In areas where perennial water source is available, basin irrigation is possible. But where the terrain is undulating and water is scarce during summer months, drip irrigation is recommended to keep four drippers per palm in the weeded palm circle to supply atleast 90 litres of water per palm per day during summer months which will vary according to the ETP values in a locality."
+            }
+        }
+    ]
+}

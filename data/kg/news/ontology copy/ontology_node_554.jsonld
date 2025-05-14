@@ -1,0 +1,95 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Stan Choe",
+            "published": "2023-10-01T18:19:08+00:00",
+            "title": "ASX set to open lower as Wall Street closes September with more losses",
+            "summary": "Treasury Wine Estates (down 1.9 per cent) and Woolworths (down 1.2 per cent) dragged the consumer staples sector (down 1.1 per cent) lower. Pilbara Minerals (down 2.1 per cent) and Qantas (down 1.5 per cent) were also among the biggest large-cap decliners. The lowdown Stronger iron ore prices helped to bolster the local bourse on Monday but not enough to offset the prospect of higher-for-longer interest rates ahead of the Reserve Bank’s meeting on Tuesday. Iron ore heavyweights advanced after the iron ore price increased 1.4 per cent overnight with lithium miner Liontown resisting the downward momentum of lithium prices, which dropped to the lowest level in two years. Most sectors traded lower but interest-rate sensitive sectors including healthcare and consumer companies were among the weakest amid expectations that the RBA will keep rates on hold in October. The National Australia Bank has forecast another rate hike to 4.35 per cent in November. Elsewhere, Wall Street closed out its worst month and quarter of the year with more losses on Friday. The S&P 500 slipped 0.3 per cent and the majority of stocks within the index sank. The Dow Jones fell 0.5 per cent and the Nasdaq composite edged 0.1 per cent higher. The Australian sharemarket is set to retreat, with futures pointing to a fall of 38 points, or 0.5 per cent, at the open. Solid gains for stocks early on faded as pressure built from within the bond market. After easing earlier in the day on encouraging signals about inflation, Treasury yields got back to rising as the day progressed. The yield on the 10-year Treasury yield returned to 4.58 per cent, where it was late Thursday, after dipping to 4.52 per cent. It’s again near its highest level since 2007. Loading Treasury bonds are seen as some of the safest investments possible, and when they pay higher yields, investors are less likely to pay high prices for stocks and other riskier investments. That’s a big reason why the S&P 500 dropped 4.9 per cent in September to drag what had been a big gain for the year down to 11.7 per cent. Treasury yields have been climbing sharply as Wall Street accepts a new normal where the Federal Reserve is likely to keep interest rates high for longer. The Fed is trying to push still-high inflation down to its target, and its main tool of high interest rates does that by trying to slow the economy and hurting prices for investments. The Fed’s main interest rate is at its highest level since 2001, and the central bank indicated last week it may cut interest rates next year by less than it earlier expected. Friday’s economic data shows that not only was inflation a touch cooler than expected in August, so was growth in spending by US consumers. That can be a positive for inflation because it means not as many dollars are pouring into purchases. That in turn could give companies less encouragement to try to raise prices further. But it may also dent what’s been a big driver keeping the US economy out of a recession. “It came to a boil during a hot summer, and the temperature is really starting to come down,” said Brian Jacobsen, chief economist at Annex Wealth Management, of spending growth by US consumers. “Higher energy prices, student loan debt repayments and real disposable incomes that have been on a declining trajectory since June doesn’t bode well.” Oil prices have jumped to their highest level in more than a year, which is pressuring the economy by raising fuel costs for everyone. A barrel of US crude sank 92¢ Friday to settle at $US90.79, but it’s still up sharply from $US70 in June. Brent crude, the international standard, also weakened. The resumption of US student-loan repayments, meanwhile, may funnel more dollars away from the spending by consumers that has helped to keep the economy afloat. The latest monthly update on the US jobs market is due next week, with a couple of important reports on inflation coming the following week. Postponements of such reports could complicate things for the Fed, which has insisted it will make upcoming decisions on interest rates based on what incoming data say about the economy. The Fed’s next meeting on rates ends on November 1. On Wall Street, Nike jumped 6.7 per cent after reporting better profit for the latest quarter than analysts expected. Strength overseas helped it make up for some declines in North America. Loading Blue Apron soared 134.5 per cent after the meal kit company said it was being bought by Wonder Group for $US13 per share in cash in a deal valued at $US103 million ($160.2 million). On the losing end of Wall Street were stocks of energy producers, hurt by the slide in oil’s price. Energy stocks in the S&P 500 fell 2 per cent as a group, more than double the loss of any of the other 10 sectors that make up the index. ExxonMobil fell 1.6 per cent, and Schlumberger dropped 4.3 per cent. Energy stocks, though, remain the market’s standout performers since the summer. Shares of Ford and General Motors slipped after the United Auto Workers said it would expand its limited strike to include another facility for each. Ford fell 1.1 per cent, and GM dipped 0.6 per cent. All told, the S&P 500 slipped 11.65 points to 4288.05. The Dow dropped 158.84 to 33,507.50, and the Nasdaq added 18.05 to 13,219.32. In sharemarkets abroad, indexes were modestly higher in Europe after exchanges were closed across much of Asia.",
+            "url": "https://www.smh.com.au/business/markets/asx-set-to-open-lower-as-wall-street-closes-september-with-more-losses-20231002-p5e8zn.html?ref=rss&utm_medium=rss&utm_source=rss_business"
+        }
+    ]
+}
+```

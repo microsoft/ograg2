@@ -1,0 +1,98 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "Stan Choe",
+            "published": "2023-12-05T21:51:55+00:00",
+            "title": "ASX set for bright start despite Wall Street slip; $A drops",
+            "summary": "Loading Perpetual climbed 6.3 per cent after it announced a strategic review of its three-pronged corporate structure that might see it demerge its corporate trust and wealth management businesses and create a more focused asset manager. Shares in Endeavour lifted 2.4 per cent after it forecast earnings before interest and tax in its hotels division would grow by more than $150 million over the next five years. The laggards Utilities and energy stocks were the weakest performers on the local bourse, rising 0.6 per cent and 0.8 per cent, respectively. Only five large-cap stocks declined, with Evolution Mining sinking a mammoth 13 per cent after it raised $525 million selling new shares to institutional investors at $3.80 a share. The mining sector, however, managed to finish in positive territory. Gold miner Newmont was down 1.25 per cent, Origin Energy fell 0.4 per cent, Mercury Nz declined 0.3 per cent and Argo Investments traded 0.1 per cent lower. The lowdown Moomoo market strategist Jessica Amir said the local sharemarket outperformed global equities on Wednesday because of the National Accounts figures, which pointed to the Reserve Bank potentially hitting pause on lifting interest rates. “We know economic growth is slowing, Australian unemployment is likely to pick up next year and inflation is likely to fall,” Amir said. “The good news is that all of these three things, the trifecta, is pointing towards the RBA stopping rising interest rates and then potentially moving to cut interest rates. This is what the market has priced in today.” The local gains came after most stocks slipped on Wall Street overnight, although the US market stayed near its highest level in 20 months following a mixed set of reports that kept alive questions about whether the world’s largest economy can pull off a perfect landing where it kills high inflation, but avoids a recession. The S&P 500 edged down by 0.1 per cent for its first back-to-back loss since October. The Dow Jones slipped 0.2 per cent and the Nasdaq composite rose 0.3 per cent. Stocks were down more sharply in Asia amid worries about the health of China’s economy, the world’s second largest. US stocks and Treasury yields wavered after reports showed that US employers advertised far fewer jobs at the end of October than expected, while growth for services businesses accelerated more last month than expected. Hope has been rising on Wall Street recently that the US economy is slowing from its recent hot pace by just the right amount. Too much strength would give inflation more fuel, but too little would mean a recession. With inflation down from its peak two summers ago, Wall Street is hopeful that the Federal Reserve may finally be done with its market-shaking hikes to interest rates and could soon turn to cutting them. That could help the economy avoid a recession and give a boost to all kinds of investment prices. Investors have been looking for a slowdown in the job market in particular. The hope is that it can cool more through employers cutting back on open positions than on employers laying off workers. Tuesday’s report showed that employers advertised just 8.7 million jobs on the last day of October, down by 617,000 from a month earlier. In the bond market, US Treasury yields continued to sag further from the heights they reached during late October. The yield on the 10-year Treasury fell to 4.18 per cent from 4.26 per cent late on Monday, offering more breathing space for stocks and other markets. It had been above 5 per cent, and at its highest level in more than a decade, during October. The yield on the two-year Treasury, which more closely tracks expectations for the Fed, went on a jagged run following the economic reports. It fell from 4.61 per cent just before the reports’ release to 4.57 per cent and then yo-yoed before easing back to 4.57 per cent. Loading Traders widely expect the Federal Reserve to hold its key interest rate steady at its meeting next week, before potentially cutting rates in March, according to data from CME Group. Fed officials have recently hinted that the federal funds rate may indeed already be at its peak. It’s above 5.25 per cent, up from nearly zero early last year. But Fed Chair Jerome Powell and others have also warned Wall Street about being overzealous in its predictions about how early a cut could happen. Lower yields have been one reason prices for cryptocurrencies have been rising recently. Excitement about a possible exchange-traded fund tied to bitcoin, which would open it to new kinds of investors, has also helped send it above $US43,000 ($65,600) recently. The surge of interest helped Robinhood Markets report a roughly 75 per cent jump in trading volumes for crypto during November from a month earlier. It also said customers added about $US1.4 billion in net deposits during the month, and its own stock rose 10.3 per cent. On the losing end of Wall Street was Take-Two Interactive, which slipped 0.5 per cent after a trailer for its highly anticipated Grand Theft Auto VI video game said it’s coming in 2025. That was later than some analysts expected. Tweet of the day Quote of the day IAG chief executive Nick Hawkins said the behaviour of Peter Horton, the insurer’s group general counsel and company secretary, didn’t meet expectations set out in its employee code of ethics and conduct. “This includes the importance of being inclusive and respectful, and we will hold people to account if they fail to meet these expectations,” Hawkins said.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://www.smh.com.au/business/markets/asx-set-for-bright-start-a-drops-20231206-p5epbi.html?ref=rss&utm_medium=rss&utm_source=rss_business"
+            }
+        }
+    ]
+}
+```

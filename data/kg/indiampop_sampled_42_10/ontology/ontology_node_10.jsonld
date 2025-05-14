@@ -1,0 +1,291 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "SeedList": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List",
+                "has_early_sowing_time": "cropCult:SowingTime",
+                "has_late_sowing_time": "cropCult:SowingTime",
+                "has_seeding_rate": "schema:QuantitativeValue",
+                "has_fertilizer_application_requirements": "cropCult:Fertilization"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CropGrowingZones":{
+                "@container": "@list",
+                "@id": "cropCult:CropGrowingZones",
+                "@type": "schema:ItemList",
+                "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List",
+                    "has_seed_recommendations": "cropCult:SeedList"
+                }
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "for_flowering": "schema:Text",
+                "for_grain_filling": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "seedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "SUGARCANE ( Saccharum Officinarum  L.)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Sugarcane",
+                "used_for": "raw for juice, for the manufacture of sugar, jaggery and sugarcane baggase is used as fuel, and used for making paper"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "110 countries",
+                    "has_regions": ["warm tropical climate", "foothills of Himalayas"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["CO–740", "CO–997", "CO–961", "CO–JOR 1", "CO–JOR 2", "CO-421"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "April",
+                            "end_date": "May"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "August",
+                            "end_date": "October"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "35,000 – 40,000 setts (3 budded)/ha i.e. 15 – 30 q of cane weight"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Nitrogen, Phosphorus, Potash",
+                            "quantity": "150 kg N, 80 – 90 kg P and 70 – 80 kg K",
+                            "stage_of_application": "at the time of sowing"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Temperature above 50˚ C restricts its growth and below 20˚ C slows its growth markedl y, less than 10˚ C with severe frost is fatal during germination and establishment.",
+                "for_flowering": "Bright sunny day s and cool nights with a temperature of 15 - 18˚ C and low relative humidity 50 – 60 % are impor tant for sugar accumulation and ripening.",
+                "for_grain_filling": "Bright sunny day s and cool nights with a temperature of 15 - 18˚ C and low relative humidity 50 – 60 % are impor tant for sugar accumulation and ripening.",
+                "negative_effect": "Temperature above 50˚ C restricts its growth and below 20˚ C slows its growth markedl y, less than 10˚ C with severe frost is fatal during germination and establishment."
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "medium to heavy soils",
+                "avoid_soil_type": "light soils",
+                "for_water": "adequate irrigation facility",
+                "for_nutrients": "good drainage is essential"
+            },
+            "has_land_preperation_requirements": {
+                "@id": "cropCult:LandPreparation",
+                "@type": "schema:Thing",
+                "instructions": "Sugarcane requires clean preparation of land. Where  soils are clay 1 or 2 deep ploughing and 1 cross ploughing is required. Cattle manure, compost are usually applied to soil and incorporated into it in advance before pla nting.",
+                "with_soil_moisture": "adequate"
+            },
+            "seed_germination_test_requirements_are": "Healthy seed material, free from insect pest and di seases having high viability is essential. The top one third to half portion of can e being immature has good viable buds hence it is best to use as seeds. The bottom portion is usua lly richer in sugar so it is used for making sugar or jaggery (Gur). If seed cane is to be trans ported to a distant place it is carried without stripping off the leaves and not cut into setts, th is is to prevent drying and injury to dormant buds. If planting is to be delayed for any reason, the cut canes should be kept in shade and periodically sprinkled with water. The stalks are c ut into 3 bud setts each, usually 30 – 40 cm long. Soaking the setts in water for 4 – 6 hours be fore planting hastens germination. To prevent rotting and infection setts are dipped in 0.2 % Car bendazin for 30 minutes or Chlorpyriphos at 1 kg a.i/ha in emulsion form and diluted 300 times an d is sprinkled with a watering can on the setts placed in furrows.",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Carbendazin, Chlorpyriphos",
+                "quantity": "0.2 % Carbendazin for 30 minutes or Chlorpyriphos at 1 kg a.i/ha in emulsion form and diluted 300 times"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "April to May for 8 months crop ( Plant – cro p), August to October for 18 months crop  (Autumn Cane)",
+                "value": "60 – 90 cm apart",
+                "depth": "5 – 7 cm",
+                "method": "Flat Planting, Furrow Planting, Trench Planting"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Atrazine",
+                "weed_types": ["Atrazine"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Atrazine",
+                    "quantity": "2 kg a.i/ha",
+                    "stage": "60 days after planting"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "adequate",
+                "stage_of_application": "rainfed"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Red rot of Sugarcane, Smut, Rust, Grassy Shoot Disease, Ratoon Stunting Disease",
+                "disease_symptoms": "Red rot of Sugarcane - i)Grow resistant varieties ii)Avoid planting in red rot infested field iii)Avo id planting in ill drained soils iv)Treat the setts with Aretan or Agallol (1:100), Smut - i)Grow resistant varieties. ii)Avoid rationing iii) Treat the setts with agallol solution 0.5 % (5gm/lit of water), Rust - Remove disease clumps, Grassy Shoot Disease and Ratoon Stunting Disease - Excesive tillering, sprouting and poor cane formation particularly in Ratoon crop  takes place.",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Aretan, Agallol",
+                    "quantity": "1:100, 0.5 % (5gm/lit of water)",
+                    "stage": "at the time of sowing"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Early shoot borer, Pyrilla or Leaf hoppers, White flies, Mealy bugs, Scale insect, Aphids, Red ants, Termites",
+                "pest_symptoms": "Early shoot borer - Clean cultivation, grow resistant varieti es, avoid rationing, remove infested plants. Spray the crop with 0.5 % Dimecron or 0.4 % Nuvacro n or apply trichogramma 2½ cards/ha, 6 releases every 2 weeks, 3 - 3½ months after plant ing, Pyrilla or Leaf hoppers - Spray the crop with 0.25 % Malathion 50 EC, White flies - Spray the crop with 0.25 % Malathion 50 EC, Mealy bugs, Scale insect, Aphids - Destroy infested sheaths and if serious spray the c rop with 0.5 % Dimecron, 100 EC or 0.4 % Rogor 30 EC, Red ants, Termites - Use only well decomposed manure, apply Ma lathion dust @ 25kg/ha.",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Dimecron, Nuvacron, Malathion, Rogor",
+                    "quantity": "0.5 % Dimecron or 0.4 % Nuvacron, 0.25 % Malathion 50 EC, 0.5 % Dimecron, 100 EC or 0.4 % Rogor 30 EC, Malathion dust @ 25kg/ha",
+                    "stage": "3 - 3½ months after plant ing, 0.25 % Malathion 50 EC, 0.5 % Dimecron, 100 EC or 0.4 % Rogor 30 EC, Use only well decomposed manure"
+                }
+            },
+            "harvesting_guidelines_are": "The canes are cut 3 – 5 cm below the ground level, the dried leaves are stripped off upto top most internode. The harvested canes sh ould be crushed quickly otherwise canes lose weight unless kept moist. In tropical areas qu ick processing is essential to avoid deterioration of the quality due to activity of Leuconostoc  bacteria.",
+            "storage_guidelines_are": "The harvested canes sh ould be crushed quickly otherwise canes lose weight unless kept moist. In tropical areas qu ick processing is essential to avoid deterioration of the quality due to activity of Leuconostoc  bacteria."
+        }
+    ]
+}

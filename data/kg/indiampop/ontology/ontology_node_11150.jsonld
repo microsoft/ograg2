@@ -1,0 +1,69 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "MushroomHouse": {
+            "@id": "cropCult:MushroomHouse",
+            "@type": "schema:Thing",
+            "@context": {
+                "size": "schema:Text",
+                "roof": "schema:Text",
+                "floor": "schema:Text",
+                "walls": "schema:Text",
+                "inner_lining": "schema:Text",
+                "capacity": "schema:Text"
+            }
+        },
+        "Spawn": {
+            "@id": "cropCult:Spawn",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "rate_of_spawning": "schema:Text",
+                "division": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "CULTIVATION OF PADDY STRAW MUSHROOM (Volvarella volvacea)",
+            "has_land_preperation_requirements": {
+                "@type": "MushroomHouse",
+                "size": "The size is 3m in breadth, 6 m in length and 1.5 m in height at all sides.",
+                "roof": "The roof is of thatch.",
+                "floor": "The floor is of cement.",
+                "walls": "The walls on all the four sides are made of bamboo.",
+                "inner_lining": "There should be an inner lining of plastic sheet in order to create high humidity and warm temperature.",
+                "capacity": "This house can hold 8 beds at a time."
+            },
+            "seed_germination_test_requirements_are": {
+                "@type": "Spawn",
+                "quantity": "Three hundred gram of spawn is required to prepare one mushroom bed of 20 kg straw.",
+                "rate_of_spawning": "The rate of spawning is 1.4% of the dry weight of straw.",
+                "division": "The spawn is divided into 3 lots- 75g, 75g and 150g."
+            }
+        }
+    ]
+}

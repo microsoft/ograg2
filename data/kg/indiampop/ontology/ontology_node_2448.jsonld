@@ -1,0 +1,141 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "LITCHI (Litchi chinensis Sqnn.)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Sub-tropical, evergreen fruit tree",
+                "used_for": "Fruit production"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Sub-tropical",
+                    "has_regions": ["Asia", "Africa", "America"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Litchi chinensis Sqnn."],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Spring",
+                            "end_date": "Summer"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Summer",
+                            "end_date": "Autumn"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "1-2 seeds per hole"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Nitrogen, Phosphorus, Potassium",
+                            "quantity": "Depends on soil fertility",
+                            "stage_of_application": "Before flowering and after fruit set"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "20-25°C",
+                "for_flowering": "15-20°C",
+                "for_grain_filling": "Not applicable",
+                "negative_effect": "Temperature below 10°C and above 35°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Well-drained sandy loam to clayey loam",
+                "avoid_soil_type": "Heavy clay, saline and waterlogged soils",
+                "for_water": "Moderate water requirement",
+                "for_nutrients": "High in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Land should be ploughed and harrowed to make it free from weeds and to bring soil to fine tilth",
+                "with_soil_moisture": "Soil should be well-drained"
+            },
+            "seed_germination_test_requirements_are": "Seeds should be viable and free from diseases",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Mancozeb",
+                "quantity": "2g per kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Spring to Summer",
+                "value": "6m x 6m",
+                "depth": "2-3 cm",
+                "method": "Direct sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Grasses, Broadleaf weeds",
+                "weed_types": ["Annual", "Perennial"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "Depends on weed infestation",
+                    "stage": "Before sowing and after harvest"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Depends on soil type and weather conditions",
+                "stage_of_application": "After sowing, flowering and fruit set"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Anthracnose, Powdery mildew",
+                "disease_symptoms": "Leaf spots, fruit rot, wilting",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Mancozeb, Sulfur",
+                    "quantity": "Depends on disease severity",
+                    "stage": "At the onset of disease symptoms"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Fruit borer, Aphids",
+                "pest_symptoms": "Damage to fruits and leaves",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Carbaryl, Imidacloprid",
+                    "quantity": "Depends on pest infestation",
+                    "stage": "At the onset of pest symptoms"
+                }
+            },
+            "harvesting_guidelines_are": "Fruits should be harvested when they turn red",
+            "storage_guidelines_are":"Fruits should be stored at 5-10°C with high humidity"
+        }
+    ]
+}

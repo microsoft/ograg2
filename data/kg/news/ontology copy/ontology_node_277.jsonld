@@ -1,0 +1,98 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Reuters",
+      "published": "2023-09-30T21:17:47+00:00",
+      "title": "European roundup: Bellingham helps Real Madrid go top while Bayern draw",
+      "summary": "Bayern Munich struck twice in the second half to come from two goals down and snatch a 2-2 draw at RB Leipzig but the champions dropped to third in the Bundesliga with their second draw of the season. Goals from Leroy Sané and Harry Kane cancelled out Leipzig’s first-half lead but the result left Bayern on 14 points, two behind the leaders, Bayer Leverkusen. Leipzig, who host Manchester City in the Champions League next week, are fifth, a further point behind. “Two very different halves from our perspective,” the Bayern coach, Thomas Tuchel, said. “In the first we started well but only for the first two minutes and missed that huge chance. “We were too slow, made too many mistakes and were not courageous enough. After the break we showed a different mentality. It was a bit wild, with a lot of risk but it is a positive result, not to lose after being 2-0 down. We showed character.” Bayern travel to Copenhagen in the Champions League next week. Leipzig struck twice in six minutes with Loïs Openda putting them in front in the 20th when he completed a quick break. They scored again with Castello Lukeba stabbing in after the goalkeeper Sven Ulreich misjudged a corner. Bayern earned a 57th-minute penalty against the run of play for a handball and Kane cut the deficit with his eighth league goal. Only Manchester City’s Erling Haaland, when he played for Borussia Dortmund, scored more often in his first six Bundesliga games with nine goals. The Bavarians’ comeback was complete in the 70th with Kane clearing the ball in his own half and Musiala finding Sané for the equaliser. Bellingham celebrates scoring Real Madrid’s third goal during their 3-0 away league win over Girona. Photograph: David S.Bustamante/Soccrates Images/Getty Images In Spain Real Madrid outclassed Girona 3-0 to return to the top of LaLiga, thanks to goals from Joselu, Aurélien Tchouaméni and Jude Bellingham. Real moved on to 21 points from eight games, one ahead of Barcelona, who beat Sevilla 1-0 at home on Friday. Girona dropped to third. “I feel very good. I have freedom of movement and I’m enjoying football. Whenever I put on this shirt I always try to do my best,” said Bellingham. Real will also be buoyed up by the performance of Vinícius Jr, who looked lively in his first start since returning from a thigh muscle injury, before being taken off in the 68th minute. Real’s coach, Carlo Ancelotti, said: “It was a solid, convincing game. We defended well, we knew they could cause damage with the ball, they are a team that plays good football, it was important to defend well and we did that.” Lautaro Martínez came off the bench to score all four goals for Internazionale as they won 4-0 at Salernitana tto return to the top of Serie A. The hosts kept Inter at bay for an hour but Martínez came on nine minutes after the break to bag four goals in 27 minutes. “I scored four goals but the important thing is that Inter won,” the striker, who has scored nine goals in seven league games and is Serie A’s top scorer, told Sky Sport Italia. “It was crucial. We lost a game at San Siro [to Sassuolo] that I don’t think we deserved but we conceded two goals from our errors, so we had to win today.” While Inter dominated the early stages, Salernitana found their footing and managed to control the tempo in a goalless first half. But Martínez opened the scoring in the 62nd minute when he collected Marcus Thuram’s low cross and chipped a finish over Guillermo Ochoa. The substitute Lautaro Martínez converts a penalty against Salernitana. Photograph: Massimo Pica/EPA Three minutes later Mateusz Legowski’s apparent equaliser was disallowed due to an offside. Martínez then got his second goal after 77 minutes when he confidently finished a pass from Nicolò Barella with a first-time strike. Martínez completed his hat-trick from the penalty spot with five minutes remaining after Matteo Lovato pulled Thuram’s shirt. He concluded the evening by converting Carlos Augusto’s cross from 10 yards out. Inter lead Serie A with 18 points, the same as their neighbours, Milan, who had briefly topped the table earlier in the day after beating Lazio 2-0 thanks to second-half goals from Christian Pulisic and Noah Okafor. Rafael Leão played a vital role in both goals, with the 24-year-old Portugal international providing two assists in a menacing display. “After the break, we were more compact and certainly more energetic, hungrier and more determined,” Milan’s coach, Stefano Pioli, told DAZN. “That is a great sign when playing every three days and it was a fully deserved victory.” Milan suffered a potential injury blow as the midfielder Ruben Loftus-Cheek limped off in the first half. “It would be a shame if we lost Ruben, he felt a twinge near the groin area,” Pioli said. “Unfortunately, injuries tend to come when players are in good shape.” In France, AS Monaco beat Marseille 3-2 to move top of Ligue 1, thanks to a brace from the midfielder Maghnes Akliouche and a powerful strike from Folarin Balogun. Marseille, who appointed Gennaro Gattuso as coach this week, took the lead after 30 secondsthrough Iliman Ndiaye’s goal, only for the hosts to respond minutes later when Akliouche fired a low shot past Pau López. The visitors regained the lead in the 18th minute when Ndiaye centred for Samuel Gigot to send a left-footed shot past Philipp Köhn, but Monaco equalised five minutes later as Akliouche found Balogun who scored with a fierce finish. Monaco sealed the win in the second half with another great strike from Akliouche.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://www.theguardian.com/football/2023/sep/30/european-roundup-bellingham-helps-real-madrid-go-top-while-bayern-draw"
+      }
+    }
+  ]
+}
+```

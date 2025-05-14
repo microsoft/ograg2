@@ -1,0 +1,115 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "SYSTEM OF RICE INTENSIFICATION ( SRI )",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Rice",
+                "used_for": "Seed production and multiplication"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "Tropical",
+                "has_regions": ["Asia", "Africa", "South America"]
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "20-30°C",
+                "for_flowering": "25-30°C",
+                "for_grain_filling": "20-25°C",
+                "negative_effect": "Below 15°C and above 35°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Sandy",
+                "for_water": "Good water holding capacity",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Ploughing and leveling of field",
+                "with_soil_moisture": "Moderate"
+            },
+            "seed_germination_test_requirements_are": "Germination rate above 80%",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Mancozeb",
+                "quantity": "2g per kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Early monsoon",
+                "value": "20cm x 20cm",
+                "depth": "2-3cm",
+                "method": "Transplanting"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Echinochloa crus-galli",
+                "weed_types": ["Grass", "Broadleaf"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Butachlor",
+                    "quantity": "1.5-2.0 kg/ha",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "1-2 inches of water",
+                "stage_of_application": "Tillering and flowering stage"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Blast",
+                "disease_symptoms": "Lesions on leaves and stems",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Tricyclazole",
+                    "quantity": "0.6-0.8 kg/ha",
+                    "stage": "At disease appearance"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Stem borer",
+                "pest_symptoms": "Dead hearts or white ears",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Carbaryl",
+                    "quantity": "1.0-1.5 kg/ha",
+                    "stage": "At pest appearance"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when grains are hard and moisture content is 20-25%",
+            "storage_guidelines_are":"Store in cool and dry place"
+        }
+    ]
+}

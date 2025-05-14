@@ -1,0 +1,77 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "OILSEEDS",
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Shoot borer Chilo infuscatellus",
+                "pest_symptoms": "15 % dead heart",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Cultural: Early season planting (Dec-Jan) ; Trash mulching on ridges on 3DAP Intercropping with green gram, black gram, daincha effectively checks shoot borer. Spray Granulosis virus at 1.5 x 1012 PIB/ha twice on 35 and 50 days after planting (DAP) or release 125 gravid females of Sturmiopsis inferens /ha on 30 and 45 DAP Apply any one of the following insecticides: Soil application Lindane 10 G 12.5 kg Carbofuran 3CG 33 kg Spraying Chlorantraniliprole 18.5%SC 375 ml/ha Fipronil 5%SC 1500-2000 ml/ha Fipronil 0.3%GR 25-33.3 Kg/ha Quinalphos 25%EC 2000 ml/ha Phosalone 35 EC 1000 ml NSKE 5 % 25 Kg/ha Daincha intercropped sugarcane recorded the lowest early shoot borer incidence. Note: The virus should be applied with teepol (0.05%) during evening hours. The granular application should be immediately followed by irrigation. ‘Granulosis’ virus spraying on sugarcane at 750 Nos. of diseased larvae, crushed and filtered mixed in 500 l of water has been found harmless to parasitoids and predators. A sticker like ‘teepol’ (250 ml for 500 l) can also be added to make the solution stick on to the surface of the crop and it is preferable to use high volume sprayer to be more effective. On cost benefit ratio basis NSKE 5% is recommended.",
+                    "quantity": "1",
+                    "stage": "Harvesting"
+                }
+            }
+        },
+        {
+            "@type": "Crop",
+            "name": "OILSEEDS",
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Internode borer Chilo sacchariphagus indicus",
+                "pest_symptoms": "",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "",
+                    "quantity": "",
+                    "stage": "Harvesting"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,120 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "title": "Watch great noir this Noirvember",
+      "byline": "Tasha Robinson",
+      "published": "2023-11-15T16:00:00+00:00",
+      "summary": "Your time is precious, and your options are endless. The good news: We watch it all so you don’t have to. Polygon’s What to Watch highlights the best, the funniest, the scariest, and the most exciting in movies, TV, and everything in between. Stop scrolling, start watching! For some reason — blame the encroaching winter, post-Halloween boredom, or simple copycat syndrome, you be the judge — November has become a big month for annual social-media-based collective challenges. From NaNoWriMo and NaPoWriMo to Movember and No-Shave November to, um, others, the extremely online crowd has focused on November as a month for group events and group discussion. For cinephiles, the fun one of the batch is Noirvember, a collective urge to watch and compare noir movies. Unlike most of these other challenges, Noirvember doesn’t have an organizing website, a sponsor, a fundraising goal, or an established set of rules. (Though individual participants have certainly proposed some.) So for those participating — or for anyone looking for the best noir movies, or the best way to get into the classic genre for the first time — we’re offering a little help. Here are some of our favorites, for newbies and noir veterans alike.",
+      "associatedAsset": [
+        {
+          "@type": "snap:textAsset",
+          "title": "The Maltese Falcon (1941)",
+          "byline": "Tasha Robinson",
+          "summary": "Director: John Huston. Where to watch: Rentable on Amazon, Vudu, Apple, YouTube. Probably the most famous noir movie of all time, John Huston’s adaptation of Dashiell Hammett’s 1930 crime movie covers the basics: There’s a hard-bitten detective, Sam Spade (Humphrey Bogart), on a case full of twists, turns, and double-crosses; a beautiful woman who lures him in and turns out to be full of lies; and a McGuffin everyone’s after that turns out to be more than it seems. A prime example of a noir that’s more about atmosphere, cinematography, and a complicated plot than about edge-of-the-seat thrills, The Maltese Falcon is a moody movie with a lot of great performances, but it’s also one of those films that’s been imitated and iterated on so much that it can feel a bit basic in comparison to its followers. Still, that also makes it one of those movies where watching it suddenly makes a thousand later cultural references and media in-jokes make sense."
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Sunset Boulevard (1950)",
+          "byline": "Tasha Robinson",
+          "summary": "Director: Billy Wilder. Where to watch: Streaming on Paramount Plus, and free with a library card on Hoopla or Kanopy. Rentable on Amazon, Vudu, YouTube. Starting with one of the all-time great openings — has-been writer Joe Gillis (William Holden) wearily narrating over a shot of the police examining his floating corpse in a Los Angeles swimming pool — Sunset Boulevard is a stunner from start to finish. This one isn’t a crime procedural, like so many classic noirs; it’s about how Joe, out of work and fleeing the men trying to repossess his car, tries to find shelter with an aging movie star by promising to write her a comeback vehicle. He gets drawn into a drama he didn’t expect — a drama that’s exceptionally well acted and scripted. It’s dark stuff about Hollywood dreams and how they die, with Gloria Swanson at her most captivating and frightening."
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Double Indemnity (1944)",
+          "byline": "Tasha Robinson",
+          "summary": "Director: Billy Wilder. Where to watch: Rentable on Amazon, Vudu, YouTube. Another Billy Wilder movie told in flashback, Double Indemnity is one of the great genre-defining femme fatale movies, with Barbara Stanwyck as the lovely lady leading hapless chump Fred MacMurray into an insurance fraud scheme that involves murdering her husband. It’s one of the great twist movies — everybody in this film is a potential double-crosser, and MacMurray as an insurance investigator is both tasked with solving the murder he committed and trying to cover it up at the same time. There’s enough going on here to keep anyone guessing up to the last minute."
+        }
+      ],
+      "hasAsset": {
+        "asset": {
+          "@type": "snap:organization",
+          "name": "Polygon"
+        }
+      }
+    }
+  ]
+}
+```

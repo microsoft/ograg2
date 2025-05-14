@@ -1,0 +1,74 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "DRY SEEDED RAINFED UN-PUDDLED LOWLAND RICE WITH SUPPLEMENTAL IRRIGATION",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Semi dry rice",
+                "used_for": "It is called as semi-dry rice."
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Rainfed rice zone",
+                    "has_regions": ["Village tank (Kanmai)"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Improved varieties"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Start of rainy season",
+                            "end_date": "End of rainy season"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "Higher than rainfed rice"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Applied nutrients",
+                            "quantity": "Higher than rainfed rice",
+                            "stage_of_application": "Peak vegetative and reproductive phases"
+                        }
+                    }
+                }
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Crop establishment is as that of rainfed rice but the rain water collected in village tank (Kanmai) is supplemented to protect the crop during peak vegetative and reproductive phases.",
+                "with_soil_moisture": "Better moisture availability than rainfed rice"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Supplemental irrigation during peak vegetative and reproductive phases",
+                "stage_of_application": "Peak vegetative and reproductive phases"
+            }
+        }
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Apiculture": {
+            "@id": "cropCult:Apiculture",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_beehive": "cropCult:Beehive",
+                "has_hand_gloves": "cropCult:HandGloves"
+            }
+        },
+        "Beehive": {
+            "@id": "cropCult:Beehive",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name"
+            }
+        },
+        "HandGloves": {
+            "@id": "cropCult:HandGloves",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Apiculture",
+            "name": "APICULTURE",
+            "has_beehive": {
+                "@type": "cropCult:Beehive",
+                "name": "Beehive"
+            },
+            "has_hand_gloves": {
+                "@type": "cropCult:HandGloves",
+                "name": "Hand gloves",
+                "used_for": "effective handling of the colony"
+            }
+        }
+    ]
+}

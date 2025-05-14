@@ -1,0 +1,197 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "The best VPN services for 2023",
+            "author": "Katie Malone",
+            "theme": "technology",
+            "summary": "Engadget has been testing and reviewing consumer tech since 2004. Our stories may include affiliate links; if you buy something through a link, we may earn a commission. Read more about how we evaluate products. Virtual private networks (VPNs) have been having a moment recently. Massive marketing budgets and influencer collaborations have convinced consumers that a VPN’s functionality and privacy features will solve all of their security woes. However, it’s not as cut-and-dry as that. VPNs are just one part of a robust online security routine, but given the number of VPN services out there today, it can be hard to figure out which one will be right for you. Not to mention that you often have to dig through claims of attributes that aren’t always totally accurate to get to that answer. We tested out nine of the best VPN services available now and landed on five top picks that should suit most people's needs.",
+            "created": "2023-10-16T16:18:17+00:00",
+            "published": "2023-10-16T16:18:17+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "ProtonVPN",
+                        "eventSummary": "Best VPN overall with strong security and usability.",
+                        "theme": "VPN",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Proton Technologies",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "ProtonVPN"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Windscribe",
+                        "eventSummary": "Best free VPN with high security and wide range of server locations.",
+                        "theme": "VPN",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Windscribe",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Windscribe"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "ExpressVPN",
+                        "eventSummary": "Best VPN for streaming services, frequent travel and gaming.",
+                        "theme": "VPN",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "ExpressVPN",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "ExpressVPN"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "CyberGhost",
+                        "eventSummary": "Best VPN for cross-platform accessibility.",
+                        "theme": "VPN",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "CyberGhost",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "CyberGhost"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Surfshark",
+                        "eventSummary": "Best VPN for multiple devices with unlimited connections.",
+                        "theme": "VPN",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Surfshark",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Surfshark"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

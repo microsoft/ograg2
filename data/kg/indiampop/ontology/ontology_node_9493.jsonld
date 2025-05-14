@@ -1,0 +1,106 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "special_features": "schema:Text",
+                "cost": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "FARM IMPLEMENTS AND MACHINERY",
+            "has_types": {
+                "@type": "CropType",
+                "name": "HORTICULTURE"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "TWIN ROW PRECISION ORGANIC MANURE CUM FERTILIZER APPLICATOR"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "method": "TWIN ROW PRECISION ORGANIC MANURE CUM FERTILIZER APPLICATOR"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "stage_of_application": "TWIN ROW PRECISION ORGANIC MANURE CUM FERTILIZER APPLICATOR"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "TWIN ROW PRECISION ORGANIC MANURE CUM FERTILIZER APPLICATOR"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "TWIN ROW PRECISION ORGANIC MANURE CUM FERTILIZER APPLICATOR"
+                }
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "TWIN ROW PRECISION ORGANIC MANURE CUM FERTILIZER APPLICATOR"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "TWIN ROW PRECISION ORGANIC MANURE CUM FERTILIZER APPLICATOR"
+                }
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "for_nutrients": "TWIN ROW PRECISION ORGANIC MANURE CUM FERTILIZER APPLICATOR"
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_grain_filling": "TWIN ROW PRECISION ORGANIC MANURE CUM FERTILIZER APPLICATOR"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "@type": "CropGrowingZone",
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "name": "TWIN ROW PRECISION ORGANIC MANURE CUM FERTILIZER APPLICATOR",
+                            "special_features": "Special features",
+                            "cost": "The cost of the unit is"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

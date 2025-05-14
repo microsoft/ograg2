@@ -1,0 +1,43 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Vanilla",
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "63 to 65ºC for three minutes"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Curing of vanilla involves immersing the beans (2-3 days after harvest) in hot water at a temperature of 63 to 65ºC for three minutes for the cessation of vegetative life. After a rapid drying on woolen blankets, when the beans are still very hot, they are kept in chests lined with blankets. Next day they are spread out in sun on blanket for three to four hours and rolled up to retain the heat. Repeat this for six to eight days during which beans lose their weight, become supple and can be twisted on finger without breaking. This is followed by slow drying in the shade for a period of two to three months."
+            },
+            "harvesting_guidelines_are": "2-3 days after harvest",
+            "storage_guidelines_are": "Store in chests lined with blankets"
+        }
+    ]
+}

@@ -1,0 +1,59 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "SeedTreatment": {
+            "@id": "cropCult:SeedTreatment",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "fungicide": "cropCult:Fungicide",
+                "bactericide": "cropCult:Bactericide"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "concentration": "schema:Text",
+                "duration": "schema:Text"
+            }
+        },
+        "Bactericide": {
+            "@id": "cropCult:Bactericide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "concentration": "schema:Text",
+                "duration": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "SeedTreatment",
+            "instructions": "Potato can be planted whole or cut. It is better to plant whole tubers of size 2.5 to 3.0 cm in diameter and each weighing between 20-30 gram. If bigger tubers are used, the same should be cut to pieces having atleast two eyes. Whole or cut tubers before planting should be allowed to sprout.",
+            "fungicide": {
+                "@type": "Fungicide",
+                "name": "vitavax power",
+                "concentration": "0.2%",
+                "duration": "15 minutes"
+            },
+            "bactericide": [
+                {
+                    "@type": "Bactericide",
+                    "name": "streptocyclin",
+                    "concentration": "0.01%",
+                    "duration": "15 minutes"
+                },
+                {
+                    "@type": "Bactericide",
+                    "name": "plantomycin",
+                    "concentration": "0.1%",
+                    "duration": "15 minutes"
+                }
+            ]
+        }
+    ]
+}

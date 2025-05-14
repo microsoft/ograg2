@@ -1,0 +1,125 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "See stunning images of STEVE and auroras from this weekend's powerful solar storm",
+            "byline": "Live Science: The Most Interesting Articles",
+            "published": "2023-11-09T14:51:14+00:00",
+            "summary": "Skywatchers worldwide were treated to a magnificent aurora light show over the weekend as northern lights were reported as far south as Greece and Turkey. The colorful aurora displays were triggered by a strong geomagnetic storm that peaked as a strong G3 on Nov. 5 at 12:40 p.m. EST (1740 GMT) on the 5-grade scale used by the U.S. National Oceanic and Atmospheric Administration (NOAA) to assess the severity of space weather events. Geomagnetic storms are disturbances to Earth's magnetic field caused by solar material from coronal mass ejections (CME) — large expulsions of plasma and magnetic fields from the sun's atmosphere. This particular geomagnetic storm was triggered by not one but two CMEs that slammed into Earth on Nov 4 and Nov. 5, according to spaceweather.com. During a solar storm, energized particles from the sun slam into Earth's atmosphere at speeds of up to 45 million mph (72 million km/h) and our planet's magnetic field funnels the particles toward the poles. The supercharging of molecules in Earth's atmosphere triggers the colorful spectacles, which usually remain limited to areas at high latitudes for the aurora borealis (northern lights) and the aurora australis (southern lights). Below, we take a look at some of the best aurora photos captured by skywatchers around the world.",
+            "associatedAsset": [
+                {
+                    "@type": "ImageAsset",
+                    "image": "Vibrant pink aurora display from Cullen on the Moray Firth in Scotland looking towards Bow Fiddle Rock. (Image credit: Debby Thorne)"
+                },
+                {
+                    "@type": "ImageAsset",
+                    "image": "Meteorologist Angel Enriquez captured pink and green aurora above a round observatory in Glasgow, Montana. (Image credit: Angel Enriquez)"
+                },
+                {
+                    "@type": "ImageAsset",
+                    "image": "Red auroras from the Mendip Hills in Somerset, UK. (Image credit: Josh Dury)"
+                },
+                {
+                    "@type": "ImageAsset",
+                    "image": "Red and green aurora above Penmon Lighthouse, Anglesey. (Image credit: Gareth Mon Jones)"
+                },
+                {
+                    "@type": "ImageAsset",
+                    "image": "Pink and green lights above Lough Neagh, Northern Ireland. (Image credit: Philip McErlean)"
+                },
+                {
+                    "@type": "ImageAsset",
+                    "image": "Image 1 of 3 (Image credit: Steven lomas)"
+                },
+                {
+                    "@type": "ImageAsset",
+                    "image": "Spectacular sight over Swatragh last night in the form of STEVE (proton arc) extending across the entire sky from W to E and flaring near Jupiter. (Image credit: Martin McKenna)"
+                }
+            ],
+            "url": "https://www.livescience.com/space/astronomy/see-stunning-images-of-steve-and-auroras-from-this-weekends-powerful-solar-storm"
+        }
+    ]
+}
+```

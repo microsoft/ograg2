@@ -1,0 +1,130 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Joanna Whitehead",
+      "published": "2023-10-24T05:50:17+00:00",
+      "title": "When do the clocks change in 2023?",
+      "summary": "Live your life healthier and happier with our free Living Well newsletter, packed with wellness advice, practical tips and nutritious recipes. Winter is coming, as the clocks go backwards one hour at 2am on Sunday 29 October. This will give us an extra hour in bed as we prepare for the colder months when the sun sets earlier and days get significantly shorter. The clocks won’t go forward again until Sunday 31 March 2024. Even so, the debate as to whether we should continue to comply with Daylight Saving Time (DST) protocols continues to run rife. Many academics, scientists and campaigners have called for the abolition of the clock turning-tradition, citing improvements to mental and physical health, public safety and wellbeing.",
+      "associatedAsset": {
+        "@type": "snap:imageAsset",
+        "image": "https://www.independent.co.uk/life-style/health-and-families/when-do-clocks-change-october-dst-b2434829.html"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "The Independent - Life and Style"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Professor Aoife Foley",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "Queen’s University Belfast"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Royal Society for the Prevention of Accidents (RoSPA)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Giulia Guerrini",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "Medino"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Sleep School"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Charlie Morley"
+    }
+  ]
+}
+```

@@ -1,0 +1,392 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "snap:asset",
+            "title": "Related Pizza Tower is platformer paradise for Wario freaks",
+            "author": "N. Clark",
+            "theme": "Gaming",
+            "content": "37. Subpar Pool",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "snap:event",
+                    "eventTitle": "Subpar Pool Release",
+                    "eventSummary": "A delightful physics puzzler on mobile and console.",
+                    "theme": "Gaming",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person1",
+                            "@type": "snap:person",
+                            "name": "Martin Jonasson",
+                            "alias": "grapefrukt"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "snap:organization",
+                            "name": "grapefrukt games"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "@id": "snap:asset2",
+            "@type": "snap:asset",
+            "title": "Amnesia: The Bunker",
+            "author": "M. Mahardy",
+            "theme": "Gaming",
+            "content": "36. Amnesia: The Bunker",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event2",
+                    "@type": "snap:event",
+                    "eventTitle": "Amnesia: The Bunker Release",
+                    "eventSummary": "A horror game set in a World War I bunker.",
+                    "theme": "Gaming",
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization2",
+                            "@type": "snap:organization",
+                            "name": "Frictional Games"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "@id": "snap:asset3",
+            "@type": "snap:asset",
+            "title": "Lil Gator Game",
+            "author": "Chris Grant",
+            "theme": "Gaming",
+            "content": "35. Lil Gator Game",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event3",
+                    "@type": "snap:event",
+                    "eventTitle": "Lil Gator Game Release",
+                    "eventSummary": "A playful game reminiscent of A Short Hike.",
+                    "theme": "Gaming",
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization3",
+                            "@type": "snap:organization",
+                            "name": "MegaWobble"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "@id": "snap:asset4",
+            "@type": "snap:asset",
+            "title": "Starfield",
+            "author": "Clayton Ashley",
+            "theme": "Gaming",
+            "content": "34. Starfield",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event4",
+                    "@type": "snap:event",
+                    "eventTitle": "Starfield Release",
+                    "eventSummary": "A sci-fi RPG with customizable ships and engaging combat.",
+                    "theme": "Gaming",
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization4",
+                            "@type": "snap:organization",
+                            "name": "Bethesda Game Studios"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "@id": "snap:asset5",
+            "@type": "snap:asset",
+            "title": "System Shock",
+            "author": "CA",
+            "theme": "Gaming",
+            "content": "33. System Shock",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event5",
+                    "@type": "snap:event",
+                    "eventTitle": "System Shock Remake",
+                    "eventSummary": "A modern update of the 1994 classic.",
+                    "theme": "Gaming",
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization5",
+                            "@type": "snap:organization",
+                            "name": "Nightdive Studios"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "@id": "snap:asset6",
+            "@type": "snap:asset",
+            "title": "Star Wars Jedi: Survivor",
+            "author": "CA",
+            "theme": "Gaming",
+            "content": "32. Star Wars Jedi: Survivor",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event6",
+                    "@type": "snap:event",
+                    "eventTitle": "Star Wars Jedi: Survivor Release",
+                    "eventSummary": "A sequel to Star Wars Jedi: Fallen Order.",
+                    "theme": "Gaming",
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization6",
+                            "@type": "snap:organization",
+                            "name": "Respawn Entertainment"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "@id": "snap:asset7",
+            "@type": "snap:asset",
+            "title": "Connections",
+            "author": "Matt Patches",
+            "theme": "Gaming",
+            "content": "31. Connections",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event7",
+                    "@type": "snap:event",
+                    "eventTitle": "Connections Release",
+                    "eventSummary": "A word puzzle game by The New York Times.",
+                    "theme": "Gaming",
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization7",
+                            "@type": "snap:organization",
+                            "name": "The New York Times"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "@id": "snap:asset8",
+            "@type": "snap:asset",
+            "title": "Hi-Fi Rush",
+            "author": "N. Clark",
+            "theme": "Gaming",
+            "content": "30. Hi-Fi Rush",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event8",
+                    "@type": "snap:event",
+                    "eventTitle": "Hi-Fi Rush Release",
+                    "eventSummary": "An action-rhythm game with a musical twist.",
+                    "theme": "Gaming",
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization8",
+                            "@type": "snap:organization",
+                            "name": "Tango Gameworks"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "@id": "snap:asset9",
+            "@type": "snap:asset",
+            "title": "Monster Hunter Now",
+            "author": "Matt Leone",
+            "theme": "Gaming",
+            "content": "29. Monster Hunter Now",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event9",
+                    "@type": "snap:event",
+                    "eventTitle": "Monster Hunter Now Release",
+                    "eventSummary": "A mobile game blending real-world elements with combat.",
+                    "theme": "Gaming",
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization9",
+                            "@type": "snap:organization",
+                            "name": "Niantic"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "@id": "snap:asset10",
+            "@type": "snap:asset",
+            "title": "Diablo 4",
+            "author": "RG",
+            "theme": "Gaming",
+            "content": "28. Diablo 4",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event10",
+                    "@type": "snap:event",
+                    "eventTitle": "Diablo 4 Release",
+                    "eventSummary": "A blend of action, RPG systems, and dark tone.",
+                    "theme": "Gaming",
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization10",
+                            "@type": "snap:organization",
+                            "name": "Blizzard Entertainment"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "@id": "snap:asset11",
+            "@type": "snap:asset",
+            "title": "Hitman World of Assassination: Freelancer mode",
+            "author": "Samit Sarkar",
+            "theme": "Gaming",
+            "content": "27. Hitman World of Assassination: Freelancer mode",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event11",
+                    "@type": "snap:event",
+                    "eventTitle": "Hitman Freelancer Mode Release",
+                    "eventSummary": "A roguelike twist on Hitman's missions.",
+                    "theme": "Gaming",
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization11",
+                            "@type": "snap:organization",
+                            "name": "IO Interactive"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "@id": "snap:asset12",
+            "@type": "snap:asset",
+            "title": "Venba",
+            "author": "N. Carpenter",
+            "theme": "Gaming",
+            "content": "26. Venba",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event12",
+                    "@type": "snap:event",
+                    "eventTitle": "Venba Release",
+                    "eventSummary": "A cooking game about an immigrant family.",
+                    "theme": "Gaming",
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization12",
+                            "@type": "snap:organization",
+                            "name": "Visai Games"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

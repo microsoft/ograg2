@@ -1,0 +1,71 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Harvest": {
+            "@id": "cropCult:Harvest",
+            "@type": "schema:Thing",
+            "@context": {
+                "harvest_type": "schema:Text",
+                "harvest_method": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Rainfed ragi",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Rainfed ragi",
+                "used_for": "Crop cultivation"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Azospirillum mixed with FYM and applied to field saves the cost of nitrogen by 50% with a comparable yield obtained with 40 kg N/ha."
+            },
+            "harvesting_guidelines_are": "CROP PROTECTION > CROP MANAGEMENT > V. HARVESTING > 2. HARVEST OF THE CROP > Second Harvest > i. Threshing"
+        },
+        {
+            "@type": "Harvest",
+            "harvest_type": "Second Harvest",
+            "harvest_method": "Threshing"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Azospirillum mixed with FYM",
+            "quantity": "50% of nitrogen",
+            "stage_of_application": "Applied to field"
+        }
+    ]
+}

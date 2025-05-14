@@ -1,0 +1,55 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_fertilizer_application_requirements": "cropCult:Fertilization"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "ONION",
+            "has_fertilizer_application_requirements": [
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "FYM/compost",
+                    "quantity": "25 to 30 t",
+                    "stage_of_application": "basal"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "N",
+                    "quantity": "120 kg",
+                    "stage_of_application": "50% basal, 25% at 3 weeks, 25% at 6 weeks"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "P2O5",
+                    "quantity": "60 kg",
+                    "stage_of_application": "basal"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "K2O",
+                    "quantity": "100 kg",
+                    "stage_of_application": "50% basal, 50% at second top dressing"
+                }
+            ]
+        }
+    ]
+}

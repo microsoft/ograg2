@@ -1,0 +1,79 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CropYield": {
+            "@id": "cropCult:CropYield",
+            "@type": "schema:Thing",
+            "@context": {
+                "number_of_bunches_per_tree_per_year": "schema:Text",
+                "ffb_yield_t_per_ha_per_year": "schema:Text",
+                "gross_income_rs_per_ha_per_year": "schema:Text",
+                "net_income_rs_per_ha_per_year": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Coconut",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Oilseeds",
+                "used_for": "Oilpalm"
+            },
+            "CropYield": [
+                {
+                    "@type": "CropYield",
+                    "number_of_bunches_per_tree_per_year": "10 bunches @ 10kg/tree/year",
+                    "ffb_yield_t_per_ha_per_year": "14.3",
+                    "gross_income_rs_per_ha_per_year": "1,02,960",
+                    "net_income_rs_per_ha_per_year": "73,460"
+                },
+                {
+                    "@type": "CropYield",
+                    "number_of_bunches_per_tree_per_year": "12 bunches @ 15kg/tree/year",
+                    "ffb_yield_t_per_ha_per_year": "25.7",
+                    "gross_income_rs_per_ha_per_year": "1,85,040",
+                    "net_income_rs_per_ha_per_year": "1,55,540"
+                },
+                {
+                    "@type": "CropYield",
+                    "number_of_bunches_per_tree_per_year": "12 bunches @ 20kg/tree/year",
+                    "ffb_yield_t_per_ha_per_year": "34.3",
+                    "gross_income_rs_per_ha_per_year": "2,46,960",
+                    "net_income_rs_per_ha_per_year": "2,17,460"
+                }
+            ]
+        }
+    ]
+}

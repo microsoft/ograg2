@@ -1,0 +1,157 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Sarah Thwaites",
+      "published": "2023-12-13T16:30:00+00:00",
+      "title": "The best gifts to level up a home theater",
+      "summary": "If you buy something from a Polygon link, Vox Media may earn a commission. See our ethics statement. The call of the couch gets stronger every year as new gadgets, movies, TV shows, and streaming services launch. As such, you may find yourself considering how to curate a space to watch coveted new (and old) releases that doesn’t involve leaving the house, or paying for tickets and reserved seating. You’ll still have to spend money on snacks, but not nearly as much. A high-quality home cinema setup summons the most compelling parts of the silver screen into your own living room. Whatever it is you want to watch, upgrading your home theater hardware and related accessories can enhance your viewing experience.",
+      "associatedAsset": [
+        {
+          "@type": "snap:textAsset",
+          "title": "LG C3 OLED TV",
+          "summary": "A TV is the beating heart of the home theater experience, and the LG C3 is a compelling sell for cinephiles who want the best possible video quality. The C2’s 65-inch OLED screen provides unparalleled contrast, and it has a 120 Hz refresh rate, which is great for making the most of gaming at a high frame rate via the PlayStation 5 or Xbox Series X. Like other high-end TVs, the C3 features Filmmaker Mode, which adjusts the picture and motion settings to display your favorite flicks as their director intended them to be seen."
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "LG Sound Bar C (SC9)",
+          "summary": "Finding the right soundbar to pair with your fancy TV can be a bit of a challenge. First, you need to decide what kind of features you want, then land on one that has a design that you like. Well, if you opted for the LG C3 OLED, you might as well get the soundbar that LG made to be the perfect companion in both regards. The SC9 soundbar and wireless subwoofer bolster the C3’s phenomenal picture quality with amazing audio, including Dolby Atmos support. When purchased through LG’s website, you’ll get a mounting bracket to fasten the soundbar to your wall — perfect if you’ve mounted your television, too."
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Disney Bundle Trio",
+          "summary": "The chances are good that you’ve already found yourself aboard the streaming service carousel, juggling options such as Paramount Plus, Netflix, Max, and maybe more. If you want to slim down without losing out on great content, you can’t do much better than the Disney Bundle Trio. Disney Plus’ impressive catalog includes plenty of original content (and a bucketload of Marvel and Star Wars), but this deal gives you all that along with Hulu and ESPN, providing hours of sitcoms and sports."
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Crunchyroll",
+          "summary": "Crunchyroll is the best streaming service for anime lovers or newcomers, with classics like JoJo’s Bizarre Adventure appearing alongside modern behemoths such as Jujutsu Kaisen, Demon Slayer: Kimetsu no Yaiba, and Spy x Family. You’ll not only have access to an impressive catalog of quality anime with Crunchyroll — you’ll also be privy to premieres shortly after their debut in Japan, such as the highly anticipated Attack on Titan finale."
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Chromecast with Google TV (4K)",
+          "summary": "Smart TVs tend to come with a range of downloadable apps built in, but performance is often middling at best — even in high-end models. If you’re looking for a compact and easy-to-use streaming device, it won’t cost you much. The latest Chromecast is a great choice that provides 4K HDR playback and comes with a voice-enabled remote, which can help you get to your favorite movies and shows faster than fiddling with on-screen keyboards."
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Vudu gift cards for watching movies at home",
+          "summary": "Vudu is like a digital Blockbuster, a storefront with a huge catalog of films that you can rent or buy, ranging from new releases like Teenage Mutant Ninja Turtles: Mutant Mayhem to beloved classics like The Nightmare Before Christmas. Unlike some other gift cards on the market, Vudu’s don’t expire, so you can take your time and save them for a rainy day. They also double as compelling gifts for the cinephile in your life."
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Panasonic DP-UB420",
+          "summary": "Streaming has become the de facto way to watch your favorite movies, but sometimes you want the reliability and quality of a physical disc. And what better way to enjoy them than with a dedicated 4K Blu-ray player? There is no better way, dear reader. The Panasonic DP-UB420 is a model that won’t break the bank, yet it can handle everything from CDs and DVDs to 3D Blu-ray and 4K Blu-ray Discs, so it should cover your entire physical media collection."
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Roku Streambar Pro",
+          "summary": "If you’re in the market for both a streaming device and a soundbar, there’s precisely one product we can recommend that can do both: the Roku Streambar Pro. By plugging it into your TV’s HDMI port, you’ll get great sound quality that defies its petite size, and its streaming capabilities are up there with the best of them, providing 4K HDR so all of your movies and TV shows will look their best. The setup also comes with a universal remote that features voice controls."
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Vizio 5.1.2 soundbar with Dolby Atmos",
+          "summary": "One of the highlights of going to the cinema is the booming surround sound that envelops the theater. The Vizio M512a-H6, a 5.1.2-channel soundbar setup, attempts to replicate that feeling (and succeeds) at a much smaller scale in your home with a highly configurable package. While the soundbar unit looks like most others out there, it comes with built-in speakers that are aimed upward to bounce sound off your ceiling, simulating the effect you get in theaters. This, plus its two included satellite speakers, allows Dolby Atmos-ready content to sing. Plus, these speakers look great, with a sleek, low-profile design."
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "CouchConsole",
+          "summary": "Crumb-covered seats and missing controllers can cause frustration when you want to relax, which is why we recommend the CouchConsole, an organizational caddy to keep around your sofa. This snack- (and controller)-protecting companion has a modular design that can be tweaked to fit your needs, and it includes a convenient self-balancing cup holder to avoid dreaded beverage spills when you get a bit too excited."
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Netgear Powerline 2000",
+          "summary": "There is nothing more infuriating than slow download speeds on your console, or getting hit with a severely pixelated image during the emotional climax of a film. If you primarily use Wi-Fi for your home theater devices, I might be describing your everyday reality, but it doesn’t have to be like this. The Netgear Powerline helps to mitigate these issues by creating a power plug-based tether between your router and your devices. Each Powerline adapter features an ethernet port, letting you use your home’s electrical lines as an internet pathway. Clever! Just plug one in near your router and connect an ethernet cable, then use another adapter near the device that you want to hard-wire."
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Govee Envisual TV backlight kit",
+          "summary": "If you want to add drama and atmosphere to your nightly viewings, consider the Govee Envisual TV backlight kit, which uses a mountable camera to track what’s on your screen to then project a matching light show behind the TV — almost as if the colors were bleeding off the screen. Once you’ve got it set up by attaching the camera to either the top or bottom of your TV, you can manage the LED lights with the Govee Home app, or trigger them via voice commands, thanks to Alexa and Google Assistant support."
+        }
+      ],
+      "url": "https://www.polygon.com/deals/23989013/best-gifts-entertainment-center-tv-audio-blu-ray-streaming"
+    }
+  ]
+}
+```

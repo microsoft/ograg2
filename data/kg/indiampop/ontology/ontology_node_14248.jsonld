@@ -1,0 +1,98 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "SYSTEM OF RICE INTENSIFICATION ( SRI )",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Rice",
+                "used_for": "Intensification"
+            },
+            "has_land_preperation_requirements": {
+                "instructions": "Use of organic manure as source of nutrition"
+            },
+            "needs_seed_sowing_spacing": {
+                "sowing_time": "2.6",
+                "value": "Higher Productivity",
+                "depth": "3.9. Harvesting",
+                "method": "3.2 Nutritional management"
+            },
+            "weed_management_needs_are": {
+                "weed_name": "CONSTRAINTS",
+                "weed_types": ["Inadequate organic manure availability"]
+            },
+            "needs_irrigation_schedule": {
+                "quantity": "As per SRI practices",
+                "stage_of_application": "Throughout the crop cycle"
+            },
+            "needs_disease_treatements": {
+                "disease_name": "Not specified",
+                "disease_symptoms": "Not specified",
+                "disease_control": {
+                    "name": "Not specified",
+                    "quantity": "Not specified",
+                    "stage": "Not specified"
+                }
+            },
+            "needs_pest_treatements": {
+                "pest_name": "Not specified",
+                "pest_symptoms": "Not specified",
+                "pest_control": {
+                    "name": "Not specified",
+                    "quantity": "Not specified",
+                    "stage": "Not specified"
+                }
+            },
+            "harvesting_guidelines_are": "As per SRI practices",
+            "storage_guidelines_are": "Store in a cool and dry place"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Organic Manure",
+            "quantity": "Inadequate",
+            "stage_of_application": "As per SRI practices"
+        }
+    ]
+}

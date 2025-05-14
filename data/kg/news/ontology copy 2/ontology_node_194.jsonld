@@ -1,0 +1,678 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "The Verge’s 2023 holiday gift guide for kids",
+            "author": "Antonio G. Di Benedetto",
+            "theme": "technology",
+            "content": "The Verge’s 2023 holiday gift guide for kids",
+            "published": "2023-12-18T23:14:07+00:00",
+            "has_events": [
+                {
+                    "@type": "EventList",
+                    "Event": [
+                        {
+                            "eventTitle": "Poetry for Neanderthals",
+                            "eventSummary": "A game where players guess words using single-syllable words.",
+                            "theme": "game",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        },
+                                        {
+                                            "name": "Walmart"
+                                        },
+                                        {
+                                            "name": "Target"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Disney Illusion Island",
+                            "eventSummary": "A 2D side-scrolling game for kids on Nintendo Switch.",
+                            "theme": "game",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Walmart"
+                                        },
+                                        {
+                                            "name": "Target"
+                                        },
+                                        {
+                                            "name": "GameStop"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Magna-Tiles Jungle Animals",
+                            "eventSummary": "A jungle-themed magnetic tile set for kids.",
+                            "theme": "toy",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        },
+                                        {
+                                            "name": "Walmart"
+                                        },
+                                        {
+                                            "name": "Macy’s"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Pokémon Matching Family Pajamas",
+                            "eventSummary": "Family pajamas with Pokémon designs.",
+                            "theme": "clothing",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Hanna Andersson"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Custom Face Socks",
+                            "eventSummary": "Socks with custom faces printed on them.",
+                            "theme": "clothing",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "DivvyUp"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Chatbooks Subscription Photo Book",
+                            "eventSummary": "A subscription service for creating photo books.",
+                            "theme": "service",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Chatbooks"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Parchie watches",
+                            "eventSummary": "Waterproof watches for kids.",
+                            "theme": "accessory",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        },
+                                        {
+                                            "name": "Parchie"
+                                        },
+                                        {
+                                            "name": "Hodinkee"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Keith Haring Kids’ Chair",
+                            "eventSummary": "A kid-sized chair with Keith Haring artwork.",
+                            "theme": "furniture",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "The Shop at The Broad"
+                                        },
+                                        {
+                                            "name": "MoMA Design Store"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Arteza Gel Ink Pens",
+                            "eventSummary": "A 60-pack of gel ink pens for kids.",
+                            "theme": "stationery",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        },
+                                        {
+                                            "name": "Target"
+                                        },
+                                        {
+                                            "name": "Arteza"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "We’re Not Really Strangers Kids Edition",
+                            "eventSummary": "A game for deeper conversations with kids.",
+                            "theme": "game",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        },
+                                        {
+                                            "name": "We’re Not Really Strangers"
+                                        },
+                                        {
+                                            "name": "Toys R Us"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Kit Adam mechanical keyboard",
+                            "eventSummary": "A mechanical keyboard built with Lego-style bricks.",
+                            "theme": "electronics",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "KBDcraft"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "BuddyPhones Cosmos Plus",
+                            "eventSummary": "Noise-canceling headphones for kids.",
+                            "theme": "electronics",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        },
+                                        {
+                                            "name": "Walmart"
+                                        },
+                                        {
+                                            "name": "BuddyPhones"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "The Super Mario Bros. Movie – Van Playset",
+                            "eventSummary": "A playset based on The Super Mario Bros. Movie.",
+                            "theme": "toy",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        },
+                                        {
+                                            "name": "Walmart"
+                                        },
+                                        {
+                                            "name": "GameStop"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Kindle Kids (2022)",
+                            "eventSummary": "An ad-free Kindle for kids with a two-year warranty.",
+                            "theme": "electronics",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        },
+                                        {
+                                            "name": "Best Buy"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "8BitDo SN30 Pro (Special Edition)",
+                            "eventSummary": "A nostalgic controller for modern games.",
+                            "theme": "electronics",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        },
+                                        {
+                                            "name": "Walmart"
+                                        },
+                                        {
+                                            "name": "8BitDo"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Nintendo Switch Lite (Isabelle’s Aloha Edition)",
+                            "eventSummary": "A travel-friendly Nintendo Switch Lite with Animal Crossing design.",
+                            "theme": "electronics",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Target"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Skullcandy Jib True 2",
+                            "eventSummary": "Wireless earbuds with built-in Tile tracking.",
+                            "theme": "electronics",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        },
+                                        {
+                                            "name": "Best Buy"
+                                        },
+                                        {
+                                            "name": "Walmart"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Amazmic Kids Karaoke Microphone",
+                            "eventSummary": "A Bluetooth karaoke microphone for kids.",
+                            "theme": "electronics",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Samba de Amigo: Party Central",
+                            "eventSummary": "A music rhythm game for Nintendo Switch.",
+                            "theme": "game",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        },
+                                        {
+                                            "name": "Best Buy"
+                                        },
+                                        {
+                                            "name": "GameStop"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Apple iPad (2021)",
+                            "eventSummary": "The ninth-gen iPad with a 10.2-inch screen.",
+                            "theme": "electronics",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Best Buy"
+                                        },
+                                        {
+                                            "name": "Walmart"
+                                        },
+                                        {
+                                            "name": "Target"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Mark-my-time digital bookmark",
+                            "eventSummary": "A bookmark with a built-in timer for tracking reading sessions.",
+                            "theme": "accessory",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        },
+                                        {
+                                            "name": "Mark-My-Time"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Echo Dot Kids (fifth-gen)",
+                            "eventSummary": "An animal-themed Echo Dot with age-appropriate games.",
+                            "theme": "electronics",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        },
+                                        {
+                                            "name": "Best Buy"
+                                        },
+                                        {
+                                            "name": "Target"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Shadows in the Forest",
+                            "eventSummary": "A tabletop game played in the dark.",
+                            "theme": "game",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        },
+                                        {
+                                            "name": "Legacy Toys"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "A Very Spidey Christmas",
+                            "eventSummary": "A five-song EP on vinyl of Spider-Man’s holiday album.",
+                            "theme": "music",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Merchbar"
+                                        },
+                                        {
+                                            "name": "Discogs Marketplace"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Pokémon Carry Case Playset",
+                            "eventSummary": "A backpack that opens into a Pokémon playset.",
+                            "theme": "toy",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Walmart"
+                                        },
+                                        {
+                                            "name": "Target"
+                                        },
+                                        {
+                                            "name": "Macy’s"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Hurry Up Chicken Butt",
+                            "eventSummary": "A hot potato game for kids and parents.",
+                            "theme": "game",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Target"
+                                        },
+                                        {
+                                            "name": "Exploding Kittens"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Furby",
+                            "eventSummary": "A voice-activated animatronic plushie.",
+                            "theme": "toy",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        },
+                                        {
+                                            "name": "Walmart"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Original Bazooka Bubble Gun",
+                            "eventSummary": "A battery-powered bubble blaster.",
+                            "theme": "toy",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Nerf Perses MXIX-5000 Motorized Blaster",
+                            "eventSummary": "A motorized blaster that shoots foam balls.",
+                            "theme": "toy",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        },
+                                        {
+                                            "name": "Walmart"
+                                        },
+                                        {
+                                            "name": "Electronics Express"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Quick Push electronic sensory fidget toy",
+                            "eventSummary": "A sensory toy with lights and sounds.",
+                            "theme": "toy",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Pinecil portable soldering iron",
+                            "eventSummary": "A portable soldering iron for electronics tinkering.",
+                            "theme": "tool",
+                            "mentions_organizations": [
+                                {
+                                    "@type": "OrganizationList",
+                                    "Organization": [
+                                        {
+                                            "name": "Amazon"
+                                        },
+                                        {
+                                            "name": "Pine64"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

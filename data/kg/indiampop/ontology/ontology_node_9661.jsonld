@@ -1,0 +1,54 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Fertilizer": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "Variety": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List",
+                "has_early_sowing_time": "cropCult:SowingTime",
+                "has_late_sowing_time": "cropCult:SowingTime",
+                "has_seeding_rate": "schema:QuantitativeValue",
+                "has_fertilizer_application_requirements": "cropCult:Fertilization"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Fertilizer",
+            "nutrient_name": "Nitrogen",
+            "quantity": "50kg",
+            "stage_of_application": "Pre-sowing"
+        },
+        {
+            "@type": "Variety",
+            "variety_name": ["Durum", "Emmer", "Spelt"],
+            "has_early_sowing_time": {
+                "start_date": "2022-09-01",
+                "end_date": "2022-09-30"
+            },
+            "has_late_sowing_time": {
+                "start_date": "2022-10-01",
+                "end_date": "2022-10-31"
+            },
+            "has_seeding_rate": {
+                "value": "100kg/ha"
+            },
+            "has_fertilizer_application_requirements": {
+                "nutrient_name": "Nitrogen",
+                "quantity": "50kg",
+                "stage_of_application": "Pre-sowing"
+            }
+        }
+    ]
+}

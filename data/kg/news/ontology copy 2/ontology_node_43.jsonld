@@ -1,0 +1,235 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "The best Apple Black Friday deals on iPads, AirPods, Apple Watches and more",
+            "author": "Amy Skorheim",
+            "theme": "technology",
+            "content": "Engadget has been testing and reviewing consumer tech since 2004. Our stories may include affiliate links; if you buy something through a link, we may earn a commission. Read more about how we evaluate products. There are still tons of Apple Black Friday deals you can shop for online; these are our favorites. Most of Apple’s current-generation devices went on sale for Black Friday — and most of those deals look like they’ll carry over through the weekend and into Cyber Monday. That means if you were otherwise occupied on Friday, you can still save on iPads, Apple Watches, MacBooks, AirPods and more. Some of the prices are new lows and many others match the record prices we’ve seen previously. We’ve tested and reviewed nearly every device below, so check out the links to our full reviews and guides if you need help deciding which deals to snag. These are the best Apple Black Friday deals you can still get today from retailers like Amazon, Target, Best Buy and B&H Photo.",
+            "published": "2023-11-24T09:30:32+00:00",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "schema:Thing",
+                    "eventTitle": "AirPod Black Friday deals",
+                    "eventSummary": "AirPods Pro (2nd gen, USB-C) and AirPods Max deals.",
+                    "theme": "technology",
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "schema:Thing",
+                            "name": "Amazon"
+                        },
+                        {
+                            "@id": "snap:organization2",
+                            "@type": "schema:Thing",
+                            "name": "Target"
+                        },
+                        {
+                            "@id": "snap:organization3",
+                            "@type": "schema:Thing",
+                            "name": "Best Buy"
+                        },
+                        {
+                            "@id": "snap:organization4",
+                            "@type": "schema:Thing",
+                            "name": "Walmart"
+                        },
+                        {
+                            "@id": "snap:organization5",
+                            "@type": "schema:Thing",
+                            "name": "Verizon"
+                        },
+                        {
+                            "@id": "snap:organization6",
+                            "@type": "schema:Thing",
+                            "name": "B&H Photo"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event2",
+                    "@type": "schema:Thing",
+                    "eventTitle": "MacBook Black Friday deals",
+                    "eventSummary": "Deals on MacBook Pro and MacBook Air.",
+                    "theme": "technology",
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "schema:Thing",
+                            "name": "Amazon"
+                        },
+                        {
+                            "@id": "snap:organization3",
+                            "@type": "schema:Thing",
+                            "name": "Best Buy"
+                        },
+                        {
+                            "@id": "snap:organization6",
+                            "@type": "schema:Thing",
+                            "name": "B&H Photo"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event3",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Apple Watch Black Friday deals",
+                    "eventSummary": "Deals on Apple Watch Ultra 2, Series 9, and SE.",
+                    "theme": "technology",
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "schema:Thing",
+                            "name": "Amazon"
+                        },
+                        {
+                            "@id": "snap:organization2",
+                            "@type": "schema:Thing",
+                            "name": "Target"
+                        },
+                        {
+                            "@id": "snap:organization3",
+                            "@type": "schema:Thing",
+                            "name": "Best Buy"
+                        },
+                        {
+                            "@id": "snap:organization4",
+                            "@type": "schema:Thing",
+                            "name": "Walmart"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event4",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Apple iPad Black Friday deals",
+                    "eventSummary": "Deals on iPad 9th and 10th generation, iPad Air, and iPad mini.",
+                    "theme": "technology",
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "schema:Thing",
+                            "name": "Amazon"
+                        },
+                        {
+                            "@id": "snap:organization2",
+                            "@type": "schema:Thing",
+                            "name": "Target"
+                        },
+                        {
+                            "@id": "snap:organization3",
+                            "@type": "schema:Thing",
+                            "name": "Best Buy"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event5",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Apple accessories Black Friday deals",
+                    "eventSummary": "Deals on Apple Gift Card, Magic Keyboard, AirTags, Apple Pencil, Apple TV 4K, and Mac Mini M2.",
+                    "theme": "technology",
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "schema:Thing",
+                            "name": "Amazon"
+                        },
+                        {
+                            "@id": "snap:organization3",
+                            "@type": "schema:Thing",
+                            "name": "Best Buy"
+                        },
+                        {
+                            "@id": "snap:organization6",
+                            "@type": "schema:Thing",
+                            "name": "B&H Photo"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

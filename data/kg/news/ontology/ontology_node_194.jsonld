@@ -1,0 +1,530 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "The Verge’s 2023 holiday gift guide for kids",
+            "author": "Antonio G. Di Benedetto",
+            "published": "2023-12-18T23:14:07+00:00",
+            "theme": "technology",
+            "summary": "A comprehensive guide to holiday gifts for kids, featuring a variety of fun and engaging products.",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Poetry for Neanderthals",
+                        "eventSummary": "A fun game where players use single-syllable words to get their team to guess a word or phrase.",
+                        "theme": "game",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Disney Illusion Island (Nintendo Switch)",
+                        "eventSummary": "A 2D side-scrolling game for kids with a cute art style and co-op mode.",
+                        "theme": "game",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Magna-Tiles Jungle Animals (25-piece set)",
+                        "eventSummary": "A jungle-themed set of magnetic tiles for creative play.",
+                        "theme": "toy",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Pokémon Matching Family Pajamas",
+                        "eventSummary": "Fun pajamas featuring Pokémon designs for family dress-up.",
+                        "theme": "clothing",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Custom Face Socks",
+                        "eventSummary": "Socks featuring custom faces, a fun gift for kids and adults.",
+                        "theme": "clothing",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Chatbooks Subscription Photo Book",
+                        "eventSummary": "A subscription service for creating photo books from your phone.",
+                        "theme": "service",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Parchie watches",
+                        "eventSummary": "Waterproof watches designed for kids, promoting responsibility.",
+                        "theme": "accessory",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Keith Haring Kids’ Chair",
+                        "eventSummary": "A decorative and functional kid-sized chair featuring Keith Haring's artwork.",
+                        "theme": "furniture",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Arteza Gel Ink Pens (60-pack)",
+                        "eventSummary": "A set of long-lasting gel pens for writing and drawing.",
+                        "theme": "stationery",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "We’re Not Really Strangers Kids Edition",
+                        "eventSummary": "A card game designed to foster deeper conversations between adults and children.",
+                        "theme": "game",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Kit Adam mechanical keyboard",
+                        "eventSummary": "A customizable mechanical keyboard that can be built with Lego-style bricks.",
+                        "theme": "electronics",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "BuddyPhones Cosmos Plus",
+                        "eventSummary": "Noise-canceling headphones designed for kids with volume limiting features.",
+                        "theme": "electronics",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "The Super Mario Bros. Movie – Van Playset",
+                        "eventSummary": "A playset based on the Super Mario Bros. movie.",
+                        "theme": "toy",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Kindle Kids (2022)",
+                        "eventSummary": "A kid-friendly e-reader with a sharp display and ad-free experience.",
+                        "theme": "electronics",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "8BitDo SN30 Pro (Special Edition)",
+                        "eventSummary": "A nostalgic controller designed for small hands.",
+                        "theme": "electronics",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Nintendo Switch Lite (Isabelle’s Aloha Edition)",
+                        "eventSummary": "A travel-friendly handheld console with a cute design.",
+                        "theme": "electronics",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Skullcandy Jib True 2",
+                        "eventSummary": "Affordable wireless earbuds with built-in tracking.",
+                        "theme": "electronics",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Amazmic Kids Karaoke Microphone",
+                        "eventSummary": "A karaoke microphone that plays backing tracks via Bluetooth.",
+                        "theme": "toy",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Samba de Amigo: Party Central (Nintendo Switch)",
+                        "eventSummary": "A music rhythm game featuring modern pop songs.",
+                        "theme": "game",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Apple iPad (2021)",
+                        "eventSummary": "A versatile tablet with a sharp display and great app support.",
+                        "theme": "electronics",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Mark-my-time digital bookmark",
+                        "eventSummary": "A colorful bookmark with a timer to track reading sessions.",
+                        "theme": "accessory",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Echo Dot Kids (fifth-gen)",
+                        "eventSummary": "A kid-friendly version of the Echo Dot with age-appropriate games.",
+                        "theme": "electronics",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Shadows in the Forest",
+                        "eventSummary": "A tabletop game played in the dark, encouraging teamwork.",
+                        "theme": "game",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "A Very Spidey Christmas",
+                        "eventSummary": "A five-song EP on vinyl featuring Spider-Man's holiday album.",
+                        "theme": "music",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Pokémon Carry Case Playset",
+                        "eventSummary": "A backpack that unfolds into a Pokémon playset.",
+                        "theme": "toy",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Hurry Up Chicken Butt",
+                        "eventSummary": "A fast-paced game that encourages physical activity.",
+                        "theme": "game",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Furby",
+                        "eventSummary": "The new version of the voice-activated animatronic plushie.",
+                        "theme": "toy",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Original Bazooka Bubble Gun",
+                        "eventSummary": "A battery-powered bubble gun that produces bubbles at a high rate.",
+                        "theme": "toy",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Nerf Perses MXIX-5000 Motorized Blaster",
+                        "eventSummary": "A motorized blaster that shoots foam balls quickly.",
+                        "theme": "toy",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Quick Push electronic sensory fidget toy (frog-green)",
+                        "eventSummary": "A sensory toy that provides fidget-friendly fun.",
+                        "theme": "toy",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Pinecil portable soldering iron",
+                        "eventSummary": "An introductory tool for electronics tinkering.",
+                        "theme": "tool",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

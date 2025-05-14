@@ -1,0 +1,201 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Merck, Novo Nordisk, Gilead, Biogen and more: Here are the investment opportunities in global Big Pharma",
+            "author": "None",
+            "theme": "business",
+            "summary": "The US is the largest pharmaceutical market in the world. By virtue of its size, its ideal IP protection laws, and deep-pocketed insurers, most of the cutting-edge innovation in pharma tends to be concentrated here. For investors and general readers alike, one should be abreast of the latest pharmaceutical innovation taking place overseas. Will a weight loss pill be a reality? When will HIV be cured? What is the future of cancer treatments? Indian investors can access growth in manufacturing, banking, commodity, services or even IT in Indian markets; but for cutting-edge tech and pharmaceutical exposure, the US is the place to look to. Here, we highlight the largest unmet needs in medicine currently being addressed by US Big Pharma, such as Merck, Gilead, Eli Lilly, and also by big players based in Europe — Novo Nordisk and Roche. We also lay down the basic framework for investing in or assessing US pharma and the stocks that are in focus currently.",
+            "created": "2023-11-18T14:00:36+00:00",
+            "published": "2023-11-18T14:00:36+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Oncology",
+                        "eventSummary": "From plain chemotherapy, to surgery, to radiation and now immunotherapy, cancer treatment has come a long way. Immunotherapy, as the name suggests, is a pharmaceutical way of using the body’s immune system to eradicate cancer cells.",
+                        "theme": "cancer treatment",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Merck"
+                                },
+                                {
+                                    "name": "Bristol-Myers Squibb"
+                                },
+                                {
+                                    "name": "Roche"
+                                },
+                                {
+                                    "name": "Gilead"
+                                },
+                                {
+                                    "name": "Celgene"
+                                },
+                                {
+                                    "name": "Eisai"
+                                },
+                                {
+                                    "name": "Biogen"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Diabetes",
+                        "eventSummary": "Antidiabetic treatment kicked off with the discovery of the first animal-made insulin around a century ago. From there, innovation brought forth insulin synthesised from humans, synthetic insulins, longer and shorter acting insulins.",
+                        "theme": "diabetes treatment",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Novo Nordisk"
+                                },
+                                {
+                                    "name": "Pfizer"
+                                },
+                                {
+                                    "name": "Eli Lilly"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "HIV",
+                        "eventSummary": "From being a near-fatal prognosis, HIV is now a chronic condition with near-normal life expectancy. The first antiretroviral therapy (ART) started with azidothymidine in the late 90s, which belongs to the nucleoside reverse transcriptase inhibitor (NRTI) class of medications.",
+                        "theme": "HIV treatment",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Gilead"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Alzheimer’s",
+                        "eventSummary": "The degenerative disease of the brain has proved to be a difficult challenge for pharmaceutical companies. Leqembi (lecanemab), developed by Eisai in collaboration with Biogen, was the first and only approved drug for Alzheimer’s in July 2023.",
+                        "theme": "Alzheimer’s treatment",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Eisai"
+                                },
+                                {
+                                    "name": "Biogen"
+                                },
+                                {
+                                    "name": "Pfizer"
+                                },
+                                {
+                                    "name": "Merck"
+                                },
+                                {
+                                    "name": "Eli Lilly"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

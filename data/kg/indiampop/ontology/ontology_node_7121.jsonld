@@ -1,0 +1,58 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "SeedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "GROUNDNUT (Arachis hypogaea )",
+            "has_types": {
+                "@type": "CropType",
+                "name": "OILSEEDS",
+                "used_for": "CROP MANAGEMENT"
+            },
+            "needs_seed_sowing_spacing": [
+                {
+                    "@type": "SeedSpacing",
+                    "sowing_time": "I. Rainfed",
+                    "value": "30 cm between rows and 10 cm between plants",
+                    "method": "Adopt a spacing"
+                },
+                {
+                    "@type": "SeedSpacing",
+                    "sowing_time": "I. Irrigated",
+                    "value": "15cm x 15 cm",
+                    "method": "Adopt a spacing where groundnut ring mosaic (bud necrosis) is prevalent"
+                }
+            ]
+        }
+    ]
+}

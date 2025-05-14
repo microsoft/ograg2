@@ -1,0 +1,80 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Banana",
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Banana Weevil",
+                "pest_symptoms": "Not specified",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Chlorpyriphos 20 EC",
+                    "quantity": "2.5 ml/l + 1 ml wetting agent",
+                    "stage": "Three weekly intervals"
+                }
+            }
+        },
+        {
+            "@type": "PesticideList",
+            "name": "Monocrotophos",
+            "quantity": "150 ml/350 ml water solution @ 2ml/plant",
+            "stage": "After 7 months of planting"
+        },
+        {
+            "@type": "PesticideList",
+            "name": "Dichlorvos",
+            "quantity": "0.25%",
+            "stage": "At two feet height and other one at 4 feet above ground level at 30 degree angle on either side of the plant"
+        },
+        {
+            "@type": "PesticideList",
+            "name": "Carbaryl",
+            "quantity": "100 ml (2 g/ litre)",
+            "stage": "After the harvest of banana bunch"
+        }
+    ]
+}

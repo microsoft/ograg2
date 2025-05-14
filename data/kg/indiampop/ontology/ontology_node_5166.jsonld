@@ -1,0 +1,62 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "spacing": "cropCult:SeedSpacing",
+                "yield_pure_crop": "schema:QuantitativeValue",
+                "yield_strip_crop": "schema:QuantitativeValue",
+                "yield_difference": "schema:QuantitativeValue"
+            }
+        },
+        "Economics": {
+            "@id": "cropCult:Economics",
+            "@type": "schema:Thing",
+            "@context": {
+                "crop": "cropCult:Crop",
+                "pure_crop_income": "schema:MonetaryAmount",
+                "strip_crop_income": "schema:MonetaryAmount",
+                "income_difference": "schema:MonetaryAmount",
+                "net_return": "schema:MonetaryAmount"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "Paddy",
+            "spacing": "20 cm",
+            "yield_pure_crop": "20 qtls/ha",
+            "yield_strip_crop": "18 qtls/ha",
+            "yield_difference": "2 qtls/ha"
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "Arhar",
+            "spacing": "500 cm",
+            "yield_pure_crop": "10 qtls/ha",
+            "yield_strip_crop": "3.5 qtls/ha",
+            "yield_difference": "6.5 qtls/ha"
+        },
+        {
+            "@type": "cropCult:Economics",
+            "crop": "Paddy",
+            "pure_crop_income": "10,000 Rs",
+            "strip_crop_income": "9,000 Rs",
+            "income_difference": "1,000 Rs",
+            "net_return": "-1,000 Rs"
+        },
+        {
+            "@type": "cropCult:Economics",
+            "crop": "Arhar",
+            "pure_crop_income": "20,000 Rs",
+            "strip_crop_income": "7,000 Rs",
+            "income_difference": "13,000 Rs",
+            "net_return": "7,000 Rs"
+        }
+    ]
+}

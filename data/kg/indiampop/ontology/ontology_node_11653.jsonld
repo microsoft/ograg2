@@ -1,0 +1,35 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "treatment_method": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "CAULIFLOWER",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "thiram + streptocycline",
+                "quantity": "3g + 1.5 g/kg of seed",
+                "treatment_method": "Seed should be treated with thiram (0.3%) + streptocycline (0.15%) @ 3g + 1.5 g/kg of seed, respectively. To avoid bacterial rot, treat the seed with hot water at 52oC for 10 minutes."
+            }
+        }
+    ]
+}

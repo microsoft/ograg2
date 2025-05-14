@@ -1,0 +1,124 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "How OpenAI's ChatGPT has changed the world in just a year",
+            "author": "Andrew Tarantola",
+            "theme": "technology",
+            "content": "Over the course of two months from its debut in November 2022, ChatGPT exploded in popularity, from niche online curio to 100 million monthly active users — the fastest user base growth in the history of the Internet. In less than a year, it has earned the backing of Silicon Valley’s biggest firms, and been shoehorned into myriad applications from academia and the arts to marketing, medicine, gaming and government. In short ChatGPT is just about everywhere. Few industries have remained untouched by the viral adoption of the generative AI’s tools. On the first anniversary of its release, let’s take a look back on the year of ChatGPT that brought us here. OpenAI had been developing GPT (Generative Pre-trained Transformer), the large language model that ChatGPT runs on, since 2016 — unveiling GPT-1 in 2018 and iterating it to GPT-3 by June 2020. With the November 30, 2022 release of GPT-3.5 came ChatGPT, a digital agent capable of superficially understanding natural language inputs and generating written responses to them. Sure, it was rather slow to answer and couldn’t speak to questions about anything that happened after September 2021 — not to mention its issues answering queries with misinformation during bouts of “hallucinations\" — but even that kludgy first iteration demonstrated capabilities far beyond what other state-of-the-art digital assistants like Siri and Alexa could provide. ChatGPT’s release timing couldn’t have been better. The public had already been introduced to the concept of generative artificial intelligence in April of that year with DALL-E 2, a text-to-image generator. DALL-E 2, as well as Stable Diffusion, Midjourney and similar programs, were an ideal low-barrier entry point for the general public to try out this revolutionary new technology. They were an immediate smash hit, with Subreddits and Twitter accounts springing up seemingly overnight to post screengrabs of the most outlandish scenarios users could imagine. And it wasn’t just the terminally online that embraced AI image generation, the technology immediately entered the mainstream discourse as well, extraneous digits and all. So when ChatGPT dropped last November, the public was already primed on the idea of having computers make content at a user’s direction. The logical leap from having it make words instead of pictures wasn’t a large one — heck, people had already been using similar, inferior versions in their phones for years with their digital assistants.",
+            "created": "2023-11-30T14:00:50+00:00",
+            "published": "2023-11-30T14:00:50+00:00",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "schema:Thing",
+                    "eventTitle": "ChatGPT's Release",
+                    "eventSummary": "ChatGPT was released in November 2022, quickly gaining 100 million users.",
+                    "theme": "technology"
+                },
+                {
+                    "@id": "snap:event2",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Microsoft Partnership",
+                    "eventSummary": "Microsoft extended its partnership with OpenAI with a $10 billion investment.",
+                    "theme": "business"
+                },
+                {
+                    "@id": "snap:event3",
+                    "@type": "schema:Thing",
+                    "eventTitle": "ChatGPT Plus Launch",
+                    "eventSummary": "OpenAI launched ChatGPT Plus, a subscription service with additional features.",
+                    "theme": "business"
+                },
+                {
+                    "@id": "snap:event4",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Legal Challenges",
+                    "eventSummary": "OpenAI faced legal challenges over copyright issues.",
+                    "theme": "legal"
+                }
+            ]
+        }
+    ]
+}

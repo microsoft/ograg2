@@ -1,0 +1,95 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Kirsten Korosec",
+      "published": "2023-10-30T10:15:24+00:00",
+      "title": "Cruise hits the brakes on driverless, UAW makes progress and more EV backpedaling",
+      "summary": "The Station is a weekly newsletter dedicated to all things transportation. Sign up here — just click The Station — to receive the newsletter every weekend in your inbox. Subscribe for free. Welcome back to The Station, your central hub for all past, present and future means of moving people and packages from Point A to Point B. It was an absolutely wild week on the robotaxi front, and more specifically for GM’s self-driving car subsidiary Cruise. The week started off with the California Department of Motor Vehicles suspending Cruise’s driverless and deployment permits (with the California Public Utilities Commission following shortly after), effectively ending the company’s robotaxi operations in San Francisco just months after receiving the last necessary permit to commercialize its operations. Two days later, Cruise decided to pause driverless operations in every market it had started to charge for its robotaxi service, including Austin, Houston and Phoenix. That decision was surprising to me based on how sources had described an all-hands meeting earlier in the week that was led by co-founder and CEO Kyle Vogt. In that meeting, which came the day after the DMV suspended Cruise’s permit, Vogt and other leaders told staff the company had not paused operations elsewhere besides California and gave no indication that the company was planning to. Instead, Vogt told employees the company was re-evaluating how it discloses information to regulators to ensure it is clearly communicated, according to an account from sources who heard the call. Cruise had even quietly launched driverless operations in Miami (just a few vehicles), a move that suggested the company was moving ahead despite its significant problems in California. What changed? Perhaps Cruise execs were pressured by GM or they looked around and realized that they were losing support from other states. Either way, Cruise said it’s now going to examine “processes, systems, and tools and reflect on how we can better operate in a way that will earn public trust.” That might be a hefty challenge, especially in California. As the Cruise drama unfolded, opposition against robotaxis grew in cities like Los Angeles. And two of the biggest groups to oppose robotaxi expansion in California are now formally working together. Want to reach out with a tip, comment or complaint? Email Kirsten at kirsten.korosec@techcrunch.com or Rebecca at rebecca.techcrunch@gmail.com. Reminder that you can drop us a note at tips@techcrunch.com. If you prefer to remain anonymous, click here to contact us, which includes SecureDrop (instructions here) and various encrypted messaging apps. Micromobbin’ Taiwanese battery swapping giant Gogoro came to play at the Japan Mobility Show 2023, showing off how its scooter batteries can also be used to power a tiny car. The tiny car in question? Project X, a concept built by the Foxconn-led Mobility in Harmony Consortium (MIH). The cute little EV is a three-seater; the spot in the backseat where you’d normally seat a fourth person is taken up by two Gogoro battery pack slots. At the event, MIH said it aims to sell 100,000 of the minicars per year in India, Thailand and Japan starting in 2025. The company will initially target fleet operators and ride-hailing services rather than individual customers. MIH says Project X supports autonomous driving Levels 2 to 4 depending on the user’s needs. The price isn’t yet fixed, but should top around $20,000. It’s not clear if Gogoro’s swappable batteries will be used to power the vehicles going forward. After all, that would require Gogoro to set up a swapping network in those regions. But if so, it would signal a new revenue stream for the company, which has been struggling to reach profitability amid softening demand and large investments into international expansion. — Rebecca Bellan Deal of the week Well this is a fun one. Flexport is in talks to acquire the technology of Convoy, the once buzzy digital freight startup that abruptly shuttered after failing to find a buyer. This possible deal, which was reported by WSJ, didn’t have any other details, but it still made me raise an eyebrow. Lest you forget, Flexport founder Ryan Petersen just took back the CEO title after his hand-picked successor was pushed out. Petersen’s big message has been getting the company’s financial house back in order and has criticized former CEO Dave Clark of overspending, specifically around hiring and expanding too quickly. Petersen has spent the past month cutting costs, including laying off about 20% of its workers, or about 600 people. If Flexport acquires the technology, the company plans to restore Convoy’s trucking services for as many customers and partners as possible, according to WSJ’s source. And folks, that’s going to cost money. Is Petersen’s reign of financial frugality already over? Other deals that got my attention … Faction, the driverless tech developer, raised an undisclosed amount in a round led by TDK Ventures. Ducera Partners, Trucks Venture Capital and Fifty Years also joined the round. Ola Electric raised $384.4 million in a funding round, which included about $240 million in debt. Singapore’s sovereign wealth fund Temasek led the funding round and Indian government-backed lender State Bank of India bankrolled the debt. The new round values the Bengaluru-headquartered electric vehicle startup at about $5.4 billion Pony.ai, the Chinese autonomous vehicle startup, scored $100 million from Neom, Saudi Arabia’s futuristic city and development project. As part of the deal, a joint venture will be established to develop, manufacture and deploy autonomous vehicles and smart infrastructure in Neom and key markets in the Middle East North Africa region. Neom also announced plans this week to set up a $10 billion joint venture with Danish freight forwarder DSV. Stellantis made a €1.5 billion deal ($1.59 billion) to take a 20% stake in Chinese electric vehicle maker Zhejiang Leapmotor Technologies, just days after ending manufacturing in the country. The deal includes the formation of Leapmotor International, a 51% to 49% Stellantis-led joint venture that has exclusive rights for the export and sale, as well as manufacturing, of Leapmotor products outside China. Notable reads and other tidbits Autonomous vehicles Waymo driverless vehicles are now available through the Uber app, starting with Phoenix. The launch comes five months since the two companies announced a multi-year agreement for the autonomous vehicle service to be accessed via the Uber app. Electric vehicles, batteries & charging Ford is delaying about $12 billion in planned investments on EVs, including construction of a second battery plant with joint venture partner SK On due to softening demand for higher-priced premium electric vehicles. While EV sales have grown, consumers aren’t willing to pay a premium for an EV over a gas or hybrid vehicle. That price pressure has squeezed profits, and in the case of Ford’s EV business caused losses to grow. General Motors and long-time partner Honda have ended plans to build millions of affordable and smaller electric vehicles as the automakers come to terms with high interest rates and battery costs coupled with softening EV demand. Anyone spotting a trend here? Nikola, the electric and hydrogen-powered heavy truck maker, was awarded $165 million from its founder and former executive chairman, Trevor Milton, in an arbitration proceeding. Nio has opened its 2,000th Power Swap Station in China, nearing its goal to build 2,300 stations by the end of 2023. The company has expanded on its strategy of swapping out EV batteries, rather than charging them, an infrastructure-intensive process that has the potential to make topping up a battery as quick as filling up a gas tank. Tesla has the attention of the U.S. Department of Justice — again. This time it has received requests for information, including subpoenas from the DOJ related to perks, the advertised range of its EVs and personnel decisions. In-car and mobile tech Google Maps and Waze stopped live traffic updates in Israel and the Gaza Strip at the request of the Israel Defense Forces. A Google spokesperson said the ability to see live traffic conditions and business information was halted temporarily out of “consideration for the safety of local communities.” Google did something similar in 2022 amid the Russian invasion of Ukraine because the apps were being used to track military movements. XPeng, often called the Chinese challenger to Tesla, has removed high-definition mapping in its XNGP assisted driving feature following its rival’s lead. Ride-hailing and car-sharing Rapido, the eight-year-old Indian bike taxi startup, is expanding into the cab market in the South Asian nation, where Uber and its homegrown competitor Ola dominate. Peer-to-peer car-sharing marketplace Turo has introduced a buy-now-pay-later option. Now you can reserve a car without immediately paying for it until seven days before a trip. Turo says it built the BNPL option in-house. UAW strike Progress was made as the United Autoworkers strike wrapped up its sixth week. The UAW struck tentative deals with Ford and Stellantis this past week. Workers still have to ratify the deal, but with UAW president Shawn Fain’s support that outcome is likely. However, over at GM, it appears that negotiations are moving in the opposite direction. The UAW called for a surprise walkout at GM’s Spring Hill, Tennessee factory, a plant where 4,000 workers assemble engines and three Cadillac models.",
+      "url": "https://techcrunch.com/2023/10/30/cruise-hits-the-brakes-on-driverless-uaw-makes-progress-and-more-ev-backpedaling/"
+    }
+  ]
+}
+```

@@ -1,0 +1,132 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "IPL 2024 Auction Live: Starc, Cummins in spotlight as Dubai set for ‘richie-rich’ carnival",
+      "author": "Swati Bhatia",
+      "theme": "sports",
+      "content": "IPL 2024 Auction Live: The auction of the Indian Premier League (IPL) 2024 is slated to happen on December 19 in Dubai. Follow here for live updates. IPL 2024 Auction is over. And it’s a record breaking day in IPL history. For the first time ever, two players have breached the Rs 20 Cr mark with Mitchell Starc and Pat Cummins — two Australian pacers leading the money charts. Cummins went to Sunrisers Hyderabad for Rs 20.50 Cr but the record only lasted for 30 minutes as Kolkata Knight Riders broke the bank for Mitchell Starc, paying a whopping Rs 24.75 Cr. However, uncapped Indians such as Shubham Dubey and Sameer Rizvi too stole the show, bagging big contracts for their performances in regional T20 leagues. A total of 72 players including 30 overseas players were sold for Rs 230.45 Cr combined.",
+      "published": "2023-12-18T23:30:00+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "IPL 2024 Auction",
+          "eventSummary": "The auction of the Indian Premier League (IPL) 2024 is slated to happen on December 19 in Dubai.",
+          "theme": "sports",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "geo:location": "Dubai"
+          },
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Mitchell Starc"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Pat Cummins"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Shubham Dubey"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Sameer Rizvi"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Sunrisers Hyderabad"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Kolkata Knight Riders"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

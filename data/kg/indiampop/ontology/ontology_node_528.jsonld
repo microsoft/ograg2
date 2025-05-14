@@ -1,0 +1,553 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "SeedList": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List",
+                "has_early_sowing_time": "cropCult:SowingTime",
+                "has_late_sowing_time": "cropCult:SowingTime",
+                "has_seeding_rate": "schema:QuantitativeValue",
+                "has_fertilizer_application_requirements": "cropCult:Fertilization"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CropGrowingZones":{
+                "@container": "@list",
+                "@id": "cropCult:CropGrowingZones",
+                "@type": "schema:ItemList",
+                "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List",
+                    "has_seed_recommendations": "cropCult:SeedList"
+                }
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "for_flowering": "schema:Text",
+                "for_grain_filling": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "seedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "GREENGRAM",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "PDM-54",
+                "used_for": "Kharif Pre-rabi 65 70"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Resistant to YMV"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "HUM 1",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "70",
+                "used_for": "-"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Resistant to YMV"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "Dhauli (TT 9E)",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "65",
+                "used_for": "70"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Resistant to PM"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "OUM 11-5",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "55",
+                "used_for": "60"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Resistant to YMV"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "OBGG 52",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "65",
+                "used_for": "70"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Resistant to YMV, long pods"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "Jyoti(Hyb 4-3)",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "-",
+                "used_for": "65"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Moderately resistant to YMV, PM, black seeded. Sujata(Hyb 12-4)"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "K 851",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "70",
+                "used_for": "-"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Seeds shining green, bold"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "ML-5",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "65",
+                "used_for": "-"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Resistant to leaf spot"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "ML 131",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "65",
+                "used_for": "-"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tolerant to YMV, resistant to leaf spot"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "Pusa 9072",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "-",
+                "used_for": "70"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Resistant to PM"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "TARM 1",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "-",
+                "used_for": "60-65"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tolerant to PM, YMV"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "TARM 2",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "-",
+                "used_for": "60-65"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tolerant to PM, YMV"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "Samrat (PDM 84-139)",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "65-70",
+                "used_for": "65-75"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tolerant to YMV"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "MGG 347",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "65-70",
+                "used_for": "-"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": ""
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "BLACKGRAM",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "Sarala (B 12-4)",
+                "used_for": "75 85"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Resistant to YMV and PM"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "T 9",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "75",
+                "used_for": "80"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Susceptible to YMV"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "Pant U 30",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "65-70",
+                "used_for": "65-75"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Resistant to YMV, PM, leaf spot"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "Pant U 19",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "65-70",
+                "used_for": "70-75"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Resistant to YMV, leaf spot"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "Pant U 35",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "65-70",
+                "used_for": "65-75"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Resistant to YMV, leaf spot"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "KU 301",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "65-70",
+                "used_for": "65-75"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Resistant to YMV, leaf spot"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "KU 300",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "65-70",
+                "used_for": "65-70"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Resistant to YMV, leaf spot"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "ARHAR",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "Mahak",
+                "used_for": "120-130"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Indeterminate"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "UPAS 120",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "135",
+                "used_for": "-"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Indeterminate"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "CO 5",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "110-115",
+                "used_for": "-"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Semispreading, resistant to sterility mosaic"
+                }
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "Jagruti(ICPL- 151)",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "120-140",
+                "used_for": "-"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Determinate"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,141 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Finger millet (Marua)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Finger millet",
+                "used_for": "Grain production"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical and Subtropical regions",
+                    "has_regions": ["Africa", "Asia"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Eleusine coracana"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "June",
+                            "end_date": "July"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "August",
+                            "end_date": "September"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "2-3 kg/acre"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Nitrogen",
+                            "quantity": "20-30 kg/acre",
+                            "stage_of_application": "At sowing"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "10-12°C",
+                "for_flowering": "25-27°C",
+                "for_grain_filling": "20-22°C",
+                "negative_effect": "Below 10°C and above 30°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy soil",
+                "avoid_soil_type": "Clayey soil",
+                "for_water": "Well-drained soil",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the field 2-3 times and level it",
+                "with_soil_moisture": "Moist soil"
+            },
+            "seed_germination_test_requirements_are": "Seeds should be viable and free from diseases",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Mancozeb",
+                "quantity": "2-3 grams/kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "June-July",
+                "value": "30 cm x 10 cm",
+                "depth": "3-4 cm",
+                "method": "Line sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Echinochloa colona",
+                "weed_types": ["Grass weeds", "Broadleaf weeds"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Atrazine",
+                    "quantity": "1-1.5 kg/acre",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "500-600 mm",
+                "stage_of_application": "Throughout the growing season"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Blast disease",
+                "disease_symptoms": "White spots on leaves and stems",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Tricyclazole",
+                    "quantity": "0.6-0.8 kg/acre",
+                    "stage": "At disease appearance"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Stem borer",
+                "pest_symptoms": "Holes in stems and wilting of plants",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Carbaryl",
+                    "quantity": "1-1.5 kg/acre",
+                    "stage": "At pest appearance"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when grains are hard and moisture content is below 20%",
+            "storage_guidelines_are":"Store in a cool and dry place"
+        }
+    ]
+}

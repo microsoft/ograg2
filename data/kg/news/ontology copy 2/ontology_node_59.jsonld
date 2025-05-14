@@ -1,0 +1,136 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Raiders vs. Lions live score, updates, highlights from NFL 'Monday Night Football' game",
+      "author": "Dan Treacy",
+      "theme": "sports",
+      "content": "The Lions just needed to get themselves back in the win column after a blowout loss in Baltimore, and they did just that in front of their home fans on Monday night. Detroit rolled to a 26-14 victory over the Raiders in a game that felt much more one-sided than the score indicates. The Lions thoroughly outplayed the Raiders, out-gaining Las Vegas by 329 yards, but critical mistakes by Detroit left points on the board. The offense struggled to turn red zone opportunities into touchdowns in the first half, and two turnovers deep in Raiders territory -- including a pick-six by Jared Goff -- kept Las Vegas in the game in the second half. MORE: What to know about Lions' retro 'Honolulu blue' helmets Nonetheless, the Lions' defense dominated. The Raiders were abysmal on the offensive side of the ball, outside of a second-quarter touchdown drive led by Josh Jacobs. Jimmy Garoppolo completed just 10 passes, badly missing a wide-open Davante Adams on multiple occasions. Adams was seen slamming his helmet down on the sideline in the fourth quarter, and it's tough to blame the star receiver after an 11-yard performance that could have been exponentially better with better quarterback play. The story of the night was Lions rookie Jahmyr Gibbs, who finally broke through after entering the season with sky-high expectations. Tasked with leading the backfield in David Montgomery's absence, Gibbs exploded for 189 scrimmage yards and a touchdown in the win. It was the first 100-yard rushing performance of his career. Meanwhile, Amon-Ra St. Brown notched his third consecutive 100-yard game despite entering Monday as questionable with an illness. MORE: Why Davante Adams is unlikely to be traded before deadline The Lions enter their bye in sole possession of the No. 2 seed in the NFC, while the Raiders drop their second consecutive game against an NFC North opponent and have what might be a must-win game against the Giants in Week 9 if they want any chance to linger in the AFC playoff race. The Sporting News tracked live updates and highlights throughout the 'Monday Night Football' matchup between the Raiders and Lions. Check out all of the key moments you might have missed.",
+      "published": "2023-10-30T22:20:03+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Raiders vs. Lions Game",
+          "eventSummary": "The Lions defeated the Raiders 26-14 in a Monday Night Football game.",
+          "theme": "sports",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "geo:location": "Ford Field, Detroit, Mich."
+          },
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Jahmyr Gibbs"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Amon-Ra St. Brown"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Davante Adams"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Jimmy Garoppolo"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Josh Jacobs"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Detroit Lions"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Las Vegas Raiders"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

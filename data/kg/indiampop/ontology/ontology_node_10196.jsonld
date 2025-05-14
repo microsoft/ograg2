@@ -1,0 +1,66 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "RICE (Oryza sativa)",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Stale seed bed technique for wet seeded rice Ploughing and levelling of field is done after dewatering the field and kept as such for a minimum period of one week. The weed seeds, especially those of Echnochloa spp. will germinate by this period. The germinated seedlings are destroyed by flooding the field for 5-7 days. Sprouted seeds are then sown after dewatering the field. In wet seeded fields, stale seed bed technique can be done even without initial ploughing and levelling. First dewater the field and keep drained for one week period. Germinated weed seedlings can be destroyed by reflooding the field for 1-2 weeks. This practice in combination with stale seedbed can keep the field weed free up to 30DAS. This method has been found effective to control Echinochloa spp and wild rice."
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Echinochloa spp",
+                "weed_types": ["Echinochloa spp", "wild rice"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Azolla",
+                    "quantity": "As per requirement",
+                    "stage": "Manuring"
+                }
+            }
+        }
+    ]
+}

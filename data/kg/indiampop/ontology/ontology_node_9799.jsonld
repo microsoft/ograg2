@@ -1,0 +1,56 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Wilt",
+            "disease_symptoms": "Rust (Uromyces ciceris arietini) 'Kalanki roga' Symptoms and nature of damage Reddish brown elongated pustules found on the leaves. In severe cases, the leaves appear rough, wither and dry up.",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "@list": [
+                    {
+                        "name": "Sulphur",
+                        "quantity": "0.5%",
+                        "stage": "Spray wettable"
+                    },
+                    {
+                        "name": "Tridemorph",
+                        "quantity": "0.2%",
+                        "stage": "Spray"
+                    },
+                    {
+                        "name": "Oxycarboxin",
+                        "quantity": "0.2%",
+                        "stage": "Spray"
+                    },
+                    {
+                        "name": "Chlorothalonil",
+                        "quantity": "0.2%",
+                        "stage": "Spray"
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,52 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "High",
+                "stage_of_application": "Throughout the growth period"
+            }
+        },
+        {
+            "@type": "IrrigationRequirement",
+            "quantity": "High",
+            "stage_of_application": "Throughout the growth period",
+            "schema:description": "Even as advanced pressure irrigation method, such as drip and sprinkler systems are in vogue the traditional gravity surface irrigation methods still remain inevitable due to their simplicity in layouts and low installation and operational expenses. However the short strip furrow and check basin layouts (the primary surface irrigation methods in Tamilnadu) warrant division of the irrigated fields into a number of square or rectangular (2m x 2m to 6m x 6m ) plots encompassed by crisscross ridges and feeder channels for facilitating irrigation flow from head to tail end of the field. This eventually results in prolonged irrigation application time and reduced irrigation efficiencies of 55 65% only due to excessive seepage, deep percolation and runoff losses (35-45%). Besides, the crisscross layout with cross ridges and feeder channels leads to a land loss of 15 -25%. In view of minimizing the land and water loss and to accomplish high level of irrigation and water use efficiencies a relatively new surface irrigation method called “surge irrigation” was introduced in TNAU campus with extensive experimental trials on it’s hydraulic performance evaluation and crop compatibility during 1992-95."
+        }
+    ]
+}

@@ -1,0 +1,246 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "title": "Michelle Jubelirer on Ice Spice, The Beatles, and reinventing Capitol Music Group",
+      "byline": "Tim Ingham",
+      "published": "2023-12-07T20:57:51+00:00",
+      "summary": "I don’t think any label group has been able to turn things around as quickly as my team and I have done in less than two years.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://www.musicbusinessworldwide.com/michelle-jubelirer-on-ice-spice-the-beatles-and-reinventing-capitol/"
+      }
+    },
+    {
+      "@type": "Organization",
+      "name": "Capitol Music Group"
+    },
+    {
+      "@type": "Person",
+      "name": "Michelle Jubelirer"
+    },
+    {
+      "@type": "Organization",
+      "name": "Universal Music Group"
+    },
+    {
+      "@type": "Organization",
+      "name": "Music Business Worldwide"
+    },
+    {
+      "@type": "Person",
+      "name": "Steve Barnett"
+    },
+    {
+      "@type": "Person",
+      "name": "Jeff Vaughn"
+    },
+    {
+      "@type": "Organization",
+      "name": "Signal Records"
+    },
+    {
+      "@type": "Organization",
+      "name": "Sony"
+    },
+    {
+      "@type": "Organization",
+      "name": "Columbia"
+    },
+    {
+      "@type": "Organization",
+      "name": "Motown"
+    },
+    {
+      "@type": "Organization",
+      "name": "Quality Control"
+    },
+    {
+      "@type": "Organization",
+      "name": "10K Projects"
+    },
+    {
+      "@type": "Person",
+      "name": "Elliot Grainge"
+    },
+    {
+      "@type": "Person",
+      "name": "Ice Spice"
+    },
+    {
+      "@type": "Person",
+      "name": "Nicki Minaj"
+    },
+    {
+      "@type": "Person",
+      "name": "Doechii"
+    },
+    {
+      "@type": "Organization",
+      "name": "Top Dawg"
+    },
+    {
+      "@type": "Organization",
+      "name": "TDE"
+    },
+    {
+      "@type": "Person",
+      "name": "Toosii"
+    },
+    {
+      "@type": "Person",
+      "name": "Offset"
+    },
+    {
+      "@type": "Person",
+      "name": "Troye Sivan"
+    },
+    {
+      "@type": "Person",
+      "name": "Niall Horan"
+    },
+    {
+      "@type": "Person",
+      "name": "Fletcher"
+    },
+    {
+      "@type": "Person",
+      "name": "Maggie Rogers"
+    },
+    {
+      "@type": "Person",
+      "name": "The Beatles"
+    },
+    {
+      "@type": "Organization",
+      "name": "Virgin Music Group"
+    },
+    {
+      "@type": "Organization",
+      "name": "HYBE America"
+    },
+    {
+      "@type": "Organization",
+      "name": "Warner Music Group"
+    },
+    {
+      "@type": "Person",
+      "name": "Arjun Pulijal"
+    },
+    {
+      "@type": "Person",
+      "name": "Jeremy Vuernick"
+    },
+    {
+      "@type": "Person",
+      "name": "Orlando Wharton"
+    },
+    {
+      "@type": "Person",
+      "name": "Kenoe Jordan"
+    },
+    {
+      "@type": "Person",
+      "name": "Gordan Dillard"
+    },
+    {
+      "@type": "Person",
+      "name": "Sam Smith"
+    },
+    {
+      "@type": "Person",
+      "name": "Jo Charrington"
+    },
+    {
+      "@type": "Person",
+      "name": "Jack Street"
+    },
+    {
+      "@type": "Person",
+      "name": "Sam Evitt"
+    }
+  ]
+}
+```

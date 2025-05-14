@@ -1,0 +1,60 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "CroppingSystem": {
+            "@id": "cropCult:CroppingSystem",
+            "@type": "schema:Thing",
+            "@context": {
+                "intercropping_recommendation": "schema:Text",
+                "main_crop": "cropCult:Crop",
+                "intercrop": "cropCult:Crop",
+                "ratio": "schema:Text",
+                "conditions": "schema:Text",
+                "season": "schema:Text",
+                "soil_type": "schema:Text",
+                "location": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "CroppingSystem",
+            "intercropping_recommendation": "Intercropping of sunflower CO 1, with the main crop of sorghum CO 26 in 4:2 ratio is recommended under rainfed conditions during North-East monsoon for black soils of CBE.",
+            "main_crop": {
+                "@type": "Crop",
+                "name": "sorghum CO 26"
+            },
+            "intercrop": {
+                "@type": "Crop",
+                "name": "sunflower CO 1"
+            },
+            "ratio": "4:2",
+            "conditions": "rainfed",
+            "season": "North-East monsoon",
+            "soil_type": "black soils",
+            "location": "CBE"
+        }
+    ]
+}

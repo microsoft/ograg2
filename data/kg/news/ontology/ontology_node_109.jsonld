@@ -1,0 +1,152 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "The Halloween Countdown: 31 days of horror to watch",
+            "author": "Toussaint Egan",
+            "theme": "entertainment",
+            "summary": "Your time is precious, and your options are endless. The good news: We watch it all so you don’t have to. Polygon’s What to Watch highlights the best, the funniest, the scariest, and the most exciting in movies, TV, and everything in between. Stop scrolling, start watching! If there’s one thing we love here at Polygon, it’s the Halloween season. We cover horror year-round, whether it’s the best horror movies you can stream at home or the best horror movies on Netflix, and generally, we have our finger on the undead pulse of the newest and ghastliest releases in horror. We even have a list of the best horror movies of the year (ranked by scariness, of course). Even still, Halloween is an especially spooky time of year, and it warrants special attention and celebration. For the past three years, Polygon has put together a Halloween countdown calendar, selecting 31 of our staff’s top horror-themed or Halloween-adjacent picks across movies and TV throughout the month of October, all available to watch at home. We’ve loved doing it, so much so that we’re bringing it back again — this time with a whole new batch of films and shows to choose from. Every day for the month of October, we’ll add a new recommendation to this countdown and tell you where you can watch it. So curl up on the couch, dim the lights, and grab some popcorn for a terrifying and entertaining marathon of horrific delights.",
+            "created": "2023-10-10T15:27:53+00:00",
+            "published": "2023-10-10T15:27:53+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Messiah of Evil",
+                        "eventSummary": "A undersung classic of ’70s cosmic horror, Willard Huyck and Gloria Katz’s Messiah of Evil is a surreal and nightmarish experience that more than deserves its status as a cult horror classic. The film centers on Arletty, a young woman who journeys to the remote coastal town of Point Dume, California, to track down her missing father, a reclusive painter who is plagued by disturbing visions of an impending apocalypse. After crossing paths with an eccentric aristocrat and his groupie companions, the group bears witness to the realization of the painter’s prophecy, as the townspeople are transformed into flesh-eating ghouls and the messiah of evil makes his return to the mortal realm. At times convoluted and bizarre, Messiah of Evil is a genuinely entertaining horror thriller filled with memorable scares and chilling set-pieces. From a cross-eyed albino man gleefully devouring a field mouse whole to a unsuspecting woman watching a Western as the theater around her slowly fills with ravenous undead zombies, it’s a dreamy and frightening experience that lands somewhere between the ineffable gothic horror of H.P. Lovecraft and the anti-consumerist allegories of George A. Romero. The horrors hold up over 50 years after it was first released, and with just the right combination of inadvertent silliness and legitimate terror, Messiah of Evil is a satisfying watch and an excellent start to a month of horrors.",
+                        "hasLocation": "Prime Video, Shudder, Pluto TV, Plex"
+                    },
+                    {
+                        "eventTitle": "Ginger Snaps",
+                        "eventSummary": "There’s a sizable hole in the monster movie canon: There just aren’t enough good werewolf movies! Ginger Snaps is here to fix that. And if you love Jennifer’s Body, you’re in for a bloody treat. Directed by future Orphan Black co-creator John Fawcett, Ginger Snaps is a delightfully gruesome story about two sisters. One of them has gotten her period for the first time, and is turned into a werewolf shortly after. Things get messy, fast. Ginger Snaps doesn’t just do a great job filling in the werewolf canon. It’s a grisly body horror story placed onto an effective puberty allegory, with a compelling central sister relationship. If you’ve ever watched something like Sam Raimi’s Spider-Man and thought, This is great and surprisingly gooey, but give me stories like this about teen girls, then Ginger Snaps is for you. The movie has amassed a dedicated cult following in the years since its release. You’re next up to join the ranks — see you at the next full moon!",
+                        "hasLocation": "Criterion Channel, Shudder, Peacock, Vudu, Tubi, Freevee, Plex"
+                    },
+                    {
+                        "eventTitle": "Creepshow",
+                        "eventSummary": "The new Creepshow home video release — presented in vibrant 4K UHD Blu-ray — is the best way to revisit this horror anthology classic. You can see individual bubbles in the foam of the ocean as it slowly drowns Ted Danson. This is why it made our list of the best Blu-rays of 2023. But reader, while I’m one of those sickos who obsesses over video resolution and bitrate, I’ll be honest: You don’t need the fanciest version of Creepshow to enjoy its comedic chills. In fact, the most aesthetically harmonious format might be a poorly treated VHS tape that recorded the film off TBS in the mid-1990s. Horror anthologies have most recently been used to condense as much terror into a tiny package, like chugging a shot glass of hot sauce. Creepshow is a throwback to a softer, more leisurely style of horror — a middle ground between the plodding tinglers of Poe and contemporary slashers. Plus, Stephen King performs a one-person show as a hillbilly. So like, that should be enough.",
+                        "hasLocation": "Kanopy"
+                    },
+                    {
+                        "eventTitle": "Pulse",
+                        "eventSummary": "What if technology could be used to communicate with the dead? It’s an idea that dates as far back as the spiritualism movement of the late 19th century, and one that takes on a frightening and fascinating dimension in Kiyoshi Kurosawa’s post-Y2K horror-thriller Pulse. Alternating between two storylines, Kurosawa’s film follows a group of young adults and university students as a rash of inexplicable disappearances and suicides occurs around Tokyo. As the protagonists investigate further, they slowly uncover a shocking revelation: The souls of the dead are spilling over into the mortal world and ensnaring their unsuspecting prey through the very infrastructure of the internet. By the time they realize this, however, it’s too late; the unearthly contagion has taken on a life of its own, and the only way to survive is cling to what few connections they have left. Produced after Kurosawa’s Cure (which we featured on last year’s Halloween calendar), Pulse is widely celebrated as one of the foundational texts in the canon of J-horror cinema, alongside Hideo Nakata’s Ring and Takashi Shimizu’s Ju-on: The Curse. Eerie and methodical, Kurosawa’s film is a nihilistic meditation on technology and human relationships that presages an advent of loneliness in a world growing more and more “connected” with each passing day. Rife with imagery that will stay with you long after it’s over, Pulse is a tremendous and terrifying movie worth experiencing.",
+                        "hasLocation": "Prime Video"
+                    },
+                    {
+                        "eventTitle": "Apostle",
+                        "eventSummary": "Don’t confuse Gareth Edwards (director of The Creator and Rogue One: A Star Wars Story) with Gareth Evans, director of the Raid movies. If you do, you may sit down to the Netflix-exclusive Apostle expecting expansive, detail-driven science fiction, and be unpleasantly surprised when you get a grimy, extremely gory period piece that goes to startling extremes. Evans’ mesmerizing Apostle deliberately starts in roughly the same place as the classic 1973 suspense thriller The Wicker Man, with a lone man heading to a remote Welsh island after getting a letter suggesting his sister is being held against her will there by a dangerous cult. Worming his way into the community by pretending to be a convert, Thomas (Dan Stevens, even more feral and intense than he is in The Guest or Beauty and the Beast) inevitably discovers a lot of nasty work going on on the island. Evans charts his own course with Apostle, veering far from the Wicker Man mold and into much bloodier territory. But he takes advantage of some of the same ideas: the ominous isolation of the island, the close-knit secrecy of its community, the predatory ideas that have flourished there under charismatic leadership. Stevens is particularly terrific in this movie, lunging from one scene to the next like a humanoid wolf who can barely contain his bloodlust. (Thomas has plenty of closely held secrets of his own.) And Evans’ commitment to violent mayhem gives this one some memorable moments that are likely to haunt you later, in the dark.",
+                        "hasLocation": "Netflix"
+                    },
+                    {
+                        "eventTitle": "Dracula 2000",
+                        "eventSummary": "With the scars of nu-metal having healed and Olivia Rodrigo’s Paramore-infused pop tracks having gone full “vampire,” now is the time to give Gerard Butler’s half-bare-chest take on Dracula the respect it’s due. Maybe the most Dimension Films movie to ever bear the Dimension Films studio logo (close second: The Faculty), Dracula 2000 finds a group of thieves — including of-the-moment faces like Omar Epps, Jennifer Esposito, and Shane West! — transporting a stolen silver coffin from London to New Orleans. They think there’s treasure inside. Are they idiots? Absolutely. And when they find Dracula instead of gold doubloons or whatever, they unleash hell. Overacted, canted-angled, seven-string-guitar-plucking HELL. Luckily, as Dracula hunts down local college student Mary Van Helsing (Justine Waddell), with whom he already shares a psychic connection, Mary’s dad’s new vampire-hunter assistant Simon (young Jonny Lee Miller!) is on his tail. Butler, never more a heartthrob, plays Dracula in a mesmerizing, baroque manner; think Nicolas Cage doing Dracula if this year’s Renfield was emo turn-of-the-millennium trash. And he’s constantly biting unsuspecting B-list actors to add to his army of hot people, who fight the heroes in multiple obligatory scenes of wire-fu. Writer-director Patrick Lussier cuts it all up like it’s the video for “Freak on a Leash,” and, well, objectively, it’s quite unlike most horror movies you can watch today! Enjoyment of Dracula 2000 may vary depending on a tolerance for Hot Topic goofs, but if you don’t catch up with it, you can’t enjoy Lussier’s sequel, Dracula II: Ascension, starring Jason Scott Lee as a martial-arts-fighting priest who kicks Dracula’s ass!",
+                        "hasLocation": "Max"
+                    },
+                    {
+                        "eventTitle": "Prince of Darkness",
+                        "eventSummary": "There aren’t enough movies about the end of the world. Sure, there are plenty of movies about preventing catastrophe at that scale, but rarely do they have the follow-through to truly get existentially terrifying. Thankfully, John Carpenter is no coward, and he made three movies about different kinds of apocalypses. But while The Thing is the best known, and In the Mouth of Madness is the zaniest, Prince of Darkness might be the scariest of the trilogy. Prince of Darkness follows a group of college researchers who are sent to study a strange canister found in the basement of a church. The canister is filled with some kind of liquid that defies science, and when it starts to get released, a strange evil seems to come into the world with it. This is Carpenter at his most ambitious. While most of this movie is set in just one building, all manner of horror makes its way inside. There are people made of bugs, horrific zombies, an extradimensional Satan, and things even worse to behold. The entire movie is an onslaught of creepy, skin-crawling images, all built out of a unique mythology about the relationship between good and evil that underpins the world. And, most importantly, after this parade of horrors seems to come to an end, Carpenter saves Prince of Darkness’ biggest, weirdest, most dreadful scare for last.",
+                        "hasLocation": "Peacock"
+                    },
+                    {
+                        "eventTitle": "Gravity Falls - Northwest Mansion Mystery",
+                        "eventSummary": "The more time that has passed since Gravity Falls concluded, the more miraculous it feels in hindsight. Alex Hirsch’s paranormal comedy show about 12-year-old twins Dipper and Mabel, who solve supernatural mysteries in their great-uncle’s home in rural Oregon, is the perfect entry point for young horror-loving audiences. It’s a pastiche of The X-Files, Twin Peaks, and Adventure Time all rolled into one, with the freewheeling, funloving spirit of a summer vacation. There’s tons of fantastic episodes to choose from, but if you’re looking for an especially spooky one to get in the Halloween spirit, you can’t go wrong with “Northwest Mansion Mystery.” A ghost has taken up residence in the mansion estate of the wealthiest family in Gravity Falls on the eve of their annual party, and Dipper has been enlisted to exorcize it. Upon arriving at the mansion, Dipper and popular girl Pacifica Northwest uncover a dark family secret that’s been buried for generations, one that threatens to not only tarnish the family’s reputation, but engulf the entire town. For a series ostensibly aimed at young children, it’s kind of wild just how scary “Northwest Mansion Mystery” gets, with taxidermy animals bleeding from their mouths, flaming skeletal lumberjacks, and hapless partygoers being petrified into screaming wooden statues. It’s a blast, and a solid stand-alone episode to introduce new audiences to the all the spooky (and “spoopy”) delights Gravity Falls has to offer.",
+                        "hasLocation": "Hulu, Disney Plus (season 2, episode 10)"
+                    },
+                    {
+                        "eventTitle": "The Scooby-Doo Project",
+                        "eventSummary": "Scooby-Doo got extremely dark for a few years in the early 2000s, which also happened to be the best years of the series since its heyday in the 1970s. But while movies like The Witch’s Ghost and Zombie Island are absolutely excellent (and still hold up), among the most interesting hidden gems of the series is The Scooby-Doo Project. Like its name implies, this was a parody of The Blair Witch Project that stars the Mystery Inc. gang. Scooby, Shaggy, Fred, Velma, and Daphne set off in the Mystery Machine to the remote woods of Casper County. The movie is filmed in the same documentary style that The Blair Witch Project made iconic, and mostly inserts the gang into live-action locations like real woods or a real town where they interview locals. The project was originally created as a bumper to bookend segments of a 1999 Scooby-Doo marathon (just a few months after the movie it was based on was released), but after Cartoon Network saw what the creators put together, it wisely decided to re-air the short segments end-to-end as a movie. The Scooby-Doo Project not only stands alongside the original Blair Witch as an impressive and loving parody, but also as a similarly unnerving found-footage horror movie. The gang standing around among live-action backgrounds is creepy enough on its own, but hearing the beloved characters be accosted by unseen forces as they sprint through the woods is downright scary — particularly if you were a kid watching this for the first time in 1999, well before you saw The Blair Witch Project. But the best part of The Scooby-Doo Project comes at the end when, much like the other Scooby-Doo movies of the time, we get a soft implication that the supernatural elements of the story were actually real and the horrors won’t stop when the villain’s mask comes off. It’s a downright haunting ending, and manages to match the excellence of its source material, which is high praise for any horror movie, let alone a Scooby-Doo parody.",
+                        "hasLocation": "YouTube"
+                    },
+                    {
+                        "eventTitle": "Saloum",
+                        "eventSummary": "One of the best movies of 2022 was this criminally underseen Senegalese thriller. Saloum follows three extremely cool mercenaries whose post-mission flight home gets interrupted. The trio find themselves in a mysterious village where something is off, and the tension slowly ramps up into a chaotic finale. The trio of lead actors are absolutely magnetic — Yann Gael (1899), Roger Sallah, and the late Mentor Ba bring the trio of loyal friends who also happen to be extremely deadly professionals fully to life. And with fantastic costume design, a stirring score, and compelling images from award-winning music video director Jean Luc Herbulot, Saloum is 84 minutes of genre-bending excellence. Saloum first premiered at the 2021 Toronto International Film Festival, and the movie went on to win awards at Fantastic Fest and the Vancouver International Film Festival. And yet, way too few people have seen it. This is your chance to correct the record and help make Saloum the cult classic it deserves to be.",
+                        "hasLocation": "Shudder, AMC Plus"
+                    },
+                    {
+                        "eventTitle": "Heck",
+                        "eventSummary": "Skinamarink has proven to be one of the most polarizing horror releases of 2023. Kyle Edward Ball’s feature debut about two children trapped alone inside their home by a malevolent entity eschews the formal conventions of traditional cinematography and plot, consisting instead of a series of canted-angle shots of dark hallways and yawning darkness that forces the audience to ruminate on the horrors that lay therein. Personally, I vibed with it heavily, and so it should come as no surprise that I quite enjoyed Ball’s 2020 short film Heck as well. Conceived as a “proof of concept” for Skinamarink, the short is told from the perspective of a young child who wakes in the dead of night to the blaring sound of their mother’s television set. With their mother seemingly nowhere to be found, the child is left to their own devices, with no means of either leaving the house or calling for help. As the interminable night drags on, with hours morphing into days morphing into weeks morphing into months of penumbral isolation, the child grows more fearful and feral, resorting to increasingly more desperate acts of disobedience in hopes of rousing their mother from sleep. This effort, however, is ultimately proven to be in vain. Heck circles the same rough ideas and themes of Skinamarink to different effect, channeling the vulnerability of a child and the horror of abandonment and neglect to create an experimental horror experience that demands the audience’s full attention. It’s a fascinating companion to Skinamarink that shows just how far Ball has come as a director honing in on this particular strain of horror, and makes it all the more intriguing to speculate on what he might conjure up next.",
+                        "hasLocation": "YouTube"
+                    }
+                ]
+            }
+        }
+    ]
+}

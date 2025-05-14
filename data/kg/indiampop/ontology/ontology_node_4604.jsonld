@@ -1,0 +1,64 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "SeedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        },
+        "Mulching": {
+            "@id": "cropCult:Mulching",
+            "@type": "schema:Thing",
+            "@context": {
+                "materials": "schema:Text",
+                "instructions": "schema:Text",
+                "nitrogen_application": "schema:Text",
+                "distance_from_plant": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Other Crops",
+            "needs_seed_sowing_spacing": {
+                "@type": "SeedSpacing",
+                "method": "double hedge-staggered"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "Mulching",
+                "materials": "Guatemala, water hyacinth, spent Citronella grass, Paddy straw",
+                "instructions": "After planting, the area should be mulched with green materials. Paddy straw may be used as mulching material.",
+                "nitrogen_application": "When paddy straw is used for mulching, it is essential to apply 20 kg nitrogen per hectare, preferably in the form of ammonium sulphate over the mulch.",
+                "distance_from_plant": "Mulching should be done 10cm away from the collar of the plant."
+            }
+        }
+    ]
+}

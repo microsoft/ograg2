@@ -1,0 +1,56 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements"
+            }
+        },
+        "CropGrowingZones": {
+            "@container": "@list",
+            "@id": "cropCult:CropGrowingZone",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name"
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "for_flowering": "schema:Text",
+                "for_grain_filling": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "JATROPHA (Jatropha curcas)",
+            "has_growing_zones": [
+                {
+                    "@type": "CropGrowingZones",
+                    "name": "tropics"
+                },
+                {
+                    "@type": "CropGrowingZones",
+                    "name": "sub-tropics"
+                }
+            ],
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "It can stand heat and frost.",
+                "for_flowering": "It can stand heat and frost.",
+                "for_grain_filling": "It can stand heat and frost.",
+                "negative_effect": "Water requirement is extremely low."
+            }
+        }
+    ]
+}

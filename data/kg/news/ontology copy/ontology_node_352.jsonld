@@ -1,0 +1,258 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Netgear Nighthawk Router",
+      "summary": "The Netgear Nighthawk series of routers are well regarded and make up some of the picks in our Best Routers guide. This model isn't one of the fancy ones, but it's a solid choice. You get Wi-Fi 6 support, coverage of up to 3,500 square feet, and the USB input means you can connect a storage drive for shared disk space.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Newegg"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Eero Pro 6E Mesh Router",
+      "summary": "If you're battling Wi-Fi dead zones in your house, you may need to add a mesh router to your setup. Our upgrade pick, Eero's Pro 6E makes this process as simple and hands-off as it can be, and each should one covers 2,000 square feet.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Eero"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "SimpliSafe Home Security",
+      "summary": "SimpliSafe makes home security easy to set up and expand on as needed with multiple motion, door, and window sensors, plus panic buttons and key fob controllers.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: SimpliSafe"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Govee Smart Lighting",
+      "summary": "Govee makes some of our favorite smart lighting, and this is our pick for a diffused light strip that can be installed on the wall, stairs, or anywhere else in plain view.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Govee"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Monster Digital Frame",
+      "summary": "Monster's digital frame isn't as good as options from Aura or Nixplay, but we like it better than most other cheap frames.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Monster"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "EcoFlow River 2 Pro Portable Power Station",
+      "summary": "It's debatable whether some of the Best Portable Power Stations are truly all that portable, but this one from EcoFlow is easy to carry, with a large handle along the back.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: EcoFlow"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Tile Sticker Two-Pack",
+      "summary": "If you're constantly losing remotes, Tile's Stickers can come in handy. These Bluetooth tracker stickers can be stuck onto remotes, e-readers, or anything else you want to keep track of within a 150-foot range.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Tile"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Petcube Bites 2 Pet Camera",
+      "summary": "Petcube makes some of our favorite pet cameras, and this one holds more treats and larger pieces than some of the others we tried.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Petcube"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Niu KQi3 Pro Electric Scooter",
+      "summary": "This is our favorite electric scooter for most people. It goes on sale regularly, so never pay full price for one.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Niu"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Withings Body+ Smart Scale",
+      "summary": "Even after trying the newer Withings Body Comp smart scale, the Body+ model is still in the sweet spot for us.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Withings"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Aqara Water Leak Detector",
+      "summary": "Water damage is one of the most frightening and potentially expensive disasters any homeowner can face, but if you learn about a leak swiftly enough you can keep damage to a minimum.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Aqara"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Epicka Travel Adapter",
+      "summary": "If you want to stay powered up on your travels, you need a travel adapter, and this one from Epicka is the budget pick in our Best Travel Adapters guide.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Epicka"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Nanoleaf Light Kit",
+      "summary": "We love this light kit for adding fun ambient lighting to any room. Each hexagon is its own light, so you can control and customize the hexagons into just about any design of your choosing.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Nanoleaf"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Google Nest Hub Max",
+      "summary": "The Google Nest Hub Max has a nice big screen and slim, powerful speakers to match. It's our favorite smart display for a variety of reasons.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Google"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Therabody Smart Goggles",
+      "summary": "Therabody's Smart Goggles use heat, vibrations, and light pressure to massage your eyes and temples.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Therabody"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Willow Go Wearable Breast Pump",
+      "summary": "Our favorite wearable breast pump is easy to use, easy to clean, and easy to bring anywhere.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Willow"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Tushy Classic 3.0 Bidet",
+      "summary": "The Tushy is affordable and, as far as bidets go, easy to install on practically any toilet.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: TUSHY"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Coway Airmega 250 Air Purifier",
+      "summary": "For larger rooms, you want a larger air purifier, and we recommend the Airmega 250 as the best air purifier for living rooms.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Amazon"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "LifeStraw Personal Water Filter",
+      "summary": "WIRED readers love LifeStraw filters, and this is the lowest we tend to see them drop in price.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: LifeStraw"
+      }
+    }
+  ]
+}
+```

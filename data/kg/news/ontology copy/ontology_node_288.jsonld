@@ -1,0 +1,178 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Jamie Jackson",
+      "published": "2023-12-25T10:00:20+00:00",
+      "title": "From Ten Hag’s future to a leaking roof: Ratcliffe’s Manchester United in-tray",
+      "summary": "Erik ten Hag’s team are treading water at precisely the wrong moment: as Sir Jim Ratcliffe takes charge of Manchester United’s sporting department before making sweeping changes in the posts that will directly affect the manager. Richard Arnold has left despite officially staying until the end of the year and into his role may come Jean-Claude Blanc, the CEO of Ratcliffe’s Ineos Sport, as the man Ten Hag reports to. Ten Hag’s line manager may change too, as Ratcliffe considers whether a new football director is required, a position held by John Murtough. Ten Hag may have a first clue of his status in Ratcliffe’s new empire if he is sounded out for his view of a prime factor in his ability to coach and manage the side to success: United’s transfer policy. This leads us to Murtough …",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "url": "https://www.theguardian.com/football/2023/dec/25/ten-hag-future-jim-ratcliffe-manchester-united-in-tray"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "The Guardian"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Erik ten Hag"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Sir Jim Ratcliffe"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Richard Arnold"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jean-Claude Blanc"
+    },
+    {
+      "@type": "snap:person",
+      "name": "John Murtough"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Casemiro"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Aaron Ramsey"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Kasper Schmeichel"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Ross Barkley"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Dan Ashworth"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Paul Mitchell"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Manchester United"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Nice"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Manchester City"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Juventus"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Paris Saint-Germain"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "French Tennis"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Tour de France"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Glazers"
+    }
+  ]
+}
+```

@@ -1,0 +1,160 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "The Best NBA Betting Sites and Apps for the 2023-24 Season",
+            "author": "Sam Eggleston",
+            "theme": "sports",
+            "summary": "With legal sports betting now at your fingertips in over 30 states, it’s easier than ever to bet on basketball at one of the best NBA betting sites.",
+            "created": "2023-10-02T21:58:37+00:00",
+            "published": "2023-10-02T21:58:37+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "NBA Regular Season Begins",
+                        "eventSummary": "The 2023-24 NBA regular season kicks off.",
+                        "theme": "sports",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Locations"
+                        }
+                    },
+                    {
+                        "eventTitle": "NBA In-Season Tournament",
+                        "eventSummary": "A tournament held from November 3 to December 9.",
+                        "theme": "sports",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Locations"
+                        }
+                    },
+                    {
+                        "eventTitle": "NBA All-Star Weekend 2024",
+                        "eventSummary": "The All-Star Weekend takes place from February 16-18.",
+                        "theme": "sports",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Locations"
+                        }
+                    },
+                    {
+                        "eventTitle": "NBA Regular Season Ends",
+                        "eventSummary": "The regular season concludes on April 14.",
+                        "theme": "sports",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Locations"
+                        }
+                    },
+                    {
+                        "eventTitle": "NBA Play-In Tournament",
+                        "eventSummary": "The play-in tournament occurs from April 16-19.",
+                        "theme": "sports",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Locations"
+                        }
+                    },
+                    {
+                        "eventTitle": "NBA Playoffs Begin",
+                        "eventSummary": "The playoffs commence on April 20.",
+                        "theme": "sports",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Locations"
+                        }
+                    },
+                    {
+                        "eventTitle": "NBA Finals Game 1",
+                        "eventSummary": "The first game of the NBA Finals is on June 6.",
+                        "theme": "sports",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Locations"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

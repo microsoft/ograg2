@@ -1,0 +1,63 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Composting": {
+            "@id": "cropCult:Composting",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_process": "cropCult:CompostingProcess",
+                "has_materials": "cropCult:CompostingMaterials",
+                "has_technology": "cropCult:CompostingTechnology",
+                "has_warnings": "schema:Text"
+            }
+        },
+        "CompostingProcess": {
+            "@id": "cropCult:CompostingProcess",
+            "@type": "schema:Thing",
+            "@context": {
+                "phase": "schema:Text",
+                "duration": "schema:Text",
+                "description": "schema:Text"
+            }
+        },
+        "CompostingMaterials": {
+            "@id": "cropCult:CompostingMaterials",
+            "@type": "schema:Thing",
+            "@context": {
+                "materials_used": "schema:Text",
+                "preparation": "schema:Text"
+            }
+        },
+        "CompostingTechnology": {
+            "@id": "cropCult:CompostingTechnology",
+            "@type": "schema:Thing",
+            "@context": {
+                "technology_name": "schema:name"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Composting",
+            "name": "COMPOSTING OF SOLID WASTES",
+            "has_process": {
+                "@type": "cropCult:CompostingProcess",
+                "phase": "Phase 2",
+                "duration": "twenty days",
+                "description": "Pre digestion of organic waste by heaping the material along with cattle dung slurry. This process partially digests the material and fit for earthworm consumption."
+            },
+            "has_materials": {
+                "@type": "cropCult:CompostingMaterials",
+                "materials_used": "organic waste, cattle dung slurry",
+                "preparation": "Cattle dung and biogas slurry may be used after drying."
+            },
+            "has_technology": {
+                "@type": "cropCult:CompostingTechnology",
+                "technology_name": "TNAU Vermi Biocompost Technology"
+            },
+            "has_warnings": "Wet dung should not be used for vermicompost production."
+        }
+    ]
+}

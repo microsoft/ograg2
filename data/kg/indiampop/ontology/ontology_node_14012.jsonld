@@ -1,0 +1,48 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Cuscuta parasite",
+            "pest_symptoms": "Major problem in Koraput district and also to some extent in Keonjhar and Mayurbhanj",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Trifluralin",
+                "quantity": "2.5 kg/ha",
+                "stage": "Pre-plant"
+            }
+        },
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Cuscuta parasite",
+            "pest_symptoms": "Major problem in Koraput district and also to some extent in Keonjhar and Mayurbhanj",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Pendimethalin",
+                "quantity": "1.5 kg/ha",
+                "stage": "Pre-emergence"
+            }
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PlantProtection": {
+            "@id": "cropCult:PlantProtection",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_pest_treatements": "cropCult:PestTreatements",
+                "reference_page": "schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PlantProtection",
+            "name": "Plant protection",
+            "has_pest_treatements": {
+                "@type": "cropCult:PestTreatements",
+                "pest_name": "Papaya mealy bug"
+            },
+            "reference_page": "309"
+        }
+    ]
+}

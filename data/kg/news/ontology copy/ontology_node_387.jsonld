@@ -1,0 +1,127 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:NewsAsset",
+      "byline": "Daniel Tencer",
+      "title": "62% of TikTok users in the United States pay for a music streaming service (report)",
+      "published": "2023-11-21T22:03:00+00:00",
+      "summary": "MBW’s Stat Of The Week is a series in which we highlight a data point that deserves the attention of the global music industry. Stat Of the Week is supported by Cinq Music Group, a technology-driven record label, distribution, and rights management company.",
+      "associatedAsset": {
+        "@type": "snap:TextAsset",
+        "image": "https://www.musicbusinessworldwide.com/62-of-tiktok-users-in-the-united-states-pay-for-a-music-streaming-service-report/"
+      },
+      "derivedFrom": {
+        "@type": "snap:Organization",
+        "name": "Music Business Worldwide"
+      }
+    },
+    {
+      "@type": "snap:Event",
+      "eventTitle": "TikTok's Influence on Music Streaming",
+      "eventSummary": "TikTok is in the process of reinventing itself as both a partner to music companies, and a competitor to streaming and distribution services.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Music Industry Trends"
+      }
+    },
+    {
+      "@type": "snap:Organization",
+      "name": "Cinq Music Group"
+    },
+    {
+      "@type": "snap:Organization",
+      "name": "Luminate"
+    },
+    {
+      "@type": "snap:Organization",
+      "name": "TikTok"
+    },
+    {
+      "@type": "snap:Person",
+      "name": "Ole Obermann"
+    }
+  ]
+}
+```

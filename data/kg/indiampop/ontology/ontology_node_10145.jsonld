@@ -1,0 +1,106 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CropGrowingZones": {
+            "@container": "@list",
+            "@id": "cropCult:CropGrowingZones",
+            "@type": "schema:ItemList",
+            "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List",
+                    "has_seed_recommendations": "cropCult:SeedList"
+                }
+            }
+        },
+        "SeedList": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "RICE (Oryza sativa)",
+            "has_types": [
+                {
+                    "@type": "CropType",
+                    "name": "Karishma",
+                    "used_for": "Late duration"
+                },
+                {
+                    "@type": "CropType",
+                    "name": "Gouri",
+                    "used_for": "Late duration"
+                },
+                {
+                    "@type": "CropType",
+                    "name": "Mangalamahsuri",
+                    "used_for": "Late duration"
+                }
+            ],
+            "has_growing_zones": [
+                {
+                    "@type": "CropGrowingZone",
+                    "name": "High altitude area",
+                    "has_regions": [
+                        "Single crop areas",
+                        "Double crop areas"
+                    ],
+                    "has_seed_recommendations": [
+                        {
+                            "@type": "SeedList",
+                            "variety_name": [
+                                "WND-1",
+                                "WND-2",
+                                "Aswathy",
+                                "Jaya",
+                                "Sabari",
+                                "Mahsuri",
+                                "Bhadra",
+                                "IR 8",
+                                "Aathira"
+                            ]
+                        },
+                        {
+                            "@type": "SeedList",
+                            "variety_name": [
+                                "Aswathy",
+                                "Jaya",
+                                "Sabari",
+                                "Bharathy",
+                                "Bhadra",
+                                "Deepthi",
+                                "Aathira",
+                                "IR 8"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

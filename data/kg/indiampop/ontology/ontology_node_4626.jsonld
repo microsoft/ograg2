@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Grass weed",
+            "weed_types": ["Grass weed"],
+            "herbicides": {
+                "@type": "cropCult:HerbicideList",
+                "name": ["paraquat", "dalapon", "glyphosate"],
+                "quantity": ["1.01 in 300 l of water", "2.5 kg in 300 lit water", "2-2.5 lit in 300 lit water"],
+                "stage": ["infested area", "infested area", "infested area"]
+            }
+        }
+    ]
+}

@@ -1,0 +1,151 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "byline": "Joshua Rivera",
+            "created": "2023-11-15T18:02:00+00:00",
+            "published": "2023-11-15T18:02:00+00:00",
+            "title": "The best surprise vampires in things you did not expect to see vampires",
+            "summary": "We're spending a week diving deep into the stories behind your favorite vampires. Who says we only get to celebrate vampires at Halloween? You know what’s cooler than a vampire story? A story that’s not a vampire story, but surprise — it has vampires.",
+            "associatedAsset": [
+                {
+                    "@type": "TextAsset",
+                    "image": "https://www.polygon.com/23959378/best-surprise-vampires-boo"
+                }
+            ]
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "Baldur’s Gate 3: Astarion",
+            "eventSummary": "Astarion, a haughty elf in Baldur’s Gate 3, is a vampire. Dealing with his vampirism is a huge part of the game."
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "The Matrix Reloaded: The Merovingian’s Henchmen",
+            "eventSummary": "The Merovingian’s henchmen in The Matrix Reloaded are hard to kill, hinting at their vampiric nature."
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "The Elder Scrolls: Everywhere",
+            "eventSummary": "Vampires are a hidden element in the Elder Scrolls games, adding depth to the fantasy setting."
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "Preacher: Cassidy",
+            "eventSummary": "Cassidy, a character in Preacher, is a vampire, adding a shocking twist to the story."
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "Spider-Man: The Animated Series: Morbius",
+            "eventSummary": "Morbius, the Living Vampire, appears in Spider-Man: The Animated Series with a unique way of feeding."
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "Spider-Man: Across the Spider-Verse: Miguel O’Hara",
+            "eventSummary": "Miguel O’Hara, the Spider-Man of 2099, is hinted to be a vampire in Spider-Man: Across the Spider-Verse."
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "Adventure Time: Marceline the Vampire Queen",
+            "eventSummary": "Marceline the Vampire Queen is introduced in Adventure Time, changing the show’s dynamic."
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "Sesame Street: The Count",
+            "eventSummary": "The Count is a beloved vampire character on Sesame Street."
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "Metal Gear Solid 2: Vamp",
+            "eventSummary": "Vamp, a character in Metal Gear Solid 2, has vampiric traits and a taste for blood."
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "The Bone Clocks: The Anchorites",
+            "eventSummary": "The Anchorites in The Bone Clocks are vampiric ghosts who achieve immortality by murdering others."
+        }
+    ]
+}
+```

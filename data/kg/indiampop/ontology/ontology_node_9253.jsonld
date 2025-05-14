@@ -1,0 +1,46 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Orabanche (Pukaielai kalan)",
+            "weed_types": ["Problem", "Perennial", "Parasitic"],
+            "herbicides": {
+                "@type": "cropCult:HerbicideList",
+                "@list": [
+                    {
+                        "name": "pendimethalin",
+                        "quantity": "1.0 kg/ha",
+                        "stage": "Pre-emergence application on 3 DATP in tobacco, tomato and brinjal"
+                    },
+                    {
+                        "name": "oxyfluorfen",
+                        "quantity": "0.30 kg/ha",
+                        "stage": "Pre-emergence application on 3 DAP in potato"
+                    }
+                ]
+            }
+        }
+    ]
+}

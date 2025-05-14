@@ -1,0 +1,190 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "# From Justin Timberlake to Sam Asghari: A timeline of Britney Spears’ relationships",
+            "author": "Amber Raiken",
+            "published": "2023-10-18T03:46:39+00:00",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Britney Spears' Memoir Release",
+                        "eventSummary": "The Woman in Me is due for release on 24 October in the US and UK.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Britney Spears",
+                                    "dateOfBirth": "1981-12-02",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Pop Star"
+                                },
+                                {
+                                    "name": "Justin Timberlake",
+                                    "dateOfBirth": "1981-01-31",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Singer"
+                                },
+                                {
+                                    "name": "Sam Asghari",
+                                    "dateOfBirth": "1994-03-03",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Actor"
+                                },
+                                {
+                                    "name": "Kevin Federline",
+                                    "dateOfBirth": "1978-03-21",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Dancer"
+                                },
+                                {
+                                    "name": "Wade Robson",
+                                    "dateOfBirth": "1982-09-17",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Choreographer"
+                                },
+                                {
+                                    "name": "Colin Farrell",
+                                    "dateOfBirth": "1976-05-31",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Actor"
+                                },
+                                {
+                                    "name": "Jason Alexander",
+                                    "dateOfBirth": "1981-01-16",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Actor"
+                                },
+                                {
+                                    "name": "Adnan Ghalib",
+                                    "dateOfBirth": "1983-05-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Paparazzo"
+                                },
+                                {
+                                    "name": "Jason Trawick",
+                                    "dateOfBirth": "1981-03-15",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Agent"
+                                },
+                                {
+                                    "name": "David Lucado",
+                                    "dateOfBirth": "1983-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Legal Professional"
+                                },
+                                {
+                                    "name": "Charlie Ebersol",
+                                    "dateOfBirth": "1982-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Producer"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Sam Asghari Files for Divorce",
+                        "eventSummary": "Sam Asghari filed for divorce from Britney Spears on 28 July 2023.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Sam Asghari",
+                                    "dateOfBirth": "1994-03-03",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Actor"
+                                },
+                                {
+                                    "name": "Britney Spears",
+                                    "dateOfBirth": "1981-12-02",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Pop Star"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

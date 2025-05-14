@@ -1,0 +1,101 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "GROUNDNUT (Arachis hypogaea )",
+            "has_types": {
+                "@type": "CropType",
+                "name": "OILSEEDS",
+                "used_for": "CROP MANAGEMENT"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "I. Rainfed"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "NUTRITIONAL DISORDER",
+                "avoid_soil_type": "N/A",
+                "for_water": "N/A",
+                "for_nutrients": "N/A"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Reduce ZnSO4 application from 25.0 kg ha-1 to 12.5 kg ha-1 if FYM is applied @ 12.5 t ha-1. For the standing crop, less than 39.4 ppm of zinc in leaves, foliar spray of 0.5% ZnSo4",
+                "with_soil_moisture": "N/A"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "N/A",
+                "value": "N/A",
+                "depth": "N/A",
+                "method": "N/A"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "N/A",
+                "weed_types": [],
+                "herbicides": []
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "N/A",
+                "stage_of_application": "N/A"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "N/A",
+                "disease_symptoms": "N/A",
+                "disease_control": []
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "N/A",
+                "pest_symptoms": "N/A",
+                "pest_control": []
+            },
+            "harvesting_guidelines_are": "N/A",
+            "storage_guidelines_are": "N/A"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "ZnSO4",
+            "quantity": "12.5 kg ha-1",
+            "stage_of_application": "If FYM is applied @ 12.5 t ha-1"
+        }
+    ]
+}

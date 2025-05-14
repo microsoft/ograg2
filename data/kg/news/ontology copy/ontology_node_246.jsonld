@@ -1,0 +1,102 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "Nick Brinkerhoff",
+            "published": "2023-09-26T21:53:00+00:00",
+            "title": "Thursday Night Football FanDuel Picks: NFL DFS lineup advice for Week 4 Lions-Packers single-game tournaments",
+            "summary": "For Detroit, it's all about courage. For a team that was once down and out, much like their city, they are now once again on the rise. The Lions are supposed to be the kings of the jungle and hope to become the NFL's version in 2023. In terms of the food chain, a basic concept taught in science classes across the country, lions are the hunter rather than the hunted, but it's been the other way around for far too long, as 31 other teams have feasted on a once proud franchise. Their motors have been restored and the team has been rebuilt with an attitude and moxie that would make even the most 'football guy' of 'football guys' blush. It's a combination of quiet confidence and a downright arrogant confidence that draws people in to root for -- or against -- an underdog. While the Packers have packed up the Lions for years, that all began to change in 2022. Aaron Rodgers is no longer in Green Bay, and a new love interest is now under center, Jordan Love. It was these Lions that ended the Rodgers era and swept Green Bay last season. Now they meet again in prime time on one of the league's most hallowed grounds in a battle for NFC North supremacy. The tundra won't be frozen at Lambeau Field at this point in the season, but the game sure is important, and for a game like this, there's no way we could pass up the chance to win some cash with our FanDuel single-game DFS lineup.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://www.sportingnews.com/us/nfl/news/thursday-night-football-fanduel-picks-lions-packers-nfl-dfs/723e1f9393bf3c74ba7efd78"
+            }
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Sporting News"
+        }
+    ]
+}
+```

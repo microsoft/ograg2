@@ -1,0 +1,198 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Jason Steger",
+            "published": "2023-10-01T21:04:20+00:00",
+            "title": "Looking for a book to read? Here are 14 tips for October",
+            "summary": "A list of book recommendations for October.",
+            "associatedAsset": [
+                {
+                    "@type": "snap:textAsset",
+                    "title": "Killing for Country: A Family Story",
+                    "author": "David Marr",
+                    "publisher": "Black Inc.",
+                    "price": "$32.99",
+                    "releaseDate": "October 3",
+                    "summary": "An investigation of the Native Police and family connections through the author's great-great-grandfather."
+                },
+                {
+                    "@type": "snap:textAsset",
+                    "title": "Unfinished Woman",
+                    "author": "Robyn Davidson",
+                    "publisher": "Bloomsbury",
+                    "price": "$34.99",
+                    "releaseDate": "October 3",
+                    "summary": "Robyn Davidson's life story, focusing on family and personal experiences."
+                },
+                {
+                    "@type": "snap:textAsset",
+                    "title": "Stone Yard Devotional",
+                    "author": "Charlotte Wood",
+                    "publisher": "Allen & Unwin",
+                    "price": "$32.99",
+                    "releaseDate": "October 3",
+                    "summary": "A novel about a woman's reckoning with her past in a religious community."
+                },
+                {
+                    "@type": "snap:textAsset",
+                    "title": "The Fall: The End of the Murdoch Empire",
+                    "author": "Michael Wolff",
+                    "publisher": "The Bridge Street Press",
+                    "price": "$34.99",
+                    "releaseDate": "Out now",
+                    "summary": "An exploration of Rupert Murdoch's influence and Fox News."
+                },
+                {
+                    "@type": "snap:textAsset",
+                    "title": "My Life as a Jew",
+                    "author": "Michael Gawenda",
+                    "publisher": "Scribe",
+                    "price": "$35",
+                    "releaseDate": "October 3",
+                    "summary": "A personal exploration of Jewish identity and life in Australia."
+                },
+                {
+                    "@type": "snap:textAsset",
+                    "title": "Gunflower: Stories",
+                    "author": "Laura Jean McKay",
+                    "publisher": "Scribe",
+                    "price": "$29.99",
+                    "releaseDate": "October 3",
+                    "summary": "A collection of short stories featuring animal life."
+                },
+                {
+                    "@type": "snap:textAsset",
+                    "title": "Going Infinite: The Rise and Fall of a New Tycoon",
+                    "author": "Michael Lewis",
+                    "publisher": "Allen Lane",
+                    "price": "$55",
+                    "releaseDate": "October 3",
+                    "summary": "The story of Sam Bankman-Fried and the collapse of FTX."
+                },
+                {
+                    "@type": "snap:textAsset",
+                    "title": "The Woman in Me",
+                    "author": "Britney Spears",
+                    "publisher": "Simon & Schuster",
+                    "price": "$49.99",
+                    "releaseDate": "October 25",
+                    "summary": "Britney Spears' candid account of her life and conservatorship."
+                },
+                {
+                    "@type": "snap:textAsset",
+                    "title": "Mr Einstein’s Secretary",
+                    "author": "Matthew Reilly",
+                    "publisher": "Macmillan",
+                    "price": "$44.99",
+                    "releaseDate": "October 17",
+                    "summary": "A novel about a woman who becomes a spy and action hero."
+                },
+                {
+                    "@type": "snap:textAsset",
+                    "title": "The Seven",
+                    "author": "Chris Hammer",
+                    "publisher": "Allen & Unwin",
+                    "price": "$32.99",
+                    "releaseDate": "October 3",
+                    "summary": "A crime novel involving murder and family secrets."
+                },
+                {
+                    "@type": "snap:textAsset",
+                    "title": "Life as We Knew it",
+                    "author": "Aisha Dow & Melissa Cunningham",
+                    "publisher": "Scribe",
+                    "price": "$35",
+                    "releaseDate": "October 3",
+                    "summary": "An account of how the pandemic affected Australia."
+                }
+            ],
+            "source": "The Sydney Morning Herald",
+            "category": "entertainment",
+            "url": "https://www.smh.com.au/culture/books/looking-for-a-book-to-read-here-are-14-tips-for-october-20230929-p5e8m6.html?ref=rss&utm_medium=rss&utm_source=rss_culture"
+        }
+    ]
+}
+```

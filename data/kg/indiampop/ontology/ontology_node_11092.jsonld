@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "APICULTURE",
+            "pest_symptoms": "Affected leaves up to about 6 inches from the tip",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Mechanical Control",
+                "quantity": "10",
+                "stage": "Clipping and destroying of affected leaves up to about 6 inches from the tip should be done as these leaves contain eggs, larvae and pupae."
+            }
+        }
+    ]
+}

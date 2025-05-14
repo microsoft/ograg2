@@ -1,0 +1,40 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Inter Cropping",
+            "weed_types": [
+                "Green manure crops",
+                "Fodder crops"
+            ],
+            "herbicides": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Napier grass",
+                "quantity": "7-20 years of age",
+                "stage": "B"
+            }
+        }
+    ]
+}

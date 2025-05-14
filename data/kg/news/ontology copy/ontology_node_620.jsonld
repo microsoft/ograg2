@@ -1,0 +1,170 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "title": "Earnings week ahead: Amazon, Microsoft, Alphabet, Meta, Ford, GM and more",
+            "byline": null,
+            "published": "2023-10-22T12:13:00+00:00",
+            "summary": "The earnings season is slated to peak in the upcoming week, with a wide range of companies across various sectors reporting their financial results. The focus will be on mega-cap tech giants, but many other firms from wide-ranging sectors will announce results, including those from consumer staples, industrial, automobile, airline and energy segments.",
+            "associatedAsset": [
+                {
+                    "@type": "snap:organization",
+                    "name": "Amazon"
+                },
+                {
+                    "@type": "snap:organization",
+                    "name": "Microsoft"
+                },
+                {
+                    "@type": "snap:organization",
+                    "name": "Alphabet"
+                },
+                {
+                    "@type": "snap:organization",
+                    "name": "Meta"
+                },
+                {
+                    "@type": "snap:organization",
+                    "name": "Ford"
+                },
+                {
+                    "@type": "snap:organization",
+                    "name": "General Motors"
+                },
+                {
+                    "@type": "snap:organization",
+                    "name": "Coca-Cola"
+                },
+                {
+                    "@type": "snap:organization",
+                    "name": "Colgate Palmolive"
+                },
+                {
+                    "@type": "snap:organization",
+                    "name": "Boeing"
+                },
+                {
+                    "@type": "snap:organization",
+                    "name": "L3Harris Technologies"
+                },
+                {
+                    "@type": "snap:organization",
+                    "name": "Raytheon Technologies"
+                },
+                {
+                    "@type": "snap:organization",
+                    "name": "General Dynamics"
+                },
+                {
+                    "@type": "snap:organization",
+                    "name": "Northrop Grumman"
+                },
+                {
+                    "@type": "snap:organization",
+                    "name": "ExxonMobil"
+                },
+                {
+                    "@type": "snap:organization",
+                    "name": "Chevron"
+                },
+                {
+                    "@type": "snap:organization",
+                    "name": "Visa"
+                },
+                {
+                    "@type": "snap:organization",
+                    "name": "Mastercard"
+                },
+                {
+                    "@type": "snap:organization",
+                    "name": "Southwest Airlines"
+                }
+            ],
+            "source": "Seeking Alpha",
+            "url": "https://seekingalpha.com/news/4022507-earnings-week-ahead-amazon-microsoft-alphabet-ford-general-motors-and-more?utm_source=feed_news_all&utm_medium=referral&feed_item_type=news"
+        }
+    ]
+}
+```

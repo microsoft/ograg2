@@ -1,0 +1,325 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "NFL Player Analysis",
+            "author": "Sports Analyst",
+            "theme": "Sports",
+            "summary": "Analysis of NFL players' performances and matchups.",
+            "created": "2023-10-10T12:00:00Z",
+            "modified": "2023-10-10T12:00:00Z",
+            "published": "2023-10-10T12:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList1",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "@type": "schema:Thing",
+                        "eventTitle": "K.J. Osborn Performance Review",
+                        "eventSummary": "Review of K.J. Osborn's performance against the Bears.",
+                        "theme": "Player Performance",
+                        "hasLocation": {
+                            "@id": "geo:location1",
+                            "@type": "geo:SpatialThing",
+                            "name": "Chicago"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList1",
+                            "Person": [
+                                {
+                                    "@id": "snap:person1",
+                                    "@type": "schema:Thing",
+                                    "name": "K.J. Osborn",
+                                    "dateOfBirth": "1997-01-10",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location2",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Chicago, IL"
+                                    },
+                                    "alias": "Osborn"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList1",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "@type": "schema:Thing",
+                                    "name": "Minnesota Vikings",
+                                    "hasLocation": {
+                                        "@id": "geo:location3",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Minneapolis, MN"
+                                    },
+                                    "alias": "Vikings"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event2",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Cole Kmet Performance Review",
+                        "eventSummary": "Review of Cole Kmet's performance against the Commanders.",
+                        "theme": "Player Performance",
+                        "hasLocation": {
+                            "@id": "geo:location4",
+                            "@type": "geo:SpatialThing",
+                            "name": "Chicago"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList2",
+                            "Person": [
+                                {
+                                    "@id": "snap:person2",
+                                    "@type": "schema:Thing",
+                                    "name": "Cole Kmet",
+                                    "dateOfBirth": "1999-03-10",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location5",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Chicago, IL"
+                                    },
+                                    "alias": "Kmet"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList2",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization2",
+                                    "@type": "schema:Thing",
+                                    "name": "Chicago Bears",
+                                    "hasLocation": {
+                                        "@id": "geo:location6",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Chicago, IL"
+                                    },
+                                    "alias": "Bears"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event3",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Tyler Lockett Performance Review",
+                        "eventSummary": "Review of Tyler Lockett's performance against the Bengals.",
+                        "theme": "Player Performance",
+                        "hasLocation": {
+                            "@id": "geo:location7",
+                            "@type": "geo:SpatialThing",
+                            "name": "Cincinnati"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList3",
+                            "Person": [
+                                {
+                                    "@id": "snap:person3",
+                                    "@type": "schema:Thing",
+                                    "name": "Tyler Lockett",
+                                    "dateOfBirth": "1991-09-28",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location8",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Tulsa, OK"
+                                    },
+                                    "alias": "Lockett"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList3",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization3",
+                                    "@type": "schema:Thing",
+                                    "name": "Seattle Seahawks",
+                                    "hasLocation": {
+                                        "@id": "geo:location9",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Seattle, WA"
+                                    },
+                                    "alias": "Seahawks"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event4",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Jeff Wilson Performance Review",
+                        "eventSummary": "Review of Jeff Wilson's performance against the Panthers.",
+                        "theme": "Player Performance",
+                        "hasLocation": {
+                            "@id": "geo:location10",
+                            "@type": "geo:SpatialThing",
+                            "name": "Miami"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList4",
+                            "Person": [
+                                {
+                                    "@id": "snap:person4",
+                                    "@type": "schema:Thing",
+                                    "name": "Jeff Wilson",
+                                    "dateOfBirth": "1995-11-16",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location11",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Los Angeles, CA"
+                                    },
+                                    "alias": "Wilson"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList4",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization4",
+                                    "@type": "schema:Thing",
+                                    "name": "Miami Dolphins",
+                                    "hasLocation": {
+                                        "@id": "geo:location12",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Miami, FL"
+                                    },
+                                    "alias": "Dolphins"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event5",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Zack Moss Performance Review",
+                        "eventSummary": "Review of Zack Moss's performance against the Jaguars.",
+                        "theme": "Player Performance",
+                        "hasLocation": {
+                            "@id": "geo:location13",
+                            "@type": "geo:SpatialThing",
+                            "name": "Jacksonville"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList5",
+                            "Person": [
+                                {
+                                    "@id": "snap:person5",
+                                    "@type": "schema:Thing",
+                                    "name": "Zack Moss",
+                                    "dateOfBirth": "1997-01-15",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location14",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Huntington, NY"
+                                    },
+                                    "alias": "Moss"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList5",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization5",
+                                    "@type": "schema:Thing",
+                                    "name": "Indianapolis Colts",
+                                    "hasLocation": {
+                                        "@id": "geo:location15",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Indianapolis, IN"
+                                    },
+                                    "alias": "Colts"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

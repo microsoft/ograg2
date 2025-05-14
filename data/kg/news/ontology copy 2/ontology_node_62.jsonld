@@ -1,0 +1,248 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "snap:asset",
+            "title": "NFL Week Analysis",
+            "author": "Sports Analyst",
+            "theme": "Sports",
+            "content": "Analysis of NFL players and teams performance.",
+            "created": "2023-10-10T00:00:00Z",
+            "modified": "2023-10-10T00:00:00Z",
+            "published": "2023-10-10T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "snap:event",
+                    "eventTitle": "Pitts Performance",
+                    "eventSummary": "Pitts shows improvement in speed and timing with Ridder.",
+                    "theme": "Sports",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person1",
+                            "@type": "snap:person",
+                            "name": "Kyle Pitts"
+                        },
+                        {
+                            "@id": "snap:person2",
+                            "@type": "snap:person",
+                            "name": "Desmond Ridder"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "snap:organization",
+                            "name": "Commanders"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event2",
+                    "@type": "snap:event",
+                    "eventTitle": "Osborn's Role",
+                    "eventSummary": "Osborn's performance without Justin Jefferson.",
+                    "theme": "Sports",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person3",
+                            "@type": "snap:person",
+                            "name": "K.J. Osborn"
+                        },
+                        {
+                            "@id": "snap:person4",
+                            "@type": "snap:person",
+                            "name": "Justin Jefferson"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization2",
+                            "@type": "snap:organization",
+                            "name": "Vikings"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event3",
+                    "@type": "snap:event",
+                    "eventTitle": "Kmet's Performance",
+                    "eventSummary": "Kmet's role in Bears' offense.",
+                    "theme": "Sports",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person5",
+                            "@type": "snap:person",
+                            "name": "Cole Kmet"
+                        },
+                        {
+                            "@id": "snap:person6",
+                            "@type": "snap:person",
+                            "name": "Justin Fields"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization3",
+                            "@type": "snap:organization",
+                            "name": "Bears"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event4",
+                    "@type": "snap:event",
+                    "eventTitle": "Lockett's Upside",
+                    "eventSummary": "Lockett's potential against Bengals.",
+                    "theme": "Sports",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person7",
+                            "@type": "snap:person",
+                            "name": "Tyler Lockett"
+                        },
+                        {
+                            "@id": "snap:person8",
+                            "@type": "snap:person",
+                            "name": "Geno Smith"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization4",
+                            "@type": "snap:organization",
+                            "name": "Bengals"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event5",
+                    "@type": "snap:event",
+                    "eventTitle": "Wilson's Return",
+                    "eventSummary": "Jeff Wilson's return to Dolphins.",
+                    "theme": "Sports",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person9",
+                            "@type": "snap:person",
+                            "name": "Jeff Wilson"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization5",
+                            "@type": "snap:organization",
+                            "name": "Dolphins"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event6",
+                    "@type": "snap:event",
+                    "eventTitle": "Moss vs Taylor",
+                    "eventSummary": "Comparison of Moss and Taylor's roles in Colts.",
+                    "theme": "Sports",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person10",
+                            "@type": "snap:person",
+                            "name": "Zack Moss"
+                        },
+                        {
+                            "@id": "snap:person11",
+                            "@type": "snap:person",
+                            "name": "Jonathan Taylor"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization6",
+                            "@type": "snap:organization",
+                            "name": "Colts"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

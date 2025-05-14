@@ -1,0 +1,495 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "SeedList": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List",
+                "has_early_sowing_time": "cropCult:SowingTime",
+                "has_late_sowing_time": "cropCult:SowingTime",
+                "has_seeding_rate": "schema:QuantitativeValue",
+                "has_fertilizer_application_requirements": "cropCult:Fertilization"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CropGrowingZones":{
+                "@container": "@list",
+                "@id": "cropCult:CropGrowingZones",
+                "@type": "schema:ItemList",
+                "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List",
+                    "has_seed_recommendations": "cropCult:SeedList"
+                }
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "for_flowering": "schema:Text",
+                "for_grain_filling": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "seedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "has_types": [
+                {
+                    "@type": "CropType",
+                    "name": "Zero tillage",
+                    "used_for": "Wheat seed and fertilizers are directly placed at proper depth into the undisturbed soil after rice harvesting using a specially designed machine which creates narrow slits by the knife type furrow openers of zero tillage ferti-seed drill instead of shovel type furrow opener in conventional ferti-seed drill."
+                },
+                {
+                    "@type": "CropType",
+                    "name": "Happy seeder",
+                    "used_for": "Happy seeder is tractor mounted machine that cuts and lifts paddy straw, sows wheat seed into the bare soil and deposits the straw over the sown area as mulch."
+                }
+            ],
+            "has_growing_zones": [
+                {
+                    "@type": "CropGrowingZones",
+                    "CropGrowingZone": [
+                        {
+                            "@type": "CropGrowingZone",
+                            "name": "North Western Plains Zone",
+                            "has_regions": ["Punjab", "Haryana", "Delhi", "Rajasthan", "western Uttar Pradesh", "Jammu and Kashmir", "Himachal Pradesh", "Uttarakhand"],
+                            "has_seed_recommendations": [
+                                {
+                                    "@type": "SeedList",
+                                    "variety_name": ["KRL 19", "PBW 502", "PBW 527", "PDW 291", "PBW 550", "HD 2967", "PDW 314", "WHD 943", "DPW 621-50"],
+                                    "has_early_sowing_time": {
+                                        "@type": "SowingTime",
+                                        "start_date": "1st November",
+                                        "end_date": "20th November"
+                                    },
+                                    "has_late_sowing_time": {
+                                        "@type": "SowingTime",
+                                        "start_date": "25th November",
+                                        "end_date": "30th November"
+                                    },
+                                    "has_seeding_rate": {
+                                        "@type": "schema:QuantitativeValue",
+                                        "value": "100",
+                                        "unitText": "kg/ha"
+                                    },
+                                    "has_fertilizer_application_requirements": {
+                                        "@type": "Fertilization",
+                                        "nutrient_name": "Nitrogen",
+                                        "quantity": "120 kg/ha",
+                                        "stage_of_application": "At sowing"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "@type": "CropGrowingZone",
+                            "name": "North Eastern Plains Zone",
+                            "has_regions": ["eastern Uttar Pradesh", "Bihar", "Jharkhand", "Odisha", "West Bengal", "Assam", "northeastern states"],
+                            "has_seed_recommendations": [
+                                {
+                                    "@type": "SeedList",
+                                    "variety_name": ["KRL 19", "PBW 343", "PBW 443", "HD 2733", "MACS 6145", "HD 2824", "HD 2888", "K 307", "DBW 17", "Raj 4120", "CBW 38", "HD 2967", "DBW 39", "MACS 6222", "KRL 210", "KRL 213", "K 9162", "K 7903", "K 9533", "DBW 252", "DBW 187", "HD 3086", "HPBW 2/(+Fe/Zn)", "PBW 550", "PBW 550 Unnat"],
+                                    "has_early_sowing_time": {
+                                        "@type": "SowingTime",
+                                        "start_date": "10th November",
+                                        "end_date": "25th November"
+                                    },
+                                    "has_late_sowing_time": {
+                                        "@type": "SowingTime",
+                                        "start_date": "25th November",
+                                        "end_date": "30th November"
+                                    },
+                                    "has_seeding_rate": {
+                                        "@type": "schema:QuantitativeValue",
+                                        "value": "100",
+                                        "unitText": "kg/ha"
+                                    },
+                                    "has_fertilizer_application_requirements": {
+                                        "@type": "Fertilization",
+                                        "nutrient_name": "Nitrogen",
+                                        "quantity": "120 kg/ha",
+                                        "stage_of_application": "At sowing"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "@type": "CropGrowingZone",
+                            "name": "Central Zone",
+                            "has_regions": ["Madhya Pradesh", "Chhattisgarh", "Gujarat", "Kota and Udaipur divisions of Rajasthan", "Jhansi division of Uttar Pradesh"],
+                            "has_seed_recommendations": [
+                                {
+                                    "@type": "SeedList",
+                                    "variety_name": ["KRL 19", "GW 1139", "GW 322", "HI 1500", "HI 8627", "HI 1531", "GW 366", "HI 8498", "HI 1544", "MACS 2971", "MPO 1215", "MP 3288", "HI 8713", "HI 8737", "DBW 110", "MPO 1106", "HI 1479", "DDW 47", "DBW 110"],
+                                    "has_early_sowing_time": {
+                                        "@type": "SowingTime",
+                                        "start_date": "10th November",
+                                        "end_date": "30th November"
+                                    },
+                                    "has_late_sowing_time": {
+                                        "@type": "SowingTime",
+                                        "start_date": "1st December",
+                                        "end_date": "15th December"
+                                    },
+                                    "has_seeding_rate": {
+                                        "@type": "schema:QuantitativeValue",
+                                        "value": "100",
+                                        "unitText": "kg/ha"
+                                    },
+                                    "has_fertilizer_application_requirements": {
+                                        "@type": "Fertilization",
+                                        "nutrient_name": "Nitrogen",
+                                        "quantity": "120 kg/ha",
+                                        "stage_of_application": "At sowing"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "@type": "CropGrowingZone",
+                            "name": "Peninsular Zone",
+                            "has_regions": ["Maharashtra", "Karnataka", "Andhra Pradesh", "Goa", "plains of Tamil Nadu"],
+                            "has_seed_recommendations": [
+                                {
+                                    "@type": "SeedList",
+                                    "variety_name": ["GW 322", "HD 2781", "GW 1189", "NIDW 295", "Raj 4037", "DDK 1025", "NIAW 917", "AKDW 2997-16", "DDK 1029", "HI 8663", "AKAW 3722", "MACS 2971", "PBW 596", "UAS 415", "HD 2987", "NIAW 1415", "UAS 428", "NIAW 301", "MACS 3125", "DBW 168", "DBW 93"],
+                                    "has_early_sowing_time": {
+                                        "@type": "SowingTime",
+                                        "start_date": "1st November",
+                                        "end_date": "25th November"
+                                    },
+                                    "has_late_sowing_time": {
+                                        "@type": "SowingTime",
+                                        "start_date": "25th November",
+                                        "end_date": "10th December"
+                                    },
+                                    "has_seeding_rate": {
+                                        "@type": "schema:QuantitativeValue",
+                                        "value": "100",
+                                        "unitText": "kg/ha"
+                                    },
+                                    "has_fertilizer_application_requirements": {
+                                        "@type": "Fertilization",
+                                        "nutrient_name": "Nitrogen",
+                                        "quantity": "120 kg/ha",
+                                        "stage_of_application": "At sowing"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "@type": "CropGrowingZone",
+                            "name": "Northern Hills Zone",
+                            "has_regions": ["western Himalayan regions of Jammu and Kashmir", "Himachal Pradesh", "Uttarakhand", "Sikkim", "hills of West Bengal", "northeastern states"],
+                            "has_seed_recommendations": [
+                                {
+                                    "@type": "SeedList",
+                                    "variety_name": ["VL 829", "HPW 251", "VL 907", "VL 804", "HPW 155", "HS 375", "SKW 196", "VL 832", "TL 2942", "HS 507", "HPW 349", "HS 420", "VL 892", "HS 490"],
+                                    "has_early_sowing_time": {
+                                        "@type": "SowingTime",
+                                        "start_date": "25th October",
+                                        "end_date": "1st November"
+                                    },
+                                    "has_late_sowing_time": {
+                                        "@type": "SowingTime",
+                                        "start_date": "25th November",
+                                        "end_date": "30th November"
+                                    },
+                                    "has_seeding_rate": {
+                                        "@type": "schema:QuantitativeValue",
+                                        "value": "100",
+                                        "unitText": "kg/ha"
+                                    },
+                                    "has_fertilizer_application_requirements": {
+                                        "@type": "Fertilization",
+                                        "nutrient_name": "Nitrogen",
+                                        "quantity": "120 kg/ha",
+                                        "stage_of_application": "At sowing"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "@type": "CropGrowingZone",
+                            "name": "Southern Hills Zone",
+                            "has_regions": ["hilly areas of Tamil Nadu and Kerala", "Nilgiri and Palni hills of the southern plateau"],
+                            "has_seed_recommendations": [
+                                {
+                                    "@type": "SeedList",
+                                    "variety_name": ["HW 2044", "HW 5216"],
+                                    "has_early_sowing_time": {
+                                        "@type": "SowingTime",
+                                        "start_date": "15th November",
+                                        "end_date": "30th November"
+                                    },
+                                    "has_seeding_rate": {
+                                        "@type": "schema:QuantitativeValue",
+                                        "value": "100",
+                                        "unitText": "kg/ha"
+                                    },
+                                    "has_fertilizer_application_requirements": {
+                                        "@type": "Fertilization",
+                                        "nutrient_name": "Nitrogen",
+                                        "quantity": "120 kg/ha",
+                                        "stage_of_application": "At sowing"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "10-15°C",
+                "for_flowering": "20-25°C",
+                "for_grain_filling": "15-20°C",
+                "negative_effect": "Temperature above 35°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Sandy",
+                "for_water": "Well-drained soil",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "In this technology, wheat seed and fertilizers are directly placed at proper depth into the undisturbed soil after rice harvesting using a specially designed machine which creates narrow slits by the knife type furrow openers of zero tillage ferti-seed drill instead of shovel type furrow opener in conventional ferti-seed drill.",
+                "with_soil_moisture": "Medium"
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Carbendazim",
+                "quantity": "2 gm/kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Winter",
+                "value": "15-20 cm",
+                "depth": "3-4 cm",
+                "method": "Drilling"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Phalaris minor",
+                "weed_types": ["Grassy"],
+                "herbicides": [
+                    {
+                        "@type": "HerbicideList",
+                        "name": "Clodinafop",
+                        "quantity": "60 gm a.i. /ha",
+                        "stage": "post-emergence 30-35 DAS"
+                    },
+                    {
+                        "@type": "HerbicideList",
+                        "name": "Fenoxaprop-ethyl",
+                        "quantity": "100-120 gm a.i. /ha",
+                        "stage": "post-emergence 30-35 DAS"
+                    },
+                    {
+                        "@type": "HerbicideList",
+                        "name": "Pinoxaden",
+                        "quantity": "40-50 gm a.i. /ha",
+                        "stage": "post-emergence 30-35 DAS"
+                    },
+                    {
+                        "@type": "HerbicideList",
+                        "name": "Sulfosulfuron",
+                        "quantity": "25 gm a.i. /ha",
+                        "stage": "post-emergence 30-35 DAS"
+                    },
+                    {
+                        "@type": "HerbicideList",
+                        "name": "Isoproturon",
+                        "quantity": "1000 gm a.i. /ha",
+                        "stage": "post-emergence 30-35 DAS"
+                    },
+                    {
+                        "@type": "HerbicideList",
+                        "name": "Pendimethalin",
+                        "quantity": "1000-1500 gm a.i. /ha",
+                        "stage": "pre-emergence 1-3 DAS"
+                    }
+                ]
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "5-6 irrigations",
+                "stage_of_application": "CRI Stage (21 DAS), First Node (45 DAS), Jointing Stage (65 DAS), Booting Stage (85 DAS), Milking Stage (105 DAS), Dough Stage (120 DAS)"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Rust, Smut, Blight",
+                "disease_symptoms": "Yellowing of leaves, stunted growth, black/brown spots on leaves",
+                "disease_control": [
+                    {
+                        "@type": "HerbicideList",
+                        "name": "Propiconazole",
+                        "quantity": "1 ml/litre of water",
+                        "stage": "At the time of disease appearance"
+                    }
+                ]
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Aphids, Termites, Cutworms",
+                "pest_symptoms": "Yellowing of leaves, stunted growth, wilting",
+                "pest_control": [
+                    {
+                        "@type": "PesticideList",
+                        "name": "Chlorpyrifos",
+                        "quantity": "2.5 ml/litre of water",
+                        "stage": "At the time of pest appearance"
+                    }
+                ]
+            },
+            "harvesting_guidelines_are": "When the moisture level of grain is 25% it is the proper time for manual harvesting. Generally, wheat is manually harvested but for quick harvesting, combine harvester should be used to avoid losses in grain yield due to shattering and lodging. Wheat should be harvested 4-5 days before it is dead ripe. Morning is the best time for harvesting. Mechanical harvesting through combine machine is done at places where uniform ripening of wheat happens. In case of manual harvesting, bundles are made and dried for 3-4 days and threshed by thresher. Before storage, grain should be dried by spreading on tarpaulin plastic sheets in bright sunlight to a moisture level below 12%.",
+            "storage_guidelines_are": "For storage, use bins and silos made of GI sheets. Now a days, aluminium bins, Pusa bins, silos and poly lined bags are available for storage. Farmers can store wheat grains in their traditional storage as well. Improved storage structures of various capacities are now available. The air-tight bin can be used. It is so constructed that it does not allow entry of any outside insects and rodents and the insects present in the grain do not get favourable atmosphere to develop. For filling and using the metal bin, the following storage practices are recommended: Clean the bin thoroughly and do not allow the left-overs of the previously stored grains to remain in the bin. Inspect the covers to ensure that the gaskets are intact. Clean and sort the grains of all impurities. Broken kernels and other impurities lead to insect attraction and, hence, should be separated. Do not mix the new grains with old stock as the latter may be infested with insects. Never store infested grains, or grains with high moisture content. Dry the grains out in the sun, cool it and fill in the bin later in the evening. The moisture content of the grains should not be higher than 9 %. Fill-in the bin to full capacity and tight the lid properly. Do not open the bin for the first 30 days and thereafter open it fortnightly. The cover should be replaced immediately after use. Inspect the grains frequently."
+        }
+    ]
+}

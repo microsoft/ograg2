@@ -1,0 +1,202 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "I Don’t Expect Anyone to Believe Me",
+            "author": "Netflix",
+            "summary": "A writer’s career — and entire life — suddenly goes off script when he falls prey to a dangerous web of criminals right before moving to Barcelona.",
+            "published": "2023-11-27T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Last Call for Istanbul",
+            "author": "Netflix",
+            "summary": "A chance meeting at the airport leads two married people to an unforgettable night full of excitement, desire, and temptation in New York City.",
+            "published": "2023-11-27T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "My Demon",
+            "author": "Netflix",
+            "summary": "Chaebol heiress Do Do Hee is an adversary to many, and Jung Koo Won is a powerful entity superior to humans. However, one day, Jung Koo Won loses his powers. Forced to collaborate with Do Do Hee to regain them, sparks of romance begin to fly between them as they embark on this journey together.",
+            "published": "2023-11-27T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Wedding Games",
+            "author": "Netflix",
+            "summary": "When Alex and Eva choose to exchange vows at the very spot they first crossed paths, a series of hilarious missteps derails their journey to the altar.",
+            "published": "2023-11-27T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Go Dog Go: Season 4",
+            "author": "Netflix Family",
+            "summary": "Tag and her best friend Scooch love lending a paw to their friends around Pawston, whether it’s delivering cookie boxes or hosting the Dogcathalon!",
+            "published": "2023-11-28T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Comedy Royale",
+            "author": "Netflix",
+            "summary": "Hand-picked by Korean comedy icons, five teams of rising comics battle for a chance to host in a Netflix show — delivering nonstop, zany laughter.",
+            "published": "2023-11-27T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Love Like a K-Drama",
+            "author": "Netflix",
+            "summary": "Four actresses from Japan go to South Korea to audition and act alongside Korean actors for roles in a series of love stories. Will true romance follow?",
+            "published": "2023-11-27T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Onmyoji",
+            "author": "Netflix",
+            "summary": "In the gilded enclave of the imperial court, a gifted mystic befriends a brilliant musician, and together they solve cases rising from the demonic realm.",
+            "published": "2023-11-27T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Verified Stand-Up",
+            "author": "Netflix Comedy",
+            "summary": "10 comics. 10 sets. 1 show. Introducing: Verified Stand-Up, a new stand-up comedy series Filmed at Webster Hall in New York City, the series features 10 of the best comedians in the game: Asif Ali, Dulcé Sloan, Gianmarco Soresi, Isiah Kelly, Leslie Liao, Nimesh Patel, Robby Hoffman, Rosebud Baker, Sabrina Wu, and Vanessa Gonzalez. Over the course of two-episodes, discover your new favorite comedian.",
+            "published": "2023-11-29T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "American Symphony",
+            "author": "Netflix Documentary",
+            "summary": "",
+            "published": "2023-11-27T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Bad Surgeon: Love Under the Knife",
+            "author": "Netflix Documentary",
+            "summary": "This shocking docuseries about one of the biggest frauds in modern medical history exposes a thoracic surgeon famous for groundbreaking achievements in the field of regenerative medicine.",
+            "published": "2023-11-30T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "The Bad Guys: A Very Bad Holiday",
+            "author": "Netflix Family",
+            "summary": "Mr. Wolf and his crew of animal outlaws realize they’ll need to restore the city’s Christmas spirit to keep their annual holiday heist afloat.",
+            "published": "2023-11-27T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Family Switch",
+            "author": "Netflix Film",
+            "summary": "Jess and Bill Walker are doing their best to keep their family connected as their children grow older, more independent, and more distant. When a chance encounter with an astrological reader causes the family to wake up to a full body switch, on the morning of the most important day of each of their lives, can the Walkers unite to land a promotion, college interview, record deal and soccer tryout? Jennifer Garner, Ed Helms, Emma Myers and Brady Noon star in this family comedy directed by McG and based on the book “Bedtime For Mommy” by Amy Krouse-Rosenthal.",
+            "published": "2023-11-27T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Hard Days",
+            "author": "Netflix Film",
+            "summary": "Already running from a mess of problems, a desperate cop thinks he’s gotten away with a hit-and-run. But there was a witness, and they’ve got his number.",
+            "published": "2023-11-27T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Obliterated",
+            "author": "Netflix Series",
+            "summary": "An elite special forces team must thwart a deadly threat in Las Vegas in this high-octane action-comedy series from the creators of “Cobra Kai.”",
+            "published": "2023-11-27T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "School Spirits: Season 1",
+            "author": "Netflix",
+            "summary": "",
+            "published": "2023-11-27T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Virgin River: Season 5 Part 2",
+            "author": "Netflix Series",
+            "summary": "Mel adjusts to a different pace of life, Jack works to grow his business, and the town faces new threats as secrets begin to surface in Virgin River.",
+            "published": "2023-11-27T00:00:00Z"
+        }
+    ]
+}

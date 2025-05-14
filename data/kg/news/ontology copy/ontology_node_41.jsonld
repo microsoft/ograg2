@@ -1,0 +1,118 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Turtle Beach Recon Controller Review",
+            "summary": "The Turtle Beach Recon controller’s biggest strengths lie in its plethora of audio controls. It’s a bit much to take in at first, but these buttons allow for very handy audio controls when using a wired headset. The bumpers, shoulders, and customizable rear buttons have an excellent textured pattern that feels great.",
+            "byline": "Antonio G. Di Benedetto",
+            "created": "2023-10-01T00:00:00Z",
+            "modified": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "hasThumbnail": {
+                "@id": "snap:imageAsset",
+                "image": "Photography by Antonio G. Di Benedetto / The Verge"
+            }
+        },
+        {
+            "@id": "snap:textAsset",
+            "title": "Turtle Beach Recon Controller Features",
+            "summary": "This pad isn’t going to win any beauty contests thanks to all those awkward buttons located smack-dab in the middle of its forehead, but each one has a valid purpose. There are four levels of microphone monitoring, overall game volume controls, game chat volume mix, four EQ presets, four programmable modes for mapping the two rear buttons, and four levels of optional right-stick sensitivity adjustments.",
+            "image": "Photography by Antonio G. Di Benedetto / The Verge"
+        },
+        {
+            "@id": "snap:textAsset",
+            "title": "Turtle Beach Recon Controller Usability",
+            "summary": "Learning to use all these controls may sound daunting, but the controller’s quick-start guide makes it easier. Superhuman Hearing is very helpful for shooters and worth using extensively for games like Halo Infinite — just be aware that it’s going to muddy up the soundtrack a little, so you may want to leave it off during story-driven, single-player games.",
+            "image": "Photography by Antonio G. Di Benedetto / The Verge"
+        },
+        {
+            "@id": "snap:textAsset",
+            "title": "Turtle Beach Recon Controller Build Quality",
+            "summary": "Audio controls aside, the Recon lacks fancy features like hair triggers and swappable thumbsticks, and the D-pad looks like the standard Xbox Wireless Controller but pales in comparison. The controller’s plastic build feels cheap, but the rubbery grips redeem it with a nice and comfy feel.",
+            "image": "Photography by Antonio G. Di Benedetto / The Verge"
+        }
+    ]
+}
+```

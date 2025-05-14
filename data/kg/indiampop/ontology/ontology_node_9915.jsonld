@@ -1,0 +1,136 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "BRINJAL (Solanum melongena)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Egg plant",
+                "used_for": "Culinary preparations"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Commonly available zones",
+                    "has_regions": ["Affordable regions"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Egg plant"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Early sowing season",
+                            "end_date": "Late sowing season"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "Standard seeding rate"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": ["Vitamin A", "Vitamin B", "Calcium", "Fiber", "Folic acid", "Sodium", "Vitamin C", "Potassium"],
+                            "quantity": "Rich",
+                            "stage_of_application": "During cultivation"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Standard germination temperature",
+                "for_flowering": "Standard flowering temperature",
+                "for_grain_filling": "Standard grain filling temperature",
+                "negative_effect": "Extreme temperatures"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Standard soil type",
+                "avoid_soil_type": "Unsuitable soil types",
+                "for_water": "Standard water requirements",
+                "for_nutrients": "Rich in nutrients"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Standard land preparation instructions",
+                "with_soil_moisture": "Standard soil moisture"
+            },
+            "seed_germination_test_requirements_are": "Standard germination test requirements",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Standard fungicide",
+                "quantity": "Standard quantity"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Standard sowing time",
+                "value": "Standard spacing value",
+                "depth": "Standard sowing depth",
+                "method": "Standard sowing method"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Common weeds",
+                "weed_types": ["Common weed types"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Common herbicides",
+                    "quantity": "Standard quantity",
+                    "stage": "During weed management"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Standard irrigation quantity",
+                "stage_of_application": "During irrigation"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Common diseases",
+                "disease_symptoms": "Common disease symptoms",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Common disease control methods",
+                    "quantity": "Standard quantity",
+                    "stage": "During disease treatment"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Common pests",
+                "pest_symptoms": "Common pest symptoms",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Common pesticides",
+                    "quantity": "Standard quantity",
+                    "stage": "During pest treatment"
+                }
+            },
+            "harvesting_guidelines_are": "Standard harvesting guidelines",
+            "storage_guidelines_are": "Standard storage guidelines"
+        }
+    ]
+}

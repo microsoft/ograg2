@@ -1,0 +1,52 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "FarmImplementsAndMachinery": {
+            "@id": "cropCult:FarmImplementsAndMachinery",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_subcategory": "cropCult:Subcategory"
+            }
+        },
+        "Subcategory": {
+            "@id": "cropCult:Subcategory",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_subcategory": "cropCult:Subcategory"
+            }
+        },
+        "PowerTillerOperatedSlasherCumInsituShredder": {
+            "@id": "cropCult:PowerTillerOperatedSlasherCumInsituShredder",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "saving_in_time": "schema:QuantitativeValue"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "cropCult:FarmImplementsAndMachinery",
+            "@type": "FarmImplementsAndMachinery",
+            "name": "FARM IMPLEMENTS AND MACHINERY",
+            "has_subcategory": {
+                "@id": "cropCult:Subcategory",
+                "@type": "Subcategory",
+                "name": "HORTICULTURE",
+                "has_subcategory": {
+                    "@id": "cropCult:PowerTillerOperatedSlasherCumInsituShredder",
+                    "@type": "PowerTillerOperatedSlasherCumInsituShredder",
+                    "name": "POWER TILLER OPERATED SLASHER CUM INSITU SHREDDER",
+                    "saving_in_time": {
+                        "@type": "QuantitativeValue",
+                        "value": "73",
+                        "unitText": "%"
+                    }
+                }
+            }
+        }
+    ]
+}

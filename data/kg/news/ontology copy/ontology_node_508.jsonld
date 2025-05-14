@@ -1,0 +1,186 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:event",
+      "eventTitle": "IPL 2024 Auction",
+      "eventSummary": "The Indian Premier League (IPL) 2024 auction took place at Coca-Cola Arena in Dubai.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "IPL 2024",
+        "eventSummary": "The 17th edition of the Indian Premier League."
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "SunRisers Hyderabad",
+      "hasAsset": {
+        "asset": {
+          "@type": "snap:textAsset",
+          "title": "Welcome, Cummins! 🫡#HereWeGOrange",
+          "summary": "Pat Cummins joins SunRisers Hyderabad for Rs 20.50 Cr."
+        }
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Chennai Super Kings",
+      "hasAsset": {
+        "asset": {
+          "@type": "snap:textAsset",
+          "title": "CSK takes Daryl Mitchell",
+          "summary": "CSK acquires Daryl Mitchell for 14 Crore."
+        }
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Punjab Kings",
+      "hasAsset": {
+        "asset": {
+          "@type": "snap:textAsset",
+          "title": "PBKS takes Chris Woakes",
+          "summary": "PBKS acquires Chris Woakes for 4.2 Cr."
+        }
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Delhi Capitals",
+      "hasAsset": {
+        "asset": {
+          "@type": "snap:textAsset",
+          "title": "Harry Brook to DC",
+          "summary": "Harry Brook joins Delhi Capitals for Rs 4 Cr."
+        }
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Rajasthan Royals",
+      "hasAsset": {
+        "asset": {
+          "@type": "snap:textAsset",
+          "title": "Rovman Powell to RR",
+          "summary": "Rovman Powell joins Rajasthan Royals for Rs 7.4 Cr."
+        }
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Mumbai Indians",
+      "hasAsset": {
+        "asset": {
+          "@type": "snap:textAsset",
+          "title": "Gerald Coetzee to MI",
+          "summary": "Gerald Coetzee joins Mumbai Indians for Rs 5 Cr."
+        }
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Lucknow Super Giants",
+      "hasAsset": {
+        "asset": {
+          "@type": "snap:textAsset",
+          "title": "LSG coach Justin Langer",
+          "summary": "KL Rahul is comfortable with the squad he has."
+        }
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Royal Challengers Bangalore",
+      "hasAsset": {
+        "asset": {
+          "@type": "snap:textAsset",
+          "title": "RCB focus on bowlers",
+          "summary": "RCB will focus on bowlers for the IPL 2024."
+        }
+      }
+    }
+  ]
+}
+```

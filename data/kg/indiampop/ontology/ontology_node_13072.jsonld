@@ -1,0 +1,87 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "DRY SEEDED UPLAND RICE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Rice",
+                "used_for": "5"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Initial soil tests",
+                "for_nutrients": "NPK (kg ha-1) + GM @ 6.25 t ha-1 + Azospirillum @ 2 kg ha-1 + PSB @ 2 kg ha-1",
+                "avoid_soil_type": "NPK (kg ha-1) + FYM @12.5 t ha-1 + Azospirillum @ 2 kg ha-1 + PSB @ 2 kg ha-1"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "SN | SP | SK | N | P2O5 | K2O | FN | FP2O5 | FK2O",
+                "with_soil_moisture": "180 | 16 | 240 | 119 | 65 | 66 | 117 | 66 | 77"
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Azospirillum",
+                "quantity": "2 kg ha-1"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "value": "200 | 18 | 260 | 113 | 62 | 58 | 111 | 63 | 69"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "220 | 20 | 280 | 107 | 59 | 49 | 105 | 60 | 60"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "FYM",
+                "disease_symptoms": "240 | 22 | 300 | 101 | 57 | 41 | 99 | 58 | 52"
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "PSB",
+                "pest_symptoms": "260 | 24 | 320 | 96 | 54 | 33 | 94 | 55 | 44"
+            },
+            "has_fertilizer_application_requirements": {
+                "@type": "Fertilization",
+                "nutrient_name": "NPK",
+                "quantity": "kg ha-1",
+                "stage_of_application": "Initial soil tests"
+            }
+        }
+    ]
+}

@@ -1,0 +1,63 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PostHarvestTechnology": {
+            "@id": "cropCult:PostHarvestTechnology",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "importance": "schema:Text",
+                "components": "schema:Text",
+                "health_benefits": "schema:Text",
+                "studies": "schema:Text",
+                "key_elements": "schema:Text",
+                "vitamin_e_components": "schema:Text",
+                "anti_cancer_effect": "schema:Text",
+                "vitamin_e_source": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "DRY SEEDED UPLAND RICE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "AEROBIC RICE",
+                "used_for": "POST HARVEST TECHNOLOGY OF RICE PROCESSING OF RICE"
+            },
+            "storage_guidelines_are": {
+                "@type": "PostHarvestTechnology",
+                "name": "Importance",
+                "importance": "Rice bran oil also contains components of vitamin E that may benefit health.",
+                "components": "The unique components, such as oryzanol or tocotrienol, have been drawing people's attention.",
+                "health_benefits": "Numerous studies show rice bran oil reduces the harmful cholesterol (LDL) without reducing good cholesterol (HDL).",
+                "studies": "In those studies, Oryzanol is reported as the key element responsible for that function.",
+                "key_elements": "Tocotrienol, on the other hand, is highlighted as the most precious and powerful vitamin E existing in nature and is said to have an anti-cancer effect, too.",
+                "vitamin_e_components": "As a Vitamin-E source, rice bran oil is rich not only in alpha Tocopherol but also has the highest amount of Tocotrienol in liquid form vegetable oils."
+            }
+        }
+    ]
+}

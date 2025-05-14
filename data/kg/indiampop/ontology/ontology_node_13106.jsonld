@@ -1,0 +1,40 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "CropProtection": {
+            "@id": "cropCult:CropProtection",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pesticide_list": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "CropProtection",
+            "pest_name": "Leaffolder",
+            "pesticide_list": [
+                {
+                    "@type": "PesticideList",
+                    "name": "Triazophos 40% EC",
+                    "quantity": "625-1250 ml/ha"
+                },
+                {
+                    "@type": "PesticideList",
+                    "name": "Phosalone 35 EC",
+                    "quantity": "1500 ml/ha"
+                }
+            ]
+        }
+    ]
+}

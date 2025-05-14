@@ -1,0 +1,244 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "byline": "Dan Treacy",
+      "published": "2023-12-23T23:54:00+00:00",
+      "title": "MLB free agency tracker: Live updates on news, rumors, signings and trades after 2023 Winter Meetings",
+      "summary": "Shohei Ohtani and Juan Soto have already found new homes, but much of the MLB offseason has yet to play out.",
+      "associatedAsset": [
+        {
+          "@type": "snap:textAsset",
+          "image": "https://www.sportingnews.com/us/mlb/news/mlb-free-agency-tracker-live-updates-news-rumors-signings/f95a54a4cbf46030b9f1ecd6"
+        }
+      ]
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Padres ink five-year deal with NPB star Matsui",
+      "eventSummary": "Star reliever Yuki Matsui inked a five-year, $28 million deal to join the Friars.",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "MLB free agency tracker, live updates"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Dodgers sign Yamamoto to $325 million contract",
+      "eventSummary": "The Dodgers have reportedly signed the Japanese ace to a 12-year, $325 million deal."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Giants out of Yamamoto sweepstakes",
+      "eventSummary": "San Francisco has been notified that the team is out of the bidding to land the Japanese ace."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Pirates re-sign franchise legend Andrew McCutchen",
+      "eventSummary": "Pittsburgh has reportedly inked Andrew McCutchen to a one-year, $5 million deal."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Angels discussing Blake Snell",
+      "eventSummary": "Los Angeles has had discussions with two-time Cy Young winner Blake Snell."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Cody Bellinger looking for package starting at $200 million",
+      "eventSummary": "Bellinger's agent, Scott Boras, is seeking a deal worth well over $200 million."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Padres closing in on contract for Yuki Matsui",
+      "eventSummary": "The Padres are nearing a deal for one of the top Japanese pitchers on the market."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Giants ink catcher Tom Murphy to two-year contract",
+      "eventSummary": "San Francisco has agreed to a two-year, $8 million contract with the Giants."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Pirates add to rotation, sign Martin Perez",
+      "eventSummary": "The Pirates have reportedly agreed to a one-year, $8 million deal with former Ranger starter Martin Perez."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Bidding for Yamamoto begins Monday",
+      "eventSummary": "The bidding process for Yamamoto is slated to begin."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Braves cut Matt Carpenter after trying to trade him",
+      "eventSummary": "Atlanta reportedly was hoping to trade Matt Carpenter after acquiring him."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Twins could trade Max Kepler, Jorge Polanco",
+      "eventSummary": "Max Kepler and Jorge Polanco could both reportedly be on the trade market."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Yamamoto requests meeting with Yankees",
+      "eventSummary": "Yamamoto reportedly asked to meet with the Yankees for a second time."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Lourdes Gurriel Jr. re-signs with Diamondbacks",
+      "eventSummary": "Gurriel has re-signed a contract with the Diamondbacks."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Yamamoto dines with Mets owner",
+      "eventSummary": "The Mets hosted the Japanese pitcher for dinner at team owner Steve Cohen's home."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Royals sign pair of veterans",
+      "eventSummary": "Kansas City signed outfielder Hunter Renfroe and right-hander Michael Wacha."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Tyler Glasnow inks extension with Dodgers",
+      "eventSummary": "Glasnow will be signing a five-year, $135 million deal with the Dodgers."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Tyler Glasnow traded to Dodgers from Rays",
+      "eventSummary": "Los Angeles has reportedly acquired the right-handed starting pitcher."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Jack Flaherty signs with Tigers",
+      "eventSummary": "The right hander is signing a one-year, $14 million deal with the Tigers."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Yoshinobu Yamamoto meets with Phillies",
+      "eventSummary": "The Japanese free agent reportedly met with the Phillies."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Cubs, Blue Jays the favorites for Cody Bellinger",
+      "eventSummary": "The Blue Jays and Cubs are believed to be the favorites to land Cody Bellinger."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Dodgers send stars to meet with Yamamoto",
+      "eventSummary": "Los Angeles reportedly sent Ohtani, Mookie Betts, Freddie Freeman and Will Smith to meet with Yamamoto."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Rays-Dodgers working on a Tyler Glasnow trade",
+      "eventSummary": "The Rays and Dodgers are reportedly working on a trade for Tyler Glasnow."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Rowdy Tellez inks one-year deal with Pirates",
+      "eventSummary": "The Pirates have agreed to a one-year, $3.2 million contract with Rowdy Tellez."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Giants, Jung-Hoo Lee agree to six-year deal",
+      "eventSummary": "The Giants have inked Korean outfielder Jung-Hoo Lee to a six-year, $113M contract."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Dodgers meeting with Yamamoto on Tuesday",
+      "eventSummary": "The Dodgers met with Yoshinobu Yamamoto on Tuesday."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Royals finalizing deal with SP Seth Lugo",
+      "eventSummary": "The Royals and starter Seth Lugo are finalizing a 3-year, $45 million contract."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Yamamoto to meet with Red Sox, Blue Jays",
+      "eventSummary": "Yoshinobu Yamamoto will meet with both the Red Sox and Blue Jays."
+    }
+  ]
+}
+```

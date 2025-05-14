@@ -1,0 +1,145 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "snap:asset",
+      "title": "Inter Miami vs FC Cincinnati live score, result, updates, highlights with Lionel Messi's MLS playoffs on line",
+      "author": "Kyle Bonn",
+      "theme": "sports",
+      "content": "Inter Miami were in simply too big of a hole in the MLS playoff race, one which even Lionel Messi couldn’t drag them out of. With two matches remaining in the season, Inter Miami have been officially eliminated from the MLS playoff race, with Supporters’ Shield winners FC Cincinnati dealing the deathblow with a 1-0 victory at DRV PNK Stadium. The match had every hallmark of what made Inter Miami a flawed side when Lionel Messi arrived. Inter Miami utterly dominated the first half, but could not find the breakthrough, instead hitting the woodwork three separate times in the opening half-hour and four overall in the match. On the other end, Drake Callender was nothing short of sensational in goal, but even his heroics were just not enough to stymie the electric counter-attack that FC Cincinnati possess. Messi, who had missed the last four games due to injury, returned to play 35 minutes off the bench, but by the time he stepped on the pitch, Inter Miami’s early dominance in the match had come and gone. Messi played a part, but he was unable to fully change the tide of the game. Eventually, Alvaro Barreal’s 78th-minute goal ended any hope that Inter Miami had to complete a stunning playoff charge, and the defeat coupled with CF Montreal’s big 4-1 victory over Portland means Inter Miami are officially out of the postseason running. The Sporting News followed the Inter Miami vs. FC Cincinnati match live, providing score updates, commentary and highlights as they happened.",
+      "published": "2023-10-07T21:30:00+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "snap:event",
+          "eventTitle": "Inter Miami vs FC Cincinnati",
+          "eventSummary": "Inter Miami were eliminated from the MLS playoff race after a 1-0 defeat to FC Cincinnati.",
+          "theme": "sports",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "geo:location": "DRV PNK Stadium, Ft. Lauderdale, FL"
+          },
+          "mentions_persons": [
+            {
+              "@id": "snap:person1",
+              "@type": "snap:person",
+              "name": "Lionel Messi"
+            },
+            {
+              "@id": "snap:person2",
+              "@type": "snap:person",
+              "name": "Drake Callender"
+            },
+            {
+              "@id": "snap:person3",
+              "@type": "snap:person",
+              "name": "Alvaro Barreal"
+            },
+            {
+              "@id": "snap:person4",
+              "@type": "snap:person",
+              "name": "Rubiel Vazquez"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization1",
+              "@type": "snap:organization",
+              "name": "Inter Miami"
+            },
+            {
+              "@id": "snap:organization2",
+              "@type": "snap:organization",
+              "name": "FC Cincinnati"
+            },
+            {
+              "@id": "snap:organization3",
+              "@type": "snap:organization",
+              "name": "CF Montreal"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

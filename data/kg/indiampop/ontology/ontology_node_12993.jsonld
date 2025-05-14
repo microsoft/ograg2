@@ -1,0 +1,115 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "DRY SEEDED RAINFED UN-PUDDLED LOWLAND RICE WITH SUPPLEMENTAL IRRIGATION",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Rice",
+                "used_for": "Food"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "Lowland",
+                "has_regions": ["Rainfed", "Un-puddled"]
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Warm",
+                "for_flowering": "Warm",
+                "for_grain_filling": "Warm",
+                "negative_effect": "Cold"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Sandy",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough and level the field",
+                "with_soil_moisture": "Moist"
+            },
+            "seed_germination_test_requirements_are": "Test for germination rate",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Fungicide X",
+                "quantity": "5 kg per acre"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Spring",
+                "value": "15 cm",
+                "depth": "2 cm",
+                "method": "Direct seeding"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Weed X",
+                "weed_types": ["Broadleaf", "Grass"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Herbicide X",
+                    "quantity": "5 kg per acre",
+                    "stage": "Post-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "5000 liters per acre",
+                "stage_of_application": "Vegetative"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Disease X",
+                "disease_symptoms": "Yellowing of leaves",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Fungicide X",
+                    "quantity": "5 kg per acre",
+                    "stage": "Post-emergence"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Pest X",
+                "pest_symptoms": "Holes in leaves",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Pesticide X",
+                    "quantity": "5 kg per acre",
+                    "stage": "Post-emergence"
+                }
+            },
+            "harvesting_guidelines_are": "As that of transplanted rice. This area is more suitable to combine harvester.",
+            "storage_guidelines_are": "Store in a cool, dry place"
+        }
+    ]
+}

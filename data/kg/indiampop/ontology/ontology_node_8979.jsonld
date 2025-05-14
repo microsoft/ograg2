@@ -1,0 +1,74 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "SERICULTURE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "A. MULBERRY (Morus spp",
+                "used_for": "1. IRRIGATED > 1.4 MAIN FIELD"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Micronutrients",
+                "disease_symptoms": "Deficiency symptoms",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "FeSO4",
+                    "quantity": "1%",
+                    "stage": "Whenever the deficiency symptoms are noticed"
+                }
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Spray 1% FeSO4 or 0.5% ZnSO4 or both whenever the deficiency symptoms are noticed.",
+                "with_soil_moisture": "N/A"
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "ZnSO4",
+                "quantity": "0.5%"
+            },
+            "needs_fertilization": {
+                "@type": "Fertilization",
+                "nutrient_name": "FeSO4, ZnSO4",
+                "quantity": "1%, 0.5%",
+                "stage_of_application": "Whenever the deficiency symptoms are noticed"
+            }
+        }
+    ]
+}

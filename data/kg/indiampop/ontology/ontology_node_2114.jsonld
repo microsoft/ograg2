@@ -1,0 +1,97 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Rust: Puccinia arachidis",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Mancozeb",
+                "quantity": "1000g /ha",
+                "stage": "Spray"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Early leaf Spot: Cercopora arachidicola, Mycosphaerella arachidis Late leaf Spot: Phaeoisariopsis personata, Mycosphaerella berkeleyii",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Carbendazim",
+                "quantity": "500 g/ha",
+                "stage": "Spray"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Combined infection of rust and Leaf spot",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Calotropis leaf extract",
+                "quantity": "10%",
+                "stage": "Spray"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Root rot: Macrophomina phaseolina (Rhizoctonia bataticola)",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "P. fluorescens",
+                "quantity": "2.5g /ha",
+                "stage": "Soil application"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Groundnut Bud Necrosis: (Peanut Bud Nercrosis Virus) vector: Thrips tabaci, Frankliniella schultzeii",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Monocrotophos 36 WSC",
+                "quantity": "500 ml/ha",
+                "stage": "Spray"
+            }
+        }
+    ]
+}

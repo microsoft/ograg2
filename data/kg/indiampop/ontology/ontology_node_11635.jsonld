@@ -1,0 +1,76 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "The crown roots appear in the third week after germination. Weeding, manuring and irrigation at this stage help root growth and development and also better tillering. In heavily weed infested field weeding earlier at about 15 days stage is necessary. Nitrogen top dressing can be done between the lines before hoeing and weeding so that the fertilizer gets incorporated into the soil there by reducing losses and increasing fertilizer use efficacy. For weeding wheel hoe and wheel finger weeder can be used."
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Interculture",
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "pendimethalin",
+                    "quantity": "1 kg/ha",
+                    "stage": "one day after sowing"
+                }
+            }
+        },
+        {
+            "@type": "HerbicideList",
+            "name": "2,4-D (80%)",
+            "quantity": "0.75 kg/ha",
+            "stage": "30 days after sowing"
+        },
+        {
+            "@type": "HerbicideList",
+            "name": "methabenzthiazuron (70%)",
+            "stage": "30 days after sowing"
+        }
+    ]
+}

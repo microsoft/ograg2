@@ -1,0 +1,98 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "title": "Coinbase rallies more than 60% in same month that FTX and Binance founders brace for prison",
+      "byline": null,
+      "published": "2023-11-30T21:08:00+00:00",
+      "summary": "In this article COIN Follow your favorite stocks CREATE FREE ACCOUNT Brian Armstrong, CEO of Coinbase, slammed the U.S. Securities and Exchange Commission. He also said the cryptocurrency exchange is looking to invest more outside of the U.S. Carlos Jasso | Bloomberg | Getty Images In a month that saw two of the crypto industry's leading figures headed on the path to prison, Coinbase shares rocketed more than 60%, their second-best monthly performance since the cryptocurrency exchange went public in 2021. Bolstered by rallies in bitcoin and ether as well as crises at key competitors, Coinbase has been one of Wall Street's best bets all year, climbing more than 250% in the first 11 months of 2023. For early holders of the stock, the rebound helps ease the pain of 2022, when Coinbase lost 86% of its value as soaring inflation and rising interest rates pushed investors out of crypto and high-growth tech companies, and into assets deemed safer in a recession. Tech stocks have roared back this year, particularly those tied to the artificial intelligence boom and crypto. Coinbase has the added benefit of having survived the so-called crypto winter, while so many of its rivals disappeared or downsized. The industry fallout came to a head this month, when Sam Bankman-Fried, founder of former Coinbase rival FTX, was found guilty of seven criminal fraud counts tied to the collapse of his exchange and the theft of customer funds. His conviction landed on Nov. 2 after a monthlong trial. Less than three weeks later, on Nov. 21, Binance founder Changpeng Zhao pleaded guilty to violations of the Bank Secrecy Act for failing to implement an effective anti-money laundering program and for willfully violating U.S. economic sanctions. Combination showing Former FTX CEO, Sam Bankman-Fried (L) and Zhao Changpeng (R), founder and chief executive officer of Binance. Getty Images | Reuters Bankman-Fried, who faces potential life behind bars, is scheduled to be sentenced in March. Zhao's sentencing is set for February. While guidelines suggest a sentence of 12 to 18 months, the Justice Department could push for a lengthier punishment for the Binance founder. Unlike FTX, which filed for bankruptcy in late 2022, Binance is still standing, though now without Zhao, who agreed to step down as CEO as part of the plea deal. Even before that, the company was seeing a plunge in trading, with volume down by two-thirds between the first and third quarters of the year, according to crypto analyst site CoinGecko. With assets of more than $65 billion on the platform, Binance remains the world's largest crypto exchange globally. But its market share fell from over 60% in February to under 50% in September, \"an indication that the exchange may be losing its grip on the industry as regulators continue to pressure it,\" CoinGecko said. In the first 24 hours after the Justice Department announced its $4.3 billion settlement with Binance, customers pulled more than $1 billion from the exchange. Liquidity also dropped 25% in the immediate aftermath of the announcement as market makers pulled back their positions, according to data provider Kaiko. A Binance spokesperson told CNBC in a statement that Zhao appeared in court \"to protect our users and to ensure the longevity of our company.\" \"Binance's resilience has been tested unlike any other exchange around today,\" the spokesperson said. \"Yet, we continue to operate the world's largest cryptocurrency exchange by volume. In fact, we currently see a climbing percentage of institutional user transactions.\" Coinbase is the fourth-biggest global exchange by daily volume, according to CoinGecko. It's the only one that's publicly traded in the U.S. and has a market cap of close $30 billion. In a report to clients on Wednesday, analysts at Mizuho noted that Coinbase shares are up about 20% since Zhao's settlement, a rally that's likely \"in anticipation of potential share gains for COIN in wake of outflows from Binance, the industry's largest exchange,\" they wrote. Coinbase shares fell 2.4% to $124.72 on Thursday, wiping out some of their recent gains. Mizuho raised its price target on the stock to $35 from $31, while keeping its underperform rating, which it's maintained since December. 'Turn the page' A Coinbase spokesperson declined to comment for this story, but CEO Brian Armstrong told CNBC's Joumanna Bercetche earlier this week that the Binance settlement allows the crypto industry to move past a spate of scandals. \"The enforcement action against Binance, that's allowing us to kind of turn the page on that and hopefully close that chapter of history,\" Armstrong said. \"I think that regulatory clarity is going to help bring in more investment, especially from institutions.\" watch now Both Coinbase and Binance still face legal battles with the Securities and Exchange Commission, which was noticeably absent from the Binance settlement. Meanwhile, Coinbase executives have floated the idea of leaving the U.S. altogether for a jurisdiction with hard-and-fast rules on crypto, should the company be unable to come to a resolution with the SEC. Wall Street appears to be shrugging off that concern. Analysts at Needham, who recommend buying Coinbase shares, wrote in a report on Nov. 21 that the company \"exited the crypto 'winter' better positioned than in the prior up cycle.\" They also noted that in addition to FTX's failure and Binance's retreat, crypto trading platform Bittrex has also exited the market. Bittrex said on Nov. 20, that effective Dec. 4, \"all trading activity on Bittrex Global will be disabled,\" and it encouraged customers \"to log into their account and withdraw assets as soon as possible.\" In April, the SEC charged Bittrex and its ex-CEO with operating an unregistered exchange. Yet there may be a new competitive threat on the horizon. U.S. regulators are expected to soon approve the first U.S. spot bitcoin exchange-traded funds, which would allow investors to buy into digital currency directly through the same mechanism they use to buy stock and bond ETFs. Top asset managers, including BlackRock , WisdomTree and Invesco, have filed applications with the SEC. Regulatory approval would open up many more avenues for people to buy bitcoin. While Coinbase allows investors to buy a variety of cryptocurrencies, bitcoin accounted for 38% of transaction volume in the third quarter and almost the same percentage of revenue. For casual investors who just want some exposure to bitcoin, there will potentially be additional ways to buy, including through their primary online brokerage. JPMorgan Chase analysts wrote last week that crypto ETFs would likely be good for Coinbase in the short term but more problematic as time passes. The initial boost would come from custody revenue tied to the ETFs. Most of the big asset managers jumping into market, including BlackRock, Franklin Templeton and WisdomTree, have picked Coinbase for custody services, which involves the storage and safekeeping of the assets. However, the longer-term concern, according to JPMorgan, is that fewer people will need Coinbase accounts, leading to pricing pressure. \"We see many novice investors never going beyond these flagship tokens and thus never needing the services of a Coinbase,\" wrote the analysts, who have a neutral rating on the stock and an $80 price target. \"We also see the ETF markets as more transparent, efficient and lower cost to execute and we see the potential for a migration to ETFs for cheaper exposure and trading driving Coinbase to lower fees.\" WATCH: Former SEC enforcement chief on 'casualness' in crypto compliance",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://www.cnbc.com/2023/11/30/coinbase-jumps-in-november-as-ftx-binance-founders-brace-for-prison.html"
+      }
+    }
+  ]
+}
+```

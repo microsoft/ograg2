@@ -1,0 +1,70 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name"
+            }
+        },
+        "CropGrowingZones": {
+            "@container": "@list",
+            "@id": "cropCult:CropGrowingZones",
+            "@type": "schema:ItemList",
+            "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List",
+                    "has_seed_recommendations": "cropCult:SeedList"
+                }
+            }
+        },
+        "SeedList": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "RICE"
+        },
+        {
+            "@type": "CropGrowingZones",
+            "CropGrowingZone": [
+                {
+                    "name": "AGROCLIMATIC ZONE WISE VARIETY RECOMMENDATION",
+                    "has_regions": [
+                        "2. North Central Plateau, Keonjhar",
+                        "3. Mid Central Table Land, Mahisapat"
+                    ],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": [
+                            "Low Savitri",
+                            "Mahanadi",
+                            "Indravati",
+                            "Kanchan",
+                            "Moti",
+                            "Padmini",
+                            "Upahar Up Parijat",
+                            "Khandagiri",
+                            "Ghanteswari",
+                            "Pathara",
+                            "Badami",
+                            "Annada",
+                            "Lalitagiri"
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

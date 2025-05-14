@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "PestTreatements",
+            "pest_name": "Spider mites",
+            "pest_symptoms": "Elongated streaks, chlorosis and withering of leaves. Depletion of chlorophyll, resulting in typical rested leathery appearance. Curling of leaves starting from margins.",
+            "pest_control": {
+                "@type": "PesticideList",
+                "name": "Water spray, Neem oil, Dimethoate",
+                "quantity": "Run-off level, 0.05%",
+                "stage": "Dry season from January to May"
+            }
+        }
+    ]
+}

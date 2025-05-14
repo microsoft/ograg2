@@ -1,0 +1,291 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "SeedList": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List",
+                "has_early_sowing_time": "cropCult:SowingTime",
+                "has_late_sowing_time": "cropCult:SowingTime",
+                "has_seeding_rate": "schema:QuantitativeValue",
+                "has_fertilizer_application_requirements": "cropCult:Fertilization"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CropGrowingZones":{
+                "@container": "@list",
+                "@id": "cropCult:CropGrowingZones",
+                "@type": "schema:ItemList",
+                "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List",
+                    "has_seed_recommendations": "cropCult:SeedList"
+                }
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "for_flowering": "schema:Text",
+                "for_grain_filling": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "seedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "­N¡hl p¡l h¡ M¡j¡l fyQ¡ p¡l fËbj Q¡­o h¡¢L ph p¡l j¤m S¢j ­a¢l Ll¡l pju fË­u¡N Ll¦e z h£S hf­el c¤laÆ",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "p¡¢l ­b­L p¡¢l 30 ­p¢j, Hhw h£S ­b­L h£­Sl c§laÆ 15 ­p¢jx hS¡u l¡M¤ez A¿¹hÑa£ f¢lQkÑ¡",
+                "used_for": "h£S hf­el 20 b­L 25 ¢ce fl i¡m L­l ¢es¡e£ ¢c­u BN¡R¡ f¢lú¡l Ll¦e zp¡¢ll j­dÉ N¡R b­L N¡­Rl c¤laÆ 15 ­p¢j, hS¡u ­l­M A¢a¢lš² Q¡l¡ a¥­m ­gm¤e z S¢j­a q¡mL¡ Sm­p­Ql hÉhÙÛ¡ Ll¦e z pju L¡m"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "@type": "cropCult:CropGrowingZone",
+                    "name": "100 - 110 ¢c­el gpm z Eyvf¡ce",
+                    "has_regions": ["L¡¢e fË¢a Eyvf¡ce 200 - 250 ­L¢S z ­R¡m¡ S¡a"],
+                    "has_seed_recommendations": {
+                        "@type": "cropCult:SeedList",
+                        "variety_name": ["jq¡j¡u¡ - 1", "jq¡j¡u¡ - 2", "Ae¤l¡d¡", "He. ¢f - 209"],
+                        "has_early_sowing_time": {
+                            "@type": "cropCult:SowingTime",
+                            "start_date": "L¡¢aÑL j¡p",
+                            "end_date": "8 ­L¢S fË¢a L¡¢e"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "cropCult:SowingTime",
+                            "start_date": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                            "end_date": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "8 ­L¢S fË¢a L¡¢e"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "cropCult:Fertilization",
+                            "nutrient_name": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                            "quantity": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                            "stage_of_application": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "cropCult:TemperatureRequirements",
+                "for_germination": "100 - 110 ¢c­el gpm z Eyvf¡ce",
+                "for_flowering": "L¡¢e fË¢a Eyvf¡ce 200 - 250 ­L¢S z ­R¡m¡ S¡a",
+                "for_grain_filling": "jq¡j¡u¡ - 1",
+                "negative_effect": "jq¡j¡u¡ - 2"
+            },
+            "has_soil_requirements": {
+                "@type": "cropCult:SoilRequirements",
+                "soil_type_name": "Ae¤l¡d¡",
+                "avoid_soil_type": "He. ¢f - 209",
+                "for_water": "L¡¢aÑL j¡p",
+                "for_nutrients": "8 ­L¢S fË¢a L¡¢e"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "cropCult:LandPreparation",
+                "instructions": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                "with_soil_moisture": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h"
+            },
+            "seed_germination_test_requirements_are": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+            "has_seed_fungicide_requirements": {
+                "@type": "cropCult:Fungicide",
+                "name": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                "quantity": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "cropCult:SeedSpacing",
+                "sowing_time": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                "value": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                "depth": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                "method": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h"
+            },
+            "weed_management_needs_are": {
+                "@type": "cropCult:WeedManagement",
+                "weed_name": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                "weed_types": ["q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h"],
+                "herbicides": {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                    "quantity": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                    "stage": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "cropCult:IrrigationRequirement",
+                "quantity": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                "stage_of_application": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h"
+            },
+            "needs_disease_treatements": {
+                "@type": "cropCult:DiseaseTreatements",
+                "disease_name": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                "disease_symptoms": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                "disease_control": {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                    "quantity": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                    "stage": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "cropCult:PestTreatements",
+                "pest_name": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                "pest_symptoms": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                "pest_control": {
+                    "@type": "cropCult:PesticideList",
+                    "name": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                    "quantity": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+                    "stage": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h"
+                }
+            },
+            "harvesting_guidelines_are": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h",
+            "storage_guidelines_are": "q¡ó¡ ­l¡­c h£S i¡­m¡ L­l ö¢L­k fË¢a ­L¢S h£­Sl p¡­b 1 NË¡j jÉ¡­L¡­Sh Hhw 1 NË¡j L¡­hÑeX¡¢Sj h£S ­h¡e¡l 7-10 ¢ce B­N i¡­m¡ L­l ¢j¢n­u ¢e­a q­h"
+        }
+    ]
+}

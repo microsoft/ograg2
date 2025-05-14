@@ -1,0 +1,160 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "snap:asset",
+      "title": "Fantasy Football RB Rankings Week 12: Who to start, best sleepers at running back",
+      "author": "Sloan Piva",
+      "theme": "sports",
+      "content": "As we trot into Turkey Day week, only three more regular-season weeks remain until the fantasy football playoffs. Every decision — from the tough starts to the difficult sits; the savvy waiver adds to the costly drops — can ultimately decide whether your team is a contender or a pretender. Our Week 12 fantasy RB rankings for standard leagues will help guide you to the right moves and hopefully land you a big \"W\" for which to be thankful. Trade deadlines have passed in most leagues, so the majority of fantasy owners must soldier on toward the home stretch with the main core they have built to this point. On a positive note, we have no byes to worry about this — just plenty of short turnarounds, some potential weather concerns, and of course, the dreaded injury bug. Fortunately for us, we have been ahead of the curve with sleepers and breakouts all season, so we're more prepared to weather any storm than the average fantasy Joe. Let's get right to our Week 12 RB rankings so you can fully prepare for Thanksgiving week and put out a lineup with backs who will feast like the rest of us.",
+      "published": "2023-11-21T21:33:00+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "snap:event",
+          "eventTitle": "Week 12 Fantasy Football",
+          "eventSummary": "Fantasy Football RB Rankings Week 12: Who to start, best sleepers at running back",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@id": "snap:person1",
+              "@type": "snap:person",
+              "name": "Christian McCaffrey"
+            },
+            {
+              "@id": "snap:person2",
+              "@type": "snap:person",
+              "name": "Austin Ekeler"
+            },
+            {
+              "@id": "snap:person3",
+              "@type": "snap:person",
+              "name": "Saquon Barkley"
+            },
+            {
+              "@id": "snap:person4",
+              "@type": "snap:person",
+              "name": "David Montgomery"
+            },
+            {
+              "@id": "snap:person5",
+              "@type": "snap:person",
+              "name": "Jahmyr Gibbs"
+            },
+            {
+              "@id": "snap:person6",
+              "@type": "snap:person",
+              "name": "Tony Pollard"
+            },
+            {
+              "@id": "snap:person7",
+              "@type": "snap:person",
+              "name": "Raheem Mostert"
+            },
+            {
+              "@id": "snap:person8",
+              "@type": "snap:person",
+              "name": "Travis Etienne"
+            },
+            {
+              "@id": "snap:person9",
+              "@type": "snap:person",
+              "name": "Josh Jacobs"
+            },
+            {
+              "@id": "snap:person10",
+              "@type": "snap:person",
+              "name": "Breece Hall"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization1",
+              "@type": "snap:organization",
+              "name": "Sporting News"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

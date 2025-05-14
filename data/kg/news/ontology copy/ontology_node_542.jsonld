@@ -1,0 +1,98 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "byline": "Amanda Silberling",
+            "published": "2023-12-21T14:00:20+00:00",
+            "title": "The new American Dream is to get MrBeast to pay off your debt",
+            "summary": "A woman in a blue tracksuit is on the floor of a bright asylum-like room, stretching in a pigeon yoga pose when she turns to the stranger she plans to live with for 100 days. “What are you going to do with this money?” she asks. The two contestants in MrBeast’s newest video, Suzie Taylor and Bailey Stanfield, have been cohabitating for nearly three weeks at this point, isolated from the rest of the world. They only eat canned food, and all they have to entertain themselves is a deck of cards that they made themselves. “I was probably going to pay a lot on the house,” Bailey replies. He’s sitting in his bed, where he’s made a canopy with a sheet to keep the light out, since the bright lights never turn off. Stacks of dollar bills lie atop his canopy, and he’s surrounded by 15 more briefcases filled with money, which he will only get if he can stick this out for another few months. “I want to pay off my parents’ debt,” Suzie says. “That would be like, my ideal world.” Taylor and Stanfield successfully completed the challenge, winning $185,000 each. But what’s intriguing about their reality TV-like experience is that this trade-off has become a new normal on social media. If you agree to suffer for content, you might just be able to pay off your parents’ debt. The most successful YouTuber in the world, MrBeast, is known for his expensive stunts. Four years ago, this meant paying people $10,000 to eat a ghost pepper, giving someone $100,000 to spend in one hour, or offering a stranger $100,000 to quit their job. With each video, MrBeast’s challenges have become a bit more diabolical, pushing contestants’ physical and mental fortitude to their limits. Now, starring in one of his videos means surviving in a locked room with a stranger for over three months, or living in a grocery store. A 25-year-old named Jimmy Donaldson, aka MrBeast, must constantly up the ante in every video to keep his massive audience entertained. Oftentimes, MrBeast is the one putting himself in these nightmarish situations, like when he buried himself alive for seven days (and while he was 10 feet underground in a coffin, he celebrated hitting the milestone of 200 million YouTube subscribers). But his contestants’ goals have remained the same since the beginning. Americans are so saddled with debt — medical bills, student loans, mortgages, credit card interest — that it seems like the only way out is to sign up for a massively unpleasant YouTube stunt. One of the 100 contestants in a video called “Last To Leave Circle Wins $500,000” cried when she earned a consolation prize of a few thousand dollars. “This is going to change my life,” she said tearfully. “I’m going to take a lot of this to pay my bills.” And Alex, the man who lived in a grocery store for 45 days, said he would set aside $60,000 of his winnings to pay off debt, $130,000 for his house and $60,000 for his two kids’ college fund. “Money is the thing we’d trade our life for,” said contestant Shawn Hendrix in one MrBeast video, in which he lived in a giant circle in the middle of nowhere for 100 days, away from his wife and four children. “I’ve given up a third of a year of my life for half a million. Make sure you’re trading your life for things that are worth it.” The situation is oddly reminiscent of “Squid Game,” the Netflix series about 456 contestants who are so deeply in debt that they agree to fight to the death for the chance to win millions of dollars, all while the wealthy elite watch for sport. And, to be extremely on the nose, MrBeast created his very own Squid Game challenge, where 456 people competed for $456,000. Then, Netflix also created a reality competition show based on the dystopian thriller. Of course, the contestants on Netflix or in MrBeast videos are participating voluntarily and are not in mortal danger. Still, we’re living in a country where the total amount of student debt has almost tripled in the last 15 years to over $1.77 trillion dollars. And according to a study from Kaiser Health News and NPR, 41% of American adults have some form of medical debt. If getting sick can render you bankrupt, why not live inside a grocery store for 45 days if it could eliminate your financial burdens? The American Dream is no longer the promise that anyone can get rich if they just work hard enough. Now, it’s the hope that maybe one day MrBeast will film you living in terrible conditions for a few months, and then you’ll be able to pay off the debt you accumulated by simply just going to school or getting sick. One of the two contestants who just won $185,000 for living in a barren room with a stranger for 100 days, Suzie Taylor is using this exposure to jumpstart her career as a content creator. Now that 78 million YouTube viewers (and counting) have watched her get pushed to her psychological limits for cash, she’s reinvesting her winnings into becoming a content creator herself. In tandem with the release of MrBeast’s video about her, Taylor posted a video called “I Spent $185,000 From MrBeast.” Her video pays homage to MrBeast’s old-school guerilla philanthropy videos, as she drives around Los Angeles doing good deeds for strangers. She buys a child a hoverboard at Target, she gives money to homeless people, and she pays for everyone’s ice cream at a very crowded dessert shop. She’s quite literally using the money she won from MrBeast to jumpstart her online career, wherein she’s emulating the same playbook that made MrBeast who he is. Taylor’s strategy is low-key genius. According to the Wayback Machine, she had 300 subscribers in April. On Sunday, December 17, the day after she and MrBeast posted their videos, Taylor had around 12,000 subscribers, and on Wednesday, December 20, she’s broken 100,000. So, if Taylor can keep her subscribers engaged beyond her 15 minutes of fame, she won’t just have won $185,000 from MrBeast. She’ll have made a down payment on a whole new career.",
+            "associatedAsset": {
+                "@type": "TextAsset",
+                "image": "https://techcrunch.com/2023/12/21/mrbeast-american-dream-suzie-taylor/"
+            }
+        }
+    ]
+}
+```

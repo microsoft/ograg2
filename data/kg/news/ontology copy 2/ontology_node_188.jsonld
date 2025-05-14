@@ -1,0 +1,300 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "title": "Which M.L.B. Playoff Team Has the Most Daunting Home Field? We Ranked Them.",
+            "author": "The New York Times",
+            "theme": "sports",
+            "content": "By Chad Jennings, C. Trent Rosecrans and Stephen J. Nesbitt\n\nIn one American League Wild Card Series, the whole thing turned on a play designed around crowd noise. It was too loud at Target Field, Twins shortstop Carlos Correa realized, for the third-base coach to warn Blue Jays baserunners about a developing pickoff play. The Twins used the noise to their advantage, picked off Vladimir Guerrero Jr. and secured a two-game sweep.\n\nIn the other AL Wild Card Series, empty seats were everywhere. The Rays are an excellent team that thrives on their underdog status — low payroll, injured players, they always find a way — but playing in front of two of the smallest postseason crowds in the past 100 years, the Rays were swept by a Rangers team that had nine fewer wins in the regular season. The indifference was deafening.\n\nHome-field advantage, it turns out, just isn’t the same from one ballpark to the next.\n\n“To be honest with you, I think we have one of the best home-field advantages in baseball,” third baseman Alec Bohm said as the Phillies swept the Marlins to improve to 24-11 in postseason games at Citizens Bank Park. “People say it’s difficult to play here and things like that. I think going through that type of stuff and learning how to play here, that just makes this time of year that much better.”\n\nThis time of year certainly brings out the best, and the postseason’s greatest moments tend to be punctuated by the crowds who witness and react in real time. After seeing the way crowds could respond — or not — to October baseball this week, The Athletic ranked the home-field environments of the eight remaining playoff teams, from the replaceable to the Phanatical.",
+            "published": "2023-10-08T21:56:00+00:00",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Arizona Diamondbacks vs. Los Angeles Dodgers",
+                    "eventSummary": "A tremendously impressive two-game sweep in Milwaukee carried the Diamondbacks into a division series showdown with the Dodgers.",
+                    "theme": "sports",
+                    "hasLocation": {
+                        "@type": "geo:SpatialThing",
+                        "name": "Chase Field"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Luis Gonzalez"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Jay Bell"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Arizona Diamondbacks"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Los Angeles Dodgers"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Texas Rangers vs. Tampa Bay Rays",
+                    "eventSummary": "The Rangers swept the Rays in front of two of the smallest postseason crowds in the past 100 years.",
+                    "theme": "sports",
+                    "hasLocation": {
+                        "@type": "geo:SpatialThing",
+                        "name": "Globe Life Field"
+                    },
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Texas Rangers"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Tampa Bay Rays"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Minnesota Twins vs. Toronto Blue Jays",
+                    "eventSummary": "The Twins snapped an 18-game postseason losing streak with two blasts off the bat of rookie Royce Lewis.",
+                    "theme": "sports",
+                    "hasLocation": {
+                        "@type": "geo:SpatialThing",
+                        "name": "Target Field"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Carlos Correa"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Royce Lewis"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Minnesota Twins"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Toronto Blue Jays"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Houston Astros vs. Kansas City Royals",
+                    "eventSummary": "Despite all that noise, the Astros were 39-42 at home.",
+                    "theme": "sports",
+                    "hasLocation": {
+                        "@type": "geo:SpatialThing",
+                        "name": "Minute Maid Park"
+                    },
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Houston Astros"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Kansas City Royals"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Atlanta Braves vs. Philadelphia Phillies",
+                    "eventSummary": "The Braves have won six straight division titles, and they’ve been to the playoffs 22 times since 1991.",
+                    "theme": "sports",
+                    "hasLocation": {
+                        "@type": "geo:SpatialThing",
+                        "name": "Truist Park"
+                    },
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Atlanta Braves"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Philadelphia Phillies"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Baltimore Orioles vs. Detroit Tigers",
+                    "eventSummary": "Delmon Young’s three-run double in the eighth inning of Game 2 of the 2014 ALDS completed the Orioles’ comeback.",
+                    "theme": "sports",
+                    "hasLocation": {
+                        "@type": "geo:SpatialThing",
+                        "name": "Oriole Park at Camden Yards"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Delmon Young"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Baltimore Orioles"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Detroit Tigers"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Los Angeles Dodgers vs. Oakland Athletics",
+                    "eventSummary": "Kirk Gibson hobbled toward home plate and stepped in against Hall of Fame A’s closer Dennis Eckersley.",
+                    "theme": "sports",
+                    "hasLocation": {
+                        "@type": "geo:SpatialThing",
+                        "name": "Dodger Stadium"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Kirk Gibson"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Dennis Eckersley"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Los Angeles Dodgers"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Oakland Athletics"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Philadelphia Phillies vs. Miami Marlins",
+                    "eventSummary": "The Phillies swept the Marlins to improve to 24-11 in postseason games at Citizens Bank Park.",
+                    "theme": "sports",
+                    "hasLocation": {
+                        "@type": "geo:SpatialThing",
+                        "name": "Citizens Bank Park"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Alec Bohm"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Bryce Harper"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Philadelphia Phillies"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Miami Marlins"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

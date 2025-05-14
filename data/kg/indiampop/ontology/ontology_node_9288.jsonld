@@ -1,0 +1,127 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Cereal",
+                "used_for": "Food"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "Temperate Zones"
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "4-12°C",
+                "for_flowering": "15-20°C",
+                "for_grain_filling": "15-20°C",
+                "negative_effect": "Above 35°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Sandy",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Ploughing, Harrowing, and Leveling",
+                "with_soil_moisture": "Medium"
+            },
+            "seed_germination_test_requirements_are": "Moisture and Warmth",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Mancozeb",
+                "quantity": "2.5 kg per hectare"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Spring",
+                "value": "15 cm",
+                "depth": "4 cm",
+                "method": "Drilling"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Blackgrass",
+                "weed_types": ["Annual", "Perennial"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1.5 L per hectare",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "500-600 mm per year",
+                "stage_of_application": "Vegetative, Flowering, and Grain filling stages"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Fusarium Head Blight",
+                "disease_symptoms": "Premature bleaching of spikelets or entire spikes",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Prothioconazole",
+                    "quantity": "0.4 L per hectare",
+                    "stage": "Flowering stage"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Aphids",
+                "pest_symptoms": "Yellowing and curling of leaves, stunted growth",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Imidacloprid",
+                    "quantity": "0.4 L per hectare",
+                    "stage": "Seedling stage"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when grains are hard and moisture content is around 12-14%",
+            "storage_guidelines_are":"Store in a cool and dry place"
+        },
+        {
+            "@type": "IrrigationRequirement",
+            "quantity": "Surge Irrigation",
+            "stage_of_application": "Features of Surge irrigation The term “ Surge irrigation” refers to the delivering irrigation flows into individual long furrows (more than 25m upto 200m) in an intermittent fashion of predetermined ON-OFF time cycles (5 minutes to 10 minute) with the design duration of irrigation. During the ON time water front advances into the furrow over a certain length and during the subsequent OFF time the water applied partially saturates the soil and infiltration rate gets reduced on the advanced length. When water is delivered in the succeeding ON time, the water front advance gets accelerated due to the reduced intake rate and eventually it reaches the tail end of long furrow with in 30 -50% of the design duration of irrigation. This process of ON OFF water supply and cutoff results in highly minimized deep percolation and runoff losses (hardly exceeding 20%). Hence, high uniformity of soil moisture distribution with in the effective root zone is achieved over the entire furrow length resulting in enhanced irrigation efficiencies of more than 85% to 95%. In addition due to the series of long furrows emanating from a single head channel, the criss -cross ridges and feeder channel of division are eliminated thereby limiting the land loss within 5% only."
+        }
+    ]
+}

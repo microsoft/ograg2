@@ -1,0 +1,95 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Jonathan Liew at Wembley",
+            "published": "2023-12-01T22:57:40+00:00",
+            "title": "England choose survival over oblivion and a chance of summer trip to France",
+            "summary": "They’ll always have Paris. Throughout this Nations League campaign this has been an England team fighting its own sense of entropy, still giving everything, still trying the same plans and processes in the hope that eventually something would click. And at 9.34pm on a briskly cold Wembley night, it finally did. Ella Toone’s injury-time goal earned England three points and kept their faintly glowing Olympic dream alive. But somehow it also did so much more. It breathed life into a team and a cycle, and a moment that for so much of the evening had felt like it was drawing to its natural conclusion provided a rousing encore to a cast preparing for its final curtain. There will be new challenges and new frontiers to conquer soon enough, a fresh set of European Championship qualifiers in the spring, but for now this iteration of the Lionesses still has tricks up its sleeve, still has talent and creativity to burn, still has a fire that can scorch any team on the planet. And as they rallied so spectacularly to salvage a match that looked cooked after 35 minutes, running on fumes and adrenaline, sustained by the sizzle of the Wembley crowd, the cold air on their skin and the flickering candle of qualification for Paris next summer, it was as if a kind of energy was surging within them. An energy that we have not really glimpsed from them since they reassembled this autumn, barely a month on from the trauma of Sydney, still a little dazed and concussed. Beth Mead came on for Chloe Kelly at half-time, Georgia Stanway moved further forward and made herself a menace in the penalty area, and the old buddies Toone and Alessia Russo teamed up off the bench. The Dutch retreated further and further into Wembley’s wide open spaces, giving Lauren James the time and territory to dictate. James had a hand in all three goals, and as Toone ghosted in at the far post to provide the final flourish, Wembley screeched out one last call to arms, one last push, one last effort. For all this, it is probably worth pointing out that for large parts of the game England were not very good. And we were reminded that for all their creativity and verve going forward perhaps the biggest flaw in this side is a lack of presence in the two penalty areas, the physicality and the alpha energy to do the grunt work, to convert the crosses and to head them away. Jess Carter had a poor game and was withdrawn for Esme Morgan after half-time, Alex Greenwood over-committed for the first Dutch goal and even the all-conquering Mary Earps plummeted to Earth with a poor first-half error. But beyond personnel, a basic brittleness seems to have crept into this team, a sense of melting surfaces and cracks in the ice. Sarina Wiegman talks a lot about defending against counterattacks, because this is basically the key to the whole enterprise. Cut off the counter, and with England’s technical quality they can easily dominate. It is also the essential measure of how the team is functioning as a collective: the efficiency of the press, the closing of the angles, the command of space. Lineth Beerensteyn’s two goals were the sort England simply were not conceding four months ago. Mary Earps shows her frustration after conceding a second goal to the Netherlands. Photograph: Tom Jenkins/The Guardian So England passed the ball around a bit and gave it away a bit and essentially ran around trying to feel normal again, and on countless occasions Kelly or Hemp would win a first or second ball, look up and see a penalty area empty of white shirts. These are issues not so much of tactics but cohesion and energy: the timing of runs, the sharpness required not just to anticipate where the ball is going to be, but actually get there. You can still chase when you’re running on fumes, but to create: this needs an idea and a vision, the clarity of mind to see the picture before it has materialised. skip past newsletter promotion Sign up to Moving the Goalposts Free weekly newsletter No topic is too small or too big for us to cover as we deliver a weekly roundup of the wonderful world of women’s football Privacy Notice: Newsletters may contain info about charities, online ads, and content funded by outside parties. For more information see our Newsletters may contain info about charities, online ads, and content funded by outside parties. For more information see our Privacy Policy . We use Google reCaptcha to protect our website and the Google Privacy Policy and Terms of Service apply. after newsletter promotion And clarity is perhaps what this team has been lacking most of late: clarity of selection, clarity of formation, clarity of mission and motivation. How much prestige should we really attach to the Nations League, anyway? Is it primarily an Olympic qualification shootout or something worth winning in its own right? England ended up trying to answer these questions on the hoof, and somehow it was only when their options had finally clarified down to one – survival or oblivion – that they recovered their poise and verve. This entire post-pandemic international cycle – a Euros, a World Cup, an Olympics and another Euros squeezed into three years – feels like a kind of sadism dressed up as a panorama of opportunity. There is a school of thought out there that a fallow summer might not have been the worst thing for this team: time to reflect and process, time to breathe, time to refresh. Instead, they now travel to Glasgow on Tuesday for one last push. The minds are still frazzled. The bodies are screaming. But chaos and confusion has never felt quite so sweet.",
+            "url": "https://www.theguardian.com/football/2023/dec/01/england-choose-survival-over-oblivion-and-a-chance-of-summer-trip-to-france"
+        }
+    ]
+}
+```

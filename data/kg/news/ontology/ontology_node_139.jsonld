@@ -1,0 +1,242 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Bears vs. Panthers Game Summary",
+            "author": "NFL Network",
+            "theme": "Sports",
+            "summary": "A detailed summary of the Bears vs. Panthers game on November 9, 2023.",
+            "created": "2023-11-09T20:15:00Z",
+            "modified": "2023-11-09T21:00:00Z",
+            "published": "2023-11-09T20:15:00Z",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Game Start",
+                        "eventSummary": "The Bears and Panthers game kicks off.",
+                        "theme": "Game Start",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Soldier Field, Chicago"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Bryce Young",
+                                    "dateOfBirth": "1999-07-25",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Miami, Florida"
+                                    },
+                                    "alias": "Young"
+                                },
+                                {
+                                    "name": "D.J. Moore",
+                                    "dateOfBirth": "1997-04-14",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Philadelphia, Pennsylvania"
+                                    },
+                                    "alias": "Moore"
+                                },
+                                {
+                                    "name": "Al Michaels",
+                                    "dateOfBirth": "1944-11-12",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Brooklyn, New York"
+                                    },
+                                    "alias": "Michaels"
+                                },
+                                {
+                                    "name": "Kirk Herbstreit",
+                                    "dateOfBirth": "1969-08-19",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Centerville, Ohio"
+                                    },
+                                    "alias": "Herbstreit"
+                                },
+                                {
+                                    "name": "Kaylee Hartung",
+                                    "dateOfBirth": "1985-11-29",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Baton Rouge, Louisiana"
+                                    },
+                                    "alias": "Hartung"
+                                },
+                                {
+                                    "name": "Tyson Bagent",
+                                    "dateOfBirth": "1999-11-25",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Bainbridge, Ohio"
+                                    },
+                                    "alias": "Bagent"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Chicago Bears",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Chicago, Illinois"
+                                    },
+                                    "alias": "Bears"
+                                },
+                                {
+                                    "name": "Carolina Panthers",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Charlotte, North Carolina"
+                                    },
+                                    "alias": "Panthers"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "D.J. Moore's Impact",
+                        "eventSummary": "D.J. Moore makes a 16-yard grab against his former team.",
+                        "theme": "Player Performance",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Soldier Field, Chicago"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "D.J. Moore",
+                                    "dateOfBirth": "1997-04-14",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Philadelphia, Pennsylvania"
+                                    },
+                                    "alias": "Moore"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Weather Update",
+                        "eventSummary": "It's 52 degrees and clear in Chicago.",
+                        "theme": "Weather",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Chicago, Illinois"
+                        }
+                    },
+                    {
+                        "eventTitle": "Injury Report",
+                        "eventSummary": "Brian Burns is out with a concussion.",
+                        "theme": "Injury Update",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Carolina Panthers"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Brian Burns",
+                                    "dateOfBirth": "1998-04-23",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Fort Lauderdale, Florida"
+                                    },
+                                    "alias": "Burns"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

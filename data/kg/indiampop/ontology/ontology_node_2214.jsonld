@@ -1,0 +1,33 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_land_preperation_requirements": "cropCult:LandPreparation"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "SUGARCANE",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "For flat planting of cane or for planting in furrows, thorough land preparation is necessary. But for trench planting, it is not necessary to plough the land more than two times. Planting of cane in trenches is the best method of planting. Trenches should be 30 cm wide, 20 cm deep and 75 cm apart from centre of one trench to the other. Drainage should be provided wherever necessary. Reduce spacing to 60 cm for delayed planting beyond March.",
+                "with_soil_moisture": "Not Specified"
+            }
+        }
+    ]
+}

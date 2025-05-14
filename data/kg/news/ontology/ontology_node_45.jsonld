@@ -1,0 +1,365 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "The best horror movies you can watch right now",
+            "author": "Toussaint Egan",
+            "published": "2023-09-28T15:26:41+00:00",
+            "summary": "Your time is precious, and your options are endless. The good news: We watch it all so you don’t have to. Polygon’s What to Watch highlights the best, the funniest, the scariest, and the most exciting in movies, TV, and everything in between. Stop scrolling, start watching!",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Encounters of the Spooky Kind",
+                        "eventSummary": "Director: Sammo Hung. Cast: Sammo Hung, Chung Fat, Dick Wei. Where to watch: Criterion Channel.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Sammo Hung"
+                                },
+                                {
+                                    "name": "Chung Fat"
+                                },
+                                {
+                                    "name": "Dick Wei"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Alone",
+                        "eventSummary": "Director: John Hyams. Cast: Jules Willcox, Marc Menchaca, Anthony Heald. Where to watch: Hulu, Kanopy.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Jules Willcox"
+                                },
+                                {
+                                    "name": "Marc Menchaca"
+                                },
+                                {
+                                    "name": "Anthony Heald"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Annihilation",
+                        "eventSummary": "Director: Alex Garland. Cast: Natalie Portman, Jennifer Jason Leigh, Gina Rodriguez. Where to watch: Netflix.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Natalie Portman"
+                                },
+                                {
+                                    "name": "Jennifer Jason Leigh"
+                                },
+                                {
+                                    "name": "Gina Rodriguez"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Climax",
+                        "eventSummary": "Director: Gaspar Noé. Cast: Sofia Boutella, Romain Guillermic, Souheila Yacoub. Where to watch: Showtime.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Sofia Boutella"
+                                },
+                                {
+                                    "name": "Romain Guillermic"
+                                },
+                                {
+                                    "name": "Souheila Yacoub"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Crimes of the Future",
+                        "eventSummary": "Director: David Cronenberg. Cast: Viggo Mortensen, Léa Seydoux, Kristen Stewart. Where to watch: Hulu.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Viggo Mortensen"
+                                },
+                                {
+                                    "name": "Léa Seydoux"
+                                },
+                                {
+                                    "name": "Kristen Stewart"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Cure",
+                        "eventSummary": "Director: Kiyoshi Kurosawa. Cast: Kōji Yakusho, Tsuyoshi Ujiki, Anna Nakagawa. Where to watch: Criterion Channel.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Kōji Yakusho"
+                                },
+                                {
+                                    "name": "Tsuyoshi Ujiki"
+                                },
+                                {
+                                    "name": "Anna Nakagawa"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Eyes Without a Face",
+                        "eventSummary": "Director: Georges Franju. Cast: Pierre Brasseur, Édith Scob, Alida Valli. Where to watch: Max, The Criterion Channel.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Pierre Brasseur"
+                                },
+                                {
+                                    "name": "Édith Scob"
+                                },
+                                {
+                                    "name": "Alida Valli"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Hellraiser",
+                        "eventSummary": "Director: Clive Barker. Cast: Andrew Robinson, Clare Higgins, Ashley Laurence. Where to watch: Prime Video, AMC+, Shudder, Tubi, Pluto, Hoopla.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Andrew Robinson"
+                                },
+                                {
+                                    "name": "Clare Higgins"
+                                },
+                                {
+                                    "name": "Ashley Laurence"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Hereditary",
+                        "eventSummary": "Director: Ari Aster. Cast: Toni Collette, Alex Wolff, Milly Shapiro. Where to watch: Max.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Toni Collette"
+                                },
+                                {
+                                    "name": "Alex Wolff"
+                                },
+                                {
+                                    "name": "Milly Shapiro"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "The Host",
+                        "eventSummary": "Director: Bong Joon-ho. Cast: Song Kang-ho, Byun Hee-bong, Park Hae-il. Where to watch: Max, Roku Channel, Hoopla, Kanopy.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Song Kang-ho"
+                                },
+                                {
+                                    "name": "Byun Hee-bong"
+                                },
+                                {
+                                    "name": "Park Hae-il"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "House",
+                        "eventSummary": "Director: Nobuhiko Obayashi. Cast: Kimiko Ikegami, Miki Jinbo, Kumiko Ohba. Where to watch: Max, Criterion Channel.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Kimiko Ikegami"
+                                },
+                                {
+                                    "name": "Miki Jinbo"
+                                },
+                                {
+                                    "name": "Kumiko Ohba"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "In the Mouth of Madness",
+                        "eventSummary": "Director: John Carpenter. Cast: Sam Neill, Julie Carmen, Jurgen Prochnow. Where to watch: YouTube.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Sam Neill"
+                                },
+                                {
+                                    "name": "Julie Carmen"
+                                },
+                                {
+                                    "name": "Jurgen Prochnow"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Let the Right One In",
+                        "eventSummary": "Director: Tomas Alfredson. Cast: Kåre Hedebrant, Lina Leandersson, Per Ragnar. Where to watch: Hulu, Prime Video, Roku Channel, Crackle, Hoopla, Kanopy.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Kåre Hedebrant"
+                                },
+                                {
+                                    "name": "Lina Leandersson"
+                                },
+                                {
+                                    "name": "Per Ragnar"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Malignant",
+                        "eventSummary": "Director: James Wan. Cast: Annabelle Wallis, Maddie Hasson, George Young. Where to watch: Max.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Annabelle Wallis"
+                                },
+                                {
+                                    "name": "Maddie Hasson"
+                                },
+                                {
+                                    "name": "George Young"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "The Mist",
+                        "eventSummary": "Director: Frank Darabont. Cast: Thomas Jane, Marcia Gay Harden, Laurie Holden. Where to watch: Digital rental/purchase.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Thomas Jane"
+                                },
+                                {
+                                    "name": "Marcia Gay Harden"
+                                },
+                                {
+                                    "name": "Laurie Holden"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

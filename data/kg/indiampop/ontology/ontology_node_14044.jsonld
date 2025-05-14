@@ -1,0 +1,46 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Broad-leaved weeds",
+            "weed_types": ["Grasses", "Sedges"],
+            "herbicides": {
+                "@type": "cropCult:HerbicideList",
+                "@list": [
+                    {
+                        "name": "Atrazine",
+                        "quantity": "1.0 kg a.i./ha",
+                        "stage": "Pre-emergence"
+                    },
+                    {
+                        "name": "Glyphosate",
+                        "quantity": "10 ml and 20 g ammonium sulphate/litre of water",
+                        "stage": "Post-emergence"
+                    }
+                ]
+            }
+        }
+    ]
+}

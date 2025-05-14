@@ -1,0 +1,214 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Toussaint Egan",
+      "published": "2023-10-16T16:54:09+00:00",
+      "title": "The best comedies you’ll find on streaming right now",
+      "summary": "Polygon’s What to Watch highlights the best, the funniest, the scariest, and the most exciting in movies, TV, and everything in between.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "The Road to El Dorado",
+        "created": "2000",
+        "summary": "The animated buddy comedy about two con men from Spain who end up in South America.",
+        "hasThumbnail": {
+          "@type": "snap:imageAsset",
+          "image": "schema:image"
+        }
+      }
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Book Club",
+      "created": "2018",
+      "summary": "A romantic comedy about a group of best friends who have been a part of a long-standing book club.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "schema:image"
+      }
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Catherine Called Birdy",
+      "created": "2022",
+      "summary": "A coming-of-age story about the difficulties of teenage girlhood.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "schema:image"
+      }
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Charade",
+      "created": "1963",
+      "summary": "A mystery involving a woman who realizes she didn’t really know anything about her husband.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "schema:image"
+      }
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Clueless",
+      "created": "1995",
+      "summary": "A modern adaptation of Jane Austen’s Emma set in 1990s Beverly Hills.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "schema:image"
+      }
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Coming to America",
+      "created": "1988",
+      "summary": "A romantic comedy about a crown prince from Africa searching for a wife in New York City.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "schema:image"
+      }
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Don’t Go Breaking My Heart",
+      "created": "2011",
+      "summary": "A romantic comedy about a love triangle involving an analyst for an investment bank.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "schema:image"
+      }
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Eega",
+      "created": "2012",
+      "summary": "A slapstick comedy revenge thriller about a man reincarnated as a fly.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "schema:image"
+      }
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "The Gold Rush",
+      "created": "1925",
+      "summary": "Charlie Chaplin’s adventurous comedy about a prospector in the Klondike.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "schema:image"
+      }
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "I Married a Witch",
+      "created": "1942",
+      "summary": "A romantic comedy about a witch seeking revenge on a descendant of the man who imprisoned her.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "schema:image"
+      }
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Kiss Kiss Bang Bang",
+      "created": "2005",
+      "summary": "A neo-noir black comedy crime thriller about a petty thief mistaken for an actor.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "schema:image"
+      }
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "The Life Aquatic with Steve Zissou",
+      "created": "2004",
+      "summary": "A comedy about an oceanographer/documentarian seeking revenge on a shark.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "schema:image"
+      }
+    }
+  ]
+}
+```

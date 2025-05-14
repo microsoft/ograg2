@@ -1,0 +1,165 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Chicago Fire vs. Inter Miami Match Preview",
+            "author": "Michelle Kaufman",
+            "theme": "Sports",
+            "summary": "Preview of the match between Chicago Fire and Inter Miami, focusing on Lionel Messi's injury status and player lineups.",
+            "created": "2023-10-04T08:00:00Z",
+            "modified": "2023-10-04T08:30:00Z",
+            "published": "2023-10-04T08:30:00Z",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Chicago Fire vs. Inter Miami",
+                        "eventSummary": "Match preview and player lineups.",
+                        "theme": "MLS",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Soldier Field, Chicago"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Xherdan Shaqiri",
+                                    "dateOfBirth": "1991-10-10",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Gjilan, Kosovo"
+                                    },
+                                    "alias": "Shaq"
+                                },
+                                {
+                                    "name": "Lionel Messi",
+                                    "dateOfBirth": "1987-06-24",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Rosario, Argentina"
+                                    },
+                                    "alias": "Leo"
+                                },
+                                {
+                                    "name": "Kei Kamara",
+                                    "dateOfBirth": "1984-09-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Kenema, Sierra Leone"
+                                    },
+                                    "alias": "Kamara"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Chicago Fire",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Chicago, Illinois"
+                                    },
+                                    "alias": "CF"
+                                },
+                                {
+                                    "name": "Inter Miami CF",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Miami, Florida"
+                                    },
+                                    "alias": "IMCF"
+                                }
+                            ]
+                        },
+                        "subEventOf": {
+                            "@id": "snap:event",
+                            "eventTitle": "MLS Regular Season",
+                            "eventSummary": "Major League Soccer regular season matches."
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

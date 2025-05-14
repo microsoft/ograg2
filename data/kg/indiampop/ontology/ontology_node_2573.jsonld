@@ -1,0 +1,43 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Propagation": {
+            "@id": "cropCult:Propagation",
+            "@type": "schema:Thing",
+            "@context": {
+                "cuttings_capacity": "schema:QuantitativeValue",
+                "chamber_size": "schema:Text",
+                "optimum_temperature": "cropCult:TemperatureRequirements",
+                "winter_lighting_requirements": "schema:Text",
+                "storage_requirements": "schema:Text"
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "for_flowering": "schema:Text",
+                "for_grain_filling": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Propagation",
+            "cuttings_capacity": {
+                "@type": "schema:QuantitativeValue",
+                "value": 150000
+            },
+            "chamber_size": "10x4 m",
+            "optimum_temperature": {
+                "@type": "cropCult:TemperatureRequirements",
+                "for_germination": "20-30oC"
+            },
+            "winter_lighting_requirements": "100 watts bulbs can be hung 1 meter above the cuttings at 1.5 meter apart during night",
+            "storage_requirements": "The unrooted cuttings of Carnation can be stored in cardboard"
+        }
+    ]
+}

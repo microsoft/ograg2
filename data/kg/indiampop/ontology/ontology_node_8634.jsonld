@@ -1,0 +1,78 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Deenanath Grass (Pennisetum pedicellatum)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "FORAGE CROPS > RAINFED FODDER CHOLAM > FODDER MAIZE"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "3. MANURING"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Rainfed",
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": "Deenanath Grass (Pennisetum pedicellatum)"
+                    }
+                }
+            }
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "FYM",
+            "quantity": "25 t/ha",
+            "stage_of_application": "Basal"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "NPK",
+            "quantity": "20 : 25 : 20 kg/ha",
+            "stage_of_application": "Basal"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "N",
+            "quantity": "20 Kg",
+            "stage_of_application": "Top dressing: 30th day after sowing"
+        }
+    ]
+}

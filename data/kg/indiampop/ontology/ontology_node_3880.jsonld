@@ -1,0 +1,46 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Rapeseed-mustard",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Rapeseed-mustard require a fine seed bed. In rainfed crop, plough the land once or twice with country plough or cultivator each followed by planking to conserve soil moisture. In irrigated crop, give a first ploughing by MB plough followed by 2-3 ploughings with country plough to obtain a good tilth. Make the seed bed free from weeds and stubble of previous crop. Apply FYM or compost @ 7.5 t/ha during final land preparation and incorporate it in the soil. Divide the land length and breadth wise into sub-plots of convenient sizes by drawing furrows at a distance of 3 to 4 m apart for irrigation and drainage.",
+                "with_soil_moisture": "Yes"
+            }
+        }
+    ]
+}

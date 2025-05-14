@@ -1,0 +1,74 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Rice (Oryza sativa) Transplanted Early Ahu",
+            "has_types": {
+                "@type": "CropType",
+                "name": "CEREALS",
+                "used_for": "Rice cultivation"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Fresh azolla @ 500 kg/ha also can be applied in the standing water in transplanted crop after establishment of seedlings. There is no need for application of additional phosphatic fertilizer in the field at the time of inoculation with fresh azolla after transplanting when recommended doses of phosphatic fertilizer is applied at the time of transplanting. Thereafter, azolla will multiply itself to cover the field. Care should be taken to keep 5-10 cm depth of water for rapid multiplication. Normally, sufficient quantities of biomass will be produced in two weeks and then it should be incorporated into the soil. It is preferable to drain out water before incorporation taking precaution so that azolla is not drained out with water.",
+                "with_soil_moisture": "5-10 cm depth of water"
+            },
+            "has_fertilizer_application_requirements": {
+                "@type": "Fertilization",
+                "nutrient_name": "Phosphatic fertilizer",
+                "quantity": "Recommended doses",
+                "stage_of_application": "At the time of transplanting"
+            }
+        }
+    ]
+}

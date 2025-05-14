@@ -1,0 +1,57 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Nursery",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Form ridges and furrows (using 3 ridges) 6 m long and 45 cm apart. If pulses is intercropped, form ridges and furrows 6 m long and 30 cm apart. If ridge planting is not followed, form beds of the size 10 m 2 or 30 m 2 depending upon water availability. Form irrigation channels. To conserve soil moisture under rainfed condition, sow the seeds in flat and form furrows between crop rows during intercultivation on third week after sowing.",
+                "with_soil_moisture": "rainfed"
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Seedlings in the nursery",
+                "pest_symptoms": "Pest attack",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "FYM or Compost",
+                    "quantity": "Application",
+                    "stage": "Protection of seedlings in the nursery"
+                }
+            }
+        }
+    ]
+}

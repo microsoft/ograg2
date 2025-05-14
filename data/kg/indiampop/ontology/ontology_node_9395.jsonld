@@ -1,0 +1,142 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Sustainable dryland management for hybrid maize (UMH 28)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Maize",
+                "used_for": "Dryland management"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Dryland",
+                    "has_regions": ["Region1", "Region2"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["UMH 28"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-01-01",
+                            "end_date": "2022-02-01"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-02-01",
+                            "end_date": "2022-03-01"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "10",
+                            "unitText": "kg/ha"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Nitrogen",
+                            "quantity": "50 kg/ha",
+                            "stage_of_application": "At sowing"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "10-15°C",
+                "for_flowering": "20-25°C",
+                "for_grain_filling": "15-20°C",
+                "negative_effect": "Below 10°C and above 30°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Clayey",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the field to a fine tilth",
+                "with_soil_moisture": "Moderate"
+            },
+            "seed_germination_test_requirements_are": "Test for germination before sowing",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Fungicide1",
+                "quantity": "5 kg/ha"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Early morning or late evening",
+                "value": "15 cm",
+                "depth": "5 cm",
+                "method": "Drill sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Weed1",
+                "weed_types": ["Type1", "Type2"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Herbicide1",
+                    "quantity": "5 kg/ha",
+                    "stage": "Post-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "500 mm",
+                "stage_of_application": "At flowering"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Disease1",
+                "disease_symptoms": "Symptom1",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Herbicide2",
+                    "quantity": "5 kg/ha",
+                    "stage": "At disease onset"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Pest1",
+                "pest_symptoms": "Symptom1",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Pesticide1",
+                    "quantity": "5 kg/ha",
+                    "stage": "At pest onset"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when grains are hard and moisture content is below 20%",
+            "storage_guidelines_are": "Store in a cool and dry place"
+        }
+    ]
+}

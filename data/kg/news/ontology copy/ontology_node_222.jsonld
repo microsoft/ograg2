@@ -1,0 +1,146 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Assaf Gilead",
+      "published": "2023-11-05T13:35:33+00:00",
+      "title": "Israel's defense undone by reliance on technology",
+      "summary": "The Berlin Wall was built in 1961 as a standard wire and concrete fence to make it difficult for East German residents to escape to freedom in the West. By the end of the 1970s, its fourth generation already included a 127 km long electrified fence, a strip of land made of sharp metal nails, a closely-packed row of watchtowers, a patrol road, an intrusion-tracking dirt road, guard dogs, deep trenches anti-vehicle trenches, and two layers of concrete walls. \"The fence was initially quite weak, so it was decided to place guards every few meters on top of the wall,\" Dr. Avner Barnea, a former Shin Bet senior officer and lecturer on intelligence and national security, and business intelligence at Bar-Ilan University, tells \"Globes.\" \"But until they mined the area, they didn't really succeed in preventing escapees. These low-tech solutions made all the difference. None of the authorities ever took the risk of relying on advanced technologies.\"",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "comment": "The fence that, until October 7, separated Israel and the Gaza Strip was completed in December 2021, 60 years after construction of the Berlin Wall began. It was intended to protect against a major security threat, but in practice it was much leaner than that. The fence was almost unmanned by soldiers, and relied mainly on sensors, above and below ground, surveillance cameras, and vehicle patrols. And, of course, there was no surrounding minefield."
+      },
+      "derivedFrom": {
+        "@type": "snap:asset",
+        "comment": "After Operation Protective Edge in 2014 revealed that Hamas forces were able to penetrate the Gaza border settlements at several points via underground tunnels, it was decided in 2016 to build a defense line focused on this threat called \"the anti-tunnel barrier\" that would replace the existing fence. The upper section of the barrier was based mainly on a fence called the \"sand clock,\" which had only proved itself in stopping illegal immigrants on the Israel-Egypt border - the same fence that then-US President Donald Trump enthused over, and wanted to duplicate on the US southern border."
+      },
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "https://en.globes.co.il/en/article-1001461695#utm_source=RSS"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Globes English | Israel Business Arena"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Dr. Avner Barnea",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "Bar-Ilan University"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Yehoshua Kalisky",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "Tel Aviv University's Institute for National Security Studies (INSS)"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Prof. Eviatar Matania",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "Tel Aviv University School of Political Sciences, Government and International Affairs"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Brigadier General Eran Ortal",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "The Dado Center for Interdisciplinary Military Studies"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Major General (Res.) Giora Eiland"
+    }
+  ]
+}
+```

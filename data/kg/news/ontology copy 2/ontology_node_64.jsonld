@@ -1,0 +1,187 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "snap:asset",
+      "title": "NFL Week 1 Highlights",
+      "author": "Sports Analyst",
+      "theme": "Sports",
+      "content": "That one went for 32 yards against the Eagles in Week 1. Since then his longest reception has been for seven yards.",
+      "created": "2023-10-01T00:00:00Z",
+      "modified": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "snap:event",
+          "eventTitle": "PATRIOTS vs EAGLES",
+          "eventSummary": "PATRIOTS: Have run one (1) play inside the opponents' five-yard line this entire season.",
+          "theme": "Sports",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization1",
+              "@type": "snap:organization",
+              "name": "PATRIOTS"
+            },
+            {
+              "@id": "snap:organization2",
+              "@type": "snap:organization",
+              "name": "EAGLES"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event2",
+          "@type": "snap:event",
+          "eventTitle": "RAIDERS Performance",
+          "eventSummary": "RAIDERS: Rank in the bottom 10 versus RBs in yards per carry allowed.",
+          "theme": "Sports",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization3",
+              "@type": "snap:organization",
+              "name": "RAIDERS"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "@id": "snap:asset2",
+      "@type": "snap:asset",
+      "title": "Lineup Decisions",
+      "author": "Fantasy Expert",
+      "theme": "Fantasy Football",
+      "content": "Start 'em 10.0-7.00 6.99 - 5.01 5.00 - 0 Sit 'em",
+      "created": "2023-10-01T00:00:00Z",
+      "modified": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z",
+      "has_events": [
+        {
+          "@id": "snap:event3",
+          "@type": "snap:event",
+          "eventTitle": "Emari Demercado Performance",
+          "eventSummary": "Emari Demercado RB ARI Arizona • #31 Age: 24 • Experience: Rookie",
+          "theme": "Fantasy Football",
+          "mentions_persons": [
+            {
+              "@id": "snap:person1",
+              "@type": "snap:person",
+              "name": "Emari Demercado",
+              "dateOfBirth": "1999-01-01"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization4",
+              "@type": "snap:organization",
+              "name": "Arizona Cardinals"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event4",
+          "@type": "snap:event",
+          "eventTitle": "Jared Goff Performance",
+          "eventSummary": "Jared Goff QB DET Detroit • #16 Age: 29 • Experience: 8 yrs.",
+          "theme": "Fantasy Football",
+          "mentions_persons": [
+            {
+              "@id": "snap:person2",
+              "@type": "snap:person",
+              "name": "Jared Goff",
+              "dateOfBirth": "1994-10-14"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization5",
+              "@type": "snap:organization",
+              "name": "Detroit Lions"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

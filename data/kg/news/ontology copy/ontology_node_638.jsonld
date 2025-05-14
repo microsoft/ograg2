@@ -1,0 +1,161 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Morgan Sung",
+      "published": "2023-10-02T21:42:14+00:00",
+      "title": "Republicans still don’t know how to talk to young voters online",
+      "summary": "Republicans still don’t know how to talk to young voters online Vivek Ramaswamy struggles to gain an edge in the face of TikTok trolls",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Republicans still don’t know how to talk to young voters online",
+        "summary": "In an appeal to younger voters, Republican presidential candidate Vivek Ramaswamy — who proposed raising the voting age to 25 — launched his TikTok presence with an endorsement from Jake Paul, the YouTuber turned boxer who built a content empire by marketing to children.",
+        "byline": "Morgan Sung",
+        "published": "2023-10-02T21:42:14+00:00"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "TechCrunch"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Vivek Ramaswamy"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jake Paul"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Annie Wu Henry"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Alexandria Ocasio-Cortez"
+    },
+    {
+      "@type": "snap:person",
+      "name": "John Fetterman"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Matt Gaetz"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Mehmet Oz"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Doug Mastriano"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Josh Shapiro"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jeff Jackson"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Ron DeSantis"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Elon Musk"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jen O’Malley Dillon"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Martin Riedl"
+    }
+  ]
+}
+```

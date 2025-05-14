@@ -1,0 +1,57 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "OILPALM",
+            "has_land_preperation_requirements": {
+                "instructions": "The fertilizers are preferably applied in two equal split doses during May - June and September -October by uniformly spreading them within a 2 metre circle around the base of the palm and forking to incorporate them into the soil. Supply of sufficient quantity of green leaves or compost is advantageous especially where the soil is poor in organic matter content."
+            }
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Mg",
+            "quantity": "500 g of MgSO 4 /palm/year",
+            "stage_of_application": "May - June and September -October"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Borax",
+            "quantity": "100g per palm per year",
+            "stage_of_application": "May - June and September -October"
+        }
+    ]
+}

@@ -1,0 +1,174 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "title": "Black Friday Deals 2023",
+            "author": "Engadget",
+            "theme": "Shopping, Deals",
+            "content": "Many of those make our lists of the best PS5 games and best Xbox games. On the Switch side, the turn-based strategy game Mario + Rabbids Sparks of Hope is on sale for $15, Xenoblade Chronicles 3 and Luigi's Mansion 3 are each down to $40 and the excellent 2D platformer Donkey Kong Country: Tropical Freeze is down to a new low of $30. There are plenty more games on sale beyond those, and we expect to see more PC game deals over the course of the week.",
+            "created": "2023-11-01T00:00:00Z",
+            "modified": "2023-11-01T00:00:00Z",
+            "published": "2023-11-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "DJI Osmo Action 3 Creator Combo",
+                    "eventSummary": "DJI Osmo Action 3 is seeing a discount as part of a bundle that includes two batteries, a 32GB microSD card and a case.",
+                    "theme": "Electronics, Cameras"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Masterclass Black Friday deal",
+                    "eventSummary": "Masterclass’ Black Friday deal gives you two memberships for the price of one, starting at $120 per year.",
+                    "theme": "Education, Online Learning"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Headspace Black Friday deal",
+                    "eventSummary": "Headspace has knocked 50 percent off its memberships for Black Friday, so you can pay only $35 to get one year of access.",
+                    "theme": "Health, Wellness"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Surfshark VPN",
+                    "eventSummary": "Surfshark’s Black Friday deal knocks up to 86 percent off two-year plans.",
+                    "theme": "Technology, VPN"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Samsung M80C Smart Monitor",
+                    "eventSummary": "Samsung’s Smart Monitor M80C is $300 off and down to $400 right now.",
+                    "theme": "Electronics, Monitors"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Motorola razr+",
+                    "eventSummary": "The Moto razr+ is 30 percent off and down to a record low of $700.",
+                    "theme": "Electronics, Mobile Phones"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Bose QuietComfort Earbuds II",
+                    "eventSummary": "The Bose QuietComfort Earbuds II are down to $199.",
+                    "theme": "Electronics, Audio"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Samsung The Frame QLED TV",
+                    "eventSummary": "The 55-inch Samsung The Frame smart TV is 35 percent off and down to a new record low of $978.",
+                    "theme": "Electronics, TVs"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Solo Stove Black Friday deal",
+                    "eventSummary": "Solo Stove’s Black Friday deals have knocked up to $245 off fire pit bundles.",
+                    "theme": "Home, Outdoor"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "ProtonVPN Black Friday deal",
+                    "eventSummary": "ProtonVPN is having a rare sale for Black Friday that brings a monthly subscription down to only $4.",
+                    "theme": "Technology, VPN"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "LG A2 OLED TV",
+                    "eventSummary": "LG's 48-inch A2 OLED TV on sale for a new low of $550.",
+                    "theme": "Electronics, TVs"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Microsoft Surface Pro 9",
+                    "eventSummary": "Microsoft's Surface Pro 9 is on sale for $1,000 at Best Buy.",
+                    "theme": "Electronics, Computers"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Lenovo IdeaPad Flex 5i Chromebook Plus",
+                    "eventSummary": "Lenovo's IdeaPad Flex 5i Chromebook Plus is on sale for $379 at Best Buy.",
+                    "theme": "Electronics, Computers"
+                }
+            ]
+        }
+    ]
+}

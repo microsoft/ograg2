@@ -1,0 +1,187 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "byline": "Steven Taranto",
+            "published": "2023-12-07T20:15:30+00:00",
+            "title": "NASCAR offseason news roundup: Short track testing in Phoenix, new spotters for stars, more moves for 2024",
+            "summary": "Every year, the wintertime and the NASCAR offseason is a welcome -- but very short -- respite from what is otherwise a demanding, year-long grind of racing. Come 2024, that grind is soon to begin again, and exactly what it looks like will be based in large part on these months where driver lineups, crew lineups and rules packages are set.",
+            "associatedAsset": {
+                "@type": "TextAsset",
+                "image": "https://www.cbssports.com/nascar/news/nascar-offseason-news-roundup-short-track-testing-in-phoenix-new-spotters-for-stars-more-moves-for-2024/"
+            }
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "Offseason testing in Phoenix",
+            "eventSummary": "One month after Ryan Blaney was crowned the Cup Series champion and the 2023 season was completed out west, Blaney and a select group of other drivers and teams returned to Phoenix Raceway for a two-day test as NASCAR looked at a number of aerodynamic and technical changes for the Next Gen car.",
+            "theme": {
+                "@type": "intangibleStuff",
+                "comment": "Testing and development of NASCAR cars"
+            }
+        },
+        {
+            "@type": "Person",
+            "name": "Ryan Blaney"
+        },
+        {
+            "@type": "Person",
+            "name": "Chris Buescher"
+        },
+        {
+            "@type": "Person",
+            "name": "Erik Jones"
+        },
+        {
+            "@type": "Person",
+            "name": "Christopher Bell"
+        },
+        {
+            "@type": "Person",
+            "name": "Kyle Larson"
+        },
+        {
+            "@type": "Person",
+            "name": "Corey LaJoie"
+        },
+        {
+            "@type": "Organization",
+            "name": "Spire Motorsports"
+        },
+        {
+            "@type": "Person",
+            "name": "Eddie D'Hondt"
+        },
+        {
+            "@type": "Person",
+            "name": "Josh Williams"
+        },
+        {
+            "@type": "Person",
+            "name": "Tim Fedewa"
+        },
+        {
+            "@type": "Person",
+            "name": "Zane Smith"
+        },
+        {
+            "@type": "Person",
+            "name": "Stephen Doran"
+        },
+        {
+            "@type": "Person",
+            "name": "Luke Lambert"
+        },
+        {
+            "@type": "Person",
+            "name": "Doug Duchardt"
+        },
+        {
+            "@type": "Person",
+            "name": "Aric Almirola"
+        },
+        {
+            "@type": "Person",
+            "name": "Chandler Smith"
+        },
+        {
+            "@type": "Person",
+            "name": "Sheldon Creed"
+        },
+        {
+            "@type": "Person",
+            "name": "Noah Gragson"
+        },
+        {
+            "@type": "Person",
+            "name": "A.J. Allmendinger"
+        },
+        {
+            "@type": "Person",
+            "name": "Ty Dillon"
+        }
+    ]
+}
+```

@@ -1,0 +1,535 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "NewsAsset",
+            "title": "Giants emerging as possible frontrunners for Yoshinobu Yamamoto",
+            "author": "Susan Slusser",
+            "theme": "MLB Trade Rumors",
+            "summary": "The Giants have missed out on big names in the past like Aaron Judge and Carlos Correa, but they are looking to turn that around in 2023 with heavy involvement and Ohtani, among others.",
+            "created": "2023-12-03T00:00:00Z",
+            "published": "2023-12-03T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList1",
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Giants pursuing Yoshinobu Yamamoto",
+                        "eventSummary": "Teams believe the Giants might have an edge in the pursuit of Japanese ace Yoshinobu Yamamoto.",
+                        "theme": "MLB Trade Rumors",
+                        "mentions_persons": {
+                            "@id": "snap:personList1",
+                            "Person": [
+                                {
+                                    "name": "Susan Slusser",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Sports Journalist"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList1",
+                            "Organization": [
+                                {
+                                    "name": "San Francisco Chronicle",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Chronicle"
+                                },
+                                {
+                                    "name": "San Francisco Giants",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Giants"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset2",
+            "@type": "NewsAsset",
+            "title": "Dylan Cease trade market heating up",
+            "author": "Jon Morosi",
+            "theme": "MLB Trade Rumors",
+            "summary": "One of the biggest names on the market early is White Sox ace Dylan Cease in trade talks.",
+            "created": "2023-12-03T00:00:00Z",
+            "published": "2023-12-03T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList2",
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Dylan Cease trade talks",
+                        "eventSummary": "MLB Network's Jon Morosi reported three teams, the Dodgers, Braves and Orioles, are among several involved discussing a deal for Cease.",
+                        "theme": "MLB Trade Rumors",
+                        "mentions_persons": {
+                            "@id": "snap:personList2",
+                            "Person": [
+                                {
+                                    "name": "Jon Morosi",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "MLB Insider"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList2",
+                            "Organization": [
+                                {
+                                    "name": "MLB Network",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "MLB Network"
+                                },
+                                {
+                                    "name": "Los Angeles Dodgers",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Dodgers"
+                                },
+                                {
+                                    "name": "Atlanta Braves",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Braves"
+                                },
+                                {
+                                    "name": "Baltimore Orioles",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Orioles"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset3",
+            "@type": "NewsAsset",
+            "title": "Rays, Mariners talking trades in winter meetings",
+            "author": "Jon Morosi",
+            "theme": "MLB Trade Rumors",
+            "summary": "The Mariners and Rays have been frequent trade partners in recent years.",
+            "created": "2023-12-03T00:00:00Z",
+            "published": "2023-12-03T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList3",
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Rays and Mariners trade discussions",
+                        "eventSummary": "MLB Network's Jon Morosi reported the teams are discussing Rays utility infielder Isaac Paredes, and potentially star left fielder Randy Arozarena.",
+                        "theme": "MLB Trade Rumors",
+                        "mentions_persons": {
+                            "@id": "snap:personList3",
+                            "Person": [
+                                {
+                                    "name": "Jon Morosi",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "MLB Insider"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList3",
+                            "Organization": [
+                                {
+                                    "name": "Tampa Bay Rays",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Rays"
+                                },
+                                {
+                                    "name": "Seattle Mariners",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Mariners"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset4",
+            "@type": "NewsAsset",
+            "title": "Jays unlikely to land both Ohtani, Soto",
+            "author": "Jon Morosi",
+            "theme": "MLB Trade Rumors",
+            "summary": "The Blue Jays have been among the most active names in both the Ohtani and Soto markets.",
+            "created": "2023-12-03T00:00:00Z",
+            "published": "2023-12-03T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList4",
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Blue Jays trade talks",
+                        "eventSummary": "MLB Network's Jon Morosi said it's unlikely the Jays will land both star players, reporting they might land one of the two.",
+                        "theme": "MLB Trade Rumors",
+                        "mentions_persons": {
+                            "@id": "snap:personList4",
+                            "Person": [
+                                {
+                                    "name": "Jon Morosi",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "MLB Insider"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList4",
+                            "Organization": [
+                                {
+                                    "name": "Toronto Blue Jays",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Blue Jays"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset5",
+            "@type": "NewsAsset",
+            "title": "Ohtani has already received several $500+ million offers",
+            "author": "Jon Heyman",
+            "theme": "MLB Trade Rumors",
+            "summary": "It's no surprise the bidding for Ohtani is heating up, with the star expected to sign soon.",
+            "created": "2023-12-03T00:00:00Z",
+            "published": "2023-12-03T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList5",
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Ohtani bidding war",
+                        "eventSummary": "New York Post's Jon Heyman reported Ohtani has already received several deals that have topped $500 million.",
+                        "theme": "MLB Trade Rumors",
+                        "mentions_persons": {
+                            "@id": "snap:personList5",
+                            "Person": [
+                                {
+                                    "name": "Jon Heyman",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Sports Writer"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList5",
+                            "Organization": [
+                                {
+                                    "name": "NY Post",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "New York Post"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset6",
+            "@type": "NewsAsset",
+            "title": "Decision near for Ohtani",
+            "author": "Jon Morosi",
+            "theme": "MLB Trade Rumors",
+            "summary": "Morosi reports Shohei Ohtani is likely to decide on a team within the next week.",
+            "created": "2023-12-03T00:00:00Z",
+            "published": "2023-12-03T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList6",
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Ohtani's decision timeline",
+                        "eventSummary": "Nothing gets the hot-stove crowd excited like a big move during the winter meetings.",
+                        "theme": "MLB Trade Rumors",
+                        "mentions_persons": {
+                            "@id": "snap:personList6",
+                            "Person": [
+                                {
+                                    "name": "Jon Morosi",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "MLB Insider"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList6",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset7",
+            "@type": "NewsAsset",
+            "title": "Status quo on Yankees' Juan Soto trade talks",
+            "author": "Jon Heyman",
+            "theme": "MLB Trade Rumors",
+            "summary": "The Yankees reportedly are pushing hard to acquire Juan Soto from the Padres.",
+            "created": "2023-12-03T00:00:00Z",
+            "published": "2023-12-03T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList7",
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Yankees pursuing Juan Soto",
+                        "eventSummary": "Heyman says the teams haven't spoken since San Diego requested a six-player package in return for Soto.",
+                        "theme": "MLB Trade Rumors",
+                        "mentions_persons": {
+                            "@id": "snap:personList7",
+                            "Person": [
+                                {
+                                    "name": "Jon Heyman",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Sports Writer"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList7",
+                            "Organization": [
+                                {
+                                    "name": "New York Yankees",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Yankees"
+                                },
+                                {
+                                    "name": "San Diego Padres",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Padres"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset8",
+            "@type": "NewsAsset",
+            "title": "Shohei Ohtani field growing smaller",
+            "author": "Jeff Passan",
+            "theme": "MLB Trade Rumors",
+            "summary": "It has been expected since before he hit free agency that Ohtani would set the record for the largest fully guaranteed contract in North American sports history.",
+            "created": "2023-12-01T00:00:00Z",
+            "published": "2023-12-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList8",
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Ohtani's free agency status",
+                        "eventSummary": "Passan reported that at least three teams initially believed to be in the running are believed to be out now.",
+                        "theme": "MLB Trade Rumors",
+                        "mentions_persons": {
+                            "@id": "snap:personList8",
+                            "Person": [
+                                {
+                                    "name": "Jeff Passan",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "ESPN Insider"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList8",
+                            "Organization": [
+                                {
+                                    "name": "ESPN",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "ESPN"
+                                },
+                                {
+                                    "name": "New York Mets",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Mets"
+                                },
+                                {
+                                    "name": "Texas Rangers",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Rangers"
+                                },
+                                {
+                                    "name": "Boston Red Sox",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Red Sox"
+                                },
+                                {
+                                    "name": "Los Angeles Dodgers",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Dodgers"
+                                },
+                                {
+                                    "name": "Chicago Cubs",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Cubs"
+                                },
+                                {
+                                    "name": "Toronto Blue Jays",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Blue Jays"
+                                },
+                                {
+                                    "name": "Los Angeles Angels",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Angels"
+                                },
+                                {
+                                    "name": "San Francisco Giants",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Giants"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset9",
+            "@type": "NewsAsset",
+            "title": "Star players could be traded",
+            "author": "Jeff Passan",
+            "theme": "MLB Trade Rumors",
+            "summary": "The free agency pool outside of Ohtani, Cody Bellinger, Blake Snell and Yoshinobu Yamamoto is a bit lacking in star power.",
+            "created": "2023-12-01T00:00:00Z",
+            "published": "2023-12-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList9",
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Potential trades of star players",
+                        "eventSummary": "Passan reported a trade of Soto appears to be edging closer to becoming a reality.",
+                        "theme": "MLB Trade Rumors",
+                        "mentions_persons": {
+                            "@id": "snap:personList9",
+                            "Person": [
+                                {
+                                    "name": "Jeff Passan",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "ESPN Insider"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList9",
+                            "Organization": [
+                                {
+                                    "name": "Cleveland Guardians",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Guardians"
+                                },
+                                {
+                                    "name": "Tampa Bay Rays",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Rays"
+                                },
+                                {
+                                    "name": "Milwaukee Brewers",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Brewers"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

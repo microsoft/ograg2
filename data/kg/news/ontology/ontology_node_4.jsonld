@@ -1,0 +1,145 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Photograph: Popsockets",
+            "author": "Unknown",
+            "theme": "Technology",
+            "summary": "This is one of our favorite MagSafe phone grips. It magnetically sticks to the back of your iPhone and you can pop out the grip for extra stability. You can just take it off to wirelessly charge your device.",
+            "created": "2023-11-26T00:00:00Z",
+            "modified": "2023-11-26T00:00:00Z",
+            "published": "2023-11-26T00:00:00Z",
+            "hasThumbnail": "snap:imageAsset",
+            "embargoedUntil": "2023-11-26T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Best USB-C Cables Guide",
+                        "eventSummary": "This cable can do it all, which is why it's currently sitting at the top of our Best USB-C Cables guide. It can deliver 100 watts, transfer data at up to 40 Gbps, and serve an 8K display (or two 4K displays). It supports DisplayPort Alt Mode (DP Alt Mode), USB Power Delivery (USB-PD), and PPS, and it is backward-compatible with all earlier standards. It's pricey, even with the discount, but it rarely dips this low. This is also the longest size; the shorter one is also on sale.",
+                        "theme": "Technology",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Creator Kit Launch",
+                        "eventSummary": "The Creator Kit acts as the link between your phone and various mounting solutions. It comes with a magnetic locking mount that works with the Peak Design SlimLink phone case and a few different mounting options including a Peak Design Arca quick-release plate, a GoPro mount adapter, and a 1/4-inch tripod mount. That way, you can easily mount it on almost any tripod. Your phone (with the case protecting it) will slot easily into the SlimLink mount and stay secure.",
+                        "theme": "Technology",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "iPhone Deals Overview",
+                        "eventSummary": "You typically won't see many iPhone deals. Those sales usually come from carriers like AT&T, Verizon, and T-Mobile, and have several requirements, like being on an unlimited plan or opening a new cell line. If you're in the market for a new iPhone, we've laid out a few deals on older unlocked models here, along with some carrier promotions.",
+                        "theme": "Sales",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

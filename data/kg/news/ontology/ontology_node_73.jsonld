@@ -1,0 +1,329 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Hopkins' Performance Analysis",
+            "author": "Sports Analyst",
+            "theme": "Sports",
+            "summary": "Analysis of Hopkins' performance and the Titans' offensive strategy.",
+            "created": "2023-10-01T12:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T12:00:00Z",
+            "has_events": [
+                {
+                    "@type": "EventList",
+                    "Event": [
+                        {
+                            "eventTitle": "Titans vs Colts Matchup",
+                            "eventSummary": "Analysis of the Titans' run-first offense and its impact on Hopkins.",
+                            "theme": "Game Analysis",
+                            "hasLocation": {
+                                "@type": "geo:SpatialThing",
+                                "name": "Nashville, TN"
+                            },
+                            "mentions_persons": [
+                                {
+                                    "name": "DeAndre Hopkins",
+                                    "dateOfBirth": "1992-06-06",
+                                    "placeOfBirth": {
+                                        "@type": "geo:location",
+                                        "name": "Houston, TX"
+                                    },
+                                    "alias": "Hopkins"
+                                },
+                                {
+                                    "name": "Ryan Tannehill",
+                                    "dateOfBirth": "1988-07-27",
+                                    "placeOfBirth": {
+                                        "@type": "geo:location",
+                                        "name": "Lynwood, CA"
+                                    },
+                                    "alias": "Tannehill"
+                                }
+                            ],
+                            "mentions_organizations": [
+                                {
+                                    "name": "Tennessee Titans",
+                                    "hasLocation": {
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Nashville, TN"
+                                    },
+                                    "alias": "Titans"
+                                },
+                                {
+                                    "name": "Indianapolis Colts",
+                                    "hasLocation": {
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Indianapolis, IN"
+                                    },
+                                    "alias": "Colts"
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Burrow's Performance Review",
+                            "eventSummary": "Review of Joe Burrow's performance against the Cardinals.",
+                            "theme": "Player Analysis",
+                            "hasLocation": {
+                                "@type": "geo:SpatialThing",
+                                "name": "Arizona"
+                            },
+                            "mentions_persons": [
+                                {
+                                    "name": "Joe Burrow",
+                                    "dateOfBirth": "1996-12-10",
+                                    "placeOfBirth": {
+                                        "@type": "geo:location",
+                                        "name": "Ames, IA"
+                                    },
+                                    "alias": "Burrow"
+                                }
+                            ],
+                            "mentions_organizations": [
+                                {
+                                    "name": "Cincinnati Bengals",
+                                    "hasLocation": {
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Cincinnati, OH"
+                                    },
+                                    "alias": "Bengals"
+                                },
+                                {
+                                    "name": "Arizona Cardinals",
+                                    "hasLocation": {
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Phoenix, AZ"
+                                    },
+                                    "alias": "Cardinals"
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Goedert's Target Analysis",
+                            "eventSummary": "Analysis of Dallas Goedert's target share and performance.",
+                            "theme": "Player Analysis",
+                            "hasLocation": {
+                                "@type": "geo:SpatialThing",
+                                "name": "Los Angeles, CA"
+                            },
+                            "mentions_persons": [
+                                {
+                                    "name": "Dallas Goedert",
+                                    "dateOfBirth": "1995-01-03",
+                                    "placeOfBirth": {
+                                        "@type": "geo:location",
+                                        "name": "South Dakota"
+                                    },
+                                    "alias": "Goedert"
+                                }
+                            ],
+                            "mentions_organizations": [
+                                {
+                                    "name": "Philadelphia Eagles",
+                                    "hasLocation": {
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Philadelphia, PA"
+                                    },
+                                    "alias": "Eagles"
+                                },
+                                {
+                                    "name": "Los Angeles Rams",
+                                    "hasLocation": {
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Los Angeles, CA"
+                                    },
+                                    "alias": "Rams"
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Addison's Performance Review",
+                            "eventSummary": "Review of Jordan Addison's performance against the Chiefs.",
+                            "theme": "Player Analysis",
+                            "hasLocation": {
+                                "@type": "geo:SpatialThing",
+                                "name": "Kansas City, MO"
+                            },
+                            "mentions_persons": [
+                                {
+                                    "name": "Jordan Addison",
+                                    "dateOfBirth": "2001-01-27",
+                                    "placeOfBirth": {
+                                        "@type": "geo:location",
+                                        "name": "Tampa, FL"
+                                    },
+                                    "alias": "Addison"
+                                }
+                            ],
+                            "mentions_organizations": [
+                                {
+                                    "name": "Minnesota Vikings",
+                                    "hasLocation": {
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Minneapolis, MN"
+                                    },
+                                    "alias": "Vikings"
+                                },
+                                {
+                                    "name": "Kansas City Chiefs",
+                                    "hasLocation": {
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Kansas City, MO"
+                                    },
+                                    "alias": "Chiefs"
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Wilson's Matchup Analysis",
+                            "eventSummary": "Analysis of Russell Wilson's upcoming matchup against the Jets.",
+                            "theme": "Player Analysis",
+                            "hasLocation": {
+                                "@type": "geo:SpatialThing",
+                                "name": "New York, NY"
+                            },
+                            "mentions_persons": [
+                                {
+                                    "name": "Russell Wilson",
+                                    "dateOfBirth": "1988-11-29",
+                                    "placeOfBirth": {
+                                        "@type": "geo:location",
+                                        "name": "Cincinnati, OH"
+                                    },
+                                    "alias": "Wilson"
+                                }
+                            ],
+                            "mentions_organizations": [
+                                {
+                                    "name": "Denver Broncos",
+                                    "hasLocation": {
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Denver, CO"
+                                    },
+                                    "alias": "Broncos"
+                                },
+                                {
+                                    "name": "New York Jets",
+                                    "hasLocation": {
+                                        "@type": "geo:SpatialThing",
+                                        "name": "New York, NY"
+                                    },
+                                    "alias": "Jets"
+                                }
+                            ]
+                        },
+                        {
+                            "eventTitle": "Ferguson's Target Analysis",
+                            "eventSummary": "Analysis of Jake Ferguson's role in the Cowboys' offense.",
+                            "theme": "Player Analysis",
+                            "hasLocation": {
+                                "@type": "geo:SpatialThing",
+                                "name": "Dallas, TX"
+                            },
+                            "mentions_persons": [
+                                {
+                                    "name": "Jake Ferguson",
+                                    "dateOfBirth": "1999-02-12",
+                                    "placeOfBirth": {
+                                        "@type": "geo:location",
+                                        "name": "Wisconsin"
+                                    },
+                                    "alias": "Ferguson"
+                                }
+                            ],
+                            "mentions_organizations": [
+                                {
+                                    "name": "Dallas Cowboys",
+                                    "hasLocation": {
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Dallas, TX"
+                                    },
+                                    "alias": "Cowboys"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,348 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "The 35 best couch co-op games for Nintendo Switch",
+            "author": "Nicole Clark",
+            "theme": "entertainment",
+            "content": "Many games are huge. Others are endless. Some are so exciting that they swallow our news feeds whole. That’s where Polygon’s What to Play comes in: We curate the best, most innovative, and most intriguing games on every platform, so you can spend less time searching, and more time playing. There’s a lot to love about the Nintendo Switch, not least of which is the abundance of titles with local multiplayer features, making it a great console for game night with friends or a casual play session with a roommate. We’ve collected some of our favorite titles that allow for good old-fashioned local play. It’s also my preferred play style, as the last few years have given me more excuses to stay in and try new games. Local multiplayer makes ass-kicking games much more approachable, thanks to friends respawning my character. I also love building something together in real time, like a farm in Stardew Valley, or causing communal chaos like with Untitled Goose Game’s treacherous honking. Sure, couch co-op can also mean getting revived just to get ragdolled across spikes in Spelunky 2. But it sure beats dying alone. And if you’re looking for more platform-agnostic couch co-op recommendations, here are our favorite local multiplayer games, games to play with a Valentine’s Day beau, and a Dear Polygon column about couch co-op. Our last update added Escape Academy.",
+            "created": "2023-10-20T16:20:53+00:00",
+            "published": "2023-10-20T16:20:53+00:00",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Stardew Valley",
+                    "eventSummary": "This modern-classic farming sim game takes its cues from the Harvest Moon series, and running a farm with your friends only adds to the fun.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event2",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Portal and Portal 2",
+                    "eventSummary": "This Switch remaster includes both Portal and Portal 2, seminal games well worth the revisit.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event3",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Good Job!",
+                    "eventSummary": "Congrats, you are the new CEO of a large corporation, and your wisdom is required to help employees stay on task.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event4",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Captain Toad: Treasure Tracker",
+                    "eventSummary": "This Wii U game’s Switch port is full of charm.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event5",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Untitled Goose Game",
+                    "eventSummary": "It’s a lovely morning in the village and you are a horrible goose!",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event6",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Spiritfarer",
+                    "eventSummary": "In this melancholy game, you play as Stella the ferrymaster, who guides spirits into the afterlife.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event7",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Luigi’s Mansion 3",
+                    "eventSummary": "Screw playing as the plumber in the red hat — it’s time to be his taller counterpart.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event8",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Cuphead",
+                    "eventSummary": "This modern-day, punishingly difficult platformer has the beautiful look of vintage animation.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event9",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Unravel Two",
+                    "eventSummary": "Play as a Yarny and solve puzzles with a friend by using your spare yarn to pull, yank, and swing.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event10",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Kirby and the Forgotten Land",
+                    "eventSummary": "Kirby games tend to be perfectly chill and incredibly adorable, and this one is no exception.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event11",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Nobody Saves the World",
+                    "eventSummary": "Play as characters named “Nobody” as you work together to attempt to cure the world of a poisonous blight.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event12",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Cat Quest 2",
+                    "eventSummary": "This criminally underrated action game puts you in the shoes of a cat fighting their way through the pun-filled land of Felingard.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event13",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Unsighted",
+                    "eventSummary": "Play as an automaton that needs a gem substance to survive, and fight against the clock to keep your friends from becoming “unsighted”.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event14",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Shovel Knight: Treasure Trove",
+                    "eventSummary": "This pixel art Metroidvania has the feel of a great NES game, with its retro aesthetic and excellent platforming and battling.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event15",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Lego Star Wars: The Skywalker Saga",
+                    "eventSummary": "The Lego games are always a great laugh, and they have reliable couch co-op modes.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event16",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Mario + Rabbids Kingdom Battle",
+                    "eventSummary": "A silly collaboration between Nintendo and Ubisoft became one of the sleeper hits of its release year.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event17",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Crypt of the Necrodancer",
+                    "eventSummary": "Crypt of the Necrodancer is the perfect combination of dungeon crawler and rhythm game.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event18",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Escape Academy",
+                    "eventSummary": "If you’ve ever wanted an escape room experience but in a video game, Escape Academy absolutely scratches that itch.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event19",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Super Mario Bros. Wonder",
+                    "eventSummary": "Super Mario Bros. has always been one of Nintendo’s most beloved franchises, and Wonder is another banger.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event20",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Vampire Survivors",
+                    "eventSummary": "I’ve donated hours and hours of my life to this deceptively simple roguelike bullet-hell.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event21",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Moving Out 2",
+                    "eventSummary": "Though packing up and moving is a pain in the neck in real life, Moving Out 2 turns the experience into a goofy, whimsical group experience.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event22",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Diablo 3",
+                    "eventSummary": "Now more than a decade old, Diablo 3 is still a great local multiplayer choice, especially on the Switch.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event23",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Spelunky 2",
+                    "eventSummary": "This one is not for the faint of heart. Work with a friend to excavate cave levels, avoid the dangers within, and ration supplies.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event24",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Rayman Legends: Definitive Edition",
+                    "eventSummary": "This edition of Rayman Legends has all of the platforming and hijinks that the series is known for.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event25",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Rocket League",
+                    "eventSummary": "Sure, racing games and soccer games are fun on their own — but mashing the two together results in something bizarre and unforgettable.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event26",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Towerfall Ascension",
+                    "eventSummary": "Towerfall Ascension is the gold standard for 2D arena games.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event27",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Minecraft",
+                    "eventSummary": "This bestseller is a no-brainer for anyone looking to spend time with friends in a sandbox world.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event28",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Overcooked! All You Can Eat",
+                    "eventSummary": "This definitive remaster bundles Overcooked and Overcooked 2 into one delicious package.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event29",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Super Mario 3D World + Bowser’s Fury",
+                    "eventSummary": "If you’re searching for that classic Super Mario feeling in a modern 3D world, look no further.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event30",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Mario Party Superstars",
+                    "eventSummary": "The Mario Party series reigns supreme as a family-friendly, chill party time.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event31",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Nintendo Switch Sports",
+                    "eventSummary": "Wii Sports’ legacy will never be forgotten. Nintendo Switch Sports gracefully takes up the mantle of its predecessor.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event32",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Mario Kart 8 Deluxe",
+                    "eventSummary": "No multiplayer Nintendo Switch list would be complete without mentioning the most recent edition of 20-year series Mario Kart.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event33",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Lovers in a Dangerous Spacetime",
+                    "eventSummary": "Scramble with your friends to operate a spaceship hurtling through outer space.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event34",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Snipperclips",
+                    "eventSummary": "The premise is simple: Each of you is a piece of paper, and you can cut shapes out of one another in order to accomplish tasks.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event35",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Super Smash Bros. Ultimate",
+                    "eventSummary": "Another Switch take on a stone-cold classic, Nintendo’s fight-to-the-death brawler is stocked with all of your favorite characters.",
+                    "theme": "gaming"
+                },
+                {
+                    "@id": "snap:event36",
+                    "@type": "schema:Thing",
+                    "eventTitle": "TMNT: Shredder’s Revenge",
+                    "eventSummary": "TMNT: Shredder’s Revenge is a return to the halcyon days for any TMNT fan, and a truly excellent beat-’em-up brawler.",
+                    "theme": "gaming"
+                }
+            ]
+        }
+    ]
+}

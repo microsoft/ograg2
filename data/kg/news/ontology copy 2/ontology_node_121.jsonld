@@ -1,0 +1,167 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "snap:asset",
+      "title": "Watch great noir this Noirvember",
+      "author": "Tasha Robinson",
+      "theme": "entertainment",
+      "content": "Your time is precious, and your options are endless. The good news: We watch it all so you don’t have to. Polygon’s What to Watch highlights the best, the funniest, the scariest, and the most exciting in movies, TV, and everything in between. Stop scrolling, start watching! For some reason — blame the encroaching winter, post-Halloween boredom, or simple copycat syndrome, you be the judge — November has become a big month for annual social-media-based collective challenges. From NaNoWriMo and NaPoWriMo to Movember and No-Shave November to, um, others, the extremely online crowd has focused on November as a month for group events and group discussion. For cinephiles, the fun one of the batch is Noirvember, a collective urge to watch and compare noir movies. Unlike most of these other challenges, Noirvember doesn’t have an organizing website, a sponsor, a fundraising goal, or an established set of rules. (Though individual participants have certainly proposed some.) So for those participating — or for anyone looking for the best noir movies, or the best way to get into the classic genre for the first time — we’re offering a little help. Here are some of our favorites, for newbies and noir veterans alike.",
+      "published": "2023-11-15T16:00:00+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "snap:event",
+          "eventTitle": "The Maltese Falcon (1941)",
+          "eventSummary": "Director: John Huston. Probably the most famous noir movie of all time, John Huston’s adaptation of Dashiell Hammett’s 1930 crime movie covers the basics: There’s a hard-bitten detective, Sam Spade (Humphrey Bogart), on a case full of twists, turns, and double-crosses; a beautiful woman who lures him in and turns out to be full of lies; and a McGuffin everyone’s after that turns out to be more than it seems.",
+          "theme": "classic noir",
+          "hasLocation": "geo:location1"
+        },
+        {
+          "@id": "snap:event2",
+          "@type": "snap:event",
+          "eventTitle": "Sunset Boulevard (1950)",
+          "eventSummary": "Director: Billy Wilder. Starting with one of the all-time great openings — has-been writer Joe Gillis (William Holden) wearily narrating over a shot of the police examining his floating corpse in a Los Angeles swimming pool — Sunset Boulevard is a stunner from start to finish.",
+          "theme": "classic noir",
+          "hasLocation": "geo:location2"
+        },
+        {
+          "@id": "snap:event3",
+          "@type": "snap:event",
+          "eventTitle": "Double Indemnity (1944)",
+          "eventSummary": "Director: Billy Wilder. Another Billy Wilder movie told in flashback, Double Indemnity is one of the great genre-defining femme fatale movies, with Barbara Stanwyck as the lovely lady leading hapless chump Fred MacMurray into an insurance fraud scheme that involves murdering her husband.",
+          "theme": "classic noir",
+          "hasLocation": "geo:location3"
+        },
+        {
+          "@id": "snap:event4",
+          "@type": "snap:event",
+          "eventTitle": "M (1931)",
+          "eventSummary": "Director: Fritz Lang. One of the most chilling crime dramas ever put to film, M has an unbeatable premise: When a child murderer starts haunting the streets of Berlin and the police can’t find him, the local crime bosses join forces to bring him down.",
+          "theme": "next steps",
+          "hasLocation": "geo:location4"
+        },
+        {
+          "@id": "snap:event5",
+          "@type": "snap:event",
+          "eventTitle": "Notorious (1946)",
+          "eventSummary": "Director: Alfred Hitchcock. Alfred Hitchcock’s Rebecca is a defining noir classic, but fans who haven’t dug past his topline roundup of classics shouldn’t miss the memorable Notorious, a thriller-romance featuring some of his most touching character work.",
+          "theme": "next steps",
+          "hasLocation": "geo:location5"
+        },
+        {
+          "@id": "snap:event6",
+          "@type": "snap:event",
+          "eventTitle": "Detour (1945)",
+          "eventSummary": "Director: Edgar G. Ulmer. Detour is about a down-on-his-luck young man hitchhiking from New York to Los Angeles to meet up with his love, who moved to Hollywood with the hopes of making it big.",
+          "theme": "digging deep",
+          "hasLocation": "geo:location6"
+        },
+        {
+          "@id": "snap:event7",
+          "@type": "snap:event",
+          "eventTitle": "Sudden Fear (1952)",
+          "eventSummary": "Director: David Miller. If you’ve never seen young Jack Palance and his startling cheekbones in a ’50s movie, this crime-and-seduction drama is worth it for that alone.",
+          "theme": "digging deep",
+          "hasLocation": "geo:location7"
+        },
+        {
+          "@id": "snap:event8",
+          "@type": "snap:event",
+          "eventTitle": "The Last Seduction (1994)",
+          "eventSummary": "Director: John Dahl. One of the most gleefully cruel, shockingly dirty neo-noirs to ever claim the name, The Last Seduction is a series of surprises that feels all the more subversive because the femme fatale is the protagonist, and there is no hero worth the label.",
+          "theme": "neo-noirs",
+          "hasLocation": "geo:location8"
+        },
+        {
+          "@id": "snap:event9",
+          "@type": "snap:event",
+          "eventTitle": "Blood Simple (1984)",
+          "eventSummary": "Directors: Joel Coen and Ethan Coen. Frances McDormand’s screen debut and the Coen brothers’ first movie is a must-see for neo-noir fans — the kind of tightly plotted, intensely acted, strikingly stylish movie they’d continue to be known for in the decades that followed.",
+          "theme": "neo-noirs",
+          "hasLocation": "geo:location9"
+        }
+      ]
+    }
+  ]
+}

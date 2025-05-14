@@ -1,0 +1,49 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Harvesting": {
+            "@id": "cropCult:Harvesting",
+            "@type": "schema:Thing",
+            "@context": {
+                "insecticide_spray": "cropCult:PesticideList",
+                "stop_spraying_before_harvest": "schema:Text"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Harvesting",
+            "insecticide_spray": [
+                {
+                    "@type": "PesticideList",
+                    "name": "Methyl demeton 25 EC",
+                    "quantity": "500 ml",
+                    "stage": "Pre-harvest"
+                },
+                {
+                    "@type": "PesticideList",
+                    "name": "Dimethoate 30 EC",
+                    "quantity": "500 ml",
+                    "stage": "Pre-harvest"
+                },
+                {
+                    "@type": "PesticideList",
+                    "name": "Phosphomidon 40 SL",
+                    "quantity": "500 ml",
+                    "stage": "Pre-harvest"
+                }
+            ],
+            "stop_spraying_before_harvest": "Stop spraying 20 days before harvest."
+        }
+    ]
+}

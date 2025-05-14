@@ -1,0 +1,98 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "Nick Brinkerhoff",
+            "published": "2023-11-07T22:09:00+00:00",
+            "title": "Best NHL prop bets tonight: Artemi Panarin, Cale Makar highlight top parlay picks for Rangers-Red Wings, Devils-Avalanche",
+            "summary": "Tuesday night's NHL national games feature an Original Six matchup at Madison Square Garden in addition to a battle between the team that left and the team that took its place. The Rangers and Red Wings will face off at the world's most famous arena as both squads have jumped out to hot starts in the new season. Dylan Larkin is a game-time decision for the Motor City while injuries to the Blueshirts' Adam Fox, Filip Chytil and Igor Shesterkin are making sure some of this matchup's biggest stars will not be watching in uniform. Regardless, there is still plenty of star power on Broadway in what should feature plenty of offense.\n\nIn the late game, the Devils return to Colorado -- the place they left in order to move to New Jersey -- for a showdown with the Avalanche. Again, injuries are a big part of the storyline here, thanks to Jack Hughes and Nico Hischier out until further notice. But just because injuries might take some of the juice out of these games doesn't mean that SuperDraft isn't giving us plenty of reasons to care. There are some snazzy looking props out there for us to make our bottom line look at lot better than it did earlier this morning.\n\nSuperDraft users can win 3X the amount wagered if their two-legged player prop parlay hits. If all four of the props below hit, users will win 10x their entry. In other words, a $20 entry fee will yield a $200 payout. the more legs you add to your player prop parlay, the larger your potential payout becomes, but as the long odds indicate, completing a clean sweep is challenging.\n\nBelow, we'll break down four of our favorite player props for Tuesday night's NHL slate. Users don't necessarily have to parlay all four picks together, though. Instead, you could make separate two-legged parlays to increase your win probability or attempt to hit it big if all four picks come through.\n\nWin BIG with SuperDraft! Get a free $10 deposit when you use promo code \"TSN\"!\n\nBest NHL prop bets today: SuperDraft player prop picks for Wednesday\n\n*10x potential payout if users parlay all four correct picks\n\n1. Artemi Panarin, LW, Rangers vs. Red Wings — OVER 3 shots on goal\n\nPanarin has registered at least three shots on goal in nine of 11 games this season, going over three in six of those contests. The winger has been up to his usual antics in the new season, but is also seeing some extra ice time under new head coach Peter Laviolette. The Rangers head into this matchup with a makeshift lineup thanks to those injuries that is forcing them to adjust. The absences of Fox and Chytil are a big deal, however, as Panarin loses Fox, who quarterbacks the power play, and Chytil, who centered his line at even strength. Panarin is still all over the ice for the Blueshirts though and is even seeing 18.8 percent of his shifts start in the offensive zone, a welcome sight after the last two seasons with Gerard Gallant behind the bench. The Red Wings have allowed the 11th most SOG this season (371) and the fourth most power play opportunities (46). If the Rangers can play with the man advantage, Panarin should hit this number with ease, but he's enough of a factor at even strength that we like the OVER here anyway.\n\nMORE SUPERDRAFT DFS & FANTASY PROPS: How to play SuperDraft\n\n2. Daniel Sprong, RW, Red Wings @ Rangers — OVER 2.5 shots on goal\n\nDespite not being featured in the top six, Sprong is holding down the fort on the third line, averaging five shot attempts per game through the first 12. He's hit the over in five straight, with 18 SOG compared to just eight combined for his two linemates. Sprong does see some work on the second power play unit, but is clearly willing to fire a lot of pucks at the net with his shoot-first mentality on the third line. With the Rangers still figuring out how to deal with the loss of Fox, there should be some opportunities there for Sprong to find at least three shots tonight.\n\n3. Jesper Bratt, LW, Devils @ Avalanche — UNDER 0.5 assists\n\nBratt comes into Tuesday night's action with seven goals and 11 assists in 11 games. The winger came firing out of the gate, but the outlook has changed for the Devils in recent days after losing the superstar center Hughes to injury. Hughes went down after slamming into the boards against the Blues, forcing New Jersey to change things on the fly. The changes have directly impacted Bratt, who was featured on the top line alongside Hughes. With fellow center Hischier also out with an injury, leaving the Devils fairly weak down the middle and trusting Michael McLeod to hold down the fort in between Bratt and Tyler Toffoli. As a result, Bratt has been held without an assist in each of the last two games for a team that's missing a key contributor on offense. And it'll need him to look to score rather than play the role of playmaker. Until the Devils figure things out, we can't trust this team to do anything positive in the offensive zone.\n\nWin BIG with SuperDraft! Get a free $10 deposit when you use promo code \"TSN\"!\n\n4. Cale Makar, D, Avalanche vs. Devils — OVER 2.5 shots on goal\n\nOver this number in each of the last two, fans will want to see Makar shoot the puck a little more after going under in five of the previous six before his recent hot streak. Facing a Devils team that is reeling thanks to injuries should help Makar's cause with Colorado able to control the play in the Mile High City. He's the team's top defenseman and a key piece to their power play. Barring something unforeseen, Makar will have plenty of opportunities to find three shots before the 60 minutes on the clock run out. And with 5.9 shot attempts per game, it's only a matter of time before they start finding their way on goal.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://www.sportingnews.com/us/nhl/news/best-nhl-prop-bets-tonight-panarin-makar-tuesday/67d9b5e55d061181d7805c01"
+            }
+        }
+    ]
+}
+```

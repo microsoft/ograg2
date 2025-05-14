@@ -1,0 +1,152 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Sex, Signal messages, and sabotaging FTX's code: SBF execs and Bahamas roommates tell all in court",
+      "author": null,
+      "theme": "business",
+      "content": "Witness Adam Yedidia answers questions during Sam Bankman-Fried fraud trial over the collapse of FTX, the bankrupt cryptocurrency exchange, at Federal Court in New York City, October 5, 2023, in this courtroom sketch. Jane Rosenberg | Reuters",
+      "published": "2023-10-06T20:17:00+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Sam Bankman-Fried Fraud Trial",
+          "eventSummary": "Trial over the collapse of FTX, the bankrupt cryptocurrency exchange.",
+          "theme": "legal",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "geo:location": "Federal Court in New York City"
+          },
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Sam Bankman-Fried"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Gary Wang"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Nicolas Roos"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Caroline Ellison"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Nishad Singh"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Adam Yedidia"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Lewis Kaplan"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Matt Huang"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "FTX"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Alameda Research"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Paradigm"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

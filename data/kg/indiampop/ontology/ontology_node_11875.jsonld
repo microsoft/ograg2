@@ -1,0 +1,47 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "CropProtection": {
+            "@id": "cropCult:CropProtection",
+            "@type": "schema:Thing",
+            "@context": {
+                "apply_insecticides": "cropCult:InsecticideList"
+            }
+        },
+        "InsecticideList": {
+            "@id": "cropCult:InsecticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:CropProtection",
+            "apply_insecticides": [
+                {
+                    "@type": "cropCult:InsecticideList",
+                    "name": "Insecticide 1",
+                    "quantity": "1 liter",
+                    "stage": "Early growth"
+                },
+                {
+                    "@type": "cropCult:InsecticideList",
+                    "name": "Insecticide 2",
+                    "quantity": "2 liters",
+                    "stage": "Mid growth"
+                },
+                {
+                    "@type": "cropCult:InsecticideList",
+                    "name": "Insecticide 3",
+                    "quantity": "3 liters",
+                    "stage": "Late growth"
+                }
+            ]
+        }
+    ]
+}

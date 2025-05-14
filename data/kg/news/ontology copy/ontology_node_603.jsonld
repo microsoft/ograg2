@@ -1,0 +1,135 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Zach Rabiroff",
+            "published": "2023-11-09T17:12:20+00:00",
+            "title": "A field guide to the vampire authors who were probably vampires",
+            "summary": "Vampire fiction has a long and distinguished pedigree in English. From the moment that Robert Southey introduced the British Isles to the concept of the coffin-sleeping undead at the turn of the 19th century, the authors of vampiric stories have mirrored the changing face of the society that reads them. We're spending a week diving deep into the stories behind your favorite vampires. Who says we only get to celebrate vampires at Halloween? And yet, scholars have largely turned a blind eye to one lingering question: Which of these authors were, themselves, nosferatu? Was night-stalking Lord Byron secretly a daywalker? Could it be that Anne Rice’s innate understanding of deathless sexiness is itself a result of her fellowship in the camp of the undead? Until we understand which writers have been secretly propagandizing for Dracular overlords, our understanding of the place of vampires in anglophone culture will never be fully complete. So in the interest of bettering the cause of human understanding and avoidance of unwilling resurrection, we present the following field guide to secretly vampiric authors, past and present.",
+            "associatedAsset": [
+                {
+                    "@type": "snap:person",
+                    "name": "John William Polidori",
+                    "comment": "Best-known vampire book: The Vampyre (1819)",
+                    "verdict": "Not a vampire, but Byron… vampire all the way"
+                },
+                {
+                    "@type": "snap:person",
+                    "name": "Bram Stoker",
+                    "comment": "Best-known vampire book: Dracula (1897)",
+                    "verdict": "Vampire"
+                },
+                {
+                    "@type": "snap:person",
+                    "name": "Stephen King",
+                    "comment": "Best-known vampire book: ’Salem’s Lot (1975)",
+                    "verdict": "Vampire (complimentary)"
+                },
+                {
+                    "@type": "snap:person",
+                    "name": "Anne Rice",
+                    "comment": "Best-known vampire books: The Vampire Chronicles series (1976-2018)",
+                    "verdict": "Not a vampire"
+                },
+                {
+                    "@type": "snap:person",
+                    "name": "Laurell K. Hamilton",
+                    "comment": "Best-known vampire books: Anita Blake: Vampire Hunter series (1993-present)",
+                    "verdict": "Not a vampire"
+                },
+                {
+                    "@type": "snap:person",
+                    "name": "Taika Waititi",
+                    "comment": "Best-known vampire work: What We Do in the Shadows (2014, 2019-present)",
+                    "verdict": "Dracula"
+                }
+            ],
+            "source": "Polygon",
+            "category": "entertainment",
+            "url": "https://www.polygon.com/23922394/vampire-books-authors-real-life"
+        }
+    ]
+}
+```

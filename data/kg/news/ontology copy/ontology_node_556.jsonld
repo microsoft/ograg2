@@ -1,0 +1,121 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Kyle Bonn",
+      "published": "2023-10-06T20:56:33+00:00",
+      "title": "What USMNT can expect from Julian Nagelsmann, Germany in first match for new manager",
+      "summary": "With the United States set to test themselves against one of Europe's most powerful sides, the opponents are entering a transitional phase as well.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://www.sportingnews.com/us/soccer/news/usmnt-expect-julian-nagelsmann-germany-first-match-manager/555946aa00b634dde90e3052"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Julian Nagelsmann",
+      "notablyAssociatedWith": {
+        "@type": "Organization",
+        "name": "Germany National Team"
+      }
+    },
+    {
+      "@type": "Organization",
+      "name": "Germany National Team",
+      "hasAsset": {
+        "asset": {
+          "@type": "TextAsset",
+          "image": "https://www.sportingnews.com/us/soccer/news/usmnt-expect-julian-nagelsmann-germany-first-match-manager/555946aa00b634dde90e3052"
+        }
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Germany vs USA Friendly Match",
+      "eventSummary": "Germany's first match under new manager Julian Nagelsmann against the United States."
+    }
+  ]
+}
+```

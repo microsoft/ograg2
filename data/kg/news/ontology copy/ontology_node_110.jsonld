@@ -1,0 +1,178 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:event",
+      "eventTitle": "Heck",
+      "eventSummary": "An experimental horror experience channeling the vulnerability of a child and the horror of abandonment.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": "snap:event"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Harper’s Island",
+      "eventSummary": "A slasher TV show set on a small Pacific Northwest island with a deadly legacy.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": "snap:event"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "American Horror Story: NYC",
+      "eventSummary": "A season of AHS focusing on a serial killer and the powerlessness of the queer community during the AIDS crisis.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": "snap:event"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Cat People",
+      "eventSummary": "A horror movie that originated the modern jump scare, following a woman who believes she is cursed.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": "snap:event"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "The Neon Demon",
+      "eventSummary": "A horror movie about the modeling industry in LA, filled with dread and seediness.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": "snap:event"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Project Wolf Hunting",
+      "eventSummary": "A Korean monster movie with a premise of criminals rebelling on a cargo ship transporting a monster.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": "snap:event"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Kuroneko",
+      "eventSummary": "A supernatural horror film set in the Sengoku period, about spirits seeking vengeance.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": "snap:event"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "A Wounded Fawn",
+      "eventSummary": "A horror movie inspired by Greek mythology, following a museum curator and a serial killer.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": "snap:event"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "The Hole in the Ground",
+      "eventSummary": "A horror movie about a woman who believes her son has been replaced by a doppelgänger.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": "snap:event"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Silent Hill",
+      "eventSummary": "A horror movie following a mother and daughter in a mysterious town filled with monsters.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": "snap:event"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Suspiria (2018)",
+      "eventSummary": "A remake of the horror masterpiece, featuring an American ballerina in a supernatural mystery.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": "snap:event"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Pan’s Labyrinth",
+      "eventSummary": "A fairy tale for adults set during the Spanish Civil War, following a girl and a mythical faun.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": "snap:event"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Eyes Without a Face",
+      "eventSummary": "A French horror film from the late 1950s.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": "snap:event"
+    }
+  ]
+}
+```

@@ -1,0 +1,156 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "title": "NFL Game Management and Team Strategies",
+            "author": "William Purnell",
+            "theme": "Sports",
+            "content": "We joked on the Football GM Podcast that the head coach himself could have used a wristband to assist with game management after the Broncos called timeout before punting with 22 seconds left in the first half of a 19-8 defeat at Kansas City in Week 6...",
+            "created": "2023-10-15T00:00:00",
+            "modified": "2023-10-15T00:00:00",
+            "published": "2023-10-15T00:00:00",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Broncos vs Chiefs Game",
+                    "eventSummary": "Broncos called timeout before punting with 22 seconds left in the first half.",
+                    "theme": "Sports",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Sean Payton"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Russell Wilson"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Denver Broncos"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Kansas City Chiefs"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Giants and Vikings Playoff Struggles",
+                    "eventSummary": "The New York Giants and Minnesota Vikings exceeded expectations under first-year head coaches in 2022.",
+                    "theme": "Sports",
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "New York Giants"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Minnesota Vikings"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Dolphins Game Strategy",
+                    "eventSummary": "The Dolphins were one of 223 teams since 2000 to be favored by at least 13.5 points in a regular-season or playoff game.",
+                    "theme": "Sports",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Tyreek Hill"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Miami Dolphins"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

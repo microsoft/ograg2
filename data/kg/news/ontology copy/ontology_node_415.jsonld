@@ -1,0 +1,134 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Sheena Vasani",
+      "title": "Here are over 40 last-minute gifts you can still nab before Christmas",
+      "published": "2023-12-24T19:15:58+00:00",
+      "summary": "Yes, Christmas is tomorrow — and yes, we know you have yet to buy a gift. We understand that life gets busy, though, and sometimes it feels like the holidays creep up on you out of nowhere. But before you spiral into a full-blown panic attack, take a deep breath. Luckily for you, the internet is filled with a treasure trove of gift cards, subscriptions, and other great digital gifts you can buy as late as Christmas Day itself.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Gifts for film and TV buffs",
+        "summary": "Regardless of whether you’re shopping for a movie buff or an avid sports fan, there are a number of subscriptions on the market that’ll grant your giftee access to a wide range of content. Below are some of the most popular, as well as a few catered toward anime diehards, horror lovers, and those looking for something more niche."
+      },
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Gifts for the gamers",
+        "summary": "If you’re not sure which type of games your giftee prefers, you can gift them an Xbox, PlayStation, or Nintendo subscription. Not only will these memberships grant him access to free digital titles but they also come with perks such as online multiplayer and cloud-based saves, among other incentives."
+      },
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Gifts for the adventurers and globe-trotters",
+        "summary": "Is your giftee in dire need of a screen break? Fortunately, the internet is filled with travel-oriented gifts, ranging from the obvious — like airline gift cards — to national park passes."
+      },
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Gifts for health and wellness fans",
+        "summary": "For health and wellness enthusiasts, many services offer a wealth of streamable fitness classes to help them get fit at home. Other gifts can help your giftee practice self-care and lighten their load with meditation or even massages."
+      },
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Gifts for foodies",
+        "summary": "Whether they’re a diehard foodie, a wine connoisseur, or a caffeine addict, the internet is filled with subscriptions and gift cards for all types."
+      },
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Gifts for music lovers",
+        "summary": "Whether your giftee is a musician or just loves to unwind with some music, there are a lot of digital presents you can buy."
+      },
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Gifts for the bookworms",
+        "summary": "Obviously, you could just gift a bibliophile a book and they’d probably be happy. But what if you don’t know what your giftee is into or simply want to give them more options?"
+      },
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Gifts for the creatives",
+        "summary": "Movie buffs and bibliophiles are easy to shop for, but what do you get the creative type? It’s actually not that hard — just buy them something to help them create, whether that’s an online course or access to a new tool."
+      }
+    }
+  ]
+}
+```

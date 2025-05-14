@@ -1,0 +1,258 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Netgear Nighthawk Router",
+      "summary": "Wi-Fi 6 support, coverage of up to 3,500 square feet, USB input for shared disk space.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Newegg"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Eero Pro 6E Mesh Router",
+      "summary": "Covers 2,000 square feet, subscription features like parental controls.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Eero"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "SimpliSafe Home Security",
+      "summary": "Easy setup with motion, door, and window sensors, panic buttons, and key fob controllers.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: SimpliSafe"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Govee Smart Lighting",
+      "summary": "Diffused light strip with adhesive brackets, supports effects in Govee app.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Govee"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Monster Digital Frame",
+      "summary": "1280p screen, supports Google Assistant or Alexa.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Monster"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "EcoFlow River 2 Pro Portable Power Station",
+      "summary": "768 watt-hours, portable with a large handle, fan noise downside.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: EcoFlow"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Tile Sticker Two-Pack",
+      "summary": "Bluetooth tracker stickers for remotes, e-readers, 150-foot range.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Tile"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Petcube Bites 2 Pet Camera",
+      "summary": "Holds 1.5 pounds of treats, four-microphone array, discounted to $80.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Petcube"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Niu KQi3 Pro Electric Scooter",
+      "summary": "Great range, 20 mph max speed, 9.5-inch tubeless tires.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Niu"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Withings Body+ Smart Scale",
+      "summary": "Tracks body fat, muscle mass, total body water, displays progress charts.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Withings"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Aqara Doorbell",
+      "summary": "1080p video, 162-degree field of view, smart home compatibility.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Aqara"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Epicka Travel Adapter",
+      "summary": "Works in 150+ countries, four USB-A ports, 15-watt USB-C port.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Epicka"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Nanoleaf Light Kit",
+      "summary": "Customizable hexagon lights, vibrant colors, works with Alexa and Google Assistant.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Nanoleaf"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Google Nest Hub Max",
+      "summary": "Smart display with big screen, doubles as photo frame, kitchen assistant.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Google"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Therabody Smart Goggles",
+      "summary": "Uses heat, vibrations, light pressure to massage eyes and temples.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Therabody"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Willow Go Wearable Breast Pump",
+      "summary": "Easy to use, clean, and portable, priced similarly to standard portable pump.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Willow"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Tushy Classic 3.0 Bidet",
+      "summary": "Affordable, easy to install, no need for electrical plug or hot water hookup.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: TUSHY"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Coway Airmega 250 Air Purifier",
+      "summary": "Best for larger rooms, automatic functioning, whisper-quiet low setting.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: Amazon"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "LifeStraw Personal Water Filter",
+      "summary": "Removes 99% of waterborne bacteria and pathogens, best for emergency gear.",
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Photograph: LifeStraw"
+      }
+    }
+  ]
+}
+```

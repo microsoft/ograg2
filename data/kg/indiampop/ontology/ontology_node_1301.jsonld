@@ -1,0 +1,67 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "8 irrigations for light soils, 7 irrigations for heavy soils",
+                "stage_of_application": [
+                    {
+                        "stage": "Germination",
+                        "start_date": "1st day after planting for light soils, 1st day after sowing for heavy soils",
+                        "end_date": "4th day for light soils, 5th day for heavy soils"
+                    },
+                    {
+                        "stage": "Vegetative phase",
+                        "start_date": "15th day for both light and heavy soils",
+                        "end_date": "28th day for light soils, 30th day for heavy soils"
+                    },
+                    {
+                        "stage": "Flowering phase",
+                        "start_date": "42nd day for light soils, 45th day for heavy soils",
+                        "end_date": "54th day for light soils, 57th day for heavy soils"
+                    },
+                    {
+                        "stage": "Maturity phase",
+                        "start_date": "66th day for light soils, 70th day for heavy soils",
+                        "end_date": "77th day for light soils, 79th day for heavy soils"
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,63 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "SeedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "VANILLA (Vanilla planifolia)",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Preparation of land and planting of standards Clear the land of jungle growth and prepare for planting. Being a creeper, the plant requires support up to a height of about 150 cm. Low branching trees with rough bark and small leaves are preferred as support trees. Cuttings of Plumaria alba, Erythrina lithosperma, Jatropha carcas and Glyricidia maculata are suitable as live supports. They are to be planted at least six months prior to planting of vanilla for successful establishment. Cuttings of 1.5-2.0m length with 4-5 cm diameter are to be used for planting in pits of about 30cm x 30cm x 30cm at a spacing of 2.5 m between rows and 2m within row. This can accommodate about 1600- 2000 plants in one-hectare area as pure crop. The growth of live standard is to be adjusted to make them branch at a height of 150 cm to facilitate trailing of the vines and artificial hand pollination.",
+                "with_soil_moisture": "Not specified"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "SeedSpacing",
+                "sowing_time": "Not specified",
+                "value": "2.5 m between rows and 2m within row",
+                "depth": "Not specified",
+                "method": "Not specified"
+            }
+        }
+    ]
+}

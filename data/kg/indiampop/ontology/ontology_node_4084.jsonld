@@ -1,0 +1,462 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are": "schema:Text"
+            }
+        },
+        "SeedList": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List",
+                "has_early_sowing_time": "cropCult:SowingTime",
+                "has_late_sowing_time": "cropCult:SowingTime",
+                "has_seeding_rate": "schema:QuantitativeValue",
+                "has_fertilizer_application_requirements": "cropCult:Fertilization"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CropGrowingZones": {
+            "@container": "@list",
+            "@id": "cropCult:CropGrowingZones",
+            "@type": "schema:ItemList",
+            "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List",
+                    "has_seed_recommendations": "cropCult:SeedList"
+                }
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "for_flowering": "schema:Text",
+                "for_grain_filling": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "SeedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "Rice (Oryza sativa) Transplanted Early Ahu",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "CEREALS",
+                "used_for": "Active tillering stage"
+            },
+            "needs_pest_treatements": [
+                {
+                    "@type": "cropCult:PestTreatements",
+                    "pest_name": "Case worm",
+                    "pest_symptoms": "Presence of tubular",
+                    "pest_control": [
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Quinalphos 25EC",
+                            "quantity": "0.025",
+                            "stage": "1-2 cases/hill"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Monocrotophos 40EC",
+                            "quantity": "0.04",
+                            "stage": "1-2 cases/hill"
+                        }
+                    ]
+                },
+                {
+                    "@type": "cropCult:PestTreatements",
+                    "pest_name": "Leaf folder",
+                    "pest_symptoms": "Leaves are folded along margins by webbing them together",
+                    "pest_control": [
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Chlorpyriphos 20EC",
+                            "quantity": "0.02",
+                            "stage": "More than 1 damaged leaf per hill"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Quinalphos 25EC",
+                            "quantity": "0.025",
+                            "stage": "More than 1 damaged leaf per hill"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Fenitrothion 50 EC",
+                            "quantity": "0.05",
+                            "stage": "More than 1 damaged leaf per hill"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Monocrotophos 40EC 0.04 Phosalone 35EC",
+                            "quantity": "0.035",
+                            "stage": "More than 1 damaged leaf per hill"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Phosphamidon 100 EC",
+                            "quantity": "0.025",
+                            "stage": "More than 1 damaged leaf per hill"
+                        }
+                    ]
+                },
+                {
+                    "@type": "cropCult:PestTreatements",
+                    "pest_name": "Gall midge",
+                    "pest_symptoms": "Presence of silver shoots (galls)",
+                    "pest_control": [
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Chlorpyriphos 20EC",
+                            "quantity": "0.02",
+                            "stage": "1 silver shoot/sq.m. in endemic areas or 5% silver short in non- endemic areas"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Phosphamidon 100 EC",
+                            "quantity": "0.025",
+                            "stage": "1 silver shoot/sq.m. in endemic areas or 5% silver short in non- endemic areas"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Carbofuran 3G",
+                            "quantity": "-",
+                            "stage": "1 silver shoot/sq.m. in endemic areas or 5% silver short in non- endemic areas"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Phorate 10G",
+                            "quantity": "-",
+                            "stage": "1 silver shoot/sq.m. in endemic areas or 5% silver short in non- endemic areas"
+                        }
+                    ]
+                },
+                {
+                    "@type": "cropCult:PestTreatements",
+                    "pest_name": "Hispa",
+                    "pest_symptoms": "Leaf tissues scrapped in white parallel lines",
+                    "pest_control": [
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Chlorpyriphos 20EC",
+                            "quantity": "0.02",
+                            "stage": "1 adult or 1-2 damaged leaves per hill"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Quinalphos 25EC",
+                            "quantity": "0.025",
+                            "stage": "1 adult or 1-2 damaged leaves per hill"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Monocrotophos 40EC 0.04",
+                            "quantity": "-",
+                            "stage": "1 adult or 1-2 damaged leaves per hill"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Phosphamidon 100 EC",
+                            "quantity": "0.025",
+                            "stage": "1 adult or 1-2 damaged leaves per hill"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Phosalone 35EC",
+                            "quantity": "0.035",
+                            "stage": "1 adult or 1-2 damaged leaves per hill"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Dichlorovos 100 EC",
+                            "quantity": "0.05",
+                            "stage": "1 adult or 1-2 damaged leaves per hill"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Carbofuran 3G",
+                            "quantity": "-",
+                            "stage": "1 adult or 1-2 damaged leaves per hill"
+                        }
+                    ]
+                },
+                {
+                    "@type": "cropCult:PestTreatements",
+                    "pest_name": "Stem borer",
+                    "pest_symptoms": "Presence of dead heart",
+                    "pest_control": [
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Chlorpyriphos 20EC",
+                            "quantity": "0.02",
+                            "stage": "More than 5% dead heart"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Quinalphos 25EC",
+                            "quantity": "0.025",
+                            "stage": "More than 5% dead heart"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Fenitrothion 50 EC",
+                            "quantity": "0.05",
+                            "stage": "More than 5% dead heart"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Monocrotophos 40EC 0.04 Phosphamidon 100 EC",
+                            "quantity": "0.025",
+                            "stage": "More than 5% dead heart"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Carbofuran 3G",
+                            "quantity": "-",
+                            "stage": "More than 5% dead heart"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Phorate 10G",
+                            "quantity": "-",
+                            "stage": "More than 5% dead heart"
+                        }
+                    ]
+                },
+                {
+                    "@type": "cropCult:PestTreatements",
+                    "pest_name": "Rice bug",
+                    "pest_symptoms": "Presence of partially or completely chaffy grains in the panicle",
+                    "pest_control": [
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Malathion 5% dust",
+                            "quantity": "20 kg/ha",
+                            "stage": "1-2 bugs/sq.m"
+                        }
+                    ]
+                },
+                {
+                    "@type": "cropCult:PestTreatements",
+                    "pest_name": "Stem borer",
+                    "pest_symptoms": "Presence of white earhead",
+                    "pest_control": [
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Chlorpyriphos 20EC",
+                            "quantity": "0.02",
+                            "stage": "1 moth/sq.m."
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Quinalphos 25EC",
+                            "quantity": "0.025",
+                            "stage": "1 moth/sq.m."
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Monocrotophos 40EC 0.04 Fenitrothion 50 EC",
+                            "quantity": "0.05",
+                            "stage": "1 moth/sq.m."
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Phosphamidon 100 EC",
+                            "quantity": "0.025",
+                            "stage": "1 moth/sq.m."
+                        }
+                    ]
+                },
+                {
+                    "@type": "cropCult:PestTreatements",
+                    "pest_name": "Ear cutting caterpillar",
+                    "pest_symptoms": "Larvae climb and cut the earhead",
+                    "pest_control": [
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Chlorpyriphos 20EC",
+                            "quantity": "0.02",
+                            "stage": "1 larva/hill"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Quinalphos 25EC",
+                            "quantity": "0.025",
+                            "stage": "1 larva/hill"
+                        }
+                    ]
+                },
+                {
+                    "@type": "cropCult:PestTreatements",
+                    "pest_name": "Climbing cutworm",
+                    "pest_symptoms": "Presence of shed grains or panicles at the base of the plant",
+                    "pest_control": [
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Chlorpyriphos 20EC",
+                            "quantity": "0.02",
+                            "stage": "1 larva/hill"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Quinalphos 25EC",
+                            "quantity": "0.025",
+                            "stage": "1 larva/hill"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Monocrotophos 40EC 0.04",
+                            "quantity": "-",
+                            "stage": "1 larva/hill"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Dichlorovos 100 EC",
+                            "quantity": "0.05",
+                            "stage": "1 larva/hill"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

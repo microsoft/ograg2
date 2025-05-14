@@ -1,0 +1,194 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "The obsessive tormenter who made professors’ lives miserable",
+            "author": "Erika Hayasaki",
+            "theme": "technology",
+            "summary": "An exploration of the harassment faced by professors, particularly focusing on the experiences of Janani Umamaheswar and her husband Alex Sinha.",
+            "created": "2023-10-25T13:00:00+00:00",
+            "published": "2023-10-25T13:00:00+00:00",
+            "url": "https://www.theverge.com/c/features/23903125/lurker-online-harassment-stalking-asian-academics",
+            "hasThumbnail": {
+                "@id": "snap:imageAsset",
+                "description": "Animated illustration of a pixelated silhouette of a figure inside of a smart phone. Harassing notifications pop up all around the phone and the figure breaths very slowly."
+            },
+            "has_events": [
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "Harassment Incident",
+                    "eventSummary": "A series of online and offline harassment incidents faced by Janani Umamaheswar.",
+                    "theme": "harassment",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "Southern Connecticut State University"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Janani Umamaheswar"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Alex Sinha"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "S."
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization",
+                            "name": "Southern Connecticut State University"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "George Mason University"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Vassar College"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "@id": "snap:person",
+            "name": "Janani Umamaheswar",
+            "dateOfBirth": "xmls:date",
+            "placeOfBirth": {
+                "@id": "geo:location",
+                "name": "Unknown"
+            },
+            "alias": "Professor Umamaheswar"
+        },
+        {
+            "@id": "snap:person",
+            "name": "Alex Sinha",
+            "dateOfBirth": "xmls:date",
+            "placeOfBirth": {
+                "@id": "geo:location",
+                "name": "Unknown"
+            },
+            "alias": "Professor Sinha"
+        },
+        {
+            "@id": "snap:person",
+            "name": "S.",
+            "dateOfBirth": "xmls:date",
+            "placeOfBirth": {
+                "@id": "geo:location",
+                "name": "Unknown"
+            },
+            "alias": "Unknown"
+        },
+        {
+            "@id": "snap:organization",
+            "name": "Southern Connecticut State University",
+            "hasLocation": {
+                "@id": "geo:SpatialThing",
+                "name": "New Haven, Connecticut"
+            },
+            "alias": "SCSU"
+        },
+        {
+            "@id": "snap:organization",
+            "name": "George Mason University",
+            "hasLocation": {
+                "@id": "geo:SpatialThing",
+                "name": "Fairfax, Virginia"
+            },
+            "alias": "GMU"
+        },
+        {
+            "@id": "snap:organization",
+            "name": "Vassar College",
+            "hasLocation": {
+                "@id": "geo:SpatialThing",
+                "name": "Poughkeepsie, New York"
+            },
+            "alias": "Vassar"
+        }
+    ]
+}

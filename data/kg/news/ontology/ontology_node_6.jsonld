@@ -1,0 +1,201 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Ground-breaking Gold Coast: Suns make AFLW finals for a second time",
+            "author": "Joanna Guelas",
+            "published": "2023-11-03T23:45:04+00:00",
+            "theme": "sports",
+            "summary": "The Gold Coast Suns have made the AFLW finals for the second time, securing a spot with a 14-point win over Essendon.",
+            "has_events": [
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "AFLW Finals",
+                    "eventSummary": "The finals series for the AFLW season.",
+                    "theme": "sports",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "Great Barrier Reef Arena"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Lucy Single"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Georgia Patrikios"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Hannah Priest"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Abbie McKay"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Mimi Hill"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Rebecca Privitelli"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Chloe Molloy"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Laura Gardiner"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Ally Morphett"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Dakota Davidson"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Bre Koenen"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Erin Phillips"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Richelle Cranston"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Ash Riddell"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Britney Gutknecht"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization",
+                            "name": "Gold Coast Suns"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Essendon"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Brisbane Lions"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Melbourne"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Geelong"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Port Adelaide"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Western Bulldogs"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "North Melbourne"
+                        }
+                    ]
+                }
+            ],
+            "followUp": "snap:asset",
+            "derivedFrom": "snap:asset"
+        }
+    ]
+}

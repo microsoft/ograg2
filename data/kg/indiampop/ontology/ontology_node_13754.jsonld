@@ -1,0 +1,33 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_pest_treatements": "cropCult:PestTreatements"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "WHEAT",
+            "has_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Termite",
+                "pest_symptoms": "Attacks plants, feeds on roots and underground parts causing wilting and death of plants. Severe in well-drained light soils."
+            }
+        }
+    ]
+}

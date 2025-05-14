@@ -1,0 +1,39 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "FarmImplementsAndMachinery": {
+            "@id": "cropCult:FarmImplementsAndMachinery",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_subcategory": "cropCult:Subcategory",
+                "description": "schema:Text"
+            }
+        },
+        "Subcategory": {
+            "@id": "cropCult:Subcategory",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_subcategory": "cropCult:Subcategory",
+                "description": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:FarmImplementsAndMachinery",
+            "name": "FARM IMPLEMENTS AND MACHINERY",
+            "has_subcategory": {
+                "@type": "cropCult:Subcategory",
+                "name": "HORTICULTURE",
+                "has_subcategory": {
+                    "@type": "cropCult:Subcategory",
+                    "name": "PALMYRAH TREE CLIMBING DEVICE",
+                    "description": "The grippers are so positioned that while ascending/descending up/down, the upper frame accommodating the operator is always horizontal to the ground, irrespective of the girth variations in the tree."
+                }
+            }
+        }
+    ]
+}

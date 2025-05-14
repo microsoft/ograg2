@@ -1,0 +1,75 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "BRINJAL (Solanum melongena)",
+            "has_land_preperation_requirements": {
+                "instructions": "Apply well rotten FYM / compost @ 20-25 t ha-1 at the time of land preparation and mix well with the soil."
+            }
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "N:P2O5:K2O",
+            "quantity": "75:40:25 kg per ha",
+            "stage_of_application": "Half the dose of nitrogen, full phosphorus and half of potash may be applied as basal dose before transplanting."
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "N:P2O5:K2O",
+            "quantity": "One fourth of nitrogen and half of potash",
+            "stage_of_application": "20-30 days after planting"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "N:P2O5:K2O",
+            "quantity": "Remaining quantities",
+            "stage_of_application": "Two months after planting"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "N:P2O5:K2O",
+            "quantity": "75:25:25 kg per ha",
+            "stage_of_application": "Optimum for getting maximum yield of fruits for the variety Swetha in the reclaimed alluvial soils of Kuttanad."
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "N:P2O5:K2O",
+            "quantity": "60:20:25 kg per ha",
+            "stage_of_application": "Economic optimum dose"
+        }
+    ]
+}

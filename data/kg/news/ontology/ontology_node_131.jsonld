@@ -1,0 +1,756 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "Paranormasight: A Horror Mystery",
+            "author": "Chris Plante",
+            "theme": "Horror Mystery",
+            "summary": "A mystery set in 1980s Japan, exploring urban legends and spooky folklore.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList1",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Game Release",
+                        "eventSummary": "Release of Paranormasight.",
+                        "theme": "Video Game",
+                        "hasLocation": {
+                            "@id": "geo:location1",
+                            "@type": "geo:SpatialThing",
+                            "name": "Tokyo, Japan"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList1",
+                            "Person": [
+                                {
+                                    "@id": "snap:person1",
+                                    "@type": "schema:Thing",
+                                    "name": "Chris Plante",
+                                    "dateOfBirth": "1980-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location2",
+                                        "@type": "geo:location",
+                                        "name": "Unknown"
+                                    },
+                                    "alias": "Reviewer"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList1",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset2",
+            "@type": "schema:Thing",
+            "title": "Marvel’s Midnight Suns",
+            "author": "Maddy Myers",
+            "theme": "Action, Strategy",
+            "summary": "A card-based strategy game featuring Marvel characters.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList2",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event2",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Game Release",
+                        "eventSummary": "Release of Marvel’s Midnight Suns.",
+                        "theme": "Video Game",
+                        "hasLocation": {
+                            "@id": "geo:location3",
+                            "@type": "geo:SpatialThing",
+                            "name": "Various Platforms"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList2",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList2",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "@type": "schema:Thing",
+                                    "name": "Firaxis Games",
+                                    "hasLocation": {
+                                        "@id": "geo:location4",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Unknown"
+                                    },
+                                    "alias": "Developer"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset3",
+            "@type": "schema:Thing",
+            "title": "Honkai: Star Rail",
+            "author": "JL",
+            "theme": "RPG",
+            "summary": "A turn-based RPG from Hoyoverse.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList3",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event3",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Game Release",
+                        "eventSummary": "Release of Honkai: Star Rail.",
+                        "theme": "Video Game",
+                        "hasLocation": {
+                            "@id": "geo:location5",
+                            "@type": "geo:SpatialThing",
+                            "name": "Various Platforms"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList3",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList3",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization2",
+                                    "@type": "schema:Thing",
+                                    "name": "Hoyoverse",
+                                    "hasLocation": {
+                                        "@id": "geo:location6",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Unknown"
+                                    },
+                                    "alias": "Developer"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset4",
+            "@type": "schema:Thing",
+            "title": "Chants of Sennaar",
+            "author": "N. Clark",
+            "theme": "Puzzle, Adventure",
+            "summary": "A game about deciphering languages in a Tower of Babel.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList4",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event4",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Game Release",
+                        "eventSummary": "Release of Chants of Sennaar.",
+                        "theme": "Video Game",
+                        "hasLocation": {
+                            "@id": "geo:location7",
+                            "@type": "geo:SpatialThing",
+                            "name": "Various Platforms"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList4",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList4",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization3",
+                                    "@type": "schema:Thing",
+                                    "name": "Rundisc",
+                                    "hasLocation": {
+                                        "@id": "geo:location8",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Unknown"
+                                    },
+                                    "alias": "Developer"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset5",
+            "@type": "schema:Thing",
+            "title": "Metroid Prime Remastered",
+            "author": "M. Myers",
+            "theme": "Action, Adventure",
+            "summary": "A remastered version of the classic Metroid Prime.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList5",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event5",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Game Release",
+                        "eventSummary": "Release of Metroid Prime Remastered.",
+                        "theme": "Video Game",
+                        "hasLocation": {
+                            "@id": "geo:location9",
+                            "@type": "geo:SpatialThing",
+                            "name": "Nintendo Switch"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList5",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList5",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization4",
+                                    "@type": "schema:Thing",
+                                    "name": "Retro Studios",
+                                    "hasLocation": {
+                                        "@id": "geo:location10",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Unknown"
+                                    },
+                                    "alias": "Developer"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset6",
+            "@type": "schema:Thing",
+            "title": "Shadow Gambit: The Cursed Crew",
+            "author": "M. Mahardy",
+            "theme": "Tactical, Adventure",
+            "summary": "A tactical stealth game set in a world of zombie pirates.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList6",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event6",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Game Release",
+                        "eventSummary": "Release of Shadow Gambit: The Cursed Crew.",
+                        "theme": "Video Game",
+                        "hasLocation": {
+                            "@id": "geo:location11",
+                            "@type": "geo:SpatialThing",
+                            "name": "Various Platforms"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList6",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList6",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization5",
+                                    "@type": "schema:Thing",
+                                    "name": "Mimimi Games",
+                                    "hasLocation": {
+                                        "@id": "geo:location12",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Unknown"
+                                    },
+                                    "alias": "Developer"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset7",
+            "@type": "schema:Thing",
+            "title": "Dredge",
+            "author": "RG",
+            "theme": "Horror, Adventure",
+            "summary": "A Lovecraftian horror experience disguised as a fishing game.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList7",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event7",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Game Release",
+                        "eventSummary": "Release of Dredge.",
+                        "theme": "Video Game",
+                        "hasLocation": {
+                            "@id": "geo:location13",
+                            "@type": "geo:SpatialThing",
+                            "name": "Various Platforms"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList7",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList7",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization6",
+                                    "@type": "schema:Thing",
+                                    "name": "Black Salt Games",
+                                    "hasLocation": {
+                                        "@id": "geo:location14",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Unknown"
+                                    },
+                                    "alias": "Developer"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset8",
+            "@type": "schema:Thing",
+            "title": "Final Fantasy 16",
+            "author": "Ana Diaz",
+            "theme": "RPG, Action",
+            "summary": "The latest mainline entry in the Final Fantasy series.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList8",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event8",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Game Release",
+                        "eventSummary": "Release of Final Fantasy 16.",
+                        "theme": "Video Game",
+                        "hasLocation": {
+                            "@id": "geo:location15",
+                            "@type": "geo:SpatialThing",
+                            "name": "PlayStation 5"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList8",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList8",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization7",
+                                    "@type": "schema:Thing",
+                                    "name": "Square Enix",
+                                    "hasLocation": {
+                                        "@id": "geo:location16",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Unknown"
+                                    },
+                                    "alias": "Developer"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset9",
+            "@type": "schema:Thing",
+            "title": "Cyberpunk 2077: Phantom Liberty",
+            "author": "M. Mahardy",
+            "theme": "RPG, Action",
+            "summary": "A DLC that expands on Cyberpunk 2077.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList9",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event9",
+                        "@type": "schema:Thing",
+                        "eventTitle": "DLC Release",
+                        "eventSummary": "Release of Cyberpunk 2077: Phantom Liberty.",
+                        "theme": "Video Game",
+                        "hasLocation": {
+                            "@id": "geo:location17",
+                            "@type": "geo:SpatialThing",
+                            "name": "Various Platforms"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList9",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList9",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization8",
+                                    "@type": "schema:Thing",
+                                    "name": "CD Projekt Red",
+                                    "hasLocation": {
+                                        "@id": "geo:location18",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Unknown"
+                                    },
+                                    "alias": "Developer"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset10",
+            "@type": "schema:Thing",
+            "title": "Dead Space",
+            "author": "M. Mahardy",
+            "theme": "Horror, Action",
+            "summary": "A remake of the classic survival horror game.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList10",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event10",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Game Release",
+                        "eventSummary": "Release of Dead Space Remake.",
+                        "theme": "Video Game",
+                        "hasLocation": {
+                            "@id": "geo:location19",
+                            "@type": "geo:SpatialThing",
+                            "name": "Various Platforms"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList10",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList10",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization9",
+                                    "@type": "schema:Thing",
+                                    "name": "Motive Studio",
+                                    "hasLocation": {
+                                        "@id": "geo:location20",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Unknown"
+                                    },
+                                    "alias": "Developer"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset11",
+            "@type": "schema:Thing",
+            "title": "Octopath Traveler 2",
+            "author": "M. Mahardy",
+            "theme": "RPG",
+            "summary": "The sequel to the acclaimed Octopath Traveler.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList11",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event11",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Game Release",
+                        "eventSummary": "Release of Octopath Traveler 2.",
+                        "theme": "Video Game",
+                        "hasLocation": {
+                            "@id": "geo:location21",
+                            "@type": "geo:SpatialThing",
+                            "name": "Various Platforms"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList11",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList11",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization10",
+                                    "@type": "schema:Thing",
+                                    "name": "Square Enix, Acquire",
+                                    "hasLocation": {
+                                        "@id": "geo:location22",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Unknown"
+                                    },
+                                    "alias": "Developers"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset12",
+            "@type": "schema:Thing",
+            "title": "Dave the Diver",
+            "author": "N. Carpenter",
+            "theme": "Simulation, Adventure",
+            "summary": "A fishing game and restaurant management simulator.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList12",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event12",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Game Release",
+                        "eventSummary": "Release of Dave the Diver.",
+                        "theme": "Video Game",
+                        "hasLocation": {
+                            "@id": "geo:location23",
+                            "@type": "geo:SpatialThing",
+                            "name": "Various Platforms"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList12",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList12",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization11",
+                                    "@type": "schema:Thing",
+                                    "name": "Mintrocket",
+                                    "hasLocation": {
+                                        "@id": "geo:location24",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Unknown"
+                                    },
+                                    "alias": "Developer"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset13",
+            "@type": "schema:Thing",
+            "title": "Resident Evil 4 Remake",
+            "author": "M. Mahardy",
+            "theme": "Horror, Action",
+            "summary": "A remake of the iconic Resident Evil 4.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList13",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event13",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Game Release",
+                        "eventSummary": "Release of Resident Evil 4 Remake.",
+                        "theme": "Video Game",
+                        "hasLocation": {
+                            "@id": "geo:location25",
+                            "@type": "geo:SpatialThing",
+                            "name": "Various Platforms"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList13",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList13",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization12",
+                                    "@type": "schema:Thing",
+                                    "name": "Capcom",
+                                    "hasLocation": {
+                                        "@id": "geo:location26",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Unknown"
+                                    },
+                                    "alias": "Developer"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset14",
+            "@type": "schema:Thing",
+            "title": "Armored Core 6: Fires of Rubicon",
+            "author": "Unknown",
+            "theme": "Action, Mech",
+            "summary": "A mech combat game from FromSoftware.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList14",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event14",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Game Release",
+                        "eventSummary": "Release of Armored Core 6: Fires of Rubicon.",
+                        "theme": "Video Game",
+                        "hasLocation": {
+                            "@id": "geo:location27",
+                            "@type": "geo:SpatialThing",
+                            "name": "Various Platforms"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList14",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList14",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization13",
+                                    "@type": "schema:Thing",
+                                    "name": "FromSoftware",
+                                    "hasLocation": {
+                                        "@id": "geo:location28",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Unknown"
+                                    },
+                                    "alias": "Developer"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,396 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "title": "Here are the best deals on headphones and wireless earbuds we could find",
+            "author": "Sheena Vasani",
+            "theme": "technology",
+            "summary": "A curated list of the best headphone and earbud deals available, highlighting various brands and models.",
+            "created": "2023-12-07T22:32:23+00:00",
+            "published": "2023-12-07T22:32:23+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "@type": "schema:ItemList",
+                "@container": "@list",
+                "Event": [
+                    {
+                        "@id": "snap:event",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Best Apple deals",
+                        "eventSummary": "Deals on various Apple wireless earbuds.",
+                        "theme": "technology",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Retailers"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Apple"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Best Buy"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Walmart"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "B&H Photo"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Micro Center"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Adorama"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Costco"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Verizon"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Best Beats deals",
+                        "eventSummary": "Deals on Beats headphones and earbuds.",
+                        "theme": "technology",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Retailers"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Beats"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Best Buy"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Verizon"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Best Sony deals",
+                        "eventSummary": "Deals on Sony headphones and earbuds.",
+                        "theme": "technology",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Retailers"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Sony"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Best Buy"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "B&H Photo"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Target"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Best Bose deals",
+                        "eventSummary": "Deals on Bose headphones and earbuds.",
+                        "theme": "technology",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Retailers"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Bose"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Best Buy"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Best Google deals",
+                        "eventSummary": "Deals on Google earbuds.",
+                        "theme": "technology",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Retailers"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Google"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Best Buy"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Walmart"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Best Samsung deals",
+                        "eventSummary": "Deals on Samsung earbuds.",
+                        "theme": "technology",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Retailers"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Samsung"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Best Buy"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Best Jabra deals",
+                        "eventSummary": "Deals on Jabra earbuds.",
+                        "theme": "technology",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Retailers"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Jabra"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Best Buy"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Best Sennheiser deals",
+                        "eventSummary": "Deals on Sennheiser headphones.",
+                        "theme": "technology",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Retailers"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Sennheiser"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Best Buy"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

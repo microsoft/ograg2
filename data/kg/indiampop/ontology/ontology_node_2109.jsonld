@@ -1,0 +1,45 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "CropProtection": {
+            "@id": "cropCult:CropProtection",
+            "@type": "schema:Thing",
+            "@context": {
+                "intercrop": "schema:Text",
+                "ratio": "schema:Text",
+                "insecticides": "cropCult:InsecticideList"
+            }
+        },
+        "InsecticideList": {
+            "@id": "cropCult:InsecticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "concentration": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:CropProtection",
+            "intercrop": "lab lab with groundnut",
+            "ratio": "1:4",
+            "insecticides": [
+                {
+                    "@type": "cropCult:InsecticideList",
+                    "name": "Imidacloprid",
+                    "concentration": "17.8% SL",
+                    "quantity": "100 -125 ml/ha"
+                },
+                {
+                    "@type": "cropCult:InsecticideList",
+                    "name": "Quinalphos",
+                    "concentration": "25%EC",
+                    "quantity": "1400 ml/ha"
+                }
+            ]
+        }
+    ]
+}

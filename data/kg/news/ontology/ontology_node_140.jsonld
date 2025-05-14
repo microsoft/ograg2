@@ -1,0 +1,225 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "N.F.L. Executives on the Biggest Questions Facing Super Bowl Contenders",
+            "author": "The New York Times",
+            "published": "2023-10-16T23:58:53+00:00",
+            "summary": "Cover 7 | Monday A daily NFL destination that provides in-depth analysis of football’s biggest stories. Each Monday, Mike Sando breaks down the six most impactful takeaways from the week.",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "San Francisco 49ers: What do they have in Purdy?",
+                        "eventSummary": "The 49ers knew they needed a good quarterback to win the Super Bowl, and they knew they could help Purdy be that.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Brock Purdy"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Kansas City Chiefs: Is the explosive passing game gone for good?",
+                        "eventSummary": "The Chiefs have never scored less per game on offense through six games or a full season since Patrick Mahomes became their quarterback.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Patrick Mahomes"
+                                },
+                                {
+                                    "name": "Travis Kelce"
+                                },
+                                {
+                                    "name": "Chris Jones"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Philadelphia Eagles: Has Jalen Hurts regressed? Where are the explosive pass plays?",
+                        "eventSummary": "Explosive passing is down through most of the league, including for the Eagles.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Jalen Hurts"
+                                },
+                                {
+                                    "name": "A.J. Brown"
+                                },
+                                {
+                                    "name": "DeVonta Smith"
+                                },
+                                {
+                                    "name": "Dallas Goedert"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Buffalo Bills: Are the defensive injuries too much to overcome?",
+                        "eventSummary": "The Bills are diminished. They have imperfections.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Matt Milano"
+                                },
+                                {
+                                    "name": "Tre'Davious White"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Miami Dolphins: Has Tua Tagovailoa proven he’s built to last?",
+                        "eventSummary": "It was tough watching Tagovailoa last season without worrying for his physical well-being.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Tua Tagovailoa"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Dallas Cowboys: Is this team any better than previous Dallas teams that fell short?",
+                        "eventSummary": "It’s a tough time to evaluate the Cowboys fairly because they were so bad against San Francisco.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Detroit Lions: Have they fixed their defense?",
+                        "eventSummary": "The Lions are 11.3 EPA per game better on defense from last season to this season.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Baltimore Ravens: Are the Ravens better off shifting to more of a pass-oriented offense?",
+                        "eventSummary": "Baltimore has never scored fewer points or amassed less offensive EPA through the first six games of a season with Lamar Jackson in the lineup.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Lamar Jackson"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Jacksonville Jaguars: Are they ready for prime time?",
+                        "eventSummary": "Trevor Lawrence’s knee injury was the big concern coming out of Sunday.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Trevor Lawrence"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Cincinnati Bengals: Can Joe Burrow hold up for a full season?",
+                        "eventSummary": "Burrow is looking healthier over the past two weeks.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Joe Burrow"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

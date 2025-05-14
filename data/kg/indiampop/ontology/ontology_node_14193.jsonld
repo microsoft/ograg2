@@ -1,0 +1,57 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "RICE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "TRANSPLANTED RICE"
+            },
+            "needs_irrigation_schedule": [
+                {
+                    "@type": "IrrigationRequirement",
+                    "quantity": "Water should not be allowed to stand in the field for 5-7 days after transplanting.",
+                    "stage_of_application": "After Transplanting"
+                },
+                {
+                    "@type": "IrrigationRequirement",
+                    "quantity": "Maintain saturation to 3 cm standing water till 25-30 days after transplanting and low depth of 3-5 cm of water till 15 days after flowering.",
+                    "stage_of_application": "25-30 days after transplanting and 15 days after flowering"
+                },
+                {
+                    "@type": "IrrigationRequirement",
+                    "quantity": "Drain out water at yellow ripe stage (10-15 days before harvesting) for uniform maturity and efficient use of paddy reaper.",
+                    "stage_of_application": "10-15 days before harvesting"
+                }
+            ]
+        }
+    ]
+}

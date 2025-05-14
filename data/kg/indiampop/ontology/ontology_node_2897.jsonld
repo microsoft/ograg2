@@ -1,0 +1,141 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Transplanted Puddled Lowland Rice",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Dry Seeded Rainfed Un-Puddled Lowland Rice",
+                "used_for": "RAINFED RICE"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tamil Nadu",
+                    "has_regions": ["Tropical"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Rainfed Rice"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Depends on rainfall",
+                            "end_date": "Depends on rainfall"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Depends on rainfall",
+                            "end_date": "Depends on rainfall"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "Depends on rainfall"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Depends on rainfall",
+                            "quantity": "Depends on rainfall",
+                            "stage_of_application": "Depends on rainfall"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Depends on rainfall",
+                "for_flowering": "Depends on rainfall",
+                "for_grain_filling": "Depends on rainfall",
+                "negative_effect": "Depends on rainfall"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Unsaturated (dry) during establishment or entire growth period",
+                "avoid_soil_type": "Saturated",
+                "for_water": "Standing water after crop establishment for a minimum period of few days to a maximum up to grain filling",
+                "for_nutrients": "Depends on rainfall"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "The crop establishment, growth and maturity depend up on the rainfall received.",
+                "with_soil_moisture": "Unsaturated (dry) during establishment or entire growth period"
+            },
+            "seed_germination_test_requirements_are": "Depends on rainfall",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Depends on rainfall",
+                "quantity": "Depends on rainfall"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Depends on rainfall",
+                "value": "Depends on rainfall",
+                "depth": "Depends on rainfall",
+                "method": "Depends on rainfall"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Depends on rainfall",
+                "weed_types": ["Depends on rainfall"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Depends on rainfall",
+                    "quantity": "Depends on rainfall",
+                    "stage": "Depends on rainfall"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Depends on rainfall",
+                "stage_of_application": "Depends on rainfall"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Depends on rainfall",
+                "disease_symptoms": "Depends on rainfall",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Depends on rainfall",
+                    "quantity": "Depends on rainfall",
+                    "stage": "Depends on rainfall"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Depends on rainfall",
+                "pest_symptoms": "Depends on rainfall",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Depends on rainfall",
+                    "quantity": "Depends on rainfall",
+                    "stage": "Depends on rainfall"
+                }
+            },
+            "harvesting_guidelines_are": "Depends on rainfall",
+            "storage_guidelines_are": "Depends on rainfall"
+        }
+    ]
+}

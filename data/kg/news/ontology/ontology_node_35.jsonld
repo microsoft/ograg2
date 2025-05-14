@@ -1,0 +1,436 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Headphone and Earbud Deals",
+            "author": "WIRED",
+            "summary": "A comprehensive review of the best headphone and earbud deals available.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "hasThumbnail": {
+                "@id": "snap:imageAsset",
+                "url": "http://example.com/image.jpg"
+            },
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "JBL's Endurance Peak 3 Review",
+                        "eventSummary": "A review of JBL's Endurance Peak 3 earbuds.",
+                        "theme": "Earbuds",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Gym"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "JBL"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Sony's WF-1000XM5 Review",
+                        "eventSummary": "A review of Sony's WF-1000XM5 earbuds.",
+                        "theme": "Earbuds",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Home"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Sony"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Sennheiser's HD 660S2 Review",
+                        "eventSummary": "A review of Sennheiser's HD 660S2 headphones.",
+                        "theme": "Headphones",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Home"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Sennheiser"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Technics EAH-AZ80 Review",
+                        "eventSummary": "A review of Technics EAH-AZ80 earbuds.",
+                        "theme": "Earbuds",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Home"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Technics"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Soundcore Life Q30 Review",
+                        "eventSummary": "A review of Soundcore's Life Q30 headphones.",
+                        "theme": "Headphones",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Home"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Soundcore"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Aura Frames Review",
+                        "eventSummary": "A review of Aura's digital picture frames.",
+                        "theme": "Smart Home",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Home"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Aura"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Nanoleaf Lines Review",
+                        "eventSummary": "A review of Nanoleaf's smart lighting panels.",
+                        "theme": "Smart Home",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Home"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Nanoleaf"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "EufyCam 3 Review",
+                        "eventSummary": "A review of EufyCam 3 security camera.",
+                        "theme": "Smart Home",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Home"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Eufy"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Google Nest Cam Review",
+                        "eventSummary": "A review of Google's Nest Cam.",
+                        "theme": "Smart Home",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Home"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Google"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "TP-Link Deco X20 Review",
+                        "eventSummary": "A review of TP-Link's Deco X20 mesh system.",
+                        "theme": "Smart Home",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Home"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "TP-Link"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Google Nest Wi-Fi Pro Review",
+                        "eventSummary": "A review of Google Nest Wi-Fi Pro mesh system.",
+                        "theme": "Smart Home",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Home"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Google"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Sonos Sub (Gen 3) Review",
+                        "eventSummary": "A review of Sonos Sub (Gen 3) speaker.",
+                        "theme": "Speaker",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Home"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Sonos"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Sonos Amp Review",
+                        "eventSummary": "A review of Sonos Amp.",
+                        "theme": "Speaker",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Home"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Sonos"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Sonos Port Review",
+                        "eventSummary": "A review of Sonos Port.",
+                        "theme": "Speaker",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Home"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Sonos"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Bose Soundlink Revolve+ Review",
+                        "eventSummary": "A review of Bose Soundlink Revolve+ speaker.",
+                        "theme": "Speaker",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Home"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Bose"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "JBL Flip Speakers Review",
+                        "eventSummary": "A review of JBL Flip speakers.",
+                        "theme": "Speaker",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Home"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "JBL"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

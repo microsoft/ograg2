@@ -1,0 +1,120 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Apple 16-inch M3 Max MacBook Pro review: A desktop among laptops",
+            "author": "Brian Heater",
+            "published": "2023-11-06T14:00:15+00:00",
+            "summary": "This thing is a beast — in pretty much every sense. It’s a big, heavy, powerful system, with a bright display, massive battery life and impressive power under the hood. After opening the box, I immediately ported all the contents over from the 15-inch Air I’ve been using daily for several months now, but still, the 16-inch MacBook Pro feels like a different species. Each has their place. I’m hopping on another cross-country flight tomorrow, and I’m planning to leave the 16-inch Pro at home. This is due partially to an ongoing back injury, but frankly, for as good as the Pro’s battery life is (very good, for the record), the Air is a much better travel companion. It’s thin, it’s light, it has more than enough processing power for 95% of the things 95% of people need, and it won’t wrestle you for the arm rest. I’ve begun thinking of the 16-inch MacBook Pro as something more along the lines of a portable desktop. That is to say that the M3 Max is plenty powerful for even most professional uses. The chip also affords the laptop the ability to power up to four external displays, making it a fine workstation option for many. When it’s time to take your work home (assuming you don’t live in France), you can pop it in your bag and take it with you. I would recommend against taking your work (and large laptop) home with you every night, but you do you.",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Scary Fast event",
+                        "eventSummary": "The new MacBook Pro, which goes on sale this week, was announced at last week’s Scary Fast event, alongside a new iMac and — of course — several members of the M3 line.",
+                        "theme": "technology",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        },
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Apple"
+                                },
+                                {
+                                    "name": "TechCrunch"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "modified": "2023-11-06T14:00:15+00:00",
+            "url": "https://techcrunch.com/2023/11/06/apple-macbook-pro-review-m3-max/"
+        }
+    ]
+}

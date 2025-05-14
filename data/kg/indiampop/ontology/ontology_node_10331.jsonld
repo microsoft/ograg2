@@ -1,0 +1,62 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Finger millet (Marua)",
+            "has_types": "Marua",
+            "has_growing_zones": "Tropical and Subtropical",
+            "has_temperature_requirements": "Warm",
+            "has_soil_requirements": "Well-drained loamy soil",
+            "has_land_preperation_requirements": "Deep ploughing and harrowing",
+            "seed_germination_test_requirements_are": "Moisture and warmth",
+            "has_seed_fungicide_requirements": "Thiram or Captan",
+            "needs_seed_sowing_spacing": "30 cm x 10 cm",
+            "weed_management_needs_are": "Hand weeding and hoeing",
+            "needs_irrigation_schedule": "At sowing, tillering and heading stage",
+            "needs_disease_treatements": "Blast, Leaf Spot",
+            "needs_pest_treatements": "Stem Borer, Leaf Miner",
+            "harvesting_guidelines_are": "Harvest when grains are hard and straw turns yellow",
+            "storage_guidelines_are":"Store in cool and dry place"
+        },
+        {
+            "@type": "PesticideList",
+            "name": "Pesticide calculation formulae",
+            "quantity": "As per package instructions",
+            "stage": "As per pest/disease stage"
+        }
+    ]
+}

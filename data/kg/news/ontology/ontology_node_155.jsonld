@@ -1,0 +1,165 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Inter Miami vs FC Cincinnati live score, result, updates, highlights with Lionel Messi's MLS playoffs on line",
+            "author": "Kyle Bonn",
+            "published": "2023-10-07T21:30:00+00:00",
+            "summary": "Inter Miami were in simply too big of a hole in the MLS playoff race, one which even Lionel Messi couldn’t drag them out of. With two matches remaining in the season, Inter Miami have been officially eliminated from the MLS playoff race, with Supporters’ Shield winners FC Cincinnati dealing the deathblow with a 1-0 victory at DRV PNK Stadium.",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Inter Miami vs FC Cincinnati",
+                        "eventSummary": "Inter Miami are made to rue their early missed chances, as Alvaro Barreal's 78th-minute goal is enough to secure victory for FC Cincinnati.",
+                        "hasLocation": {
+                            "@type": "geo:SpatialThing",
+                            "name": "DRV PNK Stadium",
+                            "location": "Ft. Lauderdale, FL"
+                        },
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Lionel Messi",
+                                    "dateOfBirth": "1987-06-24",
+                                    "placeOfBirth": {
+                                        "@type": "geo:location",
+                                        "name": "Rosario, Argentina"
+                                    },
+                                    "alias": "Leo Messi"
+                                },
+                                {
+                                    "name": "Alvaro Barreal",
+                                    "dateOfBirth": "1999-05-20",
+                                    "placeOfBirth": {
+                                        "@type": "geo:location",
+                                        "name": "Buenos Aires, Argentina"
+                                    },
+                                    "alias": "Barreal"
+                                },
+                                {
+                                    "name": "Drake Callender",
+                                    "dateOfBirth": "1998-05-24",
+                                    "placeOfBirth": {
+                                        "@type": "geo:location",
+                                        "name": "San Diego, CA, USA"
+                                    },
+                                    "alias": "Callender"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Inter Miami",
+                                    "hasLocation": {
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Ft. Lauderdale, FL"
+                                    },
+                                    "alias": "Inter Miami CF"
+                                },
+                                {
+                                    "name": "FC Cincinnati",
+                                    "hasLocation": {
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Cincinnati, OH"
+                                    },
+                                    "alias": "FCC"
+                                },
+                                {
+                                    "name": "Sporting News",
+                                    "hasLocation": {
+                                        "@type": "geo:SpatialThing",
+                                        "name": "USA"
+                                    },
+                                    "alias": "Sporting News"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

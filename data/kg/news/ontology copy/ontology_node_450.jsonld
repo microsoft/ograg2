@@ -1,0 +1,99 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Charles Pulliam-Moore",
+            "published": "2023-09-28T20:06:12+00:00",
+            "title": "Castlevania: Nocturne is a revolutionary epic that does the franchise’s best games justice",
+            "summary": "Netflix’s first Castlevania animated series excelled by balancing its quiet, beautifully performed moments of human drama with explosive and artful action set pieces dazzling enough to evoke the feeling of playing Konami’s classic side-scroller for the first time. Despite the first show’s strengths, its regular issues with pacing and effectively cultivating characters from season to season made the idea of Netflix keeping the vampiric daddy issues ball rolling with Castlevania: Nocturne — a new spinoff series from executive producer Clive Bradley and co-directors Sam Deats and Adam Deats — a dubious one. Nocturne both looks and feels a lot like its predecessor in terms of its focus on a tortured scion waging war against machiavellian, bloodsucking ghouls who fancy themselves undead gods who walk among mortal livestock. But while Nocturne could have easily settled and coasted on classic Castlevania vibes, the new show steps its game up considerably by using the franchise’s iconic lore to challenge your understanding of what it truly means to fight for freedom, equality, and fraternity. Set in the late 18th century during the thick of the French Revolution, Castlevania: Nocturne picks up hundreds of years after the events of Netflix’s first Castlevania series as demon slayer Richter Belmont (Edward Bluemel) makes his way to France in search of vengeance and vampires. Like his distant holy whip-wielding ancestor Trevor, Richter’s innate talents for magic make him perfectly suited for getting into the family business, and being raised by his formidable warrior mother Julia (Sophie Skelton) instills in him a profound sense of pride in the work they do. Together, Richter’s raw potential and Julia’s tutelage make him uniquely powerful even from a young age. But despite all of Julia’s skill with her family’s deadly heirloom, Castlevania: Nocturne’s world is one teeming with vampires even centuries after Dracula has seemingly been destroyed, and the series opens at a devastating moment in Richter’s past that leaves him orphaned and unable to access his magic. Though Nocturne takes place in the same continuity as the previous Castlevania show, it also uses major pieces of lore from Konami’s Castlevania: Rondo of Blood and Symphony of the Night games to tell a riveting story about the inherent hypocrisies baked into the historic record of colonial nations embracing democratic revolution. Here, the French Revolution isn’t just a transformative period of social unrest between moneyed elites and impoverished peasants fed up with their subjugation. It’s a war between undead ghouls like Drolta Tzuentes (Elarica Johnson) manipulating mortals from the shadows, selfish humans like a power-hungry Abbot (​​Richard Dormer), and agitators like summoner Maria (Pixie) who want to dismantle the entire oppressive system of power that makes France a formidable global presence. Narratively, Nocturne’s focus on another brooding Belmont and its depiction of late-18th-century France as a country overrun by literally vampiric aristocrats drunk on the promise of a new messiah make the new series feel true to the essence of Castlevania. What makes Nocturne’s deep dive into this alternate history a worthwhile watch, though, is the way it presents France not just as a crumbling monarchy in the throes of a heroic social uprising but also as a colonial nation whose pivot to democracy at home can’t be divorced from its history of committing unfathomable atrocities abroad. Nocturne reworks a number of Castlevania’s classic supporting characters like Maria — who fights using reimagined versions of the Four Sacred Beasts — and empathic singer Edouard (Sydney James Harcourt) to brilliant effect. But out of all the show’s old but new faces, ferrokinetic Vodoun practitioner Annette (Thuso Mbedu) stands out because of how strongly the show introduces her as a woman whose Haitian identity is what makes her able to understand the situation over in France with an exacting kind of clarity. It’s through Annette and the show’s exploration of Afro Caribbean syncretism that Nocturne expands the boundaries of Castlevania’s magical mythology, which is touched on heavily throughout the season’s eight episodes. Small nods to the video games and gnarly beheadings abound, particularly in the Powerhouse Animation-produced show’s bigger hyperkinetic brawls between its heroes and hordes of horrific creatures. But in all the bloodshed, Nocturne still finds the time to make its characters (and by extension, you) think about what it means to slaughter technically innocent people for a genuinely noble cause. That beat isn’t entirely original, and Nocturne’s mindful about leaning on it too hard as it begins to weave Annette and Edouard’s stories together with Richter and Maria’s in France. Still, it creates a resonance between the show’s action and the concepts it’s tackling that makes the season as a whole work beautifully. Occasionally, there are moments where the fluid dreaminess of Nocturne’s overall art direction butts up against the show’s application of 3D animation to make certain pivotal moments pop. It can be jarring when traditionally animated characters who were just popping in and out of view using tricks of the eye suddenly turn to the camera with deeper faces accented by flat shadows that weren’t there a second before. As strong and different as the season starts, by its last two episodes, Nocturne does start to feel a bit like it’s rehashing moments from the first show — if not in exact form, then in terms of how neatly it brings its plotlines to a close. None of that’s enough to keep the show from hitting all the right notes, however, and by the time you hit the finale, there’s a solid chance you’ll already be hoping for more.",
+            "image": "https://www.theverge.com/23891310/netflix-castlevania-nocturne-review-konami-animated"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "The Verge"
+        }
+    ]
+}
+```

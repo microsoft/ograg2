@@ -1,0 +1,81 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "First irrigation is done soon after germination. The crop needs irrigation at an interval of 10-15 days. If the field is dry, pre-sowing irrigation is done. Usually rainy season crop does not require irrigation except during long dry spells of drought. On the other hand summer season crop requires irrigation at 5-6 days interval. Both basin and furrow methods of irrigations are adopted. The crop should be supplied with plenty of water from root enlargement to harvest as it is the most sensitive and critical stage and any stress will drastically lower the yield.",
+                "stage_of_application": "Germination, Pre-sowing, Root enlargement to harvest"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": [
+                    {
+                        "name": "Hills",
+                        "has_seed_recommendations": {
+                            "@type": "SeedList",
+                            "has_early_sowing_time": {
+                                "@type": "SowingTime",
+                                "start_date": "September",
+                                "end_date": "November"
+                            }
+                        }
+                    },
+                    {
+                        "name": "Foothills",
+                        "has_seed_recommendations": {
+                            "@type": "SeedList",
+                            "has_early_sowing_time": {
+                                "@type": "SowingTime",
+                                "start_date": "September",
+                                "end_date": "November"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

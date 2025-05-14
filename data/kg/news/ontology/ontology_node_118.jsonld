@@ -1,0 +1,194 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "USC vs. Notre Dame live score, updates, highlights from Week 7 college football game",
+            "author": "Edward Sutelan",
+            "published": "2023-10-14T22:00:05+00:00",
+            "summary": "In a game with names like Caleb Williams, Sam Hartman, Zachariah Branch and Audric Estime, it felt like there might be no more room for anyone else to play the role of hero. Enter Xavier Watts. The Notre Dame safety was a wrecking ball against Williams and the USC offense, picking off Williams twice, forcing a fumble and taking another fumble in for a score. Williams finished the contest with arguably the worst game of his career as No. 21 Notre Dame rode the crucial turnovers and a relentless pass-rush to an overwhelming 48-20 win at home against No. 10 USC.",
+            "has_events": [
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "USC vs. Notre Dame Game",
+                    "eventSummary": "Notre Dame defeats USC 48-20 in a Week 7 college football game.",
+                    "theme": "sports",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "Notre Dame Stadium"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Caleb Williams",
+                            "dateOfBirth": "2002-11-18",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Washington, D.C."
+                            },
+                            "alias": "Heisman Trophy Winner"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Sam Hartman",
+                            "dateOfBirth": "1999-07-29",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "North Carolina"
+                            },
+                            "alias": "Quarterback"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Zachariah Branch",
+                            "dateOfBirth": "2003-01-01",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Las Vegas, Nevada"
+                            },
+                            "alias": "Wide Receiver"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Audric Estime",
+                            "dateOfBirth": "2002-09-01",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Michigan"
+                            },
+                            "alias": "Running Back"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Xavier Watts",
+                            "dateOfBirth": "2002-05-15",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Nebraska"
+                            },
+                            "alias": "Safety"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Marcus Freeman",
+                            "dateOfBirth": "1986-03-10",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Ohio"
+                            },
+                            "alias": "Head Coach"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization",
+                            "name": "Notre Dame Fighting Irish",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Notre Dame, Indiana"
+                            },
+                            "alias": "Fighting Irish"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "USC Trojans",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Los Angeles, California"
+                            },
+                            "alias": "Trojans"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Sporting News",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "New York, New York"
+                            },
+                            "alias": "Sports Media"
+                        }
+                    ]
+                }
+            ],
+            "url": "https://www.sportingnews.com/us/ncaa-football/news/usc-notre-dame-score-updates-highlights/4e2506e9edb5f88b5cf5cb79"
+        }
+    ]
+}

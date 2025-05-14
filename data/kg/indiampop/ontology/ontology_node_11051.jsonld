@@ -1,0 +1,45 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Apiculture": {
+            "@id": "cropCult:Apiculture",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_beehive": "cropCult:Beehive",
+                "has_smoker": "cropCult:Smoker"
+            }
+        },
+        "Beehive": {
+            "@id": "cropCult:Beehive",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name"
+            }
+        },
+        "Smoker": {
+            "@id": "cropCult:Smoker",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "purpose": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Apiculture",
+            "name": "APICULTURE",
+            "has_beehive": {
+                "@type": "cropCult:Beehive",
+                "name": "Beehive"
+            },
+            "has_smoker": {
+                "@type": "cropCult:Smoker",
+                "name": "Smoker",
+                "purpose": "to produce smoke for effective handling of the colony"
+            }
+        }
+    ]
+}

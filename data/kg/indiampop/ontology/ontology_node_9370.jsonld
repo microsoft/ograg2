@@ -1,0 +1,54 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "CropGrowingZones": {
+            "@id": "cropCult:CropGrowingZones",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_regions": "schema:List",
+                "has_rainfall_pattern": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "AGROMETEOROLOGY",
+            "has_types": {
+                "@type": "CropType",
+                "name": "CROP PLANNING AND MANAGEMENT"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "North East Monsoon",
+                "has_regions": [
+                    "Tamil Nadu"
+                ],
+                "has_rainfall_pattern": "The rainfall pattern of Tamil Nadu based on the criteria of rainfall quantity and Seasons of precipitation is given below: (NCA, 1976) A = > 30 cm rainfall per month B = 30-20 cm rainfall per month C = 20-10 cm rainfall per month D = 10-5 cm rainfall per month E = < 5 cm rainfall per month"
+            }
+        }
+    ]
+}

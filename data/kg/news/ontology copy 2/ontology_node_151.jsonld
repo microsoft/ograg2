@@ -1,0 +1,171 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "snap:asset",
+      "title": "Music Industry Insights",
+      "author": "Tim",
+      "theme": "Music Business",
+      "content": "Did you know it was a smash hit? Sam drove this record...",
+      "created": "2023-10-01T00:00:00Z",
+      "modified": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "snap:event",
+          "eventTitle": "Unholy Record Release",
+          "eventSummary": "Sam's record broke streaming records.",
+          "theme": "Music Release",
+          "mentions_persons": [
+            {
+              "@id": "snap:person1",
+              "@type": "snap:person",
+              "name": "Sam",
+              "alias": "Sam Smith"
+            },
+            {
+              "@id": "snap:person2",
+              "@type": "snap:person",
+              "name": "Kim Petras"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization1",
+              "@type": "snap:organization",
+              "name": "Capitol UK"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event2",
+          "@type": "snap:event",
+          "eventTitle": "Ice Spice Signing",
+          "eventSummary": "Ice Spice signed by Capitol and 10K.",
+          "theme": "Artist Signing",
+          "mentions_persons": [
+            {
+              "@id": "snap:person3",
+              "@type": "snap:person",
+              "name": "Ice Spice"
+            },
+            {
+              "@id": "snap:person4",
+              "@type": "snap:person",
+              "name": "Elliot"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization2",
+              "@type": "snap:organization",
+              "name": "10K"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event3",
+          "@type": "snap:event",
+          "eventTitle": "The Beatles Now And Then Release",
+          "eventSummary": "New Beatles single released.",
+          "theme": "Music Release",
+          "mentions_persons": [
+            {
+              "@id": "snap:person5",
+              "@type": "snap:person",
+              "name": "Paul McCartney"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization3",
+              "@type": "snap:organization",
+              "name": "Apple Corp"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

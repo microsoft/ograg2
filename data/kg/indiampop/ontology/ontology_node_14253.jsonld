@@ -1,0 +1,115 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "SYSTEM OF RICE INTENSIFICATION ( SRI )",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Rice",
+                "used_for": "Rice production in small farm holdings"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "Rice Growing Zones",
+                "has_regions": ["Region 1", "Region 2", "Region 3"]
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Temperature Requirement for Germination",
+                "for_flowering": "Temperature Requirement for Flowering",
+                "for_grain_filling": "Temperature Requirement for Grain Filling",
+                "negative_effect": "Negative Effect of Temperature"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Soil Type for Rice",
+                "avoid_soil_type": "Soil Type to Avoid for Rice",
+                "for_water": "Water Requirement for Soil",
+                "for_nutrients": "Nutrient Requirement for Soil"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Land Preparation Instructions",
+                "with_soil_moisture": "Soil Moisture Requirement"
+            },
+            "seed_germination_test_requirements_are": "Seed Germination Test Requirements",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Fungicide Name",
+                "quantity": "Fungicide Quantity"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "SeedSpacing",
+                "sowing_time": "Sowing Time",
+                "value": "Seed Spacing Value",
+                "depth": "Seed Spacing Depth",
+                "method": "Seed Spacing Method"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Weed Name",
+                "weed_types": ["Weed Type 1", "Weed Type 2", "Weed Type 3"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Herbicide Name",
+                    "quantity": "Herbicide Quantity",
+                    "stage": "Herbicide Stage"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Irrigation Quantity",
+                "stage_of_application": "Irrigation Stage of Application"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Disease Name",
+                "disease_symptoms": "Disease Symptoms",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Disease Control Name",
+                    "quantity": "Disease Control Quantity",
+                    "stage": "Disease Control Stage"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Pest Name",
+                "pest_symptoms": "Pest Symptoms",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Pest Control Name",
+                    "quantity": "Pest Control Quantity",
+                    "stage": "Pest Control Stage"
+                }
+            },
+            "harvesting_guidelines_are": "Harvesting Guidelines",
+            "storage_guidelines_are": "Storage Guidelines"
+        }
+    ]
+}

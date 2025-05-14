@@ -1,0 +1,75 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Mushroom",
+            "has_types": {
+                "@type": "CropType",
+                "name": "FORAGE CROPS",
+                "used_for": "MUSHROOM CULTIVATION"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "Controlled conditions"
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Controlled",
+                "for_flowering": "Controlled",
+                "for_grain_filling": "Controlled",
+                "negative_effect": "None"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Agricultural residues",
+                "avoid_soil_type": "None",
+                "for_water": "Minimal",
+                "for_nutrients": "Rich in microbial protein"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Solid state fermentation system",
+                "with_soil_moisture": "Minimal"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Short crop cycle",
+                "value": "Utilization of vertical space",
+                "depth": "N/A",
+                "method": "Solid state fermentation system"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Less than any other crop",
+                "stage_of_application": "Throughout the cultivation"
+            },
+            "harvesting_guidelines_are": "N/A",
+            "storage_guidelines_are": "N/A"
+        }
+    ]
+}

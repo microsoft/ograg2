@@ -1,0 +1,98 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Carrie Andrews",
+            "published": "2023-10-13T17:00:20+00:00",
+            "title": "Consistent policy is key to unlocking the climate tech boom, but the UK’s U-turn isn’t helping",
+            "summary": "When British prime minister Rishi Sunak appeared in front of the hastily assembled press on September 20, the letter-crammed slogan on his lectern caused the country to squint: “Long-term decisions for a brighter future,” it read. We now know, of course, there was little in the speech that followed that brought hope. Certainly not concerning the technological fight for our future climate. Not that long ago, the UK seemed a rather brighter beacon in the industrial transition toward reversing the global climate breakdown. The countrywide goals were laid out. COP26 at least offered a forum and a spotlight. London has made strides in establishing itself as a hub for green tech startups. On the narrow but viable path toward net zero, leaders were at least taking the right steps. Then came the nadir of the last few weeks. Last week, with the government’s already infamous U-turn on its green pledges, the nation joined in a consternated chorus with global leaders to lament the prime minister’s short-sighted choice. Sunak has pushed back the British net-zero transition timeline by at least five years. The first and most galling concern is, obviously, the consequences for the future of our species on this planet. The next biggest issue, currently being voiced by leaders across industries and especially within the climate tech and climate finance sectors, is the message it sends out to those of us in the trenches actually trying to build technology to change the world and enable a sustainable future. That message is loud and clear: The U.K. government isn’t willing to be consistent when it comes to climate crisis response policy, which, aside from capital and the support of nascent tech markets, is one of the most critical things anyone in our sector can hope for. For entrepreneurs, innovators and businesses to thrive and unlock the economic potential that comes from creating new industries, we need a consistent approach from the government. I care about this because, as Americans who chose to build a biocatalyst engineering company here in the U.K., we’re acutely aware of the impact such a reversal of policy has on every stage of our sector’s existence. All major technological innovation ultimately comes from government support at the very beginning. We wouldn’t have affordable solar panels, microchips, mobile phones or the internet without government funding, government subsidies, government encouragement and government infrastructure. You can’t scale technology that is going to make a considerable impact without upfront capital to match. In January of this year, Chancellor Jeremy Hunt unveiled a long-term vision to grow the economy, saying, “I want the world’s tech entrepreneurs, life science innovators and clean energy companies to come to the U.K. because it offers the best possible place to make their vision happen.” Unless his long-term vision was only meant to last until the end of the summer, for entrepreneurs, innovators and businesses to thrive and unlock the economic potential that comes from creating new industries, we need a consistent approach from the government. We have enormous fiscal potential. Within the U.K. climate tech community, we are working to create high-paying jobs and value for investors across just about every asset class. And collectively — hell, individually — our solutions could genuinely change the world. Of course, this is the common cause we should be united around. Our company is trying to move industry away from a reliance on fossil fuels to make chemicals, among other things. But the impact of these political spasms and contradictions in our climate commitments has on, say, an EV battery business — which has just seen the market demand for its output slide down the road by five years — isn’t hard to appreciate. If giants like Ford are feeling the frustration, imagine the mood at a small green tech startup. So what’s the play? How can the government support those striving against an increasingly insecure (and insincere) backdrop? The response of any tech company impacted by last week’s news surely has to be this. First, we need a consistent macroeconomic policy. This has a major impact on startups raising and deploying capital into climate R&D. The global economic contraction has made it difficult for these businesses to raise any money. Overall approaches to the economy have trickle-down effects on how we, as businesses, make money and run our operations. Right down to salaries, which alone are hard to keep up with inflation-based pay rises. The second is a consistent tax policy. One of the most critical things for startups is research and development (R&D) tax credits. This was a lifeline that gave small, research-intensive companies months of budget runway every year, as it effectively saw them get a third of the money spent in R&D back. The government announced it would be scrapping that last year, and it is only thanks to a lobbying effort spearheaded by the Startup Coalition that, at the last minute, a portion of that tax credit was able to be preserved. Which leads to the third and most important point: A consistent climate policy. The impact of not having one is playing out in real time, right now. Sunak’s public U-turn doesn’t just undermine science and play into the hands of the climate skeptics. It also plows headlong into the future of any climate tech company whose launch plans have to be aligned around decarbonization timelines. This will damage economic confidence. People will lose jobs. And action, alas, will be further delayed. In the end, it’s simple: Inconsistency breeds uncertainty. So give us consistency. It is possible for our sector to succeed in spite of bad policies. But to thrive, we need consistent resolutions and behavior from a government that actually cares about leading in this critical fight. Given the colossal stakes, which were at least recently taken seriously, is that really asking too much?",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "url": "https://techcrunch.com/2023/10/13/consistent-policy-is-key-to-unlocking-the-climate-tech-boom-but-the-uks-u-turn-isnt-helping/"
+            }
+        }
+    ]
+}
+```

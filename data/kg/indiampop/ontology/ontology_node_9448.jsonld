@@ -1,0 +1,62 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "FarmImplementsAndMachinery": {
+            "@id": "cropCult:FarmImplementsAndMachinery",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_land_preparation_implements": "cropCult:LandPreparationImplements"
+            }
+        },
+        "LandPreparationImplements": {
+            "@id": "cropCult:LandPreparationImplements",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_two_row_finger_type_paddy_rotary_weeder": "cropCult:TwoRowFingerTypePaddyRotaryWeeder"
+            }
+        },
+        "TwoRowFingerTypePaddyRotaryWeeder": {
+            "@id": "cropCult:TwoRowFingerTypePaddyRotaryWeeder",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "capacity": "schema:QuantitativeValue",
+                "cost_of_operation": "schema:MonetaryAmount",
+                "cost_of_unit": "schema:MonetaryAmount"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:FarmImplementsAndMachinery",
+            "name": "FARM IMPLEMENTS AND MACHINERY",
+            "has_land_preparation_implements": {
+                "@type": "cropCult:LandPreparationImplements",
+                "name": "I. LAND PREPARATION IMPLEMENTS",
+                "has_two_row_finger_type_paddy_rotary_weeder": {
+                    "@type": "cropCult:TwoRowFingerTypePaddyRotaryWeeder",
+                    "name": "TWO ROW FINGER TYPE PADDY ROTARY WEEDER",
+                    "capacity": {
+                        "@type": "schema:QuantitativeValue",
+                        "value": "0.35",
+                        "unitText": "ha/day"
+                    },
+                    "cost_of_operation": {
+                        "@type": "schema:MonetaryAmount",
+                        "value": "250",
+                        "currency": "INR",
+                        "unitText": "per ha"
+                    },
+                    "cost_of_unit": {
+                        "@type": "schema:MonetaryAmount",
+                        "value": "900",
+                        "currency": "INR"
+                    }
+                }
+            }
+        }
+    ]
+}

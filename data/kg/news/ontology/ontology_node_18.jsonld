@@ -1,0 +1,303 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Taylor Swift's 1989: The stories behind her biggest album",
+            "author": "None",
+            "published": "2023-10-13T23:00:08+00:00",
+            "summary": "Taylor Swift's biggest album 1989 returns with new tracks from the vault.",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Welcome To New York",
+                        "eventSummary": "A mission statement of creative and personal freedom.",
+                        "theme": "entertainment",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Blank Space",
+                        "eventSummary": "A satirical take on the media's portrayal of Taylor's love life.",
+                        "theme": "entertainment",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Style",
+                        "eventSummary": "An exploration of relationships and fashion.",
+                        "theme": "entertainment",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Out Of The Woods",
+                        "eventSummary": "A reflection on anxiety in relationships.",
+                        "theme": "entertainment",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "All You Had To Do Was Stay",
+                        "eventSummary": "A disinterested response to an ex.",
+                        "theme": "entertainment",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Shake It Off",
+                        "eventSummary": "A party anthem responding to celebrity culture.",
+                        "theme": "entertainment",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "I Wish You Would",
+                        "eventSummary": "A song about longing for an ex.",
+                        "theme": "entertainment",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Bad Blood",
+                        "eventSummary": "A vendetta disguised as a pop song.",
+                        "theme": "entertainment",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Wildest Dreams",
+                        "eventSummary": "A reflection on youthful optimism and love.",
+                        "theme": "entertainment",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "How You Get The Girl",
+                        "eventSummary": "A tutorial on winning back someone's heart.",
+                        "theme": "entertainment",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "This Love",
+                        "eventSummary": "A song about cutting someone adrift.",
+                        "theme": "entertainment",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "I Know Places",
+                        "eventSummary": "A love song about hiding from the spotlight.",
+                        "theme": "entertainment",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Clean",
+                        "eventSummary": "A palette cleanser after a relationship.",
+                        "theme": "entertainment",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Wonderland",
+                        "eventSummary": "A song about a relationship that went mad.",
+                        "theme": "entertainment",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "You Are In Love",
+                        "eventSummary": "A gentle romance inspired by real love.",
+                        "theme": "entertainment",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "New Romantics",
+                        "eventSummary": "An anthem to resilience and power.",
+                        "theme": "entertainment",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

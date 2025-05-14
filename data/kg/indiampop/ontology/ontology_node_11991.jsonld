@@ -1,0 +1,113 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Powdery Mildew",
+            "disease_symptoms": "Erysiphe polygoni",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Spray NSKE 5% or Neem oil 3% twice at 10 days interval from initial disease appearance. Spray Eucalyptus leaf extract 10% at initiation of the disease and 10 days later. Spray Carbendazim 500 g or wettable sulphur 1500g/ha or Propiconazole 500 ml/ha at initiation of the disease and 10 days later",
+                "quantity": "500 g",
+                "stage": "At initiation of the disease and 10 days later"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Rust",
+            "disease_symptoms": "Uromyces appendiculatus",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Spray Mancozeb 1000g or wettable sulphur 1500g /ha at initiation of the disease and 10 days later",
+                "quantity": "1000 g",
+                "stage": "At initiation of the disease and 10 days later"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Leaf spot",
+            "disease_symptoms": "Cercospora canescens",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Spray Carbendazim 500 g/ha or Mancozeb 1000g /ha at initiation of the disease and 10 days later",
+                "quantity": "500 g",
+                "stage": "At initiation of the disease and 10 days later"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Yellow mosaic (Geminivirus) and Leaf Crinkle",
+            "disease_symptoms": "Integrated Disease Management",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Growing resistant varieties such as VBN 4, VBN 6 and VBN 7",
+                "quantity": "N/A",
+                "stage": "N/A"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Leaf Curl (Tospovirus) Vector",
+            "disease_symptoms": "Frankliniella schultzii Thrips tabaci Scirtothrips dorsalis",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Installation of yellow sticky traps 12 nos/ha Rogue out the infected plants up to 45 days",
+                "quantity": "12 traps",
+                "stage": "Up to 45 days"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Root rot",
+            "disease_symptoms": "Rhizoctonia bataticola (Macrophomina phaseolina)",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Seed treatment with Trichoderma viride 4 g/kg or Pseudomonas fluorescens 10 g/kg Basal application of zinc sulphate 25 kg/ha Basal application of neem cake @ 150 kg/ha Soil application P. fluorescens or T. viride – 2.5 kg / ha + 50 kg of well decomposed FYM or sand at 30 days after sowing. Spot drenching of Carbendazim @ 1 gm/ lit",
+                "quantity": "4 g/kg",
+                "stage": "At 30 days after sowing"
+            }
+        }
+    ]
+}

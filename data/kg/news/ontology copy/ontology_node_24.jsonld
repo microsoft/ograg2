@@ -1,0 +1,222 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:event",
+      "eventTitle": "The Life Aquatic with Steve Zissou",
+      "eventSummary": "Zissou sets out for his next project: to find and kill the shark, and film the whole thing.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Cinematic"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Little Monsters",
+      "eventSummary": "Director Abe Forsythe’s 2019 horror comedy Little Monsters stars Alexander England as Dave, a foul-mouthed and down-on-his-luck rock musician.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Horror Comedy"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Love & Friendship",
+      "eventSummary": "Whit Stillman’s uproarious adaptation of Jane Austen’s Lady Susan stars Kate Beckinsale.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Romantic Comedy"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Magic Mike and Magic Mike XXL",
+      "eventSummary": "Two joyous celebrations of bodies in motion contained within working class stories.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Dance"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Moonstruck",
+      "eventSummary": "A widow is convinced her ill-fated first marriage was doomed by bad luck.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Romantic Comedy"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Multiple Maniacs",
+      "eventSummary": "The early transgressive comedies of John Waters have been anointed by Criterion as art.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Transgressive Comedy"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "The Paper Tigers",
+      "eventSummary": "Tran Quoc Bao’s kung fu action comedy stars Alain Uy, Ron Yuan, and Mykel Shannon Jenkins.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Action Comedy"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Plus One",
+      "eventSummary": "Netflix may be cranking out romantic comedies, but the best still come from a more personal, filmmaker-driven place.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Romantic Comedy"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Singin’ in the Rain",
+      "eventSummary": "What is there to say about one of the most well-loved movies of all time?",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Musical"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Spy",
+      "eventSummary": "A sendup of espionage movies from director Paul Feig.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Espionage Comedy"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Support the Girls",
+      "eventSummary": "This terrific day-in-the-life comedy from writer-director Andrew Bujalski.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Workplace Comedy"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Tampopo",
+      "eventSummary": "This 1985 “ramen western” is a hilarious romp.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Food Comedy"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "To Be or Not to Be",
+      "eventSummary": "Ernst Lubitsch’s 1942 masterpiece is an uproarious and touching anti-war story.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Anti-War Comedy"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "The Unauthorized Bash Brothers Experience",
+      "eventSummary": "The Lonely Island dropped this musical movie.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Musical Comedy"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Wheels on Meals",
+      "eventSummary": "Few creative teams have ever managed the consistent level of excellence.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Martial Arts Comedy"
+      }
+    }
+  ]
+}
+```

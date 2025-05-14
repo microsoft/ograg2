@@ -1,0 +1,142 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Here are over 40 last-minute gifts you can still nab before Christmas",
+      "author": "Sheena Vasani",
+      "theme": "technology",
+      "content": "Yes, Christmas is tomorrow — and yes, we know you have yet to buy a gift. We understand that life gets busy, though, and sometimes it feels like the holidays creep up on you out of nowhere. But before you spiral into a full-blown panic attack, take a deep breath. Luckily for you, the internet is filled with a treasure trove of gift cards, subscriptions, and other great digital gifts you can buy as late as Christmas Day itself. To help make your life a little easier, we’ve curated a list of some of the best digital gifts we’ve either used ourselves or gifted to our friends and family. We’ve organized the list by interests, too, so you can find the perfect present whether your loved one is into the arts, exercise, or something else entirely. That way, you’ll at least be able to gift something more thoughtful than a generic Amazon, Best Buy, or Walmart gift card — even if those are still totally viable options in our book.",
+      "published": "2023-12-24T19:15:58+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Gifts for film and TV buffs",
+          "eventSummary": "Subscriptions for movie buffs and sports fans.",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Gifts for the gamers",
+          "eventSummary": "Subscriptions for PlayStation, Nintendo, and Xbox.",
+          "theme": "gaming"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Gifts for the adventurers and globe-trotters",
+          "eventSummary": "Travel-oriented gifts like airline gift cards and national park passes.",
+          "theme": "travel"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Gifts for health and wellness fans",
+          "eventSummary": "Fitness and wellness subscriptions.",
+          "theme": "health"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Gifts for foodies",
+          "eventSummary": "Food and drink subscriptions and gift cards.",
+          "theme": "food"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Gifts for music lovers",
+          "eventSummary": "Music streaming and instrument learning subscriptions.",
+          "theme": "music"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Gifts for the bookworms",
+          "eventSummary": "Bookstore gift cards and reading subscriptions.",
+          "theme": "literature"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Gifts for the creatives",
+          "eventSummary": "Online courses and creative tools.",
+          "theme": "creativity"
+        }
+      ]
+    }
+  ]
+}

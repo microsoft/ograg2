@@ -1,0 +1,117 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Dilvin Yasa",
+      "published": "2023-11-25T18:00:00+00:00",
+      "title": "At 37, Alexandra found herself broke, heartbroken and living with her parents",
+      "summary": "While it was lovely to be taken care of, we all tend to regress when we’re living with our parents. It’s impossible not to feel infantilised, and there’s a real tipping point where you start to lean into learnt helplessness. I stayed for four months before I moved out to house-sit a friend’s place. Then I launched myself into dating to try to find a man to have a family with. After the roller-coaster of dating, I decided to start fertility treatment on my own, and by the time it began, I’d found a stable job and was renting an apartment. When I got pregnant, I was elated but also terrified about how I would raise a kid on my own, financially and emotionally. Luckily, after I gave birth, my parents invited me to live with them, so I moved back for the first three months of my son’s life. While it was wonderful to have the emotional and practical support, after three months I felt that If I didn’t get out there to live as an independent person, I would quickly lose any sense of what I was capable of. But I’m incredibly grateful for the time I had living with my parents; I know it’s a huge privilege to have them as a safety net. I ended up writing a memoir, Inconceivable, about my journey to become a solo mum – and the complexities of being a woman in your late 30s who has to start over and move back in with your parents. I think while we’re all embracing this contemporary feminist movement where women can create families of their own making, we’re also realising that we need help, that parenthood can’t happen alone.",
+      "associatedAsset": {
+        "url": "https://www.theage.com.au/lifestyle/life-and-relationships/at-37-alexandra-found-herself-broke-heartbroken-and-living-with-her-parents-20231109-p5eirq.html?ref=rss&utm_medium=rss&utm_source=rss_lifestyle"
+      }
+    },
+    {
+      "@type": "snap:textAsset",
+      "byline": "Dilvin Yasa",
+      "published": "2023-11-25T18:00:00+00:00",
+      "title": "We sold our home to go travelling and now we can’t get back into the market",
+      "summary": "Yearning for a tree change, Tess Moone, a 31-year-old travel writer, sold her Perth home only to discover that a suitable rental was almost impossible to find. “Our initial ‘quick stay’ with Dane’s parents has stretched out month after month.” “My husband Dane and I became home owners at the age of 21. We thought we were doing all the right things; we bought a house 10 minutes from Perth’s CBD, where I was working. But after the pandemic we began questioning our lifestyle choices. Did we really want to kill ourselves to pay a million-dollar mortgage in the city when we were leaning towards a tree change in Margaret River? So we sold our home in February and spent six months travelling around Europe and Japan. Our plan, once we returned to Perth, was to stay at Dane’s parents’ house while we looked for a rental in Margaret River. We figured we’d be with my in-laws for three to four weeks, but we didn’t realise how bad the rental crisis in the region is. We’ve been offering more than the asking price and/or offering more rent upfront to secure a place, but as there’s a preference to rent to families or those who’ve rented before, we keep getting knocked back. Our initial “quick stay” with Dane’s parents has stretched out month after month. We’re living in one of their spare rooms and have our boxes stored in another. I love my parents-in-law, so there have certainly been upsides. We’re spending a lot of quality time together and they’re really lovely about trying to give us as much space as possible, often booking weekends away so that Dane and I get the house to ourselves for a couple of days. We’ve also worked out our perfect system for sharing the load; they’ll cook dinner for half the week, for example, and we’ll cook the other half, so the division of labour has been a positive experience. Loading The most challenging aspects? They’re retired, so they’re home a lot. And I work from home, so it’s a little tougher for me than it is for Dane, who works in an office. I get lots of invitations from my mother-in-law to join her and her friends for lunch or coffee when I’m supposed to be working, which is probably not the worst thing to complain about. Despite our love for his parents, the anxiety Dane and I have been feeling has increased as time’s gone by. So much so that we’ve just agreed to move into a friend’s holiday home, sight unseen, even though we’ll have to move back in with Dane’s parents during the times the friend wants to use it, such as at Christmas. It isn’t ideal, but it’s one step back towards independence. If we’d known then what we know now, we’d never have sold our home.” “It’s a shame we don’t value multi-generational living more than we do",
+      "associatedAsset": {
+        "url": "https://www.theage.com.au/lifestyle/life-and-relationships/at-37-alexandra-found-herself-broke-heartbroken-and-living-with-her-parents-20231109-p5eirq.html?ref=rss&utm_medium=rss&utm_source=rss_lifestyle"
+      }
+    },
+    {
+      "@type": "snap:textAsset",
+      "byline": "Dilvin Yasa",
+      "published": "2023-11-25T18:00:00+00:00",
+      "title": "Job insecurity and financial practicality encouraged Rachel Claire, a 32-year-old photographer, to move back in with her parents in 2019",
+      "summary": "The great thing about living with your parents when you’re an adult yourself is that you don’t take any of it for granted. My parents and I have always been close. When I first moved out of home at the age of 22, my parents would always find reasons to pop by, whether it was just a quick visit after work or to fix things or mow my lawn. I could say they struggled with becoming empty-nesters, but I think it’s more accurate to say we’ve just always enjoyed each other’s company. With my career as a photographer, I was in and out of the country a lot, spending money on rent when I wasn’t often at home – crazy when you’re in an industry where there’s very little job security. Eventually, my parents said that maybe it was a good idea to move back home for a while so I could come and go with minimal financial impact while I was establishing myself. I wasn’t so sure initially; I loved my freedom and struggled with the idea of falling back into traditional parent/child roles in my late 20s. But when I started thinking about the benefits – particularly my parents’ home security systems, which are very handy when you’ve got expensive gear – I accepted and moved back in.",
+      "associatedAsset": {
+        "url": "https://www.theage.com.au/lifestyle/life-and-relationships/at-37-alexandra-found-herself-broke-heartbroken-and-living-with-her-parents-20231109-p5eirq.html?ref=rss&utm_medium=rss&utm_source=rss_lifestyle"
+      }
+    }
+  ]
+}
+```

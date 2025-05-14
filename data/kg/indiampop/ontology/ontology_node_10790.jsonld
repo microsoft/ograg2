@@ -1,0 +1,58 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Sugar Crop",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Sugar Crop",
+                "used_for": "Sugar Production"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Entire quantity of phosphatic and half of potassic fertilizers are to be applied in furrows/trenches and mixed well with the soil before planting the setts. Nitrogenous fertilizers are to be applied in two splits, 1/3rd at planting and 2/3rd at first earthing up. The remaining half of the potassic fertilizer may be top dressed along with urea. Application of nitrogenous fertilizer should be completed within 90-100 days of planting.",
+                "with_soil_moisture": "Not Specified"
+            },
+            "has_fertilizer_application_requirements": {
+                "@type": "Fertilization",
+                "nutrient_name": "Phosphatic, Potassic, Nitrogenous",
+                "quantity": "Entire quantity of phosphatic and half of potassic fertilizers, 1/3rd of Nitrogenous at planting and 2/3rd at first earthing up, remaining half of potassic top dressed along with urea",
+                "stage_of_application": "Before planting, at planting, at first earthing up, within 90-100 days of planting"
+            }
+        }
+    ]
+}

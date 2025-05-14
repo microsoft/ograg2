@@ -1,0 +1,41 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "FarmImplementsAndMachinery": {
+            "@id": "cropCult:FarmImplementsAndMachinery",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_subcategory": "cropCult:Subcategory",
+                "has_operation_cost": "schema:Text"
+            }
+        },
+        "Subcategory": {
+            "@id": "cropCult:Subcategory",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_subcategory": "cropCult:Subcategory"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "cropCult:FarmImplementsAndMachinery",
+            "@type": "FarmImplementsAndMachinery",
+            "name": "FARM IMPLEMENTS AND MACHINERY",
+            "has_subcategory": {
+                "@id": "cropCult:Subcategory",
+                "@type": "Subcategory",
+                "name": "HORTICULTURE",
+                "has_subcategory": {
+                    "@id": "cropCult:Subcategory",
+                    "@type": "Subcategory",
+                    "name": "TRACTOR OPERATED FRUIT-SHAKE HARVESTER"
+                }
+            },
+            "has_operation_cost": "Cost of Operation Rs.8/100 kg"
+        }
+    ]
+}

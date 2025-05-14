@@ -1,0 +1,72 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "SAFFLOWER (Carthamus tinctorius)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "OILSEEDS",
+                "used_for": "CROP PROTECTION"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Mixed black calcareous",
+                "for_nutrients": "FN = 9.60 T - 0.49 SN - 0.68 ON, FP2O5 = 4.20 T - 1.87 SP - 0.80 OP, FK2O = 9.24 T - 0.45 SK - 0.64 OK"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "2. APPLICATION OF FERTILIZERS",
+                "with_soil_moisture": "Perianaickenpalayam series"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Rabi",
+                "value": "Target : 20 q ha-1"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Initial soil tests (kg ha-1), NPK (kg ha-1) + FYM @12.5 t ha-1 + Azospirillum @2 kg ha-1"
+            },
+            "needs_disease_treatements": {
+                "@type": "Fertilization",
+                "nutrient_name": "SN SP, SK, FN FP2O5, FK2O",
+                "quantity": "160 10, 200, 62 43, 55; 180 12, 220, 52 40, 46; 200 14, 240, 42 36, 37; 220 16, 260, 32 32, 30*; 240 18, 280, 22 28, 30*",
+                "stage_of_application": "Rabi"
+            }
+        }
+    ]
+}

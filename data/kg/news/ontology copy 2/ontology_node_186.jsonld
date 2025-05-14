@@ -1,0 +1,156 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "snap:asset",
+      "title": "Argentina vs Paraguay live score, result, updates, highlights from CONMEBOL World Cup qualifying",
+      "author": "Kyle Bonn",
+      "theme": "sports",
+      "content": "Argentina completely dominated Paraguay from start to finish, both with and without Lionel Messi, and picked up three points in the process, although it was a bit more nervy than they would have liked at the end. With Argentina pummeling their CONMEBOL World Cup qualifying opponents in Buenos Aires from the opening whistle, Nicolas Otamendi's fourth-minute goal seemed to foreshadow a coming onslaught. Yet that was all Argentina would get, and while it was enough for a 1-0 victory, they could have had many, many more. Lionel Messi came off the bench shortly after halftime, but even he was powerless to change the narrative, hitting the post twice including once directly off a corner. Lautaro Martinez, Rodrigo de Paul, and Nico Gonzalez were all very active in the final third and had multiple chances, but none were able to find the all-important second goal to kill off the match. Yet in the end, Emiliano Martinez had himself another clean sheet as Paraguay failed to produce more than a single quality attacking chance. The shutout gave Dibu an Argentine national team record, passing 609 minutes without conceding a goal, as Argentina have not been breached since Kylian Mbappe's dramatic 118th minute equalizer in the 2022 World Cup final. Additionally, Lionel Scaloni has still never been beaten in World Cup qualifying as Argentina head coach. The Sporting News followed the Argentina vs. Paraguay match live, providing score updates, commentary and highlights as they happened.",
+      "published": "2023-10-12T23:22:00+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "snap:event",
+          "eventTitle": "Argentina vs Paraguay",
+          "eventSummary": "Argentina 1-0 Paraguay",
+          "theme": "sports",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "geo:lat": "-34.545",
+            "geo:long": "-58.449"
+          },
+          "mentions_persons": [
+            {
+              "@id": "snap:person1",
+              "@type": "snap:person",
+              "name": "Nicolas Otamendi"
+            },
+            {
+              "@id": "snap:person2",
+              "@type": "snap:person",
+              "name": "Lionel Messi"
+            },
+            {
+              "@id": "snap:person3",
+              "@type": "snap:person",
+              "name": "Lautaro Martinez"
+            },
+            {
+              "@id": "snap:person4",
+              "@type": "snap:person",
+              "name": "Rodrigo de Paul"
+            },
+            {
+              "@id": "snap:person5",
+              "@type": "snap:person",
+              "name": "Nico Gonzalez"
+            },
+            {
+              "@id": "snap:person6",
+              "@type": "snap:person",
+              "name": "Emiliano Martinez"
+            },
+            {
+              "@id": "snap:person7",
+              "@type": "snap:person",
+              "name": "Lionel Scaloni"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization1",
+              "@type": "snap:organization",
+              "name": "Argentina National Team"
+            },
+            {
+              "@id": "snap:organization2",
+              "@type": "snap:organization",
+              "name": "Paraguay National Team"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

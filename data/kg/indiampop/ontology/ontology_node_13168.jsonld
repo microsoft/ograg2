@@ -1,0 +1,91 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "RTD Management",
+            "disease_symptoms": "Drechslera oryzae (Cochliobolus miyabeanus)",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Metominostrobin",
+                "quantity": "500ml/ha",
+                "stage": "At the time of disease appearance"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Sheath rot Sarocladium oryzae",
+            "disease_symptoms": "Cultural, Botanicals, Chemical, Biological control",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Carbendazim, Metominostrobin, Hexaconazole 75% WG",
+                "quantity": "500g/ha, 500 ml/ha, 100 mg/ lit",
+                "stage": "1st spray at the time of disease appearance and 2nd spray 15 days later"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Sheath blight Rhizoctonia solani (Thanatephorus cucumeris) Rice grain discoloration",
+            "disease_symptoms": "Rice grain discoloration",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Helminthosporium oryzae, Alternaria tenuis, Fusarium moniliforme, Sarocladium oryzae",
+                "quantity": "N/A",
+                "stage": "N/A"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Bacterial blight ( Xanthomonas oryzae pv oryzae ) Bacterial streak ( Xanthomonas oryzae pv oryzicola )",
+            "disease_symptoms": "Bacterial streak ( Xanthomonas oryzae pv oryzicola )",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Copper hydroxide 77 WP",
+                "quantity": "1.25 kg/ha",
+                "stage": "30 DAP & 45 DAP"
+            }
+        }
+    ]
+}

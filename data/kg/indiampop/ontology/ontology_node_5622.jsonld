@@ -1,0 +1,154 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "CropGrowingZones": {
+            "@id": "cropCult:CropGrowingZones",
+            "@type": "schema:ItemList",
+            "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List",
+                    "has_seed_recommendations": "cropCult:SeedList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "DRY SEEDED UPLAND RICE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "DRY SEEDED IRRIGATED UN-PUDDLED LOWLAND RICE",
+                "used_for": "Area"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Dharmapuri district",
+                    "has_regions": ["Dharmapuri district"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["DRY SEEDED UPLAND RICE"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "NA",
+                            "end_date": "NA"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "NA",
+                            "end_date": "NA"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "NA"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "NA",
+                            "quantity": "NA",
+                            "stage_of_application": "NA"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "NA",
+                "for_flowering": "NA",
+                "for_grain_filling": "NA",
+                "negative_effect": "NA"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "NA",
+                "avoid_soil_type": "NA",
+                "for_water": "There is no bund to stagnate the water. Moisture availability is there but crop growth depends on the nutrient status.",
+                "for_nutrients": "Crop growth depends on the nutrient status."
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "NA",
+                "with_soil_moisture": "Moisture availability is there but crop growth depends on the nutrient status."
+            },
+            "seed_germination_test_requirements_are": "NA",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "NA",
+                "quantity": "NA"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "NA",
+                "value": "NA",
+                "depth": "NA",
+                "method": "NA"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "NA",
+                "weed_types": ["NA"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "NA",
+                    "quantity": "NA",
+                    "stage": "NA"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "NA",
+                "stage_of_application": "NA"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "NA",
+                "disease_symptoms": "NA",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "NA",
+                    "quantity": "NA",
+                    "stage": "NA"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "NA",
+                "pest_symptoms": "NA",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "NA",
+                    "quantity": "NA",
+                    "stage": "NA"
+                }
+            },
+            "harvesting_guidelines_are": "NA",
+            "storage_guidelines_are": "NA"
+        }
+    ]
+}

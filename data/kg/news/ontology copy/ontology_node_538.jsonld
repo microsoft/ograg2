@@ -1,0 +1,152 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Katie Malone",
+      "published": "2023-10-16T16:18:17+00:00",
+      "title": "The best VPN services for 2023",
+      "summary": "Engadget has been testing and reviewing consumer tech since 2004. Our stories may include affiliate links; if you buy something through a link, we may earn a commission. Read more about how we evaluate products.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "What is a VPN?",
+        "summary": "VPNs, or virtual private networks, mask your IP address and the identity of your computer or mobile device on the network and creating an encrypted 'tunnel' that prevents your internet service provider (ISP) from accessing data about your browsing history."
+      },
+      "hasAsset": {
+        "asset": {
+          "@type": "snap:asset",
+          "title": "Understand your VPN needs",
+          "summary": "Before considering a VPN, make sure your online security is up to date in other ways. That means complex passwords, multifactor authentication methods and locking down your data sharing preferences."
+        }
+      },
+      "notablyAssociatedWith": {
+        "@type": "snap:stuff",
+        "alias": "VPNs",
+        "hasAsset": {
+          "asset": {
+            "@type": "snap:asset",
+            "title": "Are VPNs worth it?",
+            "summary": "Whether or not VPNs are worth it depends how often you could use it for the above use cases. If you travel a lot and rely on public WiFi or hotspots, are looking to browse outside of your home country or want to keep your traffic hidden from your ISP, then investing in a VPN will be useful."
+          }
+        }
+      }
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "How we tested",
+      "summary": "To test the security specs of different VPNs and name our top picks, we relied on pre-existing academic work through Consumer Reports, VPNalyzer and other sources. We referenced privacy policies, transparency reports and security audits made available to the public."
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Best VPN overall: ProtonVPN",
+      "summary": "ProtonVPN stood out as a strong option because of its overall security and usability. The Proton Technologies suite of services includes mail, calendar, drive and a VPN known for its end-to-end encryption."
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Best free VPN: Windscribe",
+      "summary": "By signing up for Windscribe's free plan with your email, users can access 10GB per month of data, unlimited connections and access to more than 10 countries."
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Best VPN for streaming services, frequent travel and gaming: ExpressVPN",
+      "summary": "ExpressVPN met all those criteria and was one of the fastest VPNs we tried. Now, it even comes with an in-house password manager, ExpressVPN Keys, to manage and autofill logins across sites included with the subscription."
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Best VPN for cross-platform accessibility: CyberGhost",
+      "summary": "CyberGhost offers simultaneous connectivity on up to seven devices for $2.11 to $12.99 per month depending on subscription term."
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Best VPN for multiple devices: Surfshark",
+      "summary": "Surfshark VPN is one of few VPN services that offer use on an unlimited number of devices without bandwidth restrictions, according to the company."
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Other VPN services our experts tested",
+      "summary": "NordVPN didn’t quite make the cut because it’s overhyped, and underwhelming. TunnelBear wasn’t a top choice. Bitdefender VPN doesn’t offer support for devices like routers. Atlas VPN ranked lower on our speed tests."
+    }
+  ]
+}
+```

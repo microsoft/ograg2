@@ -1,0 +1,140 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "snap:asset",
+      "title": "Rubber Case and SD Card Reader",
+      "author": "Vjeran",
+      "theme": "Tech Accessories",
+      "content": "It is everything I have ever wanted in a rubber case and more. To have both my SD card reader and all my cards in one place is priceless (well, actually $39.95). Thank you, Vjeran. <3"
+    },
+    {
+      "@id": "snap:asset2",
+      "@type": "snap:asset",
+      "title": "Mobile Tripod for Holiday Snaps",
+      "author": "Jess Weatherbed",
+      "theme": "Photography",
+      "content": "A decent Bluetooth-enabled tripod can resolve these issues. I’ve had good experiences using Atumtek’s 60-inch Self-Stick Tripod — it features a discreet, detachable Bluetooth shutter remote that you can pair with your smartphone."
+    },
+    {
+      "@id": "snap:asset3",
+      "@type": "snap:asset",
+      "title": "Car-Friendly Charger",
+      "author": "Sean Hollister",
+      "theme": "Mobile Accessories",
+      "content": "A standard Qi charger is about the best you’ll get — and the bulky but practical iOttie Easy One Touch Qi does it with the satisfying snap of springs."
+    },
+    {
+      "@id": "snap:asset4",
+      "@type": "snap:asset",
+      "title": "Colorful Fanny Pack",
+      "author": "Victoria Song",
+      "theme": "Fashion Accessories",
+      "content": "This bag easily fits my wallet, phone, house keys, car keys, hand sanitizer, and chapstick — everything I need when I take walks or run errands."
+    },
+    {
+      "@id": "snap:asset5",
+      "@type": "snap:asset",
+      "title": "ChomChom Pet Hair Remover",
+      "author": "Mitchell Clark",
+      "theme": "Pet Products",
+      "content": "The ChomChom pet hair remover is an extraordinarily simple device — it’s basically a couple of pieces of plastic, fabric, and rubber."
+    },
+    {
+      "@id": "snap:asset6",
+      "@type": "snap:asset",
+      "title": "Fuzzy Cat Bed",
+      "author": "Elizabeth Lopatto",
+      "theme": "Pet Products",
+      "content": "Jeeves loves to be in the office with me while I work. To make her cozier, I got her this fuzzy cat bed."
+    },
+    {
+      "@id": "snap:asset7",
+      "@type": "snap:asset",
+      "title": "Distracting Dog Toy",
+      "author": "Kaitlin Hatton",
+      "theme": "Pet Products",
+      "content": "The Pet Fit For Life Plush Wand has a toy attached to a long chewable rope that is suspended from a metal pole."
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "Christy Doran",
+            "published": "2023-10-10T23:06:29+00:00",
+            "title": "‘Right people in right roles’: QRU breaks silence on RA’s reform hopes, backs review into Wallabies’ RWC flop",
+            "summary": "In the wake of the Wallabies’ World Cup flop, the Queensland Rugby Union have reaffirmed their position that they are committed to moving to a centralised high-performance model but won’t follow the NSW Waratahs by handing over the keys to Rugby Australia. They also expressed their strong support for Rugby Australia to conduct a “fully independent and transparent top-to-bottom review of the Wallabies program and how it can be improved” in light of the historic first World Cup pool exit. They added: “It should also provide a clear view of what is needed in a leadership and governance framework to ensure we put the right people, in the right roles, in the right system.” The QRU has also expressed their desire for Rugby Australia to reinstate the annual $1.7 million in funding to each of the Super Rugby franchises that was withdrawn following the Covid pandemic to help keep the game afloat. In the open letter to their members on Wednesday morning, QRU chief executive David Hanham and chairman Brett Clark moved to update constituents on the reform measures that RA is attempting to usher through the game. Last week, The Roar revealed that the New South Wales Rugby Union was in the latter stages of handing over their license to RA. By doing so, the NSW Waratahs, who were on the brink of insolvency, handed over their commercial and high-performance property. The decision will see all male and female Waratahs players, including coaches and high-performance staff, as well as all commercial and operations staff, run out of RA’s office. NSW Waratahs chief executive Paul Doorn informed stakeholders of the decision last week. RA is cognisant that not every Super Rugby franchise will follow suit immediately, but the governing body is hopeful that now one of the two biggest states has agreed to hand over the keys, others will follow suit swiftly. The Melbourne Rebels are expected to follow. RA chief executive Phil Waugh says building trust back between the governing body and states is essential to their plans. Under fire Wallabies coach Eddie Jones also advocated for Australian rugby to move to a centralised model, believing the nation had fallen behind the rest of the world. “We’re a state-based union that’s run by the states, the national union wants to assume more responsibility and when things were going well, no one questioned that,” Jones said. “But over the last period of time, they haven’t been going so well and this tournament’s probably been the icing on the cake where it’s got to a stage where I think people, most people probably think there’s time for change. But it’s not going to go easy. “[It’s] one of the key issues. We need to maximize the development of the players. At the end of the day, that’s the key to success and alignment of your resources, for a small country. “Because Australia, if you look at the history of rugby, when we were amateur, we were probably ahead of the game because we had the influence of rugby league. We had the influence of AFL and our players were more professional than the rest of the world.” He added: “I know what’s going on and we need to get a better system of developing players. We need to develop better players and we need to develop a larger batch of better players and that only comes through changing the whole system.” While all five Australian Super Rugby sides fundamentally are on board with regards to moving to a centralised high-performance program, The Roar added that some states, including the ACT Brumbies as well as the QRU, don’t want to give up their commercial assets. The QRU confirmed that on Wednesday morning. “The QRU is committed to working with Rugby Australia to lead reform of our game at a high-performance level, and help Rugby Australia develop an improved game through high-performance centralisation,” the statement read. “Centralisation” would include a national player-contracting model, and alignment of key high-performance staff, such as coaching, strength and conditioning, and medical to operate as one national system.” The letter pointed to RA’s involvement in Les Kiss’ appointment as Reds coach, with the former State of Origin winger turned coach, who has spent the best part of two decades coaching in Ireland and England, replacing Brad Thorn. As The Roar has previously reported, the QRU stopped short of wanting to hand over its commercial property. “While the QRU is very supportive of high-performance alignment, it will not agree to any proposal on centralising commercial or corporate functions,” the letter read. “The very strength of our State unions is the expertise they bring in their own markets. “We are open to work on commercial initiatives together but will always retain our independence for the benefit of Queensland Rugby, its members and stakeholders. “Queensland Rugby has built a sustainable business model through the elimination of legacy operating debt, delivered four-straight operating profits and worked in partnership with Governments to successfully deliver $31 million of improvements to Ballymore through the construction of the National Rugby Training Centre, the home of the Wallaroos and Queensland Reds.” The letter also pointed to the 71,000 players across the state, including more than 16,000 of those female participants, 257 schools featuring rugby as part of its program, as well as its Hospital Cup competition and regional club competitions, as evidence that the game was in good health in Queensland. The QRU also expressed its satisfaction that RA was willing to discuss the annual $1.7m being reinstated, which had been withheld because of the Covid pandemic to keep the game afloat. Meanwhile, The Roar understands the ACT Brumbies have sent RA confirmation of solvency for the next 12 months. RA was forced to take out a $40m loan from Ares to keep the game afloat. While RA has around another $15m left to spend from the loan, the governing body is looking to borrow up to another $60m so they’re in the strongest possible position to capitalise on the two major money-making events – the 2025 British and Irish Lions series and home men’s World Cup in 2017 – and succeed. RA is also in the early stages of looking to renew its next broadcast deal, with the governing body hoping to at least double its current deal with Nine Entertainment/Stan Sport, which is seeing them paid $29m per year until the end of 2025.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://www.theroar.com.au/2023/10/11/right-people-in-right-roles-qru-breaks-silence-on-ras-reform-hopes-backs-review-into-wallabies-rwc-flop/"
+            }
+        }
+    ]
+}
+```

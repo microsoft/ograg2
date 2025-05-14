@@ -1,0 +1,265 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Argentina vs Paraguay Match Commentary",
+            "author": "Televisión Pública",
+            "theme": "Sports",
+            "summary": "Live commentary and analysis of the Argentina vs Paraguay match.",
+            "created": "2023-10-12T00:00:00Z",
+            "published": "2023-10-12T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "eventTitle": "Argentina vs Paraguay Match",
+                        "eventSummary": "Kickoff: The match is under way from Buenos Aires! Lionel Messi starts on the bench for Argentina.",
+                        "theme": "Football",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Buenos Aires"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "@id": "snap:person1",
+                                    "name": "Lionel Messi",
+                                    "dateOfBirth": "1987-06-24",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Rosario, Argentina"
+                                    },
+                                    "alias": "La Pulga"
+                                },
+                                {
+                                    "@id": "snap:person2",
+                                    "name": "Lautaro Martinez",
+                                    "dateOfBirth": "1997-08-22",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Bahía Blanca, Argentina"
+                                    },
+                                    "alias": "Lauty"
+                                },
+                                {
+                                    "@id": "snap:person3",
+                                    "name": "Julian Alvarez",
+                                    "dateOfBirth": "2000-01-31",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Calchín, Argentina"
+                                    },
+                                    "alias": "Juli"
+                                },
+                                {
+                                    "@id": "snap:person4",
+                                    "name": "Daniel Garnero",
+                                    "dateOfBirth": "1969-09-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Argentina"
+                                    },
+                                    "alias": "Garnero"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "name": "Televisión Pública",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Argentina"
+                                    },
+                                    "alias": "TV Pública"
+                                },
+                                {
+                                    "@id": "snap:organization2",
+                                    "name": "Tigo Sports Costa Rica",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Costa Rica"
+                                    },
+                                    "alias": "Tigo Sports"
+                                },
+                                {
+                                    "@id": "snap:organization3",
+                                    "name": "ESPN Fútbol Argentina",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Argentina"
+                                    },
+                                    "alias": "ESPN"
+                                },
+                                {
+                                    "@id": "snap:organization4",
+                                    "name": "OptaJavier",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Argentina"
+                                    },
+                                    "alias": "Opta"
+                                },
+                                {
+                                    "@id": "snap:organization5",
+                                    "name": "TR SPORTS",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Argentina"
+                                    },
+                                    "alias": "TR SPORTS"
+                                },
+                                {
+                                    "@id": "snap:organization6",
+                                    "name": "The Sporting News Argentina",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Argentina"
+                                    },
+                                    "alias": "Sporting News"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event2",
+                        "eventTitle": "Pre-match Analysis",
+                        "eventSummary": "Paraguay have a new manager, Daniel Garnero, making his debut.",
+                        "theme": "Football",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Buenos Aires"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "@id": "snap:person4",
+                                    "name": "Daniel Garnero"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event3",
+                        "eventTitle": "Match Lineups",
+                        "eventSummary": "Argentina and Paraguay starting lineups announced.",
+                        "theme": "Football",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Buenos Aires"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "@id": "snap:person1",
+                                    "name": "Lionel Messi"
+                                },
+                                {
+                                    "@id": "snap:person2",
+                                    "name": "Lautaro Martinez"
+                                },
+                                {
+                                    "@id": "snap:person3",
+                                    "name": "Julian Alvarez"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

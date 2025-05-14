@@ -1,0 +1,125 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Meredith Clark",
+      "published": "2023-10-20T15:02:26+00:00",
+      "title": "Britney Spears and Kevin Federline: A complete timeline of their relationship",
+      "summary": "A detailed timeline of Britney Spears and Kevin Federline's relationship, including marriage, divorce, and co-parenting.",
+      "associatedAsset": {
+        "@type": "snap:imageAsset",
+        "image": "https://www.independent.co.uk/life-style/britney-spears-kevin-federline-relationship-timeline-b2143493.html"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "The Independent - Life and Style"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Britney Spears"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Kevin Federline"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Marriage of Britney Spears and Kevin Federline",
+      "eventSummary": "Britney Spears and Kevin Federline married in September 2004 in Studio City, California."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Divorce of Britney Spears and Kevin Federline",
+      "eventSummary": "Britney Spears filed for divorce from Kevin Federline in November 2006, citing irreconcilable differences."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Co-parenting of Sean Preston and Jayden James",
+      "eventSummary": "Britney Spears and Kevin Federline co-parent their two sons, Sean Preston and Jayden James."
+    }
+  ]
+}
+```

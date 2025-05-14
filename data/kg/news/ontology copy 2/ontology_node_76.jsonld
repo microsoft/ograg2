@@ -1,0 +1,239 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "snap:asset",
+      "title": "Taylor Swift-Travis Kelce timeline: Everything to know about rumored romance between pop star, Chiefs TE",
+      "author": "Shanna McCarriston",
+      "theme": "sports",
+      "content": "Singer Taylor Swift has a blank space, and she's writing Travis Kelce's name. There were rumors the two were dating for weeks, and those talks only intensified with swift attending five Chiefs games so far this season, including Sunday's game against the Chargers. The Era's Tour singer was seen chatting with the tight end's mom, Donna Kelce, and cheering emphatically when No. 87 scored a touchdown in the first game she attended last month. Last week, she was in attendance to watch the Chiefs as they defeated the Denver Broncos in Week 6 on 'Thursday Night Football.' She is once again at Arrowhead Stadium, this time to watch the Chiefs take on another AFC West opponent, the Los Angeles Chargers. For those wondering how this apparent relationship came to be, wonder no longer. We have created an extensive timeline of the high-profile couple that is currently the talk of the league, and even added some Swift lyrics to go along with some of the highlights.",
+      "published": "2023-10-12T23:21:52+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "snap:event",
+          "eventTitle": "June 29: Kelce makes friendship bracelets for fellow TEs",
+          "eventSummary": "Kelce made a friendship bracelet to give to the newcomers at a camp for NFL tight ends. He said he was 'taking a page out of Taylor Swift's book.'"
+        },
+        {
+          "@id": "snap:event2",
+          "@type": "snap:event",
+          "eventTitle": "July 26: Kelce makes friendship bracelet for Swift",
+          "eventSummary": "Kelce announced that he went to Swift's highly anticipated concert, but said he did not have the chance to meet the 12-time Grammy winner."
+        },
+        {
+          "@id": "snap:event3",
+          "@type": "snap:event",
+          "eventTitle": "Aug. 5: Kelce names his celebrity crush",
+          "eventSummary": "Well before the two were rumored to be dating, Kelce was asked his crush. But before he could even answer, the answer was given for him."
+        },
+        {
+          "@id": "snap:event4",
+          "@type": "snap:event",
+          "eventTitle": "Sept. 14: Rumors aren't denied",
+          "eventSummary": "Of course people were going to ask Jason, who is very close with his brother, whether rumors of the two hanging out were true. He did not confirm them, but he also did not deny them."
+        },
+        {
+          "@id": "snap:event5",
+          "@type": "snap:event",
+          "eventTitle": "Sept. 17: The references begin",
+          "eventSummary": "The rumors began to pick up, and now there were a lot of people, commentators included, making Swift references around Kelce."
+        },
+        {
+          "@id": "snap:event6",
+          "@type": "snap:event",
+          "eventTitle": "Sept. 21: Kelce sends Swift an invite",
+          "eventSummary": "While on the Pat McAfee show, Kelce discussed the rumors and sounded somehow surprised people are talking about it."
+        },
+        {
+          "@id": "snap:event7",
+          "@type": "snap:event",
+          "eventTitle": "Sept. 22: Another bracelet",
+          "eventSummary": "Kelce was spotted at his nonprofit charity event wearing a bracelet that says 'Vigilante Sh--,' the name of one of Swift's songs."
+        },
+        {
+          "@id": "snap:event8",
+          "@type": "snap:event",
+          "eventTitle": "Sept. 24: Swift attends Chiefs game",
+          "eventSummary": "Swift took Kelce up on his offer and attended the Chiefs' Week 3 game against the Chicago Bears."
+        },
+        {
+          "@id": "snap:event9",
+          "@type": "snap:event",
+          "eventTitle": "Sept. 24: Swift mingles with Donna Kelce",
+          "eventSummary": "Swift was sitting next to Donna in the box and the two were seen talking and laughing as the game went along."
+        },
+        {
+          "@id": "snap:event10",
+          "@type": "snap:event",
+          "eventTitle": "Sept. 24: Postgame interviews turn into Swiftie talk",
+          "eventSummary": "The postgame press conference seemed more about Swift and Kelce than it did about the actual game."
+        },
+        {
+          "@id": "snap:event11",
+          "@type": "snap:event",
+          "eventTitle": "Sept. 24: Kelce and Swift leave stadium together",
+          "eventSummary": "This was the first time the two were photographed together. They walked side by side."
+        },
+        {
+          "@id": "snap:event12",
+          "@type": "snap:event",
+          "eventTitle": "Sept. 24: The two leave in a convertible",
+          "eventSummary": "Swift and Kelce were spotted in a convertible, with the tight end driving, after the Chiefs' win."
+        },
+        {
+          "@id": "snap:event13",
+          "@type": "snap:event",
+          "eventTitle": "Sept. 25: Kelce jersey sales skyrocket",
+          "eventSummary": "Since Swift attended the Chiefs game, there was a 400% increase in Kelce jersey sales."
+        },
+        {
+          "@id": "snap:event14",
+          "@type": "snap:event",
+          "eventTitle": "Sept. 25: Belichick weighs in on the matter",
+          "eventSummary": "New England Patriots head coach commented on the Kelce-Swift situation."
+        },
+        {
+          "@id": "snap:event15",
+          "@type": "snap:event",
+          "eventTitle": "Sept. 26: Chiefs games get even more popular",
+          "eventSummary": "The defending Super Bowl champions are already one of the more popular teams in the league."
+        },
+        {
+          "@id": "snap:event16",
+          "@type": "snap:event",
+          "eventTitle": "Sept. 27: Mahomes confirms he met Swift",
+          "eventSummary": "Mahomes said he had not met Swift when asked in the postgame press conference, but he did meet her at the afterparty."
+        },
+        {
+          "@id": "snap:event17",
+          "@type": "snap:event",
+          "eventTitle": "Sept. 27: Kelce breaks his silence",
+          "eventSummary": "Kelce addressed Swift's attendance on his podcast."
+        },
+        {
+          "@id": "snap:event18",
+          "@type": "snap:event",
+          "eventTitle": "Sept. 27: Jerry Jones comments on the Swift effect",
+          "eventSummary": "Swift is getting the owners talking, too."
+        },
+        {
+          "@id": "snap:event19",
+          "@type": "snap:event",
+          "eventTitle": "Oct. 1: Swift attends Chiefs-Jets",
+          "eventSummary": "Swift went to her second consecutive Chiefs game, showing up with some famous friends."
+        },
+        {
+          "@id": "snap:event20",
+          "@type": "snap:event",
+          "eventTitle": "Oct. 5: NFL defends itself",
+          "eventSummary": "Swift coverage is everywhere and the league even changed their social media bio to one of the singer's lyrics."
+        },
+        {
+          "@id": "snap:event21",
+          "@type": "snap:event",
+          "eventTitle": "Oct. 6: Travis and Jason think the NFL is doing too much",
+          "eventSummary": "The NFL is really digging into the Swift-Kelce coverage, and not everyone is a fan."
+        },
+        {
+          "@id": "snap:event22",
+          "@type": "snap:event",
+          "eventTitle": "Oct. 12: Swift attends Chiefs-Broncos",
+          "eventSummary": "One day after her movie premiere, Swift is in the house for the Chiefs' 'Thursday Night Football' divisional matchup against the Broncos."
+        },
+        {
+          "@id": "snap:event23",
+          "@type": "snap:event",
+          "eventTitle": "Oct. 15: Kelce, Swift make 'SNL' cameos",
+          "eventSummary": "The two were spotted out in NYC together and then had a surprise appearance on 'Saturday Night Live.'"
+        },
+        {
+          "@id": "snap:event24",
+          "@type": "snap:event",
+          "eventTitle": "Oct. 22: Swift attends fifth Chiefs game",
+          "eventSummary": "Swift has now attended games broadcast across all five networks."
+        }
+      ]
+    }
+  ]
+}

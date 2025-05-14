@@ -1,0 +1,141 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "AGROMETEOROLOGY",
+            "has_types": {
+                "@type": "CropType",
+                "name": "CROP PLANNING AND MANAGEMENT",
+                "used_for": "North East Monsoon"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "North East Monsoon",
+                    "has_regions": ["North East"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Example Variety"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Example Start Date",
+                            "end_date": "Example End Date"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Example Start Date",
+                            "end_date": "Example End Date"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "Example Seeding Rate"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Example Nutrient",
+                            "quantity": "Example Quantity",
+                            "stage_of_application": "Example Stage"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Example Temperature",
+                "for_flowering": "Example Temperature",
+                "for_grain_filling": "Example Temperature",
+                "negative_effect": "Example Effect"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Example Soil Type",
+                "avoid_soil_type": "Example Soil Type",
+                "for_water": "Example Water Requirement",
+                "for_nutrients": "Example Nutrient Requirement"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Example Instructions",
+                "with_soil_moisture": "Example Soil Moisture"
+            },
+            "seed_germination_test_requirements_are": "Example Germination Test Requirements",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Example Fungicide",
+                "quantity": "Example Quantity"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Example Sowing Time",
+                "value": "Example Value",
+                "depth": "Example Depth",
+                "method": "Example Method"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Example Weed",
+                "weed_types": ["Example Weed Type"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Example Herbicide",
+                    "quantity": "Example Quantity",
+                    "stage": "Example Stage"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Example Quantity",
+                "stage_of_application": "Example Stage"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Example Disease",
+                "disease_symptoms": "Example Symptoms",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Example Herbicide",
+                    "quantity": "Example Quantity",
+                    "stage": "Example Stage"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Example Pest",
+                "pest_symptoms": "Example Symptoms",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Example Pesticide",
+                    "quantity": "Example Quantity",
+                    "stage": "Example Stage"
+                }
+            },
+            "harvesting_guidelines_are": "Example Harvesting Guidelines",
+            "storage_guidelines_are": "Example Storage Guidelines"
+        }
+    ]
+}

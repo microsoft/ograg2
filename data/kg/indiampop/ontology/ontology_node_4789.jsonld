@@ -1,0 +1,118 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Tapioca",
+            "has_types": {
+                "name": "Tapioca",
+                "used_for": "Food"
+            },
+            "has_growing_zones": {
+                "CropGrowingZone": {
+                    "name": "Tropical and Sub-tropical",
+                    "has_regions": ["Tropical", "Sub-tropical"],
+                    "has_seed_recommendations": {
+                        "variety_name": "Tapioca",
+                        "has_early_sowing_time": {
+                            "start_date": "Start of Rainy Season",
+                            "end_date": "End of Rainy Season"
+                        },
+                        "has_seeding_rate": {
+                            "value": "1kg per hectare"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "nutrient_name": "NPK",
+                            "quantity": "100kg per hectare",
+                            "stage_of_application": "At the time of sowing"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "for_germination": "Warm",
+                "for_flowering": "Warm",
+                "for_grain_filling": "Warm",
+                "negative_effect": "Cold"
+            },
+            "has_soil_requirements": {
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Clayey",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "instructions": "Plough the field to a fine tilth",
+                "with_soil_moisture": "Moist"
+            },
+            "seed_germination_test_requirements_are": "Seeds should be viable and free from diseases",
+            "has_seed_fungicide_requirements": {
+                "name": "Mancozeb",
+                "quantity": "2g per kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "sowing_time": "At the start of the rainy season",
+                "value": "60cm x 60cm",
+                "depth": "5cm",
+                "method": "Direct sowing"
+            },
+            "weed_management_needs_are": {
+                "weed_name": "Grass weeds",
+                "weed_types": ["Annual", "Perennial"],
+                "herbicides": {
+                    "name": "Glyphosate",
+                    "quantity": "1.5kg per hectare",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "quantity": "500mm per year",
+                "stage_of_application": "At the time of sowing"
+            },
+            "needs_disease_treatements": {
+                "disease_name": "Cassava Mosaic Disease",
+                "disease_symptoms": "Mosaic pattern on leaves",
+                "disease_control": {
+                    "name": "Mancozeb",
+                    "quantity": "2g per litre of water",
+                    "stage": "At the first sign of disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "pest_name": "Cassava Mealybug",
+                "pest_symptoms": "White cottony mass on plant parts",
+                "pest_control": {
+                    "name": "Imidacloprid",
+                    "quantity": "1ml per litre of water",
+                    "stage": "At the first sign of pests"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when the tubers are fully matured",
+            "storage_guidelines_are": "Store in a cool and dry place"
+        }
+    ]
+}

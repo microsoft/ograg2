@@ -1,0 +1,214 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Toussaint Egan",
+      "published": "2023-10-16T16:54:09+00:00",
+      "title": "The best comedies you’ll find on streaming right now",
+      "summary": "Polygon’s What to Watch highlights the best, the funniest, the scariest, and the most exciting in movies, TV, and everything in between.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "The Road to El Dorado",
+        "year": "2000",
+        "runTime": "1hr 29m",
+        "directors": ["Eric “Bibo” Bergeron", "Don Paul", "Jeffrey Katzenberg"],
+        "cast": ["Kevin Kline", "Kenneth Branagh", "Rosie Perez"],
+        "summary": "The animated buddy comedy came out during the transition point between the Disney Renaissance and the eventual wave of crass CG movies ushered in by Shrek.",
+        "streaming": "Netflix"
+      }
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Book Club",
+      "year": "2018",
+      "runTime": "1h 44m",
+      "director": "Bill Holderman",
+      "cast": ["Diane Keaton", "Jane Fonda", "Candice Bergen", "Mary Steenburgen"],
+      "summary": "A delightful and raunchy romantic comedy about a group of best friends who have been a part of a long-standing book club.",
+      "streaming": "Paramount Plus, FuboTV"
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Catherine Called Birdy",
+      "year": "2022",
+      "runTime": "1h 48m",
+      "director": "Lena Dunham",
+      "cast": ["Bella Ramsey", "Andrew Scott", "Billie Piper"],
+      "summary": "An outstanding coming-of-age story about the difficulties of teenage girlhood.",
+      "streaming": "Prime Video"
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Charade",
+      "year": "1963",
+      "runTime": "1h 54m",
+      "director": "Stanley Donen",
+      "cast": ["Cary Grant", "Audrey Hepburn", "Walter Matthau"],
+      "summary": "A captivating mystery and genuine thriller with snappy dialogue.",
+      "streaming": "Prime Video"
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Clueless",
+      "year": "1995",
+      "runTime": "1h 37m",
+      "director": "Amy Heckerling",
+      "cast": ["Alicia Silverstone", "Brittany Murphy", "Paul Rudd"],
+      "summary": "A chic, stylish, and popular high school student who thinks she knows what’s best for everyone.",
+      "streaming": "Paramount Plus"
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Coming to America",
+      "year": "1988",
+      "runTime": "1h 56m",
+      "director": "John Landis",
+      "cast": ["Eddie Murphy", "Arsenio Hall", "James Earl Jones"],
+      "summary": "A romantic comedy about a crown prince who journeys to New York City to search for a wife.",
+      "streaming": "Netflix"
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Don’t Go Breaking My Heart",
+      "year": "2011",
+      "runTime": "1h 55m",
+      "director": ["Johnnie To", "Wai Ka-fai"],
+      "cast": ["Louis Koo", "Daniel Wu", "Gao Yuanyuan"],
+      "summary": "A sincere, funny, and truly charming romantic time.",
+      "streaming": "Netflix"
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Eega",
+      "year": "2012",
+      "runTime": "2h 14m",
+      "director": "S.S. Rajamouli",
+      "cast": ["Sudeepa", "Nani", "Samantha"],
+      "summary": "A whirlwind slapstick comedy revenge thriller about a man reincarnated as a fly.",
+      "streaming": "Netflix"
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "The Gold Rush",
+      "year": "1925",
+      "runTime": "1h 28m",
+      "director": "Charlie Chaplin",
+      "cast": ["Charlie Chaplin", "Georgia Hale", "Mack Swain"],
+      "summary": "An adventurous comedy about a prospector living on a shack in the middle of the Klondike.",
+      "streaming": "Max"
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "I Married a Witch",
+      "year": "1942",
+      "runTime": "1h 16m",
+      "director": "René Clair",
+      "cast": ["Fredric March", "Veronica Lake", "Robert Benchley"],
+      "summary": "A romantic comedy about a witch who hopes to exact revenge on the descendant of the man who imprisoned her.",
+      "streaming": "Max"
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "Kiss Kiss Bang Bang",
+      "year": "2005",
+      "runTime": "1h 42m",
+      "director": "Shane Black",
+      "cast": ["Robert Downey Jr.", "Val Kilmer", "Michelle Monaghan"],
+      "summary": "A neo-noir black comedy crime thriller about a petty thief mistaken for an actor.",
+      "streaming": "Amazon"
+    },
+    {
+      "@type": "snap:textAsset",
+      "title": "The Life Aquatic with Steve Zissou",
+      "year": "2004",
+      "runTime": "1h 58m",
+      "director": "Wes Anderson",
+      "cast": ["Bill Murray", "Owen Wilson", "Cate Blanchett"],
+      "summary": "An eccentric ensemble comedy dedicated to Jacques Cousteau.",
+      "streaming": "Hoopla"
+    }
+  ]
+}
+```

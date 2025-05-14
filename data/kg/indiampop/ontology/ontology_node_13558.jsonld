@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "IPM SCHEDULE FOR CITRUS PESTS",
+            "pest_symptoms": "Larva on hatching feed on the pulp inside. Fungal and bacterial infection takes place through puncture hole due to which rottening of fruit occurs. The fruit ultimately drops down.",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Management",
+                "quantity": "Lays the eggs inside",
+                "stage": "Fruit"
+            }
+        }
+    ]
+}

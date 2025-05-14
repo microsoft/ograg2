@@ -1,0 +1,68 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Appendices": {
+            "@id": "cropCult:Appendices",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_sections": "cropCult:SectionList"
+            }
+        },
+        "SectionList": {
+            "@id": "cropCult:SectionList",
+            "@type": "schema:ItemList",
+            "@context": {
+                "Section": {
+                    "@id": "cropCult:Section",
+                    "@type": "schema:Thing",
+                    "@context": {
+                        "name": "schema:name",
+                        "has_subsections": "cropCult:SubsectionList"
+                    }
+                }
+            }
+        },
+        "SubsectionList": {
+            "@id": "cropCult:SubsectionList",
+            "@type": "schema:ItemList",
+            "@context": {
+                "Subsection": {
+                    "@id": "cropCult:Subsection",
+                    "@type": "schema:Thing",
+                    "@context": {
+                        "name": "schema:name",
+                        "has_content": "schema:Text"
+                    }
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "cropCult:Appendices",
+            "@type": "Appendices",
+            "name": "I. Micronutrients",
+            "has_sections": {
+                "@list": [
+                    {
+                        "@id": "cropCult:Section",
+                        "@type": "Section",
+                        "name": "IV.",
+                        "has_subsections": {
+                            "@list": [
+                                {
+                                    "@id": "cropCult:Subsection",
+                                    "@type": "Subsection",
+                                    "name": "Technical and trades names of insecticides & acaricides",
+                                    "has_content": ""
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

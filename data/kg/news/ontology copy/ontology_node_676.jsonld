@@ -1,0 +1,161 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:event1",
+            "@type": "snap:event",
+            "eventTitle": "Broncos vs Chiefs Game",
+            "eventSummary": "The Broncos called timeout before punting with 22 seconds left in the first half of a 19-8 defeat at Kansas City.",
+            "theme": "snap:intangibleStuff1"
+        },
+        {
+            "@id": "snap:intangibleStuff1",
+            "@type": "snap:intangibleStuff",
+            "comment": "Game Management"
+        },
+        {
+            "@id": "snap:person1",
+            "@type": "snap:person",
+            "name": "Sean Payton",
+            "notablyAssociatedWith": "snap:organization1"
+        },
+        {
+            "@id": "snap:organization1",
+            "@type": "snap:organization",
+            "name": "Denver Broncos"
+        },
+        {
+            "@id": "snap:person2",
+            "@type": "snap:person",
+            "name": "Russell Wilson",
+            "notablyAssociatedWith": "snap:organization1"
+        },
+        {
+            "@id": "snap:event2",
+            "@type": "snap:event",
+            "eventTitle": "Giants and Vikings Struggles",
+            "eventSummary": "The New York Giants and Minnesota Vikings exceeded expectations under first-year head coaches in 2022 but are struggling in their second seasons.",
+            "theme": "snap:intangibleStuff2"
+        },
+        {
+            "@id": "snap:intangibleStuff2",
+            "@type": "snap:intangibleStuff",
+            "comment": "Team Performance"
+        },
+        {
+            "@id": "snap:organization2",
+            "@type": "snap:organization",
+            "name": "New York Giants"
+        },
+        {
+            "@id": "snap:organization3",
+            "@type": "snap:organization",
+            "name": "Minnesota Vikings"
+        },
+        {
+            "@id": "snap:event3",
+            "@type": "snap:event",
+            "eventTitle": "Dolphins Game Strategy",
+            "eventSummary": "The Dolphins were one of 223 teams since 2000 to be favored by at least 13.5 points in a regular-season or playoff game.",
+            "theme": "snap:intangibleStuff3"
+        },
+        {
+            "@id": "snap:intangibleStuff3",
+            "@type": "snap:intangibleStuff",
+            "comment": "Game Strategy"
+        },
+        {
+            "@id": "snap:organization4",
+            "@type": "snap:organization",
+            "name": "Miami Dolphins"
+        },
+        {
+            "@id": "snap:person3",
+            "@type": "snap:person",
+            "name": "Tyreek Hill",
+            "notablyAssociatedWith": "snap:organization4"
+        }
+    ]
+}
+```

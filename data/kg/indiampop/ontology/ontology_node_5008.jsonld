@@ -1,0 +1,47 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Banana",
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Bunchy top of banana",
+                "disease_symptoms": "The primary symptoms of bunchy top of banana are seen if infected suckers are planted. They put forth short, narrow leaves which are chlorotic and exhibit mosaic symptoms. The leaves arise in clusters, giving a rosette appearance. They are brittle with numerous dark green dots or patches with the margins rolled upward. The plants do not usually grow taller than two to three feet and they fail to put forth any fruit. The secondary infection is the premature unfurling of leaves and the development of dark green spots and streaks on the blade. These symptoms are common along the secondary veins and on the midrib and petiole. The leaves become pale and much reduced in size and when a few more leaves develop the characteristic rosette or bunchy top symptom is evident. Symptom less infection or latency is reported to last for two seasons. If late infection occurs, the plant may sometime produce a bunch but the fingers never develop to maturity. Fruits of infected plants are malformed."
+            }
+        }
+    ]
+}

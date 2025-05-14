@@ -1,0 +1,98 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "Luke McLaughlin at OL Stadium",
+            "published": "2023-10-06T21:06:37+00:00",
+            "title": "Damien Penaud leads historic rout of Italy as France confirm progress in style",
+            "summary": "Et voilà. France are through to the quarter-finals after the tournament’s latest mismatch against a demoralised Italy. The unthinkable outcome – a pool-stage exit for Fabien Galthié’s side – had remained a possibility, but was never on the cards from the moment Damian Penaud scored the first of eight French tries in the second minute. France have beaten Italy 14 times consecutively, a run stretching back to 2014. If the predatory Penaud’s progress is a marker of France’s hopes, their fellow title contenders should be worried. The wing has scored in seven straight matches and 14 times this year. Two tries here took him to second overall in their men’s try-scorers’ chart, with 35, three behind Serge Blanco. As a whole, the French machine is tuning up satisfactorily with top spot in Pool A secured. A potential last-eight collision with Ireland or South Africa, or indeed Scotland, will be a monumental affair. “It’s easy to congratulate Damian for his attacking performance,” Galthié said. “But it’s also easy when you have a team like that working for you. Players that become great are served by their teams; there’s always a balance.” The former France scrum-half added: “We’re happy to qualify … We’ll recuperate together, celebrate qualification, then turn to the quarter-final. For us, after a World Cup final against New Zealand [on opening night], our game next Sunday will be a second final.” For Kieran Crowley, Galthié’s opposite number, his Italy tenure ends in profound disappointment, although crushing defeats by the All Blacks and now the hosts are offset by victories against Namibia and Uruguay. “I’ve said before, I’d like to take this team forward,” he said. “I think the next World Cup is our cycle … we’ll get to the next tournament, and a lot of these players will have 60, 70 caps. But that wasn’t my decision. “What needs to happen is that these players need to be treated with a bit of respect off the field … They [the Italian Rugby Federation] need to get some of that stuff sorted. Quite honestly, I don’t know if I’d want to be involved unless that gets sorted. I respect these guys, these players and staff. They’ve gone way beyond … and yet people will judge us on these last two games. It’s disappointing.” Damaging setbacks have arrived with regularity for France, most notably Antoine Dupont’s fractured cheekbone. But the prop Cyril Baille had returned from injury in the thrashing of Namibia, along with the estimable Jonathan Danty in midfield, and both started against Italy. Any hint of home nerves was calmed by the try for Penaud that stemmed from the first attack. Uini Atonio and Thibaud Flament were both involved, busting through tackles and creating a huge overlap for Penaud. Thomas Ramos belted over a penalty and the pressure on Italy continued unabated, Penaud fluffing a grubber kick with another big overlap created. The hosts quickly came again, and Penaud got his kick right this time, picking out Louis Bielle-Biarrey with a chip that the wing converted impeccably. Ramos flopped over after another fluent exchange with Gaël Fickou. Louis Bielle-Biarrey scores France’s try to again underline his potential. Photograph: Anne-Christine Poujoulat/AFP/Getty Images At 24-0 Italy temporarily steadied a listing ship. After Ange Capuozzo was removed for a head injury assessment, Simone Ferrari powered over, but the television match official spotted a high hit by Ferrari on Maxime Lucu and the try was chalked off. Almost immediately, Penaud went over at the other end to secure a bonus point after fielding Matthieu Jalibert’s cross-kick. It was 31-0 at half-time. skip past newsletter promotion Sign up to The Breakdown Free weekly newsletter The latest rugby union news and analysis, plus all the week's action reviewed Privacy Notice: Newsletters may contain info about charities, online ads, and content funded by outside parties. For more information see our Newsletters may contain info about charities, online ads, and content funded by outside parties. For more information see our Privacy Policy . We use Google reCaptcha to protect our website and the Google Privacy Policy and Terms of Service apply. after newsletter promotion Things got worse for Italy when Jalibert darted through a gap seven minutes after the break and when Peato Mauvaka, the France hooker, crashed across the line, Italian heads were beginning to drop alarmingly. Capuozzo failed his HIA – another unwelcome blow – while Galthié’s thoughts were turning to managing his resources for the quarter-final: Melvyn Jaminet replaced Ramos and Yoram Moefana, freshly introduced in midfield for Fickou, jogged in for the seventh on 63 minutes. Italy mustered a consolation score via Manuel Zuliani, his try converted by the fly-half Tommaso Allan, before Moefana completed a bright cameo with his second. “Our goal is to win the game,” Galthié said of France’s eight-try display. “There are several boxes to tick. The important thing is that at the end of the game, we end up ahead. We are not here to show off, or to look good. We’re here to win.” He added that he expects the injured Dupont and Julien Marchand to play during the knockout stages. When flanker Charles Ollivon – sitting alongside his head coach – was asked about next Sunday’s opponents, Galthié interjected. “We can’t know our opponent. Have you played tomorrow’s game already? There is a Scotland v Ireland game that may modify the quarter-finals. If you are talking about our quarter-final opponents, it’s quite simple. It’s a World Cup final for us.”",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://www.theguardian.com/sport/2023/oct/06/rugby-world-cup-damien-penaud-leads-rout-of-italy-as-france-confirm-progress-in-style"
+            }
+        }
+    ]
+}
+```

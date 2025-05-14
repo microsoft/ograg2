@@ -1,14 +1,127 @@
-# Project
+# Ontology Generated Retrieval Augmented Generation (OG-RAG)
+![OG-RAG: Ontology-Grounded Retrieval-Augmented Generation](https://arxiv.org/html/2412.15235v1/x2.png)
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+**OG-RAG** enhances Large Language Models (LLMs) with domain-specific ontologies for improved factual accuracy and contextually relevant responses in specialized fields like agriculture, healthcare, and more.
 
-As the maintainer of this project, please make a few updates:
+---
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+## 🔍 Overview
+
+OG-RAG addresses traditional Retrieval-Augmented Generation (RAG) limitations by using hypergraphs to incorporate ontology-grounded knowledge. It retrieves minimal, highly relevant contexts, significantly boosting response accuracy and factual grounding.
+
+---
+
+## 📈 Key Features
+
+* **Ontology-Grounded Retrieval**
+* **Hypergraph Context Representation**
+* **Optimized Context Retrieval Algorithm**
+* **Enhanced Factual Accuracy**
+
+---
+
+## 🛠️ Installation
+
+```bash
+git clone https://github.com/yourusername/og-rag.git
+cd og-rag
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+---
+
+## ⚙️ Configuration
+
+Create a YAML config file with your environment and preferences:
+
+```yaml
+model:
+  api_base: <API_BASE>
+  api_key: <API_KEY>
+  deployment_name: <LLM model name, eg. "gpt-4-turbo">
+  api_type: <Eg. "openai">
+  api_version: <Eg '2024-08-06'>
+
+embedding_model:
+  api_base: <API_BASE>
+  api_key: <API_KEY>
+  deployment_name: <LLM embedding model name, eg. "text-embedding-ada-002">
+  api_type: <Eg. azure>
+  api_version: <Eg '2024-08-06'>
+
+data:
+  documents_dir: data/md/soybean
+  ontology_path: data/ontology/farm_cropcultivation_schema_ontology_jsonld.json
+  kg_storage_path: data/kg/soybean
+  index_dir: index_openai/vector_soybean
+  subdir: False
+  smart_pdf: True
+  chunk_size: 8192
+
+query:
+  framework: ontohypergraph-rag
+  batch_size: 10
+  mode: json
+  questions_file:
+
+question_generator:
+  framework: ontodocragas
+  test_size: 100
+  distr:
+    simple: 0
+    reasoning: 1
+    multi_context: 0
+
+evaluator:
+  eval_file:
+  reference_free: True
+  type: single
+  metrics:
+    - answer_correctness
+    - faithfulness
+    - answer_similarity
+    - answer_relevancy
+    - context_relevancy
+    - context_precision
+    - context_recall
+    - context_entity_recall
+```
+
+## 🚀 Usage
+
+### Mapping Ontology and Generating Knowledge Graph
+
+Map ontology only and Generate full knowledge graph (triples):
+
+```bash
+python build_knowledge_graph.py --config_file <path-to-config-file>
+```
+
+### Querying LLM
+
+Execute queries:
+
+```bash
+python query_llm.py --config_file <path-to-config-file>
+```
+
+### Testing
+
+Run tests and evaluate model performance:
+
+```bash
+python test_answers.py --config_file <path-to-config-file>
+```
+
+---
+
+## 📚 Reference
+
+* [**Paper:** OG-RAG: Ontology-Grounded Retrieval-Augmented Generation For Large Language Models](https://arxiv.org/html/2412.15235v1)
+
+
 
 ## Contributing
 
@@ -31,86 +144,3 @@ trademarks or logos is subject to and must follow
 [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general).
 Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft sponsorship.
 Any use of third-party trademarks or logos are subject to those third-party's policies.
-
-
-# Config
-
-```yaml
-model:
-  api_base: \<API_BASE\>
-  api_key: \<API_KEY\>
-  deployment_name: gpt-4-turbo
-  api_type: openai
-  # api_version: 2023-08-01-preview
-  api_version: '2024-08-06'
-  # MODEL_NAME: gpt-4-32k
-
-embedding_model:
-  api_base: \<API_BASE\>
-  api_key: \<API_KEY\>
-  deployment_name: text-embedding-ada-002 # sentence-transformers/all-mpnet-base-v2
-  api_type: azure #huggingface
-  api_version: '2024-08-06'
-
-data:
-  documents_dir: data/md/soybean # Path to the documents files
-  ontology_path: data/ontology/farm_cropcultivation_schema_ontology_jsonld.json # ontology path
-  kg_storage_path: data/kg/soybean # path where the triples are stored
-  index_dir: index_openai/vector_soybean # path where the vector index is stored
-  subdir: False
-  smart_pdf: True
-  chunk_size: 8192
-  
-query:
-  framework: ontohypergraph-rag
-  # framework: llm # = LLM as above
-  # framework: rag # = traditional RAG 
-  # framework: graphrag # = GRAPH RAG
-  # framework: raptor-rag # = RAPTOR RAG
-  # ontohypergraph-rag # OG RAG
-  # kg-rag # Previous KG RAG
-  hyperparams:
-    # add hyperparams here
-  batch_size: 10
-  mode: json
-  questions_file: # questions file
-
-question_generator:
-  framework: ontodocragas
-  test_size: 100
-  distr: 
-    simple: 0
-    reasoning: 1
-    multi_context: 0
-
-evaluator:
-  eval_file: # file with questions, answers, and optionally contexts to evaluate 
-  reference_free: True
-  type: single
-  metrics:
-    # metrics to evaluate, following are RAGAS metrics
-    - answer_correctness
-    - faithfulness
-    - answer_similarity
-    - answer_relevancy
-    - context_relevancy
-    - context_precision
-    - context_recall
-    - context_entity_recall
-```
-
-You can also change any of these options using command line arguments by simply writing `--model.development_name` and so on.
-
-# Mapping Ontology
-
-> python build_knowledge_graph.py --config_file \<path-to-config-file\> --only_map_ontology
-
-If you also want to generate triples, don't add `--only_map_ontology` option. 
-
-# Querying LLM
-
-> python query_llm.py --config_file \<path-to-config-file\>
-
-# Testing
-
-> python test_answers.py --config_file \<path-to-config_file\>

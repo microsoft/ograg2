@@ -1,0 +1,197 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Republicans still don’t know how to talk to young voters online",
+            "author": "Morgan Sung",
+            "published": "2023-10-02T21:42:14+00:00",
+            "summary": "Republicans still don’t know how to talk to young voters online Vivek Ramaswamy struggles to gain an edge in the face of TikTok trolls.",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Vivek Ramaswamy's TikTok Strategy",
+                        "eventSummary": "Ramaswamy attempts to connect with Gen Z through TikTok.",
+                        "theme": "politics",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Vivek Ramaswamy",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Vivek"
+                                },
+                                {
+                                    "name": "Jake Paul",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Jake"
+                                },
+                                {
+                                    "name": "Annie Wu Henry",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Annie"
+                                },
+                                {
+                                    "name": "Alexandria Ocasio-Cortez",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "AOC"
+                                },
+                                {
+                                    "name": "John Fetterman",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "John"
+                                },
+                                {
+                                    "name": "Tricia McLaughlin",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Tricia"
+                                },
+                                {
+                                    "name": "Mehmet Oz",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Dr. Oz"
+                                },
+                                {
+                                    "name": "Doug Mastriano",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Doug"
+                                },
+                                {
+                                    "name": "Josh Shapiro",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Josh"
+                                },
+                                {
+                                    "name": "Jeff Jackson",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Jeff"
+                                },
+                                {
+                                    "name": "Ken Russell",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Ken"
+                                },
+                                {
+                                    "name": "Matt Gaetz",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Matt"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "TechCrunch",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "TechCrunch"
+                                },
+                                {
+                                    "name": "Alliance for Securing Democracy",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Alliance"
+                                },
+                                {
+                                    "name": "Influenceable",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Influenceable"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,213 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Why the Apple Watch is being banned — and how Apple can avoid it",
+            "author": "Victoria Song",
+            "theme": "technology",
+            "summary": "Earlier this year, the US International Trade Commission (ITC) ruled that Apple had infringed on two patents from medical device maker Masimo. As a result, the ITC said it would impose an import ban on the Apple Watch Series 9 and Ultra 2 starting December 26th. At the time it was hard to believe that this would actually come to pass: Apple gets sued all the time, and even when it loses, how often does it actually face dramatic consequences? Well, now would be one of those times. Experts say that, barring a Christmas miracle, it’s unlikely that Apple will find a way to escape the ban. Case in point, the company shocked everyone yesterday when it decided to preemptively pull the watches from its online store starting December 21st at 3PM ET. And after the 24th, they’ll disappear from Apple Stores, too.",
+            "created": "2023-12-19T18:16:57+00:00",
+            "published": "2023-12-19T18:16:57+00:00",
+            "modified": "2023-12-19T18:16:57+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "ITC Ruling on Apple Watch",
+                        "eventSummary": "The ITC ruled that Apple Watches did in fact infringe on Masimo patents.",
+                        "theme": "technology",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "United States"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Ben Levi",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "United States"
+                                    },
+                                    "alias": "Legal Expert"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Andrei Iancu",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "United States"
+                                    },
+                                    "alias": "Patent Expert"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Smith Brittingham",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "United States"
+                                    },
+                                    "alias": "Legal Analyst"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Nikki Rothberg",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "United States"
+                                    },
+                                    "alias": "Apple Spokesperson"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Joe Kiani",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "United States"
+                                    },
+                                    "alias": "Masimo CEO"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Apple Inc.",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Cupertino, California"
+                                    },
+                                    "alias": "Apple"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Masimo Corporation",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Irvine, California"
+                                    },
+                                    "alias": "Masimo"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "US International Trade Commission",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Washington, D.C."
+                                    },
+                                    "alias": "ITC"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Sullivan & Cromwell LLP",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "New York, New York"
+                                    },
+                                    "alias": "Sullivan & Cromwell"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Finnegan, Henderson, Farabow, Garrett & Dunner, LLP",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Washington, D.C."
+                                    },
+                                    "alias": "Finnegan"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

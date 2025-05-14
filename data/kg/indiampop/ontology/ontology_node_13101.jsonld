@@ -1,0 +1,91 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Leaffolder",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": [
+                    "Phosalone 35 EC",
+                    "Chlorpyriphos 20 EC",
+                    "Carbaryl 50 WP",
+                    "Acephate 75 % SP",
+                    "Azadirachtin 0.03%",
+                    "Carbosulfan 6% G",
+                    "CartapHydrochloride 50 % SP",
+                    "Chlorantraniliprole 18.5% SC",
+                    "Chlorantraniliprole 0.4% G",
+                    "Dichlorvos 76%SC",
+                    "Fipronil 80%WG",
+                    "Flubendiamide 20% WG",
+                    "Flubendiamide 39.35% M/M SC",
+                    "Phosphamidon 40% SL",
+                    "Thiamethoxam 25% WG"
+                ],
+                "quantity": [
+                    "1500 ml/ha",
+                    "1250 ml/ha",
+                    "1.0 kg/ha",
+                    "666-1000 ml/ha",
+                    "1000 ml/ha",
+                    "16.7 kg/ha",
+                    "1000 g/ha",
+                    "150 g/ha",
+                    "10 kg/ha",
+                    "627 ml/ha",
+                    "50-62.5 g/ha",
+                    "125-250 g/ha",
+                    "50 g/ha",
+                    "1250 ml/ha",
+                    "100 kg/ha"
+                ],
+                "stage": [
+                    "Release Platygaster oryzae parasitised galls at 1 per 10 m2 on 10 days after transplanting (DAT)"
+                ]
+            }
+        }
+    ]
+}

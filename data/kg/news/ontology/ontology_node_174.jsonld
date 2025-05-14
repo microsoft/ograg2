@@ -1,0 +1,150 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "World Series 2023 live score: Rangers vs. Diamondbacks updates, highlights, results from Game 4",
+            "author": "Dan Treacy",
+            "published": "2023-10-31T22:00:04+00:00",
+            "summary": "The Rangers found themselves one strike away from a championship twice in 2011. They couldn't finish the job. On Wednesday night, they'll have a chance to avenge that painful finish. Texas found out before Tuesday's Game 4 that slugger Adolis Garcia's season was over, but a talented lineup didn't miss a beat. The Rangers erupted for five runs in the second inning and five more in the third, bludgeoning Arizona's bullpen to take a 10-0 lead in the blink of an eye. Corey Seager came through with his third home run of the series, while Marcus Semien drove in five of the Rangers' first 10 runs — including a three-run blast that put Texas up by double digits. The Diamondbacks have earned a reputation for not backing down, and to their credit, they didn't. Arizona scored six runs over the final two innings, putting together competitive at-bats despite the dramatic deficit and forcing the Rangers to go to closer Jose Leclerc for the final out. Still, it wasn't nearly enough. The Diamondbacks' best hope is that their late-game surge carries over to Game 5, where they will face elimination for the third time in this postseason. The Rangers just need one more win to become World Series champions, and they will have the right man on the mound in Game 5 as Nathan Eovaldi makes his sixth start of the postseason. Zac Gallen, who was less than sharp in October but earned Cy Young consideration during the regular season, will start for the Diamondbacks with everything on the line for Arizona.",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "World Series Game 4",
+                        "eventSummary": "Final score: Rangers 11, Diamondbacks 7",
+                        "theme": "sports",
+                        "hasLocation": {
+                            "@type": "geo:SpatialThing",
+                            "name": "Chase Field"
+                        },
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Dan Treacy"
+                                },
+                                {
+                                    "name": "Adolis Garcia"
+                                },
+                                {
+                                    "name": "Corey Seager"
+                                },
+                                {
+                                    "name": "Marcus Semien"
+                                },
+                                {
+                                    "name": "Jose Leclerc"
+                                },
+                                {
+                                    "name": "Nathan Eovaldi"
+                                },
+                                {
+                                    "name": "Zac Gallen"
+                                },
+                                {
+                                    "name": "Bruce Bochy"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Sporting News"
+                                },
+                                {
+                                    "name": "FOX Sports: MLB"
+                                },
+                                {
+                                    "name": "Texas Rangers"
+                                },
+                                {
+                                    "name": "Arizona Diamondbacks"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

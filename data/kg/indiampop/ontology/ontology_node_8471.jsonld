@@ -1,0 +1,141 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "TROPICAL SUGARBEET",
+            "has_types": {
+                "@type": "CropType",
+                "name": "SWEET SORGHUM (Sorghum bicolor)",
+                "used_for": "OILSEEDS"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "TROPICAL",
+                    "has_regions": ["TEMPLATE FOR TECHNOLOGY"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Introduction"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Need based",
+                            "end_date": "Need based"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Need based",
+                            "end_date": "Need based"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "Need based"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Need based",
+                            "quantity": "Need based",
+                            "stage_of_application": "Need based"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Need based",
+                "for_flowering": "Need based",
+                "for_grain_filling": "Need based",
+                "negative_effect": "Need based"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Need based",
+                "avoid_soil_type": "Need based",
+                "for_water": "Need based",
+                "for_nutrients": "Need based"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Need based",
+                "with_soil_moisture": "Need based"
+            },
+            "seed_germination_test_requirements_are": "Need based",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Need based",
+                "quantity": "Need based"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Need based",
+                "value": "Need based",
+                "depth": "Need based",
+                "method": "Need based"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Need based",
+                "weed_types": ["Need based"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Need based",
+                    "quantity": "Need based",
+                    "stage": "Need based"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Need based",
+                "stage_of_application": "Need based"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Need based",
+                "disease_symptoms": "Need based",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Need based",
+                    "quantity": "Need based",
+                    "stage": "Need based"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Need based",
+                "pest_symptoms": "Need based",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Need based",
+                    "quantity": "Need based",
+                    "stage": "Need based"
+                }
+            },
+            "harvesting_guidelines_are": "Need based",
+            "storage_guidelines_are": "Need based"
+        }
+    ]
+}

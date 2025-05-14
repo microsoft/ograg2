@@ -1,0 +1,43 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Water Management",
+            "weed_types": [
+                "Maturity phase"
+            ],
+            "herbicides": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Control irrigation",
+                "quantity": "2",
+                "stage": "72nd, 85th day Light soils"
+            }
+        },
+        {
+            "@type": "cropCult:IrrigationRequirement",
+            "quantity": "2",
+            "stage_of_application": "Maturity phase (72nd, 85th day Light soils)"
+        }
+    ]
+}

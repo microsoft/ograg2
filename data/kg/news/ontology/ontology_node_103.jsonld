@@ -1,0 +1,574 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "NewsAsset",
+            "title": "Top 25 Movies of 2023",
+            "author": "Various Critics",
+            "theme": "Film Review",
+            "summary": "A comprehensive review of the top 25 movies of 2023, highlighting their unique qualities and themes.",
+            "created": "2023-12-01T00:00:00Z",
+            "published": "2023-12-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "EventList",
+                    "eventTitle": "M3GAN",
+                    "eventSummary": "A tech whiz builds a robot to handle parenting, leading to unexpected consequences.",
+                    "theme": "Horror, AI",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person1",
+                            "name": "Gerard Johnstone"
+                        },
+                        {
+                            "@id": "snap:person2",
+                            "name": "Allison Williams"
+                        },
+                        {
+                            "@id": "snap:person3",
+                            "name": "Violet McGraw"
+                        },
+                        {
+                            "@id": "snap:person4",
+                            "name": "Amie Donald"
+                        }
+                    ],
+                    "mentions_organizations": []
+                },
+                {
+                    "@id": "snap:event2",
+                    "@type": "EventList",
+                    "eventTitle": "When Evil Lurks",
+                    "eventSummary": "A possession movie that explores deeper themes of societal failure.",
+                    "theme": "Horror, Drama",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person5",
+                            "name": "Demián Rugna"
+                        },
+                        {
+                            "@id": "snap:person6",
+                            "name": "Ezequiel Rodríguez"
+                        },
+                        {
+                            "@id": "snap:person7",
+                            "name": "Demián Salomón"
+                        },
+                        {
+                            "@id": "snap:person8",
+                            "name": "Luis Ziembrowski"
+                        }
+                    ],
+                    "mentions_organizations": []
+                },
+                {
+                    "@id": "snap:event3",
+                    "@type": "EventList",
+                    "eventTitle": "Polite Society",
+                    "eventSummary": "A wedding heist comedy that blends genres and tones.",
+                    "theme": "Comedy, Action",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person9",
+                            "name": "Nida Manzoor"
+                        },
+                        {
+                            "@id": "snap:person10",
+                            "name": "Priya Kansara"
+                        },
+                        {
+                            "@id": "snap:person11",
+                            "name": "Ritu Arya"
+                        },
+                        {
+                            "@id": "snap:person12",
+                            "name": "Nimra Bucha"
+                        }
+                    ],
+                    "mentions_organizations": []
+                },
+                {
+                    "@id": "snap:event4",
+                    "@type": "EventList",
+                    "eventTitle": "Talk to Me",
+                    "eventSummary": "A horror film that uses possession as a party drug.",
+                    "theme": "Horror, Thriller",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person13",
+                            "name": "Danny Philippou"
+                        },
+                        {
+                            "@id": "snap:person14",
+                            "name": "Michael Philippou"
+                        },
+                        {
+                            "@id": "snap:person15",
+                            "name": "Sophie Wilde"
+                        },
+                        {
+                            "@id": "snap:person16",
+                            "name": "Joe Bird"
+                        },
+                        {
+                            "@id": "snap:person17",
+                            "name": "Miranda Otto"
+                        },
+                        {
+                            "@id": "snap:person18",
+                            "name": "Alexandra Jensen"
+                        }
+                    ],
+                    "mentions_organizations": []
+                },
+                {
+                    "@id": "snap:event5",
+                    "@type": "EventList",
+                    "eventTitle": "Skinamarink",
+                    "eventSummary": "A peculiar horror film about siblings trapped in a nightmare.",
+                    "theme": "Horror, Psychological",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person19",
+                            "name": "Kyle Edward Ball"
+                        },
+                        {
+                            "@id": "snap:person20",
+                            "name": "Lucas Paul"
+                        },
+                        {
+                            "@id": "snap:person21",
+                            "name": "Ross Paul"
+                        },
+                        {
+                            "@id": "snap:person22",
+                            "name": "Dali Rose Tetreault"
+                        }
+                    ],
+                    "mentions_organizations": []
+                },
+                {
+                    "@id": "snap:event6",
+                    "@type": "EventList",
+                    "eventTitle": "Are You There God? It’s Me, Margaret",
+                    "eventSummary": "A coming-of-age story based on Judy Blume's novel.",
+                    "theme": "Drama, Family",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person23",
+                            "name": "Kelly Fremon Craig"
+                        },
+                        {
+                            "@id": "snap:person24",
+                            "name": "Abby Ryder Fortson"
+                        },
+                        {
+                            "@id": "snap:person25",
+                            "name": "Rachel McAdams"
+                        },
+                        {
+                            "@id": "snap:person26",
+                            "name": "Benny Safdie"
+                        }
+                    ],
+                    "mentions_organizations": []
+                },
+                {
+                    "@id": "snap:event7",
+                    "@type": "EventList",
+                    "eventTitle": "Teenage Mutant Ninja Turtles: Mutant Mayhem",
+                    "eventSummary": "A modern reboot of the TMNT origin story.",
+                    "theme": "Animation, Action",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person27",
+                            "name": "Jeff Rowe"
+                        },
+                        {
+                            "@id": "snap:person28",
+                            "name": "Micah Abbey"
+                        },
+                        {
+                            "@id": "snap:person29",
+                            "name": "Shamon Brown Jr."
+                        },
+                        {
+                            "@id": "snap:person30",
+                            "name": "Nicolas Cantu"
+                        },
+                        {
+                            "@id": "snap:person31",
+                            "name": "Brady Noon"
+                        }
+                    ],
+                    "mentions_organizations": []
+                },
+                {
+                    "@id": "snap:event8",
+                    "@type": "EventList",
+                    "eventTitle": "Dungeons & Dragons: Honor Among Thieves",
+                    "eventSummary": "A fantasy romp that appeals to both fans and newcomers.",
+                    "theme": "Fantasy, Adventure",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person32",
+                            "name": "Jonathan Goldstein"
+                        },
+                        {
+                            "@id": "snap:person33",
+                            "name": "John Francis Daley"
+                        },
+                        {
+                            "@id": "snap:person34",
+                            "name": "Chris Pine"
+                        },
+                        {
+                            "@id": "snap:person35",
+                            "name": "Michelle Rodriguez"
+                        },
+                        {
+                            "@id": "snap:person36",
+                            "name": "Justice Smith"
+                        }
+                    ],
+                    "mentions_organizations": []
+                },
+                {
+                    "@id": "snap:event9",
+                    "@type": "EventList",
+                    "eventTitle": "Napoleon",
+                    "eventSummary": "A biopic that explores the life of Napoleon Bonaparte.",
+                    "theme": "Biography, Historical",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person37",
+                            "name": "Ridley Scott"
+                        },
+                        {
+                            "@id": "snap:person38",
+                            "name": "Joaquin Phoenix"
+                        },
+                        {
+                            "@id": "snap:person39",
+                            "name": "Vanessa Kirby"
+                        },
+                        {
+                            "@id": "snap:person40",
+                            "name": "Tahar Rahim"
+                        }
+                    ],
+                    "mentions_organizations": []
+                },
+                {
+                    "@id": "snap:event10",
+                    "@type": "EventList",
+                    "eventTitle": "Jawan",
+                    "eventSummary": "An Indian blockbuster that combines action, romance, and dance.",
+                    "theme": "Action, Drama",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person41",
+                            "name": "Atlee"
+                        },
+                        {
+                            "@id": "snap:person42",
+                            "name": "Shah Rukh Khan"
+                        },
+                        {
+                            "@id": "snap:person43",
+                            "name": "Nayanthara"
+                        },
+                        {
+                            "@id": "snap:person44",
+                            "name": "Vijay Sethupathi"
+                        }
+                    ],
+                    "mentions_organizations": []
+                },
+                {
+                    "@id": "snap:event11",
+                    "@type": "EventList",
+                    "eventTitle": "Saltburn",
+                    "eventSummary": "A dark story about toxic obsession set in 2000s England.",
+                    "theme": "Drama, Thriller",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person45",
+                            "name": "Emerald Fennell"
+                        },
+                        {
+                            "@id": "snap:person46",
+                            "name": "Barry Keoghan"
+                        },
+                        {
+                            "@id": "snap:person47",
+                            "name": "Jacob Elordi"
+                        },
+                        {
+                            "@id": "snap:person48",
+                            "name": "Rosamund Pike"
+                        }
+                    ],
+                    "mentions_organizations": []
+                },
+                {
+                    "@id": "snap:event12",
+                    "@type": "EventList",
+                    "eventTitle": "Dream Scenario",
+                    "eventSummary": "A black comedy about a college professor who appears in everyone's dreams.",
+                    "theme": "Comedy, Drama",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person49",
+                            "name": "Kristoffer Borgli"
+                        },
+                        {
+                            "@id": "snap:person50",
+                            "name": "Nicolas Cage"
+                        },
+                        {
+                            "@id": "snap:person51",
+                            "name": "Julianne Nicholson"
+                        },
+                        {
+                            "@id": "snap:person52",
+                            "name": "Michael Cera"
+                        }
+                    ],
+                    "mentions_organizations": []
+                },
+                {
+                    "@id": "snap:event13",
+                    "@type": "EventList",
+                    "eventTitle": "The Zone of Interest",
+                    "eventSummary": "A unique perspective on the Holocaust from the viewpoint of the perpetrators.",
+                    "theme": "Drama, Historical",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person53",
+                            "name": "Jonathan Glazer"
+                        },
+                        {
+                            "@id": "snap:person54",
+                            "name": "Christian Friedel"
+                        },
+                        {
+                            "@id": "snap:person55",
+                            "name": "Sandra Hüller"
+                        },
+                        {
+                            "@id": "snap:person56",
+                            "name": "Ralph Herforth"
+                        }
+                    ],
+                    "mentions_organizations": []
+                },
+                {
+                    "@id": "snap:event14",
+                    "@type": "EventList",
+                    "eventTitle": "Priscilla",
+                    "eventSummary": "A biopic about Priscilla Presley and her life with Elvis.",
+                    "theme": "Biography, Drama",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person57",
+                            "name": "Sofia Coppola"
+                        },
+                        {
+                            "@id": "snap:person58",
+                            "name": "Cailee Spaeny"
+                        },
+                        {
+                            "@id": "snap:person59",
+                            "name": "Jacob Elordi"
+                        },
+                        {
+                            "@id": "snap:person60",
+                            "name": "Dagmara Domińczyk"
+                        }
+                    ],
+                    "mentions_organizations": []
+                },
+                {
+                    "@id": "snap:event15",
+                    "@type": "EventList",
+                    "eventTitle": "Anatomy of a Fall",
+                    "eventSummary": "A courtroom drama that explores the truth behind a husband's death.",
+                    "theme": "Drama, Thriller",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person61",
+                            "name": "Justine Triet"
+                        },
+                        {
+                            "@id": "snap:person62",
+                            "name": "Sandra Hüller"
+                        },
+                        {
+                            "@id": "snap:person63",
+                            "name": "Swann Arlaud"
+                        },
+                        {
+                            "@id": "snap:person64",
+                            "name": "Milo Machado-Graner"
+                        }
+                    ],
+                    "mentions_organizations": []
+                },
+                {
+                    "@id": "snap:event16",
+                    "@type": "EventList",
+                    "eventTitle": "Knock at the Cabin",
+                    "eventSummary": "A family faces a moral dilemma while being held hostage.",
+                    "theme": "Horror, Thriller",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person65",
+                            "name": "M. Night Shyamalan"
+                        },
+                        {
+                            "@id": "snap:person66",
+                            "name": "Dave Bautista"
+                        },
+                        {
+                            "@id": "snap:person67",
+                            "name": "Jonathan Groff"
+                        },
+                        {
+                            "@id": "snap:person68",
+                            "name": "Ben Aldridge"
+                        },
+                        {
+                            "@id": "snap:person69",
+                            "name": "Rupert Grint"
+                        }
+                    ],
+                    "mentions_organizations": []
+                },
+                {
+                    "@id": "snap:event17",
+                    "@type": "EventList",
+                    "eventTitle": "Mission: Impossible — Dead Reckoning Part One",
+                    "eventSummary": "An action-packed installment in the Mission: Impossible series.",
+                    "theme": "Action, Adventure",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person70",
+                            "name": "Christopher McQuarrie"
+                        },
+                        {
+                            "@id": "snap:person71",
+                            "name": "Tom Cruise"
+                        },
+                        {
+                            "@id": "snap:person72",
+                            "name": "Rebecca Ferguson"
+                        },
+                        {
+                            "@id": "snap:person73",
+                            "name": "Hayley Atwell"
+                        }
+                    ],
+                    "mentions_organizations": []
+                }
+            ]
+        }
+    ]
+}

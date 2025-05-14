@@ -1,0 +1,331 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "SeedList": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List",
+                "has_early_sowing_time": "cropCult:SowingTime",
+                "has_late_sowing_time": "cropCult:SowingTime",
+                "has_seeding_rate": "schema:QuantitativeValue",
+                "has_fertilizer_application_requirements": "cropCult:Fertilization"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CropGrowingZones":{
+                "@container": "@list",
+                "@id": "cropCult:CropGrowingZones",
+                "@type": "schema:ItemList",
+                "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List",
+                    "has_seed_recommendations": "cropCult:SeedList"
+                }
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "for_flowering": "schema:Text",
+                "for_grain_filling": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "SeedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "Rice",
+            "has_types": [
+                {
+                    "@type": "cropCult:CropType",
+                    "name": "Upland Rice",
+                    "used_for": "Early sowing to avoid moisture stress at later stage and accommodate second crop"
+                },
+                {
+                    "@type": "cropCult:CropType",
+                    "name": "Medium and Low Land Rice",
+                    "used_for": "Direct seeding"
+                }
+            ],
+            "has_growing_zones": [
+                {
+                    "@type": "cropCult:CropGrowingZones",
+                    "CropGrowingZone": [
+                        {
+                            "@type": "cropCult:CropGrowingZone",
+                            "name": "North Western Plateau, Sundargarh",
+                            "has_regions": ["Up", "Medium", "Low"],
+                            "has_seed_recommendations": {
+                                "@type": "cropCult:SeedList",
+                                "variety_name": ["Khandagiri", "Heera", "Ghanteswari", "Kalinga-III", "Annada", "Jogesh", "Sindhanta", "Parijata", "Lalat", "Konark", "Naveen", "Surendra", "Swarna", "Pratikshya", "Gajapati", "MTU-1001", "Savitri", "Mahanadi", "Prachi", "Indravati", "Jagabandhu", "CR-1014"],
+                                "has_early_sowing_time": {
+                                    "@type": "cropCult:SowingTime",
+                                    "start_date": "2022-05-01",
+                                    "end_date": "2022-06-01"
+                                },
+                                "has_late_sowing_time": {
+                                    "@type": "cropCult:SowingTime",
+                                    "start_date": "2022-06-01",
+                                    "end_date": "2022-07-01"
+                                },
+                                "has_seeding_rate": {
+                                    "@type": "schema:QuantitativeValue",
+                                    "value": "60-80 kg/ha"
+                                },
+                                "has_fertilizer_application_requirements": {
+                                    "@type": "cropCult:Fertilization",
+                                    "nutrient_name": "N:P:K",
+                                    "quantity": "40:20:20 kg/ha",
+                                    "stage_of_application": "At sowing"
+                                }
+                            }
+                        },
+                        {
+                            "@type": "cropCult:CropGrowingZone",
+                            "name": "North Central Plateau, Keonjhar",
+                            "has_regions": ["Up", "Medium", "Low"],
+                            "has_seed_recommendations": {
+                                "@type": "cropCult:SeedList",
+                                "variety_name": ["Khandagiri", "Vandana", "Kalinga-III", "Ghanteswari", "Jogesh", "Sindhanta", "Lalat", "Surendra", "Konark", "Tapaswini", "Swarna", "MTU- 1001", "Naveen", "Kalajeera", "Pimpudibasa", "Geetanjali", "Mahanadi", "Prachi", "Kanchan", "Savitri", "Moti", "Padmini", "Jagabandhu", "Ketakijoha"],
+                                "has_early_sowing_time": {
+                                    "@type": "cropCult:SowingTime",
+                                    "start_date": "2022-05-01",
+                                    "end_date": "2022-06-01"
+                                },
+                                "has_late_sowing_time": {
+                                    "@type": "cropCult:SowingTime",
+                                    "start_date": "2022-06-01",
+                                    "end_date": "2022-07-01"
+                                },
+                                "has_seeding_rate": {
+                                    "@type": "schema:QuantitativeValue",
+                                    "value": "60-80 kg/ha"
+                                },
+                                "has_fertilizer_application_requirements": {
+                                    "@type": "cropCult:Fertilization",
+                                    "nutrient_name": "N:P:K",
+                                    "quantity": "40:20:20 kg/ha",
+                                    "stage_of_application": "At sowing"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ],
+            "has_temperature_requirements": {
+                "@type": "cropCult:TemperatureRequirements",
+                "for_germination": "Warm",
+                "for_flowering": "Warm",
+                "for_grain_filling": "Warm",
+                "negative_effect": "Cold"
+            },
+            "has_soil_requirements": {
+                "@type": "cropCult:SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Sandy",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "cropCult:LandPreparation",
+                "instructions": "Cultivate the land after harvest of the previous crop preferably with a MB plough. Summer ploughing should be done after summer showers.",
+                "with_soil_moisture": "Adequate"
+            },
+            "seed_germination_test_requirements_are": "Test the germination percentage before sowing.",
+            "has_seed_fungicide_requirements": {
+                "@type": "cropCult:Fungicide",
+                "name": "Refer Annexure-III, IV & V.",
+                "quantity": "As per recommendation"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "cropCult:SeedSpacing",
+                "sowing_time": "Early sowing may be done in uplands soon after one or two good early monsoon showers in last week of May or first week of June, to take a second crop.",
+                "value": "15 cm apart",
+                "depth": "4-6 cm",
+                "method": "Line sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "cropCult:WeedManagement",
+                "weed_name": "Various",
+                "weed_types": ["Various"],
+                "herbicides": {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Butachlor, Pendimethalin, Arozin, Oxyfluorfen",
+                    "quantity": "1.0 kg/ha, 1.0 kg/ha, 0.4 kg/ha, 0.04 kg/ha",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "cropCult:IrrigationRequirement",
+                "quantity": "Maintain soil moisture at saturation for 20-25 days to induce tillering and about 3 cm standing water till primodia initiation. Thereafter, maintain 5 cm depth of water in the field.",
+                "stage_of_application": "Throughout the growth period"
+            },
+            "needs_disease_treatements": {
+                "@type": "cropCult:DiseaseTreatements",
+                "disease_name": "Various",
+                "disease_symptoms": "Various",
+                "disease_control": {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Refer Annexure-III, IV & V.",
+                    "quantity": "As per recommendation",
+                    "stage": "As per recommendation"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "cropCult:PestTreatements",
+                "pest_name": "Gundhi bug, Termites",
+                "pest_symptoms": "Various",
+                "pest_control": {
+                    "@type": "cropCult:PesticideList",
+                    "name": "Refer Annexure-III, IV & V.",
+                    "quantity": "As per recommendation",
+                    "stage": "As per recommendation"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest the crop when the grains in the panicle are grey in colour.  Delayed harvesting causes considerable loss by shattering and due to damage by rats and birds.  However, early varieties should be harvested 25 days after 50% flowering.",
+            "storage_guidelines_are":"The early crop is to be threshed within a day or two after harvest otherwise there would be fermentation and discolouration of grains. Reduce the moisture content of grains to 14% by drying."
+        }
+    ]
+}

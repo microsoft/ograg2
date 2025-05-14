@@ -1,0 +1,182 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Video games in 2023: Acquisitions, layoffs, unions",
+      "author": "Jessica Conditt",
+      "theme": "technology",
+      "content": "This was a year of upheaval in video games. The industry has shapeshifted over the past 12 months, and it’s not all due to Microsoft’s lengthy acquisition of Activision, Blizzard and King. While Xbox executives were defending the legality of a $69 billion deal that would create the third-largest video game studio in the world, smaller companies were firing staff and shutting down entire teams, even amid fervent collective-bargaining efforts. It’s been a wild ride. In 2023, the main factors molding the video game landscape were consolidation, layoffs and unionization, with each of these phenomena feeding into each other. This past year, the video game industry shrank, even as it grew financially.",
+      "published": "2023-12-19T14:30:37+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Consolidation",
+          "eventSummary": "Microsoft's purchase of Activision-Blizzard-King was finally approved on October 12, 2023, making it the world’s third-largest video game studio by revenue.",
+          "theme": "business",
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Microsoft"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Activision Blizzard"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "King"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Layoffs",
+          "eventSummary": "More than 9,000 people in video games were laid off in 2023, affecting teams of all sizes.",
+          "theme": "business",
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Embracer Group"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Unity"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Sony"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Epic Games"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Electronic Arts"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "CD Projekt RED"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Sega"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Ubisoft"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Microsoft"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Unions",
+          "eventSummary": "Unionization efforts in the video game industry gained traction in 2023, with Microsoft hosting the industry’s largest union.",
+          "theme": "business",
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Microsoft"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "ZeniMax Media"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Activision Blizzard"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Raven Software"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

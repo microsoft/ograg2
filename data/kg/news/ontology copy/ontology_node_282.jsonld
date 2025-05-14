@@ -1,0 +1,108 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "title": "Shop 200+ Walmart doorbuster deals for Black Friday",
+            "byline": null,
+            "published": "2023-11-25T01:13:44+00:00",
+            "summary": "Table of Contents Table of Contents What are Walmart's Black Friday hours in 2023? Is Walmart holding a Cyber Monday sale? TV deals Laptop deals Headphone/earbud deals Tablet deals Smartwatch deals Gaming deals Speaker and soundbar deals Vacuum deals Robot vacuum deals Home and kitchen deals Outdoor deals Apple deals Pet deals Fitness deals Toys and gift deals",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "title": "Shop 200+ Walmart doorbuster deals for Black Friday",
+                "byline": null,
+                "published": "2023-11-25T01:13:44+00:00",
+                "summary": "UPDATE: Nov. 25, 2023, 4:00 a.m. EST We've updated this story with the latest deals from the Walmart early Cyber Monday sale.",
+                "associatedAsset": {
+                    "@type": "snap:asset",
+                    "title": "Shop 200+ Walmart doorbuster deals for Black Friday",
+                    "byline": null,
+                    "published": "2023-11-25T01:13:44+00:00",
+                    "summary": "Early birds already know that Walmart launched its first round of Black Friday deals back on Nov. 8 and just dished out another round the day before Thanksgiving. Some of the retailer's most popular rollbacks have already sold out. Leave items in your shopping cart too long and you'll risk losing out on your haul."
+                }
+            }
+        }
+    ]
+}
+```

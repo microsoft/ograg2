@@ -1,0 +1,103 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Hunter Felt",
+      "published": "2023-10-28T23:00:28+00:00",
+      "title": "World Series Game 2: Arizona Diamondbacks v Texas Rangers – live",
+      "summary": "Final thoughts Okay, we officially have a series! Assuming one has no rooting interest in either of the remaining teams, there’s no greater start to a World Series than a split in the first two games. A 1-1 split is an ideal situation for the casual fan as it usually portends a longer series. It is, of course, a less than ideal situation for the Rangers. Today, their weaknesses were exposed and they know their two-game home stand could have gone worse: they needed plenty of late-inning drama just to pull off a come-from-behind win in Game 1. What happens next is anybody’s guess. The World Series heads to Arizona for Monday’s Game 3 where Rangers’ Max Scherzer and the Diamondbacks’ Brandon Pfaadt are currently penciled in as the probable starters. Stay tuned to the Guardian for further coverage of the 2023 World Series as it develops but this will wrap up today’s Game 2 liveblog. Thanks to everybody who followed along with us tonight. Ciao!",
+      "associatedAsset": {
+        "@type": "snap:organization",
+        "name": "The Guardian"
+      },
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "sports"
+      },
+      "url": "https://www.theguardian.com/sport/live/2023/oct/28/world-series-game-2-arizona-diamondbacks-v-texas-rangers-live"
+    }
+  ]
+}
+```

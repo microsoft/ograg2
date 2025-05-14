@@ -1,0 +1,63 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Pre-emergence",
+            "weed_types": [
+                "Fluchloralin",
+                "Pendimethalin"
+            ],
+            "herbicides": [
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Fluchloralin",
+                    "quantity": "2.0 l/ha",
+                    "stage": "applied on third day after sowing through flat fan nozzle with 500 l of water/ha followed by irrigation"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Pendimethalin",
+                    "quantity": "3.3l/ha",
+                    "stage": "applied on third day after sowing through flat fan nozzle with 500 l of water/ha followed by irrigation"
+                }
+            ]
+        },
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Post-emergence",
+            "weed_types": [
+                "Hand weeding"
+            ],
+            "herbicides": [
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Hand weeding",
+                    "quantity": "one",
+                    "stage": "After 35 - 40 days"
+                }
+            ]
+        }
+    ]
+}

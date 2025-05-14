@@ -1,0 +1,62 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "FORAGE CROPS > FODDER COWPEA > PUDIA SOUNDAL (Leucaena diversifolia) > CROP IMPROVEMENT > I. SEASON AND VARIETIES > 7. Harvesting",
+            "has_types": {
+                "@type": "CropType",
+                "name": "FORAGE CROPS",
+                "used_for": "FODDER COWPEA"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "PUDIA SOUNDAL (Leucaena diversifolia)",
+                    "has_regions": ["CROP IMPROVEMENT"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["I. SEASON AND VARIETIES"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "7. Harvesting",
+                            "end_date": "7. Harvesting"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "80 to 100 t/ha of green fodder",
+                "for_flowering": "40 t/ha of green fodder",
+                "for_grain_filling": "2 years of initial growth",
+                "negative_effect": "pruning to a height of 100 cm"
+            },
+            "harvesting_guidelines_are": "As green fodder under irrigated conditions, a pure crop yields about 80 to 100 t/ha of green fodder. Under rain fed conditions 40 t/ha of green fodder is obtained after 2 years of initial growth and pruning to a height of 100 cm."
+        }
+    ]
+}

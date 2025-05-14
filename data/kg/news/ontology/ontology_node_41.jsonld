@@ -1,0 +1,131 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "Turtle Beach Recon Controller Review",
+                "author": "Antonio G. Di Benedetto",
+                "theme": "Gaming",
+                "summary": "The Turtle Beach Recon controller offers extensive audio controls and a comfortable design, making it suitable for gamers.",
+                "created": "2023-10-01T00:00:00Z",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "2023-10-01T00:00:00Z",
+                "modified": "2023-10-01T00:00:00Z",
+                "published": "2023-10-01T00:00:00Z",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "Turtle Beach Controller Launch",
+                    "eventSummary": "Launch of the Turtle Beach Recon controller with advanced audio features.",
+                    "theme": "Gaming",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "1985-01-01",
+                    "dateOfDeath": null,
+                    "name": "Antonio G. Di Benedetto",
+                    "placeOfBirth": "geo:location",
+                    "alias": "The Verge Reviewer"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "The Verge",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "Verge",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "title": "Turtle Beach Recon Controller Review",
+            "author": "Antonio G. Di Benedetto",
+            "theme": "Gaming",
+            "summary": "The Turtle Beach Recon controller offers extensive audio controls and a comfortable design, making it suitable for gamers.",
+            "created": "2023-10-01T00:00:00Z",
+            "hasThumbnail": "snap:imageAsset",
+            "embargoedUntil": "2023-10-01T00:00:00Z",
+            "modified": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Turtle Beach Controller Launch",
+                    "eventSummary": "Launch of the Turtle Beach Recon controller with advanced audio features.",
+                    "theme": "Gaming",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "@type": "schema:Thing",
+                            "dateOfBirth": "1985-01-01",
+                            "dateOfDeath": null,
+                            "name": "Antonio G. Di Benedetto",
+                            "placeOfBirth": "geo:location",
+                            "alias": "The Verge Reviewer"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization",
+                            "@type": "schema:Thing",
+                            "name": "The Verge",
+                            "hasLocation": "geo:SpatialThing",
+                            "alias": "Verge",
+                            "notablyAssociatedWith": "snap:organizationList"
+                        }
+                    ],
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            ],
+            "followUp": "snap:asset",
+            "derivedFrom": "snap:asset"
+        }
+    ]
+}

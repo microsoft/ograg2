@@ -1,0 +1,57 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "WeedManagement",
+            "weed_name": "Water Management",
+            "weed_types": [
+                "Germination & establishment",
+                "Vegetative Phase",
+                "Flowering phase (Irrigate copiously)",
+                "Maturity phase (Controlled irrigation)"
+            ],
+            "herbicides": [
+                {
+                    "name": "After sowing, Life irrigation -4th ,12thday",
+                    "quantity": "3",
+                    "stage": "Germination & establishment"
+                },
+                {
+                    "name": "22nd ,32nd & 40th day",
+                    "quantity": "3",
+                    "stage": "Vegetative Phase"
+                },
+                {
+                    "name": "50th ,60th & 72nd day",
+                    "quantity": "3",
+                    "stage": "Flowering phase (Irrigate copiously)"
+                },
+                {
+                    "name": "85th , 95th day",
+                    "quantity": "2",
+                    "stage": "Maturity phase (Controlled irrigation)"
+                }
+            ]
+        }
+    ]
+}

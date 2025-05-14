@@ -1,0 +1,122 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "title": "We could end the AIDS epidemic in less than a decade. Here's how.",
+      "byline": null,
+      "published": "2023-12-01T12:00:17+00:00",
+      "summary": "Countries have teamed up through a United Nations program to end the AIDS epidemic by 2030. Can it be done? An HIV diagnosis hasn't been a death sentence for years, thanks to powerful medications. Despite incredible progress, however, HIV (human immunodeficiency virus) remains a global public health threat, with 1.3 million new infections and around half that many deaths in 2022 alone.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://www.livescience.com/health/hiv/we-could-end-the-aids-epidemic-in-less-than-a-decade-heres-how"
+      }
+    },
+    {
+      "@type": "Organization",
+      "name": "Live Science: The Most Interesting Articles"
+    },
+    {
+      "@type": "Person",
+      "name": "Quarraisha Abdool Karim",
+      "alias": "associate scientific director of the Centre for the AIDS Programme of Research in South Africa and a joint United Nations Programme on HIV/AIDS (UNAIDS) special ambassador"
+    },
+    {
+      "@type": "Person",
+      "name": "Dr. Monica Gandhi",
+      "alias": "director of the University of California, San Francisco Center for AIDS Research and medical director of the HIV Clinic at San Francisco General Hospital"
+    },
+    {
+      "@type": "Person",
+      "name": "Dr. Raphael Landovitz",
+      "alias": "co-director of UCLA's Center for HIV Identification, Prevention, and Treatment Services"
+    },
+    {
+      "@type": "Person",
+      "name": "Dr. Anjali Sharma",
+      "alias": "professor of medicine who now studies complications of HIV at the Albert Einstein College of Medicine in New York"
+    }
+  ]
+}
+```

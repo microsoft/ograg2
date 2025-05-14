@@ -1,0 +1,46 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Rice",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "The traditional method of preparing the soil for transplanting rice consists of puddling which results in substantial break down of aggregates with uniform structures less mass. Under continuous flooding and submergence of soil in a rice-rice-rice cropping system, the soil particles are always in a state of flux and the mechanical strength is lost leading to the fluffy ness. This is further aggrevated by insitu application of rice stubbles and weeds during puddling. They are characterized by low bulk density of the top soil resulting in the sinking of farm animals and labourers as well as poor anchorage to paddy seedlings. For such soils, passing of 400 kg stone roller or oil drum with sand inside eight times at proper moisture level (moisture level at friable condition of soil which is approximately 13 per cent) once in two to three years.",
+                "with_soil_moisture": "13 per cent"
+            }
+        }
+    ]
+}

@@ -1,0 +1,159 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "McRae reveals hidden message he carried under collar of his grand final shirt",
+            "author": "Peter Ryan",
+            "theme": "sports",
+            "summary": "Collingwood coach Craig McRae had the message '44 sons' written under the collar of the shirt he wore through Saturday’s epic grand final to signify how he felt about each player in the Magpies squad during 2023 as they drove towards a premiership.",
+            "created": "2023-09-30T22:45:39+00:00",
+            "published": "2023-09-30T22:45:39+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Grand Final Celebration",
+                        "eventSummary": "Collingwood celebrates their premiership victory.",
+                        "theme": "celebration",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Centrepiece, Melbourne"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Craig McRae",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Australia"
+                                    },
+                                    "alias": "Fly"
+                                },
+                                {
+                                    "name": "Brayden Maynard",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Australia"
+                                    },
+                                    "alias": "Maynard"
+                                },
+                                {
+                                    "name": "Oleg Markov",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Australia"
+                                    },
+                                    "alias": "Markov"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Collingwood Football Club",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Melbourne, Australia"
+                                    },
+                                    "alias": "Pies"
+                                },
+                                {
+                                    "name": "The Sydney Morning Herald",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Sydney, Australia"
+                                    },
+                                    "alias": "SMH"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Pure Crop of Sugarcane",
+            "herbicides": {
+                "@type": "cropCult:HerbicideList",
+                "@list": [
+                    {
+                        "name": "Atrazine",
+                        "quantity": "2 kg",
+                        "stage": "3rd day of planting"
+                    },
+                    {
+                        "name": "Oxyflurofen",
+                        "quantity": "750 ml",
+                        "stage": "3rd day of planting"
+                    }
+                ]
+            }
+        }
+    ]
+}

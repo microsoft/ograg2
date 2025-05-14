@@ -1,0 +1,49 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "New black gram varieties",
+            "has_types": {
+                "@type": "CropType",
+                "name": "PULSES & OILSEEDS",
+                "used_for": "normal sowing"
+            },
+            "storage_guidelines_are": "Properly dried black gram seeds should be mixed thoroughly with black pepper seed powder @ 3g/kg of seed, against bruchid infestation during storage. Treated seeds should be kept in polybags with outer covering of gunny bags.",
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Storage Pests",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "black pepper seed powder",
+                    "quantity": "3g/kg of seed",
+                    "stage": "storage"
+                }
+            }
+        }
+    ]
+}

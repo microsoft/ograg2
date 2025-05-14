@@ -1,0 +1,159 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Ferguson as a Safety Valve",
+      "summary": "Ferguson is a safety valve for Prescott, appealing in PPR.",
+      "created": "2023-10-05T00:00:00Z",
+      "modified": "2023-10-05T00:00:00Z",
+      "published": "2023-10-05T00:00:00Z",
+      "byline": "Sportsline"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "49ers Defense Analysis",
+      "summary": "49ers lead in catch rate allowed to tight ends.",
+      "created": "2023-10-05T00:00:00Z",
+      "modified": "2023-10-05T00:00:00Z",
+      "published": "2023-10-05T00:00:00Z",
+      "byline": "Sportsline"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Brock Purdy Performance",
+      "summary": "Purdy's consistent performance with 20 Fantasy points.",
+      "created": "2023-10-05T00:00:00Z",
+      "modified": "2023-10-05T00:00:00Z",
+      "published": "2023-10-05T00:00:00Z",
+      "byline": "Sportsline"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Cowboys Defensive Strategy",
+      "summary": "Cowboys lead in pass rush pressure rate.",
+      "created": "2023-10-05T00:00:00Z",
+      "modified": "2023-10-05T00:00:00Z",
+      "published": "2023-10-05T00:00:00Z",
+      "byline": "Sportsline"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Jordan Love's Potential",
+      "summary": "Love has upside with return of key players.",
+      "created": "2023-10-05T00:00:00Z",
+      "modified": "2023-10-05T00:00:00Z",
+      "published": "2023-10-05T00:00:00Z",
+      "byline": "Sportsline"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Justin Fields' Challenges",
+      "summary": "Fields faces a step-up in competition.",
+      "created": "2023-10-05T00:00:00Z",
+      "modified": "2023-10-05T00:00:00Z",
+      "published": "2023-10-05T00:00:00Z",
+      "byline": "Sportsline"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Sam Howell's Sleeper Potential",
+      "summary": "Howell has 20-point potential against Bears.",
+      "created": "2023-10-05T00:00:00Z",
+      "modified": "2023-10-05T00:00:00Z",
+      "published": "2023-10-05T00:00:00Z",
+      "byline": "Sportsline"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Terry McLaurin's Matchup",
+      "summary": "McLaurin is a low-end WR2 against Bears.",
+      "created": "2023-10-05T00:00:00Z",
+      "modified": "2023-10-05T00:00:00Z",
+      "published": "2023-10-05T00:00:00Z",
+      "byline": "Sportsline"
+    }
+  ]
+}
+```

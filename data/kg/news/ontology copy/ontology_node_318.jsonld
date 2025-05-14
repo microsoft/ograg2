@@ -1,0 +1,149 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Arnold Schwarzenegger, Reese Witherspoon parent with tough love: 'Learning from failure'",
+      "published": "2023-10-10T08:00:40+00:00",
+      "summary": "Hollywood is a tough place to raise kids, prompting some celebrities to take a tough-love approach to parenting.",
+      "associatedAsset": [
+        {
+          "@type": "snap:person",
+          "name": "Arnold Schwarzenegger",
+          "notablyAssociatedWith": {
+            "@type": "snap:stuff",
+            "alias": "drill instructor approach"
+          }
+        },
+        {
+          "@type": "snap:person",
+          "name": "Reese Witherspoon",
+          "notablyAssociatedWith": {
+            "@type": "snap:stuff",
+            "alias": "learning from failure"
+          }
+        },
+        {
+          "@type": "snap:person",
+          "name": "Ashton Kutcher"
+        },
+        {
+          "@type": "snap:person",
+          "name": "Mila Kunis"
+        },
+        {
+          "@type": "snap:person",
+          "name": "Kristen Bell"
+        },
+        {
+          "@type": "snap:person",
+          "name": "Dax Shepard"
+        },
+        {
+          "@type": "snap:person",
+          "name": "Daniel Craig"
+        },
+        {
+          "@type": "snap:person",
+          "name": "Freddie Prinze Jr."
+        },
+        {
+          "@type": "snap:person",
+          "name": "Sarah Michelle Gellar"
+        },
+        {
+          "@type": "snap:person",
+          "name": "Candace Cameron Bure"
+        }
+      ],
+      "byline": "FOX News - Entertainment",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "alias": "entertainment"
+      },
+      "url": "https://www.foxnews.com/entertainment/arnold-schwarzenegger-reese-witherspoon-parent-with-tough-love-learning-from-failure"
+    }
+  ]
+}
+```

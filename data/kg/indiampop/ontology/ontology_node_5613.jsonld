@@ -1,0 +1,91 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Dry Seeded Irrigated Un-Puddled Lowland Rice",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "After cultivation"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Clay soils of Nagapattinam / Tiruvarur district"
+            },
+            "has_types": {
+                "@type": "CropType",
+                "name": "Rice",
+                "used_for": "Dry Seeded Irrigated Un-Puddled Lowland"
+            }
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "FYM/compost",
+            "quantity": "12.5 t/ha or 750 kg of FYM enriched with 50 kg P2O5",
+            "stage_of_application": "Basal dose"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "N:P2O5:K2O",
+            "quantity": "75:50:37.5 kg/ha",
+            "stage_of_application": "Blanket recommendation"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "N and K",
+            "quantity": "In three splits at around 20-25, 40-45 and 60-65 days for short duration varieties or four splits for medium duration varieties at around 20-25, 40-45, 60-65 and 80-85 days after germination",
+            "stage_of_application": "Each split may follow 25kg N and 12.5 kg K2O"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "ZnSO4 and FeSO4",
+            "quantity": "ZnSO4 at 25 kg/ha and FeSO4 at 50 kg/ha",
+            "stage_of_application": "Basal application"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "ZnSO4 and FeSO4",
+            "quantity": "0.5% ZnSO4 and 1% FeSO4",
+            "stage_of_application": "Need based foliar application at tillering and PI stages"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Urea + DAP + KCl",
+            "quantity": "1% urea + 2% DAP + 1% KCl",
+            "stage_of_application": "Foliar spray at PI and 10 days later"
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "DiseaseTreatements",
+            "disease_name": "Wilt",
+            "disease_symptoms": "Fusarium oxysporum f.sp.",
+            "disease_control": {
+                "@type": "HerbicideList",
+                "@list": [
+                    {
+                        "name": "Talc formulation of T. viride",
+                        "quantity": "4g/kg seed",
+                        "stage": "Seed treatment"
+                    },
+                    {
+                        "name": "P. fluorescens",
+                        "quantity": "10 g/kg seed",
+                        "stage": "Seed treatment"
+                    },
+                    {
+                        "name": "Carbendazim",
+                        "quantity": "2 g/kg seed",
+                        "stage": "Seed treatment"
+                    },
+                    {
+                        "name": "Thiram",
+                        "quantity": "4 g/kg seed",
+                        "stage": "Seed treatment"
+                    }
+                ]
+            }
+        }
+    ]
+}

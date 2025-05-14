@@ -1,0 +1,165 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "snap:asset",
+            "title": "N.F.L. Executives on the Biggest Questions Facing Super Bowl Contenders",
+            "author": "The New York Times",
+            "theme": "sports",
+            "content": "Cover 7 | Monday A daily NFL destination that provides in-depth analysis of football’s biggest stories. Each Monday, Mike Sando breaks down the six most impactful takeaways from the week. The San Francisco 49ers entered Week 6 riding a 15-game winning streak and looking unstoppable with a young quarterback, Brock Purdy, who was making the game look easy. They exited with a 19-17 defeat at Cleveland, injuries to key players and, for the first time this season, a question mark or two. With the previously unbeaten Philadelphia Eagles also losing ugly Sunday, this edition of the Pick Six column addresses key questions facing Super Bowl favorites with one-third of the 18-week regular season nearly complete. So far this season, we’ve seen the Miami Dolphins set NFL records for offense, only to lose by four touchdowns in their lone game against a true contender. We’ve seen the Kansas City Chiefs win with defense, sometimes in spite of their offense. We’ve seen the Buffalo Bills incur devastating injuries. Here we’ll address 10 teams with the shortest Super Bowl odds, running through what I think and what NFL insiders have to say.",
+            "published": "2023-10-16T23:58:53+00:00",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "snap:event",
+                    "eventTitle": "San Francisco 49ers: What do they have in Purdy?",
+                    "eventSummary": "The 49ers knew they needed a good quarterback to win the Super Bowl, and they knew they could help Purdy be that. Give him a great receiving tight end, two good receivers and a great halfback who fits the system, and they’ll get someone open on every pass play. But then Deebo Samuel gets hurt, Christian McCaffrey gets hurt, and now we don’t have as many guys open.",
+                    "theme": "sports"
+                },
+                {
+                    "@id": "snap:event2",
+                    "@type": "snap:event",
+                    "eventTitle": "Kansas City Chiefs: Is the explosive passing game gone for good?",
+                    "eventSummary": "The Chiefs have never scored less per game on offense through six games or a full season since Patrick Mahomes became their quarterback. They have also never enjoyed larger average point differentials (9.8 per game), because their defense is so much better.",
+                    "theme": "sports"
+                },
+                {
+                    "@id": "snap:event3",
+                    "@type": "snap:event",
+                    "eventTitle": "Philadelphia Eagles: Has Jalen Hurts regressed?",
+                    "eventSummary": "Explosive passing is down through most of the league, including for the Eagles. They are gaining more than 15 yards on just 11 percent of pass plays, down from 21 percent through six games last season and 19 percent for 2022 overall.",
+                    "theme": "sports"
+                },
+                {
+                    "@id": "snap:event4",
+                    "@type": "snap:event",
+                    "eventTitle": "Buffalo Bills: Are the defensive injuries too much to overcome?",
+                    "eventSummary": "Matt Milano and Tre’Davious White, those are huge injuries for that football team. The Bills are not as dominant as they felt going into it with so many injuries on defense.",
+                    "theme": "sports"
+                },
+                {
+                    "@id": "snap:event5",
+                    "@type": "snap:event",
+                    "eventTitle": "Miami Dolphins: Has Tua Tagovailoa proven he’s built to last?",
+                    "eventSummary": "It was tough watching Tagovailoa last season without worrying for his physical well-being. I’ve never felt that way watching him so far this season.",
+                    "theme": "sports"
+                },
+                {
+                    "@id": "snap:event6",
+                    "@type": "snap:event",
+                    "eventTitle": "Dallas Cowboys: Is this team any better than previous Dallas teams that fell short?",
+                    "eventSummary": "Run defense and consistency on defense, and then offensively, what is their identity? They just are not very good.",
+                    "theme": "sports"
+                },
+                {
+                    "@id": "snap:event7",
+                    "@type": "snap:event",
+                    "eventTitle": "Detroit Lions: Have they fixed their defense?",
+                    "eventSummary": "The Lions are 11.3 EPA per game better on defense from last season to this season, the second-largest gain for any team since last season.",
+                    "theme": "sports"
+                },
+                {
+                    "@id": "snap:event8",
+                    "@type": "snap:event",
+                    "eventTitle": "Baltimore Ravens: Are the Ravens better off shifting to more of a pass-oriented offense?",
+                    "eventSummary": "The defense keeps them in it, but I don’t necessarily think this offensive change is going to make them any better when it counts.",
+                    "theme": "sports"
+                },
+                {
+                    "@id": "snap:event9",
+                    "@type": "snap:event",
+                    "eventTitle": "Jacksonville Jaguars: Are they ready for prime time?",
+                    "eventSummary": "Trevor Lawrence’s knee injury was the big concern coming out of Sunday. If he’s out, expectations shift dramatically.",
+                    "theme": "sports"
+                },
+                {
+                    "@id": "snap:event10",
+                    "@type": "snap:event",
+                    "eventTitle": "Cincinnati Bengals: Can Joe Burrow hold up for a full season?",
+                    "eventSummary": "Burrow is looking healthier over the past two weeks. The bye week comes at a great time for Burrow to get even healthier.",
+                    "theme": "sports"
+                }
+            ]
+        }
+    ]
+}

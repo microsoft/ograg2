@@ -1,0 +1,43 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "CropProtection": {
+            "@id": "cropCult:CropProtection",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_pesticide_list": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "CropProtection",
+            "name": "CROP PROTECTION",
+            "has_pesticide_list": [
+                {
+                    "@type": "PesticideList",
+                    "name": "Triazophos 40% EC",
+                    "quantity": "625-1250 ml/ha",
+                    "stage": "N/A"
+                },
+                {
+                    "@type": "PesticideList",
+                    "name": "Methyl demeton 25 EC",
+                    "quantity": "1000 ml/ha",
+                    "stage": "N/A"
+                }
+            ]
+        }
+    ]
+}

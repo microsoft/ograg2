@@ -1,0 +1,142 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Toussaint Egan",
+      "published": "2023-10-25T16:09:11+00:00",
+      "title": "The best new TV series on every streaming service",
+      "summary": "Your time is precious, and your options are endless. The good news: We watch it all so you don’t have to. Polygon’s What to Watch highlights the best, the funniest, the scariest, and the most exciting in movies, TV, and everything in between. Stop scrolling, start watching! The streaming landscape is vast and hard to keep track of. TV shows pop up (and get canceled) seemingly overnight, and even if you’re in a place where you’re looking for a new show to sink hours into, it can be overwhelming to make the right choice. That’s what we’re here for. We’re going to keep this post updated with the most recent series on each of the major streaming platforms that we liked, as well as some other options if our pick doesn’t sound like your particular jam. So, below, find the best new shows on Netflix, Hulu, Prime Video, Max, Disney Plus, Paramount Plus, Apple TV, and Peacock. Our latest update added Castlevania: Nocturne, Gen V, Hijack, and The Continental.",
+      "associatedAsset": {
+        "asset": "snap:asset",
+        "comment": "The best new TV series on every streaming service"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Polygon"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "The best new shows on Netflix",
+      "eventSummary": "Castlevania: Nocturne, The Diplomat, The Night Agent, Physical 100, Ganglands, Cyberpunk: Edgerunners, The Makanai: Cooking for the Maiko House, Derry Girls, The Sandman"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "The best new show on Hulu",
+      "eventSummary": "Reservation Dogs, Love Island UK, What We Do in the Shadows, Atlanta"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "The best new TV on Prime Video",
+      "eventSummary": "Gen V, A League of Their Own, Paper Girls, Reacher"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "The best new TV on Max",
+      "eventSummary": "Unicorn: Warriors Eternal, My Adventures with Superman, Full Circle, The Righteous Gemstones, Harley Quinn"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "The best new TV on Disney Plus",
+      "eventSummary": "Andor, Willow"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "The best new TV on Paramount Plus",
+      "eventSummary": "The Good Fight, Star Trek: Strange New Worlds"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "The best new TV on Apple TV Plus",
+      "eventSummary": "Hijack, Severance, Slow Horses"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "The best new TV on Peacock",
+      "eventSummary": "The Continental: From the World of John Wick, Poker Face, Grand Crew, Girls5Eva, The Resort"
+    }
+  ]
+}
+```

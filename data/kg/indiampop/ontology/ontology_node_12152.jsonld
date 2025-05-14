@@ -1,0 +1,54 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Pendimethalin",
+            "quantity": "2.5 litre",
+            "stage_of_application": "Pre emergence"
+        },
+        {
+            "@type": "WeedManagement",
+            "weed_name": "Unknown",
+            "weed_types": [],
+            "herbicides": [
+                {
+                    "@type": "HerbicideList",
+                    "name": "Pendimethalin",
+                    "quantity": "2.5 litre",
+                    "stage": "3 days after sowing"
+                }
+            ]
+        }
+    ]
+}

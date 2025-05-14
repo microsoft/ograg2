@@ -1,0 +1,113 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Fundamental Investing: The Art of Relative Valuation",
+            "author": "None",
+            "theme": "business",
+            "summary": "The PE (price to earnings ratio) of a stock is 18. Is that cheap or expensive? Well, it depends. On what? Many things! Welcome to the world of relative valuation. The findings from research done a decade earlier by Aswath Damodaran indicated that around 85 per cent of valuation done by equity research analysts and 50 per cent of corporate M&A transactions were based on relative valuation. So, what exactly is this relative valuation? It is the art of attempting to determine the fair value of a stock based on how it is valued relative to many factors. So, whether the PE of a stock is 15 or 18 or 30, the only way you can make an assessment of whether it is cheap or expensive is by analysing this one number — against its growth prospects, peer company multiples, industry trading range, historical average PE, the prevailing interest rates, etc.",
+            "created": "2023-10-14T15:38:28+00:00",
+            "published": "2023-10-14T15:38:28+00:00",
+            "has_events": {
+                "@type": "EventList",
+                "Event": []
+            },
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "2023-10-14T15:38:28+00:00",
+            "embargoedUntil": "xmls:dateTime",
+            "followUp": "snap:asset",
+            "derivedFrom": "snap:asset"
+        },
+        {
+            "@type": "OrganizationList",
+            "Organization": {
+                "name": "Business Line",
+                "hasLocation": "geo:SpatialThing",
+                "alias": "None",
+                "notablyAssociatedWith": {
+                    "@type": "OrganizationList",
+                    "Organization": []
+                }
+            }
+        }
+    ]
+}

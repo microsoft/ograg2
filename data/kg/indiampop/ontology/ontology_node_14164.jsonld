@@ -1,0 +1,35 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "RICE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "UPLAND RICE",
+                "used_for": "Post-harvest technology"
+            },
+            "storage_guidelines_are": "The early crop is to be threshed within a day or two after harvest otherwise there would be fermentation and discolouration of grains. Reduce the moisture content of grains to 14% by drying. Pedal operated and power operated thresher should be used for threshing. Hand operated winnower should be used for cleaning the grains. Power operated thresher-cum-winnower should be used for simultaneous threshing and cleaning of the grains."
+        }
+    ]
+}

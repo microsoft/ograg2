@@ -1,0 +1,165 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Tesla ‘digs its own grave with the Cybertruck,’ Convoy collapses and Rivian scores a win at Rebelle",
+            "author": "Rebecca Bellan",
+            "published": "2023-10-22T19:15:29+00:00",
+            "summary": "Welcome back to The Station, your central hub for all past, present and future means of moving people and packages from Point A to Point B. Your usual host Kirsten was shredding off-road at the Rebelle Rally this week, so I’ll be taking over the newsletter. Let’s jump in with a few words about Tesla. Ah, but before Rebecca goes . . . it’s me, Kirsten, popping in here to share a bit of what I saw and experienced at Rebelle Rally 2023, a 2,120-kilometer off-road and navigation competition. In its eighth year, the Rebelle has become a proving ground of sorts for the 65 all-women teams who participate as well as stock manufacturer vehicles. The catch? GPS and other electronic devices are strictly prohibited. So what am I checking out at this seemingly non-tech event? EVs and tech, of course. Oh, and green hydrogen, believe it or not. There were 10 vehicles out of the 65 that fell into the electrified category such as the Jeep Wrangler Rubicon 4xe. Four of those vehicles — all of them Rivian R1T pickups — were electric. And this year, one Rivian team took first place in the 4×4 class (there are two classes in the Rebelle) — the first time an all-electric vehicle was on the top podium. The first place finishers, driver Lillian Macaruso and navigator Alexandra Anderson, are both employees of Rivian. OK, Rebecca, back to you. Tesla reported its third-quarter earnings this week, and once again, all eyes were on the automaker’s margins amid ongoing price cuts. Tesla’s shares, which are priced more as a tech stock than as an automaker’s stock, were down after Q3 earnings. Investors were clearly feeling skittish after Tesla reported a gross margin of 17.9%, down from 25.1% in the same period last year. That’s also down from Q2’s margins of 18.2%. As a result, profits fell 44% to $1.85 billion in Q3 from the same year-ago period. Investors see the falling margins and Tesla’s price cuts as proof that demand is lessening for the vehicles as other EVs take market share and rising interest rates make it difficult for many buyers to afford big ticket purchases. The company also reported that solar deployments slipped 48% in Q3 from the same period last year. But the company made up for it by pulling in a 90% spike in energy storage deployments. Tesla also gave some updates about its long-delayed Cybertruck. Initial deliveries are set for an event at Giga Texas on November 30. Elon Musk noted that scaling the Cybertruck will be hard and it will take 18 months before the pickup is profitable. “I mean, we dug our own grave with Cybertruck,” said Musk. The billionaire executive also said Giga Texas will be able to produce about 250,000 Cybertrucks a year starting in 2025. But let’s remember that Musk isn’t great at making predictions. After all, he initially said the Cybertruck would be on the market by 2021. Expect some of these numbers to be pushed out, too. Want to reach out with a tip, comment or complaint? Email Kirsten at kirsten.korosec@techcrunch.com or Rebecca at rebecca.techcrunch@gmail.com. Reminder that you can drop us a note at tips@techcrunch.com. If you prefer to remain anonymous, click here to contact us, which includes SecureDrop (instructions here) and various encrypted messaging apps.",
+            "url": "https://techcrunch.com/2023/10/22/tesla-digs-its-own-grave-with-the-cybertruck-convoy-collapses-and-rivian-scores-a-win-at-rebelle/",
+            "has_events": {
+                "@list": []
+            },
+            "followUp": {
+                "@id": "snap:asset"
+            },
+            "derivedFrom": {
+                "@id": "snap:asset"
+            }
+        },
+        {
+            "@type": "EventList",
+            "Event": {
+                "@id": "snap:event",
+                "eventTitle": "Rebelle Rally 2023",
+                "eventSummary": "A 2,120-kilometer off-road and navigation competition featuring all-women teams.",
+                "theme": "technology",
+                "hasLocation": {
+                    "@id": "geo:SpatialThing"
+                },
+                "mentions_persons": {
+                    "@list": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Lillian Macaruso"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Alexandra Anderson"
+                        }
+                    ]
+                },
+                "mentions_organizations": {
+                    "@list": [
+                        {
+                            "@id": "snap:organization",
+                            "name": "Rivian"
+                        }
+                    ]
+                },
+                "subEventOf": {
+                    "@id": "snap:event"
+                },
+                "notablyAssociatedWith": {
+                    "@id": "snap:event"
+                }
+            }
+        },
+        {
+            "@type": "PersonList",
+            "Person": {
+                "@id": "snap:person",
+                "name": "Rebecca Bellan",
+                "dateOfBirth": "xmls:date",
+                "dateOfDeath": "xmls:date",
+                "placeOfBirth": {
+                    "@id": "geo:location"
+                },
+                "alias": "xmls:string"
+            }
+        },
+        {
+            "@type": "OrganizationList",
+            "Organization": {
+                "@id": "snap:organization",
+                "name": "TechCrunch",
+                "hasLocation": {
+                    "@id": "geo:SpatialThing"
+                },
+                "alias": "xmls:string",
+                "notablyAssociatedWith": {
+                    "@list": []
+                }
+            }
+        }
+    ]
+}

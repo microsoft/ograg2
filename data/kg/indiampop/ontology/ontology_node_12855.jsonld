@@ -1,0 +1,64 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "TRANSPLANTED PUDDLED LOWLAND RICE",
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Main Field Management",
+                "weed_types": [
+                    "Stand Establishment"
+                ],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Neem treated urea and coal-tar treated urea",
+                    "quantity": "100 kg urea, one kg coal-tar and 1.5 litres of kerosene",
+                    "stage": "Blend the urea with crushed neem seed or neem cake 20% by weight. Powder neem cake to pass through 2mm sieve before mixing with urea. Keep it overnight before use (or) urea can be mixed with gypsum in 1:3 ratios, or urea can be mixed with gypsum and neem cake at 5:4:1 ratio to increase the nitrogen use efficiency. For treating 100 kg urea, take one kg coal-tar and 1.5 litres of kerosene. Melt coal-tar over a low flame and dissolve it in kerosene. Mix urea with the solution thoroughly in a plastic container, using a stick. Allow it to dry in shade on a polythene sheet. This can be stored for a month and applied basally."
+                }
+            }
+        }
+    ]
+}

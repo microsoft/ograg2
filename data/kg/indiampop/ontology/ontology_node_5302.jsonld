@@ -1,0 +1,141 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Deep Water Rice",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Deep Water Rice",
+                "used_for": "The waterlogged rice lands which accumulate water to a depth of 51-100 cm for a prolonged period ( 2-5 months ) during the crop season and the rice grown in these lands designated as deep water rice. These lands also tend to experience frequent, short term submergence, which is much more damaging to crops than the effects of standing medium deep water."
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Waterlogged Lands",
+                    "has_regions": ["Rice Lands"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Deep Water Rice"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Start of Rainy Season",
+                            "end_date": "End of Rainy Season"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "End of Rainy Season",
+                            "end_date": "Start of Dry Season"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "1.5-2.0 kg/ha"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Nitrogen",
+                            "quantity": "80-100 kg/ha",
+                            "stage_of_application": "At the time of transplanting"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "25-30°C",
+                "for_flowering": "20-25°C",
+                "for_grain_filling": "20-25°C",
+                "negative_effect": "Temperature below 20°C and above 35°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Clayey Soil",
+                "avoid_soil_type": "Sandy Soil",
+                "for_water": "Waterlogged Soil",
+                "for_nutrients": "Rich in Organic Matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the field to a fine tilth and level it. Puddle the field 2-3 times and incorporate Azolla and green manure crops in the field during the last ploughing.",
+                "with_soil_moisture": "Waterlogged Soil"
+            },
+            "seed_germination_test_requirements_are": "Seeds should be soaked in water for 24 hours and then incubated at 25-30°C for 48 hours. The germination percentage should be above 80%.",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Thiram",
+                "quantity": "2-3 g/kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "At the start of the rainy season",
+                "value": "20 x 15 cm",
+                "depth": "2-3 cm",
+                "method": "Transplanting"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Echinochloa crus-galli",
+                "weed_types": ["Grass Weeds", "Broadleaf Weeds", "Sedges"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Butachlor",
+                    "quantity": "1.5-2.0 kg a.i./ha",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "5-7 cm of standing water",
+                "stage_of_application": "Throughout the crop season"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Blast",
+                "disease_symptoms": "Small, elliptical or spindle-shaped spots on the leaves which later enlarge and coalesce to form large patches.",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Tricyclazole",
+                    "quantity": "0.6 kg a.i./ha",
+                    "stage": "At the time of disease appearance"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Stem Borer",
+                "pest_symptoms": "Dead hearts or white ears in the crop.",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Carbaryl",
+                    "quantity": "1.0 kg a.i./ha",
+                    "stage": "At the time of pest appearance"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest the crop when the grains are hard and the straw turns yellow. The moisture content of the grains should be around 20-25%.",
+            "storage_guidelines_are":"Store the grains in a cool and dry place. The moisture content of the grains should be reduced to 12-14% before storage."
+        }
+    ]
+}

@@ -1,0 +1,59 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "FoodProcessingTechnologies": {
+            "@id": "cropCult:FoodProcessingTechnologies",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_product": "cropCult:Product",
+                "has_nutrient_content": "cropCult:NutrientContent"
+            }
+        },
+        "Product": {
+            "@id": "cropCult:Product",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name"
+            }
+        },
+        "NutrientContent": {
+            "@id": "cropCult:NutrientContent",
+            "@type": "schema:Thing",
+            "@context": {
+                "calcium": "schema:QuantitativeValue",
+                "phosphorus": "schema:QuantitativeValue",
+                "iron": "schema:QuantitativeValue"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:FoodProcessingTechnologies",
+            "name": "HOME SCIENCE",
+            "has_product": {
+                "@type": "cropCult:Product",
+                "name": "Samai Biscuits"
+            },
+            "has_nutrient_content": {
+                "@type": "cropCult:NutrientContent",
+                "calcium": {
+                    "@type": "schema:QuantitativeValue",
+                    "value": "25.8",
+                    "unitText": "mg/100g"
+                },
+                "phosphorus": {
+                    "@type": "schema:QuantitativeValue",
+                    "value": "150",
+                    "unitText": "mg/100g"
+                },
+                "iron": {
+                    "@type": "schema:QuantitativeValue",
+                    "value": "4.21",
+                    "unitText": "mg/100g"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,115 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "byline": "Susana Polo",
+      "published": "2023-09-26T17:35:00+00:00",
+      "title": "Dropout’s dropping CollegeHumor on its 5th anniversary — here’s why and what the future holds",
+      "summary": "Whatever happened to CollegeHumor? Fans of the Dropout streaming service will tell you at the drop of a hat: The creatives behind it announced a new subscription service in late 2018, made a few ambitious seasons of comedy and live-play Dungeons & Dragons — and then got walloped when their corporate owner, IAC, stopped funding CH Media, resulting in layoffs of nearly the entire staff in January 2020 (which was a totally chill month to lose your job, with absolutely no major upheavals in television production on the horizon).",
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "image": "https://www.polygon.com/23889773/dropout-anniversary-collegehumor-brennan-lee-mulligan-sam-reich"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Polygon"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Brennan Lee Mulligan"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Sam Reich"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Dropout’s 5th Anniversary",
+      "eventSummary": "Polygon sat down with Reich and Mulligan for the occasion of Dropout’s fifth anniversary to chat about upcoming shows, how a YouTube video brand successfully pivoted to the subscription streaming model, and the big birthday announcement itself: CollegeHumor is no more."
+    }
+  ]
+}
+```

@@ -1,0 +1,130 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "title": "Office rents in Israel stay firm - for now",
+            "author": "Anat-Daniely Lev",
+            "theme": "business",
+            "content": "Less than a month before the war, \"Globes\" reported a huge deal in which Amnon Shashua's unicorn AI21 Labs announced it was leasing 7,000 square meters for NIS 15 million annually in Tel Aviv's Da Vinci project. It will now be interesting to see when the next such big deal for office space is signed in Tel Aviv following the impact of the Israel-Hamas war. Sources in the income-producing property sector in Israel say that over the past few weeks there has been some interest in the sector, although mainly for smaller deals involving hundreds of square meters each. The reports: \"No change in rents Azrieli Group (TASE: AZRG), is one of the biggest companies in the sector, with 15 office buildings comprising 632,000 square meters of space and 97% occupancy. Last week Azrieli published its financial results for the third quarter of 2023 saying that the company had not been impacted by the war. However the company added that due to the uncertainty about the length of the war and its development, it could not assess the future impact of the war on business activities in Israel in general and on the company in particular. Amot Investments (TASE: AMOT), another of the biggest companies in the income-producing property sector, has 1.15 million square meters of office space for leasing with 93.5% occupancy with a further six projects in various stages of construction. Amot wrote, \"In the third quarter several new contracts were signed including the exercising of options and the renewal of immaterial contracts for 14,000 square meters of space for an unchanged rent.\" Amot raises concerns about the continuation of the war which would lead to damage to the economy, including to the company's tenants. The report says, \"The uncertainty that existed in the profitable real estate market in Israel even before the outbreak of the war and that was felt in the moderation in demand and the lengthening of the negotiations to close agreements, has intensified following the war. \"The company's management estimates that given that the war will focus only on the southern front and the duration of the fighting at the current intensity will not exceed two to three months, then the effect of the war is not material on the company's business. In the aforementioned situation, the company's management estimates that despite the damage to its revenue, which cannot yet be accurately estimated, they will be reflected in the company's annual NOI and FFO within the forecast. \"In the company's assessment, the continuation of the fighting for a long time and/or a full conflict on the northern border front (or on other fronts) will result in a significant and wider damage to the economy, including deepening the damage to private consumption and businesses, including the company's tenants, and as a result will cause a decrease in payments and changes in other economic parameters.\" The supply: Millions of square meters between Kfar Saba and Rishon Lezion Even before the war, the industry was talking about there being too large a supply of office space. According to the Central Bureau of Statistics, between 2020 and 2022, construction was begun on 3.56 million square meters of office space. Avison Young Israel co-CEO Guy Amosi says, \"I am now doing four or five deals for companies that must rent space. Not large-scale deals. There are a few companies that end contracts or companies that grow and want more space. On the other hand, Midtown was written off when it was built next to Azrieli and now these are the most sought-after towers. Everything is a question of how long will it take to occupy. In the end, everything will be occupied.\" Amosi says that there are many areas in the central region, which in his opinion he fears could remain empty for a long time before they are occupied. He says, \"A company asked us to find them 15,000 square meters and asked us to map out options for offices from Rishon Lezion to Kfar Saba. They did not look in Tel Aviv where the prices are high, and two years ago contracts were closed for NIS 150 per square meter. We found that there are a huge number of projects in the area between Rosh Laz and Kfar Saba. Millions of square meters are being built and I really don't know who will occupy all these areas.\" In his opinion, there is an advantage to offices in a good location, like Park Naimi in the central region (Messubim Junction) near Roads 4 and 1. \"It sits in a good location.\" But Amosi is bothered by offices built without an anchor tenant to begin with. \"Without a tenant for which the building is being specifically constructed for marketing. Even in Petah Tikva they are building half a million square meters of new office space.\" There was Covid and then there was a crisis in high-tech that led to a chain reaction of reduced spending. Companies began to check every investment. Along with this, interest rates rose and inflation is rampant all over the world. We are not a bubble. Above all this, comes the war. However, in general, real estate works in waves and the wave will come again.\" The war: \"I expected a longer stoppage\" Natalie Marshall, the owner of Marshall Strategic Real Estate marketing talks about a restored interest in offices. \"I expected there to be a longer stoppage in the office market. There was a stoppage of office marketing for a month, but about two weeks ago movement recommenced. There is also seasonality in the office sector - in July-August and during the holidays every year there is a stoppage. \"In my opinion, in an ironic way, all of us in the public have now realized that we have nowhere to go and we only have one country. In the last six months, with the protests and the reform, people did not know what to do and even thought of leaving. But we all understood that we have one home and must keep it as the best possible place. I see there has been a movement of people interested in renting offices in the last two and a half weeks and the market is alive and kicking. There are many meetings and tours of the area. At the moment we are seeing companies searching for 10,000 or 15,000 square meters.\" Newmark Natam VP real estate services Or Ben Zvi Klein explains that there are even companies interested in the southern region and there is a market for deals and factories in the region. He says, \"We managed to do such deals, such as lawyers, small high-tech companies, call centers, warehouses moving from Ofakim and Sderot towards Beer Sheva and Kiryat Gat on short contracts, so as soon as the area is restored they will return.\" Ben Zvi Klein says \"In the north, I am marketing a building in Nof Hagalil. All the areas in Metula, Kiryat Shmona, etc. are not areas for offices\" says Ben Zvi Klein. Rents: \"Property owners have not cut rents\" Property developer Miki Naimi, who is building the large office park near the Messubim Interchange, does not sound bothered. He says, \"We are continuing to progress. Real estate is not for a year. I am not afraid of the situation and the war will also end. We are currently in advanced talks with three companies that will join us in Naimi Park. \"We have built 140,000 square meters out of 350,000 square meters and now we are developing another 140,000 square meters of office space with 100,000 square meters of parking lots designed by MYS architects. Our location is the most central in the country, so I am not afraid to plan and build four more buildings\". Naimi says that the first building to be occupied, with an area of 35,000 square meters, \"Is mostly marketed and there is already set to be occupancy.\" The first company to move in as early as January is Audicodes, which has leased 10,500 square meters and is implementing finishing works. \"In March-April, additional companies will enter. Sheba Medical Center Tel Hashomer will also enter there and leased 2,600 square meters and will increase to 5,300 square meters,\" he says. Ben Zvi Klein thinks that as in other crises, when the crisis breaks everything halts but then we see buds of everything returning to work. But he also adds that volumes are low but no different than before the war. Ben Zvi Klein says, \"\"In the first two weeks of the war, people were in the market but the market was at a standstill and once again people started to wonder, what will happen now and where are we going and how long will it take. It reminded me of the feeling during Covid, when there were ghost offices and nothing was happening. As time goes by, people come back to the offices. They really want to leave home and get to work. Most offices have emergency shelters, and relative to residential areas, most of them are protected. I live in Tel Aviv and during the fighting, when schools were closed, my children came with me to the office, because there is a shelter there and the house only has a stairwell. \"In the last three weeks, we feel that the market is returning to activity - but we entered this war when the office market was already stuttering. There were no huge deals, because there are no huge hiring in high-tech or big deals of tens of thousands of meters for the big companies. There are small and medium-sized deals. There are quite a few inquiries from high-tech and service companies looking for 1,000-2,000 square meters who want to expand. We have such inquiries in Haifa, Tel Aviv and Rehovot. There is some revival in the market, but property owners have not cut rents.\" Companies subletting are under pressure So if there is huge supply and a fall in demand for offices, why aren't rents falling? Amosi says, \"The prices have fallen by about 10% at most. Those cutting rents are those who bought buildings in purchase groups like BSR City where many individuals bought as a profitable investment. The construction of the building is finished and suddenly the payments such as management fees, mortgage and property taxes drop. In such cases there are people who are thinking of selling, and in these places we may see a drop in prices.\" Ben Zvi Klein says that prices won't go down because people have learned lessons from the past. He says, \"Everyone was burned by Covid. A property owner who gave a discount at the beginning of Covid realized this by the end of Covid, when the office opposite the one leased out at a discount of NIS 100 per square meter was being rented out for NIS 140 per square meter. The property owners are not under pressure because they rented most of their space during the peak periods of 2021-2022. Those who are under pressure may be companies that are trying to sublet their properties and here we see attractiveness in prices for fully furnished properties. \"We have been living here for years with fighting in the background. If the war continues, people may want to break a contract. As the economy returns to work because kindergartens and schools are opening, there is a general feeling of an economy returning to normal alongside the war, and it is possible to start going to work. After Covid, there was talk about what would happen and whether people would return to work and in the end everyone returned to work from the office. I am optimistic about the office market in the future.\" Published by Globes, Israel business news - en.globes.co.il - on December 3, 2023. © Copyright of Globes Publisher Itonut (1983) Ltd., 2023.",
+            "published": "2023-12-03T15:15:32+00:00",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Amnon Shashua's unicorn AI21 Labs leasing deal",
+                    "eventSummary": "AI21 Labs announced it was leasing 7,000 square meters for NIS 15 million annually in Tel Aviv's Da Vinci project.",
+                    "theme": "business",
+                    "hasLocation": {
+                        "@type": "geo:SpatialThing",
+                        "geo:lat": "32.0853",
+                        "geo:long": "34.7818"
+                    },
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "AI21 Labs"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Azrieli Group"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Amot Investments"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Impact of Israel-Hamas war on office space",
+                    "eventSummary": "The impact of the Israel-Hamas war on office space deals in Tel Aviv.",
+                    "theme": "business",
+                    "hasLocation": {
+                        "@type": "geo:SpatialThing",
+                        "geo:lat": "32.0853",
+                        "geo:long": "34.7818"
+                    }
+                }
+            ]
+        }
+    ]
+}

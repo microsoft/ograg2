@@ -1,0 +1,252 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:person",
+      "name": "Phoenix Gothard",
+      "dateOfBirth": "2005-09-07",
+      "height": "178cm",
+      "state": "NSW/ACT",
+      "stateLeagueClub": "Murray Bushrangers",
+      "communityClub": "Albury",
+      "weapon": "Elusiveness and creativity",
+      "AFLPlayerComparison": "Tom Papley (Sydney Swans)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Will Graham",
+      "dateOfBirth": "2005-07-27",
+      "height": "186cm",
+      "state": "Queensland",
+      "stateLeagueClub": "Gold Coast Suns Academy",
+      "communityClub": "Palm Beach Currumbin",
+      "weapon": "Speed and ball use",
+      "AFLPlayerComparison": "Dan Houston (Port Adelaide)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Will Green",
+      "dateOfBirth": "2005-09-08",
+      "height": "204cm",
+      "state": "Victoria Metro",
+      "stateLeagueClub": "Northern Knights",
+      "communityClub": "Northcote",
+      "weapon": "Mobility and marking",
+      "AFLPlayerComparison": "Brodie Grundy (Sydney Swans)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Clay Hall",
+      "dateOfBirth": "2005-05-12",
+      "height": "189cm",
+      "state": "Western Australia",
+      "stateLeagueClub": "Peel Thunder",
+      "communityClub": "Harvey Brunswick Leschenault",
+      "weapon": "Neat kicking and ball-winning ability",
+      "AFLPlayerComparison": "Jack Macrae (Western Bulldogs)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Riley Hardeman",
+      "dateOfBirth": "2005-02-27",
+      "height": "185cm",
+      "state": "Western Australia",
+      "stateLeagueClub": "Swan Districts",
+      "communityClub": "Caversham",
+      "weapon": "Aerial ability and left-foot kicking",
+      "AFLPlayerComparison": "Hayden Young (Fremantle)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Angus Hastie",
+      "dateOfBirth": "2005-09-19",
+      "height": "190cm",
+      "state": "Victoria Country",
+      "stateLeagueClub": "Geelong Falcons",
+      "communityClub": "Geelong West Giants",
+      "weapon": "Line-breaking dash",
+      "AFLPlayerComparison": "Mason Redman (Essendon)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Tew Jiath",
+      "dateOfBirth": "2005-03-02",
+      "height": "188cm",
+      "state": "Victoria Country",
+      "stateLeagueClub": "Gippsland Power",
+      "communityClub": "Morwell",
+      "weapon": "Intercept marking",
+      "AFLPlayerComparison": "Will Day (Hawthorn)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "James Leake",
+      "dateOfBirth": "2005-10-02",
+      "height": "187cm",
+      "state": "Tasmania",
+      "stateLeagueClub": "Tasmania Devils",
+      "communityClub": "Launceston",
+      "weapon": "Versatility and contested ball-winning ability",
+      "AFLPlayerComparison": "Callum Mills (Sydney Swans)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Kane McAuliffe",
+      "dateOfBirth": "2005-03-01",
+      "height": "187cm",
+      "state": "South Australia",
+      "stateLeagueClub": "North Adelaide",
+      "communityClub": "Central Augusta",
+      "weapon": "Power and left-foot kick",
+      "AFLPlayerComparison": "Jack Crisp (Collingwood)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Will McCabe",
+      "dateOfBirth": "2005-09-29",
+      "height": "197cm",
+      "state": "South Australia",
+      "stateLeagueClub": "Central District",
+      "communityClub": "Tanunda",
+      "weapon": "Overhead marking",
+      "AFLPlayerComparison": "Jordan Ridley (Essendon)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Colby McKercher",
+      "dateOfBirth": "2005-04-12",
+      "height": "180cm",
+      "state": "Tasmania",
+      "stateLeagueClub": "Tasmania Devils",
+      "communityClub": "Launceston",
+      "weapon": "Dazzling speed and ball-winning ability",
+      "AFLPlayerComparison": "Zac Merrett (Essendon)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Ashton Moya",
+      "dateOfBirth": "2005-04-15",
+      "height": "187cm",
+      "state": "South Australia",
+      "stateLeagueClub": "Glenelg",
+      "communityClub": "Plympton",
+      "weapon": "Marking on the lead and goalkicking accuracy",
+      "AFLPlayerComparison": "Bayley Fritsch (Melbourne)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Ollie Murphy",
+      "dateOfBirth": "2005-09-16",
+      "height": "200cm",
+      "state": "Victoria Metro",
+      "stateLeagueClub": "Sandringham Dragons",
+      "communityClub": "East Brighton Vampires",
+      "weapon": "Height and intercept marking",
+      "AFLPlayerComparison": "Jake Lever (Melbourne)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Connor O’Sullivan",
+      "dateOfBirth": "2005-05-19",
+      "height": "198cm",
+      "state": "NSW/ACT",
+      "stateLeagueClub": "Murray Bushrangers",
+      "communityClub": "Albury",
+      "weapon": "Rebound ability and athleticism",
+      "AFLPlayerComparison": "Sam Taylor (GWS Giants)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Ethan Read",
+      "dateOfBirth": "2005-07-07",
+      "height": "202cm",
+      "state": "Queensland",
+      "stateLeagueClub": "Gold Coast Suns Academy",
+      "communityClub": "Palm Beach Currumbin",
+      "weapon": "Running ability and ball use",
+      "AFLPlayerComparison": "Mark Blicavs (Geelong Cats)"
+    }
+  ]
+}
+```

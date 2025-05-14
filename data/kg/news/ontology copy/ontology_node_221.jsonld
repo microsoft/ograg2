@@ -1,0 +1,151 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:event",
+      "eventTitle": "Musk's Departure from OpenAI",
+      "eventSummary": "In late 2017, Musk planned to transform OpenAI into a commercial operation with Tesla. After disagreements, he left in February 2018.",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "OpenAI and Microsoft Partnership",
+        "eventSummary": "OpenAI formed a for-profit company and secured $1 billion from Microsoft in 2019."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Elon Musk"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Sam Altman"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Satya Nadella"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Dario Amodei"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Greg Brockman"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Chelsea Voss"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "OpenAI"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Microsoft"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Anthropic"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Amazon"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Google"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Anthropic Formation",
+      "eventSummary": "In 2021, a group of engineers and scientists left OpenAI to form Anthropic, focusing on AI with tight controls."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "GPT-4 Demonstration",
+      "eventSummary": "On August 24, 2022, OpenAI demonstrated GPT-4 to Bill Gates, showcasing its capabilities in advanced biology."
+    }
+  ]
+}
+```

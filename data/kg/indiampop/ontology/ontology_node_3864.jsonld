@@ -1,0 +1,106 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Acid Lime: Citrus aurantifolia (Christm) Swingle; Rutaceae",
+            "needs_pest_treatements": [
+                {
+                    "@type": "PestTreatements",
+                    "pest_name": "Black fly",
+                    "pest_control": [
+                        {
+                            "@type": "PesticideList",
+                            "name": "monocrotophos 36 WSC",
+                            "quantity": "1.5 ml/lit"
+                        }
+                    ]
+                },
+                {
+                    "@type": "PestTreatements",
+                    "pest_name": "Aphids",
+                    "pest_control": [
+                        {
+                            "@type": "PesticideList",
+                            "name": "methyl Demeton 25 EC",
+                            "quantity": "1 ml/lit"
+                        },
+                        {
+                            "@type": "PesticideList",
+                            "name": "neem oil",
+                            "quantity": "3 ml/lit"
+                        },
+                        {
+                            "@type": "PesticideList",
+                            "name": "Fish oil rosin soap",
+                            "quantity": "10/25 g/lit"
+                        },
+                        {
+                            "@type": "PesticideList",
+                            "name": "endosulfan 35 EC",
+                            "quantity": "2ml/lit"
+                        }
+                    ]
+                },
+                {
+                    "@type": "PestTreatements",
+                    "pest_name": "Rust mite",
+                    "pest_control": [
+                        {
+                            "@type": "PesticideList",
+                            "name": "dicofol 18.5 EC",
+                            "quantity": "2.5 ml/lit"
+                        },
+                        {
+                            "@type": "PesticideList",
+                            "name": "wettable sulphur 50 WP",
+                            "quantity": "at"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

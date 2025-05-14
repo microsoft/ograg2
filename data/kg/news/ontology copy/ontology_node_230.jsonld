@@ -1,0 +1,226 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "byline": "Barbara Krasnoff",
+      "published": "2023-11-24T15:42:21+00:00",
+      "title": "Some of our favorite devices are on sale for Black Friday",
+      "summary": "Black Friday and Cyber Monday may be in the past, but some sales are still hanging around. For more leftover deals we recommend across all categories, be sure to check out the rest of the Cyber Monday still available here.",
+      "associatedAsset": [
+        {
+          "@type": "snap:textAsset",
+          "image": "https://www.theverge.com/23969272/black-friday-cyber-monday-tech-deals-verge-staff-favorites"
+        }
+      ]
+    },
+    {
+      "@type": "snap:organization",
+      "name": "The Verge"
+    },
+    {
+      "@type": "snap:stuff",
+      "alias": "technology"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Alex Cranz",
+      "notablyAssociatedWith": {
+        "@type": "snap:asset",
+        "title": "Electronics repair kit",
+        "summary": "Tekton Everybit Tech Rescue Kit $22 $29 24% off. A 46-piece screwdriver kit that can help you repair practically any tech device out there."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Emilia David",
+      "notablyAssociatedWith": {
+        "@type": "snap:asset",
+        "title": "Safety cutter",
+        "summary": "Slice Micro Ceramic Blade safety cutter. Cuts through paper packaging tape cleanly, opens plastic wrapping, and keeps me from going insane opening blister packaging."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Kaitlin Hatton",
+      "notablyAssociatedWith": [
+        {
+          "@type": "snap:asset",
+          "title": "Headphone hanger",
+          "summary": "Anchor Pro under-desk headphone hanger $12 $15 20% off. An under-desk dual headphone hanger that uses 3M adhesive for mounting."
+        },
+        {
+          "@type": "snap:asset",
+          "title": "Carry-on backpack",
+          "summary": "Lumesner carry-on backpack. Can carry a laptop, several days’ worth of clothes, and more. Includes packing cubes."
+        }
+      ]
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jess Weatherbed",
+      "notablyAssociatedWith": [
+        {
+          "@type": "snap:asset",
+          "title": "Charging station",
+          "summary": "Helps separate the device from being my phone and instead helps me build the habit of it being another tool to boost my productivity."
+        },
+        {
+          "@type": "snap:asset",
+          "title": "A mobile tripod for holiday snaps",
+          "summary": "A decent Bluetooth-enabled tripod can resolve issues of taking group photographs."
+        }
+      ]
+    },
+    {
+      "@type": "snap:person",
+      "name": "Victoria Song",
+      "notablyAssociatedWith": [
+        {
+          "@type": "snap:asset",
+          "title": "A multipurpose rice cooker",
+          "summary": "Zojirushi Micom Rice Cooker and Warmer $194 $233 17% off. A 5.5-cup-capacity rice cooker and warmer that not only cooks rice but also comes with a steaming basket."
+        },
+        {
+          "@type": "snap:asset",
+          "title": "Universal travel adapter",
+          "summary": "Epicka universal travel adapter $20 $25 20% off. An all-in-one adapter that includes four different plugs that cover over 150 countries."
+        }
+      ]
+    },
+    {
+      "@type": "snap:person",
+      "name": "Amelia Holowaty Krales",
+      "notablyAssociatedWith": {
+        "@type": "snap:asset",
+        "title": "Old-fashioned toaster oven",
+        "summary": "Compact, works fast, and is perfect for reheating pizza, making nachos, and yes, even toast."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Emma Roth",
+      "notablyAssociatedWith": {
+        "@type": "snap:asset",
+        "title": "Seal in your fresh food",
+        "summary": "FoodSaver vacuum sealer machine $147 $220 33% off. Keep food fresh by squeezing all the air out of the package and sealing it for long- or short-term storage."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Sarah Jeong",
+      "notablyAssociatedWith": {
+        "@type": "snap:asset",
+        "title": "An extension cord for awkward situations",
+        "summary": "Anker 321 Power Strip $15 $26 42% off. This all-in-one 20W USB-C power cube boasts three AC outlets, two USB-A ports, and one USB-C port."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Brandon Widder",
+      "notablyAssociatedWith": [
+        {
+          "@type": "snap:asset",
+          "title": "A portable smart speaker",
+          "summary": "Sonos Roam $134 $180 26% off. A truly portable Sonos speaker with a rugged design that’s built to withstand the elements."
+        },
+        {
+          "@type": "snap:asset",
+          "title": "Lovely lights",
+          "summary": "MPOWERD’s solar-powered Luci lanterns. The 18-foot string is certainly not the brightest you can buy but it can swap between six different colors."
+        }
+      ]
+    },
+    {
+      "@type": "snap:person",
+      "name": "Becca Farsace",
+      "notablyAssociatedWith": {
+        "@type": "snap:asset",
+        "title": "Memory card holder and reader",
+        "summary": "Consolidation of gear — especially when it pertains to dongles. Has a carabiner hook."
+      }
+    }
+  ]
+}
+```

@@ -1,0 +1,125 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "PULSES",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Mix the fertilizer with the soil thoroughly at final land preparation before sowing. The fertilizer can also be applied in the furrows with greater advantage."
+            },
+            "has_types": {
+                "@type": "CropType",
+                "name": "Sowing",
+                "used_for": "Pulses respond admirably to liberal doses of phosphate application."
+            },
+            "has_fertilizer_application_requirements": [
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "N",
+                    "quantity": "20 kg/ha",
+                    "stage_of_application": "starter dose"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "P2O5",
+                    "quantity": "40 kg/ha",
+                    "stage_of_application": "general"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "K2O",
+                    "quantity": "20 kg/ha",
+                    "stage_of_application": "general"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "S",
+                    "quantity": "20 kg/ha",
+                    "stage_of_application": "general"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "N",
+                    "quantity": "25 kg/ha",
+                    "stage_of_application": "for cowpea and pea grown with irrigation"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "P2O5",
+                    "quantity": "50 kg/ha",
+                    "stage_of_application": "for cowpea and pea grown with irrigation"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "Potash",
+                    "quantity": "25 kg/ha",
+                    "stage_of_application": "for cowpea and pea grown with irrigation"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "N",
+                    "quantity": "15 kg/ha",
+                    "stage_of_application": "for local varieties"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "P2O5",
+                    "quantity": "30 kg/ha",
+                    "stage_of_application": "for local varieties"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "super phosphate and rock phosphate",
+                    "quantity": "50:50 mixture",
+                    "stage_of_application": "general"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "N",
+                    "quantity": "10 kg/ha",
+                    "stage_of_application": "for kulthi"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "P2O5",
+                    "quantity": "25 kg/ha",
+                    "stage_of_application": "for kulthi"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,330 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "IPL 2024 Auction Live: Starc, Cummins in spotlight as Dubai set for ‘richie-rich’ carnival",
+            "author": "Swati Bhatia",
+            "published": "2023-12-18T23:30:00+00:00",
+            "summary": "IPL 2024 Auction Live: The auction of the Indian Premier League (IPL) 2024 is slated to happen on December 19 in Dubai. Follow here for live updates.",
+            "has_events": [
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "IPL 2024 Auction",
+                    "eventSummary": "A total of 72 players including 30 overseas players were sold for Rs 230.45 Cr combined.",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "Dubai"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Mitchell Starc"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Pat Cummins"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Shubham Dubey"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Sameer Rizvi"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Sourabh Chauhan"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Nandre Burger"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Avinash Rao Aravely"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Abid Mushtaq"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Swastik Chikara"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Gus Atkinson"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Mohammad Nabi"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Arshad Khan"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Mujeeb Ur Rahman"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Lockie Ferguson"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Steve Smith"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Rilee Rossouw"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Manish Pandey"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Karun Nair"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Jathavedh Subramaniam"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Prince Choudhary"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Robin Minz"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Ashutosh Sharma"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Sumit Kumar"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Anshul Kamboj"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Naman Dhir"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Nuwan Thushara"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Jhye Richardson"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Mustafizur Rahman"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Spencer Johnson"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "David Willey"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Odean Smith"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Tom Curran"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Rassie van der Dussen"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Ashton Turner"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Sherfane Rutherford"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Finn Allen"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Yash Dayal"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Kumar Kushagra"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Ricky Bhui"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Josh Hazlewood"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Alzarri Joseph"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Dilshan Madushanka"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Jaydev Unadkat"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Umesh Yadav"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "K.S. Bharat"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Tristan Stubbs"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization",
+                            "name": "Sunrisers Hyderabad"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Kolkata Knight Riders"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Rajasthan Royals"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Chennai Super Kings"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Delhi Capitals"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Mumbai Indians"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Lucknow Super Giants"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Gujarat Titans"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Royal Challengers Bangalore"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Punjab Kings"
+                        }
+                    ]
+                }
+            ],
+            "url": "https://www.insidesport.in/cricket/ipl-2024-auction-live-updates-liveblog-dubai/"
+        }
+    ]
+}

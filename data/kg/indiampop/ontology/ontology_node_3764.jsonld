@@ -1,0 +1,58 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Sugarcane",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Sugarcane",
+                "used_for": "Sugar production"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Sugarcane is a heavy feeder. A crop producing 100 MT/ha removes 205 kg N, 55 kg P, 275 kg K. Under Nagaland condition 150 kg N, 80 – 90 kg P and 70 – 80 kg K is required. ⅓ of Nitrogen and full quantity of Phosphorus and Potash are applied at the time of sowing. Remaining nitrogen is applied in 2 split doses 1st dose at tillering stage and 2nd dose in grand growth stage. Acetobacter a nitrogen fixing bacteria is also added at the time of sowing. Bacterium Acetobacter diazoter Ophicus unlike legumes or other nitrogen fixing plants which do not form root nodules in the soil. They lives within the entercellular spaces of the sugarcane stem.",
+                "with_soil_moisture": "High"
+            },
+            "has_fertilizer_application_requirements": {
+                "@type": "Fertilization",
+                "nutrient_name": "Nitrogen, Phosphorus, Potash",
+                "quantity": "150 kg N, 80 – 90 kg P, 70 – 80 kg K",
+                "stage_of_application": "At the time of sowing, tillering stage, grand growth stage"
+            }
+        }
+    ]
+}

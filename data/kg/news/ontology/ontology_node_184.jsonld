@@ -1,0 +1,145 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "MLB Betting Sites & Apps - The Best Baseball Sportsbooks 2023",
+            "author": "Sam Eggleston",
+            "theme": "sports",
+            "summary": "Today, placing Major League Baseball bets online is easier than ever. This guide will look at the best MLB betting sites and how to sign up for a new betting account. All major MLB betting sites and apps post daily MLB odds, ranging from game lines to player props to futures bets. Fans can engross themselves in the season by betting on individual games, player performance, or season-long results. You can choose from multiple sportsbooks and apps to bet on MLB games. You’ll have to create a new account at each, but you’ll also qualify for new-customer bonuses and promotions, so exploring your options and finding the best deal is worth the effort.",
+            "created": "2023-10-24T22:32:27+00:00",
+            "published": "2023-10-24T22:32:27+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "DraftKings Sportsbook",
+                        "eventSummary": "DraftKings, a premier sportsbook platform, boasts an extensive array of Major League Baseball betting options for novice and seasoned bettors. Their MLB odds include intriguing player and game prop bets, such as predicting the First Inning Winner or First Team to Score.",
+                        "theme": "sports",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        }
+                    },
+                    {
+                        "eventTitle": "FanDuel Sportsbook",
+                        "eventSummary": "FanDuel stands out as a top destination for MLB enthusiasts looking to bet daily. It offers the staple bets such as run lines, where you can bet on the margin of victory, and totals, predicting the combined score of both teams.",
+                        "theme": "sports",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        }
+                    },
+                    {
+                        "eventTitle": "BetMGM Sportsbook",
+                        "eventSummary": "BetMGM provides MLB aficionados with an expansive betting portfolio. Traditional bet types, such as moneylines, where one bets on the outright winner; run lines, which focus on the margin of victory; and totals that predict combined team scores, are all readily available.",
+                        "theme": "sports",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        }
+                    },
+                    {
+                        "eventTitle": "Caesars Sportsbook",
+                        "eventSummary": "Caesars has a comprehensive suite of MLB odds to elevate the game-watching experience. That includes run lines, predicting the margin of victory; totals, where bettors forecast the combined scores; and player props, focusing on individual milestones such as hits, home runs, or RBIs.",
+                        "theme": "sports",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        }
+                    },
+                    {
+                        "eventTitle": "Bet365 Sportsbook",
+                        "eventSummary": "One of the world's premier sportsbooks, Bet365, has marked its presence in the US, notably emphasizing its Major League Baseball odds. Now accessible in many states and expected to grow further, Bet365 posts daily MLB odds boosts.",
+                        "theme": "sports",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        }
+                    },
+                    {
+                        "eventTitle": "BetRivers Sportsbook",
+                        "eventSummary": "BetRivers stands out for its comprehensive Major League Baseball betting offerings. Bettors are presented with a wealth of stats and insightful tips related to upcoming games, enhancing the decision-making process.",
+                        "theme": "sports",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

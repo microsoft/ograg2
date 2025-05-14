@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "OtherCrops": {
+            "@id": "cropCult:OtherCrops",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_drainage_requirements": "cropCult:DrainageRequirements"
+            }
+        },
+        "DrainageRequirements": {
+            "@id": "cropCult:DrainageRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "subsidiary_drains_spacing": "schema:Text",
+                "contour_drains_based_on": "schema:Text",
+                "drain_dimensions": "schema:Text",
+                "drain_connection": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:OtherCrops",
+            "name": "Drainage",
+            "has_drainage_requirements": {
+                "@type": "cropCult:DrainageRequirements",
+                "subsidiary_drains_spacing": "Subsidiary drains should be dug 15 m – 25 m apart (depending on soil type) before planting tea.",
+                "contour_drains_based_on": "In undulating area, graded contour drains should be dug based on contour map.",
+                "drain_dimensions": "Drains should be 90 cm deep and 60 cm wide with slopping sides",
+                "drain_connection": "they should be connected with natural outlet like ‘nallahs’ or paddy fields."
+            }
+        }
+    ]
+}

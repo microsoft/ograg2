@@ -1,0 +1,141 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "title": "Jamaica vs Canada live score, result, updates, highlights from CONCACAF Nations League quarterfinal first leg",
+            "author": "Kyle Bonn",
+            "theme": "sports",
+            "content": "Canada took a major step towards Copa America 2024 qualification as Stephen Eustaquio's 85th-minute strike gave them victory in their CONCACAF Nations League quarterfinal first leg and a first win in Jamaica for 35 years. Porto midfielder Eustaquio slotted in from Richie Laryea's surging run and low delivery, restoring the lead Canada had initially established through Jonathan David during first-half added time. Shamar Nicholson fired in Jamaica's equaliser 13 minutes after the break but their opponents will seal their place at Copa America if they avoid defeat in the second leg at Ontario's BMO Field on Tuesday.",
+            "published": "2023-11-17T21:48:03+00:00",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Jamaica vs Canada CONCACAF Nations League",
+                    "eventSummary": "Canada wins 2-1 against Jamaica in the first leg of the CONCACAF Nations League quarterfinal.",
+                    "theme": "sports",
+                    "hasLocation": {
+                        "@type": "geo:SpatialThing",
+                        "geo:lat": "18.0179",
+                        "geo:long": "-76.8099"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Stephen Eustaquio"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Jonathan David"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Shamar Nicholson"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Richie Laryea"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Leon Bailey"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Milan Borjan"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Canada Soccer"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Concacaf Nations League"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

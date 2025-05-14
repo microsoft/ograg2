@@ -1,0 +1,112 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Tuberous begonias",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Tuberous begonias",
+                "used_for": "summer flowering plants"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Green houses, conservatories, balconies and window sills",
+                    "has_regions": ["Protected from direct sun and rain during summer months"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Various colours"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Start of summer",
+                            "end_date": "End of summer"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Start of summer",
+                            "end_date": "End of summer"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "1",
+                            "unitText": "plant per pot"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "N/A",
+                            "quantity": "N/A",
+                            "stage_of_application": "N/A"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "15-20°C",
+                "for_flowering": "15-20°C",
+                "for_grain_filling": "N/A",
+                "negative_effect": "Direct sun and rain"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "N/A",
+                "avoid_soil_type": "N/A",
+                "for_water": "N/A",
+                "for_nutrients": "N/A"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Best grown in pots, tubs, troughs, window boxes or hanging baskets",
+                "with_soil_moisture": "N/A"
+            },
+            "seed_germination_test_requirements_are": "N/A",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "N/A",
+                "quantity": "N/A"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Summer",
+                "value": "1 plant per pot",
+                "depth": "N/A",
+                "method": "N/A"
+            },
+            "weed_management_needs_are": "N/A",
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "N/A",
+                "stage_of_application": "N/A"
+            },
+            "needs_disease_treatements": "N/A",
+            "needs_pest_treatements": "N/A",
+            "harvesting_guidelines_are": "N/A",
+            "storage_guidelines_are":"N/A"
+        }
+    ]
+}

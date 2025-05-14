@@ -1,0 +1,772 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "NewsAsset",
+            "title": "Fallout Review",
+            "author": "OW",
+            "theme": "Action, Adventure",
+            "summary": "While it fell some way short of the series’ critical and commercial peak, Fallout — mistakes were made, chiefly putting “Part One” in the title — the seventh (seventh!) Mission: Impossible film is another shockingly confident and artful action movie that delivers set-piece after astounding set-piece over a breathless two and a half hours.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event1",
+                        "eventTitle": "Fallout Release",
+                        "eventSummary": "Release of the seventh Mission: Impossible film.",
+                        "theme": "Film Release",
+                        "hasLocation": {
+                            "@id": "geo:location1",
+                            "@type": "geo:SpatialThing",
+                            "name": "Theaters"
+                        },
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person1",
+                                    "name": "Tom Cruise"
+                                },
+                                {
+                                    "@id": "snap:person2",
+                                    "name": "Rebecca Ferguson"
+                                },
+                                {
+                                    "@id": "snap:person3",
+                                    "name": "Hayley Atwell"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "name": "Paramount Pictures"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset2",
+            "@type": "NewsAsset",
+            "title": "The Killer Review",
+            "author": "AG",
+            "theme": "Thriller, Action",
+            "summary": "The Killer, like the assassin at its center, is difficult to pin down. It’s astonishingly gorgeous and well made, but at the same time stubbornly unflashy.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event2",
+                        "eventTitle": "The Killer Release",
+                        "eventSummary": "Release of The Killer directed by David Fincher.",
+                        "theme": "Film Release",
+                        "hasLocation": {
+                            "@id": "geo:location2",
+                            "@type": "geo:SpatialThing",
+                            "name": "Netflix"
+                        },
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person4",
+                                    "name": "David Fincher"
+                                },
+                                {
+                                    "@id": "snap:person5",
+                                    "name": "Michael Fassbender"
+                                },
+                                {
+                                    "@id": "snap:person6",
+                                    "name": "Tilda Swinton"
+                                },
+                                {
+                                    "@id": "snap:person7",
+                                    "name": "Sophie Charlotte"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization2",
+                                    "name": "Netflix"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset3",
+            "@type": "NewsAsset",
+            "title": "Ferrari Review",
+            "author": "AG",
+            "theme": "Biopic, Drama",
+            "summary": "The Enzo Ferrari biopic’s standout sequences are unquestionably its races, which director Michael Mann infuses with tension, speed, and horror.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event3",
+                        "eventTitle": "Ferrari Release",
+                        "eventSummary": "Release of the Enzo Ferrari biopic directed by Michael Mann.",
+                        "theme": "Film Release",
+                        "hasLocation": {
+                            "@id": "geo:location3",
+                            "@type": "geo:SpatialThing",
+                            "name": "Theaters"
+                        },
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person8",
+                                    "name": "Michael Mann"
+                                },
+                                {
+                                    "@id": "snap:person9",
+                                    "name": "Adam Driver"
+                                },
+                                {
+                                    "@id": "snap:person10",
+                                    "name": "Penélope Cruz"
+                                },
+                                {
+                                    "@id": "snap:person11",
+                                    "name": "Shailene Woodley"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization3",
+                                    "name": "Paramount Pictures"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset4",
+            "@type": "NewsAsset",
+            "title": "Poor Things Review",
+            "author": "OW",
+            "theme": "Fantasy, Comedy",
+            "summary": "Poor Things is tipped to win a few real Oscars, despite making The Favourite look like a normal movie.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event4",
+                        "eventTitle": "Poor Things Release",
+                        "eventSummary": "Release of Poor Things directed by Yorgos Lanthimos.",
+                        "theme": "Film Release",
+                        "hasLocation": {
+                            "@id": "geo:location4",
+                            "@type": "geo:SpatialThing",
+                            "name": "Theaters"
+                        },
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person12",
+                                    "name": "Yorgos Lanthimos"
+                                },
+                                {
+                                    "@id": "snap:person13",
+                                    "name": "Emma Stone"
+                                },
+                                {
+                                    "@id": "snap:person14",
+                                    "name": "Mark Ruffalo"
+                                },
+                                {
+                                    "@id": "snap:person15",
+                                    "name": "Willem Dafoe"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization4",
+                                    "name": "A24"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset5",
+            "@type": "NewsAsset",
+            "title": "Suzume Review",
+            "author": "PR",
+            "theme": "Animation, Adventure",
+            "summary": "Makoto Shinkai’s career seems to have been building up to Suzume.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event5",
+                        "eventTitle": "Suzume Release",
+                        "eventSummary": "Release of Suzume directed by Makoto Shinkai.",
+                        "theme": "Film Release",
+                        "hasLocation": {
+                            "@id": "geo:location5",
+                            "@type": "geo:SpatialThing",
+                            "name": "Crunchyroll"
+                        },
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person16",
+                                    "name": "Makoto Shinkai"
+                                },
+                                {
+                                    "@id": "snap:person17",
+                                    "name": "Nanoka Hara"
+                                },
+                                {
+                                    "@id": "snap:person18",
+                                    "name": "Hokuto Matsumura"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization5",
+                                    "name": "Crunchyroll"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset6",
+            "@type": "NewsAsset",
+            "title": "Godzilla Minus One Review",
+            "author": "CP",
+            "theme": "Action, Sci-Fi",
+            "summary": "Godzilla Minus One is the first Japanese live-action Godzilla film from Toho since the brilliant, post-Fukushima Shin Godzilla.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event6",
+                        "eventTitle": "Godzilla Minus One Release",
+                        "eventSummary": "Release of Godzilla Minus One directed by Takashi Yamazaki.",
+                        "theme": "Film Release",
+                        "hasLocation": {
+                            "@id": "geo:location6",
+                            "@type": "geo:SpatialThing",
+                            "name": "Theaters"
+                        },
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person19",
+                                    "name": "Takashi Yamazaki"
+                                },
+                                {
+                                    "@id": "snap:person20",
+                                    "name": "Ryunosuke Kamiki"
+                                },
+                                {
+                                    "@id": "snap:person21",
+                                    "name": "Minami Hamabe"
+                                },
+                                {
+                                    "@id": "snap:person22",
+                                    "name": "Yuki Yamada"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization6",
+                                    "name": "Toho"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset7",
+            "@type": "NewsAsset",
+            "title": "John Wick: Chapter 4 Review",
+            "author": "JR",
+            "theme": "Action, Thriller",
+            "summary": "Chad Stahelski’s saga about the boogeyman of assassins in a world full of them reaches a staggering crescendo in Chapter 4.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event7",
+                        "eventTitle": "John Wick: Chapter 4 Release",
+                        "eventSummary": "Release of John Wick: Chapter 4 directed by Chad Stahelski.",
+                        "theme": "Film Release",
+                        "hasLocation": {
+                            "@id": "geo:location7",
+                            "@type": "geo:SpatialThing",
+                            "name": "Starz"
+                        },
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person23",
+                                    "name": "Chad Stahelski"
+                                },
+                                {
+                                    "@id": "snap:person24",
+                                    "name": "Keanu Reeves"
+                                },
+                                {
+                                    "@id": "snap:person25",
+                                    "name": "Donnie Yen"
+                                },
+                                {
+                                    "@id": "snap:person26",
+                                    "name": "Ian McShane"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization7",
+                                    "name": "Lionsgate"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset8",
+            "@type": "NewsAsset",
+            "title": "May December Review",
+            "author": "ZM",
+            "theme": "Drama",
+            "summary": "Elizabeth arrives in Savannah to prepare for a new role based on Gracie, a grown woman who slept with 13-year-old Joe.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event8",
+                        "eventTitle": "May December Release",
+                        "eventSummary": "Release of May December directed by Todd Haynes.",
+                        "theme": "Film Release",
+                        "hasLocation": {
+                            "@id": "geo:location8",
+                            "@type": "geo:SpatialThing",
+                            "name": "Netflix"
+                        },
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person27",
+                                    "name": "Todd Haynes"
+                                },
+                                {
+                                    "@id": "snap:person28",
+                                    "name": "Natalie Portman"
+                                },
+                                {
+                                    "@id": "snap:person29",
+                                    "name": "Julianne Moore"
+                                },
+                                {
+                                    "@id": "snap:person30",
+                                    "name": "Charles Melton"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization8",
+                                    "name": "Netflix"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset9",
+            "@type": "NewsAsset",
+            "title": "Showing Up Review",
+            "author": "CP",
+            "theme": "Drama",
+            "summary": "Lizzy is a 30-something artist living on campus at her hometown art school.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event9",
+                        "eventTitle": "Showing Up Release",
+                        "eventSummary": "Release of Showing Up directed by Kelly Reichardt.",
+                        "theme": "Film Release",
+                        "hasLocation": {
+                            "@id": "geo:location9",
+                            "@type": "geo:SpatialThing",
+                            "name": "Digital rental/purchase"
+                        },
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person31",
+                                    "name": "Kelly Reichardt"
+                                },
+                                {
+                                    "@id": "snap:person32",
+                                    "name": "Michelle Williams"
+                                },
+                                {
+                                    "@id": "snap:person33",
+                                    "name": "Hong Chau"
+                                },
+                                {
+                                    "@id": "snap:person34",
+                                    "name": "John Magaro"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization9",
+                                    "name": "A24"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset10",
+            "@type": "NewsAsset",
+            "title": "Barbie Review",
+            "author": "TR",
+            "theme": "Comedy, Fantasy",
+            "summary": "Any description of Barbie’s big themes makes it sound preachy and stilted.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event10",
+                        "eventTitle": "Barbie Release",
+                        "eventSummary": "Release of Barbie directed by Greta Gerwig.",
+                        "theme": "Film Release",
+                        "hasLocation": {
+                            "@id": "geo:location10",
+                            "@type": "geo:SpatialThing",
+                            "name": "Digital rental/purchase"
+                        },
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person35",
+                                    "name": "Greta Gerwig"
+                                },
+                                {
+                                    "@id": "snap:person36",
+                                    "name": "Margot Robbie"
+                                },
+                                {
+                                    "@id": "snap:person37",
+                                    "name": "Ryan Gosling"
+                                },
+                                {
+                                    "@id": "snap:person38",
+                                    "name": "Will Ferrell"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization10",
+                                    "name": "Warner Bros."
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset11",
+            "@type": "NewsAsset",
+            "title": "Spider-Man: Across the Spider-Verse Review",
+            "author": "PR",
+            "theme": "Animation, Action",
+            "summary": "2018’s Spider-Man: Into the Spider-Verse changed the game for superhero movies and animated movies.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event11",
+                        "eventTitle": "Spider-Man: Across the Spider-Verse Release",
+                        "eventSummary": "Release of Spider-Man: Across the Spider-Verse directed by Joaquim Dos Santos, Kemp Powers, and Justin K. Thompson.",
+                        "theme": "Film Release",
+                        "hasLocation": {
+                            "@id": "geo:location11",
+                            "@type": "geo:SpatialThing",
+                            "name": "Netflix"
+                        },
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person39",
+                                    "name": "Joaquim Dos Santos"
+                                },
+                                {
+                                    "@id": "snap:person40",
+                                    "name": "Kemp Powers"
+                                },
+                                {
+                                    "@id": "snap:person41",
+                                    "name": "Justin K. Thompson"
+                                },
+                                {
+                                    "@id": "snap:person42",
+                                    "name": "Shameik Moore"
+                                },
+                                {
+                                    "@id": "snap:person43",
+                                    "name": "Hailee Steinfeld"
+                                },
+                                {
+                                    "@id": "snap:person44",
+                                    "name": "Daniel Kaluuya"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization11",
+                                    "name": "Sony Pictures Animation"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset12",
+            "@type": "NewsAsset",
+            "title": "The Boy and the Heron Review",
+            "author": "ZM",
+            "theme": "Animation, Fantasy",
+            "summary": "Texture is essential to Hayao Miyazaki’s work.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event12",
+                        "eventTitle": "The Boy and the Heron Release",
+                        "eventSummary": "Release of The Boy and the Heron directed by Hayao Miyazaki.",
+                        "theme": "Film Release",
+                        "hasLocation": {
+                            "@id": "geo:location12",
+                            "@type": "geo:SpatialThing",
+                            "name": "Theaters"
+                        },
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person45",
+                                    "name": "Hayao Miyazaki"
+                                },
+                                {
+                                    "@id": "snap:person46",
+                                    "name": "Soma Santoki"
+                                },
+                                {
+                                    "@id": "snap:person47",
+                                    "name": "Masaki Suda"
+                                },
+                                {
+                                    "@id": "snap:person48",
+                                    "name": "Ko Shibasaki"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization12",
+                                    "name": "Studio Ghibli"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset13",
+            "@type": "NewsAsset",
+            "title": "Asteroid City Review",
+            "author": "PR",
+            "theme": "Comedy, Drama",
+            "summary": "To people who don’t know Wes Anderson’s work well, he’s a known quantity that’s easily replicated and parodied.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event13",
+                        "eventTitle": "Asteroid City Release",
+                        "eventSummary": "Release of Asteroid City directed by Wes Anderson.",
+                        "theme": "Film Release",
+                        "hasLocation": {
+                            "@id": "geo:location13",
+                            "@type": "geo:SpatialThing",
+                            "name": "Peacock"
+                        },
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person49",
+                                    "name": "Wes Anderson"
+                                },
+                                {
+                                    "@id": "snap:person50",
+                                    "name": "Jason Schwartzman"
+                                },
+                                {
+                                    "@id": "snap:person51",
+                                    "name": "Scarlett Johansson"
+                                },
+                                {
+                                    "@id": "snap:person52",
+                                    "name": "Tom Hanks"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization13",
+                                    "name": "Focus Features"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

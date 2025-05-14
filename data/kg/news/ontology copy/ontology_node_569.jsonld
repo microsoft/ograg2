@@ -1,0 +1,98 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Saleah Blancaflor",
+      "published": "2023-10-20T17:30:00+00:00",
+      "title": "Twitch is the best way to watch sports, when you can actually watch sports on Twitch",
+      "summary": "Twitch is the best way to watch sports, when you can actually watch sports on Twitch. Need a new way to watch sports? Twitch might be exactly what you’ve been looking for. It’s no secret that fans have historically consumed sports through live events and cable TV, but as media consumption has shifted, many — especially in younger generations — have sought out sports content on social platforms. Twitch in particular has become a platform where sports streamers and fans have flocked. During the COVID-19 shutdowns in 2020, athletes and sports leagues around the world joined the platform to stream video games when live sports were temporarily on hiatus — and years later, some of them are still active. WNBA player Aerial Powers regularly streams herself playing games like NBA 2K and Apex Legends, while Argentinian former soccer player Sergio Agüero uses his channel to livestream Kings League and Queens League games. Organizations like the NBA, the NFL, and the UFC have their own Twitch channels where they promote and share content. For instance, the UFC runs watch-along streams hosted by former mixed martial artist, boxer, and kickboxer Jens Pulver. Polygon is celebrating TwitchCon 2023 with a package of stories covering streaming trends and news from the show. Check it out! In recent years, Twitch has introduced a TwitchSports channel as well as a stand-alone sports category to help users find live sporting events and sports-related content. On the stand-alone sports category page — which, as of publication, has 2.7 million followers — users can find creators commentating and analyzing various sports, reaction and watch-along streams, some live sports feeds, and streams of creators playing sports video games. Take a look and you’ll see everything from motorsports and soccer to tennis, volleyball, and even pickleball. EnterpriseAppsToday reported that in 2023, Twitch’s “Sports” category registered around 8 million hours of watch time. YPulse survey research from April found that 66% of Gen Zers are tuning into platforms like Twitch to follow their favorite sports. “In contrast to the more spectator-oriented sports watching of earlier generations, Gen Z has evolved the experience into an interactive digital experience through social and streaming platforms,” says Anastasia Pelot, YPulse’s content marketing manager. While livestreams of major league games are less common to find on Twitch due to broadcast rights, some leagues — nationally and globally — have experimented with streaming games in recent years. The NBA signed a deal with Twitch in 2017 to stream minor league games while giving fans the chance to interact with each other. The two also teamed up in 2019 for a separate deal to exclusively stream USA Basketball games globally. When Amazon began airing Thursday Night Football games last fall, Nielsen reported a total viewership figure of 13 million for its first exclusive game, which included U.S. Prime Video subscribers who streamed on Twitch. Twitch creator EsfandTV, who requested to go by Esfand for this story, is a streamer with 1.2 million followers who follow not only for gaming content, but for his sports streaming as well. He says that broadcast rights are one of the aspects hindering Twitch from becoming a full-blown sports streaming platform. Leagues still own the rights when it comes to where sports are aired, and Esfand says they need to adapt if they want to reach young and international sports fans. “The NBA is king,” Esfand says. “When it comes to hockey, the NHL is king. But what’s happening is these different leagues, they are the boss. They’re the governing body. They have all the rights to everything and when it comes to content, they can be in control.” Esfand says if done properly, a league can partner with a streamer that has a large audience and find a way to allow rights to reduce the barrier to entry for users. “You can’t just block it out in certain markets,” Esfand says. “When I did a stream [of a football game], I think Canada couldn’t watch. Most of Europe couldn’t watch.” Some leagues have partnered with streamers and have yielded successful results: LiveMode and FIFA partnered with Brazilian streamer Casimito to broadcast the 2022 World Cup on Twitch in Latin America, while the Men in Blazers podcast hosted its popular live watch-along shows for some World Cup matches in the U.S. Earlier this year, Casimito also struck a deal to stream the 2023 Women’s World Cup on his channel. The NBA also signed a deal in 2021 with Alexandre “Gaules” Borba Chiqueta and Budweiser to stream games in Brazilian markets. “These are the things that, if they’re done the right way, you are now attracting the younger audience who is not watching cable TV as much anymore,” Esfand says. In place of regularly streaming games, Esfand has found other ways to engage with fans on his channel. Esfand’s Tailgate Tour, where he visits college towns and showcases college football culture — everything from the tailgating atmosphere to the energy inside the stadium — resonates strongly with young and global fans, especially those who might not be familiar with American college traditions. In April, he livestreamed Esfand’s Draft Night Extravaganza on Twitch. The broadcast coincided with the first day of the NFL draft and featured a mix of Twitch creators like Will Neff and Erobb221 as well as current and former NFL players including Austin Ekeler, Micah Parsons, and Kenny Vaccaro, where they provided analysis and commentary on draft picks. “I have people that have been watching me for years playing World of Warcraft or doing something that isn’t football, but they’re actually huge football fans” In some cases, fans preferred Esfand’s show to the traditional broadcast. “I havent watched or cared about football in like 10 years but i still watched this whole stream and loved it,” one viewer commented on YouTube, where the Twitch stream was uploaded after airing. Another user wrote, “I love all things football and I pretty much had the draft on TV muted while watching your stream.” Esfand says he feels fortunate he’s been able to stream more sports content on his channel over the last few years, to the point where people have recognized him solely for his football content. He adds that it’s been interesting seeing fans evolve from those that were fans of his gaming streams to ones who are sports fans, or discovering gaming fans who are also sports fans. “I have people that have been watching me for years playing World of Warcraft or doing something that isn’t football, but they’re actually huge football fans,” Esfand says. “A big part of Twitch is that people like watching streamers they can relate to. Because what happens is, it’s not just about the streamer; it’s also about the streamer’s chat. Now they are getting involved in the community, whether it’s just through chat itself or through Discord.” Alex Casassovici, founder and CEO of Azarus, a company that works with online creators to enhance the streaming experience, says that livestreaming sports and sports-related content on platforms like Twitch creates a more intimate experience for streamers and fans alike. “I think what we’re looking at is either a very curated kind of managed channel, and more grassroots-like, creator-led experiences,” Casassovici says. “That’s clearly something that can be differentiated when it comes to streaming.” Twitch seems to see value when it comes to investing in sports streamers. A few years ago, the platform launched the Sports Accelerator Program to support sports content creators wanting to get into “sports talk,” like podcasts, talk shows, reaction streams, sidecasts, watch-alongs, and more, through live workshops and by providing opportunities to network and expand their viewership. U.K.-based Keira Megan, who goes by keirameganxx on Twitch and was previously part of the Sports Accelerator Program, has been on the platform for about a year and a half with a focus on soccer and motorsports like Formula 1. While Formula 1 has always been primarily popular in Europe, it’s seen growth among new fans in the United States in recent years, thanks in part to docuseries like Netflix’s Drive to Survive. While she doesn’t stream actual races or games due to broadcast rights, Megan hosts watch-along streams for fans who want to hear her commentary. Megan says that while she doesn’t have as many followers on Twitch as she does on her YouTube channel, there are elements of Twitch she prefers to YouTube, including the ability to be herself and engage with fans more closely. “People want to know what you want to say,” Megan says. “They come into my Twitch channel and ask me about the race. They asked me three days later about a [soccer] match. They want to talk about it. I think Twitch is good for that. I think it’s good for one-on-one. I find that Twitch is where I’m the most engaged with my audiences, and they feel closest to me.",
+      "associatedAsset": {
+        "@type": "snap:organization",
+        "name": "Polygon"
+      }
+    }
+  ]
+}
+```

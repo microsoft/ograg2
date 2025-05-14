@@ -1,0 +1,117 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:imageAsset",
+            "title": "Photograph: Popsockets",
+            "summary": "This is one of our favorite MagSafe phone grips. It magnetically sticks to the back of your iPhone and you can pop out the grip for extra stability. You can just take it off to wirelessly charge your device.",
+            "published": "2023-11-26"
+        },
+        {
+            "@type": "snap:textAsset",
+            "title": "USB-C Cable",
+            "summary": "This cable can do it all, which is why it's currently sitting at the top of our Best USB-C Cables guide. It can deliver 100 watts, transfer data at up to 40 Gbps, and serve an 8K display (or two 4K displays). It supports DisplayPort Alt Mode (DP Alt Mode), USB Power Delivery (USB-PD), and PPS, and it is backward-compatible with all earlier standards. It's pricey, even with the discount, but it rarely dips this low. This is also the longest size; the shorter one is also on sale.",
+            "published": "2023-11-26"
+        },
+        {
+            "@type": "snap:textAsset",
+            "title": "Creator Kit",
+            "summary": "The Creator Kit acts as the link between your phone and various mounting solutions. It comes with a magnetic locking mount that works with the Peak Design SlimLink phone case and a few different mounting options including a Peak Design Arca quick-release plate, a GoPro mount adapter, and a 1/4-inch tripod mount. That way, you can easily mount it on almost any tripod. Your phone (with the case protecting it) will slot easily into the SlimLink mount and stay secure.",
+            "published": "2023-11-26"
+        },
+        {
+            "@type": "snap:textAsset",
+            "title": "iPhone Deals",
+            "summary": "You typically won't see many iPhone deals. Those sales usually come from carriers like AT&T, Verizon, and T-Mobile, and have several requirements, like being on an unlimited plan or opening a new cell line. If you're in the market for a new iPhone, we've laid out a few deals on older unlocked models here, along with some carrier promotions.",
+            "published": "2023-11-26"
+        },
+        {
+            "@type": "snap:textAsset",
+            "title": "Cyber Monday Updates",
+            "summary": "Published November 26, 2023: We've updated prices throughout for Cyber Monday sales, and added a few more deals including the Otterbox sale, HyperDrive 6-in-1 Dongle, and Macbook Pro 16-inch laptop.",
+            "published": "2023-11-26"
+        }
+    ]
+}
+```

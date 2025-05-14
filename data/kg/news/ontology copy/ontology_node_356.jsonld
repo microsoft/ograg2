@@ -1,0 +1,111 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "NTPC: Why investors can accumulate this stock",
+            "byline": null,
+            "published": "2023-11-11T16:26:58+00:00",
+            "summary": "The Power Ministry has scheduled tenders of around 50 GW annually of renewable energy for the next five years, to achieve the target of 500 GW of non-fossil fuel capacity. Alongside the government’s thrust on ramping up renewable energy capacity, building incremental thermal capacity has also been a priority. This is because energy security has become an important issue with consistent increase in demand in recent years; power demand is now at all-time high/peak levels. PSU thermal major NTPC appears to be well-placed to capture both themes — energy transition and energy security.",
+            "associatedAsset": {
+                "@type": "TextAsset",
+                "image": "https://www.thehindubusinessline.com/portfolio/stock-fundamental-analysis-india/ntpc-why-investors-can-accumulate-this-stock/article67517684.ece"
+            }
+        },
+        {
+            "@type": "Organization",
+            "name": "NTPC"
+        },
+        {
+            "@type": "Organization",
+            "name": "Business Line"
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "NTPC Stock Analysis",
+            "eventSummary": "Since our accumulate rating on NTPC in bl.portfolio dated August 13, 2023, the stock has gained around 48 per cent. This has been majorly on account of growth in earnings as well as re-rating in the stock from the trailing P/E of around 10 times then, to 12 times now. During FY23, the company’s revenue increased by around 32 per cent. While there was flattish growth in PAT during the period on account of increase in fuel cost, the same grew nearly 30 per cent YoY in H1FY24. NTPC is now trading at a one-year forward P/E of around 11 times, which is around 35 per cent higher than its historical five-year average P/E of around 8.2 times."
+        }
+    ]
+}
+```

@@ -1,0 +1,136 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "title": "Ozempic, Wegovy may be linked to stomach paralysis and other digestive issues in large-scale study",
+      "byline": null,
+      "published": "2023-10-07T09:30:42+00:00",
+      "summary": "Popular weight loss drugs like Wegovy and Ozempic could increase the risk of stomach paralysis as well as several other serious gastrointestinal conditions, according to a study published Thursday in JAMA.",
+      "associatedAsset": {
+        "@type": "snap:organization",
+        "name": "FOX News - Health"
+      },
+      "url": "https://www.foxnews.com/health/ozempic-wegovy-may-be-linked-stomach-paralysis-other-digestive-issues-large-scale-study"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Study on GLP-1 Agonists",
+      "eventSummary": "A study published in JAMA links GLP-1 receptor agonists like Ozempic and Wegovy to increased risks of stomach paralysis and other gastrointestinal issues.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "health"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Dr. Mahyar Etminan",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "The University of British Columbia"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Mohit Sodhi",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "The University of British Columbia"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Dr. Ernst von Schwarz",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "California-based cardiologist"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Novo Nordisk"
+    }
+  ]
+}
+```

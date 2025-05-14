@@ -1,0 +1,119 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Apple Watch Ultra",
+      "summary": "The second-gen Apple Watch Ultra packs a brighter 3,000-nit display, the latest S9 chip, and the new ultra-wideband chip for precision-locating your phone.",
+      "created": "2023-10-01T00:00:00Z",
+      "modified": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Beats and AirPods Deals",
+      "summary": "The Powerbeats Pro are older but still our top pick for earbuds with the most secure fit. The Beats Studio Pro Wireless Headphones pack excellent noise canceling.",
+      "created": "2023-10-01T00:00:00Z",
+      "modified": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Apple Charger Deals",
+      "summary": "Anker MagGo 637 is a compact and tidy charger. The Zendure SuperTank Pro is the largest portable battery you can get away with taking onto an airplane.",
+      "created": "2023-10-01T00:00:00Z",
+      "modified": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Phone Cases and Accessory Deals",
+      "summary": "Lume Cube Mobile Creator Kit 2.0 is a great and convenient all-in-one solution if you shoot content with your smartphone.",
+      "created": "2023-10-01T00:00:00Z",
+      "modified": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    }
+  ]
+}
+```

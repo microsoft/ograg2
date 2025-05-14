@@ -1,0 +1,197 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "The best controllers for PC gaming",
+            "author": "Cameron Faulkner",
+            "theme": "entertainment",
+            "summary": "Polygon’s What to Buy has rounded up the best in gaming hardware, entertainment, tabletop, merch, and toys, and how to get them for the best value, so you spend less time shopping and more time enjoying. Finding the best controller for playing PC games is a more personal journey than it sounds. It’s got to be comfortable to use, with every button, stick, and trigger easily in reach. It’s also important that you’re getting the features you want.",
+            "created": "2023-11-17T13:15:48+00:00",
+            "published": "2023-11-17T13:15:48+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Microsoft Xbox controller",
+                        "eventSummary": "The Xbox controller got the highest number of endorsements of any controller. This speaks to its comfort and value, and that Microsoft has released enough colors to satisfy varying tastes in design.",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Nicole Carpenter",
+                                    "dateOfBirth": "xmls:date",
+                                    "dateOfDeath": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "xmls:string"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Microsoft",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "xmls:string"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Sony DualSense controller",
+                        "eventSummary": "The DualSense is the official controller for the PS5. In games that support its features, it can have realistic-feeling haptic feedback and gyroscopic motion controls.",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Nicole Clark",
+                                    "dateOfBirth": "xmls:date",
+                                    "dateOfDeath": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "xmls:string"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Sony",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "xmls:string"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Nintendo Switch Pro controller",
+                        "eventSummary": "The Switch Pro controller is another staff favorite. If it’s a great Nintendo Switch and PC controller you’re after, this is the pinnacle in terms of comfort, durability, battery life, and other Switch-specific extras.",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Oli Welsh",
+                                    "dateOfBirth": "xmls:date",
+                                    "dateOfDeath": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "xmls:string"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Nintendo",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "xmls:string"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "8BitDo Ultimate 2.4g controller",
+                        "eventSummary": "8BitDo has released a lot of controllers in recent years, but the name for its Ultimate controller is fitting. It has many of the features from its best gamepads, plus some extras that should settle any sticker shock associated with its $49.99 price.",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "8BitDo",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "xmls:string"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

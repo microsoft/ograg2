@@ -1,0 +1,164 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Fantasy Football Week 13 Lineup Decisions: Starts, Sits, Sleepers, Busts to know for every game",
+            "author": "Dave Richard",
+            "published": "2023-11-30T22:10:58+00:00",
+            "theme": "sports",
+            "summary": "Fantasy Football is all about the matchups. Even though you drafted your team with certain hopes and intentions, your weekly lineup decisions shouldn't be determined by the order you picked your players in. You need to check who your players play and make sure you've got the right guys in -- and the wrong guys out.",
+            "url": "https://www.cbssports.com/fantasy/football/news/fantasy-football-week-13-lineup-decisions-starts-sits-sleepers-busts-to-know-for-every-game/",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Start 'em",
+                        "eventSummary": "Dak Prescott, CeeDee Lamb, Tony Pollard, DK Metcalf (low-end WR2), Jake Ferguson, Cowboys DST",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Dak Prescott"
+                                },
+                                {
+                                    "name": "CeeDee Lamb"
+                                },
+                                {
+                                    "name": "Tony Pollard"
+                                },
+                                {
+                                    "name": "DK Metcalf"
+                                },
+                                {
+                                    "name": "Jake Ferguson"
+                                },
+                                {
+                                    "name": "Cowboys DST"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Sit 'em",
+                        "eventSummary": "Tyler Lockett (flex at best), Geno Smith, Jaxon Smith-Njigba, Zach Charbonnet, Michael Gallup, Seahawks DST",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Tyler Lockett"
+                                },
+                                {
+                                    "name": "Geno Smith"
+                                },
+                                {
+                                    "name": "Jaxon Smith-Njigba"
+                                },
+                                {
+                                    "name": "Zach Charbonnet"
+                                },
+                                {
+                                    "name": "Michael Gallup"
+                                },
+                                {
+                                    "name": "Seahawks DST"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Sleepers",
+                        "eventSummary": "Brandin Cooks",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Brandin Cooks"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "modified": "2023-11-30T22:10:58+00:00"
+        }
+    ]
+}

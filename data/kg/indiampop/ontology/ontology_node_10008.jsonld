@@ -1,0 +1,41 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Thinning and Gap Filling",
+            "weed_types": [
+                "Hoeing",
+                "Hand-Weeding",
+                "Earthing Up"
+            ],
+            "herbicides": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Hoe and hand-weed",
+                "quantity": "On the 30th day of sowing",
+                "stage": "Earth up and form new ridges so that the plants come directly on the top of the ridges. This will provide additional anchorage to the plants."
+            }
+        }
+    ]
+}

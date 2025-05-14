@@ -1,0 +1,170 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Charlie Hall",
+      "published": "2023-12-13T15:00:00+00:00",
+      "title": "The best tabletop RPGs we played in 2023",
+      "summary": "After more than a decade of going on and on about the “board gaming renaissance,” it’s safe to say that tabletop role-play is finally having its moment in the spotlight. But while Dungeons & Dragons’ OGL fiasco has clearly lit a fire under many players eager to make a change, the fact of the matter is that a sizeable cohort of writers and designers have been toiling away at excellent games for years now. Their tireless efforts have yielded a bumper crop of excellent, some might say genre-defining, TTRPGs. Just like board games, a few modern classics have also cropped up: Look no further than The Quiet Year and The One Ring, both making their second appearance on this list.",
+      "associatedAsset": [
+        {
+          "@type": "TextAsset",
+          "image": "https://www.polygon.com/23989775/best-tabletop-rpgs-2022"
+        }
+      ]
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "City of Winter",
+      "eventSummary": "Linda Codega, Ennie Award-winning entertainment journalist, describes City of Winter as a game with lightweight rules but a heavy emphasis on ephemera, focusing on themes of assimilation, diaspora, and baggage."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Dead After Dinner",
+      "eventSummary": "Jason Morningstar describes Jenn Martin’s game Dead After Dinner as a hilarious murder mystery combining procedural revelation with Knives Out-style intrigue."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Desperation",
+      "eventSummary": "Tim Hutchings describes Desperation by Jason Morningstar as a card-driven TTRPG with a marvelous mechanic that makes for rich storytelling."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Dungeon Crawl Classics",
+      "eventSummary": "Thilo Graf of AAW Games praises Dungeon Crawl Classics by Goodman Games for its aesthetics and emphasis on player skill."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Dungeons & Dragons",
+      "eventSummary": "Mike Haracz and Petrana Radulovic share their experiences with Dungeons & Dragons, highlighting the joy of long-term campaigns and the impact of Baldur’s Gate 3."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Eating Oranges in the Shower",
+      "eventSummary": "Sam Dunnewold describes Hazel Anneke Dixon’s game as a delightful LARP about eating oranges in the shower, capturing the magic of niche online communities."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Exquisite Biome",
+      "eventSummary": "Everest Pipkin describes Exquisite Biome as a world-building TTRPG focusing on ecological biomes, likening it to being David Attenborough on an alien planet."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Fetch My Blade",
+      "eventSummary": "A solo journaling RPG by Kelly Tran and Ethan Yen where players role-play as a dog retrieving a master’s weapon for a duel."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Home",
+      "eventSummary": "Wesley “Nox” Crowe describes Home as a haunted house exploration game using custom tarot cards, playable solo or with a group."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "The Luminant Age",
+      "eventSummary": "A Pathfinder 2nd edition-compatible setting with unique ancestries and a city built on oil-rig-like platforms in the open ocean."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Marvel Multiverse Role-playing Game",
+      "eventSummary": "A lightweight superhero RPG devoted to giving players the feeling of being a hero in the Marvel universe."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Masks of the Masks",
+      "eventSummary": "A tabletop RPG presented as a fully illustrated comic book, exploring the violence inherent in superhero comics."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "The Monster Overhaul",
+      "eventSummary": "A reimagined bestiary with unique categories and tables to build and flesh out encounters."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Reach of the Roach God",
+      "eventSummary": "A system-agnostic setting inspired by Southeast Asian folklore, featuring the roach god Odoyoq."
+    }
+  ]
+}
+```

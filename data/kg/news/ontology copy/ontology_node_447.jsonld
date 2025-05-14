@@ -1,0 +1,127 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "title": "Is Kevin Durant the Most Disrespected Superstar in the History of NBA?",
+            "byline": "Dushyant Singh",
+            "published": "2023-12-01T20:46:09+00:00",
+            "summary": "The NBA is home to the world’s best basketball players and teams, with it being the pinnacle of the sport. Throughout its history, iconic figures like Magic Johnson, Larry Bird, Kareem Abdul-Jabbar, and Michael Jordan have left an indelible mark on the league. However, for the better part of the past two decades, players like Stephen Curry, LeBron James and Kevin Durant have dominated the NBA landscape. Their otherworldly talents have continuously captivated the fans across the globe. While LeBron James and Stephen Curry may have accumulated more championships and accolades, Kevin Durant, without a doubt, is universally acknowledged as the best pure talent of his generation.",
+            "associatedAsset": {
+                "@type": "snap:imageAsset",
+                "image": "https://www.essentiallysports.com/nba-active-basketball-news-perspective-is-kevin-durant-the-most-disrespected-superstar-in-the-history-of-nba/"
+            }
+        },
+        {
+            "@type": "snap:person",
+            "name": "Kevin Durant",
+            "notablyAssociatedWith": {
+                "@type": "snap:event",
+                "eventTitle": "NBA Playoffs 2023",
+                "eventSummary": "May 1, 2023; Denver, Colorado, USA; Phoenix Suns forward Kevin Durant (35) reacts in the second half against the Denver Nuggets during game two of the 2023 NBA playoffs at Ball Arena. Mandatory Credit: Ron Chenoy-USA TODAY Sports"
+            }
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Phoenix Suns"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Brooklyn Nets"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Golden State Warriors"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Seattle SuperSonics"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Oklahoma City Thunder"
+        }
+    ]
+}
+```

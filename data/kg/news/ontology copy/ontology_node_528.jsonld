@@ -1,0 +1,98 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Shrabana Sengupta",
+            "published": "2023-11-18T21:21:03+00:00",
+            "title": "Unraveling Potential Reasons Why the Dodgers May Not Pursue Shohei Ohtani and Mike Trout in Free Agency Despite Their Availability",
+            "summary": "The Los Angeles Angels have gone through a tough year. After a heartbreaking 2023 season, they now have to cope with the impending exit of their star two-way star, Shohei Ohtani. The team is also open to trading their nine-time Silver Slugger hitter Mike Trout, should he request it. In a huge miss, a team that couldn’t do well even with two of the league’s biggest talents on their roster may lose said stars at the same time. Will they choose to stay in LA? America’s Favorite Video Today The Halos’ cross-town rivals, the Los Angeles Dodgers, have been eyeing the dynamic Troutani duo for a long time. However, despite fans’ expectations, the Dodgers’ Ohtani-Trout conquest might not take place—and for good reasons. Do the Dodgers have the budget to afford Ohtani and Trout on the same roster? Shohei Ohtani’s next projected contract value is predicted to be around $500–$600 million. If it goes through, he will break Trout’s biggest MLB deal record of 12 years, $426.5 million. Now, we all know that the Dodgers have deep pockets; they have managed to maintain quite a costly lineup this season valued at $283 million. But can they afford two of baseball’s biggest superstars at full value? Now, with Trout’s $426.5 million tagline, the slugger has an annual salary of about $35.45 million. He still has seven years left on his Angels contract, so get him in blue, the Dodgers will have to pay $248.15 million plus any extension value. Shohei Ohtani’s predicted $535 million for 11 years (according to a Sports Illustrated segment) will bring the Dodgers down to pay him a good $48.63 million annually. The Dodgers already have six players whom they have to pay above $10 million a year: Freddie Freeman ($27 million), Mookie Betts ($25 million), Clayton Kershaw ($20 million), Chris Taylor ($15 million), Max Muncy ($13.5 million), and J.D. Martinez ($10 million). Among the top-paid players, Clayton Kershaw is exiting the team this season. That, along with a few other player offloads, will free up enough space in the Dodgers payroll to support two $25 million or three $10 million p/a players on their team. Neither Trout nor Ohtani falls within that price range, so keeping both together at the same time would not be a feasible option for the Dodgers right now. Pitchers or Hitters? Who Will the Dodgers Prioritize This Free Agency? The Dodgers have been in dire need of pitchers for a few seasons. Their current highest strikeout rate by a pitcher in a single postseason is 137 SOs by Clayton Kershaw, followed by 119 SOs by Bobby Miller and 117 SOs by Julio Urias. With Shohei Ohtani’s high strikeout rate of 167 this season, he’ll be an invaluable addition to the team. However, there’s a little hiccup that could keep that from happening. Ohtani will not be available to pitch throughout the 2024 season due to an elbow ligament injury he’s currently recovering from. Given the pitcher’s unavoidable absence, it will not be advisable for the Dodgers to hire him until 2025. Yes, Ohtani does have magnificent hitting form as well. However, the team already has hitters like Freeman and Betts, who have scored 211 and 179 hits this regular season, respectively. Speaking of hitters, why will they still want Trout to join the team despite having better-than-average hitters on the team? Why will the Dodgers sign an injury-prone Trout? Mike Trout might have been absent for most of the 2023 season, but his career records boast the story of a legendary hitter who has given more than his salt’s worth to his current team. He has bagged 1624 hits and 940 RBIs with an 85.2 WAR and .301 BA across his 12-year-long baseball career. Unfortunately, Trout has become a victim of an injury streak, starting in 2022. He got his hands, left groin, back, and foot injured five times in the entire season; in 2023, he faced two hand injuries in two consecutive months. Despite his injury-prone history, the more logical option for the Dodgers would be to choose Trout over Ohtani; the team will not be able to afford them both at the same time. Trout comes with a cheaper price tag of $35.45 million compared to Ohtani’s projected $48.63 million. The Dodgers could use his All-Star form in between injuries if he still keeps getting them in 2024. With Shohei Ohtani, the Dodgers would be wasting a year letting him play at-bat, with a high chance of getting him further injured and missing more pitching time. Isn’t it better to have a consistently wounded soldier than risk losing an overperforming one in a game of chances? Why would Mike Trout switch to another Los Angeles team? Trout has been pretty persistent about sticking with the Los Angeles Angels from the very start. The team has been transparent about not stopping him should he choose to play for another team, but he does not want to do that. However, it seems that the Angels will have a hard time affording a player like Trout in the foreseeable future, as they have to win a good number of games to stay in the playoffs and keep a steady income of revenue throughout the seasons. Considering their 73-game win record this season, that seems like a pipe dream right now. Trout is 32 years old, which means that he has already hit the MLB average retirement age of 30. He still has a lot left to give to the diamond for approximately 6 more years. If the Dodgers have the chance to draft them, should they go with Ohtani, Trout, both, or neither? Let us know your opinions in the comment box. Watch This Story: Shohei Ohtani’s Two-Way Dream: Before Injury, He Always Wanted Both!",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "url": "https://www.essentiallysports.com/mlb-baseball-news-perspective-unraveling-potential-reasons-why-the-dodgers-may-not-pursue-shohei-ohtani-and-mike-trout-in-free-agency-despite-their-availability/"
+            }
+        }
+    ]
+}
+```

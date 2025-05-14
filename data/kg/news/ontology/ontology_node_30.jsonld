@@ -1,0 +1,138 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "6 VCs explain how startups can capture and defend marketshare in the AI era",
+            "author": "Alex Wilhelm",
+            "published": "2023-10-13T20:01:40+00:00",
+            "theme": "technology",
+            "summary": "You cannot escape conversations about AI no matter how far or fast you run. Hyperbole abounds around what current AI tech will be able to do (revolutionize every industry!) and what current AI tech will be able to do (take over the world!). Closer to the ground, TechCrunch+ is working to understand where startups might find footholds in the market by levering large language models (LLMs), a recent and impactful new method of creating artificially intelligent software.",
+            "has_events": {
+                "@list": [
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Discussion on AI in Startups",
+                        "eventSummary": "A discussion with venture capitalists on how startups can leverage AI technologies.",
+                        "theme": "AI and Startups",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Rick Grinnell"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Edward Tsai"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Lisa Calhoun"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Glasswing Ventures"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Alumni Ventures"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Valor VC"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "TechCrunch"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "modified": "2023-10-13T20:01:40+00:00"
+        }
+    ]
+}

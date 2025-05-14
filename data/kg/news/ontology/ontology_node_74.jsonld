@@ -1,0 +1,318 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "NFL Player Analysis",
+            "author": "Sportsline",
+            "theme": "Sports",
+            "summary": "Analysis of NFL players' performances and projections for upcoming games.",
+            "created": "2023-10-01T00:00:00Z",
+            "modified": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "hasThumbnail": "snap:imageAsset",
+            "has_events": [
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "Ferguson vs 49ers",
+                    "eventSummary": "Analysis of Ferguson's performance against the 49ers.",
+                    "theme": "Player Performance",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "Levi's Stadium, Santa Clara, CA"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Jake Ferguson",
+                            "dateOfBirth": "1998-12-02",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Cypress, TX"
+                            },
+                            "alias": "Ferguson"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Dak Prescott",
+                            "dateOfBirth": "1993-07-29",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Sulphur, LA"
+                            },
+                            "alias": "Prescott"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization",
+                            "name": "Dallas Cowboys",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "AT&T Stadium, Arlington, TX"
+                            },
+                            "alias": "Cowboys"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "San Francisco 49ers",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Levi's Stadium, Santa Clara, CA"
+                            },
+                            "alias": "49ers"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "Purdy's Performance Review",
+                    "eventSummary": "Review of Brock Purdy's performance against the Cowboys.",
+                    "theme": "Player Performance",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "AT&T Stadium, Arlington, TX"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Brock Purdy",
+                            "dateOfBirth": "1999-12-27",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Queen Creek, AZ"
+                            },
+                            "alias": "Purdy"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization",
+                            "name": "San Francisco 49ers",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Levi's Stadium, Santa Clara, CA"
+                            },
+                            "alias": "49ers"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Dallas Cowboys",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "AT&T Stadium, Arlington, TX"
+                            },
+                            "alias": "Cowboys"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "Jordan Love's Matchup Analysis",
+                    "eventSummary": "Analysis of Jordan Love's upcoming game against the Raiders.",
+                    "theme": "Player Performance",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "Lambeau Field, Green Bay, WI"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Jordan Love",
+                            "dateOfBirth": "1999-11-02",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Burlington, WI"
+                            },
+                            "alias": "Love"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization",
+                            "name": "Green Bay Packers",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Lambeau Field, Green Bay, WI"
+                            },
+                            "alias": "Packers"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Las Vegas Raiders",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Allegiant Stadium, Paradise, NV"
+                            },
+                            "alias": "Raiders"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "Justin Fields' Performance Review",
+                    "eventSummary": "Review of Justin Fields' performance against the Commanders.",
+                    "theme": "Player Performance",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "FedExField, Landover, MD"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Justin Fields",
+                            "dateOfBirth": "1999-03-05",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Kennesaw, GA"
+                            },
+                            "alias": "Fields"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization",
+                            "name": "Chicago Bears",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Soldier Field, Chicago, IL"
+                            },
+                            "alias": "Bears"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Washington Commanders",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "FedExField, Landover, MD"
+                            },
+                            "alias": "Commanders"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "Sam Howell's Matchup Analysis",
+                    "eventSummary": "Analysis of Sam Howell's upcoming game against the Bears.",
+                    "theme": "Player Performance",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "FedExField, Landover, MD"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Sam Howell",
+                            "dateOfBirth": "1999-09-16",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Monroe, NC"
+                            },
+                            "alias": "Howell"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization",
+                            "name": "Washington Commanders",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "FedExField, Landover, MD"
+                            },
+                            "alias": "Commanders"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Chicago Bears",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Soldier Field, Chicago, IL"
+                            },
+                            "alias": "Bears"
+                        }
+                    ]
+                }
+            ],
+            "followUp": "snap:asset",
+            "derivedFrom": "snap:asset"
+        }
+    ]
+}

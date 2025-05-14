@@ -1,0 +1,137 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Sheena Vasani",
+      "published": "2023-12-18T19:26:44+00:00",
+      "title": "Here are the shipping deadlines to get your holiday gifts on time",
+      "summary": "The same thing happens year after year. Things get busy with work, school, and life in general until you’re suddenly up against the clock as you race your gifts to your local post office, FedEx store, or UPS location. We’ve all been there, but we’d like to be of some help as you plan your next move and begin sending out your holiday packages.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "Illustration by Alex Castro / The Verge"
+      }
+    },
+    {
+      "@type": "Organization",
+      "name": "The Verge"
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "UPS 2023 Holiday Shipping Deadlines",
+      "eventSummary": "UPS 2023 Holiday Shipping Deadlines Final day to ship Ships via this service December 19th UPS 3 Day Select December 20th UPS 2nd Day Air December 21st UPS Next Day Air"
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "FedEx 2023 Holiday Shipping Deadlines",
+      "eventSummary": "FedEx 2023 Holiday Shipping Deadlines Final day to ship Ships via this service December 19th FedEx Express Saver December 20th FedEx 2Day and 2Day A.M. December 22nd FedEx SameDay"
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "USPS 2023 Holiday Shipping Deadlines",
+      "eventSummary": "USPS 2023 Holiday Shipping Deadlines Final day to ship Ships via this service December 20th First-Class Mail December 20th USPS Ground Advantage December 21st Priority Mail December 21st Priority Mail Express"
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Amazon Prime Shipping Deadlines",
+      "eventSummary": "If you subscribe to Amazon Prime and live in an eligible ZIP code in the US, you can get Same-Day Delivery on certain items through December 24th. Prime members can get One-Day Delivery for eligible products through December 23rd with no minimum purchase amount or Two-Day Delivery through December 22nd."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Best Buy 2023 Shipping Deadlines",
+      "eventSummary": "Best Buy 2023 deadlines If you’re a My Best Buy Plus and My Best Buy Total subscriber, you can get free two-day shipping, and there’s no order minimum. December 21st at 11:30AM ET is the cutoff date for free shipping if you want your package to arrive by December 23rd."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Walmart 2023 Shipping Deadlines",
+      "eventSummary": "Walmart offers two-day shipping on items sold directly from Walmart, with orders over $35 shipping for free. You must place orders by 2PM local time on December 21st to receive the package in time for Christmas."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Target 2023 Shipping Deadlines",
+      "eventSummary": "Both same-day delivery and in-store pickup are available to you if you place an order by 6PM local time on Christmas Eve. Target RedCard credit card holders receive free two-day shipping on many items from the retailer’s website."
+    }
+  ]
+}
+```

@@ -1,0 +1,237 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "snap:asset",
+      "title": "Top 10 Games of 2023",
+      "author": "Various Authors",
+      "theme": "Video Games",
+      "content": "A lesser game would have shrunk in the face of such intimidating source material, but the Resident Evil 4 remake achieved the balancing act in spades. —M. Mahardy",
+      "created": "2023-10-01T00:00:00Z",
+      "modified": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "snap:event",
+          "eventTitle": "Armored Core 6: Fires of Rubicon",
+          "eventSummary": "The giant robot you pilot heaves with the weight of a six-story building but flies into the sky as nimble as a hummingbird.",
+          "theme": "Video Games",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization1",
+              "@type": "snap:organization",
+              "name": "FromSoftware"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event2",
+          "@type": "snap:event",
+          "eventTitle": "Jusant",
+          "eventSummary": "Boulderers, or rock climbers who don’t use safety gear but also don’t ascend very high, have a word for the routes they climb: problems.",
+          "theme": "Video Games",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization2",
+              "@type": "snap:organization",
+              "name": "Don’t Nod"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event3",
+          "@type": "snap:event",
+          "eventTitle": "Marvel’s Spider-Man 2",
+          "eventSummary": "Marvel’s Spider-Man 2 builds on the successes of the first game, both narratively and in its immensely satisfying gameplay.",
+          "theme": "Video Games",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization3",
+              "@type": "snap:organization",
+              "name": "Insomniac Games"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event4",
+          "@type": "snap:event",
+          "eventTitle": "Street Fighter 6",
+          "eventSummary": "Capcom has hit the gym and returned stronger than before with Street Fighter 6.",
+          "theme": "Video Games",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization4",
+              "@type": "snap:organization",
+              "name": "Capcom"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event5",
+          "@type": "snap:event",
+          "eventTitle": "Cocoon",
+          "eventSummary": "You play as a buglike creature that picks up and places glowing orbs to solve puzzles.",
+          "theme": "Video Games",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization5",
+              "@type": "snap:organization",
+              "name": "Geometric Interactive"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event6",
+          "@type": "snap:event",
+          "eventTitle": "Pikmin 4",
+          "eventSummary": "Pikmin 4 is like the perfect amalgamation of Pikmin games.",
+          "theme": "Video Games",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization6",
+              "@type": "snap:organization",
+              "name": "Nintendo EPD, Eighting"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event7",
+          "@type": "snap:event",
+          "eventTitle": "Super Mario Bros. Wonder",
+          "eventSummary": "Super Mario Bros. Wonder is a musical, a quiz show, a race, or a hidden object game.",
+          "theme": "Video Games",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization7",
+              "@type": "snap:organization",
+              "name": "Nintendo EPD"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event8",
+          "@type": "snap:event",
+          "eventTitle": "Alan Wake 2",
+          "eventSummary": "Alan Wake 2 is full of words but few are in order.",
+          "theme": "Video Games",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization8",
+              "@type": "snap:organization",
+              "name": "Remedy Entertainment"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event9",
+          "@type": "snap:event",
+          "eventTitle": "Baldur’s Gate 3",
+          "eventSummary": "Baldur’s Gate 3 hit at the perfect moment.",
+          "theme": "Video Games",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization9",
+              "@type": "snap:organization",
+              "name": "Larian Studios"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event10",
+          "@type": "snap:event",
+          "eventTitle": "The Legend of Zelda: Tears of the Kingdom",
+          "eventSummary": "Princess Zelda is missing. Ganondorf has returned, somehow, and he’s really hot.",
+          "theme": "Video Games",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization10",
+              "@type": "snap:organization",
+              "name": "Nintendo EPD"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

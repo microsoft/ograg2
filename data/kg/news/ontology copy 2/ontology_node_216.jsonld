@@ -1,0 +1,180 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "title": "Accurate!",
+      "author": "Adrienne",
+      "theme": "Best Earplugs",
+      "content": "I (Adrienne) have two pairs of these ear plugs, which are the Best for Sleep in our Best Earplugs guide. They are stylish, have different-sized ear tips, and stay put much more easily than the foam ones that you buy in a giant can. I like that they're reusable!",
+      "hasThumbnail": "Photograph: Loop",
+      "has_events": [
+        {
+          "@type": "EventList",
+          "Event": {
+            "eventTitle": "Best Prime Day Vacuum Deals",
+            "eventSummary": "Dyson V15 Detect Cordless Stick Vacuum Photograph: Dyson",
+            "theme": "Vacuum Deals",
+            "mentions_persons": [
+              {
+                "@type": "PersonList",
+                "Person": {
+                  "name": "Adrienne"
+                }
+              }
+            ],
+            "mentions_organizations": [
+              {
+                "@type": "OrganizationList",
+                "Organization": {
+                  "name": "Dyson"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "EventList",
+          "Event": {
+            "eventTitle": "Best Prime Day Lego and Other Toy Deals",
+            "eventSummary": "Lego Marvel Hulkbuster Photograph: Amazon",
+            "theme": "Toy Deals",
+            "mentions_persons": [
+              {
+                "@type": "PersonList",
+                "Person": {
+                  "name": "Adrienne"
+                }
+              }
+            ],
+            "mentions_organizations": [
+              {
+                "@type": "OrganizationList",
+                "Organization": {
+                  "name": "Amazon"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "EventList",
+          "Event": {
+            "eventTitle": "Best Prime Day TV and Soundbar Deals",
+            "eventSummary": "Samsung The Frame Photograph: Walmart",
+            "theme": "TV Deals",
+            "mentions_organizations": [
+              {
+                "@type": "OrganizationList",
+                "Organization": {
+                  "name": "Samsung"
+                }
+              },
+              {
+                "@type": "OrganizationList",
+                "Organization": {
+                  "name": "Walmart"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "EventList",
+          "Event": {
+            "eventTitle": "Best Prime Day Camera Deals",
+            "eventSummary": "GoPro Hero10 Photograph: GoPro",
+            "theme": "Camera Deals",
+            "mentions_organizations": [
+              {
+                "@type": "OrganizationList",
+                "Organization": {
+                  "name": "GoPro"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

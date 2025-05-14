@@ -1,0 +1,63 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Production": {
+            "@id": "cropCult:Production",
+            "@type": "schema:Thing",
+            "@context": {
+                "number_of_bunches_per_tree_per_year": "schema:QuantitativeValue",
+                "ffb_yield_t_per_ha_per_year": "schema:QuantitativeValue",
+                "gross_income_rs_per_ha_per_year": "schema:QuantitativeValue",
+                "net_income_rs_per_ha_per_year": "schema:QuantitativeValue"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "OILPALM",
+            "has_types": "PRODUCTION"
+        },
+        {
+            "@type": "Production",
+            "number_of_bunches_per_tree_per_year": {
+                "@type": "QuantitativeValue",
+                "value": "10 bunches"
+            },
+            "ffb_yield_t_per_ha_per_year": {
+                "@type": "QuantitativeValue",
+                "value": "14.3 t/ha/year"
+            },
+            "gross_income_rs_per_ha_per_year": {
+                "@type": "QuantitativeValue",
+                "value": "1,02,960 Rs./ha/year"
+            },
+            "net_income_rs_per_ha_per_year": {
+                "@type": "QuantitativeValue",
+                "value": "73,460 Rs./ha/year"
+            }
+        }
+    ]
+}

@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "C. Birds",
+            "pest_symptoms": "N/A",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Tying metalised reflective ribbon",
+                "quantity": "20 - 25 rolls ha-1",
+                "stage": "75 cm above the canopy of the vulnerable stage of the crop on bamboo poles, 2.5 – 3.0 m apart at"
+            }
+        }
+    ]
+}

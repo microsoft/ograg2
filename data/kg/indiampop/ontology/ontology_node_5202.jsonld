@@ -1,0 +1,96 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "RICE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "UPLAND RICE"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Apply well decomposed FYM or compost @ 5 t /ha with chemical fertilizers. It is better to apply fertilizer on the basis of soil test recommendation."
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "for_nutrients": "N:P:K @ 40:20:20, 30:20:20 and 60:30:30 kg/ha for improved, local and HYV, respectively be applied depending on the initial fertility of the soil and the yield potential of the variety."
+            },
+            "Fertilization": [
+                {
+                    "nutrient_name": "P & K",
+                    "quantity": "Full",
+                    "stage_of_application": "basal by broadcasting and mixing at final ploughing"
+                },
+                {
+                    "nutrient_name": "N",
+                    "quantity": "25%",
+                    "stage_of_application": "basal application to have early vigour of the seedlings where line sowing has been done"
+                },
+                {
+                    "nutrient_name": "N",
+                    "quantity": "75%",
+                    "stage_of_application": "first top dressing at the time of interculture (hoeing and weeding) in the third week from germination"
+                },
+                {
+                    "nutrient_name": "N",
+                    "quantity": "25%",
+                    "stage_of_application": "at the panicle initiation (PI) stage (18-20 days before panicle emergence)"
+                },
+                {
+                    "nutrient_name": "P",
+                    "quantity": "Full",
+                    "stage_of_application": "basal in well drained sandy soil"
+                },
+                {
+                    "nutrient_name": "N & K",
+                    "quantity": "Split",
+                    "stage_of_application": "in well drained sandy soil"
+                },
+                {
+                    "nutrient_name": "P & K",
+                    "quantity": "Full",
+                    "stage_of_application": "basal in other soils"
+                },
+                {
+                    "nutrient_name": "N",
+                    "quantity": "Split",
+                    "stage_of_application": "in other soils"
+                }
+            ]
+        }
+    ]
+}

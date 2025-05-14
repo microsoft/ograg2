@@ -1,0 +1,128 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "title": "Rubber Case Review",
+            "summary": "It is everything I have ever wanted in a rubber case and more. To have both my SD card reader and all my cards in one place is priceless (well, actually $39.95). Thank you, Vjeran. <3"
+        },
+        {
+            "@type": "snap:textAsset",
+            "title": "Mobile Tripod for Holiday Snaps",
+            "byline": "Jess Weatherbed, news writer",
+            "summary": "A decent Bluetooth-enabled tripod can resolve these issues. I’ve had good experiences using Atumtek’s 60-inch Self-Stick Tripod — it features a discreet, detachable Bluetooth shutter remote that you can pair with your smartphone."
+        },
+        {
+            "@type": "snap:textAsset",
+            "title": "Car-Friendly Charger",
+            "byline": "Sean Hollister, senior editor",
+            "summary": "A standard Qi charger is about the best you’ll get — and the bulky but practical iOttie Easy One Touch Qi does it with the satisfying snap of springs."
+        },
+        {
+            "@type": "snap:textAsset",
+            "title": "Colorful Fanny Pack",
+            "byline": "Victoria Song, senior reviewer",
+            "summary": "This bag easily fits my wallet, phone, house keys, car keys, hand sanitizer, and chapstick — everything I need when I take walks or run errands."
+        },
+        {
+            "@type": "snap:textAsset",
+            "title": "ChomChom Pet Hair Remover",
+            "byline": "Mitchell Clark, former news writer",
+            "summary": "The ChomChom pet hair remover is an extraordinarily simple device — it’s basically a couple of pieces of plastic, fabric, and rubber."
+        },
+        {
+            "@type": "snap:textAsset",
+            "title": "Fuzzy Cat Bed",
+            "byline": "Elizabeth Lopatto, senior reporter",
+            "summary": "Jeeves loves to be in the office with me while I work. To make her cozier, I got her this fuzzy cat bed."
+        },
+        {
+            "@type": "snap:textAsset",
+            "title": "Distracting Dog Toy",
+            "byline": "Kaitlin Hatton, audience manager",
+            "summary": "Trudee, otherwise known as My Boss, is notoriously insistent on being the focus of my attention. The Pet Fit For Life Plush Wand has a toy attached to a long chewable rope."
+        }
+    ]
+}
+```

@@ -1,0 +1,141 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "MAIZE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Maize",
+                "used_for": "Cereal crop"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Andhra Pradesh",
+                    "has_regions": ["Andhra Pradesh"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Maize"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Start of Kharif season",
+                            "end_date": "End of Kharif season"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Start of Kharif season",
+                            "end_date": "End of Kharif season"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "Recommended seeding rate for Maize in Andhra Pradesh"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Recommended nutrients for Maize in Andhra Pradesh",
+                            "quantity": "Recommended quantity of nutrients for Maize in Andhra Pradesh",
+                            "stage_of_application": "Recommended stage of application for nutrients for Maize in Andhra Pradesh"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Recommended temperature for germination of Maize in Andhra Pradesh",
+                "for_flowering": "Recommended temperature for flowering of Maize in Andhra Pradesh",
+                "for_grain_filling": "Recommended temperature for grain filling of Maize in Andhra Pradesh",
+                "negative_effect": "Temperature range that negatively affects Maize in Andhra Pradesh"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Recommended soil type for Maize in Andhra Pradesh",
+                "avoid_soil_type": "Soil type to avoid for Maize in Andhra Pradesh",
+                "for_water": "Soil water requirements for Maize in Andhra Pradesh",
+                "for_nutrients": "Soil nutrient requirements for Maize in Andhra Pradesh"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Land preparation instructions for Maize in Andhra Pradesh",
+                "with_soil_moisture": "Soil moisture requirements during land preparation for Maize in Andhra Pradesh"
+            },
+            "seed_germination_test_requirements_are": "Seed germination test requirements for Maize in Andhra Pradesh",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Recommended fungicide for Maize in Andhra Pradesh",
+                "quantity": "Recommended quantity of fungicide for Maize in Andhra Pradesh"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Recommended sowing time for Maize in Andhra Pradesh",
+                "value": "Recommended seed spacing for Maize in Andhra Pradesh",
+                "depth": "Recommended seed depth for Maize in Andhra Pradesh",
+                "method": "Recommended sowing method for Maize in Andhra Pradesh"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Common weeds affecting Maize in Andhra Pradesh",
+                "weed_types": ["List of common weed types affecting Maize in Andhra Pradesh"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Recommended herbicides for Maize in Andhra Pradesh",
+                    "quantity": "Recommended quantity of herbicides for Maize in Andhra Pradesh",
+                    "stage": "Recommended stage of application for herbicides for Maize in Andhra Pradesh"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Recommended irrigation quantity for Maize in Andhra Pradesh",
+                "stage_of_application": "Recommended stage of application for irrigation for Maize in Andhra Pradesh"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Common diseases affecting Maize in Andhra Pradesh",
+                "disease_symptoms": "Symptoms of common diseases affecting Maize in Andhra Pradesh",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Recommended disease control measures for Maize in Andhra Pradesh",
+                    "quantity": "Recommended quantity of disease control measures for Maize in Andhra Pradesh",
+                    "stage": "Recommended stage of application for disease control measures for Maize in Andhra Pradesh"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Common pests affecting Maize in Andhra Pradesh",
+                "pest_symptoms": "Symptoms of common pests affecting Maize in Andhra Pradesh",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Recommended pest control measures for Maize in Andhra Pradesh",
+                    "quantity": "Recommended quantity of pest control measures for Maize in Andhra Pradesh",
+                    "stage": "Recommended stage of application for pest control measures for Maize in Andhra Pradesh"
+                }
+            },
+            "harvesting_guidelines_are": "Harvesting guidelines for Maize in Andhra Pradesh",
+            "storage_guidelines_are": "Storage guidelines for Maize in Andhra Pradesh"
+        }
+    ]
+}

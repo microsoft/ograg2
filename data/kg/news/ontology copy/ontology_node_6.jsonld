@@ -1,0 +1,128 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "title": "Ground-breaking Gold Coast: Suns make AFLW finals for a second time",
+      "byline": "Joanna Guelas",
+      "published": "2023-11-03T23:45:04+00:00",
+      "summary": "The Gold Coast Suns have secured their second AFLW finals appearance.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://www.theage.com.au/sport/afl/ground-breaking-gold-coast-suns-make-aflw-finals-for-a-second-time-20231103-p5ehk0.html?ref=rss&utm_medium=rss&utm_source=rss_sport"
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "WEEK ONE FINALS FIXTURE",
+      "eventSummary": "SATURDAY NOVEMBER 11 First Qualifying Final: Adelaide v Brisbane Lions, 2.35pm local (3.05pm AEDT), Norwood Oval First Elimination Final: Gold Coast v Sydney, 6.15pm local (7.15pm AEDT), Heritage Bank Stadium SUNDAY NOVEMBER 12 Second Elimination Final: Geelong v Essendon, 1.05pm AEDT, GMHBA Stadium Second Qualifying Final: Melbourne v North Melbourne, 3.05pm AEDT, Ikon Park"
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Demons denied the minor premiership",
+      "eventSummary": "The Brisbane Lions have toppled AFLW heavyweights Melbourne by 25 points to clinch a double chance in the finals and deny the Demons the minor premiership."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Cats secure elimination final home-ground advantage",
+      "eventSummary": "Geelong have secured their spot in the top eight with a huge 40-point win over Hawthorn on Saturday at GMHBA Stadium."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Tears abound in Phillips’ emotional farewell",
+      "eventSummary": "There were emotional scenes at Alberton Oval as the siren sounded on AFLW great Erin Phillips’ last game, with Port Adelaide saluting her with a huge 58-point win over Greater Western Sydney."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Roos’ lock in top-four spot",
+      "eventSummary": "North Melbourne secured third spot on the ladder and the double chance in finals after downing the Western Bulldogs by a whopping 46 points."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Suns secure finals spot",
+      "eventSummary": "Unsung hero Lucy Single has helped Gold Coast book their second AFLW finals appearance with a 14-point win over Essendon."
+    }
+  ]
+}
+```

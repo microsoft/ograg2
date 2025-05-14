@@ -1,0 +1,48 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name"
+            }
+        },
+        "SeedList": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List",
+                "has_early_sowing_time": "cropCult:SowingTime",
+                "has_late_sowing_time": "cropCult:SowingTime",
+                "has_seeding_rate": "schema:QuantitativeValue",
+                "has_fertilizer_application_requirements": "cropCult:Fertilization"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "ONION"
+        },
+        {
+            "@type": "SeedList",
+            "variety_name": "N-53",
+            "has_early_sowing_time": {
+                "@type": "SowingTime",
+                "start_date": "Kharif season"
+            },
+            "has_seeding_rate": {
+                "@type": "schema:QuantitativeValue",
+                "value": "200-250 q/ha"
+            },
+            "has_fertilizer_application_requirements": {
+                "@type": "Fertilization",
+                "nutrient_name": "Not specified",
+                "quantity": "Not specified",
+                "stage_of_application": "Not specified"
+            }
+        }
+    ]
+}

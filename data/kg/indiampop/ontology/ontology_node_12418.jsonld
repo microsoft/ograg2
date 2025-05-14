@@ -1,0 +1,142 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Castor",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Indeterminate",
+                "used_for": "Perennial"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical",
+                    "has_regions": ["India", "Brazil", "China"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Hybrid 6", "Hybrid 7", "Hybrid 8"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-06-01",
+                            "end_date": "2022-06-30"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-07-01",
+                            "end_date": "2022-07-31"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "QuantitativeValue",
+                            "value": "5",
+                            "unitText": "kg/ha"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "NPK",
+                            "quantity": "100 kg/ha",
+                            "stage_of_application": "At sowing"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "20-25°C",
+                "for_flowering": "25-30°C",
+                "for_grain_filling": "20-25°C",
+                "negative_effect": "Below 15°C and above 35°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Well drained sandy loam to clayey loam",
+                "avoid_soil_type": "Heavy clay, saline and water logged",
+                "for_water": "Moderate",
+                "for_nutrients": "High"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Ploughing, harrowing and leveling",
+                "with_soil_moisture": "Moderate"
+            },
+            "seed_germination_test_requirements_are": "Germination test is required before sowing",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Thiram",
+                "quantity": "2 g/kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "June to July",
+                "value": "90 cm x 60 cm",
+                "depth": "4-5 cm",
+                "method": "Dibbling"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Echinochloa colona, Cyperus rotundus",
+                "weed_types": ["Grass", "Sedge"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Pendimethalin",
+                    "quantity": "1.0 kg a.i./ha",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "500-600 mm",
+                "stage_of_application": "Critical stages (flowering and peg formation)"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Wilt, Leaf spot",
+                "disease_symptoms": "Wilting of plant, Brown spots on leaves",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Mancozeb",
+                    "quantity": "2 g/litre of water",
+                    "stage": "At disease appearance"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Castor semilooper, Capsule borer",
+                "pest_symptoms": "Defoliation, Damage to capsules",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Quinalphos",
+                    "quantity": "2 ml/litre of water",
+                    "stage": "At pest appearance"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when any of the capsules in the spike turns brown in colour. The main spike is ready for harvest within 90-120 days after sowing. The subsequent pickings can be taken up at an interval of 30 days. The mature spikes are cut preferably in morning hours and dried in sun for few days for easy threshing. Threshing is usually done by either beating the capsules with stick or alternatively by trampling with bullocks.",
+            "storage_guidelines_are":"Store in a cool and dry place"
+        }
+    ]
+}

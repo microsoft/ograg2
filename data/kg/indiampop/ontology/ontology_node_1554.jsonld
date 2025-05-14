@@ -1,0 +1,48 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "PestTreatements",
+            "pest_name": "Aphids and early pests",
+            "pest_symptoms": "Not specified",
+            "pest_control": {
+                "@type": "PesticideList",
+                "name": "Chrysoperla carnea",
+                "quantity": "20,000 1st instar larvae/acre",
+                "stage": "15 days’ intervals twice"
+            }
+        },
+        {
+            "@type": "PestTreatements",
+            "pest_name": "Not specified",
+            "pest_symptoms": "Not specified",
+            "pest_control": {
+                "@type": "PesticideList",
+                "name": "Trichogramma chilonis",
+                "quantity": "60,000/acre",
+                "stage": "10 days’ intervals 6 times starting from 45 DAS"
+            }
+        }
+    ]
+}

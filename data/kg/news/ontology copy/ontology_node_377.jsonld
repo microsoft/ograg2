@@ -1,0 +1,203 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:event",
+            "eventTitle": "The US Senate and Silicon Valley reconvene for a second AI Insight Forum",
+            "eventSummary": "Senator Charles Schumer (D-NY) once again played host to Silicon Valley’s AI leaders on Tuesday as the US Senate reconvened its AI Insights Forum for a second time.",
+            "theme": "technology",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "byline": "Andrew Tarantola",
+                "published": "2023-10-25T14:31:28+00:00",
+                "title": "The US Senate and Silicon Valley reconvene for a second AI Insight Forum",
+                "summary": "Senator Charles Schumer (D-NY) once again played host to Silicon Valley’s AI leaders on Tuesday as the US Senate reconvened its AI Insights Forum for a second time.",
+                "url": "https://www.engadget.com/the-us-senate-and-silicon-valley-reconvene-for-a-second-ai-insight-forum-143128622.html?src=rss"
+            }
+        },
+        {
+            "@type": "snap:person",
+            "name": "Charles Schumer",
+            "alias": "Senator Charles Schumer (D-NY)"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Marc Andreessen",
+            "alias": "manifesto enthusiast"
+        },
+        {
+            "@type": "snap:person",
+            "name": "John Doerr",
+            "alias": "venture capitalist"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Max Tegmark",
+            "alias": "Future of Life Institute"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Derrick Johnson",
+            "alias": "NAACP CEO"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Future of Life Institute"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "NAACP"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Engadget"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "AFL-CIO"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "C2PA"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "CAI"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "National Security AI Commission"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "SEC"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Brian Schatz",
+            "alias": "Senator Brian Schatz (D-HI)"
+        },
+        {
+            "@type": "snap:person",
+            "name": "John Kennedy",
+            "alias": "Senator John Kennedy (R-LA)"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Martin Heinrich",
+            "alias": "Senator Martin Heinrich (D-NM)"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Mike Rounds",
+            "alias": "Senator Mike Rounds (R-SD)"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Todd Young",
+            "alias": "Senator Todd Young (R-IN)"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Gary Gensler",
+            "alias": "SEC Chairman"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Liz Shuler",
+            "alias": "AFL-CIO President"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Ed Markey",
+            "alias": "Senator Ed Markey (D-MA)"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Pramila Jayapal",
+            "alias": "Representative Pramila Jayapal (WA-07)"
+        }
+    ]
+}
+```

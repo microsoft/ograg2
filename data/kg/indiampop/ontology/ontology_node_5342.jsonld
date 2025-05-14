@@ -1,0 +1,142 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "HYBRID RICE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Transplanted Rice",
+                "used_for": "Rice Cultivation"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical",
+                    "has_regions": ["Asia", "Africa"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["IR64", "Swarna"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-06-01",
+                            "end_date": "2022-06-30"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-07-01",
+                            "end_date": "2022-07-31"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "30",
+                            "unitText": "kg/ha"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Nitrogen",
+                            "quantity": "80 kg/ha",
+                            "stage_of_application": "Tillering"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "25-30°C",
+                "for_flowering": "23-28°C",
+                "for_grain_filling": "20-25°C",
+                "negative_effect": "Below 20°C and above 35°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Sandy",
+                "for_water": "Good Water Holding Capacity",
+                "for_nutrients": "Rich in Nitrogen and Phosphorus"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the field to a fine tilth and level it. Puddle the field 3-4 times and incorporate Azospirillum and Phosphobacteria 2 kg/ha and Pseudomonoas 2.5 kg/ha along with FYM 50 kg and Neem cake @ 100 kg/ha.",
+                "with_soil_moisture": "Moist"
+            },
+            "seed_germination_test_requirements_are": "Seeds should have a germination rate of at least 80%",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Carbendazim",
+                "quantity": "2 g/kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Early Morning or Late Evening",
+                "value": "20 cm x 15 cm",
+                "depth": "1-2 cm",
+                "method": "Transplanting"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Echinochloa crus-galli",
+                "weed_types": ["Grass", "Broadleaf"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Butachlor",
+                    "quantity": "1.5 kg/ha",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "5 cm water depth",
+                "stage_of_application": "Every week"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Blast",
+                "disease_symptoms": "Lesions on leaves and stems",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Tricyclazole",
+                    "quantity": "0.6 kg/ha",
+                    "stage": "At disease appearance"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Stem Borer",
+                "pest_symptoms": "Deadhearts or whiteheads",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Carbaryl",
+                    "quantity": "1 kg/ha",
+                    "stage": "At pest appearance"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when 80% of the grains have turned yellow and the moisture content of the grain is around 20-25%",
+            "storage_guidelines_are":"Store in a cool and dry place"
+        }
+    ]
+}

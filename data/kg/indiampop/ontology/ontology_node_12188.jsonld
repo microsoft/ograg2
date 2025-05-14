@@ -1,0 +1,31 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "SeedProduction": {
+            "@id": "cropCult:SeedProduction",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_drying_process": "cropCult:DryingProcess"
+            }
+        },
+        "DryingProcess": {
+            "@id": "cropCult:DryingProcess",
+            "@type": "schema:Thing",
+            "@context": {
+                "treatment": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:SeedProduction",
+            "name": "SEED PRODUCTION",
+            "has_drying_process": {
+                "@type": "cropCult:DryingProcess",
+                "treatment": "Slurry treat with carbendazim @ 2g kg-1 of seed along with carbaryl @ 200 mg kg-1 of seed (or)"
+            }
+        }
+    ]
+}

@@ -1,0 +1,43 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "CropProtection": {
+            "@id": "cropCult:CropProtection",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_pesticide_list": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "CropProtection",
+            "name": "CROP PROTECTION",
+            "has_pesticide_list": [
+                {
+                    "@type": "PesticideList",
+                    "name": "Neem seed kernel extract",
+                    "quantity": "5%",
+                    "stage": "Spray twice"
+                },
+                {
+                    "@type": "PesticideList",
+                    "name": "Malathion 50 EC",
+                    "quantity": "500 ml/ha. in 500 lit of water",
+                    "stage": "at 10% heading and 9days after"
+                }
+            ]
+        }
+    ]
+}

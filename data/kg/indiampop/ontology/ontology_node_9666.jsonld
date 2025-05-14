@@ -1,0 +1,67 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList",
+                "weeding_schedule": "schema:Text",
+                "weeding_instructions": "schema:Text"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Interculture",
+            "weeding_schedule": "First hoeing and weeding should be done within 2 to 3 weeks of sowing and the second a fortnight after. A second weeding may be done 15 to 20 days after, if necessary.",
+            "weeding_instructions": "Early weeding of the direct seeded crop is essential for getting good yields. Thin out the plants 12 to 15 days after sowing to maintain proper plant population. One weeding of the transplanted crop, between 2 to 3 weeks after transplanting is adequate.",
+            "herbicides": [
+                {
+                    "name": "isoproturon",
+                    "quantity": "0.5 kg/ha",
+                    "stage": "pre-emergence"
+                },
+                {
+                    "name": "2,4-D sodium salt",
+                    "quantity": "0.75 kg/ha",
+                    "stage": "post-emergence spray 20-25 days after sowing"
+                }
+            ]
+        }
+    ]
+}

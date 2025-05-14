@@ -1,0 +1,161 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Jets vs. Raiders Game Summary",
+            "author": "NFL",
+            "theme": "Sports",
+            "summary": "Summary of the NFL game between the New York Jets and the Las Vegas Raiders on November 12, 2023.",
+            "created": "2023-11-12T20:20:00Z",
+            "modified": "2023-11-13T00:00:00Z",
+            "published": "2023-11-12T20:20:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "Jets vs. Raiders",
+                    "eventSummary": "A thrilling NFL matchup between the New York Jets and the Las Vegas Raiders.",
+                    "theme": "NFL",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "Allegiant Stadium, Las Vegas"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Zach Wilson",
+                            "dateOfBirth": "1999-08-03",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Southampton, New York"
+                            },
+                            "alias": "Zach"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Davante Adams",
+                            "dateOfBirth": "1992-12-24",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Palo Alto, California"
+                            },
+                            "alias": "Davante"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Josh Jacobs",
+                            "dateOfBirth": "1998-02-11",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Tulsa, Oklahoma"
+                            },
+                            "alias": "Josh"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization",
+                            "name": "New York Jets",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "MetLife Stadium, East Rutherford, New Jersey"
+                            },
+                            "alias": "Jets"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Las Vegas Raiders",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Allegiant Stadium, Las Vegas"
+                            },
+                            "alias": "Raiders"
+                        }
+                    ],
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            ],
+            "followUp": "snap:asset",
+            "derivedFrom": "snap:asset"
+        }
+    ]
+}

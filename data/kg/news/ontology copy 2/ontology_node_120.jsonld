@@ -1,0 +1,126 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "Canelo Alvarez vs Jermell Charlo live fight updates, results, highlights from 2023 boxing fight",
+            "author": "Andreas Hale",
+            "theme": "sports",
+            "content": "T-MOBILE ARENA, LAS VEGAS — Reports of Saul \"Canelo\" Alvarez's decline have been greatly exaggerated. The reigning face of boxing made it look easy as he retained his undisputed super middleweight title by dominating Jermell Charlo. And it wasn't even remotely close. Charlo already had a significant mountain to climb by moving up two weight classes and leaving his undisputed super welterweight status behind for the biggest fight of his career. But there are clearly levels to the boxing game and Charlo was either unprepared or unwilling to deal with one of the best pound-for-pound fighters in the world. Charlo delivered a listless performance as Canelo bulled his way forward and tormented his opponent's body for much of the fight, scoring a knockdown in round seven to provide the only real drama of the evening. “I worked the whole fight on going to the body, and then I changed it up. That’s what happens when you change the punch,\" Canelo said about the knockdown. Canelo pursued Charlo and realized very quickly that his opponent was overmatched. With Charlo spending most of the fight with his back against the ropes, Canelo rumbled forward and slugged away at the body, fired an efficient jab, and landed the occasional hook to the head. There wasn't much that Canelo could do aside from following Charlo around and looking for an opening to land power shots. That opportunity presented itself in the seventh round when a body shot was followed by a right hand to the temple which caused Charlo to take a knee. After that, it was a game of survival for Charlo. With fans filtering out in the later rounds due to an insurmountable lead, Canelo appeared to become annoyed with Charlo's unwillingness to engage. The scores reflected that as Canelo won with tallies of 119-108, 118-109 & 118-109. \"Nobody can beat this Canelo,\" \"Cinco De Mayo. I'll come back and fight anybody. I don't f---ing care.\" Canelo (59-2-2, 39 KOs) successfully made his third defense of the undisputed super middleweight championship. He unified all four major titles when he knocked out Caleb Plant in November 2021. After suffering a hiccup when he fell short in attempting to gain light heavyweight gold against Dmitry Bivol, the 33-year-old superstar has now won three fights in a row and will wait to see what's next. The obvious choice for many is a megafight with undisputed welterweight champion Terence Crawford. However, Crawford would need to move up 21 pounds for that fight to happen and he's engaged in a potential rematch with Errol Spence. Other options appear to be David Benavidez and Jermell's older brother, Jermall Charlo. As for Charlo, he still owns the IBF, WBA, and WBC championships and can return to the 154-pound division to defend those titles. Charlo called out Crawford, but after this performance, it is unlikely that Crawford would be interested. Here's how it all went down in Las Vegas.",
+            "published": "2023-09-30T23:44:09+00:00",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Canelo Alvarez vs Jermell Charlo",
+                    "eventSummary": "Canelo Alvarez retained his undisputed super middleweight title by dominating Jermell Charlo.",
+                    "theme": "sports",
+                    "hasLocation": {
+                        "@type": "geo:SpatialThing",
+                        "geo:location": "T-MOBILE ARENA, LAS VEGAS"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person1",
+                            "@type": "schema:Thing",
+                            "name": "Canelo Alvarez",
+                            "alias": "Saul Alvarez"
+                        },
+                        {
+                            "@id": "snap:person2",
+                            "@type": "schema:Thing",
+                            "name": "Jermell Charlo"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "schema:Thing",
+                            "name": "Sporting News"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

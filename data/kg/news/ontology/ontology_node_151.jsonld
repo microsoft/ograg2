@@ -1,0 +1,331 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Did you know it was a smash hit?",
+            "author": "Unnamed Author",
+            "theme": "Music Industry",
+            "summary": "A detailed account of the efforts behind the success of Sam's record and the rise of Ice Spice.",
+            "created": "2023-10-01T00:00:00Z",
+            "modified": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "hasThumbnail": "snap:imageAsset",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Launch of Sam's Record",
+                        "eventSummary": "The global marketing effort behind the first single of Sam's record.",
+                        "theme": "Music Release",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Sam",
+                                    "dateOfBirth": "1990-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Sam the Artist"
+                                },
+                                {
+                                    "name": "Arjun",
+                                    "dateOfBirth": "1985-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Arjun the Manager"
+                                },
+                                {
+                                    "name": "Jo Charrington",
+                                    "dateOfBirth": "1980-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Jo the Executive"
+                                },
+                                {
+                                    "name": "Jack Street",
+                                    "dateOfBirth": "1982-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Jack the Manager"
+                                },
+                                {
+                                    "name": "Sam Evitt",
+                                    "dateOfBirth": "1983-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Sam the Manager"
+                                },
+                                {
+                                    "name": "Ice Spice",
+                                    "dateOfBirth": "2000-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Ice the Artist"
+                                },
+                                {
+                                    "name": "Elliot",
+                                    "dateOfBirth": "1980-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Elliot the Executive"
+                                },
+                                {
+                                    "name": "Jeremy Vuernick",
+                                    "dateOfBirth": "1980-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Jeremy the Executive"
+                                },
+                                {
+                                    "name": "Zach Friedman",
+                                    "dateOfBirth": "1980-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Zach the Co-President"
+                                },
+                                {
+                                    "name": "Tony Talamo",
+                                    "dateOfBirth": "1980-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Tony the Co-President"
+                                },
+                                {
+                                    "name": "Cindy Mabe",
+                                    "dateOfBirth": "1980-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Cindy the Chair"
+                                },
+                                {
+                                    "name": "Bruce Resnikoff",
+                                    "dateOfBirth": "1980-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Bruce the President"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Capitol Records",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Capitol"
+                                },
+                                {
+                                    "name": "10K",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "10K Records"
+                                },
+                                {
+                                    "name": "Universal Music Publishing Group",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "UMPG"
+                                },
+                                {
+                                    "name": "Apple Corp",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Apple"
+                                },
+                                {
+                                    "name": "Universal Music Enterprises",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "UMG"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "Dinner with Ice Spice",
+                        "eventSummary": "A dinner meeting that led to the co-signing of Ice Spice.",
+                        "theme": "Artist Development",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Ice Spice",
+                                    "dateOfBirth": "2000-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Ice the Artist"
+                                },
+                                {
+                                    "name": "Elliot",
+                                    "dateOfBirth": "1980-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Elliot the Executive"
+                                },
+                                {
+                                    "name": "Jeremy Vuernick",
+                                    "dateOfBirth": "1980-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Jeremy the Executive"
+                                },
+                                {
+                                    "name": "Zach Friedman",
+                                    "dateOfBirth": "1980-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Zach the Co-President"
+                                },
+                                {
+                                    "name": "Tony Talamo",
+                                    "dateOfBirth": "1980-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Tony the Co-President"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Capitol Records",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Capitol"
+                                },
+                                {
+                                    "name": "10K",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "10K Records"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    },
+                    {
+                        "eventTitle": "Release of Now And Then",
+                        "eventSummary": "The release of a brand-new single from The Beatles.",
+                        "theme": "Music Release",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Paul McCartney",
+                                    "dateOfBirth": "1942-06-18",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Paul the Artist"
+                                },
+                                {
+                                    "name": "Arjun",
+                                    "dateOfBirth": "1985-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Arjun the Manager"
+                                },
+                                {
+                                    "name": "Jeff Jones",
+                                    "dateOfBirth": "1980-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Jeff the Executive"
+                                },
+                                {
+                                    "name": "Bruce Resnikoff",
+                                    "dateOfBirth": "1980-01-01",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Bruce the President"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Capitol Records",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Capitol"
+                                },
+                                {
+                                    "name": "Apple Corp",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "Apple"
+                                },
+                                {
+                                    "name": "Universal Music Enterprises",
+                                    "hasLocation": "geo:SpatialThing",
+                                    "alias": "UMG"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    }
+                ]
+            },
+            "followUp": "snap:asset",
+            "derivedFrom": "snap:asset"
+        }
+    ]
+}

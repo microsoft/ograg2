@@ -1,0 +1,209 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "title": "AI and the Future of Creation",
+            "author": "David Baszucki",
+            "theme": "Technology, AI, Gaming",
+            "summary": "Discussion on the future of AI in gaming and creation.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T12:00:00Z",
+            "hasThumbnail": "snap:imageAsset1",
+            "embargoedUntil": "2023-10-01T12:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList1",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "eventTitle": "Audience Q&A with David Baszucki",
+                        "eventSummary": "A session where audience members ask questions to David.",
+                        "theme": "Q&A",
+                        "hasLocation": {
+                            "@id": "geo:location1",
+                            "name": "Virtual Conference Room"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList1",
+                            "Person": [
+                                {
+                                    "@id": "snap:person1",
+                                    "name": "Alex Heath",
+                                    "dateOfBirth": "1985-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location2",
+                                        "name": "USA"
+                                    },
+                                    "alias": "AH"
+                                },
+                                {
+                                    "@id": "snap:person2",
+                                    "name": "Cathy Hackl",
+                                    "dateOfBirth": "1980-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location3",
+                                        "name": "USA"
+                                    },
+                                    "alias": "CH"
+                                },
+                                {
+                                    "@id": "snap:person3",
+                                    "name": "Neil Shankar",
+                                    "dateOfBirth": "1990-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location4",
+                                        "name": "USA"
+                                    },
+                                    "alias": "NS"
+                                },
+                                {
+                                    "@id": "snap:person4",
+                                    "name": "Casey Newton",
+                                    "dateOfBirth": "1985-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location5",
+                                        "name": "USA"
+                                    },
+                                    "alias": "CN"
+                                },
+                                {
+                                    "@id": "snap:person5",
+                                    "name": "Andrew Melnizek",
+                                    "dateOfBirth": "1992-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location6",
+                                        "name": "USA"
+                                    },
+                                    "alias": "AM"
+                                },
+                                {
+                                    "@id": "snap:person6",
+                                    "name": "Jay Peters",
+                                    "dateOfBirth": "1988-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location7",
+                                        "name": "USA"
+                                    },
+                                    "alias": "JP"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList1",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "name": "Roblox",
+                                    "hasLocation": {
+                                        "@id": "geo:location8",
+                                        "name": "California, USA"
+                                    },
+                                    "alias": "RB"
+                                },
+                                {
+                                    "@id": "snap:organization2",
+                                    "name": "Journey",
+                                    "hasLocation": {
+                                        "@id": "geo:location9",
+                                        "name": "California, USA"
+                                    },
+                                    "alias": "JN"
+                                },
+                                {
+                                    "@id": "snap:organization3",
+                                    "name": "Parsons School of Design",
+                                    "hasLocation": {
+                                        "@id": "geo:location10",
+                                        "name": "New York, USA"
+                                    },
+                                    "alias": "PSD"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event1",
+                        "notablyAssociatedWith": "snap:event1"
+                    }
+                ]
+            }
+        }
+    ]
+}

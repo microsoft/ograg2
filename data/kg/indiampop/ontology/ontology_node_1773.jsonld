@@ -1,0 +1,59 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "DiseaseTreatements",
+            "disease_name": "Katte disease",
+            "disease_symptoms": "Infected plants",
+            "disease_control": {
+                "@type": "HerbicideList",
+                "name": "Insecticide",
+                "quantity": "Regular application",
+                "stage": "Eradication of the source of inoculum by destroying infected plants and destruction of the vector"
+            }
+        },
+        {
+            "@type": "DiseaseTreatements",
+            "disease_name": "Cardamom thrips",
+            "disease_symptoms": "Aphids",
+            "disease_control": {
+                "@type": "HerbicideList",
+                "name": "Insecticide",
+                "quantity": "Regular application",
+                "stage": "Controls the aphids"
+            }
+        },
+        {
+            "@type": "DiseaseTreatements",
+            "disease_name": "Katte disease",
+            "disease_symptoms": "Infected rhizome",
+            "disease_control": {
+                "@type": "HerbicideList",
+                "name": "Avoidance",
+                "quantity": "Not applicable",
+                "stage": "Avoid using katte-infected rhizome for planting"
+            }
+        }
+    ]
+}

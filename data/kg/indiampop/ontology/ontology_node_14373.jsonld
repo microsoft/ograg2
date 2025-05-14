@@ -1,0 +1,140 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Pulses",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Pulses",
+                "used_for": "Expansion of pulse area in the pre-rabi, rabi and summer season where scope exists"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Pre-rabi, rabi and summer season",
+                    "has_regions": ["Scope exists"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Pulses"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Pre-rabi season",
+                            "end_date": "Summer season"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Rabi season",
+                            "end_date": "Summer season"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "Depends on the scope"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Depends on the soil",
+                            "quantity": "Depends on the soil",
+                            "stage_of_application": "Depends on the crop stage"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Depends on the variety",
+                "for_flowering": "Depends on the variety",
+                "for_grain_filling": "Depends on the variety",
+                "negative_effect": "Depends on the variety"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Depends on the variety",
+                "avoid_soil_type": "Depends on the variety",
+                "for_water": "Depends on the variety",
+                "for_nutrients": "Depends on the variety"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Depends on the variety",
+                "with_soil_moisture": "Depends on the variety"
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Depends on the variety",
+                "quantity": "Depends on the variety"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Depends on the variety",
+                "value": "Depends on the variety",
+                "depth": "Depends on the variety",
+                "method": "Depends on the variety"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Depends on the variety",
+                "weed_types": ["Depends on the variety"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Depends on the variety",
+                    "quantity": "Depends on the variety",
+                    "stage": "Depends on the variety"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Depends on the variety",
+                "stage_of_application": "Depends on the variety"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Depends on the variety",
+                "disease_symptoms": "Depends on the variety",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Depends on the variety",
+                    "quantity": "Depends on the variety",
+                    "stage": "Depends on the variety"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Depends on the variety",
+                "pest_symptoms": "Depends on the variety",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Depends on the variety",
+                    "quantity": "Depends on the variety",
+                    "stage": "Depends on the variety"
+                }
+            },
+            "harvesting_guidelines_are": "Depends on the variety",
+            "storage_guidelines_are": "Depends on the variety"
+        }
+    ]
+}

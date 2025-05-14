@@ -1,0 +1,43 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "CropProtection": {
+            "@id": "cropCult:CropProtection",
+            "@type": "schema:Thing",
+            "@context": {
+                "protection_instructions": "schema:Text",
+                "insecticides": "cropCult:InsecticideList"
+            }
+        },
+        "InsecticideList": {
+            "@id": "cropCult:InsecticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:CropProtection",
+            "protection_instructions": "Protection of seedlings in the nursery from pest attack If seed bed is not treated before sowing, protect the nursery by applying any one of the insecticides given below on the 7th and 14th day of sowing by mixing in 6 litres of water",
+            "insecticides": [
+                {
+                    "@type": "cropCult:InsecticideList",
+                    "name": "Methyl demeton 25 EC",
+                    "quantity": "12 ml",
+                    "stage": "7th and 14th day of sowing"
+                },
+                {
+                    "@type": "cropCult:InsecticideList",
+                    "name": "Dimethoate 30 EC",
+                    "quantity": "12 ml",
+                    "stage": "7th and 14th day of sowing"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,74 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text",
+                "deficiency_symptoms": "schema:Text",
+                "effects_on_growth_and_yield": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Oil Palm",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Oilseeds",
+                "used_for": "Oil Production"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Tropical Soils",
+                "for_nutrients": "Nitrogen, Phosphorus, Potassium"
+            },
+            "has_fertilizer_application_requirements": [
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "Nitrogen",
+                    "deficiency_symptoms": "Characteristic yellowing symptoms",
+                    "effects_on_growth_and_yield": "Essential for rapid growth and fruiting of the palm. Increases leaf production rate, leaf area, net assimilation rate, number of bunches and bunch weight. Excessive application reduces sex ratio."
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "Phosphorus",
+                    "deficiency_symptoms": "Older leaves become dull and assume a pale olive green colour. High incidence of premature desiccation of older leaves.",
+                    "effects_on_growth_and_yield": "Increases bunch production rate, bunch weight, number of female inflorescences and thereby the sex ratio. Lack of response due to P fixation in soils is common in the tropics."
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "Potassium",
+                    "deficiency_symptoms": "Retarded growth and yield. Mature leaves become chlorotic and necrotic. Confluent orange spotting and mid crown yellowing are common.",
+                    "effects_on_growth_and_yield": "Translocated from mature leaves to growing points. Later formed leaves tend to become short and the palm has an unthrifty appearance with much premature withering."
+                }
+            ]
+        }
+    ]
+}

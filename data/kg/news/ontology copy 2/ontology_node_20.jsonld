@@ -1,0 +1,161 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "schema:Thing",
+      "title": "Comeback kings Richmond take the AFLW points in Cairns",
+      "author": "The Age",
+      "theme": "sports",
+      "content": "Tackled above waist and below shoulders. No sling or double motion. Sheppard lands on her back. ′ ‘Girls’ play hard too,” Harford said on X, the social media site formerly known as Twitter. This echoed Collingwood defender and Fox Footy commentator Ruby Schleicher’s thoughts at the time, who called it a “monster tackle” but believed it was “fair”. “I don’t see any dirtiness in that,” Schleicher said on Fox Footy. “It was pretty heavy on her head, wasn’t it? I look at that – I still see a fair tackle. There’s no doubt the match review [officer] will look at it because they have to I guess. The duty of care for the player.”...",
+      "published": "2023-10-20T23:51:34+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "eventTitle": "Richmond vs Hawthorn",
+          "eventSummary": "Richmond's Emelia Yassir scores a late goal to secure victory over Hawthorn.",
+          "theme": "sports",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "geo:lat": "-16.9186",
+            "geo:long": "145.7781"
+          },
+          "mentions_persons": [
+            {
+              "@id": "snap:person1",
+              "name": "Emelia Yassir"
+            },
+            {
+              "@id": "snap:person2",
+              "name": "Monique Conti"
+            },
+            {
+              "@id": "snap:person3",
+              "name": "Grace Egan"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization1",
+              "name": "Richmond"
+            },
+            {
+              "@id": "snap:organization2",
+              "name": "Hawthorn"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event2",
+          "eventTitle": "West Coast vs Essendon",
+          "eventSummary": "West Coast narrowly defeats Essendon in a close match.",
+          "theme": "sports",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "geo:lat": "-37.7598",
+            "geo:long": "144.9934"
+          },
+          "mentions_persons": [
+            {
+              "@id": "snap:person4",
+              "name": "Emma Swanson"
+            },
+            {
+              "@id": "snap:person5",
+              "name": "Maddy Prespakis"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization3",
+              "name": "West Coast"
+            },
+            {
+              "@id": "snap:organization4",
+              "name": "Essendon"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

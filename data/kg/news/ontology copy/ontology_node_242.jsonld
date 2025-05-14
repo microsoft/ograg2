@@ -1,0 +1,95 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Nell Geraets",
+            "published": "2023-09-26T05:26:05+00:00",
+            "title": "When pop culture and sport collide: A timeline of Taylor Swift’s NFL takeover",
+            "summary": "The first link between Swift and Kelce was established in 2016, when Kelce – who helped bring his team to Super Bowl victory in both 2020 and 2023 – played the classic game “Kiss, Marry, Kill”. Speaking with AfterBuzz TV, Kelce was given the options of Swift, Katy Perry and Ariana Grande. He said he’d ultimately kill Grande, marry Perry and kiss Swift. That was about six years ago, but it has more recently set tongues wagging as fans wondered how long the plan for them to meet has been in the works. Cruel Summer Fast-forward seven years, and things started to heat up. In July, speaking on the podcast he shares with his brother, New Heights, Kelce said he intended to give Swift a friendship bracelet with his number on it during her Eras Tour concert in Kansas City. Unfortunately, the bracelet never made it to her wrist or his digits to her phone. “I was disappointed that she doesn’t talk before or after her shows because she has to save her voice for the 44 songs she sings,” he said. “She doesn’t meet anybody, or at least she didn’t want to meet me, so I took it personal[sic].” At this point, it seems like any attraction between the two was one-sided. Kelce’s attempts to make proper contact with Swift at the show ultimately failed. Was she just not that into him? But Kelce, exhibiting the tenacity typical of a professional sportsman, remained determined to get her attention. Wildest Beards The Kelce brothers couldn’t stop talking about Swift, even though she’d left Travis hanging at the concert. Swift’s name began popping up everywhere on the podcast, including during conversations about... facial hair? In August, the brothers discussed Kelce’s moustache, which he grows every year in honour of the Chief’s head coach, Andy Reid. When asked if he knew what Swift thought of the ’stache, he remained cheekily confident. “We’re not going to bring up Taylor Swift in this episode,” he says, “But something tells me she’s going to like it.” There was a clear suggestion Kelce had made contact with Swift, and was even going to meet her. Shortly after that remark, Kelce took a week off training to visit New York City, according to Vulture. Coincidentally, this happened to be while Swift was re-recording her 1989 tracks in the city. Welcome to New York The suspicion the two were actually spending time together in New York was seemingly confirmed in September when it was reported they had been “quietly hanging out” for months. This was the first, albeit tentative, confirmation from the media rather than from amateur Swiftie sleuths on social media. So, it was only a matter of time before it entered the cultural zeitgeist. Blank Space Which it did, very quickly. On September 17, Kelce scored a touchdown against the Jaguars, triggering CBS announcer Ian Eagle to reference Swift’s 2014 hit, Blank Space. “Kelce finds a blank space for the score,” Eagle said, poking fun at Kelce’s newfound Swiftie status. And Eagle wasn’t the only one, with NFL Network’s Rich Eisen including a slew of lyric references during a preshow, including “shake it off”, “anti-hero” and “all too well”. Kelce even acknowledged the tongue-in-cheek banter, commenting on a montage video of the preshow that Eisen posted to Instagram. “Well played Rich … Well played,” he wrote. Suddenly, football fans and Swifties were living through this surprising collision. Swift lyrics were infiltrating NFL game commentary, and her fans were furiously becoming football experts. All that needed to happen was for Swift herself to infiltrate a game, determining once and for all whether there was anything to these rumours or not. This Is Me Trying On September 21, Kelce announced on The Pat McAfee Show he had invited Swift to watch one of his games. “I told her, ‘I’ve seen you rock the stage in Arrowhead, you might have to come see me rock a stage at Arrowhead and we can see which one’s a little more lit,’” he said. “We’ll see what happens in the near future.” Were they finally about to hard-launch their friendship/potential romance to the world, laying all speculation to rest? Love Story This finally brings us to the fated sighting of Swift at Arrowhead Stadium on Monday, cheering on No. 87 with gusto. The 12-time Grammy winner appeared to shout “let’s f—ing go” after Kelce scored a touchdown before chest-bumping other Chiefs fans. Considering Swift is known for being an Eagles fan – she’s originally from Pennsylvania and even references the team in Gold Rush – her outward support for the Kelce’s team seemed extra telling. Swifties were immediately on high alert, with some capturing Swift and Kelce leaving the stadium together. If that wasn’t enough, extra observant fans were able to note that Kelce’s blue and white post-game outfit was supposedly labelled the “1989 bedroom painting set”, perhaps an intentional reference to Swift’s 2014 album, which she will be re-releasing in October. Swift’s penchant for Easter eggs must be rubbing off on the tight end player. As if this weren’t enough subtle references already, they were also spotted in a “getaway car” together outside the stadium – potentially a nod towards her 2017 track. Could they have been driving off into the sunset? Of course, none of this actually confirms Swift and Kelce are actually dating. But regardless of whether it’s a friendship or a romantic relationship, it has sent shockwaves through two massive cultural franchises, expanding the NFL’s audience into uncharted territory. It’s a cultural pairing on par with – and perhaps even bigger than – Kim Kardashian and Kanye West.",
+            "url": "https://www.theage.com.au/culture/music/when-pop-culture-and-sport-collide-a-timeline-of-taylor-swift-s-nfl-takeover-20230926-p5e7lu.html?ref=rss&utm_medium=rss&utm_source=rss_culture"
+        }
+    ]
+}
+```

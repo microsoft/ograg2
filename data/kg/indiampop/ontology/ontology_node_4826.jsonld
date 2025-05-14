@@ -1,0 +1,64 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "PINEAPPLE (Ananas comosus)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Pineapple",
+                "used_for": "Can be grown as a pure crop on plantation scale or as an intercrop in coconut gardens."
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Low elevations",
+                    "has_regions": ["Areas with a temperature range of 15 to 30 0C"]
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "15 to 30 0C",
+                "for_flowering": "15 to 30 0C",
+                "for_grain_filling": "15 to 30 0C",
+                "negative_effect": "Below 15 0C and above 30 0C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Wide range of soils",
+                "avoid_soil_type": "Water logging soils",
+                "for_water": "600-2500 mm / annum, the optimum being 1000-1500mm",
+                "for_nutrients": "Tolerant to drought because of the special water storage cells"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Can be grown as a pure crop on plantation scale or as an intercrop in coconut gardens.",
+                "with_soil_moisture": "Tolerant to drought because of the special water storage cells"
+            }
+        }
+    ]
+}

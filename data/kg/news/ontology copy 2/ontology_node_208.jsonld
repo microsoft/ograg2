@@ -1,0 +1,173 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "snap:asset",
+      "title": "Weekly Breakdown",
+      "author": "Sportsline",
+      "theme": "Fantasy Football",
+      "content": "MATCHUP @ PIT PIT -5.5 O/U 41 OPP VS RB 8th PROJ PTS 10.1 RB RNK 27th YTD Stats RUYDS 526 REC 14 REYDS 36 TD 2 FPTS/G 10.3 Kyler Murray's return has changed the math on Conner's expectations...",
+      "created": "2023-11-30T12:00:00",
+      "modified": "2023-11-30T12:00:00",
+      "published": "2023-11-30T12:00:00",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "snap:event",
+          "eventTitle": "Start 'em",
+          "eventSummary": "Michael Pittman, Derrick Henry, Zack Moss",
+          "theme": "Fantasy Football",
+          "mentions_persons": [
+            {
+              "@id": "snap:person1",
+              "@type": "snap:person",
+              "name": "Michael Pittman"
+            },
+            {
+              "@id": "snap:person2",
+              "@type": "snap:person",
+              "name": "Derrick Henry"
+            },
+            {
+              "@id": "snap:person3",
+              "@type": "snap:person",
+              "name": "Zack Moss"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event2",
+          "@type": "snap:event",
+          "eventTitle": "Sit 'em",
+          "eventSummary": "DeAndre Hopkins, Josh Downs, Will Levis, Titans DST",
+          "theme": "Fantasy Football",
+          "mentions_persons": [
+            {
+              "@id": "snap:person4",
+              "@type": "snap:person",
+              "name": "DeAndre Hopkins"
+            },
+            {
+              "@id": "snap:person5",
+              "@type": "snap:person",
+              "name": "Josh Downs"
+            },
+            {
+              "@id": "snap:person6",
+              "@type": "snap:person",
+              "name": "Will Levis"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization1",
+              "@type": "snap:organization",
+              "name": "Titans DST"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event3",
+          "@type": "snap:event",
+          "eventTitle": "Sleepers",
+          "eventSummary": "Colts DST, Gardner Minshew",
+          "theme": "Fantasy Football",
+          "mentions_persons": [
+            {
+              "@id": "snap:person7",
+              "@type": "snap:person",
+              "name": "Gardner Minshew"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization2",
+              "@type": "snap:organization",
+              "name": "Colts DST"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

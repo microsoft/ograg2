@@ -1,0 +1,177 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:event",
+            "eventTitle": "Argentina vs Paraguay",
+            "eventSummary": "Pre-match commentary, analysis, stats, and more",
+            "theme": "Football Match",
+            "subEventOf": {
+                "@type": "snap:event",
+                "eventTitle": "World Cup Qualifiers"
+            }
+        },
+        {
+            "@type": "snap:person",
+            "name": "Lionel Messi",
+            "dateOfBirth": "1987-06-24",
+            "placeOfBirth": "Rosario, Argentina"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Lautaro Martinez",
+            "dateOfBirth": "1997-08-22",
+            "placeOfBirth": "Bahía Blanca, Argentina"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Julian Alvarez",
+            "dateOfBirth": "2000-01-31",
+            "placeOfBirth": "Calchín, Argentina"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Daniel Garnero",
+            "dateOfBirth": "1969-04-01",
+            "placeOfBirth": "Lomas de Zamora, Argentina"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Televisión Pública"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Tigo Sports Costa Rica"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "VarskySports"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Selección Argentina"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "The Sporting News Argentina"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "OptaJavier"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "ESPN Fútbol Argentina"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "TR SPORTS"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "TyC Sports"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Astro Supersport"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "SporTV 2"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "L'Equipe Web"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Movistar"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "SSC"
+        }
+    ]
+}
+```

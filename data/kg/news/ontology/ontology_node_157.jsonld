@@ -1,0 +1,249 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Vikings vs. Broncos live score, updates, highlights from NFL 'Sunday Night Football' game",
+            "author": "Kyle Irving",
+            "theme": "sports",
+            "summary": "The Broncos completed a major comeback in the Mile High City. Both Denver and Minnesota entered 'Sunday Night Football' on red-hot win streaks but only one team could keep the momentum rolling. It looked like it was going to be Joshua Dobbs and the Vikings for the majority of the contest, but the Broncos wouldn't let up. Trailing by eight points going into the final frame, Denver's offense finally woke up in the game's biggest moment. The Broncos hadn't found the end zone all night but Russell Wilson still found a way to lead an impressive game-winning drive in the final three minutes. Courtland Sutton was as clutch as can be, coming up with a key catch on fourth down to keep the drive alive. When Denver brought the ball into the red zone where it had stalled out several times throughout the night, Wilson went right back to his guy Sutton. Sutton hauled in a monster touchdown reception to give the Broncos a one-point lead with a minute remaining, and Dobbs had run out of magic. Denver forced a turnover on downs on Minnesota's final drive, extending its win streak to four games while handing the Vikings their first loss in five weeks.",
+            "created": "2023-11-19T23:00:04+00:00",
+            "published": "2023-11-19T23:00:04+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Vikings vs. Broncos final score",
+                        "eventSummary": "Final: Broncos 21, Vikings 20",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Mile High City"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Joshua Dobbs",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Dobbs"
+                                },
+                                {
+                                    "name": "Russell Wilson",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Wilson"
+                                },
+                                {
+                                    "name": "Courtland Sutton",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Sutton"
+                                },
+                                {
+                                    "name": "Samaje Perine",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Perine"
+                                },
+                                {
+                                    "name": "Ty Chandler",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Chandler"
+                                },
+                                {
+                                    "name": "Alexander Mattison",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Mattison"
+                                },
+                                {
+                                    "name": "Jerry Jeudy",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Jeudy"
+                                },
+                                {
+                                    "name": "Brandon Powell",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Powell"
+                                },
+                                {
+                                    "name": "D.J. Wonnum",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Wonnum"
+                                },
+                                {
+                                    "name": "Kareem Jackson",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Jackson"
+                                },
+                                {
+                                    "name": "Danielle Hunter",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Hunter"
+                                },
+                                {
+                                    "name": "Marvin Mims Jr.",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Mims"
+                                },
+                                {
+                                    "name": "Peyton Manning",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Manning"
+                                },
+                                {
+                                    "name": "Justin Jefferson",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Jefferson"
+                                },
+                                {
+                                    "name": "Mike Tirico",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Tirico"
+                                },
+                                {
+                                    "name": "Cris Collinsworth",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Collinsworth"
+                                },
+                                {
+                                    "name": "Melissa Stark",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Stark"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Sporting News",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "USA"
+                                    },
+                                    "alias": "Sporting News"
+                                },
+                                {
+                                    "name": "NBC",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "USA"
+                                    },
+                                    "alias": "NBC"
+                                },
+                                {
+                                    "name": "Fubo",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "USA"
+                                    },
+                                    "alias": "Fubo"
+                                },
+                                {
+                                    "name": "DAZN",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Canada"
+                                    },
+                                    "alias": "DAZN"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

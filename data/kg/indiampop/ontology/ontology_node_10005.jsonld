@@ -1,0 +1,40 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Unweeded Maize field",
+            "weed_types": [
+                "Hoeing",
+                "hand weeding"
+            ],
+            "herbicides": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Weedfree maize field",
+                "quantity": "On the 17th or 18th day of sowing",
+                "stage": "Sowing"
+            }
+        }
+    ]
+}

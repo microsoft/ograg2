@@ -1,0 +1,123 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Travis Pulver",
+      "published": "2023-12-05T20:45:25+00:00",
+      "title": "NFL awards odds: Six longshots bettors should consider for MVP, OPOY, DPOY and more",
+      "summary": "NFL award longshots can be easy to overlook since each has a favorite(s). The longshot may be playing well, but other players have commanded the spotlight, making it easier for them to go unnoticed. Whatever the reason, they have not gotten the credit they deserve. However, with five weeks left in the regular season, there is plenty of time for a longshot to become a contender. But if you wait too long before placing a bet, your payout will be a lot less than if you were to roll the dice on a longshot right now.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "url": "https://www.sportingnews.com/us/betting/news/nfl-awards-odds-longshots-mvp-opoy-dpoy/ed7dc8b5ba19eb3e71c53349"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "NFL MVP",
+      "eventSummary": "Current favorite(s): Brock Purdy, Dak Prescott, Jalen Hurts. Longshot(s): C.J. Stroud, Jared Goff."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Offensive Player of the Year",
+      "eventSummary": "Current favorite: Tyreek Hill. Longshot: CeeDee Lamb."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Defensive Player of the Year",
+      "eventSummary": "Current favorite(s): Micah Parsons, Myles Garrett, T.J. Watt. Longshot: Danielle Hunter."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Coach of the Year",
+      "eventSummary": "Current favorite: Dan Campbell +200 (via DraftKings). Longshot: Sean Payton +2200 (via DraftKings)."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Comeback Player of the Year",
+      "eventSummary": "Current favorite: Demar Hamlin. Longshot: Russell Wilson."
+    }
+  ]
+}
+```

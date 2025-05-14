@@ -1,0 +1,131 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Tires are saving us — and killing us, too",
+      "author": "Tim Stevens",
+      "theme": "technology",
+      "content": "Tires are the most important safety component on a car, yet there’s increasing research that they’re doing a good deal of harm, too. Slowly, surely, one mote of black dust at a time, tires are leaving their mark on the environment. According to researchers at Imperial College London, our cars and trucks emit 6 million tons of tire wear particles every year, transportation detritus that goes into the air, the land, and the water. That’s a massive figure that ignores the nearly 250 million tires that are disposed of annually in North America, roughly half of which are burned. It’s a depressing state of affairs, but there is room for optimism. Every major tire manufacturer globally is raising its game — not only in terms of performance in the face of bigger, heavier electric cars but also in terms of environmental impact. Renewable materials are finding their way into modern tires, and there’s even greener rubber on the horizon, too. Truly sustainable tires are becoming a reality, but will it be enough?",
+      "created": "2023-11-17T13:45:00+00:00",
+      "published": "2023-11-17T13:45:00+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Renewable rubber",
+          "eventSummary": "Bridgestone’s “Wireless-In-Wheel” technology.",
+          "theme": "technology",
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Bridgestone"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "The molecular menace",
+          "eventSummary": "Firestone’s IndyCar tires.",
+          "theme": "environment",
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Firestone"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "End of the road",
+          "eventSummary": "Michelin’s Uptis.",
+          "theme": "technology",
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Michelin"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:NewsAsset",
+      "byline": "Dan Treacy",
+      "published": "2023-11-27T23:32:04+00:00",
+      "title": "Bears vs. Vikings live score, updates, highlights from NFL 'Monday Night Football' game",
+      "summary": "The honeymoon period is over for Joshua Dobbs in Minnesota. The folk hero quarterback threw four interceptions in the Vikings' 12-10 'Monday Night Football' loss to the Bears, leading a sluggish offense that didn't find its footing until the fourth quarter in a game that Minnesota wouldn't have needed many points to win. The Bears' defense swarmed Dobbs throughout the night, sacking him only twice but bringing a great deal of pressure as the defensive backs made plays. Despite the barrage of turnovers, Chicago largely failed to take advantage. The Bears scored only three points off of the four Dobbs interceptions. MORE: How Joshua Dobbs got his 'Passtronaut' nickname Meanwhile, Chicago's first turnover of the night — a deflating fumble by Fields when the Bears had a chance to extend their lead to two possessions — was quickly turned into a touchdown by the Vikings. It looked like that score might be the difference, particularly after Fields fumbled away the ball again on the next possession, but the Bears' defense put the ball back in his hands in the final minutes. Fields delivered. Facing 3rd & 10 outside of field goal range, Fields hit an open D.J. Moore for a 36-yard gain. At that point, all the Bears needed to do was kneel and put Cairo Santos in position to win the game. Santos drilled the 30-yard attempt with 10 seconds remaining, and that would seal it for Chicago. MORE: Vikings playoff chances after loss to Bears As he embarks on a crucial stretch that could determine his future with the Bears, Fields flashed the good and the bad. He was excellent on Chicago's opening drive, albeit one that ended without points, but missed throws and costly turnovers allowed the Vikings to hang around. When it mattered most, though, Fields was poised and sealed the Bears' first win over an NFC North opponent since 2021. While Chicago's hopes are still extraordinarily distant at 4-8, the Vikings saw their playoff chances take a hit on Monday night. Minnesota (6-6) dropped to the No. 7 seed in the NFC with the loss, with the Packers, Rams and Saints all just a half-game behind in the wild-card race. While a win would have put the Vikings in position to compete for the division crown down the stretch, just holding onto a playoff spot will now be a battle for Kevin O'Connell's squad. MORE: Latest updates on Justin Jefferson's return date The Sporting News tracked live updates from the 'Monday Night Football' game between the Bears and Vikings. Check out all of the key moments you might have missed.",
+      "associatedAsset": {
+        "@type": "snap:TextAsset",
+        "image": "https://www.sportingnews.com/us/nfl/news/bears-vikings-live-score-highlights-monday-night-football/9e0ddaf702f99e7aec9645db"
+      }
+    },
+    {
+      "@type": "snap:Organization",
+      "name": "Sporting News"
+    }
+  ]
+}
+```

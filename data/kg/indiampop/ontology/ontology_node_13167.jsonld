@@ -1,0 +1,102 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Blast",
+            "disease_symptoms": "Pyricularia grisea (Magnaporthe grisea)",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Metominostrobin",
+                "quantity": "1ml /lit of water",
+                "stage": "20 cents"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Brown spot",
+            "disease_symptoms": "Drechslera oryzae (Cochliobolus miyabeanus)",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Carbofuran 3G",
+                "quantity": "3.5kg at 10 DAS",
+                "stage": "20 cents area"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Rice Tungro Disease (RTD)",
+            "disease_symptoms": "Rice Tungro Bacilliform virus Rice Tungro Spherical virus",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Thiamethoxam 25 WDG",
+                "quantity": "8g",
+                "stage": "20 cents area"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Blast",
+            "disease_symptoms": "Pyricularia grisea (Magnaporthe grisea)",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Carbendazim 50WP",
+                "quantity": "500g/ha",
+                "stage": "after observing initial infection of the disease"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Brown spot",
+            "disease_symptoms": "Drechslera oryzae (Cochliobolus miyabeanus)",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Metominostrobin",
+                "quantity": "1ml /lit of water",
+                "stage": "20 cents"
+            }
+        }
+    ]
+}

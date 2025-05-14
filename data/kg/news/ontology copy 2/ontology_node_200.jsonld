@@ -1,0 +1,174 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "snap:asset",
+      "title": "Gift Ideas for Creatives and Book Lovers",
+      "author": "Unknown",
+      "theme": "Gifts",
+      "content": "Gift ideas for creatives and book lovers including subscriptions and gift cards.",
+      "created": "2023-10-01T00:00:00",
+      "modified": "2023-10-01T00:00:00",
+      "published": "2023-10-01T00:00:00",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "snap:event",
+          "eventTitle": "Gift Cards for Bookstores",
+          "eventSummary": "Gift cards for Barnes & Noble, Amazon, or Best Buy.",
+          "theme": "Books",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization1",
+              "@type": "snap:organization",
+              "name": "Barnes & Noble"
+            },
+            {
+              "@id": "snap:organization2",
+              "@type": "snap:organization",
+              "name": "Amazon"
+            },
+            {
+              "@id": "snap:organization3",
+              "@type": "snap:organization",
+              "name": "Best Buy"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event2",
+          "@type": "snap:event",
+          "eventTitle": "Subscriptions for Creatives",
+          "eventSummary": "Subscriptions like MasterClass, Adobe Creative Cloud, and Codecademy.",
+          "theme": "Creativity",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization4",
+              "@type": "snap:organization",
+              "name": "MasterClass"
+            },
+            {
+              "@id": "snap:organization5",
+              "@type": "snap:organization",
+              "name": "Adobe"
+            },
+            {
+              "@id": "snap:organization6",
+              "@type": "snap:organization",
+              "name": "Codecademy"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event3",
+          "@type": "snap:event",
+          "eventTitle": "Gift Cards for Major Retailers",
+          "eventSummary": "Gift cards from Amazon, Best Buy, Walmart, and Target.",
+          "theme": "Retail",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization2",
+              "@type": "snap:organization",
+              "name": "Amazon"
+            },
+            {
+              "@id": "snap:organization3",
+              "@type": "snap:organization",
+              "name": "Best Buy"
+            },
+            {
+              "@id": "snap:organization7",
+              "@type": "snap:organization",
+              "name": "Walmart"
+            },
+            {
+              "@id": "snap:organization8",
+              "@type": "snap:organization",
+              "name": "Target"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

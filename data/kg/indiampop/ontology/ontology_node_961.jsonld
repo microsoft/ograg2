@@ -1,0 +1,62 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CropGrowingZones": {
+            "@container": "@list",
+            "@id": "cropCult:CropGrowingZones",
+            "@type": "schema:ItemList",
+            "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "CHINA ASTER",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "China Aster",
+                "used_for": "One of the most important annual flower crops"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": [
+                    {
+                        "@type": "cropCult:CropGrowingZone",
+                        "name": "China",
+                        "has_regions": ["Native"]
+                    },
+                    {
+                        "@type": "cropCult:CropGrowingZone",
+                        "name": "India",
+                        "has_regions": ["Karnatka", "Tamil Nadu", "West Bengal", "Maharasthtra"]
+                    }
+                ]
+            }
+        }
+    ]
+}

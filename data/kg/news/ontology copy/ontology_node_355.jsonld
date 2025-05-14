@@ -1,0 +1,116 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "With hopes of victory fading, Ukraine's fight against Russia could get even harder in 2024",
+            "byline": null,
+            "published": "2023-12-25T23:36:00+00:00",
+            "summary": "A Ukrainian soldier is seen inside an artillery vehicle in his fighting position as Russia-Ukraine war continues in the direction of Kharkiv, Ukraine on November 20, 2023. Diego Herrera Carcedo | Anadolu | Getty Images",
+            "associatedAsset": {
+                "@type": "ImageAsset",
+                "image": "https://www.cnbc.com/2023/12/26/what-could-happen-in-the-russia-ukraine-war-in-2024.html"
+            }
+        },
+        {
+            "@type": "TextAsset",
+            "title": "Expectations not met",
+            "summary": "At the start of 2023, hopes were high that a much-vaunted Ukrainian counteroffensive — expected to be launched in the spring — would change the dial in the war against Russia. It didn't, and the prospect of a breakthrough in 2024 is also unlikely, military experts and defense analysts told CNBC.",
+            "image": "Ukrainian servicemen take part in a military training exercise not far from front line in the Donetsk region on June 8, 2023. Anatolii Stepanov | Afp | Getty Images"
+        },
+        {
+            "@type": "TextAsset",
+            "title": "Aid and politics",
+            "summary": "Another year of war in Europe has undoubtedly drained Western military resources and the political appetite to maintain massive amounts of military aid for Ukraine. Ongoing funding for Ukraine is far from secure in 2024 given the fact that the U.S. presidential election could herald a seismic change in the attitude toward and support for Kyiv.",
+            "image": "Good chemistry: President Donald Trump and Russian President Vladimir Putin shake hands during a joint press conference after their summit on July 16, 2018 in Helsinki, Finland. Chris McGrath | Getty Images News | Getty Images"
+        },
+        {
+            "@type": "TextAsset",
+            "title": "More stalemate or negotiations?",
+            "summary": "Ukraine's Defense Ministry said last week that its main goal in 2024 is to boost its domestic defense industry in the face of uncertain future supplies from its Western allies. It has also changed conscription laws, foreseeing the need to bolster its forces, which are dwarfed in size by Russia's but are more highly trained and equipped.",
+            "image": "A Ukrainian tank drives along the field on December 7, 2023 in Avdiivka, Ukraine. Kostya Liberov | Getty Images"
+        }
+    ]
+}
+```

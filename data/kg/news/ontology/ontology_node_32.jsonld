@@ -1,0 +1,198 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "NewsAsset",
+            "title": "Holiday Photography Solutions",
+            "author": "Jess Weatherbed",
+            "theme": "Photography",
+            "summary": "A review of various products that enhance holiday photography experiences.",
+            "created": "2023-10-01T10:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList1",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "eventTitle": "Mobile Tripod Review",
+                        "eventSummary": "A review of a mobile tripod for holiday snaps.",
+                        "theme": "Photography",
+                        "hasLocation": {
+                            "@id": "geo:location1",
+                            "@type": "geo:SpatialThing"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList1",
+                            "Person": [
+                                {
+                                    "@id": "snap:person1",
+                                    "name": "Jess Weatherbed"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList1",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event2",
+                        "eventTitle": "Car-Friendly Charger Review",
+                        "eventSummary": "A review of a car-friendly charger.",
+                        "theme": "Technology",
+                        "hasLocation": {
+                            "@id": "geo:location2",
+                            "@type": "geo:SpatialThing"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList2",
+                            "Person": [
+                                {
+                                    "@id": "snap:person2",
+                                    "name": "Sean Hollister"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList2",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event3",
+                        "eventTitle": "Fanny Pack Review",
+                        "eventSummary": "A review of a colorful fanny pack.",
+                        "theme": "Fashion",
+                        "hasLocation": {
+                            "@id": "geo:location3",
+                            "@type": "geo:SpatialThing"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList3",
+                            "Person": [
+                                {
+                                    "@id": "snap:person3",
+                                    "name": "Victoria Song"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList3",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event4",
+                        "eventTitle": "Pet Products Review",
+                        "eventSummary": "A review of various products for pets.",
+                        "theme": "Pets",
+                        "hasLocation": {
+                            "@id": "geo:location4",
+                            "@type": "geo:SpatialThing"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList4",
+                            "Person": [
+                                {
+                                    "@id": "snap:person4",
+                                    "name": "Mitchell Clark"
+                                },
+                                {
+                                    "@id": "snap:person5",
+                                    "name": "Elizabeth Lopatto"
+                                },
+                                {
+                                    "@id": "snap:person6",
+                                    "name": "Kaitlin Hatton"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList4",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

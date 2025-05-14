@@ -1,0 +1,148 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Faiza Saqib and Amber Raiken",
+      "published": "2023-11-06T10:40:17+00:00",
+      "title": "Thanksgiving 2023: What stores will be open on the holiday?",
+      "summary": "On Thursday 23 November, Americans will be hard at work to prepare their Thanksgiving dinner, with foods on the menus ranging from a roasted turkey to a green bean casserole. Aside from the dishes served in the lavish feast, which can vary based on families’ cultures and traditions, Thanksgiving is also the annual holiday for people to commemorate all that they’re grateful for. In the midst of planning the big meal, there’s also a huge range of ingredients that need to be purchased at your local grocery store. However, since Thanksgiving Day is a federal holiday in the US, some stores will be completely shut down on the holiday.",
+      "associatedAsset": [
+        {
+          "@type": "TextAsset",
+          "image": "https://www.independent.co.uk/life-style/thanksgiving-2023-stores-opening-times-walmart-b2416502.html"
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "name": "Whole Foods"
+    },
+    {
+      "@type": "Organization",
+      "name": "Costco"
+    },
+    {
+      "@type": "Organization",
+      "name": "Walmart"
+    },
+    {
+      "@type": "Organization",
+      "name": "Target"
+    },
+    {
+      "@type": "Organization",
+      "name": "Trader Joe’s"
+    },
+    {
+      "@type": "Organization",
+      "name": "Wegmans"
+    },
+    {
+      "@type": "Organization",
+      "name": "Starbucks"
+    },
+    {
+      "@type": "Organization",
+      "name": "Aldi"
+    },
+    {
+      "@type": "Organization",
+      "name": "Dollar General"
+    },
+    {
+      "@type": "Organization",
+      "name": "CVS"
+    },
+    {
+      "@type": "Organization",
+      "name": "Dunkin’ Donuts"
+    },
+    {
+      "@type": "Organization",
+      "name": "Walgreens"
+    }
+  ]
+}
+```

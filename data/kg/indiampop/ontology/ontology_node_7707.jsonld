@@ -1,0 +1,55 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "CostOfProduction": {
+            "@id": "cropCult:CostOfProduction",
+            "@type": "schema:Thing",
+            "@context": {
+                "labour_cost": "schema:Text",
+                "fertilizer_cost": "schema:Text",
+                "plant_protection_cost": "schema:Text",
+                "total_cost_of_production": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Coconut",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Oilseeds",
+                "used_for": "Oilpalm"
+            },
+            "CostOfProduction": {
+                "@type": "CostOfProduction",
+                "labour_cost": "Labour cost for 200 Nos. @ Rs.120/- per day as casual labour 24,000",
+                "fertilizer_cost": "Fertilizer cost 5000",
+                "plant_protection_cost": "Plant Protection cost 500",
+                "total_cost_of_production": "Total cost of production 29,500"
+            }
+        }
+    ]
+}

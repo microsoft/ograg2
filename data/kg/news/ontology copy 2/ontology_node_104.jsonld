@@ -1,0 +1,298 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "title": "Mission: Impossible - Fallout",
+            "author": "OW",
+            "theme": "Action Movie",
+            "content": "While it fell some way short of the series’ critical and commercial peak, Fallout — mistakes were made, chiefly putting “Part One” in the title — the seventh (seventh!) Mission: Impossible film is another shockingly confident and artful action movie that delivers set-piece after astounding set-piece over a breathless two and a half hours.",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Rome Car Chase",
+                    "eventSummary": "A new, more kinetic and balletic partnership between the star and Hayley Atwell.",
+                    "theme": "Action Sequence"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Train Carriage Climax",
+                    "eventSummary": "Jaw-dropping practical stunt work with ballroom dancing, silent slapstick, and rom-com meet-cute.",
+                    "theme": "Action Sequence"
+                }
+            ]
+        },
+        {
+            "@type": "snap:asset",
+            "title": "The Killer",
+            "author": "AG",
+            "theme": "Thriller",
+            "content": "The Killer, like the assassin at its center, is difficult to pin down. It’s astonishingly gorgeous and well made, but at the same time stubbornly unflashy.",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Fight Scene",
+                    "eventSummary": "A fight scene for five minutes that’s better than almost any fight in a mainstream movie this year.",
+                    "theme": "Action Sequence"
+                }
+            ]
+        },
+        {
+            "@type": "snap:asset",
+            "title": "Ferrari",
+            "author": "AG",
+            "theme": "Biopic",
+            "content": "Between Ferrari and Oppenheimer, it’s been a fabulous year for biopics about bastards doing tremendously dangerous things.",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Race Sequences",
+                    "eventSummary": "The Enzo Ferrari biopic’s standout sequences are unquestionably its races.",
+                    "theme": "Racing"
+                }
+            ]
+        },
+        {
+            "@type": "snap:asset",
+            "title": "Poor Things",
+            "author": "OW",
+            "theme": "Fantasy",
+            "content": "If there were an award for unlikeliest but most effective Oscar bait, it would go to this reunion of The Favourite star Emma Stone.",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Reanimated Woman’s Quest",
+                    "eventSummary": "A deeply weird, neo-Frankenstinian fable about a reanimated woman’s quest for independence, identity, and the meaning of life.",
+                    "theme": "Fantasy"
+                }
+            ]
+        },
+        {
+            "@type": "snap:asset",
+            "title": "Suzume",
+            "author": "PR",
+            "theme": "Anime",
+            "content": "Makoto Shinkai’s career seems to have been building up to Suzume.",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Cross-Country Journey",
+                    "eventSummary": "Suzume, the protagonist, overcoming her own trauma.",
+                    "theme": "Adventure"
+                }
+            ]
+        },
+        {
+            "@type": "snap:asset",
+            "title": "Godzilla Minus One",
+            "author": "CP",
+            "theme": "Kaiju",
+            "content": "Godzilla fans aren’t wanting for new media, including the recent Apple TV series Monarch.",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Post-WWII Tokyo Setting",
+                    "eventSummary": "A throwback to the post-WWII Tokyo setting.",
+                    "theme": "Kaiju"
+                }
+            ]
+        },
+        {
+            "@type": "snap:asset",
+            "title": "John Wick: Chapter 4",
+            "author": "JR",
+            "theme": "Action",
+            "content": "John Wick has only ever wanted to fuck off and retire, and no one seems to get the message.",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Action Legends Face-off",
+                    "eventSummary": "Facing off against action legends Donnie Yen and Scott Adkins.",
+                    "theme": "Action"
+                }
+            ]
+        },
+        {
+            "@type": "snap:asset",
+            "title": "May December",
+            "author": "ZM",
+            "theme": "Drama",
+            "content": "Elizabeth arrives in Savannah to prepare for a new role based on Gracie.",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Role Preparation",
+                    "eventSummary": "Elizabeth arrives in Savannah to prepare for a new role.",
+                    "theme": "Drama"
+                }
+            ]
+        },
+        {
+            "@type": "snap:asset",
+            "title": "Showing Up",
+            "author": "CP",
+            "theme": "Art",
+            "content": "Lizzy is a 30-something artist living on campus at her hometown art school.",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Art Exhibition Preparation",
+                    "eventSummary": "Lizzy wants time to prepare for her exhibition.",
+                    "theme": "Art"
+                }
+            ]
+        },
+        {
+            "@type": "snap:asset",
+            "title": "Barbie",
+            "author": "TR",
+            "theme": "Comedy",
+            "content": "Any description of Barbie’s big themes makes it sound preachy and stilted.",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Barbie's Big Themes",
+                    "eventSummary": "Toxic masculinity, how Barbie branding affects young girls.",
+                    "theme": "Comedy"
+                }
+            ]
+        },
+        {
+            "@type": "snap:asset",
+            "title": "Spider-Man: Across the Spider-Verse",
+            "author": "PR",
+            "theme": "Superhero",
+            "content": "2018’s Spider-Man: Into the Spider-Verse changed the game for superhero movies and animated movies.",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Multiverse Adventure",
+                    "eventSummary": "As the characters bounce across the multiverse, the animation style shifts.",
+                    "theme": "Superhero"
+                }
+            ]
+        },
+        {
+            "@type": "snap:asset",
+            "title": "The Boy and the Heron",
+            "author": "ZM",
+            "theme": "Fantasy",
+            "content": "Texture is essential to Hayao Miyazaki’s work.",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Fantastical Realms",
+                    "eventSummary": "For all its fantastical realms and magical happenings, follows the same ethos.",
+                    "theme": "Fantasy"
+                }
+            ]
+        },
+        {
+            "@type": "snap:asset",
+            "title": "Asteroid City",
+            "author": "Unknown",
+            "theme": "Comedy",
+            "content": "To people who don’t know Wes Anderson’s work well, he’s a known quantity that’s easily replicated and parodied.",
+            "created": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Wes Anderson's Style",
+                    "eventSummary": "Fast-talking people responding with unemotive calm to extraordinary events.",
+                    "theme": "Comedy"
+                }
+            ]
+        }
+    ]
+}

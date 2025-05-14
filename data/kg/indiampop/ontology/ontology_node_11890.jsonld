@@ -1,0 +1,51 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "SeedProduction": {
+            "@id": "cropCult:SeedProduction",
+            "@type": "schema:Thing",
+            "@context": {
+                "isolation": "schema:Text",
+                "first_spray": "cropCult:FirstSpray",
+                "second_spray": "cropCult:SecondSpray"
+            }
+        },
+        "FirstSpray": {
+            "@id": "cropCult:FirstSpray",
+            "@type": "schema:Thing",
+            "@context": {
+                "time": "schema:Text",
+                "substance": "schema:Text",
+                "concentration": "schema:Text"
+            }
+        },
+        "SecondSpray": {
+            "@id": "cropCult:SecondSpray",
+            "@type": "schema:Thing",
+            "@context": {
+                "time_after_first_spray": "schema:Text",
+                "substance": "schema:Text",
+                "concentration": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:SeedProduction",
+            "isolation": "At the time of first appearance of flowering, spray 2% DAP and a second spray is given at 15 days after the first spray.",
+            "first_spray": {
+                "@type": "cropCult:FirstSpray",
+                "time": "At the time of first appearance of flowering",
+                "substance": "DAP",
+                "concentration": "2%"
+            },
+            "second_spray": {
+                "@type": "cropCult:SecondSpray",
+                "time_after_first_spray": "15 days",
+                "substance": "DAP",
+                "concentration": "2%"
+            }
+        }
+    ]
+}

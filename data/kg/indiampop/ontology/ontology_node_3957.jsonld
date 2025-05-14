@@ -1,0 +1,80 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "has_types": "Cereal",
+            "has_growing_zones": "Temperate",
+            "has_temperature_requirements": "15-25°C",
+            "has_soil_requirements": "Loamy",
+            "has_land_preperation_requirements": "Ploughing",
+            "seed_germination_test_requirements_are": "Moisture content",
+            "has_seed_fungicide_requirements": "Mancozeb",
+            "needs_seed_sowing_spacing": "15cm",
+            "weed_management_needs_are": "Herbicides",
+            "needs_irrigation_schedule": "Every 10 days",
+            "needs_disease_treatements": "Fungicides",
+            "needs_pest_treatements": "Insecticides",
+            "harvesting_guidelines_are": "When grains are dry",
+            "storage_guidelines_are":"Dry and cool place"
+        },
+        {
+            "@type": "PesticideList",
+            "name": "Pesticides banned for manufacture, import and use in India",
+            "quantity": "25 nos.",
+            "stage": "Not applicable"
+        },
+        {
+            "@type": "PesticideList",
+            "name": "Pesticides/pesticide formulations banned for use but their manufacture is allowed for export",
+            "quantity": "2 nos.",
+            "stage": "Not applicable"
+        },
+        {
+            "@type": "PesticideList",
+            "name": "Pesticides withdrawn",
+            "quantity": "8 nos.",
+            "stage": "Not applicable"
+        },
+        {
+            "@type": "PesticideList",
+            "name": "Pesticides restricted for use in India",
+            "quantity": "12 nos.",
+            "stage": "Not applicable"
+        }
+    ]
+}

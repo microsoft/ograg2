@@ -1,0 +1,127 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Sheena Vasani",
+      "published": "2023-10-16T21:40:46+00:00",
+      "title": "Here are the best Kindle deals right now",
+      "summary": "When it comes to finding a device to use to read your ebooks, you have a few options to choose from. You can always buy a tablet or use your phone, but those devices are multipurpose and can be used for a ton of things, like surfing the web or doom-scrolling on Twitter. If you are looking for something to strictly read books, e-readers, while niche, are designed to store all of your books in a virtual library with limited functionality. Amazon, one of the pioneers of the e-reader, has dominated the space for years with its ever-expanding Kindle lineup, which consists of several unique models with their own pros and cons. The bulk of the devices function as simple ebook readers; however, with the Kindle Scribe, Amazon looks to be moving beyond books and into the realm of writing — something that should make future Kindles function more akin to physical paper.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://www.theverge.com/21539047/best-amazon-kindle-deals"
+      }
+    },
+    {
+      "@type": "Organization",
+      "name": "The Verge"
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "The best Kindle (2022) deals",
+      "eventSummary": "What does it mean when a Kindle is “ad-supported”? Amazon Kindle e-readers come in different storage configurations, but there is also an additional option that allows you to buy the e-reader with or without ads. Ad-supported Kindles will display personalized advertisements on the lock screen when it is in sleep mode or at the bottom of the homescreen when the device is connected to Wi-Fi. Typically, you save about $20 by buying the ad-supported version, but if you decide to remove ads later, you can make a one-time payment to cover the difference and remove the ads."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "The best Kindle Kids (2022) deals",
+      "eventSummary": "The new base Kindle wasn’t the only e-reader Amazon introduced in 2022. The new entry-level model has arrived alongside a new Kindle Kids, which is identical to the standard model but comes with a handful of accessories and provides age-appropriate content for younger readers who prefer digital books. Like the last-gen Kindle Kids, the new model retails for $20 more than the base model, bringing the MSRP to $119.99."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "The best Kindle Paperwhite (2021) deals",
+      "eventSummary": "Amazon’s latest Kindle Paperwhite is its 11th-gen model, which comes with USB-C support, longer battery life, and a larger 6.8-inch display. The e-reader launched more than two years ago, and it often receives steep discounts at retailers like Amazon and Best Buy, particularly around Black Friday and throughout the holiday season."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "The best Kindle Oasis (2019) deals",
+      "eventSummary": "The Kindle Oasis is the most expensive of the lineup, starting at $249.99. The device comes in two storage configurations, 8GB or 32GB, and like the other models, you can get it with or without ads on the lock screen."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "The best Kindle Scribe deals",
+      "eventSummary": "The ad-free Kindle Scribe is Amazon’s biggest e-reader to date — one that also represents a departure from past Kindle models. It packs a 10.2-inch display with 300 dpi, along with the same great battery life for which Kindles have become known."
+    }
+  ]
+}
+```

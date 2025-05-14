@@ -1,0 +1,116 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Parthenium",
+            "weed_types": ["Parthenium"],
+            "herbicides": [
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Paddy straw",
+                    "quantity": "0.5 ton",
+                    "stage": "C. Working capital"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Spawn",
+                    "quantity": "500 packets of 200 g each",
+                    "stage": "C. Working capital"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Polythene bags",
+                    "quantity": "1,200.00",
+                    "stage": "C. Working capital"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Labour",
+                    "quantity": "100 man days @ 100/-",
+                    "stage": "C. Working capital"
+                },
+                {
+                    "@type": "cropCult:Fungicide",
+                    "name": "Fungicides",
+                    "quantity": "700.00"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Miscellaneous",
+                    "quantity": "800.00",
+                    "stage": "C. Working capital"
+                }
+            ]
+        },
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Mushroom production",
+            "weed_types": ["Mushroom"],
+            "herbicides": [
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Working capital plus fixed capital",
+                    "quantity": "22,152.00",
+                    "stage": "D. Cost of mushroom production"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Cost of production of 1 kg of mushroom",
+                    "quantity": "44.30",
+                    "stage": "D. Cost of mushroom production"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,224 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "Hear more from Gold Coast Academy ruckman Ethan Read ahead of the #AFLDraft",
+            "author": "AFL",
+            "created": "2023-11-11T00:00:00Z",
+            "published": "2023-11-11T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList1",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "@type": "schema:Thing",
+                        "eventTitle": "AFL Draft",
+                        "eventSummary": "Ethan Read's insights ahead of the draft.",
+                        "mentions_persons": {
+                            "@id": "snap:personList1",
+                            "Person": [
+                                {
+                                    "@id": "snap:person1",
+                                    "@type": "schema:Thing",
+                                    "name": "Ethan Read",
+                                    "dateOfBirth": "2005-01-01",
+                                    "placeOfBirth": "Gold Coast",
+                                    "alias": "Ethan"
+                                },
+                                {
+                                    "@id": "snap:person2",
+                                    "@type": "schema:Thing",
+                                    "name": "Archer Reid",
+                                    "dateOfBirth": "2005-09-19",
+                                    "placeOfBirth": "Victoria Country",
+                                    "alias": "Archer"
+                                },
+                                {
+                                    "@id": "snap:person3",
+                                    "@type": "schema:Thing",
+                                    "name": "Harley Reid",
+                                    "dateOfBirth": "2005-04-17",
+                                    "placeOfBirth": "Victoria Country",
+                                    "alias": "Harley"
+                                },
+                                {
+                                    "@id": "snap:person4",
+                                    "@type": "schema:Thing",
+                                    "name": "Archie Roberts",
+                                    "dateOfBirth": "2005-11-18",
+                                    "placeOfBirth": "Victoria Metro",
+                                    "alias": "Archie"
+                                },
+                                {
+                                    "@id": "snap:person5",
+                                    "@type": "schema:Thing",
+                                    "name": "Jake Rogers",
+                                    "dateOfBirth": "2005-03-02",
+                                    "placeOfBirth": "Queensland",
+                                    "alias": "Jake"
+                                },
+                                {
+                                    "@id": "snap:person6",
+                                    "@type": "schema:Thing",
+                                    "name": "Ryley Sanders",
+                                    "dateOfBirth": "2005-01-21",
+                                    "placeOfBirth": "Tasmania",
+                                    "alias": "Ryley"
+                                },
+                                {
+                                    "@id": "snap:person7",
+                                    "@type": "schema:Thing",
+                                    "name": "Ari Schoenmaker",
+                                    "dateOfBirth": "2005-01-07",
+                                    "placeOfBirth": "Tasmania",
+                                    "alias": "Ari"
+                                },
+                                {
+                                    "@id": "snap:person8",
+                                    "@type": "schema:Thing",
+                                    "name": "Cooper Simpson",
+                                    "dateOfBirth": "2005-02-13",
+                                    "placeOfBirth": "Victoria Country",
+                                    "alias": "Cooper"
+                                },
+                                {
+                                    "@id": "snap:person9",
+                                    "@type": "schema:Thing",
+                                    "name": "George Stevens",
+                                    "dateOfBirth": "2005-04-14",
+                                    "placeOfBirth": "Victoria Country",
+                                    "alias": "George"
+                                },
+                                {
+                                    "@id": "snap:person10",
+                                    "@type": "schema:Thing",
+                                    "name": "Koltyn Tholstrup",
+                                    "dateOfBirth": "2005-06-28",
+                                    "placeOfBirth": "Western Australia",
+                                    "alias": "Koltyn"
+                                },
+                                {
+                                    "@id": "snap:person11",
+                                    "@type": "schema:Thing",
+                                    "name": "Jed Walter",
+                                    "dateOfBirth": "2005-06-08",
+                                    "placeOfBirth": "Queensland",
+                                    "alias": "Jed"
+                                },
+                                {
+                                    "@id": "snap:person12",
+                                    "@type": "schema:Thing",
+                                    "name": "Nick Watson",
+                                    "dateOfBirth": "2005-02-24",
+                                    "placeOfBirth": "Victoria Metro",
+                                    "alias": "Nick"
+                                },
+                                {
+                                    "@id": "snap:person13",
+                                    "@type": "schema:Thing",
+                                    "name": "Darcy Wilson",
+                                    "dateOfBirth": "2005-08-18",
+                                    "placeOfBirth": "Victoria Country",
+                                    "alias": "Darcy"
+                                },
+                                {
+                                    "@id": "snap:person14",
+                                    "@type": "schema:Thing",
+                                    "name": "Caleb Windsor",
+                                    "dateOfBirth": "2005-06-09",
+                                    "placeOfBirth": "Victoria Metro",
+                                    "alias": "Caleb"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList1",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

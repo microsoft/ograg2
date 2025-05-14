@@ -1,0 +1,188 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Comeback kings Richmond take the AFLW points in Cairns",
+            "author": "The Age",
+            "published": "2023-10-20T23:51:34+00:00",
+            "summary": "A late goal by Emelia Yassir has helped Richmond to their first win in four games, putting their AFLW finals campaign back on track with an 11-point victory over Hawthorn.",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "eventTitle": "Richmond vs Hawthorn Match",
+                        "eventSummary": "Richmond pulled off a 6.5 (41) to 4.6 (30) victory to keep their finals hopes alive at Cazaly’s Stadium in Cairns.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Cazaly’s Stadium, Cairns"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "@id": "snap:person1",
+                                    "name": "Emelia Yassir",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Yassir"
+                                },
+                                {
+                                    "@id": "snap:person2",
+                                    "name": "Monique Conti",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Conti"
+                                },
+                                {
+                                    "@id": "snap:person3",
+                                    "name": "Grace Egan",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Egan"
+                                },
+                                {
+                                    "@id": "snap:person4",
+                                    "name": "Emily Bates",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Bates"
+                                },
+                                {
+                                    "@id": "snap:person5",
+                                    "name": "Jasmine Fleming",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Fleming"
+                                },
+                                {
+                                    "@id": "snap:person6",
+                                    "name": "Katie Brennan",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Brennan"
+                                },
+                                {
+                                    "@id": "snap:person7",
+                                    "name": "Greta Bodey",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Bodey"
+                                },
+                                {
+                                    "@id": "snap:person8",
+                                    "name": "Caitlin Greiser",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "Greiser"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "name": "Richmond Football Club",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Richmond, Victoria"
+                                    },
+                                    "alias": "Tigers"
+                                },
+                                {
+                                    "@id": "snap:organization2",
+                                    "name": "Hawthorn Football Club",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Hawthorn, Victoria"
+                                    },
+                                    "alias": "Hawks"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

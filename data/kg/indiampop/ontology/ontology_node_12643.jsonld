@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements"
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "for_flowering": "schema:Text",
+                "for_grain_filling": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "POTATO (Solanum tuberosum L)",
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Potato is very sensitive to temperature, rainfall and humidity and photoperiod. The optimum temperature for potato cultivation is 180C - 250C.",
+                "for_flowering": "Good crop growth is observed when days are sunny and nights are cool.",
+                "for_grain_filling": "Good tuberisation is obtained when day temperature is 200C and night temperature is 140C.",
+                "negative_effect": "N/A"
+            }
+        }
+    ]
+}

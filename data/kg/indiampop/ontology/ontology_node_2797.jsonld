@@ -1,0 +1,35 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "Transplanted Puddled Lowland Rice",
+            "weed_management_needs_are": {
+                "@type": "cropCult:WeedManagement",
+                "weed_name": "Main Field Management",
+                "weed_types": [
+                    "Tillering",
+                    "Panicle initiation"
+                ],
+                "herbicides": {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Recommended Quantity",
+                    "quantity": "Should not be reduced",
+                    "stage": "Crucial periods"
+                }
+            }
+        }
+    ]
+}

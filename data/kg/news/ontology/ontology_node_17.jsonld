@@ -1,0 +1,249 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "OpenAI Connects ChatGPT to the Internet",
+            "author": "OpenAI",
+            "summary": "OpenAI launched plugins for ChatGPT, extending the bot’s functionality by granting it access to third-party knowledge sources and databases, including the web.",
+            "created": "2023-02-01T00:00:00Z",
+            "published": "2023-02-01T00:00:00Z",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "OpenAI Launches GPT-4",
+                        "eventSummary": "GPT-4 is a powerful image- and text-understanding AI model from OpenAI.",
+                        "theme": "AI Development",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "OpenAI"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "ChatGPT Available in Azure OpenAI Service",
+                        "eventSummary": "ChatGPT is generally available through the Azure OpenAI Service.",
+                        "theme": "AI Service",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Microsoft"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "OpenAI Launches an API for ChatGPT",
+                        "eventSummary": "OpenAI makes another move toward monetization by launching a paid API for ChatGPT.",
+                        "theme": "API Launch",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Instacart"
+                                },
+                                {
+                                    "name": "Snap"
+                                },
+                                {
+                                    "name": "Quizlet"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Microsoft Launches the New Bing",
+                        "eventSummary": "Microsoft announced its long-rumored integration of OpenAI’s GPT-4 model into Bing.",
+                        "theme": "Search Engine Integration",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Microsoft"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "OpenAI Launches ChatGPT Plus",
+                        "eventSummary": "OpenAI launched a new pilot subscription plan for ChatGPT called ChatGPT Plus.",
+                        "theme": "Subscription Service",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "OpenAI"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "OpenAI Teases ChatGPT Professional",
+                        "eventSummary": "OpenAI said that it’s starting to think about how to monetize ChatGPT.",
+                        "theme": "Monetization Strategy",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "OpenAI"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "ShareGPT Launch",
+                        "eventSummary": "Two developers made a Chrome extension called ShareGPT to make it easier to capture and share the AI’s answers.",
+                        "theme": "Extension Launch",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Steven Tey"
+                                },
+                                {
+                                    "name": "Dom Eccleston"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "ChatGPT First Launched to the Public",
+                        "eventSummary": "GPT-3.5 broke cover with ChatGPT, a fine-tuned version of GPT-3.5.",
+                        "theme": "Public Launch",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "OpenAI"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,98 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "STAN CHOE",
+            "published": "2023-10-12T20:00:32+00:00",
+            "title": "ASX to open lower; Wall Street falls as the clamp tightens from rising bond yields",
+            "summary": "The laggards Meanwhile, Harvey Norman (down 4.4 per cent) dropped as it went ex-dividend, weighing on the consumer discretionary sector (down 1 per cent). Wesfarmers (down 0.2 per cent), Lottery Corporation (down 3.6 per cent) and IDP Education (down 1.3 per cent) also fell. Gold miners Evolution (down 3.4 per cent) and Northern Star (down 2.6 per cent), along with NEXTDC (down 2.9 per cent) and REA Group (down 2.7 per cent) were among the biggest large-cap decliners. Healthcare player Resmed (down 2.8 per cent) and lithium miner Liontown Resources (down 2.8 per cent) both bucked the trend among their respective sectors. The lowdown Hotter-than-expected inflation data and the prospect of more rate rises in the world’s biggest economy weighed on sentiment in the Australian sharemarket as interest-rate sensitive sectors such as IT and consumer discretionary dragged the index lower on Friday. While commodity prices boosted iron ore players, company specific news was behind some of the biggest swings. Resmed extended its losses after brokers at RBC downgraded the stock and gold miner Newcrest stepped up after investors approved its merger with US gold mining giant Newmont. US stocks slipped on Thursday as the clamps tighten on Wall Street from rising yields in the bond market. The S&P 500 was 0.7 per cent lower in afternoon trading and on track to break a four-day winning streak, its longest since August. The Dow Jones Industrial Average was down 204 points, or 0.6 per cent, as of 3pm Eastern time, and the Nasdaq composite was 0.8 per cent lower. The stock market has largely been taking its cue from the bond market recently, and weak results announced in the afternoon for an auction of 30-year Treasury bonds sent yields of all kinds higher. Higher yields can knock down prices for stocks and slow the economy by making borrowing more expensive. Yields had already been on the rise in the morning after a report that showed inflation at the consumer level was a touch higher last month than economists expected. That raises worries about the Federal Reserve keeping its main interest rate high for a long time, as it tries to undercut inflation by knocking down investment prices and slowing the economy. Nothing in Thursday’s inflation report should sway the Fed one way or the other when it comes to what it will do on November 1. The inflation report, though, also had some encouraging nuggets for financial markets underneath the surface. After ignoring prices for food and fuel, which Fed officials see as a better predictor of where inflation is heading, prices that consumers had to pay last month were in line with expectations. They also continued to decelerate from earlier months. A second economic report from the morning likewise offered both encouragement and caution for financial markets. It said slightly fewer US workers than expected applied for unemployment benefits last week. On one hand, it indicates a job market with few lay-offs, which means strength for the overall economy. But it could also be adding fuel to keep upward pressure on inflation. After the reports, the 10-year Treasury yield rose to 4.7 per cent from 4.56 per cent late Wednesday. The two-year Treasury yield, which more closely tracks expectations for the Fed, climbed to 5.06 per cent from 4.99 per cent. Yields are still down slightly for the week so far. After jumping last week to their highest levels in more than a decade, yields regressed following speeches that investors saw as hints that the Fed may not raise its main overnight interest rate further. Loading The big jump for the 10-year Treasury yield since the summer has pulled mortgage rates to their highest levels since the turn of the millennium, and such moves could slow the economy without requiring more Fed hikes. Nothing in Thursday’s inflation report should sway the Fed one way or the other when it comes to what it will do on November 1, when it announces its next move on interest rates, said Seema Shah, chief global strategist at Principal Asset Management. She called the data “reassuringly uneventful”. “The question around whether or not there will be one more interest rate hike is yet to be answered,” she said. Rising crude oil prices have put extra pressure on inflation since the summer, and they were volatile again on Thursday. After jumping early in the day, a barrel of benchmark US crude slipped US58¢ to settle at $US82.91. Brent crude, the international standard, rose US18¢ to $US86 a barrel. After jumping since the summer and then regressing a couple of weeks ago, crude prices have been shaky following the latest fighting in Gaza. The worry is the violence could lead to disruptions in the supply of petroleum. Crude prices have been shaky following the latest fighting in Gaza. Credit: Bloomberg Higher oil prices add costs across the economy, and airlines are particularly affected because fuel is one of their biggest expenses. Delta Air Lines fell 2.3 per cent despite reporting stronger profit for the summer than analysts expected. It also reported encouraging trends for bookings going into the holiday season. The result heads a reporting season for S&P 500 companies that could mark a return to profit growth after three straight quarters of declines. Several financial giants will report on Friday, including Citigroup, JPMorgan Chase and Wells Fargo, along with UnitedHealth Group. Ford Motors slumped 1.9 per cent after the United Auto Workers union escalated its walkout against Detroit automakers. In a surprise move, 8700 workers left their jobs at a Ford truck plant in Louisville, Kentucky. In stock markets abroad, indexes were mixed in Europe after rising sharply in much of Asia.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://www.theage.com.au/business/markets/asx-to-open-lower-wall-street-falls-as-the-clamp-tightens-from-rising-bond-yields-20231013-p5eby7.html?ref=rss&utm_medium=rss&utm_source=rss_business"
+            }
+        }
+    ]
+}
+```

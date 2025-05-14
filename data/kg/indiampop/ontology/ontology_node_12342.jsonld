@@ -1,0 +1,48 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Alachlor",
+            "weed_types": ["irrigated crop"],
+            "herbicides": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Alachlor",
+                "quantity": "4 litres/ha",
+                "stage": "after sowing"
+            }
+        },
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Pendimethalin",
+            "weed_types": ["irrigated crop"],
+            "herbicides": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Pendimethalin",
+                "quantity": "3.3 litre ai/ha",
+                "stage": "after sowing followed by one hand weeding on 30 days after sowing"
+            }
+        }
+    ]
+}

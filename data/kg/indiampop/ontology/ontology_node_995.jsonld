@@ -1,0 +1,48 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Integrated Disease Management",
+            "disease_symptoms": "Not specified",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Bordeaux mixture",
+                "quantity": "1%",
+                "stage": "Soil drenching"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Integrated Disease Management",
+            "disease_symptoms": "Not specified",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Trichoderma viride",
+                "quantity": "2.0 to 2.5 kg/ha",
+                "stage": "One month before and after the Bordeaux mixture"
+            }
+        }
+    ]
+}

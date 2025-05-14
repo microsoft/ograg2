@@ -1,0 +1,223 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Video games in 2023: Acquisitions, layoffs, unions",
+            "author": "Jessica Conditt",
+            "theme": "technology",
+            "summary": "This was a year of upheaval in video games. The industry has shapeshifted over the past 12 months, and it’s not all due to Microsoft’s lengthy acquisition of Activision, Blizzard and King. While Xbox executives were defending the legality of a $69 billion deal that would create the third-largest video game studio in the world, smaller companies were firing staff and shutting down entire teams, even amid fervent collective-bargaining efforts. It’s been a wild ride.",
+            "created": "2023-12-19T14:30:37+00:00",
+            "published": "2023-12-19T14:30:37+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Microsoft's acquisition of Activision-Blizzard-King",
+                        "eventSummary": "When Microsoft's purchase of Activision-Blizzard-King was finally approved on October 12, 2023 after nearly two years of regulatory hurdles, it became the world’s third-largest video game studio by revenue.",
+                        "theme": "acquisition",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Microsoft Headquarters"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Microsoft"
+                                },
+                                {
+                                    "name": "Activision"
+                                },
+                                {
+                                    "name": "Blizzard"
+                                },
+                                {
+                                    "name": "King"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Layoffs in the video game industry",
+                        "eventSummary": "It’s estimated that more than 9,000 people in video games were laid off this year and the firings affected teams of all sizes.",
+                        "theme": "layoffs",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Locations"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Embracer Group"
+                                },
+                                {
+                                    "name": "Unity"
+                                },
+                                {
+                                    "name": "Sony"
+                                },
+                                {
+                                    "name": "Epic Games"
+                                },
+                                {
+                                    "name": "Electronic Arts"
+                                },
+                                {
+                                    "name": "CD Projekt RED"
+                                },
+                                {
+                                    "name": "Sega"
+                                },
+                                {
+                                    "name": "Ubisoft"
+                                },
+                                {
+                                    "name": "Microsoft"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Unionization efforts in the video game industry",
+                        "eventSummary": "Unionization is one approach that can help protect the livelihoods of people in the video game industry, and there was progress on this front in 2023.",
+                        "theme": "unionization",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Various Locations"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Microsoft"
+                                },
+                                {
+                                    "name": "ZeniMax Media"
+                                },
+                                {
+                                    "name": "Activision Blizzard"
+                                },
+                                {
+                                    "name": "Avalanche Studios"
+                                },
+                                {
+                                    "name": "Anemone Hug"
+                                },
+                                {
+                                    "name": "CD Projekt RED"
+                                },
+                                {
+                                    "name": "Experis Game Solutions"
+                                },
+                                {
+                                    "name": "Keywords Studios"
+                                },
+                                {
+                                    "name": "Sega of America"
+                                },
+                                {
+                                    "name": "Tender Claws"
+                                },
+                                {
+                                    "name": "Workinman Interactive"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,257 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "byline": "N. Clark",
+      "title": "Related Pizza Tower is platformer paradise for Wario freaks",
+      "summary": "37. Subpar Pool",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Subpar Pool",
+        "summary": "Developer: grapefrukt games",
+        "associatedAsset": {
+          "@type": "snap:asset",
+          "title": "Where to play",
+          "summary": "Android, iOS, Nintendo Switch, and Windows PC"
+        }
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "byline": "OW",
+      "title": "Amnesia: The Bunker",
+      "summary": "36. Amnesia: The Bunker",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Where to play",
+        "summary": "PlayStation 4, PlayStation 5, Windows PC, Xbox One, and Xbox Series X"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "byline": "Chris Grant",
+      "title": "Lil Gator Game",
+      "summary": "35. Lil Gator Game",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Developer: MegaWobble",
+        "summary": "Where to play: Nintendo Switch, PlayStation 4, PlayStation 5, Windows PC, Xbox One, and Xbox Series X"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "byline": "Clayton Ashley",
+      "title": "Starfield",
+      "summary": "34. Starfield",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Developer: Bethesda Game Studios",
+        "summary": "Where to play: Windows PC and Xbox Series X"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "byline": "CA",
+      "title": "System Shock",
+      "summary": "33. System Shock",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Developer: Nightdive Studios",
+        "summary": "Where to play: Windows PC"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "byline": "CA",
+      "title": "Star Wars Jedi: Survivor",
+      "summary": "32. Star Wars Jedi: Survivor",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Developer: Respawn Entertainment",
+        "summary": "Where to play: PlayStation 5, Windows PC, and Xbox Series X"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "byline": "Matt Patches",
+      "title": "Connections",
+      "summary": "31. Connections",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Developer: The New York Times",
+        "summary": "Where to play: Android, browser, and iOS"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "byline": "N. Clark",
+      "title": "Hi-Fi Rush",
+      "summary": "30. Hi-Fi Rush",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Developer: Tango Gameworks",
+        "summary": "Where to play: Windows PC and Xbox Series X"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "byline": "Matt Leone",
+      "title": "Monster Hunter Now",
+      "summary": "29. Monster Hunter Now",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Developer: Niantic",
+        "summary": "Where to play: Android and iOS"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "byline": "RG",
+      "title": "Diablo 4",
+      "summary": "28. Diablo 4",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Developer: Blizzard Entertainment",
+        "summary": "Where to play: PlayStation 4, PlayStation 5, Windows PC, Xbox One, and Xbox Series X"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "byline": "Samit Sarkar",
+      "title": "Hitman World of Assassination: Freelancer mode",
+      "summary": "27. Hitman World of Assassination: Freelancer mode",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Developer: IO Interactive",
+        "summary": "Where to play: PlayStation 4, PlayStation 5, Windows PC, Xbox One, and Xbox Series X"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "byline": "N. Carpenter",
+      "title": "Venba",
+      "summary": "26. Venba",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Developer: Visai Games",
+        "summary": "Where to play: Nintendo Switch, PlayStation 4, PlayStation 5, Windows PC, Xbox One, and Xbox Series X"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "byline": "CA",
+      "title": "Viewfinder",
+      "summary": "25. Viewfinder",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Developer: Sad Owl Studios",
+        "summary": "Where to play: PlayStation 5 and Windows PC"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "byline": "ML",
+      "title": "Humanity",
+      "summary": "24. Humanity",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Developer: tha",
+        "summary": "Where to play: PlayStation 4, PlayStation 5, and Windows PC"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "byline": "Chris Plante",
+      "title": "Paranormasight: The Seven Mysteries of Honjo",
+      "summary": "23. Paranormasight: The Seven Mysteries of Honjo",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Developer: Square Enix",
+        "summary": "Where to play: Android, iOS, Nintendo Switch, and Windows PC"
+      }
+    }
+  ]
+}
+```

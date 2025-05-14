@@ -1,0 +1,159 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Amazon’s latest Echo Frames are more style than substance",
+            "author": "Victoria Song",
+            "published": "2023-12-07T15:00:00+00:00",
+            "summary": "The purpose of the Amazon Echo Frames is obvious: to provide quick access to Alexa no matter where you are because it’s on your face. But generally speaking, that’s not why anyone wants smart glasses, let alone a pair that costs $389.99 like the Carrera Cruiser model I’ve been wearing for the past week.",
+            "has_events": {
+                "@list": []
+            },
+            "followUp": {
+                "@id": "snap:asset"
+            },
+            "derivedFrom": {
+                "@id": "snap:asset"
+            }
+        },
+        {
+            "@type": "EventList",
+            "Event": {
+                "@id": "snap:event",
+                "eventTitle": "Review of Amazon Echo Frames",
+                "eventSummary": "A detailed review of the Amazon Echo Frames highlighting their features and shortcomings.",
+                "theme": "technology",
+                "hasLocation": {
+                    "@id": "geo:SpatialThing"
+                },
+                "mentions_persons": {
+                    "@list": []
+                },
+                "mentions_organizations": {
+                    "@list": [
+                        {
+                            "@id": "snap:organization",
+                            "name": "The Verge"
+                        }
+                    ]
+                },
+                "subEventOf": {
+                    "@id": "snap:event"
+                },
+                "notablyAssociatedWith": {
+                    "@id": "snap:event"
+                }
+            }
+        },
+        {
+            "@type": "PersonList",
+            "Person": {
+                "@id": "snap:person",
+                "name": "Victoria Song",
+                "dateOfBirth": {
+                    "@id": "xmls:date"
+                },
+                "dateOfDeath": {
+                    "@id": "xmls:date"
+                },
+                "placeOfBirth": {
+                    "@id": "geo:location"
+                },
+                "alias": "Reviewer"
+            }
+        },
+        {
+            "@type": "OrganizationList",
+            "Organization": {
+                "@id": "snap:organization",
+                "name": "The Verge",
+                "hasLocation": {
+                    "@id": "geo:SpatialThing"
+                },
+                "alias": "Tech News Outlet",
+                "notablyAssociatedWith": {
+                    "@list": []
+                }
+            }
+        }
+    ]
+}

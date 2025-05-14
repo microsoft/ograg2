@@ -1,0 +1,61 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "SeedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        },
+        "GrowthRegulators": {
+            "@id": "cropCult:GrowthRegulators",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Banana",
+            "needs_seed_sowing_spacing": {
+                "@type": "SeedSpacing",
+                "sowing_time": "After last hand has opened",
+                "value": "yteiraV gnicapS ah/stnalpfo.oN",
+                "depth": "N/A",
+                "method": "Spray"
+            },
+            "GrowthRegulators": {
+                "@type": "GrowthRegulators",
+                "instructions": "To improve the grade of bunches 2,4-D at 25 ppm (25 mg/lit.) may be sprayed in Poovan and CO 1 banana after the last hand has opened. This will also help to remove seediness in Poovan variety. Spray CCC 1000 ppm at 4th and 6th month after planting. Spray plantozyme @ 2ml/lt at 6th and 8th month after planting to get higher yield."
+            }
+        }
+    ]
+}
