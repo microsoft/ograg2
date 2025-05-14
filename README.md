@@ -3,6 +3,8 @@
 
 **OG-RAG** enhances Large Language Models (LLMs) with domain-specific ontologies for improved factual accuracy and contextually relevant responses in fields with specialized workflows like agriculture, healthcare, knowledge work, and more.
 
+[**Paper:** OG-RAG: Ontology-Grounded Retrieval-Augmented Generation For Large Language Models](https://arxiv.org/html/2412.15235v1)
+
 ---
 
 ## 🔍 Overview
