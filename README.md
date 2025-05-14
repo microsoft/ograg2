@@ -1,5 +1,5 @@
 # Ontology Generated Retrieval Augmented Generation (OG-RAG)
-![OG-RAG: Ontology-Grounded Retrieval-Augmented Generation]https://arxiv.org/html/2412.15235v1/x1.png)
+![OG-RAG: Ontology-Grounded Retrieval-Augmented Generation](https://arxiv.org/html/2412.15235v1/x1.png)
 
 **OG-RAG** enhances Large Language Models (LLMs) with domain-specific ontologies for improved factual accuracy and contextually relevant responses in fields with specialized workflows like agriculture, healthcare, knowledge work, and more.
 
