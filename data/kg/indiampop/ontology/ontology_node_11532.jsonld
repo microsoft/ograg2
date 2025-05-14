@@ -1,0 +1,110 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text",
+                "deficiency_symptoms": "schema:Text",
+                "functions": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Oil Palm",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Oil Palm",
+                "used_for": "Oil Production"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Tropical Soils",
+                "for_water": "Moderate",
+                "for_nutrients": "High"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Clear land, plough and harrow soil, create drainage system",
+                "with_soil_moisture": "Moderate"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Start of rainy season",
+                "value": "9m x 9m",
+                "depth": "1m",
+                "method": "Direct sowing"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Moderate",
+                "stage_of_application": "Throughout growth stages"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical",
+                    "has_regions": ["Asia", "Africa"]
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "25-30°C",
+                "for_flowering": "25-30°C",
+                "for_grain_filling": "25-30°C",
+                "negative_effect": "Below 15°C and above 35°C"
+            }
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Nitrogen",
+            "quantity": "High",
+            "stage_of_application": "Throughout growth stages",
+            "deficiency_symptoms": "Characteristic yellowing symptoms",
+            "functions": "Essential for rapid growth and fruiting of the palm. Increases leaf production rate, leaf area, net assimilation rate, number of bunches and bunch weight."
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Phosphorus",
+            "quantity": "Moderate",
+            "stage_of_application": "Throughout growth stages",
+            "deficiency_symptoms": "Older leaves become dull and assume a pale olive green colour. High incidence of premature desiccation of older leaves.",
+            "functions": "Increases bunch production rate, bunch weight, number of female inflorescences and thereby the sex ratio."
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Potassium",
+            "quantity": "High",
+            "stage_of_application": "Throughout growth stages",
+            "deficiency_symptoms": "Growth and yield is retarded. Mature leaves become chlorotic and necrotic. Confluent orange spotting. Mid crown yellowing.",
+            "functions": "Essential for growth and yield. Translocated from mature leaves to growing points."
+        }
+    ]
+}

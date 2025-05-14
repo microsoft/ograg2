@@ -1,0 +1,67 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Eucalyptus spp.",
+            "has_types": {
+                "@type": "CropType",
+                "name": "AGROFORESTRY",
+                "used_for": "Coppice growth"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Felling the trees immediately after the monsoon helps to rapid callus formation and consequently thicker coppice stems."
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "None",
+                "weed_types": [],
+                "herbicides": []
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Depends on the weather conditions",
+                "stage_of_application": "Throughout the growth period"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "None",
+                "disease_symptoms": "None",
+                "disease_control": []
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "None",
+                "pest_symptoms": "None",
+                "pest_control": []
+            },
+            "harvesting_guidelines_are": "Harvest when the trees reach the desired height and thickness.",
+            "storage_guidelines_are": "Store in a cool and dry place."
+        }
+    ]
+}

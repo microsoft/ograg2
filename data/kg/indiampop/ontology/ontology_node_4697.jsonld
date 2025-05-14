@@ -1,0 +1,81 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Apiculture": {
+            "@id": "cropCult:Apiculture",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_seasons": "cropCult:Seasons",
+                "has_management_practices": "cropCult:ManagementPractices",
+                "has_artificial_diet": "cropCult:ArtificialDiet"
+            }
+        },
+        "Seasons": {
+            "@id": "cropCult:Seasons",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name"
+            }
+        },
+        "ManagementPractices": {
+            "@id": "cropCult:ManagementPractices",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "description": "schema:Text"
+            }
+        },
+        "ArtificialDiet": {
+            "@id": "cropCult:ArtificialDiet",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "composition": "schema:Text",
+                "administration": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "cropCult:Apiculture",
+            "@type": "Apiculture",
+            "name": "APICULTURE",
+            "has_seasons": [
+                {
+                    "@id": "cropCult:Seasons",
+                    "@type": "Seasons",
+                    "name": "Spring"
+                },
+                {
+                    "@id": "cropCult:Seasons",
+                    "@type": "Seasons",
+                    "name": "Summer"
+                },
+                {
+                    "@id": "cropCult:Seasons",
+                    "@type": "Seasons",
+                    "name": "Rainy"
+                }
+            ],
+            "has_management_practices": [
+                {
+                    "@id": "cropCult:ManagementPractices",
+                    "@type": "ManagementPractices",
+                    "name": "Spring Management",
+                    "description": "In the summer management, honeybee colonies should be kept under shade just to protect from scorching sun. As there is continuous rainfall in Assam during the rainy season, honeybee colony should be provided with artificial diet, composed of carbohydrate, protein and water."
+                }
+            ],
+            "has_artificial_diet": [
+                {
+                    "@id": "cropCult:ArtificialDiet",
+                    "@type": "ArtificialDiet",
+                    "name": "Artificial Diet",
+                    "composition": "Effective artificial diet comprises of sugar (as carbohydrate); black gram or green gram or soybean powder (as protein source) and water @ 1 kg of sugar and 100 gm protein powder mixed in 1 lit of water.",
+                    "administration": "It should be administered as per requirement of the colony."
+                }
+            ]
+        }
+    ]
+}

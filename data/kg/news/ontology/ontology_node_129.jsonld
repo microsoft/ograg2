@@ -1,0 +1,319 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "The best video games of the year so far",
+            "author": "Mike Mahardy",
+            "published": "2023-10-31T16:30:45+00:00",
+            "summary": "For the first year in recent memory, scale did not necessitate tradition, and scope did not preclude getting weird. In 2023, nothing was sacred in video games, and so they felt more vibrant than ever.",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Mr. Sun’s Hatbox",
+                        "eventSummary": "Mr. Sun’s Hatbox is about a hat delivery person (or maybe it’s just a blob with legs?) that takes their job way too seriously.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": {
+                                "name": "Kenny Sun"
+                            }
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": {
+                                "name": "Amazin"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Lies of P",
+                        "eventSummary": "Yes, Lies of P is a Dark Souls mixed with Pinocchio, and that’s a questionable elevator pitch from the outset.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": {
+                                "name": "Ryan Gilliam"
+                            }
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": {
+                                "name": "Neowiz Games"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Tchia",
+                        "eventSummary": "Tchia is an open-world adventure game set in a fictional version of island nation New Caledonia.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": {
+                                "name": "Nicole Carpenter"
+                            }
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": {
+                                "name": "Awaceb"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Blasphemous 2",
+                        "eventSummary": "Blasphemous 2 continues to use Spanish Catholicism as a narrative and aesthetic touchpoint.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": {
+                                "name": "Russ Frushtick"
+                            }
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": {
+                                "name": "The Game Kitchen"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Party Animals",
+                        "eventSummary": "Party Animals may have made me a monster? I don’t know.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": {
+                                "name": "Julia Lee"
+                            }
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": {
+                                "name": "Recreate Games"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "The Talos Principle 2",
+                        "eventSummary": "The Talos Principle 2 tackles grand science fiction ideas, particularly about what it means to be human.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": {
+                                "name": "Nicole Clark"
+                            }
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": {
+                                "name": "Croteam"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Fading Afternoon",
+                        "eventSummary": "Fading Afternoon ends when Seiji’s time runs out.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": {
+                                "name": "Joshua Rivera"
+                            }
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": {
+                                "name": "yeo"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Suika Game",
+                        "eventSummary": "Suika Game has become my go-to whenever I need to kill some time.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": {
+                                "name": "JL"
+                            }
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": {
+                                "name": "Aladdin X"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "League of Legends Season 13",
+                        "eventSummary": "League of Legends’ 13th season is one of the game’s most balanced yet.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": {
+                                "name": "Pete Volk"
+                            }
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": {
+                                "name": "Riot Games"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Goodbye Volcano High",
+                        "eventSummary": "Goodbye Volcano High is a visual novel with rhythm game elements.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": {
+                                "name": "N. Carpenter"
+                            }
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": {
+                                "name": "KO_OP"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "World of Warcraft Classic",
+                        "eventSummary": "Something very, very interesting started to happen in the retro version of WoW this year.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": {
+                                "name": "Oli Welsh"
+                            }
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": {
+                                "name": "Blizzard Entertainment"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Fire Emblem Engage",
+                        "eventSummary": "Fire Emblem Engage was designed for a very specific kind of sicko.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": {
+                                "name": "M. Mahardy"
+                            }
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": {
+                                "name": "Intelligent Systems"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Pizza Tower",
+                        "eventSummary": "Pizza Tower is a perfect object, and fully committed to its vision.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": {
+                                "name": "N. Clark"
+                            }
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": {
+                                "name": "Tour De Pizza"
+                            }
+                        }
+                    },
+                    {
+                        "eventTitle": "Subpar Pool",
+                        "eventSummary": "You can play this delightful physics puzzler on Switch or Steam if you want.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": {
+                                "name": "Unknown"
+                            }
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": {
+                                "name": "grapefrukt games"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

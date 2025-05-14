@@ -1,0 +1,54 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "has_growing_zones": {
+                "Summer": "March – April",
+                "Autumn": "August – September"
+            },
+            "has_land_preperation_requirements": {
+                "instructions": "Application of fertilizers: Apply 15 t of FYM/ha, and 2 kg each of Azospirillum and Phosphobacteria as basal and 120 kg N, 240 kg P and 120 kg K/ha in two splits; half as basal and the balance for top dressing 30 days after sowing."
+            },
+            "Fertilization": {
+                "nutrient_name": "Magnesium sulphate",
+                "quantity": "60 kg/ha",
+                "stage_of_application": "basal dose"
+            }
+        }
+    ]
+}

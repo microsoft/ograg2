@@ -1,0 +1,43 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "weed_management_needs_are": "cropCult:WeedManagement"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "CABBAGE",
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "instructions": "Seedlings should be watered immediately after transplanting and thereafter irrigation at an interval of 7 days would be adequate."
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "instructions": "Weeding should be done frequently."
+            }
+        }
+    ]
+}

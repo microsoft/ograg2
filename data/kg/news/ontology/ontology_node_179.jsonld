@@ -1,0 +1,315 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "IPL 2024 Auction Updates",
+            "author": "Indian Premier League",
+            "theme": "Cricket",
+            "summary": "Live updates from the IPL 2024 auction held in Dubai.",
+            "created": "2023-12-19T13:00:00+05:30",
+            "published": "2023-12-19T13:00:00+05:30",
+            "has_events": [
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "IPL 2024 Auction",
+                    "eventSummary": "The IPL 2024 auction is taking place with various teams bidding for players.",
+                    "theme": "Auction",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "Coca-Cola Arena, Dubai"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Pat Cummins",
+                            "dateOfBirth": "1993-05-08",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Australia"
+                            },
+                            "alias": "Australia Captain"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Daryl Mitchell",
+                            "dateOfBirth": "1991-05-20",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "New Zealand"
+                            },
+                            "alias": "Kiwi All-Rounder"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Wanindu Hasaranga",
+                            "dateOfBirth": "1997-11-29",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Sri Lanka"
+                            },
+                            "alias": "Sri Lankan Spinner"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Gerald Coetzee",
+                            "dateOfBirth": "1996-12-01",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "South Africa"
+                            },
+                            "alias": "South African Bowler"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Travis Head",
+                            "dateOfBirth": "1993-12-29",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Australia"
+                            },
+                            "alias": "Australian Batter"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Harry Brook",
+                            "dateOfBirth": "1999-09-22",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "England"
+                            },
+                            "alias": "English Batter"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Rovman Powell",
+                            "dateOfBirth": "1993-10-23",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Jamaica"
+                            },
+                            "alias": "West Indies Batter"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Harshal Patel",
+                            "dateOfBirth": "1990-11-23",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "India"
+                            },
+                            "alias": "Indian All-Rounder"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Shardul Thakur",
+                            "dateOfBirth": "1991-10-16",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "India"
+                            },
+                            "alias": "Indian Bowler"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Azmatullah Omarzai",
+                            "dateOfBirth": "1999-01-01",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "Afghanistan"
+                            },
+                            "alias": "Afghan All-Rounder"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Rachin Ravindra",
+                            "dateOfBirth": "1999-11-18",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "New Zealand"
+                            },
+                            "alias": "Kiwi All-Rounder"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization",
+                            "name": "Sunrisers Hyderabad",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Hyderabad, India"
+                            },
+                            "alias": "SRH"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Chennai Super Kings",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Chennai, India"
+                            },
+                            "alias": "CSK"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Delhi Capitals",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Delhi, India"
+                            },
+                            "alias": "DC"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Punjab Kings",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Punjab, India"
+                            },
+                            "alias": "PBKS"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Mumbai Indians",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Mumbai, India"
+                            },
+                            "alias": "MI"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Gujarat Titans",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Gujarat, India"
+                            },
+                            "alias": "GT"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Lucknow Super Giants",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Lucknow, India"
+                            },
+                            "alias": "LSG"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Kolkata Knight Riders",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Kolkata, India"
+                            },
+                            "alias": "KKR"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Rajasthan Royals",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Rajasthan, India"
+                            },
+                            "alias": "RR"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Royal Challengers Bangalore",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Bangalore, India"
+                            },
+                            "alias": "RCB"
+                        }
+                    ],
+                    "subEventOf": {
+                        "@id": "snap:event",
+                        "eventTitle": "IPL 2024 Auction",
+                        "eventSummary": "The IPL 2024 auction is taking place with various teams bidding for players."
+                    }
+                }
+            ],
+            "followUp": "snap:asset",
+            "derivedFrom": "snap:asset"
+        }
+    ]
+}

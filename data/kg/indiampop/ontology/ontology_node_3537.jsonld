@@ -1,0 +1,99 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Crop management",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Seeds",
+                "used_for": "Produced after first cut"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "Higher quality zone"
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Optimal",
+                "for_flowering": "Optimal",
+                "for_grain_filling": "Optimal",
+                "negative_effect": "None"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Optimal",
+                "avoid_soil_type": "None",
+                "for_water": "Optimal",
+                "for_nutrients": "Optimal"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Standard",
+                "with_soil_moisture": "Optimal"
+            },
+            "seed_germination_test_requirements_are": "Standard",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Standard",
+                "quantity": "Optimal"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Optimal",
+                "value": "Optimal",
+                "depth": "Optimal",
+                "method": "Standard"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "None",
+                "weed_types": [],
+                "herbicides": []
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Optimal",
+                "stage_of_application": "All stages"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "None",
+                "disease_symptoms": "None",
+                "disease_control": []
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "None",
+                "pest_symptoms": "None",
+                "pest_control": []
+            },
+            "harvesting_guidelines_are": "Standard",
+            "storage_guidelines_are": "Standard"
+        }
+    ]
+}

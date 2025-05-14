@@ -1,0 +1,106 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Fungicide",
+            "name": "Zinc sulphate",
+            "quantity": "0.5% (500 g/100 lit of water) thrice in a year (March, July and October)"
+        },
+        {
+            "@type": "cropCult:LandPreparation",
+            "instructions": "Remove branches of main stem up to 45 cm from ground level."
+        },
+        {
+            "@type": "cropCult:Fertilization",
+            "nutrient_name": "green leaves",
+            "quantity": "30 kg per tree",
+            "stage_of_application": "once in 3 months"
+        },
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Legumes and vegetable crops",
+            "weed_types": ["Legumes", "vegetable crops"],
+            "herbicides": [
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "2,4 – D",
+                    "quantity": "20 ppm",
+                    "stage": "during flowering"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "2,4 – D or NAA",
+                    "quantity": "20 ppm or 30 ppm",
+                    "stage": "after fruit set (marble size)"
+                }
+            ]
+        }
+    ]
+}

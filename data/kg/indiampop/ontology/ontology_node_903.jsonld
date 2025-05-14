@@ -1,0 +1,33 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements"
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "TAPIOCA (Manihot esculenta)",
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Tapioca grows and produces best under warm humid tropical conditions where rainfall is well distributed and fairly abundant. Its outstanding characteristic in terms of moisture requirements is the ability to withstand fairly prolonged periods of drought. However, at the time of planting there must be sufficient moisture for the plant to establish itself.",
+                "negative_effect": "The crop cannot withstand cold and is killed by frost."
+            }
+        }
+    ]
+}

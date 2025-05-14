@@ -1,0 +1,70 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/"
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "Tropical Sugarbeet",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "Sweet Sorghum",
+                "used_for": "Oilseeds"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical",
+                    "has_regions": ["Tropical regions"],
+                    "has_seed_recommendations": {
+                        "@type": "cropCult:SeedList",
+                        "variety_name": ["Sorghum bicolor"],
+                        "has_early_sowing_time": {
+                            "@type": "cropCult:SowingTime",
+                            "start_date": "Start of tropical season",
+                            "end_date": "End of tropical season"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "Standard rate for Sorghum bicolor"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "cropCult:Fertilization",
+                            "nutrient_name": "Trichoderma viride or Pseudomonas fluorescens",
+                            "quantity": "2.5 kg/ha mixed with 50 kg of FYM",
+                            "stage_of_application": "Before planting"
+                        }
+                    }
+                }
+            },
+            "has_land_preperation_requirements": {
+                "@type": "cropCult:LandPreparation",
+                "instructions": "Crop rotation for 3 years with Marigold or gingelly or sunnhemp for root rot and nematode",
+                "with_soil_moisture": "Standard for Tropical Sugarbeet"
+            },
+            "needs_pest_treatements": {
+                "@type": "cropCult:PestTreatements",
+                "pest_name": "Spodoptera litura",
+                "pest_symptoms": "Egg masses, early stage larvae formed in clusters",
+                "pest_control": {
+                    "@type": "cropCult:PesticideList",
+                    "name": "Pherodin SL",
+                    "quantity": "12/ha",
+                    "stage": "For Spodoptera litura"
+                }
+            },
+            "weed_management_needs_are": {
+                "@type": "cropCult:WeedManagement",
+                "weed_name": "Castor",
+                "weed_types": ["Trap crop"],
+                "herbicides": {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Not specified",
+                    "quantity": "Not specified",
+                    "stage": "Not specified"
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,141 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Coconut Mother Palm",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Coconut",
+                "used_for": "Crop Protection"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical",
+                    "has_regions": ["South Asia", "South East Asia"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Tall", "Dwarf"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "January",
+                            "end_date": "March"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "April",
+                            "end_date": "June"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "1 seed per hole"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Nitrogen",
+                            "quantity": "500g per tree",
+                            "stage_of_application": "After 1 year of planting"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "28-30°C",
+                "for_flowering": "24-28°C",
+                "for_grain_filling": "22-26°C",
+                "negative_effect": "Below 20°C and above 34°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Sandy loam",
+                "avoid_soil_type": "Clayey soil",
+                "for_water": "Well drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the land 2-3 times and level it. Dig pits of size 1m x 1m x 1m with a spacing of 8m x 8m.",
+                "with_soil_moisture": "Moist but not waterlogged"
+            },
+            "seed_germination_test_requirements_are": "Seeds should be soaked in water for 48 hours before sowing.",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Mancozeb",
+                "quantity": "2g per litre of water"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Early morning or late evening",
+                "value": "8m x 8m",
+                "depth": "1m",
+                "method": "Direct sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Grass weeds",
+                "weed_types": ["Annual", "Perennial"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1.5-2.0 kg a.i./ha",
+                    "stage": "Post-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "200 litres per tree per week",
+                "stage_of_application": "Throughout the year"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Bud rot",
+                "disease_symptoms": "Wilting and yellowing of leaves",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Copper oxychloride",
+                    "quantity": "3g per litre of water",
+                    "stage": "At the onset of disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Rhinoceros beetle",
+                "pest_symptoms": "Holes in the trunk and crown",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Chlorpyrifos",
+                    "quantity": "2ml per litre of water",
+                    "stage": "At the onset of pest attack"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when the nuts turn brown and start falling from the tree.",
+            "storage_guidelines_are":"Store in a cool and dry place."
+        }
+    ]
+}

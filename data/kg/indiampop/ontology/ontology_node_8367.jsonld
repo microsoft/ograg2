@@ -1,0 +1,100 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "OILSEEDS",
+            "needs_pest_treatements": [
+                {
+                    "@type": "PestTreatements",
+                    "pest_name": "Scirpophaga excerptalis",
+                    "pest_control": [
+                        {
+                            "@type": "PesticideList",
+                            "name": "Carbofuran 3%G",
+                            "quantity": "33.3 kg/ha",
+                            "stage": "18. HARVESTING"
+                        },
+                        {
+                            "@type": "PesticideList",
+                            "name": "Chlorantraniprole 18.5%SC",
+                            "quantity": "375 ml/ha",
+                            "stage": "18. HARVESTING"
+                        },
+                        {
+                            "@type": "PesticideList",
+                            "name": "Phorate 10%G",
+                            "quantity": "30 kg/ha",
+                            "stage": "18. HARVESTING"
+                        }
+                    ]
+                },
+                {
+                    "@type": "PestTreatements",
+                    "pest_name": "Pyrilla Pyrilla perpusilla",
+                    "pest_control": [
+                        {
+                            "@type": "PesticideList",
+                            "name": "Chlorpyrifos 20% EC",
+                            "quantity": "1500 ml/ha",
+                            "stage": "18. HARVESTING"
+                        },
+                        {
+                            "@type": "PesticideList",
+                            "name": "Dichlorvos 76% EC",
+                            "quantity": "376 ml/ha",
+                            "stage": "18. HARVESTING"
+                        }
+                    ]
+                },
+                {
+                    "@type": "PestTreatements",
+                    "pest_name": "Aleurodids Aleurolobus barodensis",
+                    "pest_control": []
+                }
+            ]
+        }
+    ]
+}

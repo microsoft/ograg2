@@ -1,0 +1,142 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "He’s Hockey’s Brightest Young Star. This Is What Makes His Shot So Special.",
+      "author": "The New York Times",
+      "theme": "sports",
+      "content": "What is it, really, about Connor Bedard’s shot — a shot that, though he’s just 18 years old, has for years been talked about as if he has patented it — that makes it so dangerous and unique? What’s the nerdy science of it, from his feet up to his knees, hips, hands and head? How does he prep, shape and let it go? What does it look like to goalies, and to professional shooting coaches, those who’ve taught him — or, more accurately, watched him after he taught himself — and had to stop him? The Athletic spoke with five NHL shooting and skills coaches, his teammates, past opponents and him to try to take apart, piece by piece, “The Bedard.”",
+      "published": "2023-11-17T21:47:19+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Connor Bedard's Shooting Evaluation",
+          "eventSummary": "Tim Turk evaluates Connor Bedard's unique shooting style.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Connor Bedard"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Tim Turk"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Nate Danielson"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "NHL"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Connor Bedard's Shooting Session",
+          "eventSummary": "Connor Bedard participates in a shooting session with Tim Turk.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Connor Bedard"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Tim Turk"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "NHL"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

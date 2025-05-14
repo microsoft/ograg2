@@ -1,0 +1,46 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "1. Wetland (Heavy soils): In wetlands, preparatory cultivation by ploughing the land and bringing the soil to fine tilth could not be done. i. After harvest of the paddy crop, form irrigation and drainage channels of 40 cm depth and 30 cm width at intervals of 6 m across the field and along the field borders. ii. Form ridges and furrows with a spacing of 80 cm between rows with spade. iii. Stir the furrows with hand hoes and allow the soil to weather for 4 to 5 days.",
+                "with_soil_moisture": "Wetland"
+            }
+        }
+    ]
+}

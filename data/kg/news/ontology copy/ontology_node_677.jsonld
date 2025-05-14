@@ -1,0 +1,109 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Shaikh Aerajuddin",
+            "published": "2023-11-21T21:21:15+00:00",
+            "title": "3 Possible Opponents for CM Punk if He Returns to WWE at Survivor Series",
+            "summary": "One of the most talked about in the pro wrestling fandom is CM Punk’s next move following his exit from AEW. The Second City Saint was released from the Jacksonville-based promotion back in September 2023 due to his backstage altercation with Jack Perry at AEW All In 2023. Following this, there have been multiple speculations about what might be the former WWE star’s next move. While he has been dropping multiple hints sparking rumors, fans are particularly inclined that he might return to his old stomping ground, WWE.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "title": "Shinsuke Nakamura",
+                "summary": "The recent cryptic promos by the King of Strong Style have left the fans scratching their heads. The promos which started several weeks ago, show Nakamura calling out to someone that he wants to have a duel with. The mystery opponent has not been revealed yet and according to reports, talents at WWE are pretty clueless as well. However, fans were pretty fast to decode who might be his opponent. At the fallout episode of Raw following Fastlane, Nakamura was particularly frustrated due to his loss against Seth Rollins."
+            },
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "title": "Seth Rollins",
+                "summary": "While this might come as an obvious piece of information considering Rollins has the WWE World Heavyweight Championship title, the reason behind it might be from outside the ring. When CM Punk made his return to WWE Backstage in 2019, many saw this as the precursor to his return to the company, including Rollins, who invited him to step into the ring with the Messiah."
+            },
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "title": "Cody Rhodes",
+                "summary": "CM Punk and Cody Rhodes do have a lot of history. Both the stars were a part of All Elite Wrestling. Even though they were in the same promotion, the two never got a chance to spar. But Rhodes and Punk had a bout in WWE a while back during their initial days. The two had brawled on a couple of occasions. One was during a tag team match with his tag-team partner Ted Debiase Jr. The then World Tag Team Champions lost their title to CM Punk and his partner Kofi Kingston."
+            }
+        }
+    ]
+}
+```

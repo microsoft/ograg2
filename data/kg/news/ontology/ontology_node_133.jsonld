@@ -1,0 +1,136 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Tears of the Kingdom: A Journey of Discovery",
+            "author": "M. Myers",
+            "theme": "Video Games",
+            "summary": "A personal reflection on the experience of playing Tears of the Kingdom, highlighting the joy of exploration and discovery.",
+            "created": "2023-10-01T00:00:00Z",
+            "modified": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "First Dive into the Depths",
+                        "eventSummary": "The amazement felt upon discovering a whole other world underneath the one known.",
+                        "theme": "Exploration",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "The Depths"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Realization of Princess Zelda's Location",
+                        "eventSummary": "The moment of understanding where Princess Zelda really was.",
+                        "theme": "Narrative",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Hyrule"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    }
+                ]
+            },
+            "followUp": "snap:asset",
+            "derivedFrom": "snap:asset"
+        }
+    ]
+}

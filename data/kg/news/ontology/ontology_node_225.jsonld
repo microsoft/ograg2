@@ -1,0 +1,186 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "In the end, the FTX trial was about the friends screwed along the way",
+            "author": "Elizabeth Lopatto",
+            "published": "2023-10-26T12:00:00+00:00",
+            "summary": "The FTX trial has revealed how Bankman-Fried blew up the lives of the people who are closest to him.",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Testimony of Adam Yedidia",
+                        "eventSummary": "Adam Yedidia testified with immunity about his concerns regarding the code he worked on.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Adam Yedidia"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Testimony of Gary Wang",
+                        "eventSummary": "Gary Wang testified about the secret privileges created for Alameda in the FTX code.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Gary Wang"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Testimony of Nishad Singh",
+                        "eventSummary": "Nishad Singh admitted to backdating transactions on FTX to create doctored balance sheets.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Nishad Singh"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Testimony of Caroline Ellison",
+                        "eventSummary": "Caroline Ellison testified about the phony balance sheets created at Alameda.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Caroline Ellison"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Testimony of Joe Bankman",
+                        "eventSummary": "Joe Bankman was mentioned as part of the FTX inner circle strategizing during the exchange's last days.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Joe Bankman"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Political Donations by Mind the Gap",
+                        "eventSummary": "Barbara Fried's political action committee received FTX customer money as political donations.",
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Mind the Gap"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Gabe Bankman-Fried's Nonprofit",
+                        "eventSummary": "Gabe Bankman-Fried's nonprofit received millions from FTX.",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Gabe Bankman-Fried"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,176 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "EU lawmakers bag late night deal on ‘global first’ AI rules",
+            "author": "Natasha Lomas",
+            "theme": "technology",
+            "summary": "After marathon ‘final’ talks which stretched to almost three days European Union lawmakers have tonight clinched a political deal on a risk-based framework for regulating artificial intelligence.",
+            "created": "2023-12-09T02:28:09+00:00",
+            "published": "2023-12-09T02:28:09+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Political Agreement on AI Regulation",
+                        "eventSummary": "EU lawmakers reached a political agreement on AI regulation after extensive negotiations.",
+                        "theme": "AI Regulation",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Brussels, Belgium"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Ursula von der Leyen",
+                                    "dateOfBirth": "1958-10-08",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Brussels, Belgium"
+                                    },
+                                    "alias": "President of the European Commission"
+                                },
+                                {
+                                    "name": "Carme Artigas",
+                                    "dateOfBirth": "1975-05-15",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Spain"
+                                    },
+                                    "alias": "Spain’s Secretary of State for Digital and AI"
+                                },
+                                {
+                                    "name": "Dragoș Tudorache",
+                                    "dateOfBirth": "1980-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Romania"
+                                    },
+                                    "alias": "Co-rapporteur"
+                                },
+                                {
+                                    "name": "Brando Benifei",
+                                    "dateOfBirth": "1985-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Italy"
+                                    },
+                                    "alias": "Co-rapporteur"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "European Parliament",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Brussels, Belgium"
+                                    },
+                                    "alias": "EP"
+                                },
+                                {
+                                    "name": "European Commission",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Brussels, Belgium"
+                                    },
+                                    "alias": "EC"
+                                },
+                                {
+                                    "name": "European Council",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Brussels, Belgium"
+                                    },
+                                    "alias": "Council"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

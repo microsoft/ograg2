@@ -1,0 +1,89 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "REDGRAM (Cajanus cajan (L.) Millsp. )",
+            "has_types": {
+                "@type": "CropType",
+                "name": "PULSES",
+                "used_for": "CROP MANAGEMENT"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "IV. MANAGEMENT OF FIELD OPERATION",
+                "with_soil_moisture": "4. APPLICATION OF FERTILIZERS"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "10",
+                "value": "160",
+                "depth": "13*",
+                "method": "23"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "13*",
+                "weed_types": [
+                    "180",
+                    "12",
+                    "180",
+                    "13*",
+                    "21",
+                    "13*",
+                    "200",
+                    "14",
+                    "200",
+                    "13*",
+                    "19",
+                    "13*",
+                    "220",
+                    "16",
+                    "220",
+                    "13*",
+                    "17",
+                    "13*",
+                    "240",
+                    "18",
+                    "240",
+                    "13*",
+                    "15",
+                    "13*"
+                ]
+            }
+        }
+    ]
+}

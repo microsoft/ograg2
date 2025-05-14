@@ -1,0 +1,54 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "SUGARCANE (Saccharum officinarum )",
+            "has_types": {
+                "@type": "CropType",
+                "name": "OILSEEDS",
+                "used_for": "CROP MANAGEMENT"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "BIOFERTILIZER FOR SUGARCANE"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Provide shallow wetting with 2 to 3 cm depth of water at shorter intervals especially for sandy soil for enhancing the germination.",
+                "stage_of_application": "Germination phase (0 - 35 days)"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Germination phase (0 - 35 days)",
+                "value": "2 to 3 cm depth of water",
+                "depth": "2 to 3 cm",
+                "method": "Sprinkler irrigation is the suitable method to satisfy the requirement, during initial stages."
+            }
+        }
+    ]
+}

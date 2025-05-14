@@ -1,0 +1,59 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "COCONUT (Cocos nucifera Linn.)",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Before planting the pits are filled up with top soil and powdered cow dung / compost up to a depth of 50 to 60 cm. Then take a small pit inside this, so as to accommodate the nut attached to the seedling. Plant the seedling inside this pit and fill up with soil. Press the soil well so as to avoid water stagnation. In laterite areas apply 2 kg common salt per pit for improving the physical condition of the soil. Burying 25 to 30 coconut husks per pit in layers will be useful for moisture conservation.",
+                "with_soil_moisture": "Burying 25 to 30 coconut husks per pit in layers will be useful for moisture conservation."
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Sevidol 8 G",
+                "quantity": "5 gm"
+            }
+        }
+    ]
+}

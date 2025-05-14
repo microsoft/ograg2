@@ -1,0 +1,81 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "TRANSPLANTED PUDDLED LOWLAND RICE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Rice",
+                "used_for": "Food"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Lowland",
+                    "has_regions": ["Asia", "Africa"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Short duration rice varieties"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "20 days old seedlings",
+                            "end_date": "All seasons except Thaladi or heavy rain season"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "20% more than the line planting or equal to random planting"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "N/A",
+                            "quantity": "N/A",
+                            "stage_of_application": "N/A"
+                        }
+                    }
+                }
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "The seedlings are thrown into the puddled leveled field by labour without using force. Suitable for all seasons except Thaladi or heavy rain season. 50% labour shaving as compared to line planting and 35% to random planting. Up to 7-10 days of seedling throwing care should be taken to maintain thin film of water (similar to wet seeded rice). Other cultural operations are same as in transplanted rice",
+                "with_soil_moisture": "Maintain thin film of water (similar to wet seeded rice) for 7-10 days after seedling throwing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "N/A",
+                "weed_types": ["N/A"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "N/A",
+                    "quantity": "N/A",
+                    "stage": "N/A"
+                }
+            },
+            "harvesting_guidelines_are": "Grain yield will be equal to line planted crop and 10-12% higher than random planted crop."
+        }
+    ]
+}

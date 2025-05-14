@@ -1,0 +1,103 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "NIGER",
+            "has_types": {
+                "name": "Drought Tolerant",
+                "used_for": "Soil Recuperation"
+            },
+            "has_growing_zones": {
+                "CropGrowingZone": {
+                    "name": "Marginal and Sub-Marginal Zones",
+                    "has_regions": ["Unable to invest in cash inputs"]
+                }
+            },
+            "has_temperature_requirements": {
+                "for_germination": "Highly Tolerant",
+                "for_flowering": "Highly Tolerant",
+                "for_grain_filling": "Highly Tolerant",
+                "negative_effect": "None"
+            },
+            "has_soil_requirements": {
+                "soil_type_name": "Any",
+                "avoid_soil_type": "None",
+                "for_water": "Drought Tolerant",
+                "for_nutrients": "Low Requirement"
+            },
+            "has_land_preperation_requirements": {
+                "instructions": "No Special Requirements",
+                "with_soil_moisture": "Drought Tolerant"
+            },
+            "seed_germination_test_requirements_are": "No Special Requirements",
+            "has_seed_fungicide_requirements": {
+                "name": "None",
+                "quantity": "None"
+            },
+            "needs_seed_sowing_spacing": {
+                "sowing_time": "Any",
+                "value": "Any",
+                "depth": "Any",
+                "method": "Any"
+            },
+            "weed_management_needs_are": {
+                "weed_name": "Any",
+                "weed_types": ["Any"],
+                "herbicides": {
+                    "name": "None",
+                    "quantity": "None",
+                    "stage": "None"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "quantity": "Low",
+                "stage_of_application": "Any"
+            },
+            "needs_disease_treatements": {
+                "disease_name": "None",
+                "disease_symptoms": "None",
+                "disease_control": {
+                    "name": "None",
+                    "quantity": "None",
+                    "stage": "None"
+                }
+            },
+            "needs_pest_treatements": {
+                "pest_name": "None",
+                "pest_symptoms": "None",
+                "pest_control": {
+                    "name": "None",
+                    "quantity": "None",
+                    "stage": "None"
+                }
+            },
+            "harvesting_guidelines_are": "No Special Requirements",
+            "storage_guidelines_are": "No Special Requirements"
+        }
+    ]
+}

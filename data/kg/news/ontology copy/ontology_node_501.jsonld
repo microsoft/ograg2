@@ -1,0 +1,134 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "byline": "Edward Sutelan",
+      "published": "2023-10-13T21:58:11+00:00",
+      "title": "Bryce Harper 'Atta Boy' controversy, explained: Why Orlando Arcia's comments led to backlash, Alanna Rizzo rant",
+      "summary": "It had been reported Monday night when the Braves beat the Phillies in Game 2 of the NLDS, ending on a critical base-running play involving Bryce Harper, that Atlanta shortstop Orlando Arcia taunted about the Phillies' star in the clubhouse after the game. That report wound up generating plenty of controversy.",
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "image": "https://www.sportingnews.com/us/mlb/news/bryce-harper-atta-boy-controversy-orlando-arcia-comments/0fe0f26efb69bc8b012216ad"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Sporting News"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Bryce Harper"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Orlando Arcia"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Alanna Rizzo"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jake Mintz"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Kevin Gausman"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Chelsea Janes"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "MLB Network"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "BBWAA"
+    }
+  ]
+}
+```

@@ -1,0 +1,47 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Composting": {
+            "@id": "cropCult:Composting",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_waste_type": "cropCult:WasteType",
+                "has_composting_technology": "cropCult:CompostingTechnology",
+                "has_inoculation_time": "schema:Text"
+            }
+        },
+        "WasteType": {
+            "@id": "cropCult:WasteType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name"
+            }
+        },
+        "CompostingTechnology": {
+            "@id": "cropCult:CompostingTechnology",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "contains": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Composting",
+            "name": "COMPOSTING OF SOLID WASTES",
+            "has_waste_type": {
+                "@type": "cropCult:WasteType",
+                "name": "Ipomea"
+            },
+            "has_composting_technology": {
+                "@type": "cropCult:CompostingTechnology",
+                "name": "TNAU Vermi Biocompost Technology",
+                "contains": "Azospirillum and Phosphobacteria"
+            },
+            "has_inoculation_time": "twenty days after putting the waste into the vermibed"
+        }
+    ]
+}

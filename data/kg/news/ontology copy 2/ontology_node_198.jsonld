@@ -1,0 +1,265 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "snap:asset",
+            "title": "Baseball Trade Speculations",
+            "author": "Sports Analyst",
+            "theme": "Sports",
+            "content": "Not only did he finish with a mediocre .219/.318/.333 batting line, he underwent season-ending surgery on his left ankle in September...",
+            "created": "2023-10-01T00:00:00Z",
+            "modified": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "snap:event",
+                    "eventTitle": "Paul Blackburn Trade Speculation",
+                    "eventSummary": "Blackburn is arguably the most desirable realistic trade candidate on the Oakland roster...",
+                    "theme": "Sports",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person1",
+                            "@type": "snap:person",
+                            "name": "Paul Blackburn"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "snap:organization",
+                            "name": "Oakland A's"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event2",
+                    "@type": "snap:event",
+                    "eventTitle": "Alek Manoah's Disappointing Season",
+                    "eventSummary": "Perhaps no player had a more disappointing 2023 performance than Manoah...",
+                    "theme": "Sports",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person2",
+                            "@type": "snap:person",
+                            "name": "Alek Manoah"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization2",
+                            "@type": "snap:organization",
+                            "name": "Toronto Blue Jays"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event3",
+                    "@type": "snap:event",
+                    "eventTitle": "Brandon Drury's Future with Angels",
+                    "eventSummary": "The Halos signed Drury to a two-year free agent deal last winter...",
+                    "theme": "Sports",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person3",
+                            "@type": "snap:person",
+                            "name": "Brandon Drury"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization3",
+                            "@type": "snap:organization",
+                            "name": "Los Angeles Angels"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event4",
+                    "@type": "snap:event",
+                    "eventTitle": "Brendan Donovan Trade Possibility",
+                    "eventSummary": "Donovan is a longer shot trade possibility if the Cards move a controllable hitter...",
+                    "theme": "Sports",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person4",
+                            "@type": "snap:person",
+                            "name": "Brendan Donovan"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization4",
+                            "@type": "snap:organization",
+                            "name": "St. Louis Cardinals"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event5",
+                    "@type": "snap:event",
+                    "eventTitle": "Christopher Morel's Trade Value",
+                    "eventSummary": "Morel is likely to be a divisive player around the league...",
+                    "theme": "Sports",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person5",
+                            "@type": "snap:person",
+                            "name": "Christopher Morel"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization5",
+                            "@type": "snap:organization",
+                            "name": "Chicago Cubs"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event6",
+                    "@type": "snap:event",
+                    "eventTitle": "Christian Vázquez Trade Consideration",
+                    "eventSummary": "Trading Vázquez is another route Minnesota could consider to clear money...",
+                    "theme": "Sports",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person6",
+                            "@type": "snap:person",
+                            "name": "Christian Vázquez"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization6",
+                            "@type": "snap:organization",
+                            "name": "Minnesota Twins"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event7",
+                    "@type": "snap:event",
+                    "eventTitle": "Luis Robert Jr.'s Trade Value",
+                    "eventSummary": "Robert has the most trade value of any player on this list...",
+                    "theme": "Sports",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person7",
+                            "@type": "snap:person",
+                            "name": "Luis Robert Jr."
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization7",
+                            "@type": "snap:organization",
+                            "name": "Chicago White Sox"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event8",
+                    "@type": "snap:event",
+                    "eventTitle": "Pete Alonso Trade Speculation",
+                    "eventSummary": "Alonso was the subject of early offseason trade speculation...",
+                    "theme": "Sports",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person8",
+                            "@type": "snap:person",
+                            "name": "Pete Alonso"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization8",
+                            "@type": "snap:organization",
+                            "name": "New York Mets"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

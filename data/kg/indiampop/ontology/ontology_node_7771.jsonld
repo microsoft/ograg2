@@ -1,0 +1,289 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "SeedList": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List",
+                "has_early_sowing_time": "cropCult:SowingTime",
+                "has_late_sowing_time": "cropCult:SowingTime",
+                "has_seeding_rate": "schema:QuantitativeValue",
+                "has_fertilizer_application_requirements": "cropCult:Fertilization"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CropGrowingZones":{
+            "@container": "@list",
+            "@id": "cropCult:CropGrowingZones",
+            "@type": "schema:ItemList",
+            "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List",
+                    "has_seed_recommendations": "cropCult:SeedList"
+                }
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "for_flowering": "schema:Text",
+                "for_grain_filling": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "SeedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "NIGER (Guizotia abyssinica)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "OILSEEDS",
+                "used_for": "COTTON"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Irrigated Rainfed",
+                    "has_regions": ["Irrigated 2000", "Extra long staple", "Verticillium wilt tolerant 1800", "725", "1800", "Dwarf", "semi compact plant type", "Medium staple (29 mm)", "Can spun upto 40s", "ginning 36.2%"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["CROP IMPROVEMENT", "Varieties/ Hybrids"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2000",
+                            "end_date": "2000"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "1800",
+                            "end_date": "1800"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "725"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Verticillium wilt tolerant",
+                            "quantity": "1800",
+                            "stage_of_application": "Dwarf"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Extra long staple",
+                "for_flowering": "Verticillium wilt tolerant",
+                "for_grain_filling": "1800",
+                "negative_effect": "725"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Dwarf",
+                "avoid_soil_type": "semi compact plant type",
+                "for_water": "Medium staple (29 mm)",
+                "for_nutrients": "Can spun upto 40s"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "ginning 36.2%",
+                "with_soil_moisture": "Medium staple (29 mm)"
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Verticillium wilt tolerant",
+                "quantity": "1800"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "SeedSpacing",
+                "sowing_time": "2000",
+                "value": "725",
+                "depth": "1800",
+                "method": "Dwarf"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Verticillium wilt tolerant",
+                "weed_types": ["Extra long staple", "Verticillium wilt tolerant", "1800", "725", "1800", "Dwarf", "semi compact plant type", "Medium staple (29 mm)", "Can spun upto 40s", "ginning 36.2%"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Verticillium wilt tolerant",
+                    "quantity": "1800",
+                    "stage": "Dwarf"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "725",
+                "stage_of_application": "1800"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Verticillium wilt tolerant",
+                "disease_symptoms": "1800",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Verticillium wilt tolerant",
+                    "quantity": "1800",
+                    "stage": "Dwarf"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Verticillium wilt tolerant",
+                "pest_symptoms": "1800",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Verticillium wilt tolerant",
+                    "quantity": "1800",
+                    "stage": "Dwarf"
+                }
+            },
+            "harvesting_guidelines_are": "ginning 36.2%",
+            "storage_guidelines_are": "Medium staple (29 mm)"
+        }
+    ]
+}

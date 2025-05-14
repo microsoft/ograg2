@@ -1,0 +1,278 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "NewsAsset",
+            "title": "Latest Apple Watch and Accessories Review",
+            "author": "WIRED",
+            "theme": "Technology",
+            "summary": "A comprehensive review of the latest Apple Watch Ultra and accessories including Beats and AirPods.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "hasThumbnail": "snap:imageAsset1",
+            "has_events": {
+                "@id": "snap:eventList1",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "eventTitle": "Apple Watch Ultra Launch",
+                        "eventSummary": "Launch of the second-gen Apple Watch Ultra with new features.",
+                        "theme": "Product Launch",
+                        "hasLocation": {
+                            "@id": "geo:location1",
+                            "@type": "geo:SpatialThing",
+                            "name": "Apple Headquarters"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList1",
+                            "Person": [
+                                {
+                                    "@id": "snap:person1",
+                                    "name": "Tim Cook",
+                                    "dateOfBirth": "1960-11-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location2",
+                                        "@type": "geo:location",
+                                        "name": "Mobile, Alabama, USA"
+                                    },
+                                    "alias": "CEO of Apple"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList1",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "name": "Apple Inc.",
+                                    "hasLocation": {
+                                        "@id": "geo:location3",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Cupertino, California, USA"
+                                    },
+                                    "alias": "Apple"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "followUp": {
+                "@id": "snap:asset2"
+            },
+            "derivedFrom": {
+                "@id": "snap:asset3"
+            }
+        },
+        {
+            "@id": "snap:asset2",
+            "@type": "NewsAsset",
+            "title": "Beats and AirPods Deals",
+            "author": "WIRED",
+            "theme": "Technology",
+            "summary": "A review of the latest deals on Beats and AirPods.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "hasThumbnail": "snap:imageAsset2",
+            "has_events": {
+                "@id": "snap:eventList2",
+                "Event": [
+                    {
+                        "@id": "snap:event2",
+                        "eventTitle": "Beats Studio Pro Launch",
+                        "eventSummary": "Launch of the Beats Studio Pro Wireless Headphones.",
+                        "theme": "Product Launch",
+                        "hasLocation": {
+                            "@id": "geo:location4",
+                            "@type": "geo:SpatialThing",
+                            "name": "Apple Headquarters"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList2",
+                            "Person": [
+                                {
+                                    "@id": "snap:person2",
+                                    "name": "Eddy Cue",
+                                    "dateOfBirth": "1964-10-23",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location5",
+                                        "@type": "geo:location",
+                                        "name": "Newport News, Virginia, USA"
+                                    },
+                                    "alias": "Senior Vice President of Internet Software and Services"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList2",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization2",
+                                    "name": "Beats Electronics",
+                                    "hasLocation": {
+                                        "@id": "geo:location6",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Los Angeles, California, USA"
+                                    },
+                                    "alias": "Beats"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "followUp": {
+                "@id": "snap:asset1"
+            },
+            "derivedFrom": {
+                "@id": "snap:asset3"
+            }
+        },
+        {
+            "@id": "snap:asset3",
+            "@type": "NewsAsset",
+            "title": "Apple Charger Deals",
+            "author": "WIRED",
+            "theme": "Technology",
+            "summary": "A review of the latest Apple charger deals.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "hasThumbnail": "snap:imageAsset3",
+            "has_events": {
+                "@id": "snap:eventList3",
+                "Event": [
+                    {
+                        "@id": "snap:event3",
+                        "eventTitle": "Anker MagGo 637 Launch",
+                        "eventSummary": "Launch of the Anker MagGo 637 charger.",
+                        "theme": "Product Launch",
+                        "hasLocation": {
+                            "@id": "geo:location7",
+                            "@type": "geo:SpatialThing",
+                            "name": "Anker Headquarters"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList3",
+                            "Person": [
+                                {
+                                    "@id": "snap:person3",
+                                    "name": "Steven Yang",
+                                    "dateOfBirth": "1982-05-15",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location8",
+                                        "@type": "geo:location",
+                                        "name": "Nanjing, China"
+                                    },
+                                    "alias": "CEO of Anker"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList3",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization3",
+                                    "name": "Anker Innovations",
+                                    "hasLocation": {
+                                        "@id": "geo:location9",
+                                        "@type": "geo:SpatialThing",
+                                        "name": "Shenzhen, China"
+                                    },
+                                    "alias": "Anker"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "followUp": {
+                "@id": "snap:asset1"
+            },
+            "derivedFrom": {
+                "@id": "snap:asset2"
+            }
+        }
+    ]
+}

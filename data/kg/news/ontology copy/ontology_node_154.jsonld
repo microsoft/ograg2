@@ -1,0 +1,135 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Jessica Conditt",
+      "published": "2023-12-19T14:30:37+00:00",
+      "title": "Video games in 2023: Acquisitions, layoffs, unions",
+      "summary": "This was a year of upheaval in video games. The industry has shapeshifted over the past 12 months, and it’s not all due to Microsoft’s lengthy acquisition of Activision, Blizzard and King. While Xbox executives were defending the legality of a $69 billion deal that would create the third-largest video game studio in the world, smaller companies were firing staff and shutting down entire teams, even amid fervent collective-bargaining efforts. It’s been a wild ride.",
+      "associatedAsset": {
+        "@type": "snap:imageAsset",
+        "image": "Charley Gallay via Getty Images"
+      },
+      "derivedFrom": {
+        "@type": "snap:imageAsset",
+        "image": "Xinhua News Agency via Getty Images"
+      },
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "Mediatonic"
+      },
+      "source": "Engadget",
+      "url": "https://www.engadget.com/video-games-in-2023-acquisitions-layoffs-unions-143037174.html?src=rss"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Consolidation",
+      "eventSummary": "When Microsoft's purchase of Activision-Blizzard-King was finally approved on October 12, 2023 after nearly two years of regulatory hurdles, it became the world’s third-largest video game studio by revenue.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Consolidation in the video game industry"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Layoffs",
+      "eventSummary": "The post-acquisition power dynamic is playing out in public and in real-time. It’s estimated that more than 9,000 people in video games were laid off this year and the firings affected teams of all sizes.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Layoffs in the video game industry"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Unions",
+      "eventSummary": "Unionization is one approach that can help protect the livelihoods of people in the video game industry, and there was progress on this front in 2023.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Unionization in the video game industry"
+      }
+    }
+  ]
+}
+```

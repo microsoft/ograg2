@@ -1,0 +1,128 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Brian Heater",
+      "published": "2023-10-01T13:51:56+00:00",
+      "title": "A tale of two research institutes",
+      "summary": "If you’re lucky, once a year you get to put together a panel built on pure kismet. Pairing Gill Pratt with Marc Raibert was exactly that for me. The two go back several decades, to the salad days of MIT’s Leg Lab.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "A tale of two research institutes",
+        "summary": "Raibert founded the lab at Carnegie Mellon University (CMU) in 1980, before moving operations to MIT. The team was focused on robot locomotion research that would pave the way for Boston Dynamics’ work."
+      },
+      "derivedFrom": {
+        "@type": "snap:asset",
+        "title": "A tale of two research institutes",
+        "summary": "Raibert and Pratt first crossed paths when the latter was a student at MIT. Raibert would found Boston Dynamics in 1992, handing the Leg Lab keys over to Pratt three years later."
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "TechCrunch"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Marc Raibert"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Gill Pratt"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Boston Dynamics"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Toyota Research Institute"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Boston Dynamics AI Institute"
+    }
+  ]
+}
+```

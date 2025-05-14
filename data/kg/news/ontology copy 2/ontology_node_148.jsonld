@@ -1,0 +1,126 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "snap:asset",
+      "title": "Republicans still don’t know how to talk to young voters online",
+      "author": "Morgan Sung",
+      "theme": "technology",
+      "content": "Republicans still don’t know how to talk to young voters online Vivek Ramaswamy struggles to gain an edge in the face of TikTok trolls...",
+      "published": "2023-10-02T21:42:14+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "snap:event",
+          "eventTitle": "Vivek Ramaswamy's TikTok Launch",
+          "eventSummary": "Vivek Ramaswamy launched his TikTok presence with an endorsement from Jake Paul.",
+          "theme": "politics",
+          "mentions_persons": [
+            {
+              "@id": "snap:person1",
+              "@type": "snap:person",
+              "name": "Vivek Ramaswamy"
+            },
+            {
+              "@id": "snap:person2",
+              "@type": "snap:person",
+              "name": "Jake Paul"
+            },
+            {
+              "@id": "snap:person3",
+              "@type": "snap:person",
+              "name": "Annie Wu Henry"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization1",
+              "@type": "snap:organization",
+              "name": "TechCrunch"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

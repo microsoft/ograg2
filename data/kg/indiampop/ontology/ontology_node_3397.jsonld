@@ -1,0 +1,87 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Gerbera",
+            "has_types": {
+                "name": "Flower",
+                "used_for": "Decoration"
+            },
+            "has_growing_zones": {
+                "CropGrowingZone": {
+                    "name": "Tropical",
+                    "has_regions": ["South America", "Africa", "Asia"]
+                }
+            },
+            "has_temperature_requirements": {
+                "for_germination": "20-25°C",
+                "for_flowering": "15-20°C",
+                "for_grain_filling": "N/A",
+                "negative_effect": "Below 10°C and above 30°C"
+            },
+            "has_soil_requirements": {
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Clayey",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "instructions": "Growing of gerbera in raised beds improves drainage and aeration. The plants should not be planted too deep.",
+                "with_soil_moisture": "Moderate"
+            },
+            "seed_germination_test_requirements_are": "N/A",
+            "has_seed_fungicide_requirements": {
+                "name": "N/A",
+                "quantity": "N/A"
+            },
+            "needs_seed_sowing_spacing": {
+                "sowing_time": "January to March and June to August",
+                "value": "30 cm",
+                "depth": "Not too deep",
+                "method": "Direct sowing"
+            },
+            "weed_management_needs_are": "Regular weeding",
+            "needs_irrigation_schedule": {
+                "quantity": "Moderate",
+                "stage_of_application": "Throughout the growing period"
+            },
+            "needs_disease_treatements": {
+                "disease_name": "N/A",
+                "disease_symptoms": "N/A",
+                "disease_control": "N/A"
+            },
+            "needs_pest_treatements": {
+                "pest_name": "N/A",
+                "pest_symptoms": "N/A",
+                "pest_control": "N/A"
+            },
+            "harvesting_guidelines_are": "Harvest when flowers are fully bloomed",
+            "storage_guidelines_are":"Store in a cool, dry place"
+        }
+    ]
+}

@@ -1,0 +1,243 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "NewsAsset",
+            "title": "Black Friday Shopping Guide",
+            "author": "Engadget",
+            "theme": "Shopping",
+            "summary": "Your Black Friday Shopping Guide: See all of Yahoo’s Black Friday coverage, here.",
+            "created": "2023-11-24T00:00:00Z",
+            "published": "2023-11-24T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList1",
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "@type": "Event",
+                        "eventTitle": "JLab Earphones Review",
+                        "eventSummary": "JLab even bakes three different EQ presets directly into the earphones.",
+                        "theme": "Audio",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList1",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList1",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event2",
+                        "@type": "Event",
+                        "eventTitle": "Google Pixel Buds Pro Review",
+                        "eventSummary": "The Google Pixel Buds Pro are available for a new low of $115 at Wellbots.",
+                        "theme": "Audio",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList2",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList2",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event3",
+                        "@type": "Event",
+                        "eventTitle": "Beyerdynamic DT 900 Pro X Review",
+                        "eventSummary": "Beyerdynamic's DT 900 Pro X headphones are down to $249 at Amazon and Target.",
+                        "theme": "Audio",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList3",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList3",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event4",
+                        "@type": "Event",
+                        "eventTitle": "Sennheiser HD 560S Review",
+                        "eventSummary": "The Sennheiser HD 560S is another open-back pair of wired headphones.",
+                        "theme": "Audio",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList4",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList4",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event5",
+                        "@type": "Event",
+                        "eventTitle": "Drop X Sennheiser HD 6XX Review",
+                        "eventSummary": "The Drop X Sennheiser HD 6XX is on sale for $169 at Drop.",
+                        "theme": "Audio",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList5",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList5",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event6",
+                        "@type": "Event",
+                        "eventTitle": "Astro A40 TR Review",
+                        "eventSummary": "Our favorite dedicated gaming headset for most people, the Astro A40 TR, is down to $100 at Amazon.",
+                        "theme": "Gaming",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList6",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList6",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event7",
+                        "@type": "Event",
+                        "eventTitle": "HyperX Cloud Stinger 2 Review",
+                        "eventSummary": "If all you want is a decent gaming headset for as little as possible, the HyperX Cloud Stinger 2 is worth considering at $35.",
+                        "theme": "Gaming",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList7",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList7",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event8",
+                        "@type": "Event",
+                        "eventTitle": "Logitech G535 Review",
+                        "eventSummary": "The Logitech G535 is another honorable mention in our gaming headsets guide.",
+                        "theme": "Gaming",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList8",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList8",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event9",
+                        "@type": "Event",
+                        "eventTitle": "Shokz OpenRun Pro Review",
+                        "eventSummary": "The Shokz OpenRun Pro is back down to $125 for Black Friday.",
+                        "theme": "Audio",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList9",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList9",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

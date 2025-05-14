@@ -1,0 +1,181 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Black Friday Deals",
+      "summary": "Various Black Friday deals on electronics, games, and services.",
+      "created": "2023-11-24T00:00:00",
+      "modified": "2023-11-24T00:00:00",
+      "published": "2023-11-24T00:00:00",
+      "associatedAsset": [
+        {
+          "@type": "snap:textAsset",
+          "title": "PS5 and Xbox Games Sale",
+          "summary": "Discounts on popular PS5 and Xbox games.",
+          "image": "http://example.com/image1.jpg"
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "DJI Osmo Action 3 Creator Combo",
+          "summary": "Discount on DJI Osmo Action 3 bundle.",
+          "image": "http://example.com/image2.jpg"
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Masterclass Black Friday Deal",
+          "summary": "Two memberships for the price of one.",
+          "image": "http://example.com/image3.jpg"
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Headspace Black Friday Deal",
+          "summary": "50% off Headspace memberships.",
+          "image": "http://example.com/image4.jpg"
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Surfshark VPN",
+          "summary": "Up to 86% off two-year plans.",
+          "image": "http://example.com/image5.jpg"
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Samsung M80C Smart Monitor",
+          "summary": "$300 off Samsung Smart Monitor.",
+          "image": "http://example.com/image6.jpg"
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Motorola razr+",
+          "summary": "30% off Motorola razr+.",
+          "image": "http://example.com/image7.jpg"
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Bose QuietComfort Earbuds II",
+          "summary": "$199 for Bose QuietComfort Earbuds II.",
+          "image": "http://example.com/image8.jpg"
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Samsung The Frame QLED TV",
+          "summary": "35% off Samsung The Frame TV.",
+          "image": "http://example.com/image9.jpg"
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Solo Stove Black Friday Deal",
+          "summary": "Up to $245 off fire pit bundles.",
+          "image": "http://example.com/image10.jpg"
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "ProtonVPN Black Friday Deal",
+          "summary": "$4 per month for ProtonVPN.",
+          "image": "http://example.com/image11.jpg"
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "LG A2 OLED TV",
+          "summary": "LG's 48-inch A2 OLED TV for $550.",
+          "image": "http://example.com/image12.jpg"
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Microsoft Surface Pro 9",
+          "summary": "$1,000 for Microsoft Surface Pro 9.",
+          "image": "http://example.com/image13.jpg"
+        },
+        {
+          "@type": "snap:textAsset",
+          "title": "Lenovo IdeaPad Flex 5i Chromebook Plus",
+          "summary": "$379 for Lenovo IdeaPad Flex 5i.",
+          "image": "http://example.com/image14.jpg"
+        }
+      ]
+    }
+  ]
+}
+```

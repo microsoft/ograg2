@@ -1,0 +1,232 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "snap:asset",
+            "title": "World Series Game 4 Highlights",
+            "author": "FOX Sports: MLB",
+            "theme": "Sports/Baseball",
+            "content": "Highlights and updates from Game 4 of the World Series between the Rangers and Diamondbacks.",
+            "created": "2023-11-01T20:00:00",
+            "hasThumbnail": "http://pic.twitter.com/GJoEF1GVKj",
+            "published": "2023-11-01T20:00:00",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "snap:event",
+                    "eventTitle": "Game 4 of the World Series",
+                    "eventSummary": "Rangers vs. Diamondbacks at Chase Field.",
+                    "theme": "Sports/Baseball",
+                    "hasLocation": {
+                        "@type": "geo:SpatialThing",
+                        "geo:location": "Chase Field, Phoenix"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person1",
+                            "@type": "snap:person",
+                            "name": "Joe Mantiply"
+                        },
+                        {
+                            "@id": "snap:person2",
+                            "@type": "snap:person",
+                            "name": "Marcus Semien"
+                        },
+                        {
+                            "@id": "snap:person3",
+                            "@type": "snap:person",
+                            "name": "Mitch Garver"
+                        },
+                        {
+                            "@id": "snap:person4",
+                            "@type": "snap:person",
+                            "name": "Corey Seager"
+                        },
+                        {
+                            "@id": "snap:person5",
+                            "@type": "snap:person",
+                            "name": "Geraldo Perdomo"
+                        },
+                        {
+                            "@id": "snap:person6",
+                            "@type": "snap:person",
+                            "name": "Andrew Heaney"
+                        },
+                        {
+                            "@id": "snap:person7",
+                            "@type": "snap:person",
+                            "name": "Jon Rahm"
+                        },
+                        {
+                            "@id": "snap:person8",
+                            "@type": "snap:person",
+                            "name": "Michael Phelps"
+                        },
+                        {
+                            "@id": "snap:person9",
+                            "@type": "snap:person",
+                            "name": "Nathan Eovaldi"
+                        },
+                        {
+                            "@id": "snap:person10",
+                            "@type": "snap:person",
+                            "name": "Jordan Montgomery"
+                        },
+                        {
+                            "@id": "snap:person11",
+                            "@type": "snap:person",
+                            "name": "Max Scherzer"
+                        },
+                        {
+                            "@id": "snap:person12",
+                            "@type": "snap:person",
+                            "name": "Brock Burke"
+                        },
+                        {
+                            "@id": "snap:person13",
+                            "@type": "snap:person",
+                            "name": "Adolis Garcia"
+                        },
+                        {
+                            "@id": "snap:person14",
+                            "@type": "snap:person",
+                            "name": "Ezequiel Duran"
+                        },
+                        {
+                            "@id": "snap:person15",
+                            "@type": "snap:person",
+                            "name": "Travis Jankowski"
+                        },
+                        {
+                            "@id": "snap:person16",
+                            "@type": "snap:person",
+                            "name": "Emmanuel Rivera"
+                        },
+                        {
+                            "@id": "snap:person17",
+                            "@type": "snap:person",
+                            "name": "Evan Longoria"
+                        },
+                        {
+                            "@id": "snap:person18",
+                            "@type": "snap:person",
+                            "name": "Bruce Bochy"
+                        },
+                        {
+                            "@id": "snap:person19",
+                            "@type": "snap:person",
+                            "name": "Chris Russo"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "snap:organization",
+                            "name": "FOX Sports"
+                        },
+                        {
+                            "@id": "snap:organization2",
+                            "@type": "snap:organization",
+                            "name": "MLB"
+                        },
+                        {
+                            "@id": "snap:organization3",
+                            "@type": "snap:organization",
+                            "name": "Rangers"
+                        },
+                        {
+                            "@id": "snap:organization4",
+                            "@type": "snap:organization",
+                            "name": "Diamondbacks"
+                        },
+                        {
+                            "@id": "snap:organization5",
+                            "@type": "snap:organization",
+                            "name": "ESPN"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

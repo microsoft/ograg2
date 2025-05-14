@@ -1,0 +1,107 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "byline": "Richard Jolly",
+            "published": "2023-12-13T22:16:07+00:00",
+            "title": "Another cruel comeback sees Newcastle perish in group of death",
+            "summary": "It was the sequel Newcastle United did not want, the second cruel comeback in as many Champions League games. For some 45 minutes, including half-time, they could savour the sight of a table that showed them in second, permitting them to imagine a date with Real Madrid or Bayern Munich in the knockout stages. And then, little more than half an hour, they were ejected from Europe altogether.",
+            "associatedAsset": {
+                "@type": "TextAsset",
+                "image": "https://www.independent.co.uk/sport/football/newcastle-ac-milan-result-champions-league-b2463663.html"
+            }
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "Newcastle vs AC Milan Champions League Match",
+            "eventSummary": "Newcastle United faced AC Milan in a crucial Champions League match, resulting in a defeat that ended their European campaign.",
+            "theme": {
+                "@type": "intangibleStuff",
+                "comment": "sports"
+            }
+        }
+    ]
+}
+```

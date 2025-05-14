@@ -1,0 +1,59 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Mealy bugs",
+            "pest_symptoms": "Tristeza virus",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "methyl demeton 25 EC",
+                "quantity": "1ml/lit",
+                "stage": "Spray to control the aphids which spread the disease"
+            }
+        },
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Tristeza virus",
+            "pest_symptoms": "Infected trees",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "monocrotophos",
+                "quantity": "1ml/lit",
+                "stage": "Remove the infected trees and destroy"
+            }
+        },
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Tristeza virus",
+            "pest_symptoms": "Infected seedlings",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "pre-immunized acid lime seedlings",
+                "quantity": "For planting",
+                "stage": "Use for planting"
+            }
+        }
+    ]
+}

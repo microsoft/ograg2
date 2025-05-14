@@ -1,0 +1,122 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "title": "The $777 million surprise: Donald Trump is getting richer",
+      "byline": "Tom Maloney",
+      "published": "2023-11-07T22:22:05+00:00",
+      "summary": "Thousands of pages of exhibits detailing the performance of his assets made available during the trial have provided a deeper look into his fortune. The former president’s 2021 statement of financial condition, filed as part of the lawsuit, pegged his net worth at $US4.5 billion. Bloomberg’s calculation has consistently been below Trump’s figures. At the same time, Bloomberg measured the value of some Trump properties higher than what New York state claims. Trump took the stand and testified that the properties whose values he’s accused of inflating were actually undervalued, based on the premium his “brand” adds. He also said that banks didn’t rely on his statements of financial condition when weighing loans. “They just weren’t a very important element in banks’ decision-making process,” Trump told the court. “And we’ll explain that as this trial goes along.” Here’s a look at New York state’s valuation of four high-profile Trump properties where the prosecution alleges fraud occurred, along with Bloomberg’s own approach to assessing the assets.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://www.theage.com.au/business/companies/the-777-million-surprise-donald-trump-is-getting-richer-20231108-p5eicf.html?ref=rss&utm_medium=rss&utm_source=rss_business"
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Mar-a-Lago Valuation Dispute",
+      "eventSummary": "Mar-a-Lago Trump’s valuation (2021): $US612.1 million , Bloomberg valuation (2023): $US240 million, New York’s valuation (2021): $US27.6 million. It’s fair to say that Trump’s most famous property these days is no longer New York’s Trump Tower but his Mar-a-Lago Club, the historic Palm Beach estate built by Marjorie Merriweather Post in the 1920s that he now calls home. New York’s valuation of Donald Trump’s Mar-a-Lago estate has raised eyebrows.",
+      "theme": "snap:intangibleStuff"
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Trump’s Fifth Avenue Penthouse Valuation",
+      "eventSummary": "Trump’s valuation (2021): $US131.3 million, Bloomberg valuation (2023): $US40 million, New York valuation: No current estimate available. Trump’s penthouse apartment at Trump Tower has been an integral part of his image for 40 years, so it’s not surprising that one of the world’s masters of hyperbole exaggerated its size for most of that time.",
+      "theme": "snap:intangibleStuff"
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Trump Park Avenue Valuation",
+      "eventSummary": "Trump’s valuation (2021): $US90.9 million, Bloomberg valuation (2023): $US86.4 million, New York’s valuation (2021): $US80 million. The residential condo tower on Manhattan’s Upper East Side, formerly the Hotel Delmonico, isn’t one of Trump’s best-known buildings, but it’s been the source of some significant asset inflations, according to the prosecution.",
+      "theme": "snap:intangibleStuff"
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "40 Wall Street Valuation",
+      "eventSummary": "Trump’s valuation (2021): $US664 million, Bloomberg valuation (2023): $US270 million, New York’s valuation: No current estimate available. In valuing his flagship lower Manhattan office tower, Trump consistently ignored more conservative appraisals he’d received from professionals, New York State argues.",
+      "theme": "snap:intangibleStuff"
+    }
+  ]
+}
+```

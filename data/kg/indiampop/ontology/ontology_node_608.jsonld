@@ -1,0 +1,141 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Cover Cropping",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Cover Crop",
+                "used_for": "Cover Cropping"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Rainy Season",
+                    "has_regions": ["Region 1", "Region 2"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Variety 1", "Variety 2"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Start of Rainy Season",
+                            "end_date": "End of Rainy Season"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Start of Rainy Season",
+                            "end_date": "End of Rainy Season"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "Standard Seeding Rate"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Standard Nutrient",
+                            "quantity": "Standard Quantity",
+                            "stage_of_application": "Standard Stage"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Standard Temperature for Germination",
+                "for_flowering": "Standard Temperature for Flowering",
+                "for_grain_filling": "Standard Temperature for Grain Filling",
+                "negative_effect": "Standard Negative Effect"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Standard Soil Type",
+                "avoid_soil_type": "Standard Soil Type to Avoid",
+                "for_water": "Standard Water Requirement",
+                "for_nutrients": "Standard Nutrient Requirement"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Standard Land Preparation Instructions",
+                "with_soil_moisture": "Standard Soil Moisture Requirement"
+            },
+            "seed_germination_test_requirements_are": "Standard Seed Germination Test Requirements",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Standard Fungicide",
+                "quantity": "Standard Quantity"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Standard Sowing Time",
+                "value": "Standard Value",
+                "depth": "Standard Depth",
+                "method": "Standard Method"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Standard Weed Name",
+                "weed_types": ["Weed Type 1", "Weed Type 2"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Standard Herbicide",
+                    "quantity": "Standard Quantity",
+                    "stage": "Standard Stage"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Standard Quantity",
+                "stage_of_application": "Standard Stage"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Standard Disease Name",
+                "disease_symptoms": "Standard Disease Symptoms",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Standard Herbicide",
+                    "quantity": "Standard Quantity",
+                    "stage": "Standard Stage"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Standard Pest Name",
+                "pest_symptoms": "Standard Pest Symptoms",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Standard Pesticide",
+                    "quantity": "Standard Quantity",
+                    "stage": "Standard Stage"
+                }
+            },
+            "harvesting_guidelines_are": "Standard Harvesting Guidelines",
+            "storage_guidelines_are": "Standard Storage Guidelines"
+        }
+    ]
+}

@@ -1,0 +1,210 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "MLB free agency tracker: Live updates on news, rumors, signings and trades after 2023 Winter Meetings",
+            "author": "Dan Treacy",
+            "published": "2023-12-23T23:54:00+00:00",
+            "theme": "sports",
+            "summary": "Shohei Ohtani and Juan Soto have already found new homes, but much of the MLB offseason has yet to play out. Japanese pitcher Yoshinobu Yamamoto is the focus of many teams as he prepares to sign a massive deal, while Blake Snell, Cody Bellinger and Jordan Montgomery remain on the market. The trade market is also expected to be active once more dominoes fall, with Dylan Cease, Corbin Burnes and Tyler Glasnow among starters who could be moved this winter.",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "eventTitle": "Padres ink five-year deal with NPB star Matsui",
+                        "eventSummary": "Another Japanese star is headed to the Sunshine State. Star reliever Yuki Matsui inked a five-year, $28 million deal to join the Friars on Saturday.",
+                        "theme": "sports",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Yuki Matsui"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "San Diego Padres"
+                                },
+                                {
+                                    "name": "Tohoku Rakuten Golden Eagles"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event2",
+                        "eventTitle": "Dodgers sign Yamamoto to $325 million contract",
+                        "eventSummary": "The Yamamoto sweepstakes are over, as the Dodgers have reportedly signed the Japanese ace to a 12-year, $325 million.",
+                        "theme": "sports",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Yoshinobu Yamamoto"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Los Angeles Dodgers"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event3",
+                        "eventTitle": "Giants out of Yamamoto sweepstakes",
+                        "eventSummary": "The Giants made a hard push to land Yamamoto, but according to NBC Sports Bay Area's Alex Pavlovic, San Francisco has been notified that the team is out of the bidding to land the Japanese ace.",
+                        "theme": "sports",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "San Francisco Giants"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event4",
+                        "eventTitle": "Pirates re-sign franchise legend Andrew McCutchen",
+                        "eventSummary": "The Pirates have been making a few veteran free-agent signings to bolster the rotation. Now, they're bringing back a franchise icon.",
+                        "theme": "sports",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Andrew McCutchen"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Pittsburgh Pirates"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event5",
+                        "eventTitle": "Angels discussing Blake Snell",
+                        "eventSummary": "The Angels came up empty on bringing back Ohtani. Now, they're looking to land another splashy name on the free-agent market.",
+                        "theme": "sports",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Blake Snell"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Los Angeles Angels"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

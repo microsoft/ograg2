@@ -1,0 +1,95 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Jacqueline Maley",
+      "published": "2023-10-06T04:50:00+00:00",
+      "title": "Author Melissa Lucashenko on playing with black and white binaries",
+      "summary": "Melissa Lucashenko, the only person ever to have won both the Miles Franklin Literary Award and TV’s Millionaire Hot Seat, is struggling to concentrate. We’re sitting on the back terrace of the Avid Reader bookstore in Brisbane’s West End, drinking coffee in the late-winter warmth, which even in August is hinting at humidity. We’re shaded by a fig tree, which bursts with bird life. To me, it feels lush and subtropical. Peaceful even. But Lucashenko is distracted by a particular bird that’s dropping fig rubble all over us. “Sorry, that bloody bird is really annoying me, that’s a pest bird,” she says, breaking off our conversation. “Indian mynas, I hate ’em.” That the Indian myna is an import – introduced to Australia in the 1860s – seems apt. We’d been deep in discussion about colonial Brisbane, the hanging of the Aboriginal resistance fighter Dundalli, and the gestation of Lucashenko’s new novel, Edenglassie, published last week by University of Queensland Press. It’s a historical epic which depicts the fascinating period in Brisbane’s history when the former penal colony was morphing into a settler town, and Aboriginal people still outnumbered white colonists. In the book (named after Brisbane’s early moniker), the two groups coexist uneasily at the Queensland ­frontier, their interactions defined by mutual curiosity and suspicion, economic co-dependence and outbreaks of violence. “I’d wanted to write a novel of ­colonial Brisbane for a very long time, since I read Tom Petrie’s Reminiscences of Early Queensland,” Lucashenko says, having refocused after the myna interruption. “It is so full of stories and insights into the colonial era that as a novelist I just went, ‘Wow. This is begging to be fictionalised.’ ” Edenglassie had a long gestation. It was back in the 1990s that Lucashenko devoured Reminiscences, a 1904 classic that records the memories of the great Queensland pioneer Petrie, a Scottish-born explorer, gold prospector, logger and grazier who lived in the Moreton Bay penal colony, subsequently Brisbane, from 1831 to 1910. The book embedded itself in her consciousness and stayed there for the ensuing decades, as she moved to different homes over the east coast and overseas, as she wove through marriage and divorce, and navigated the challenges of having young children, and the challenges of having grown children, and the torture and exhilaration of writing through it all. Loading “I just had this vague awareness that I should be living in Brisbane to write this book,” she says now, firmly in Brisbane, which is verdant and infested with aforementioned noisy wildlife. “Because it’s very different to write a book when you’re walking the streets every day and looking at the river every week, than trying to do it at a distance.” She’s dressed casually in a T-shirt and trousers, finished off with borrowed thongs (her shoes were stolen from her house this morning). Her eyes are brown, expressive and kind, but she’s wary of too many personal questions.",
+      "url": "https://www.theage.com.au/culture/books/author-melissa-lucashenko-on-playing-with-black-and-white-binaries-20230919-p5e5uy.html?ref=rss&utm_medium=rss&utm_source=rss_culture"
+    }
+  ]
+}
+```

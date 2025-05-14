@@ -1,0 +1,50 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Transplanted Puddled Lowland Rice",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the land during summer to economize the water requirement for initial preparation of land. Flood the field 1 or 2 days before ploughing and allow water to soak in. Keep the surface of the field covered with water. Keep water to a depth of 2.5cm at the time of puddling.",
+                "with_soil_moisture": "Keep the surface of the field covered with water. Keep water to a depth of 2.5cm at the time of puddling."
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Main Field Management"
+            }
+        }
+    ]
+}

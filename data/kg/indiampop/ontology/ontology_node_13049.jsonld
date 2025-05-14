@@ -1,0 +1,64 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PostHarvestTechnology": {
+            "@id": "cropCult:PostHarvestTechnology",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "process": "schema:Text",
+                "byproducts": "schema:Text",
+                "extraction_method": "schema:Text",
+                "oil_properties": "schema:Text",
+                "uses": "schema:Text",
+                "protein_content": "schema:Text",
+                "fat_content": "schema:Text",
+                "storage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "DRY SEEDED UPLAND RICE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "AEROBIC RICE"
+            }
+        },
+        {
+            "@type": "PostHarvestTechnology",
+            "name": "POST HARVEST TECHNOLOGY OF RICE PROCESSING OF RICE",
+            "process": "Byproducts of Rice",
+            "byproducts": "Rice bran oil",
+            "extraction_method": "Bran oil is obtained by the extraction of rice bran with solvents. Bran oil is also obtained in the solvent extraction milling of rice.",
+            "oil_properties": "The oil contains a high percentage of unsaturated fatty acids, yet it is quite stable because of the presence of natural antioxidants.",
+            "uses": "When refined, bleached and deodorized, it is used for salad dressing and as cooking oil.",
+            "protein_content": "Bran after solvent extraction has a higher percentage of protein that the original material.",
+            "fat_content": "With its low fat content it keeps well.",
+            "storage": "With its low fat content it keeps well."
+        }
+    ]
+}

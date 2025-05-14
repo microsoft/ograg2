@@ -1,0 +1,46 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Plant lice",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Fish oil soap",
+                "quantity": "1.5 per cent",
+                "stage": "First dissolve soap in hot water and then make up the volume."
+            }
+        },
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Plant lice",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Dimethoate",
+                "quantity": "As per manufacturer's instructions",
+                "stage": "Apply as an alternative to fish oil soap."
+            }
+        }
+    ]
+}

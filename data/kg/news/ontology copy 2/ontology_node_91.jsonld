@@ -1,0 +1,119 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "Dangerous 'superbugs' are a growing threat, and antibiotics can't stop their rise. What can?",
+            "author": null,
+            "theme": "science",
+            "content": "Bacteria's rising resistance to antibiotics is making the drugs obsolete. Scientists are fighting back with viruses (pictured), CRISPR, designer molecules and cell-slicing enzymes. The bacteria may have entered her flesh along with shrapnel from the bomb detonated in Brussels Airport in 2016. Or perhaps the microbes hitched a ride on the surgical instruments used to treat her wounds. Either way, the 'superbug' refused to be vanquished, despite years of antibiotic treatment. The woman had survived a terrorist attack but was held hostage by drug-resistant Klebsiella pneumoniae, a bacterial strain often picked up by surgery patients in hospitals. Only by combining antibiotics with a new, experimental treatment did doctors finally rid her of the superbug. Devastating drug-resistant bacterial infections like this one are all too common, and they represent an ever-growing threat to global health. In 2019, antibiotic-resistant bacteria directly killed roughly 1.27 million people worldwide and contributed to an additional 3.68 million deaths. In the U.S. alone, drug-resistant bacteria and fungi together cause an estimated 2.8 million infections and 35,000 deaths each year. And the problem is getting worse: Seven of the 18 concerning bacteria tracked by the Centers for Disease Control and Prevention (CDC) are becoming more resistant to common antibiotics considered essential for maintaining public health. Meanwhile, drug companies have been slow to make new antibiotics capable of beating the microbes. Fewer than 30 antibiotics currently in the development pipeline target 'priority' bacteria, as defined by the World Health Organization (WHO), and most of those drugs are still vulnerable to resistance, just like their predecessors. This table of select antibiotic-resistant bacteria demonstrates how rapidly important types of resistance developed after the approval and release of new antibiotics. So some scientists are looking beyond traditional antibiotics for new weapons that won't fuel the rise of superbugs. Their emerging arsenal features viruses that kill bacteria; CRISPR; and microbe-slaying molecules. They hope that these experimental treatments, some of which have been tested in patients, will kill superbugs without promoting resistance. 'The vision, for me, is that we move beyond antibiotics and really just see a much broader palate of options,' Chase Beisel, leader of the RNA synthetic biology research group at the Helmholtz Institute for RNA-based Infection Research in Germany, told Live Science. But until these new therapeutics are ready for prime time, the world needs to curtail its overuse and misuse of antibiotics, which experts say is speeding up the rate at which these lifesaving drugs become obsolete.",
+            "created": null,
+            "hasThumbnail": null,
+            "embargoedUntil": null,
+            "modified": null,
+            "published": "2023-10-01T11:00:46+00:00",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event1",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Brussels Airport Bombing",
+                        "eventSummary": "The bacteria may have entered her flesh along with shrapnel from the bomb detonated in Brussels Airport in 2016.",
+                        "theme": "terrorism",
+                        "hasLocation": null,
+                        "mentions_persons": {
+                            "@list": []
+                        },
+                        "mentions_organizations": {
+                            "@list": []
+                        },
+                        "subEventOf": null,
+                        "notablyAssociatedWith": null
+                    }
+                ]
+            },
+            "followUp": null,
+            "derivedFrom": null
+        }
+    ]
+}

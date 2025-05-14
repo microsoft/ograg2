@@ -1,0 +1,151 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "The best new TV series on every streaming service",
+            "author": "Toussaint Egan",
+            "theme": "entertainment",
+            "content": "Your time is precious, and your options are endless. The good news: We watch it all so you don’t have to. Polygon’s What to Watch highlights the best, the funniest, the scariest, and the most exciting in movies, TV, and everything in between. Stop scrolling, start watching! The streaming landscape is vast and hard to keep track of. TV shows pop up (and get canceled) seemingly overnight, and even if you’re in a place where you’re looking for a new show to sink hours into, it can be overwhelming to make the right choice. That’s what we’re here for. We’re going to keep this post updated with the most recent series on each of the major streaming platforms that we liked, as well as some other options if our pick doesn’t sound like your particular jam. So, below, find the best new shows on Netflix, Hulu, Prime Video, Max, Disney Plus, Paramount Plus, Apple TV, and Peacock. Our latest update added Castlevania: Nocturne, Gen V, Hijack, and The Continental.",
+            "published": "2023-10-25T16:09:11+00:00",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "schema:Thing",
+                    "eventTitle": "The best new shows on Netflix",
+                    "eventSummary": "Castlevania: Nocturne, The Diplomat, The Night Agent, Physical 100, Ganglands, Cyberpunk: Edgerunners, The Makanai: Cooking for the Maiko House, Derry Girls, The Sandman",
+                    "theme": "entertainment"
+                },
+                {
+                    "@id": "snap:event2",
+                    "@type": "schema:Thing",
+                    "eventTitle": "The best new show on Hulu",
+                    "eventSummary": "Reservation Dogs, Love Island UK, What We Do in the Shadows, Atlanta",
+                    "theme": "entertainment"
+                },
+                {
+                    "@id": "snap:event3",
+                    "@type": "schema:Thing",
+                    "eventTitle": "The best new TV on Prime Video",
+                    "eventSummary": "Gen V, A League of Their Own, Paper Girls, Reacher",
+                    "theme": "entertainment"
+                },
+                {
+                    "@id": "snap:event4",
+                    "@type": "schema:Thing",
+                    "eventTitle": "The best new TV on Max",
+                    "eventSummary": "Unicorn: Warriors Eternal, My Adventures with Superman, Full Circle, The Righteous Gemstones, Harley Quinn",
+                    "theme": "entertainment"
+                },
+                {
+                    "@id": "snap:event5",
+                    "@type": "schema:Thing",
+                    "eventTitle": "The best new TV on Disney Plus",
+                    "eventSummary": "Andor, Willow",
+                    "theme": "entertainment"
+                },
+                {
+                    "@id": "snap:event6",
+                    "@type": "schema:Thing",
+                    "eventTitle": "The best new TV on Paramount Plus",
+                    "eventSummary": "The Good Fight, Star Trek: Strange New Worlds",
+                    "theme": "entertainment"
+                },
+                {
+                    "@id": "snap:event7",
+                    "@type": "schema:Thing",
+                    "eventTitle": "The best new TV on Apple TV Plus",
+                    "eventSummary": "Hijack, Severance, Slow Horses",
+                    "theme": "entertainment"
+                },
+                {
+                    "@id": "snap:event8",
+                    "@type": "schema:Thing",
+                    "eventTitle": "The best new TV on Peacock",
+                    "eventSummary": "The Continental: From the World of John Wick, Poker Face, Grand Crew, Girls5Eva, The Resort",
+                    "theme": "entertainment"
+                }
+            ]
+        }
+    ]
+}

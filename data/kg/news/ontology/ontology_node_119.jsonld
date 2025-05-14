@@ -1,0 +1,174 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "USC vs. Notre Dame Game Summary",
+            "author": "NBC Sports",
+            "theme": "Sports",
+            "summary": "A detailed summary of the USC vs. Notre Dame football game on October 14, 2023.",
+            "created": "2023-10-14T19:30:00Z",
+            "published": "2023-10-14T20:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "USC Scoring Play",
+                        "eventSummary": "Denis Lynch drills a 25-yard field goal.",
+                        "theme": "Scoring",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Notre Dame Stadium"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "USC",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Los Angeles, CA"
+                                    },
+                                    "alias": "Trojans"
+                                },
+                                {
+                                    "name": "Notre Dame",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "South Bend, IN"
+                                    },
+                                    "alias": "Fighting Irish"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Notre Dame Scoring Play",
+                        "eventSummary": "Sam Hartman throws a 4-yard touchdown pass to Gi'Bran Payne.",
+                        "theme": "Scoring",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Notre Dame Stadium"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Sam Hartman",
+                                    "dateOfBirth": "1999-03-29",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "North Carolina"
+                                    }
+                                },
+                                {
+                                    "name": "Gi'Bran Payne",
+                                    "dateOfBirth": "2000-05-15",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Florida"
+                                    }
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Notre Dame",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "South Bend, IN"
+                                    },
+                                    "alias": "Fighting Irish"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

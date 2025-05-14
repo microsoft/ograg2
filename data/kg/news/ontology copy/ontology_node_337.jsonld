@@ -1,0 +1,223 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "title": "Ground-breaking Gold Coast: Suns make AFLW finals for a second time",
+      "byline": "Joanna Guelas",
+      "published": "2023-11-03T23:45:04+00:00",
+      "summary": "The Gold Coast Suns have secured their second AFLW finals appearance.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://www.theage.com.au/sport/afl/ground-breaking-gold-coast-suns-make-aflw-finals-for-a-second-time-20231103-p5ehk0.html?ref=rss&utm_medium=rss&utm_source=rss_sport"
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "WEEK ONE FINALS FIXTURE",
+      "eventSummary": "SATURDAY NOVEMBER 11 First Qualifying Final: Adelaide v Brisbane Lions, 2.35pm local (3.05pm AEDT), Norwood Oval First Elimination Final: Gold Coast v Sydney, 6.15pm local (7.15pm AEDT), Heritage Bank Stadium SUNDAY NOVEMBER 12 Second Elimination Final: Geelong v Essendon, 1.05pm AEDT, GMHBA Stadium Second Qualifying Final: Melbourne v North Melbourne, 3.05pm AEDT, Ikon Park"
+    },
+    {
+      "@type": "Person",
+      "name": "Georgia Patrikios",
+      "alias": "Powerhouse display with 25 disposals and eight contested possessions"
+    },
+    {
+      "@type": "Person",
+      "name": "Hannah Priest",
+      "alias": "Nine intercept possessions in defence"
+    },
+    {
+      "@type": "Person",
+      "name": "Abbie McKay",
+      "alias": "28 disposals and 12 clearances"
+    },
+    {
+      "@type": "Person",
+      "name": "Mimi Hill",
+      "alias": "30 disposals"
+    },
+    {
+      "@type": "Person",
+      "name": "Rebecca Privitelli",
+      "alias": "Third-term goal sparked Swans to victory"
+    },
+    {
+      "@type": "Person",
+      "name": "Chloe Molloy",
+      "alias": "Sydney co-captain, two goals"
+    },
+    {
+      "@type": "Person",
+      "name": "Laura Gardiner",
+      "alias": "33 disposals and 18 contested possessions"
+    },
+    {
+      "@type": "Person",
+      "name": "Ally Anderson",
+      "alias": "22 disposals"
+    },
+    {
+      "@type": "Person",
+      "name": "Jade Ellenger",
+      "alias": "22 disposals"
+    },
+    {
+      "@type": "Person",
+      "name": "Dakota Davidson",
+      "alias": "Two goals"
+    },
+    {
+      "@type": "Person",
+      "name": "Bre Koenen",
+      "alias": "12 intercept possessions"
+    },
+    {
+      "@type": "Person",
+      "name": "Charlotte Mullins",
+      "alias": "Celebrated with Ruby Svarc"
+    },
+    {
+      "@type": "Person",
+      "name": "Ruby Svarc",
+      "alias": "Celebrated with Charlotte Mullins"
+    },
+    {
+      "@type": "Person",
+      "name": "Chloe Scheer",
+      "alias": "Three goals"
+    },
+    {
+      "@type": "Person",
+      "name": "Georgie Prespakis",
+      "alias": "35 touches, eight clearances"
+    },
+    {
+      "@type": "Person",
+      "name": "Amy McDonald",
+      "alias": "23 touches, eight clearances"
+    },
+    {
+      "@type": "Person",
+      "name": "Renee Garing",
+      "alias": "11 tackles"
+    },
+    {
+      "@type": "Person",
+      "name": "Rebecca Webster",
+      "alias": "Geelong young defender"
+    },
+    {
+      "@type": "Person",
+      "name": "Erin Phillips",
+      "alias": "AFLW great, emotional farewell"
+    },
+    {
+      "@type": "Person",
+      "name": "Richelle Cranston",
+      "alias": "Retirement due to health issues"
+    },
+    {
+      "@type": "Person",
+      "name": "Ash Riddell",
+      "alias": "36 touches and seven clearances"
+    },
+    {
+      "@type": "Person",
+      "name": "Lucy Single",
+      "alias": "25 disposals and six clearances"
+    },
+    {
+      "@type": "Person",
+      "name": "Claudia Whitford",
+      "alias": "25 possessions"
+    },
+    {
+      "@type": "Person",
+      "name": "Alison Drennan",
+      "alias": "22 touches"
+    }
+  ]
+}
+```

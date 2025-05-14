@@ -1,0 +1,51 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Orabanche (Pukaielai kalan)",
+            "weed_types": ["Problem", "Perennial", "Parasitic"],
+            "herbicides": [
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "paraquat",
+                    "quantity": "6 ml/litre of water",
+                    "stage": "Directed application on the Orbanche shoots"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "glyphosate",
+                    "quantity": "8 ml/litre of water",
+                    "stage": "Directed application on the Orbanche shoots"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "imazethapyr",
+                    "quantity": "3 ml/litre of water",
+                    "stage": "Directed application on the Orbanche shoots"
+                }
+            ]
+        }
+    ]
+}

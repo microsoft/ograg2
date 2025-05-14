@@ -1,0 +1,218 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "The Roar",
+      "title": "Who’s the next Gawn, Grundy or Dusty? AFL’s talent guru names top 40 draft prospects and compares them to current stars",
+      "published": "2023-11-15T23:48:27+00:00",
+      "summary": "AFL Talent Ambassador Kevin Sheehan has revealed his top 40 prospects ahead of this month’s AFL Draft.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://www.theroar.com.au/2023/11/16/whos-the-next-gawn-grundy-or-dusty-afls-talent-guru-names-top-40-draft-prospects-and-compares-them-to-current-stars/"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Kynan Brown",
+      "dateOfBirth": "2005-01-13",
+      "alias": "Left-footed inside midfielder",
+      "notablyAssociatedWith": {
+        "@type": "Organization",
+        "name": "Oakleigh Chargers"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Nate Caddy",
+      "dateOfBirth": "2005-07-14",
+      "alias": "Pack marking forward",
+      "notablyAssociatedWith": {
+        "@type": "Organization",
+        "name": "Northern Knights"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Caiden Cleary",
+      "dateOfBirth": "2005-03-05",
+      "alias": "In-and-under player",
+      "notablyAssociatedWith": {
+        "@type": "Organization",
+        "name": "Sydney Swans Academy"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Lance Collard",
+      "dateOfBirth": "2005-03-26",
+      "alias": "Small forward",
+      "notablyAssociatedWith": {
+        "@type": "Organization",
+        "name": "Subiaco"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Jordan Croft",
+      "dateOfBirth": "2005-05-12",
+      "alias": "Tall forward",
+      "notablyAssociatedWith": {
+        "@type": "Organization",
+        "name": "Calder Cannons"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Daniel Curtin",
+      "dateOfBirth": "2005-03-08",
+      "alias": "Left-footed defender",
+      "notablyAssociatedWith": {
+        "@type": "Organization",
+        "name": "Claremont"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Harry DeMattia",
+      "dateOfBirth": "2005-09-11",
+      "alias": "Midfielder/forward",
+      "notablyAssociatedWith": {
+        "@type": "Organization",
+        "name": "Dandenong Stingrays"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Zane Duursma",
+      "dateOfBirth": "2005-08-28",
+      "alias": "Mercurial forward/midfielder",
+      "notablyAssociatedWith": {
+        "@type": "Organization",
+        "name": "Gippsland Power"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Charlie Edwards",
+      "dateOfBirth": "2005-05-18",
+      "alias": "Medium defender/midfielder",
+      "notablyAssociatedWith": {
+        "@type": "Organization",
+        "name": "Sandringham Dragons"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Mitchell Edwards",
+      "dateOfBirth": "2005-06-02",
+      "alias": "Exciting ruckman",
+      "notablyAssociatedWith": {
+        "@type": "Organization",
+        "name": "Peel Thunder"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Joel Freijah",
+      "dateOfBirth": "2005-11-14",
+      "alias": "Wingman",
+      "notablyAssociatedWith": {
+        "@type": "Organization",
+        "name": "GWV Rebels"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Taylor Goad",
+      "dateOfBirth": "2005-04-28",
+      "alias": "Developing ruckman",
+      "notablyAssociatedWith": {
+        "@type": "Organization",
+        "name": "South Adelaide"
+      }
+    }
+  ]
+}
+```

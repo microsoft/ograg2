@@ -1,0 +1,160 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Dolphins vs. Eagles live score, updates, highlights from NFL 'Sunday Night Football' game",
+            "author": "Dan Treacy",
+            "published": "2023-10-22T23:28:04+00:00",
+            "theme": "sports",
+            "summary": "The Eagles looked good on Sunday night, donning Kelly Green jerseys and helmets for their matchup with the Dolphins. Philadelphia rolled to a 31-17 win over Miami on 'Sunday Night Football.'",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Dolphins vs. Eagles Final Score",
+                        "eventSummary": "Eagles 31, Dolphins 17",
+                        "theme": "NFL Game",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Lincoln Financial Field, Philadelphia, PA"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Dan Treacy"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Deion Sanders"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "A.J. Brown"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Jalen Hurts"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Tyreek Hill"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "D'Andre Swift"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Jerome Baker"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Mike McDaniel"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Philadelphia Eagles"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Miami Dolphins"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Sporting News"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,102 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "David Pierce",
+      "published": "2023-11-12T13:00:00+00:00",
+      "title": "The best apps and tools for managing your money online",
+      "summary": "Hi, friends! Welcome to Installer No. 14, your guide to the best and Verge-iest stuff in the world. (If you’re new here, welcome, you’re my favorite, so happy you’re here, and also, you can read all the old editions at the Installer homepage.)\n\nI also have for you a rundown of the best tools for managing money, new gadgets from Valve and Humane, way too many writing apps, new stuff from ChatGPT, and much more.\n\nAs always, the best part of Installer is your ideas and tips. What are you into right now? What have you been reading / watching / learning / doing that everyone should know about? Tell me everything: installer@theverge.com. And if you know someone else who might enjoy Installer, forward it to them and tell them to subscribe here.\n\nBig week in the Installerverse! Let’s get to it.\n\nInstaller / A weekly newsletter by David Pierce designed to tell you everything you need to download, watch, read, listen to, and explore that fits in The Verge’s universe. Email (required) Sign up By submitting your email, you agree to our Terms and Privacy Notice . This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.",
+      "associatedAsset": {
+        "asset": {
+          "@type": "snap:asset",
+          "title": "The Drop",
+          "summary": "Group project\n\nLast week, I asked you to share what systems you use for managing money. With the news that Mint was shutting down (which, ugh), I think a lot of people were left suddenly looking for a new way to easily keep track of their budget and spending. I figured y’all might have some good ideas. (The Verge’s Barbara Krasnoff also put together a list of Mint alternatives, and it’s a really good place to start.)\n\nOnce again, you came through! I got a ton of emails, texts, and mentions with good ideas for apps and systems for making this all work. Also, a lot of people who are very cranky with Mint, and trust me, I feel you on that.\n\nOne note before we get into it: you should, of course, be careful about where you manage your money and financial information and to whom you give access to any of that data. Many of the apps we’re about to talk about are popular and highly regarded, but you should always be cautious with this stuff. My credit score also once got dinged because I had signed up for too many personal finance apps — true story — so there are lots of reasons to be thoughtful here.\n\nCool? Cool. Let’s run through some of your ideas and findings:\n\nYNAB is the big winner. YNAB, which stands for You Need A Budget, was the overwhelming most popular recommendation I got this week. Folks liked that you can sync all your accounts and cards, that it’s an independent app you pay for instead of being bombarded by ads and credit card deals, and that it has a specific set of principles and systems you can just pick up and start using.\n\nYNAB, which stands for You Need A Budget, was the overwhelming most popular recommendation I got this week. Folks liked that you can sync all your accounts and cards, that it’s an independent app you pay for instead of being bombarded by ads and credit card deals, and that it has a specific set of principles and systems you can just pick up and start using. Copilot is the other go-to. Copilot is much more polished than YNAB, and people love the app’s design, its dataviz tools, and just how easy it is to interact with. It’s only for iOS and Mac, which is unfortunate, but as finance apps go, it seems to be unbeatably fun to use.\n\nCopilot is much more polished than YNAB, and people love the app’s design, its dataviz tools, and just how easy it is to interact with. It’s only for iOS and Mac, which is unfortunate, but as finance apps go, it seems to be unbeatably fun to use. There are a lot of apps worth a look. Other apps you recommended, in rough order of popularity: Qapital , Buddy , Empower , HomeBank , Expenses , Quicken , EveryDollar , Nudget , Ledger , and Dime .\n\nOther apps you recommended, in rough order of popularity: , , , , , , , , , and . Don’t sleep on spreadsheets. I heard from a number of people who said they’d tried the apps and built the systems but ultimately landed on a good ol’ spreadsheet in Excel or Google Sheets for tracking their spending. Especially for folks who just want a rough “here’s what I have, here’s where I want it to go” outline, you can’t beat the ‘sheet. (Is that a thing people say? I’m going with it.)\n\nI heard from a number of people who said they’d tried the apps and built the systems but ultimately landed on a good ol’ spreadsheet in Excel or Google Sheets for tracking their spending. Especially for folks who just want a rough “here’s what I have, here’s where I want it to go” outline, you can’t beat the ‘sheet. (Is that a thing people say? I’m going with it.) Templates are your friend! A few people recommended Tiller as a way to make the Excel and Google Sheets setup a little cleaner and more automatic. This Notion template got some love, too.\n\nA few people recommended as a way to make the Excel and Google Sheets setup a little cleaner and more automatic. got some love, too. The manual way can be the way… but it’s more work. Some of you love having custom-built systems that you can tend to for a few minutes a week, and there’s certainly no beating “it’s just a file on your computer that you own.” But almost everyone who recommended this strategy also said it’s a lot of work and can be too easy to give up on.\n\nSome of you love having custom-built systems that you can tend to for a few minutes a week, and there’s certainly no beating “it’s just a file on your computer that you own.” But almost everyone who recommended this strategy also said it’s a lot of work and can be too easy to give up on. Or maybe just use your bank. A lot of banks now offer budget tools from right within your banking app, so you can manage your money right next to where it lives. (I hear good things about SoFi’s features on this front.) If you do most or all of your banking in one place, a few folks said this is the way.\n\nPersonally, after reading all your notes and doing some research, I’m going to give Copilot a run. I’ve tried YNAB in the past, and it’s great, but I just did a bad job keeping up with it. I’m also going to make an epic 2024 budget spreadsheet and see how far that gets me."
+        }
+      },
+      "url": "https://www.theverge.com/2023/11/12/23955681/best-apps-online-budget-money-mint-ynab-copilot-steam-deck-humane-ai"
+    }
+  ]
+}
+```

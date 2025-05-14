@@ -1,0 +1,46 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "INSECTS",
+            "pest_symptoms": "Physical methods",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": [
+                    "Paecilomyces lilacimus",
+                    "VA mycorrhiza",
+                    "Glomus fasciculatum",
+                    "Pasteuria penetrans"
+                ],
+                "quantity": [
+                    "Effective in reducing nematode population in soil and root"
+                ],
+                "stage": [
+                    "Biological agents"
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,117 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Andrew Tarantola",
+            "published": "2023-11-30T14:00:50+00:00",
+            "title": "How OpenAI's ChatGPT has changed the world in just a year",
+            "summary": "Over the course of two months from its debut in November 2022, ChatGPT exploded in popularity, from niche online curio to 100 million monthly active users — the fastest user base growth in the history of the Internet. In less than a year, it has earned the backing of Silicon Valley’s biggest firms, and been shoehorned into myriad applications from academia and the arts to marketing, medicine, gaming and government.",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "title": "How OpenAI's ChatGPT has changed the world in just a year",
+                "summary": "OpenAI had been developing GPT (Generative Pre-trained Transformer), the large language model that ChatGPT runs on, since 2016 — unveiling GPT-1 in 2018 and iterating it to GPT-3 by June 2020. With the November 30, 2022 release of GPT-3.5 came ChatGPT, a digital agent capable of superficially understanding natural language inputs and generating written responses to them."
+            },
+            "derivedFrom": {
+                "@type": "snap:asset",
+                "title": "How OpenAI's ChatGPT has changed the world in just a year",
+                "summary": "ChatGPT’s release timing couldn’t have been better. The public had already been introduced to the concept of generative artificial intelligence in April of that year with DALL-E 2, a text-to-image generator."
+            },
+            "hasThumbnail": {
+                "@type": "snap:imageAsset",
+                "image": "https://www.engadget.com/how-openais-chatgpt-has-changed-the-world-in-just-a-year-140050053.html?src=rss"
+            }
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Engadget"
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "ChatGPT Release",
+            "eventSummary": "ChatGPT was released on November 30, 2022, marking a significant milestone in the development of generative AI."
+        }
+    ]
+}
+```

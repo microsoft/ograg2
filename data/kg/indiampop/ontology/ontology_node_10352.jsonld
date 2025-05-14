@@ -1,0 +1,130 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Cereal",
+                "used_for": "Food"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "Temperate",
+                "has_regions": ["North America", "Europe"]
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "4-12°C",
+                "for_flowering": "16-20°C",
+                "for_grain_filling": "10-15°C",
+                "negative_effect": "Above 25°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Sandy",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Ploughing, Harrowing, and Leveling",
+                "with_soil_moisture": "Moist but not waterlogged"
+            },
+            "seed_germination_test_requirements_are": "Moisture and Warmth",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Mancozeb",
+                "quantity": "2.5 kg/ha"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Spring",
+                "value": "15 cm",
+                "depth": "4 cm",
+                "method": "Drilling"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Blackgrass",
+                "weed_types": ["Annual", "Perennial"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1.5 L/ha",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "500-600 mm/year",
+                "stage_of_application": "Vegetative and Reproductive"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Fusarium Head Blight",
+                "disease_symptoms": "Premature bleaching of spikelets",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Prothioconazole",
+                    "quantity": "0.4 L/ha",
+                    "stage": "Flowering"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Aphids",
+                "pest_symptoms": "Yellowing and curling of leaves",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Imidacloprid",
+                    "quantity": "0.5 L/ha",
+                    "stage": "Vegetative"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when moisture content is below 14%",
+            "storage_guidelines_are": "Store in a cool and dry place"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Nitrogen",
+            "quantity": "120 kg/ha",
+            "stage_of_application": "At germination or after second weeding"
+        }
+    ]
+}

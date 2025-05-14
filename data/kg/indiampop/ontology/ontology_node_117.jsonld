@@ -1,0 +1,139 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Dark green (Exposed) Yellowish green (Unexposed)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "COC 23",
+                "used_for": "69A591 GC"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "Medium",
+                "has_regions": ["Cylindrical"],
+                "has_seed_recommendations": {
+                    "@type": "SeedList",
+                    "variety_name": ["Absent"],
+                    "has_early_sowing_time": {
+                        "@type": "SowingTime",
+                        "start_date": "Medium",
+                        "end_date": "Reddish pink (exposed)"
+                    },
+                    "has_late_sowing_time": {
+                        "@type": "SowingTime",
+                        "start_date": "Greenish yellow (unexposed)",
+                        "end_date": "Dark green"
+                    },
+                    "has_seeding_rate": {
+                        "@type": "QuantitativeValue",
+                        "value": "Medium"
+                    },
+                    "has_fertilizer_application_requirements": {
+                        "@type": "Fertilization",
+                        "nutrient_name": "COC 24",
+                        "quantity": "CO 8371 x MS 6847",
+                        "stage_of_application": "Medium"
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Light Green",
+                "for_flowering": "Dark Green",
+                "for_grain_filling": "Yellowish Green with purple tinge",
+                "negative_effect": "Green"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loose",
+                "avoid_soil_type": "Slightly tight",
+                "for_water": "Absent",
+                "for_nutrients": "Present(d eciduous)"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Medium",
+                "with_soil_moisture": "Medium"
+            },
+            "seed_germination_test_requirements_are": "Medium",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Cylindrical",
+                "quantity": "Absent"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Medium",
+                "value": "Medium",
+                "depth": "Medium",
+                "method": "Reddish pink (exposed)"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Greenish yellow (unexposed)",
+                "weed_types": ["Dark green"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "COC 23",
+                    "quantity": "69A591 GC",
+                    "stage": "Medium"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Medium",
+                "stage_of_application": "Light Green"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Dark Green",
+                "disease_symptoms": "Yellowish Green with purple tinge",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Green",
+                    "quantity": "Loose",
+                    "stage": "Slightly tight"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Absent",
+                "pest_symptoms": "Present(d eciduous)",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Medium",
+                    "quantity": "Medium",
+                    "stage": "Medium"
+                }
+            },
+            "harvesting_guidelines_are": "Reddish pink (exposed)",
+            "storage_guidelines_are": "Greenish yellow (unexposed)"
+        }
+    ]
+}

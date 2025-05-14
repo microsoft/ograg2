@@ -1,0 +1,55 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "SeedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "COCONUT (Cocos nucifera)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "OILSEEDS",
+                "used_for": "VARIETIES AND HYBRIDS"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "SeedSpacing",
+                "sowing_time": "CROP MANAGEMENT",
+                "value": "100 Nos.",
+                "depth": "60 cm",
+                "method": "Husk burial can be done in coconut basins or in the interspaces to overcome drought and button shedding. Bury husks with concave surface facing upwards or 25 kg of coir pith /palm in circular trenches, dug 30 cm width and 60 cm depth at 1.5 metres radius. The husk can be also buried in the trenches at a distance of 3 m from the palm with a size of 45 cm deep and 150 cm width in between two rows of coconut. The soaking of the coconut husk or coir pith as the case may be preserves the monsoon rains."
+            }
+        }
+    ]
+}

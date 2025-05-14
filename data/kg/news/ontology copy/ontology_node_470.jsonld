@@ -1,0 +1,130 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "Sydney Lake",
+            "published": "2023-10-20T20:30:29+00:00",
+            "title": "The housing winter arrives early as existing home sales crash to Great Recession levels and the long-feared ‘deep freeze’ sets in",
+            "summary": "After a long, hot summer that saw mortgage rates creep ever higher, October has brought an early winter for the housing market. Existing-home sales dropped a stunning 15% in September on a year-over-year basis to a seasonally adjusted annual rate of 3.96 million transactions, according to the National Association of Realtors (NAR). That’s the lowest figure in 13 years, since 2010, when the world economy, and particularly the U.S. housing market, were struggling to pull out of the Great Financial Crisis.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://fortune.com/2023/10/20/housing-market-deep-freeze-existing-homes-sales-great-recession-13-years/"
+            }
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Fortune"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Lawrence Yun"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Jerome Powell"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Jeseo Park"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Mark Fleming"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Roger Ashworth"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Odeta Kushi"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Sam Khater"
+        }
+    ]
+}
+```

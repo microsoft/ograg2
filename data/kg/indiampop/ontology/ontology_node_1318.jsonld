@@ -1,0 +1,80 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Claviceps fusiformis",
+            "disease_symptoms": "Spray any one of the fungicides like Carbendazim 500g or Mancozeb 1000g /ha when 5 - 10% flowers have opened and again at 50% flowering stage.",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Carbendazim",
+                "quantity": "500g",
+                "stage": "5 - 10% flowers have opened and again at 50% flowering stage"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Rust: Puccinia penniseti",
+            "disease_symptoms": "Sowing during December - May result in less incidence. Adopt control measures when there is rust incidence in the early stages as spread of infection to top leaves results in poor grain filling.",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Wettable sulphur",
+                "quantity": "2500g / ha",
+                "stage": "Initial symptoms"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Downy Mildew: Sclerospora graminicola",
+            "disease_symptoms": "Grow downy mildew resistant varieties CO7, WCC 75, CO(Cu)9, TNAU-Cumbu Hybrid-CO9 Transplanting reduces disease incidence. At the time of planting infected seedlings should be removed. In the direct sown crop, infested plants should be removed up to 45 days of sowing as and when the symptoms are noticed.",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Metalaxyl + Mancozeb",
+                "quantity": "500g",
+                "stage": "At the time of planting"
+            }
+        }
+    ]
+}

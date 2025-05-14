@@ -1,0 +1,33 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_land_preperation_requirements": "cropCult:LandPreparation"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "BRINJAL (Solanum melongena)",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Land is prepared to a fine tilth by thorough ploughing or digging. Well rotten organic manure is incorporated in the soil and seedlings are transplanted in shallow trenches/pits during May or on ridges/levelled lands during rainy season. Transplanted seedlings may be given temporary shade for 3-4 days during summer.",
+                "with_soil_moisture": "Well rotten organic manure is incorporated in the soil"
+            }
+        }
+    ]
+}

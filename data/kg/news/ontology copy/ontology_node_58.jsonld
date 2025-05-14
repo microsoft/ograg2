@@ -1,0 +1,211 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Engadget",
+      "published": "2023-10-12T15:44:16+00:00",
+      "title": "The 26 best Amazon Prime Day deals you can still shop for today",
+      "summary": "Engadget has been testing and reviewing consumer tech since 2004. Our stories may include affiliate links; if you buy something through a link, we may earn a commission. Read more about how we evaluate products.",
+      "associatedAsset": [
+        {
+          "@type": "TextAsset",
+          "title": "Samsung Galaxy Watch 6",
+          "summary": "The new Samsung Galaxy Watch 6 went down to $269 for October Prime Day and it's still on sale. That's lowest price we've seen since it came out a few months ago. You can't get a better smartwatch than this one if you have an Android phone (bonus points if you have a Samsung phone), and it's smaller and lighter than previous versions. Samsung brought back the spinning bezel on the Classic version, which is which makes the software's UI easier to navigate, plus it has improved performance and updated health and fitness tracking tools."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Apple MacBook Air M2 (15-inch)",
+          "summary": "The 15.3-inch version of Apple’s MacBook Air is still down to $1,049 for an entry-level model with 8GB of RAM and a 256GB SSD. That matches the best price we’ve seen and takes $250 off Apple’s list price. The MacBook Air is the top pick in our guide to the best laptops, and we gave the 15-inch model a review score of 96 earlier this year, as it covers just about all of the things we look for in a quality mainstream notebook."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Sony WF-1000XM5",
+          "summary": "Sony's WF-1000XM5 wireless earbuds went down to $278 for Prime Day and are still going for that price today. That's a $22 discount and their best price yet. We think these are the best wireless earbuds on the market right now."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Amazon Fire TV Stick 4K",
+          "summary": "The previous generation of Fire TV Stick 4K dropped to $23 for the sale and is one of the few Amazon devices still on sale. It has the same processor, RAM and storage as the standard Fire TV Stick, but it can stream 4K HDR content in all its glory."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Anker Soundcore Motion +",
+          "summary": "One of the top Bluetooth options in our speaker guide is Anker’s Soundcore Motion +, which gives out good sound for its price point. The $100 MSRP is discounted to $70 if you clip the on-page coupon. That's a 30 percent discount and an all-time low."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "HyperX Cloud Stinger 2",
+          "summary": "The top budget pick in our gaming headphones buying guide, the HyperX Cloud Stinger 2, is on sale for $36. That’s a dollar more than it went for on Prime Day and only a modest $4 discount over its street price recently, but it's still close to lowest price we’ve seen."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Shokz OpenRun Pro",
+          "summary": "The Shokz OpenRun Pro is down to $125 for Prime Big Deal Days, which is $25 more than the lowest price we’ve tracked but still $55 below its usual going rate. This is a recommended pair of bone conduction headphones."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Logitech G535",
+          "summary": "If you’re looking for a wireless headset, the Logitech G535 is back down to $80, which is about $25 below its average street price. This is an honorable mention in our gaming headsets guide."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Samsung Smart Monitor M8",
+          "summary": "The Samsung Smart Monitor M8 is down to just $500, which is $200 off its starting price (though it regularly sells for $600) and the lowest price we've seen thus far."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Google Indoor Nest Security Cam",
+          "summary": "A slew of Google Nest home security devices are still on sale the day after Prime, including the battery-powered Nest Cam that can go inside or outside your home."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Google Nest Thermostat",
+          "summary": "In other Google deals, the Nest Thermostat is on sale for just $90, which is only about $10 more than the lowest price we've tracked and $40 off Google's MSRP."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Beats Studio Pro",
+          "summary": "The Beats Studio Pro headphones are on sale for $180 right now. which is a dollar more than they sold for on Prime Day and still a sizable $170 discount."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Tribit StormBox Micro 2",
+          "summary": "The Tribit StormBox Micro 2 is another small speaker we like that puts out decent volume for its size, and for Prime day it went down to $48, which is $12 off its usual going rate."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Google Nest Wi-Fi Pro 6E",
+          "summary": "The Google Nest Wi-Fi Pro 6E is holding strong at $300 right now for a pack of three routers. That's within a dollar of the lowest price it's sold for on Amazon."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Roku Streaming Stick 4K",
+          "summary": "Our favorite streaming stick, the Roku Streaming Stick 4K, remains at $37 after the sale. It packs a ton of features into an affordable package, including 4K HDR streaming capabilities."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Hisense U6K",
+          "summary": "The Hisense U6K is one of the more affordable TVs. And the 55- and 65-inch models are still down to $400 and $548, respectively."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "iRobot Roomba 694",
+          "summary": "iRobot's Roomba 694 dropped to $199 for Prime Day and stayed there. While that's still $20 more than the lowest we've seen it go, it's still a good deal on our favorite cheap robot vacuum."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Samsung Pro Plus microSD",
+          "summary": "The Samsung Pro Plus microSD card is on sale for $20 right now. It's our top pick in our best microSD card guide because it was the most consistent of the ones we tested."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Crucial MX500",
+          "summary": "The Crucial MX500 internal drive is on sale for $46 right now. It's been an Engadget favorite for a while thanks to its sequential read speeds of 560MB/s."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Anker 511 Charger",
+          "summary": "New Apple Watches don’t come with power adapters, so if you’re looking for one that can deliver a quick charge, we recommend Anker's 511 (Nano 3) charging brick."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "OtterBox Fast Charge Power Bank",
+          "summary": "The OtterBox Fast Charge Power Bank is currently just $36 for the 15,000mAh capacity model, which is the version we tested and recommend in our portable battery guide."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "SanDisk 128GB microSDXC Card for Nintendo Switch",
+          "summary": "If you need more room on your Switch, SanDisk's officially licensed microSDXC card is a good pick, particularly when it’s on sale."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Samsung Pro Plus microSD card",
+          "summary": "Our favorite microSD card for most people is the Samsung Pro Plus. It had the fastest sequential write speeds and random performance of any card we tested."
+        }
+      ]
+    }
+  ]
+}
+```

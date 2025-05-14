@@ -1,0 +1,98 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Rita Nazareth and Sinéad Carew",
+      "published": "2023-10-10T23:50:33+00:00",
+      "title": "ASX rises after Wall Street gains on rate optimism; Oil drops",
+      "summary": "The laggards Meanwhile, healthcare companies (down 0.1 per cent) fell despite CSL (down 0.4 per cent) delivering broadly in line with expectations. Pro Medicus (down 0.2 per cent) and Ramsay Health Care (down 0.5 per cent) also fell. Bendigo and Adelaide Bank (down 1.3 per cent) and Westpac (down 0.2 per cent) were among the biggest large-cap decliners, while Bank of Queensland shed 6.9 per cent after missing consensus expectations. Lithium miner Liontown (down 3.3 per cent), TPG Telecom (down 1.3 per cent) and gold miner Northern Star (down 1 per cent) were also among the biggest large-cap decliners. The lowdown TMS Capital portfolio manager Ben Clark said the Australian sharemarket was stronger on the back of a calming bond market and positive lead from Wall Street, as well as positive news out of China. “The bond market is retracing,” he said. “There’s also been strength in resource stocks amid rumours that the Chinese government might launch a substantial stimulus package.” Clark said interest-rate sensitive sectors climbed on increased probabilities of an easing in interest rates. “Consumer discretionary and information technology companies are winners in lower-interest rate environments,” he said. As more annual general meetings kick off in the next few weeks, Clark said he would be looking at trading updates, especially of companies that didn’t give solid guidance in their last update. Elsewhere, Wall Street advanced overnight, with the S&P 500 and Nasdaq touching three-week highs as dovish comments from the Fed officials pushed Treasury yields lower. Following remarks from other top Fed officials on Monday, Atlanta Fed President Raphael Bostic said the US central bank did not need to raise interest rates any further, and that he saw no recession ahead. Oil edged lower, with West Texas Intermediate settling below $US86 a barrel following its biggest rally since April. The Australian dollar was US64.20¢ at the close as the US dollar fell for a fifth straight day, its longest losing streak since July. ‘Everybody has one eye on the Middle East conflict and one eye on what’s happening with bond yields.’ John Praveen, managing director at Paleo Leon The 10-year Treasury yield came off its 16-year peak, on track for its steepest single-day drop since May, as trading resumed in the US bond market, which had been closed for a holiday on Monday. Ten-year yields tumbled as much as 18 basis points to 4.62 per cent. Fed swaps currently show about a 60 per cent chance the Fed will stay on hold in December, compared with 60 per cent odds on another interest rate rise by then, just a week ago. But while oil prices eased after Monday’s rally, investors were still closely monitoring developments the Middle East. Israeli air strikes attacked Gaza on Tuesday, razing entire districts in the densely populated and impoverished enclave. “Everybody has one eye on the Middle East conflict and one eye on what’s happening with bond yields. The decline in bond yields is the key driver today,” said John Praveen, managing director & co-chief investment officer at Paleo Leon. Loading While the Fed’s dovish comments were helping stocks on Tuesday and investors were being sanguine about the Middle East, Praveen said that view could change if, for example, the fighting spread to other countries in the region. “If tensions escalate bond yields might decline further because they’re a safe haven, but equities would sell off in that instance because of increased uncertainty and risk aversion,” he said. The Dow Jones Industrial Average rose 0.4 per cent, to 33,739.30, the S&P 500 gained 0.5 per cent and the Nasdaq Composite added 0.6 per cent. All 11 major S&P 500 sectors were advancing with materials and consumer staples leading gains, while technology was the slowest gainer. Energy was among the laggards after its more than 3 per cent rally on Monday. A measure of US-listed Chinese shares added 3 per cent amid reports that the Asian nation is considering new economic stimulus. “Policymakers have begun to acknowledge a lesser need for further policy action given financial conditions have tightened considerably after the recent surge in Treasury yields,” said Ben Jeffery at BMO Capital Markets. “This acknowledgment may have reduced angst around the need for additional rate increases.” Loading Investors will be watching for any hints in the September Fed meeting minutes due on Wednesday that would suggest the Fed may not follow through with the last rise indicated in its economic projections, according to Anna Wong at Bloomberg Economics. Two critical coming indicators for the US economy — Thursday’s consumer price index and Friday’s University of Michigan consumer-sentiment survey — may give a more definitive read, she noted. Billionaire investor Paul Tudor Jones told CNBC the current geopolitical environment was the “most threatening and challenging” he’d ever seen following Hamas’s attack on Israel over the weekend and predicted the US will enter into a recession early next year. The shekel regained its footing as the central bank duelled short sellers to contain the market fallout from Israel’s conflict with militant group Hamas. European gas prices jumped, with Finland on high alert as it suspects a gas pipeline leak in the Baltic Sea was caused by a deliberate act of destruction, fuelling concerns about the safety of Europe’s energy infrastructure. Base metals sank amid fresh fears over property turmoil in China. Tweet of the day Quote of the day “This is as strong a level of confidence in the market that we have seen since before COVID,” said The Leasing Agency group managing director Terence Yeh as the return of international students and a growing number of apartments in inner-city Melbourne provides a shot in the arm for CBD hospitality businesses. You may have missed Corporate leaders caught underpaying staff should expect zero sympathy from new Fair Work Ombudsman Anna Booth, who believes chief executives and board directors are directly responsible for any failures to pay correct wages. With Bloomberg/Reuters",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://www.smh.com.au/business/markets/asx-rises-after-wall-street-gains-on-rate-optimism-oil-drops-20231011-p5eba1.html?ref=rss&utm_medium=rss&utm_source=rss_business"
+      }
+    }
+  ]
+}
+```

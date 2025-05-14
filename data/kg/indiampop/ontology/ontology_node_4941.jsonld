@@ -1,0 +1,35 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "DiseaseTreatements",
+            "disease_name": "B. DISEASES",
+            "disease_symptoms": "Management",
+            "disease_control": {
+                "@type": "Fungicide",
+                "name": "Commonly used fungicides",
+                "quantity": "Continuous use of same systemic fungicide may cause resistance or tolerance in pathogenic population. Hence alternate spray of systemic and contact fungicides at 7-10 days intervals can minimize the risk of development of resistance in pathogens."
+            }
+        }
+    ]
+}

@@ -1,0 +1,214 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Every movie and show coming to Netflix in November",
+      "author": "Petrana Radulovic",
+      "theme": "entertainment",
+      "content": "Even with Netflix’s recommendation algorithm serving you new movies, new TV shows, and original programming tailored to your viewing habits, the streaming service’s firehose of content makes what’s coming and going difficult to parse. It’s a great month for adult animation, with both the Scott Pilgrim animated show and Blue Eye Samurai hitting Netflix this month. Also, there’s the Squid Game reality show — because right, that’s a thing — and a new season of The Crown. But this month, we’re highlighting The Social Network, with another new David Fincher movie on its way to Netflix... but not for the reasons you probably think. Editor’s Pick: The Social Network Hey, did you know that there’s a popular fan theory that bestselling romantic comedy Red, White, and Royal Blue started off as fanfic of The Social Network? Well, now you do! I could talk about how with each passing year, David Fincher’s Mark Zuckerberg biopic grows increasingly more relevant, as Facebook’s (excuse me, Meta’s) grip on the internet becomes stronger, but that’s been done to the death. Instead, I’m going to praise both Jesse Eisenberg and Andrew Garfield for their electric performances and their zinging chemistry. Come for the Facebook and Mark Zuckerberg origin story, stay for the tale of doomed friendship (and maybe write a fanfic about it?). Also, this is a great November movie because of the autumnal shots of Harvard and the Winklevoss twins rowing. Impeccable vibes to fuel the dark academia aesthetic TikTok videos.",
+      "published": "2023-11-01T12:00:00+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Now",
+          "eventSummary": "Slayaway Camp 2: Netflix & Kill (Netflix Games)",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available in November",
+          "eventSummary": "Dead Cells: Netflix Edition (Netflix Games), Elena Knows (Netflix Film), The Railway Men (Netflix Series), Replacing Chef Chico (Netflix Series)",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Nov. 1",
+          "eventSummary": "Hurricane Season (Netflix Film), Locked In (Netflix Film), Mysteries of the Faith (Netflix Documentary), Nuovo Olimpo (Netflix Film), Till Murder Do Us Part: Soering vs. Haysom (Netflix Documentary), Wingwomen (Netflix Film), 13 Going on 30, 13 Hours: The Secret Soldiers of Benghazi, 60 Days In: Season 5, The Addams Family, The Big Lebowski, The Change-Up, Desperado, Downsizing, Drag Me to Hell, Love in the Wild: Season 1, Madea’s Family Reunion, The Mummy (2017), Paul Blart: Mall Cop, Paul Blart: Mall Cop 2, Pitch Perfect, The Scorpion King, Scott Pilgrim vs. the World, Sherlock Gnomes, Six Feet Under: Seasons 1-5, Sixteen Candles, The Social Network, Ted 2, Victorious: Season 3, Whiplash",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Nov. 2",
+          "eventSummary": "All the Light We Cannot See (Netflix Series), Cigarette Girl (Netflix Series), Higuita: The Way of the Scorpion (Netflix Documentary), Onimusha (Netflix Anime), Unicorn Academy (Netflix Family)",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Nov. 3",
+          "eventSummary": "Blue Eye Samurai (Netflix Anime), Daily Dose of Sunshine (Netflix Series), Erin & Aaron: Season 1, Ferry: The Series (Netflix Series), NYAD (Netflix Film), Selling Sunset: Season 7 (Netflix Series), Sly (Netflix Documentary), The Tailor: Season 3 (Netflix Series), Vacaciones de verano (Netflix Film)",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Nov. 4",
+          "eventSummary": "The Amazing Race: Season 17, The Amazing Race: Season 31, Insidious: The Red Door, Lopez vs. Lopez: Season 1",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Nov. 7",
+          "eventSummary": "Face Off: Seasons 4-5, The Improv: 60 and Still Standing (Netflix Comedy)",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Nov. 8",
+          "eventSummary": "The Billionaire, the Butler and the Boyfriend (Netflix Documentary), The Claus Family 3 (Netflix Film), Cyberbunker: The Criminal Underworld (Netflix Documentary), Escaping Twin Flames (Netflix Documentary), Robbie Williams (Netflix Documentary)",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Nov. 9",
+          "eventSummary": "Akuma Kun (Netflix Anime), Temple of Film: 100 Years of the Egyptian Theatre (Netflix Documentary)",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Nov. 10",
+          "eventSummary": "At the Moment (Netflix Series), The Killer (Netflix Film), Team Ninja Warrior: Season 2",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Nov. 11",
+          "eventSummary": "Laguna Beach: Season 3",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Nov. 14",
+          "eventSummary": "Criminal Code (Netflix Series), Dubai Bling: Season 2 (Netflix Series), How to Become a Mob Boss (Netflix Documentary), The Netflix Cup: Swing to Survive (Netflix Live Event), Suburræterna (Netflix Series)",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Nov. 15",
+          "eventSummary": "Feedback (Netflix Series), First Wives Club: Seasons 1-3, Matt Rife: Natural Selection (Netflix Comedy), Million Dollar Decorators: Season 1",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Nov. 16",
+          "eventSummary": "Best. Christmas. Ever! (Netflix Film), The Crown: Season 6 Part 1 (Netflix Series), Downton Abbey, Harriet, In Love and Deep Water (Netflix Film), Lone Survivor",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Nov. 17",
+          "eventSummary": "All-Time High (Netflix Film), Believer 2 (Netflix Film), CoComelon Lane (Netflix Film), The Dads (Netflix Documentary), The Queenstown Kings (Netflix Film), Rustin (Netflix Film), Sagrada Familia: Season 2 (Netflix Series), Scott Pilgrim Takes Off (Netflix Anime), Stamped from the Beginning (Netflix Documentary)",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Nov. 20",
+          "eventSummary": "Shahs of Sunset: Seasons 1-2",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Nov. 21",
+          "eventSummary": "Leo (Netflix Family)",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Nov. 22",
+          "eventSummary": "Crime Diaries: The Celebrity Stylist (Netflix Film), High on the Hog: How African American Cuisine Transformed America: Season 2 — (Netflix Documentary), Squid Game: The Challenge (Netflix Series)",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Nov. 23",
+          "eventSummary": "Love Island USA: Season 3, My Daemon (Netflix Anime), My Little Pony: Make Your Mark: Chapter 6 (Netflix Family)",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Available Nov. 24",
+          "eventSummary": "A Nearly Normal Family (Netflix Series), DOI BOY (Netflix Film), I Don’t Expect Anyone to Believe Me (Netflix Film), Last Call for Istanbul (Netflix Film), My Demon (Netflix Series)",
+          "theme": "entertainment"
+        }
+      ]
+    }
+  ]
+}

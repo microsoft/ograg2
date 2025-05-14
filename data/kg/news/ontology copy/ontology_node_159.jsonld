@@ -1,0 +1,190 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "I Don’t Expect Anyone to Believe Me",
+      "summary": "A writer’s career — and entire life — suddenly goes off script when he falls prey to a dangerous web of criminals right before moving to Barcelona.",
+      "associatedAsset": "Netflix Film"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Last Call for Istanbul",
+      "summary": "A chance meeting at the airport leads two married people to an unforgettable night full of excitement, desire, and temptation in New York City.",
+      "associatedAsset": "Netflix Film"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "My Demon",
+      "summary": "Chaebol heiress Do Do Hee is an adversary to many, and Jung Koo Won is a powerful entity superior to humans. However, one day, Jung Koo Won loses his powers. Forced to collaborate with Do Do Hee to regain them, sparks of romance begin to fly between them as they embark on this journey together.",
+      "associatedAsset": "Netflix Series"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Wedding Games",
+      "summary": "When Alex and Eva choose to exchange vows at the very spot they first crossed paths, a series of hilarious missteps derails their journey to the altar.",
+      "associatedAsset": "Netflix Film"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Go Dog Go: Season 4",
+      "summary": "Tag and her best friend Scooch love lending a paw to their friends around Pawston, whether it’s delivering cookie boxes or hosting the Dogcathalon!",
+      "associatedAsset": "Netflix Family",
+      "published": "2023-11-27"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Comedy Royale",
+      "summary": "Hand-picked by Korean comedy icons, five teams of rising comics battle for a chance to host in a Netflix show — delivering nonstop, zany laughter.",
+      "associatedAsset": "Netflix Series"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Love Like a K-Drama",
+      "summary": "Four actresses from Japan go to South Korea to audition and act alongside Korean actors for roles in a series of love stories. Will true romance follow?",
+      "associatedAsset": "Netflix Series"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Onmyoji",
+      "summary": "In the gilded enclave of the imperial court, a gifted mystic befriends a brilliant musician, and together they solve cases rising from the demonic realm.",
+      "associatedAsset": "Netflix Anime"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Verified Stand-Up",
+      "summary": "10 comics. 10 sets. 1 show. Introducing: Verified Stand-Up, a new stand-up comedy series Filmed at Webster Hall in New York City, the series features 10 of the best comedians in the game: Asif Ali, Dulcé Sloan, Gianmarco Soresi, Isiah Kelly, Leslie Liao, Nimesh Patel, Robby Hoffman, Rosebud Baker, Sabrina Wu, and Vanessa Gonzalez. Over the course of two-episodes, discover your new favorite comedian.",
+      "associatedAsset": "Netflix Comedy",
+      "published": "2023-11-28"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "American Symphony",
+      "associatedAsset": "Netflix Documentary"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Bad Surgeon: Love Under the Knife",
+      "summary": "This shocking docuseries about one of the biggest frauds in modern medical history exposes a thoracic surgeon famous for groundbreaking achievements in the field of regenerative medicine.",
+      "associatedAsset": "Netflix Documentary",
+      "published": "2023-11-30"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "The Bad Guys: A Very Bad Holiday",
+      "summary": "Mr. Wolf and his crew of animal outlaws realize they’ll need to restore the city’s Christmas spirit to keep their annual holiday heist afloat.",
+      "associatedAsset": "Netflix Family"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Family Switch",
+      "summary": "Jess and Bill Walker are doing their best to keep their family connected as their children grow older, more independent, and more distant. When a chance encounter with an astrological reader causes the family to wake up to a full body switch, on the morning of the most important day of each of their lives, can the Walkers unite to land a promotion, college interview, record deal and soccer tryout? Jennifer Garner, Ed Helms, Emma Myers and Brady Noon star in this family comedy directed by McG and based on the book “Bedtime For Mommy” by Amy Krouse-Rosenthal.",
+      "associatedAsset": "Netflix Film"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Hard Days",
+      "summary": "Already running from a mess of problems, a desperate cop thinks he’s gotten away with a hit-and-run. But there was a witness, and they’ve got his number.",
+      "associatedAsset": "Netflix Film"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Obliterated",
+      "summary": "An elite special forces team must thwart a deadly threat in Las Vegas in this high-octane action-comedy series from the creators of “Cobra Kai.”",
+      "associatedAsset": "Netflix Series"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "School Spirits: Season 1",
+      "associatedAsset": "Netflix Series"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Virgin River: Season 5 Part 2",
+      "summary": "Mel adjusts to a different pace of life, Jack works to grow his business, and the town faces new threats as secrets begin to surface in Virgin River.",
+      "associatedAsset": "Netflix Series"
+    }
+  ]
+}
+```

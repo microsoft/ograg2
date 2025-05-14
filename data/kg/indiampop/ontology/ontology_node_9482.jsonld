@@ -1,0 +1,48 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "FarmImplementsAndMachinery": {
+            "@id": "cropCult:FarmImplementsAndMachinery",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_subcategories": "cropCult:Subcategories"
+            }
+        },
+        "Subcategories": {
+            "@id": "cropCult:Subcategories",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_subcategories": "cropCult:Subcategories"
+            }
+        },
+        "TractorOperatedSubsoilCoirpithApplicator": {
+            "@id": "cropCult:TractorOperatedSubsoilCoirpithApplicator",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "description": "schema:description"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "cropCult:FarmImplementsAndMachinery",
+            "@type": "FarmImplementsAndMachinery",
+            "name": "FARM IMPLEMENTS AND MACHINERY",
+            "has_subcategories": {
+                "@id": "cropCult:Subcategories",
+                "@type": "Subcategories",
+                "name": "HORTICULTURE",
+                "has_subcategories": {
+                    "@id": "cropCult:TractorOperatedSubsoilCoirpithApplicator",
+                    "@type": "TractorOperatedSubsoilCoirpithApplicator",
+                    "name": "TRACTOR OPERATED SUBSOIL COIRPITH APPLICATOR",
+                    "description": "The sub soil coir pith mulch applied at 15-30 cm deep ensured higher moisture retention ,crop growth and yield"
+                }
+            }
+        }
+    ]
+}

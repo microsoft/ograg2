@@ -1,0 +1,99 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Edward Sutelan",
+      "published": "2023-11-12T23:30:03+00:00",
+      "title": "Jets vs. Raiders live score, updates, highlights from NFL 'Sunday Night Football' game",
+      "summary": "If you tuned into 'Sunday Night Football' expecting to see some offense, you tuned in on the wrong weekend. The Jets and Raiders were locked into an old-school, defense-heavy primetime clash that featured nothing but six field goals through the first three quarters of the game. It wasn't until 50 seconds into the fourth quarter that Las Vegas finally picked up the first touchdown, with Michael Mayer making a leaping grab in the end zone to put the Raiders up 16-9. In such a low-scoring game, that touchdown felt, even as early as it was, that it could be a game-winner. And indeed, it was as the Raiders held the Jets to just a field goal the rest of the game and picked off Zach Wilson late to stymy New York in a 16-12 win. MORE: What to know about Raiders 'SNF' hero Robert Spillane It wasn't exactly a quarterback showdown that many might have expected in the preseason when this game appeared to be Aaron Rodgers vs. Jimmy Garoppolo. Instead, Wilson went 23-for-39 with 263 yards, no touchdowns and a pick (rushing four times for 54 yards) while Aidan O'Connell completed 16-of-27 passes for 153 yards, a touchdown and an interception. The Raiders largely turned to running back Josh Jacobs, who set season-best marks with 27 carries for 116 yards, while the Jets' running back duo of Breece Hall and Dalvin Cook was held to just 17 rushes for 54 yards. The win for the Raiders already marks their second in as many games since the firing of Josh McDaniels, with interim coach Antonio Pierce getting off to an undefeated 2-0 start to his career. It also vaults the Raiders into a deep AFC playoff race, with Las Vegas joining the now five AFC wild-card contenders with at least five wins. For the Jets, it marked a second straight game without a touchdown, and gives them their second consecutive loss before hitting the road to face the Bills in Week 11. MORE: Revisiting Antonio Pierce's NFL playing career Sporting News tracked all the scores and highlights from Jets vs. Raiders on 'Sunday Night Football.' Check out all of the key moments you might have missed. Jets vs. Raiders final score 1 2 3 4 F Jets 6 3 0 3 12 Raiders 3 3 3 7 16 Jets vs. Raiders results, highlights from 'Sunday Night Football' (All times Eastern) Fourth quarter 11:26 p.m.: Wilson's final pass after being chased out of the pocket is batted down, and the Raiders hang on to win 16-12. 11:24 p.m.: It's time for Hail Marys, and the first to Gipson sails out of bounds. With five seconds left, the Raiders call their second timeout. 11:22 p.m.: Wilson spikes the first pass with no one open, then connects with Conklin on a dump-off for nine yards. He goes back to Conklin with the clock rolling, and the tight end makes an impressive leaping grab at the Raiders' 45. The Jets use their last timeout with 12 seconds left. A big pass to Tyler Conklin gets the Jets into opposing territory 📺: #NYJvsLV on NBC 📱: Stream on #NFLPlus https://t.co/lfCP1NFAnO pic.twitter.com/oW0Nb8335s — NFL (@NFL) November 13, 2023 11:20 p.m.: Even after backing up five yards, Cole still boots the ball too far. He tries to angle it toward the sideline, and it bounces into the end zone for a touchback. Jets will get the ball at the 20 with 53 seconds left. 11:19 p.m.: Raiders opt to trust O'Connell to put the game away and have him attempt a pass, but his pass attempt to Mayer is batted down by Jermaine Johnson. That saves the Jets a timeout and means they will get the ball back after a punt. Raiders take a delay of game penalty before the kick. 11:18 p.m.: Jacobs is stuffed for no gain, and the Jets use their second timeout. 1:05 left, and the Raiders facing a pivotal third-and-5. 11:17 p.m.: Jacobs gets five, and the Jets call a quick timeout. 11:16 p.m.: Hall can only get a pair of yards on a check down to the right out to the 20. The next play, Wilson tries to get the ball out to Lazard and is picked off by Robert Spillane, who returns the ball out to the Raiders' 40. With 1:14 and the Jets having three timeouts, this one's all but over. 11:11 p.m.: Wilson misses Lazard over the middle, then goes back to Conklin, who makes the low catch two yards shy of the first down marker. Wilson connects with Wilson again for six up to the 22 to bring up a fresh set of downs and the two-minute warning. Garrett Wilson bobbled it but still hung on for the first down 📺: #NYJvsLV on NBC 📱: Stream on #NFLPlus https://t.co/lfCP1NFAnO pic.twitter.com/pTmdt9OLNK — NFL (@NFL) November 13, 2023 11:10 p.m.: The drive stays alive as Wilson dumps the ball off to Conklin, who stretches across for the first down at the 36. 11:08 p.m.: Uzomah makes a strong effort catching a pass, staying up after a big hit and powering his way up six yards. Play stops for an injury to Jakorian Bennett. Wilson tries a deep shot toward the end zone to Garrett Wilson, but in double coverage, the pass is broken up. 11:07 p.m.: New York keeps moving down the field, as after a three-yard catch from Garrett Wilson, Hall catches a quick pass underneath, makes some defenders miss and takes it up 10 yards to the Raiders 46. 11:06 p.m.: The call on the field stands, and the Jets immediately work to pay off the turnover as Zach Wilson starts the drive with a nice throw across the middle of the field to Lazard for 17 yards to the Jets 41. 11:03 p.m.: Costly turnover for the Raiders. Just as it felt the Raiders were inching toward putting the game away, Jacobs loses a fumble at the Jets' 25, and it's recovered by Ashtyn Davis. The turnover is being reviewed, and would be a massive swing if it stands. Jamien Sherwood forces the fumble and the Jets take over! 📺: #NYJvsLV on NBC 📱: Stream on #NFLPlus https://t.co/lfCP1NFAnO pic.twitter.com/g9gWv0UKIT — NFL (@NFL) November 13, 2023 11:01 p.m.: Zamir White gets his first carry of the day and appears to lose the football after gaining five, but the Raiders recover it. Jacobs gets the next handoff and appeared to be bottled up, but the line pushes him ahead for seven yards for a first down up to the Jets 29. Las Vegas grinding away the clock now with 6:14 left to play. 11 p.m.: Gutsy call by Pierce and the Raiders, who fake a sneak and instead hand the ball off to Carter, who races around the left end and speeds past the defense for 15 yards and a first down up to the Jets 41. 15 yards on 4th and inches. That equals a first down. 📺: #NYJvsLV on NBC 📱: Stream on #NFLPlus https://t.co/lfCP1NFAnO pic.twitter.com/ZJPCx6eHpq — NFL (@NFL) November 13, 2023 10:58 p.m.: Facing a third-and-8, O'Connell fires the ball out to Austin Hooper, who is brought down just shy of the first down. The Raiders will have a decision to make on a fourth-and-1 from the Las Vegas 44. C.J. Mosley was injured on the play, and has to come off the field. 10:56 p.m.: O'Connell tries a deep shot to Adams to start the drive, but the star receiver is double-covered. Jacobs gets Las Vegas back on schedule by racing his way up the middle for nine yards to set up a third-and-1, just stumbling short. He picks up that yard on a carry the next play to keep the chains moving. 10:54 p.m.: Raiders will start at the 25 with 11:58 to play. 10:51 p.m. Jets scoring play: The Jets offense stalls after a throw from Garrett Wilson on a trick play to Lazard misses, then a low throw from Zach Wilson to Cook that's missed as well. Wilson escapes pressure from the Raiders and manages a yard, but the call is to Zuerlein to boot the field goal. Raiders 16, Jets 12 10:48 p.m.: Trading explosive plays now. First Jacobs with the big run, now Hall catches a screen pass, and he bursts down the left sideline for 35 yards to the Las Vegas 40. Then Garrett Wilson makes a wide-open grab for 13 to the Raiders' 28. Breece Hall just turned the screen pass into a 35-yard gain 😳",
+      "url": "https://www.sportingnews.com/us/nfl/news/jets-raiders-score-updates-highlights-sunday-night-football/bd298c5dd8f31f8c2fab27b2"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Sporting News"
+    }
+  ]
+}
+```

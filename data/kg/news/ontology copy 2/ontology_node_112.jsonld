@@ -1,0 +1,180 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "title": "Who’s the next Gawn, Grundy or Dusty? AFL’s talent guru names top 40 draft prospects and compares them to current stars",
+            "author": "The Roar",
+            "theme": "sports",
+            "content": "AFL Talent Ambassador Kevin Sheehan has revealed his top 40 prospects ahead of this month’s AFL Draft. Sheehan’s picks were announced in a press release by the AFL on Thursday. The 2023 draft will be held on November 20 and 21 with the rookie draft to follow a day later. Sheehan has profiled all 129 players who attended the 2023 AFL Draft Combine or 2023 AFL State Draft Combine last month. His full list can be found at the AFL Draft Hub.",
+            "published": "2023-11-15T23:48:27+00:00",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "AFL Draft Announcement",
+                    "eventSummary": "Kevin Sheehan reveals top 40 draft prospects.",
+                    "theme": "sports",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Kevin Sheehan"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Kynan Brown",
+                            "dateOfBirth": "2005-01-13"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Nate Caddy",
+                            "dateOfBirth": "2005-07-14"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Caiden Cleary",
+                            "dateOfBirth": "2005-03-05"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Lance Collard",
+                            "dateOfBirth": "2005-03-26"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Jordan Croft",
+                            "dateOfBirth": "2005-05-12"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Daniel Curtin",
+                            "dateOfBirth": "2005-03-08"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Harry DeMattia",
+                            "dateOfBirth": "2005-09-11"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Zane Duursma",
+                            "dateOfBirth": "2005-08-28"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Charlie Edwards",
+                            "dateOfBirth": "2005-05-18"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Mitchell Edwards",
+                            "dateOfBirth": "2005-06-02"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Joel Freijah",
+                            "dateOfBirth": "2005-11-14"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Taylor Goad",
+                            "dateOfBirth": "2005-04-28"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "AFL"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Fox Footy"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Kayo"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

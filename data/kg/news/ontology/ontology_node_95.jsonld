@@ -1,0 +1,160 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "NHL Opening Night: Blackhawks vs. Penguins",
+            "author": "Pens Inside Scoop",
+            "theme": "Sports",
+            "summary": "Sidney Crosby, Evgeni Malkin and Kris Letang are set to surpass the New York Yankees’ Derek Jeter, Mariano Rivera and Jorge Posada as the longest-tenured trio of teammates in NHL, MLB, NBA and NFL history.",
+            "created": "2023-10-10T18:45:00",
+            "published": "2023-10-10T18:45:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "eventTitle": "Blackhawks vs. Penguins Game",
+                        "eventSummary": "Connor Bedard is in the house for his NHL debut. It's the most anticipated first game for a rookie since Auston Matthews' debut in 2016.",
+                        "theme": "NHL Game",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "PPG Paints Arena",
+                            "hasLocation": "Pittsburgh, Pa."
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "@id": "snap:person1",
+                                    "name": "Sidney Crosby"
+                                },
+                                {
+                                    "@id": "snap:person2",
+                                    "name": "Evgeni Malkin"
+                                },
+                                {
+                                    "@id": "snap:person3",
+                                    "name": "Kris Letang"
+                                },
+                                {
+                                    "@id": "snap:person4",
+                                    "name": "Connor Bedard"
+                                },
+                                {
+                                    "@id": "snap:person5",
+                                    "name": "Erik Karlsson"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "name": "Pittsburgh Penguins"
+                                },
+                                {
+                                    "@id": "snap:organization2",
+                                    "name": "Chicago Blackhawks"
+                                },
+                                {
+                                    "@id": "snap:organization3",
+                                    "name": "ESPN"
+                                },
+                                {
+                                    "@id": "snap:organization4",
+                                    "name": "Sportsnet"
+                                },
+                                {
+                                    "@id": "snap:organization5",
+                                    "name": "TVA Sports"
+                                }
+                            ]
+                        },
+                        "subEventOf": "snap:event",
+                        "notablyAssociatedWith": "snap:event"
+                    }
+                ]
+            }
+        }
+    ]
+}

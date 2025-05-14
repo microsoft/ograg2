@@ -1,0 +1,139 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "has_types": {
+                "@type": "CropType",
+                "name": "SEED PRODUCTION",
+                "used_for": "Storage"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "Zone 1",
+                "has_regions": ["Region 1", "Region 2"],
+                "has_seed_recommendations": {
+                    "@type": "SeedList",
+                    "variety_name": ["Variety 1", "Variety 2"],
+                    "has_early_sowing_time": {
+                        "@type": "SowingTime",
+                        "start_date": "2022-01-01",
+                        "end_date": "2022-02-01"
+                    },
+                    "has_late_sowing_time": {
+                        "@type": "SowingTime",
+                        "start_date": "2022-02-01",
+                        "end_date": "2022-03-01"
+                    },
+                    "has_seeding_rate": {
+                        "@type": "schema:QuantitativeValue",
+                        "value": "100 kg/ha"
+                    },
+                    "has_fertilizer_application_requirements": {
+                        "@type": "Fertilization",
+                        "nutrient_name": "Nitrogen",
+                        "quantity": "50 kg/ha",
+                        "stage_of_application": "At sowing"
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "10-15°C",
+                "for_flowering": "15-20°C",
+                "for_grain_filling": "20-25°C",
+                "negative_effect": "Above 30°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Sandy",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the field to a fine tilth",
+                "with_soil_moisture": "Moist but not waterlogged"
+            },
+            "seed_germination_test_requirements_are": "Test for germination rate before sowing",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Fungicide 1",
+                "quantity": "1 kg/ha"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Early morning or late evening",
+                "value": "15 cm",
+                "depth": "5 cm",
+                "method": "Drill sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Weed 1",
+                "weed_types": ["Type 1", "Type 2"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Herbicide 1",
+                    "quantity": "1 L/ha",
+                    "stage": "Post-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "500 mm",
+                "stage_of_application": "At flowering"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Disease 1",
+                "disease_symptoms": "Yellowing of leaves",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Fungicide 2",
+                    "quantity": "1 L/ha",
+                    "stage": "At first sign of disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Pest 1",
+                "pest_symptoms": "Holes in leaves",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Pesticide 1",
+                    "quantity": "1 L/ha",
+                    "stage": "At first sign of pest"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when grains are hard and moisture content is below 20%",
+            "storage_guidelines_are": "Store in a cool, dry place"
+        }
+    ]
+}

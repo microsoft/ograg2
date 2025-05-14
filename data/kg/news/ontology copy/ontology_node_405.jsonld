@@ -1,0 +1,150 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:event",
+      "eventTitle": "Giants emerging as possible frontrunners for Yoshinobu Yamamoto",
+      "eventSummary": "The Giants have missed out on big names in the past like Aaron Judge and Carlos Correa, but they are looking to turn that around in 2023 with heavy involvement and Ohtani, among others. Per San Francisco Chronicle's Susan Slusser, teams believe the Giants 'might have an edge' in the pursuit of Japanese ace Yoshinobu Yamamoto.",
+      "created": "2023-12-03",
+      "byline": "Susan Slusser, San Francisco Chronicle"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Dylan Cease trade market heating up",
+      "eventSummary": "One of the biggest names on the market early is White Sox ace Dylan Cease in trade talks. MLB Network's Jon Morosi reported three teams, the Dodgers, Braves and Orioles, are among several involved discussing a deal for Cease as the winter meetings begin.",
+      "created": "2023-12-03",
+      "byline": "Jon Morosi, MLB Network"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Rays, Mariners talking trades in winter meetings",
+      "eventSummary": "The Mariners and Rays have been frequent trade partners in recent years, and there's a chance they could be talking shop again at the winter meetings. MLB Network's Jon Morosi reported the teams are discussing Rays utility infielder Isaac Paredes, and potentially star left fielder Randy Arozarena, in talks to start the winter meetings.",
+      "created": "2023-12-03",
+      "byline": "Jon Morosi, MLB Network"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Jays unlikely to land both Ohtani, Soto",
+      "eventSummary": "The Blue Jays have been among the most active names in both the Ohtani and Soto markets. And of course, those talks have had fans dreaming of a lineup that features, Ohtani, Soto, Vladimir Guerrero Jr., Bo Bichette and George Springer. But MLB Network's Jon Morosi said it's unlikely the Jays will land both star players, reporting they might land one of the two, but they will not add both this offseason.",
+      "created": "2023-12-03",
+      "byline": "Jon Morosi, MLB Network"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Ohtani has already received several $500+ million offers",
+      "eventSummary": "It's no surprise the bidding for Ohtani is heating up, with the star expected to sign soon. And New York Post's Jon Heyman reported Ohtani has already received several deals that have topped $500 million, which could mean he winds up being the first $600 million player in MLB history. He added there are believed to be five teams in the running for Ohtani.",
+      "created": "2023-12-03",
+      "byline": "Jon Heyman, NY Post"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Decision near for Ohtani",
+      "eventSummary": "Nothing gets the hot-stove crowd excited like a big move during the winter meetings, and the biggest move of the offseason could come this week in Nashville or soon after. Morosi reports Shohei Ohtani is 'likely to decide on a team within the next week,' according to a source.",
+      "created": "2023-12-03",
+      "byline": "Jon Morosi, MLB Network"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Status quo on Yankees' Juan Soto trade talks",
+      "eventSummary": "The Yankees reportedly are pushing hard to acquire Juan Soto from the Padres, but Heyman says the teams haven't spoken since San Diego requested a six-player package in return for Soto and Trent Grisham. That ask included pitchers Michael King and Drew Thorpe, who the Yankees aren't inclined to move. Stay tuned...",
+      "created": "2023-12-03",
+      "byline": "Jon Heyman, New York Post"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Shohei Ohtani field growing smaller",
+      "eventSummary": "It has been expected since before he hit free agency that Ohtani would set the record for the largest fully guaranteed contract in North American sports history, with Passan reporting the deal could reach as much as $600 million. Who will hand him that contract has been much more of a mystery. Little has been leaked about the top suitors for Ohtani beyond the usual suspects. Passan reported that at least three teams initially believed to be in the running — the Mets, Rangers and Red Sox — are believed to be out now. The teams most likely to still be in the mix are the Dodgers, Cubs, Blue Jays and Angels, with the Giants' status in the race for Ohtani unknown.",
+      "created": "2023-12-01",
+      "byline": "Jeff Passan, ESPN"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Star players could be traded",
+      "eventSummary": "The free agency pool outside of Ohtani, Cody Bellinger, Blake Snell and Yoshinobu Yamamoto is a bit lacking in star power, but the trade market could ensure several big-name players are on the move this offseason. Passan reported a trade of Soto appears to be 'edging closer to becoming a reality,' and while several teams are out on him because of his large salary and pending free-agent status, there still could be a large market for the star outfielder. Much of the rest of the names on the trade market are arms. Dylan Cease and Tyler Glasnow are the pitchers most likely to be dealt this offseason, and Cleveland could also hold a pair of intriguing trade chips in closer Emmanuel Clase and former Cy Young winner Shane Bieber. The Brewers have also begun trade talks for former Cy Young winner Corbin Burnes.",
+      "created": "2023-12-01",
+      "byline": "Jeff Passan, ESPN"
+    }
+  ]
+}
+```

@@ -1,0 +1,142 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "NEELAKOLUKATTAI (BLUE BUFFEL GRASS)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Cenchrus glaucus",
+                "used_for": "CROP IMPROVEMENT"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical and Subtropical",
+                    "has_regions": ["Africa", "Asia", "Australia"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Cenchrus glaucus"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-03-01",
+                            "end_date": "2022-04-30"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-09-01",
+                            "end_date": "2022-10-31"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "QuantitativeValue",
+                            "value": "25",
+                            "unitText": "kg/ha"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Nitrogen",
+                            "quantity": "50",
+                            "stage_of_application": "At sowing"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "15-20°C",
+                "for_flowering": "20-25°C",
+                "for_grain_filling": "25-30°C",
+                "negative_effect": "Above 35°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Clayey",
+                "for_water": "Well-drained",
+                "for_nutrients": "Moderately fertile"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the field to a fine tilth and level it.",
+                "with_soil_moisture": "Moist but not waterlogged"
+            },
+            "seed_germination_test_requirements_are": "Seeds should have a germination rate of at least 80%",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Thiram",
+                "quantity": "2g/kg of seed"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Early morning or late evening",
+                "value": "15cm x 15cm",
+                "depth": "1-2cm",
+                "method": "Drilling"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Barnyard grass",
+                "weed_types": ["Echinochloa crus-galli"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1.5 L/ha",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "500-600mm per year",
+                "stage_of_application": "At sowing and during tillering"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Leaf spot",
+                "disease_symptoms": "Brown spots on leaves",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Mancozeb",
+                    "quantity": "2g/L of water",
+                    "stage": "At first sign of disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Aphids",
+                "pest_symptoms": "Yellowing and curling of leaves",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Imidacloprid",
+                    "quantity": "0.5ml/L of water",
+                    "stage": "At first sign of pests"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when the grass turns yellow and the seeds are hard",
+            "storage_guidelines_are":"Store in a cool, dry place"
+        }
+    ]
+}

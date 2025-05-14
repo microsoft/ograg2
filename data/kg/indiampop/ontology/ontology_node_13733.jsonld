@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Stem borer",
+            "pest_symptoms": "ANNEXURE-II",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "chlorpyriphos",
+                "quantity": "0.02%",
+                "stage": "Apply seedling root dip treatment with 0.02% chlorpyriphos solution ( 1ml in 1 litres of water) for 8-10 hours before transplanting or in 0.02% chlorpyriphos with 1.0% urea (10g urea in litre of water) for 3 hours."
+            }
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_soil_requirements": "cropCult:SoilRequirements"
+            }
+        },
+        "CropGrowingZones": {
+            "@container": "@list",
+            "@id": "cropCult:CropGrowingZones",
+            "@type": "schema:ItemList",
+            "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List"
+                }
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "CINNAMON (Cinnamomum zeylanicum)",
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Humid tropical evergreen rain forest",
+                    "has_regions": [
+                        "Up to an altitude of about 1800 m"
+                    ]
+                }
+            },
+            "has_soil_requirements": {
+                "@type": "cropCult:SoilRequirements",
+                "soil_type_name": "Well-drained, deep sandy soil, rich in humus",
+                "avoid_soil_type": "Marshy areas and hard laterites"
+            }
+        }
+    ]
+}

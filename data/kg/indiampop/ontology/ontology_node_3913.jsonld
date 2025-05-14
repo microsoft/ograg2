@@ -1,0 +1,33 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_soil_requirements": "cropCult:SoilRequirements"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "JATROPHA (Jatropha curcas)",
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "It grows well on poor soils even in sandy soil but clay and loamy soils are best suited.",
+                "avoid_soil_type": "Water logged condition and flood prone areas should be avoided."
+            }
+        }
+    ]
+}

@@ -1,0 +1,164 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "Stan Choe",
+            "published": "2023-10-04T21:01:01+00:00",
+            "title": "ASX set to open higher as Wall Street rebounds; $A rises",
+            "summary": "On the small-cap front, Melbourne-based biotech Dimerix more than doubled its share price to 16¢ on Thursday after the company revealed it had inked an exclusive licensing deal to commercialise its treatment for a kidney disease called Focal Segmental Glomerulosclerosis in Europe, the UK, Switzerland, Canada, Australia and New Zealand. The laggards Meanwhile, energy companies (down 0.9 per cent) were among the weakest on the index as the oil price slumped overnight. Heavyweights Woodside and Santos shed 0.8 per cent and 0.4 per cent, respectively, and Ampol dropped 2.8 per cent. Miners were also weaker, with lithium prospector IGO (down 4 per cent) and Mineral Resources (down 2.9 per cent) among the biggest large-cap advancers. Iron ore giants Rio Tinto (down 1.5 per cent) and BHP (down 0.7 per cent) slipped after the iron ore price fell 1.1 per cent. Aristocrat Leisure (down 3.7 per cent) dragged the consumer discretionary sector (down 0.3 per cent) lower.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://www.theage.com.au/business/markets/asx-set-to-edge-up-as-wall-street-steadies-a-rises-20231005-p5e9va.html?ref=rss&utm_medium=rss&utm_source=rss_business"
+            }
+        },
+        {
+            "@type": "snap:person",
+            "name": "Tony Sycamore",
+            "alias": "IG Australia market analyst"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "The Age"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Dimerix"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Woodside"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Santos"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Ampol"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "IGO"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Mineral Resources"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Rio Tinto"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "BHP"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Aristocrat Leisure"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Morgan Stanley Global Investment Office"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Goldman Sachs"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Australian Retailers Association"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Paul Zahra",
+            "alias": "chief"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Qantas"
+        }
+    ]
+}
+```

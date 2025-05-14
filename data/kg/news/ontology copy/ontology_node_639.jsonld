@@ -1,0 +1,152 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Yardbarker Staff",
+      "published": "2023-11-30T22:29:33+00:00",
+      "title": "Hottest seat on each NFC team: Buns burning for these four head coaches",
+      "summary": "Even the Philadelphia Eagles and Dallas Cowboys – two of the NFL's best teams – have hot seats. No seats, however, may be more sizzling than those occupied by two head coaches in the NFC South, one in the NFC North and another (surprisingly) in the NFC West.",
+      "associatedAsset": [
+        {
+          "@type": "TextAsset",
+          "image": "https://www.yardbarker.com/nfl/articles/hottest_seat_on_each_nfc_team_buns_burning_for_these_four_head_coaches/s1_13132_39607617"
+        }
+      ]
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "NFC East",
+      "eventSummary": "Hottest seats in NFC East teams.",
+      "subEventOf": {
+        "@type": "Event",
+        "eventTitle": "NFL Hot Seats"
+      },
+      "theme": {
+        "@type": "intangibleStuff",
+        "comment": "sports"
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "NFC West",
+      "eventSummary": "Hottest seats in NFC West teams.",
+      "subEventOf": {
+        "@type": "Event",
+        "eventTitle": "NFL Hot Seats"
+      },
+      "theme": {
+        "@type": "intangibleStuff",
+        "comment": "sports"
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "NFC North",
+      "eventSummary": "Hottest seats in NFC North teams.",
+      "subEventOf": {
+        "@type": "Event",
+        "eventTitle": "NFL Hot Seats"
+      },
+      "theme": {
+        "@type": "intangibleStuff",
+        "comment": "sports"
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "NFC South",
+      "eventSummary": "Hottest seats in NFC South teams.",
+      "subEventOf": {
+        "@type": "Event",
+        "eventTitle": "NFL Hot Seats"
+      },
+      "theme": {
+        "@type": "intangibleStuff",
+        "comment": "sports"
+      }
+    }
+  ]
+}
+```

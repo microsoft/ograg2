@@ -1,0 +1,102 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "schema:Thing",
+      "title": "The Apple Watch’s double tap gesture points at a new way to use wearables",
+      "author": "Victoria Song",
+      "theme": "technology",
+      "content": "The coolest Apple Watch Series 9 and Ultra 2 feature wasn’t actually available when the watches launched last month. Double tap, which finally arrives today via the watchOS 10.1 update, lets you interact with the watch without ever needing to use the touchscreen. With a quick pinching motion, you can use it to scroll through the new smart stack of widgets in watchOS 10, pause or end timers, skip music tracks, and answer phone calls. It’s the sort of feature that you might read about and scoff at — until you’re unloading groceries from your car, hands full, and an important call comes through on your watch.",
+      "published": "2023-10-25T17:04:01+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "schema:Thing",
+          "eventTitle": "Double Tap Gesture Release",
+          "eventSummary": "The double tap gesture is released with watchOS 10.1 update.",
+          "theme": "technology"
+        }
+      ]
+    }
+  ]
+}

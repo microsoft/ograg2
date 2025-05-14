@@ -1,0 +1,61 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_disease_treatements": "cropCult:DiseaseTreatements"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Rice (Oryza sativa)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Transplanted Early Ahu",
+                "used_for": "CEREALS"
+            },
+            "has_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Sheath blight",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "carbendazim",
+                    "quantity": "0.5 g/lit",
+                    "stage": "Two sprayings, the first at the appearance of symptoms and the other 10 days after the first spraying"
+                }
+            }
+        }
+    ]
+}

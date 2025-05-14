@@ -1,0 +1,112 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "Nick Brinkerhoff",
+            "published": "2023-12-18T22:47:00+00:00",
+            "title": "Monday Night Football DraftKings Picks: NFL DFS lineup advice for Week 15 Eagles-Seahawks Showdown tournaments",
+            "summary": "The Seahawks are just about hanging on by a thread. At 6-7, the team is on the outside looking in when it comes to the playoff picture. A win on Monday night against the suddenly reeling Eagles could be a big boost in their chances going forward -- a matchup that is actually a pretty good one after looking beneath the surface. The Eagles come in as losers of two straight, losing in blowout fashion both times no less. Suddenly the sky is falling as the Cowboys have taken over the NFC East division lead, complicating matters as the regular season winds down. The sense of urgency for both sides means we are looking at two teams with plenty to lose, setting up for a fun Monday night under the lights at Lumen Field.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://www.sportingnews.com/us/nfl/news/monday-night-football-draftkings-picks-eagles-seahawks-dfs/f0776f8dbc7873a98e43c77e"
+            }
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Sporting News"
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Eagles-Seahawks DraftKings Picks: DFS lineup for Week 15 Monday Night Football",
+            "eventSummary": "$50,000 budget, need at least one player from each team. Captain (1.5x points, 1.5x salary): WR DK Metcalf, Seahawks ($14,400) FLEX QB Geno Smith, Seahawks ($9,400) FLEX WR DeVonta Smith, Eagles ($9,000) FLEX RB D'Andre Swift, Eagles ($8,000) FLEX TE Dallas Goedert, Eagles ($6,200) FLEX TE Noah Fant, Seahawks ($2,600)"
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Best SuperDraft Eagles-Seahawks DFS Picks",
+            "eventSummary": "Champion (+50% points): WR DK Metcalf, Seahawks (Multiplier 1.8x) Super FLEX: QB Geno Smith, Seahawks (Multiplier 1.2x) Super FLEX: QB Jalen Hurts, Eagles (Multiplier 1x) Super FLEX: WR A.J. Brown, Eagles (Multiplier 1.05x) Super FLEX: WR DeVonta Smith, Eagles (Multiplier 1.25x)"
+        }
+    ]
+}
+```

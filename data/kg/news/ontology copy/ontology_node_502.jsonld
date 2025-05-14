@@ -1,0 +1,98 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Lisa Mascaro, Farnoush Amiri, Stephen Groves, The Associated Press",
+      "published": "2023-10-18T20:36:54+00:00",
+      "title": "Republicans just dumped Jim Jordan again. They're looking for another speaker candidate",
+      "summary": "Republican Rep. Jim Jordan failed again Wednesday on a crucial second ballot to become House speaker, the hard-fighting ally of Donald Trump losing even more GOP colleagues who are refusing to give him the gavel. Next steps were highly uncertain as angry, frustrated Republicans looked at other options. A bipartisan group of lawmakers floated an extraordinary plan — to give the interim speaker-pro-tempore, Rep. Patrick McHenry, R-N.C., more power to reopen the immobilized House and temporarily conduct routine business. What was clear was that Jordan’s path to become House speaker was almost certainly lost. He was opposed by 22 Republicans, two more than he lost in first round voting the day before. “We’ll keep talking to members, keep working on it,” Jordan, a founding member of the hard-right Freedom Caucus, said after the vote, vowing to stay in the race. The House came to another abrupt standstill, stuck now 15 days without a speaker — a position of power second in line to the presidency — since the sudden ouster of Kevin McCarthy. Once a formality in Congress, the vote for House speaker has devolved into another bitter GOP showdown for the gavel. As Republicans upset and exhausted by the infighting retreated for private conversations, hundreds of protesters, if not more, amassed outside the Capitol over the Israel-Hamas war, a stark reminder of the dangers of having the House adrift as political challenges intensify at home and abroad. Ahead of the morning vote, Jordan, the combative Judiciary Committee chairman, made an unusual plea for party unity — almost daring his colleagues to put forward the alternative proposal for a temporary speaker. “We’ve been at this two weeks,” Jordan said at the Capitol. “American people deserve to have their government functioning.” But as the roll call got under way, he lost more than he gained, picking up three backers but adding more detractors. No further votes were scheduled. The holdouts added to a surprisingly large and politically diverse group of 20 Republicans who had rejected Jordan’s nomination the day before, many resenting the hardball tactics seeking to enforce support, and viewing the Ohio congressman as too extreme for a central seat of U.S. power. With Republicans in majority control of the House, 221-212, Jordan must pick up most of his GOP foes to win. Wednesday’s tally, with 199 Republicans voting for Jordan and 212 for Democratic leader Hakeem Jeffries of New York, left no candidate with a clear majority, as the 22 Republicans voted for someone else. One new Jordan opponent, Rep. Vern Buchanan of Florida, explained his vote, “I think it’s time to move on.” Bipartisan groups of lawmakers have been floating ways to operate the House by giving greater power to McHenry or another temporary speaker. The House had never ousted its speaker before McCarthy, and McHenry could tap the temporary powers that were created after the Sept. 11, 2001, terror attacks to ensure continuity of government. The novel concept of boosting the interim speaker’s role was gaining favor with a pair of high-profile Republicans: Former GOP speakers Newt Gingrich and John Boehner. Gingrich said while he likes Jordan, he has “no faith” the nominee can get much beyond the 200 votes he won in the first vote. “We can’t sit around and suck our thumbs and hope the world will wait until the House Republicans get their act together,” Gingrich told Fox News’ Sean Hannity on his show. Boehner reposted Gingrich’s views saying, “I agree,” on social media. The two men have deep experience with the subject. Both were chased to early retirement. “The Republicans are unable to function right now,” Jeffries said late Tuesday. “All options are on the table to end the Republican civil war,” he added Wednesday. In nominating Jordan, veteran Republican Rep. Tom Cole of Oklahoma said it was time to end the upheaval that he had warned against with McCarthy’s sudden ouster. “We have a chance today to end that chaos, end that uncertainty,” Cole said. He said that Jordan was not a “shrinking violet” but someone who could lead the House. Democratic Rep. Pete Aguilar of California nominated Jeffries, noting the Democratic leader continues to win more votes and is the best choice to move the country forward. “The country cannot afford more delays and more chaos,” Aguilar said. Jordan had relied on backing from Trump, the party’s frontrunner in the 2024 election to challenge President Joe Biden, and groups pressuring rank-and-file lawmakers for the vote, but it was not enough. Flexing their independence, the holdouts are a mix of pragmatists — ranging from seasoned legislators and committee chairs worried about governing, to newer lawmakers from districts where voters back home prefer President Joe Biden to Trump. Some Republicans resent being pressured by Jordan’s allies and say they are being threatened with primary opponents if they don’t support him as speaker. Others are simply upset at the way the whole process has dragged out. They cast their ballots for McCarthy, Majority Leader Steve Scalise — who had been the party’s first nominee to replace McCarthy — and others, one vote even going to the retired Boehner. “Jim Jordan will be a great speaker,” Trump had said Tuesday said outside a courthouse in Manhattan, where he is facing business fraud charges. “I think he’s going to have the votes soon, if not today, over the next day or two.” Jordan has been a top Trump ally, particularly during the Jan. 6 Capitol attack by the former president’s backers who were trying to overturn the 2020 election he lost to Biden. Days later, Trump awarded Jordan a Medal of Freedom. The political climb has been steep for Jordan who is known more as a chaos agent than a skilled legislator, raising questions about how he would lead. Congress faces daunting challenges, risking a federal shutdown at home if it fails to fund the government and fielding Biden’s requests for aid to help Ukraine and Israel in the wars abroad. First elected in 2006, Jordan has few bills to his name from his time in office. He also faces questions about his past. Some years ago, Jordan denied allegations from former wrestlers during his time as an assistant wrestling coach at Ohio State University who accused him of knowing about claims they were inappropriately groped by an Ohio doctor. Jordan has said he was never aware of any abuse.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://fortune.com/2023/10/18/jim-jordan-loses-second-vote-speaker-of-house-republican-party/"
+      }
+    }
+  ]
+}
+```

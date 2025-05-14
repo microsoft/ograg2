@@ -1,0 +1,51 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/"
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "RICE (Oryza sativa)",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "Rice",
+                "used_for": "Cereal"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical and Subtropical",
+                    "has_regions": ["Asia", "Africa", "South America"],
+                    "has_seed_recommendations": {
+                        "@type": "cropCult:SeedList",
+                        "variety_name": ["Oryza sativa"]
+                    }
+                }
+            },
+            "has_land_preperation_requirements": {
+                "@type": "cropCult:LandPreparation",
+                "instructions": "Prepare the land by ploughing and leveling",
+                "with_soil_moisture": "Ensure the soil is moist before sowing"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "cropCult:seedSpacing",
+                "sowing_time": "Early Spring",
+                "value": "15 cm",
+                "depth": "1-2 cm",
+                "method": "Direct sowing"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "cropCult:IrrigationRequirement",
+                "quantity": "As per Table 4.",
+                "stage_of_application": "Throughout the growing season"
+            },
+            "has_fertilizer_application_requirements": {
+                "@type": "cropCult:Fertilization",
+                "nutrient_name": "Azolla",
+                "quantity": "As per the manuring schedule",
+                "stage_of_application": "During the manuring stage"
+            }
+        }
+    ]
+}

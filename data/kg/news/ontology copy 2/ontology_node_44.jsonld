@@ -1,0 +1,128 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "schema:Thing",
+      "title": "The Best NBA Betting Sites and Apps for the 2023-24 Season",
+      "author": "Sam Eggleston",
+      "theme": "sports",
+      "content": "With legal sports betting now at your fingertips in over 30 states, it’s easier than ever to bet on basketball at one of the best NBA betting sites. The NBA gives you plenty of games, teams and players to bet on across hundreds of odds markets. As a bettor, you'll want to find the best NBA betting lines night after night plus NBA futures markets from NBA Finals odds to Rookie of the Year odds. See below for where to look and more on betting on the NBA at the best sports betting sites.",
+      "published": "2023-10-02T21:58:37+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "schema:Thing",
+          "eventTitle": "2023-24 NBA Season",
+          "eventSummary": "October 24 Regular season begins November 3 - December 9 In-season tournament February 16-18 All-Star Weekend 2024 April 14 Regular season ends April 16-19 Play-in tournament April 20 Playoffs begin June 6 NBA Finals Game 1",
+          "theme": "sports"
+        }
+      ],
+      "mentions_organizations": [
+        {
+          "@id": "snap:organization1",
+          "@type": "schema:Thing",
+          "name": "DraftKings Sportsbook",
+          "alias": "DraftKings"
+        },
+        {
+          "@id": "snap:organization2",
+          "@type": "schema:Thing",
+          "name": "FanDuel Sportsbook",
+          "alias": "FanDuel"
+        },
+        {
+          "@id": "snap:organization3",
+          "@type": "schema:Thing",
+          "name": "BetMGM Sportsbook",
+          "alias": "BetMGM"
+        },
+        {
+          "@id": "snap:organization4",
+          "@type": "schema:Thing",
+          "name": "BetRivers Sportsbook",
+          "alias": "BetRivers"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "SYSTEM OF RICE INTENSIFICATION ( SRI )",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Leveled lands having good water control with fertile soil are suitable for SRI. Leveled lands facilitate uniform spread and drainage of water. But in SRI method, flooding with water is not allowed."
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Fertile soil",
+                "avoid_soil_type": "Saline soils are not suitable, as they need flooding to decrease salinity level. Further, in saline soils draining and drying of soil leads to accumulation of salts on soil surface, which harms the plants."
+            },
+            "harvesting_guidelines_are": "3.9. Harvesting",
+            "storage_guidelines_are": "3.1 Selection of suitable site"
+        }
+    ]
+}

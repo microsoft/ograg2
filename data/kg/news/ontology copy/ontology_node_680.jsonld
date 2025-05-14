@@ -1,0 +1,101 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Dan Treacy",
+            "published": "2023-11-09T23:04:33+00:00",
+            "title": "Bears vs. Panthers live score, updates, highlights from NFL 'Thursday Night Football' game",
+            "summary": "The Bears and Panthers entered Thursday night looking for progress, not playoff contention. If any team achieved that goal, it was Chicago. It wasn't an aesthetically pleasing game, but that was never the expectation. The Bears grinded out a 16-13 victory behind a terrific defensive performance, a solid running game, and a few timely throws by Tyson Bagent. The Panthers jumped out to an early lead on a punt returned for a touchdown by Ihmir Smith-Marsette, but they never found the end zone again. The only offensive touchdown of the night came in the third quarter, when D'Onta Foreman rumbled his way into the end zone to give Chicago a 16-10 lead. As it turned out, 16 points was all the Bears needed. After Eddy Pineiro cut Carolina's deficit to three early in the fourth quarter, Frank Reich put his trust in Pineiro again with the game on the line, sending him out for a 59-yard attempt on fourth-and-10 in the final minutes rather than trusting the offense to pick up the 10 yards. Pineiro's kick was short. While the decision to kick from 59 yards out might be second-guessed, Carolina's offense didn't give Reich much reason to believe. Bryce Young struggled to develop any kind of rhythm through the first three quarters, and even the Panthers' most successful drives were laborious, consistently requiring conversions on third and fourth down. While Young got little help from his receivers, who failed to get open all night, his struggles — including multiple passes that were nearly intercepted — are a reminder that the Panthers' offense is still a long way from resembling anything like the unit owner David Tepper envisioned when the franchise traded for the No. 1 pick in March. The Bears (3-7) are hoping to get Justin Fields back in time for their Week 11 game in Detroit, but they've gotten a shot in the arm from Bagent, who improved to 2-2 as a starter with the win. The victory on Thursday was a win-win for Chicago, as the franchise owns the first-round pick of the Panthers (1-8). The Sporting News tracked live scoring updates and highlights from Bears vs. Panthers on 'Thursday Night Football.' Check out all of the key moments you might have missed.",
+            "associatedAsset": {
+                "@type": "snap:organization",
+                "name": "Sporting News"
+            },
+            "hasAsset": {
+                "asset": "https://www.sportingnews.com/us/nfl/news/bears-panthers-live-score-highlights-thursday-night-football/50e2de0148c14c204e3bb16c"
+            }
+        }
+    ]
+}
+```

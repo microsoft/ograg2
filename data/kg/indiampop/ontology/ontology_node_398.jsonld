@@ -1,0 +1,35 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "DiseaseTreatements",
+            "disease_name": "Red rot",
+            "disease_control": {
+                "@type": "schema:List",
+                "name": ["CO 62198", "CO 7704"],
+                "quantity": ["Resistant", "Resistant"]
+            }
+        },
+        {
+            "@type": "DiseaseTreatements",
+            "disease_name": "Smut",
+            "disease_control": {
+                "@type": "schema:List",
+                "name": ["CO 7704", "COC 85061", "COC 8201"],
+                "quantity": ["Resistant", "Moderately resistant", "Moderately resistant"]
+            }
+        }
+    ]
+}

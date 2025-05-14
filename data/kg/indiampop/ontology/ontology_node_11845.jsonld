@@ -1,0 +1,52 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Pendimethalin",
+            "weed_types": [
+                "Pre emergence"
+            ],
+            "herbicides": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Pendimethalin",
+                "quantity": "0.75 kg/ha (2.5 litres/ha)",
+                "stage": "3 DAS"
+            }
+        },
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Hand weeding",
+            "weed_types": [
+                "Post emergence"
+            ],
+            "herbicides": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Hand weeding",
+                "quantity": "One time",
+                "stage": "30-35 DAS"
+            }
+        }
+    ]
+}

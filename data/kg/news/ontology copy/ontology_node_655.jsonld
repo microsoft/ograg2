@@ -1,0 +1,122 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:NewsAsset",
+      "byline": "Jake Coyle, The Associated Press",
+      "published": "2023-10-10T20:11:16+00:00",
+      "title": "Taylor Swift has already sold over $100 million of tickets for her concert movie. Theaters nationwide brace for impact",
+      "summary": "Greg Marcus has been in the movie business for years but he never expected to be urging moviegoers to take out their phones during a film — let alone to be crafting friendship bracelets in preparation for an opening weekend. But there the chief executive and chair of the Marcus Corporation is in a promotion for his theater chain headquartered in Milwaukee, Wisconsin, stringing beads together while humming “Shake It Off.” Movie theaters are readying for an onslaught like they’ve never seen before, beginning Friday when “Taylor Swift: The Eras Tour” debuts. The concert film, compiled from several Swift shows at Southern California’s SoFi Stadium, is expected to launch with $100 million, or possibly more. Advance ticket sales worldwide have already surpassed $100 million. Swifties will descend. Dancing will be encouraged. “This is different,” says Marcus. “Take your phone out. Take selfies. Dance, sing, get up, have a good time. We want to create an atmosphere.” Concert films, of course, aren’t anything new. Just last month, the Talking Heads classic “Stop Making Sense” returned to theaters for a decades-later encore. But “The Eras Tour” heralds something new and potentially game-changing in the movie industry. Two of the biggest stars on the planet — Swift and , in December under a very similar arrangement, Beyoncé — are heading into cinemas in first-of-their-kind deals made directly with AMC Theaters that circumvent Hollywood studios and which, for now, leave streamers waiting on the sidelines. But how did the once declared-for-dead multiplex become the go-to place this fall a pair of stars previously at home on Netflix? When studios began diverting some of their titles to streaming platforms, movie theaters began thinking harder about how they could fill their screens — a question exacerbated this autumn by an actors strike that’s led to the postponement of big releases like “Dune: Part Two.” Movie theaters are increasingly not just a marquee of movie showtimes but a big-screen stage for a variety of visual media. BTS earlier this year released a concert film, with higher ticket prices and limited showtimes. The Metropolitan Opera has for years done popular live broadcasts in theaters. Few acts can do what Swift and Beyoncé can. Their expected success is unlikely to be replicated. But “The Eras Tour” could be the start of an expansion of what, exactly, a movie theater can be. Think the Sphere, only much cheaper and in most towns. “You could say we’re in the movie business, but really we’re in the getting-together-with-other-people business,” says Marcus. “The more we do of it, the more the customers will think about it and the more talent will go: This is something I could do.” Swift’s camp was motivated to get the film out even as her stadium tour continues internationally. The tour, which is projected by Pollstar to gross some $1.4 billion, crashed Ticketmaster’s site, saw sky-high resale mark-ups and left many fans priced out. The movie, directed by Sam Wrench, would be a way for millions more to experience the Eras Tour. Adult tickets are being sold for $19.89, a reference to her birth year and 2014 album, a re-recording of which is due out Oct. 27. That’s higher than the average movie ticket but several thousand less than many tickets to see Swift live. It’s arriving uncommonly fast, too, just a little over two months since the SoFi shows. Speed was one reason Swift’s father, Scott Swift, is said to have sought out a direct deal with AMC. Swift produced the film, herself, and, with 274 million followers on Instagram, didn’t need a studio to promote it. The pop star’s apparent relationship with Kansas City Chiefs tight end Travis Kelce has only further brightened the spotlight on the movie. According to ad tracking firm iSpot, TV ads for the film ran only a few dozen times as of Oct. 6, including several spots during NFL broadcasts. (A Marvel movie, by comparison, might run several thousand TV commercials.) Ticket sales will be split 43% with theaters and 57% shared by Swift and AMC — with the lion’s share of that going to Swift. The film will play exclusively in theaters for at least 13 weeks — longer than many Hollywood releases do now. AMC CEO Adam Aron has called the deal “a coup for AMC” on social media. Both AMC and representatives for Swift declined to discuss the film’s release. After a premiere in Los Angeles on Wednesday, there won’t be any advance screenings until the movie begins playing at 6 p.m. local time Friday. Most wide-release movies open with Thursday showings and Friday daytime screenings. It’s another wrinkle in a nontraditional release that’s challenging Hollywood norms. “Innovation comes out of challenging times in this business. We’re seeing a lot of changes, some subtle, some not so subtle,” says Paul Dergarabedian, senior media analyst for data firm Comscore. “It seems like, right now, there are no rules when it comes to being successful.” Dergarabedian believes the two concert films should help lift the North American box office to more than $9 billion in 2023, up from the $7.4 billion of last year and edging closer to the $11.4 billion of 2019. “It really opens up the idea that other types of content can play really well in a movie theater,” he says. Some of those changes have been facilitated by the abolishment of long-held antitrust restrictions governing movie distribution. After more than 70 years of regulating divisions between exhibition and distribution, the Paramount consent decrees were terminated in 2020 at the urging of the Department of Justice, with a two-year sunset period that ran until last year. “Innovation had effectively been stunted,” says Makan Delrahim, the former antitrust chief at the Justice Department who proposed ending the consent decrees. Delrahim believes “Taylor Swift: The Eras Tour” — as a movie distributed by a theater chain, with nontraditional ticket prices — could “fuel new business models to save the exhibitors.” “There will be more appetite to experiment different models for theatrical distribution,” Delrahim says. “The industry needs it and, frankly, so do consumers.” Meanwhile, “Taylor Swift: The Eras Tour” is poised to become the biggest concert film ever in about two days of release. Not accounting for inflation, 2011’s “Justin Bieber: Never Say Never” holds that mark with $73.1 million across its entire run. Accounting for inflation, it will be harder for “The Eras Tour” to catch “Woodstock,” which grossed $50 million in 1970, a total that translates to nearly $400 million today. In Marcus’ theaters, like many other chains, there will be friendship bracelet stations. Sound systems have been modified for more of a concert feel. And while Marcus grants it will be strange to see an AMC logo before a film playing in his theaters, he doesn’t particularly mind. “I’m just happy it’s there,” he says.",
+      "associatedAsset": {
+        "@type": "snap:TextAsset",
+        "image": "https://fortune.com/2023/10/10/taylor-swift-eras-tour-movie-amc-concert-blockbuster/"
+      }
+    },
+    {
+      "@type": "snap:Person",
+      "name": "Taylor Swift"
+    },
+    {
+      "@type": "snap:Person",
+      "name": "Greg Marcus"
+    },
+    {
+      "@type": "snap:Organization",
+      "name": "Marcus Corporation"
+    },
+    {
+      "@type": "snap:Organization",
+      "name": "AMC Theaters"
+    },
+    {
+      "@type": "snap:Organization",
+      "name": "The Associated Press"
+    },
+    {
+      "@type": "snap:Organization",
+      "name": "Fortune"
+    }
+  ]
+}
+```

@@ -1,0 +1,121 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "AGROFORESTRY",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Tree",
+                "used_for": "Agroforestry system"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical and Subtropical",
+                    "has_regions": ["Africa", "Asia", "Australia"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Acacia holosericea", "Eucalyptus sp.", "Casuarina equisetifolia", "Tamarindus indica", "Azadirachta indica", "Ceiba pentandra", "Ailanlthus excelsa"]
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "20-30°C",
+                "for_flowering": "25-35°C",
+                "for_grain_filling": "20-30°C",
+                "negative_effect": "Below 15°C and above 40°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy and sandy",
+                "avoid_soil_type": "Clayey",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Clear the land of weeds and other plants. Plough the land to a depth of 15-20 cm. Add organic manure and mix well with the soil.",
+                "with_soil_moisture": "Moist but not waterlogged"
+            },
+            "seed_germination_test_requirements_are": "Seeds should be viable and free from diseases. Germination rate should be above 80%.",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Mancozeb",
+                "quantity": "2 kg per hectare"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Start of the rainy season",
+                "value": "5-6 m between trees",
+                "depth": "2-3 cm",
+                "method": "Direct sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Grasses and broadleaf weeds",
+                "weed_types": ["Annual", "Perennial"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1.5 kg per hectare",
+                    "stage": "Before sowing"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "800-1000 mm per year",
+                "stage_of_application": "Throughout the growing season"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Root rot",
+                "disease_symptoms": "Yellowing and wilting of leaves, death of plant",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Metalaxyl",
+                    "quantity": "2 kg per hectare",
+                    "stage": "At the first sign of disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Aphids",
+                "pest_symptoms": "Yellowing and curling of leaves, stunted growth",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Imidacloprid",
+                    "quantity": "1 kg per hectare",
+                    "stage": "At the first sign of pests"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when the leaves start to turn yellow and fall off. Cut the tree at the base and remove the branches and leaves.",
+            "storage_guidelines_are": "Store the logs in a cool, dry place away from direct sunlight."
+        }
+    ]
+}

@@ -1,0 +1,128 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Bill Bender",
+      "published": "2023-12-01T22:23:03+00:00",
+      "title": "Can Alabama make College Football Playoff? How Texas, Oregon losses could impact Tide's 2023 chances",
+      "summary": "Will the Crimson Tide endure a three-year drought in the College Football Playoff? No. 8 Alabama (11-1) must beat No. 1 Georgia in the SEC championship at 4 p.m. on Saturday on CBS. By that time, the Crimson Tide will know what happened with No. 7 Texas. Alabama did get help with No. 3 Washington beating No. 5 Oregon in the Pac-12 championship game Friday.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "url": "https://www.sportingnews.com/us/ncaa-football/news/alabama-college-football-playoff-texas-oregon-losses/02ba9161c845ab8490f4813a"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "SEC Championship Game",
+      "eventSummary": "No. 1 Georgia vs. No. 8 Alabama (Saturday, 4 p.m., CBS)",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "College Football Playoff",
+        "eventSummary": "Will Alabama make College Football Playoff?"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Pac-12 Championship Game",
+      "eventSummary": "No. 3 Washington 34, No. 5 Oregon 31"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Big 12 Championship Game",
+      "eventSummary": "No. 7 Texas vs. No. 18 Oklahoma State (Saturday, 12 p.m., ABC)"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "ACC Championship Game",
+      "eventSummary": "No. 4 Florida State vs. No. 14 Louisville (Saturday, 8 p.m., ABC)"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Big Ten Championship Game",
+      "eventSummary": "No. 2 Michigan vs. No. 16 Iowa (Saturday, 8 p.m., FOX)"
+    }
+  ]
+}
+```

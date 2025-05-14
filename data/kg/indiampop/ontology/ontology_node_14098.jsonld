@@ -1,0 +1,115 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Coconut",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Coconut",
+                "used_for": "CROP PROTECTION"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "Tropical",
+                "has_regions": ["South Asia", "South America", "Africa"]
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Warm",
+                "for_flowering": "Warm",
+                "for_grain_filling": "Warm",
+                "negative_effect": "Cold"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Sandy",
+                "avoid_soil_type": "Clay",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Clear land of debris, ensure proper drainage",
+                "with_soil_moisture": "Moist"
+            },
+            "seed_germination_test_requirements_are": "Warm temperature, moist soil",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Fungicide X",
+                "quantity": "10ml per seed"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Spring",
+                "value": "10 feet",
+                "depth": "1 inch",
+                "method": "Direct sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Weed X",
+                "weed_types": ["Type 1", "Type 2"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Herbicide X",
+                    "quantity": "10ml per square foot",
+                    "stage": "Pre-emergent"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "1 inch per week",
+                "stage_of_application": "All stages"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Disease X",
+                "disease_symptoms": "Yellowing leaves, stunted growth",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Herbicide X",
+                    "quantity": "10ml per square foot",
+                    "stage": "At first sign of disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Pest X",
+                "pest_symptoms": "Holes in leaves, chewed stems",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Pesticide X",
+                    "quantity": "10ml per square foot",
+                    "stage": "At first sign of pests"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when fruit is brown and husk is dry",
+            "storage_guidelines_are": "Store in a cool, dry place"
+        }
+    ]
+}

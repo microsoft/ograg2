@@ -1,0 +1,208 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "The future of DC movies in 2022 and beyond",
+      "author": "Tasha Robinson",
+      "theme": "entertainment",
+      "content": "The DC Extended Universe, as DC Comics’ movie and TV line was originally called, has gone through some major growing pains since it launched with Zack Snyder’s Man of Steel in 2013...",
+      "published": "2023-10-24T15:00:36+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Aquaman and The Lost Kingdom",
+          "eventSummary": "Expect online fandom debates to go ballistic again as we get closer to the sequel to James Wan’s joyously goofy 2018 under-the-sea extravaganza, Aquaman...",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Joker: Folie à Deux",
+          "eventSummary": "Todd Phillips’ acerbic 2019 drama Joker — effectively a DC-themed riff on Martin Scorsese’s King of Comedy...",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Creature Commandos",
+          "eventSummary": "James Gunn is listed as the writer for this seven-episode adult animated series...",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Waller",
+          "eventSummary": "Gunn’s hilarious, heartfelt Suicide Squad spinoff series Peacemaker was greenlit for a second season...",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Superman: Legacy",
+          "eventSummary": "The first of the new Gunn/Safran projects to actually get a release date...",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "The Batman Part II",
+          "eventSummary": "The long, contentious history behind 2022’s The Batman didn’t leave much room for hope...",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "The Penguin",
+          "eventSummary": "HBO Max’s TV spinoff of Matt Reeves’ The Batman is meant to bridge the gap...",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Arkham Asylum",
+          "eventSummary": "The actual title for the second of Reeves’ two HBO Max The Batman spinoffs hasn’t been revealed yet...",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "A ‘Black Superman’ movie",
+          "eventSummary": "DC announced in early 2021 that writer Ta-Nehisi Coates would reboot Superman...",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Brave and the Bold",
+          "eventSummary": "Taking its title from a silver age DC Comic, Brave and the Bold will introduce Batman’s biological son Damian...",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "The Authority",
+          "eventSummary": "The WildStorm imprint — founded as an independent company in 1992 and bought up by DC in 1999...",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Supergirl: Woman of Tomorrow",
+          "eventSummary": "Just as Superman: Legacy is meant to present a new view of Superman for the DCU...",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Swamp Thing",
+          "eventSummary": "The recent appearance of Man-Thing in Marvel’s black-and-white special Werewolf by Night...",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Booster Gold",
+          "eventSummary": "DC hasn’t said much about this TV series, which brings the comics’ fan-favorite comic-relief character...",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Lanterns",
+          "eventSummary": "The 2011 live-action Green Lantern movie (starring Ryan Reynolds as original Green Lantern Hal Jordan)...",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Paradise Lost",
+          "eventSummary": "This series is set in Wonder Woman’s home island of Themyscira...",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Sandman season 2",
+          "eventSummary": "Netflix announced in November 2022 that its live-action series Sandman...",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Dead Boy Detectives",
+          "eventSummary": "In spite of a series of cancellations and shake-ups at Max, Neil Gaiman confirmed in January 2023...",
+          "theme": "entertainment"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Peacemaker season 2",
+          "eventSummary": "Alongside everything else in this universe with his name on it, Gunn hasn’t forgotten Peacemaker...",
+          "theme": "entertainment"
+        }
+      ]
+    }
+  ]
+}

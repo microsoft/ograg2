@@ -1,0 +1,239 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Michelle Jubelirer on Ice Spice, The Beatles, and reinventing Capitol Music Group: ‘I don’t think any label group has been able to turn things around as quickly as my team and I have done in less than two years.’",
+            "author": "Tim Ingham",
+            "theme": "business",
+            "summary": "An in-depth interview with Michelle Jubelirer discussing her leadership at Capitol Music Group and the successes achieved in the past two years.",
+            "created": "2023-12-07T20:57:51+00:00",
+            "published": "2023-12-07T20:57:51+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Capitol Music Group's Leadership Changes",
+                        "eventSummary": "Discussion on the leadership changes at Capitol Music Group and their impact on the label.",
+                        "theme": "Leadership",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Los Angeles"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Michelle Jubelirer",
+                                    "dateOfBirth": "1980-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Los Angeles"
+                                    },
+                                    "alias": "CEO of Capitol Music Group"
+                                },
+                                {
+                                    "name": "Steve Barnett",
+                                    "dateOfBirth": "1950-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "London"
+                                    },
+                                    "alias": "Former Chairman/CEO"
+                                },
+                                {
+                                    "name": "Jeff Vaughn",
+                                    "dateOfBirth": "1985-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "New York"
+                                    },
+                                    "alias": "Former Chairman/CEO"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Capitol Music Group",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Los Angeles"
+                                    },
+                                    "alias": "CMG"
+                                },
+                                {
+                                    "name": "Universal Music Group",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Santa Monica"
+                                    },
+                                    "alias": "UMG"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Ice Spice's Rise to Fame",
+                        "eventSummary": "Highlighting Ice Spice's achievements and her partnership with Capitol Music Group.",
+                        "theme": "Music",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "New York"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Ice Spice",
+                                    "dateOfBirth": "2000-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "New York"
+                                    },
+                                    "alias": "Breakout Artist of 2023"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Capitol Music Group",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Los Angeles"
+                                    },
+                                    "alias": "CMG"
+                                },
+                                {
+                                    "name": "10K Projects",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Los Angeles"
+                                    },
+                                    "alias": "10K"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "The Beatles' Comeback",
+                        "eventSummary": "Discussion on the release of The Beatles' new single and its success.",
+                        "theme": "Music",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "London"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Paul McCartney",
+                                    "dateOfBirth": "1942-06-18",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Liverpool"
+                                    },
+                                    "alias": "Member of The Beatles"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Capitol Music Group",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Los Angeles"
+                                    },
+                                    "alias": "CMG"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

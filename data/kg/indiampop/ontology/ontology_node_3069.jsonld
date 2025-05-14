@@ -1,0 +1,33 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "CABBAGE",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "thiram (0.3%) + plantomycin (100 ppm) or hot water treatment (54oC) for 10 minutes",
+                "quantity": "Seed treatment"
+            }
+        }
+    ]
+}

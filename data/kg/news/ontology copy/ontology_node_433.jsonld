@@ -1,0 +1,112 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Sam Eggleston",
+      "published": "2023-10-04T22:11:54+00:00",
+      "title": "NBA MVP Odds 2024 Season - Jokic and Giannis early favorites",
+      "summary": "Trying to predict the next NBA MVP is a popular betting option at the best sports betting sites. Because the award has no set criteria for selection, it can be notoriously difficult to predict which player will walk away with the MVP trophy at the end of the season.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Latest NBA MVP odds",
+        "summary": "Check up-to-date odds for the NBA Most Valuable Player Award below. Click any odds to go to the corresponding sportsbook, open an account and claim your new-bettor bonus."
+      },
+      "derivedFrom": {
+        "@type": "snap:asset",
+        "title": "Who are the NBA MVP odds favorites?",
+        "summary": "Nikola Jokic: Falling short of a third consecutive MVP last season, Jokic steered Denver to its first NBA championship through an impressive playoff showing. During the summer, he emerged as a favored MVP candidate. As the Nuggets maintain their key lineup for another championship bid, Jokic consistently demonstrates his game prowess."
+      },
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "https://www.sportingnews.com/us/betting/news/nba-mvp-odds/0761bdb95810bf2c320e6e0f"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Sporting News"
+    }
+  ]
+}
+```

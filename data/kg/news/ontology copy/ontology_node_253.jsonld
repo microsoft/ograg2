@@ -1,0 +1,115 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Beeper Mini is back in operation after Apple’s attempt to shut it down",
+      "byline": "Sarah Perez",
+      "published": "2023-12-11T18:08:48+00:00",
+      "summary": "Beeper Mini, the app bringing blue bubble iMessage texts to Android users, is back in operation on Monday after a long weekend that saw Apple putting an end to Beeper’s services, claiming it was a security risk. Now, the startup behind the new app says it has resumed functioning, but hasn’t disclosed how that’s been made possible. In addition, Beeper Mini will be free for the time being given the unstable nature of Beeper’s status and Apple’s attempts at shutting it down.",
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "image": "https://techcrunch.com/2023/12/11/beeper-mini-is-back-in-operation-after-apples-attempt-to-shut-it-down/"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "TechCrunch"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Eric Migicovsky"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Elizabeth Warren"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Beeper Mini Relaunch",
+      "eventSummary": "Beeper Mini, the app bringing blue bubble iMessage texts to Android users, is back in operation after Apple’s attempt to shut it down."
+    }
+  ]
+}
+```

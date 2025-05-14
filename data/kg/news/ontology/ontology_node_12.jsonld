@@ -1,0 +1,290 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Michigan sign-stealing scandal news: Latest updates on possible Jim Harbaugh suspension from NCAA cheating investigation",
+            "author": "Dan Treacy",
+            "published": "2023-11-06T23:58:04+00:00",
+            "summary": "An investigation into Michigan's alleged sign-stealing scheme, centered on now-fired staffer Connor Stalions, continues to evolve by the hour.",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Michigan fires coach connected to destroying evidence in investigation",
+                        "eventSummary": "The NCAA's investigation has found that Stalions was at least partially funded by a Michigan booster, named as 'Uncle T.'",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Connor Stalions"
+                                },
+                                {
+                                    "name": "Chris Partridge"
+                                },
+                                {
+                                    "name": "Jim Harbaugh"
+                                },
+                                {
+                                    "name": "Biff Poggi"
+                                },
+                                {
+                                    "name": "Santa Ono"
+                                },
+                                {
+                                    "name": "Warde Manuel"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "NCAA"
+                                },
+                                {
+                                    "name": "Big Ten"
+                                },
+                                {
+                                    "name": "University of Michigan"
+                                },
+                                {
+                                    "name": "Sporting News"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Michigan accepts Harbaugh's three-game suspension",
+                        "eventSummary": "Michigan has dropped its litigation against the Big Ten over Harbaugh's three-game suspension.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Jim Harbaugh"
+                                },
+                                {
+                                    "name": "Warde Manuel"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Big Ten"
+                                },
+                                {
+                                    "name": "University of Michigan"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Harbaugh says he'll state his case at Friday hearing",
+                        "eventSummary": "Despite the suspension, Jim Harbaugh held his usual weekly news conference.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Jim Harbaugh"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "U-M president praises Wolverines for handling 'challenges and adversity'",
+                        "eventSummary": "University of Michigan President Santa Ono posted on social media, praising the team's ability to respond to challenges.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Santa Ono"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Warde Manuel issues strong statement against Big Ten",
+                        "eventSummary": "Michigan athletic director Warde Manuel expressed disappointment with the Big Ten's suspension of Harbaugh.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Warde Manuel"
+                                },
+                                {
+                                    "name": "Jim Harbaugh"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Big Ten"
+                                },
+                                {
+                                    "name": "University of Michigan"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Michigan files temporary restraining order against the Big Ten",
+                        "eventSummary": "In an effort to delay Harbaugh's suspension, the university filed a temporary restraining order.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Jim Harbaugh"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Big Ten"
+                                },
+                                {
+                                    "name": "University of Michigan"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Michigan players respond to Harbaugh suspension",
+                        "eventSummary": "Michigan players tweeted 'Bet' after Harbaugh was suspended for the remainder of the regular season.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "J.J. McCarthy"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Big Ten claims no evidence Harbaugh was aware of scheme",
+                        "eventSummary": "The Big Ten asserts that, because he is the head coach, Harbaugh has a responsibility for preventing this kind of scheme.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Jim Harbaugh"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Big Ten"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Jim Harbaugh suspended for remainder of regular season",
+                        "eventSummary": "The Big Ten has officially announced a suspension for Jim Harbaugh for the remaining three games of the regular season.",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Jim Harbaugh"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Big Ten"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

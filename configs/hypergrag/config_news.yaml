@@ -1,0 +1,84 @@
+model:
+  api_base: 
+  api_key: 
+  # api_base: 
+  # api_key: 
+  # deployment_name: gpt-35-turbo-16k # -32k
+  deployment_name: gpt-4o
+  # deployment_name: gpt-4-32k # -32k
+  api_type: openai
+  api_version: '2024-02-01' 
+  # MODEL_NAME: gpt-4-32k
+
+# model:
+#   RESOURCE_ENDPOINT: 
+#   api_base: 
+#   api_key: 
+#   deployment_name: chatgpt432k
+#   api_type: openai
+#   api_version: '2024-02-01' 
+#   # MODEL_NAME: gpt-4-32k
+
+embedding_model:
+  api_base: 
+  api_key: 
+  # api_base: 
+  # api_key: 
+  deployment_name: text-embedding-3-small #ada-002 # sentence-transformers/all-mpnet-base-v2
+  api_type: openai #huggingface
+  api_version: '2024-02-01' 
+
+data:
+  documents_dir: data/news/corpora_reduced
+  ontology_path: data/ontology/snap_ontology.jsonld
+  kg_storage_path: data/kg/news
+  index_dir: index_openai/vector_news
+  subdir: False
+  smart_pdf: True
+  full_text: True
+  chunk_size: 4096
+  
+query:
+  method: ontohypergraph-rag #kg-rag
+  hyperparams:
+    vector_index: False
+    top_k : 2
+    nodes_top_k: 5
+  batch_size: 10
+  mode: json
+  questions_file: 
+    # - data/md/soybean/questions/ragas/testset_10_0p0,0p0,1p0.csv 
+    # - data/md/soybean/questions/ragas/testset_10_0p0,1p0,0p0.csv 
+    # - data/md/soybean/questions/ragas/testset_10_0p5,0p25,0p25.csv 
+    # - data/md/soybean/questions/ragas/testset_10_0p25,0p5,0p25.csv 
+    # - data/md/soybean/questions/ragas/testset_10_0p25,0p25,0p5.csv 
+    # - data/md/soybean/questions/ragas/testset_10_1p0,0p0,0p0.csv
+    # - data/kg/soybean/questions/ontodoc_ragas/testset100_0p34_0p33_0p33.csv
+    - data/kg/news/questions/ontodoc_ragas/testset500_0p0_1p0_0p0.csv  
+  answers_file: results/news/ontodocragas_reasoning_answers_ontohypergraphrag.json
+
+question_generator:
+  framework: ragas
+  test_size: 10
+  distr: 
+    simple: 1.0
+    reasoning: 0.0
+    multi_context: 0.0 
+
+evaluator:
+  eval_file: results/news/ontodocragas_reasoning_answers_ontohypergraphrag_vector_indexFalse_top_k2_nodes_top_k5.json
+  reference_free: True
+  type: single
+  metrics: 
+    # - Comprehensiveness
+    # - Diversity
+    # - Empowerment
+    # - Directness
+    - answer_correctness
+    - faithfulness
+    - answer_similarity
+    - answer_relevancy
+    - context_relevancy
+    - context_precision
+    - context_recall
+    - context_entity_recall

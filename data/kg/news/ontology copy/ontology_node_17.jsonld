@@ -1,0 +1,150 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:event1",
+      "@type": "snap:event",
+      "eventTitle": "OpenAI connects ChatGPT to the internet",
+      "eventSummary": "OpenAI launched plugins for ChatGPT, extending the bot’s functionality by granting it access to third-party knowledge sources and databases, including the web.",
+      "created": "2023-03-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:event2",
+      "@type": "snap:event",
+      "eventTitle": "OpenAI launches GPT-4",
+      "eventSummary": "GPT-4 is a powerful image- and text-understanding AI model from OpenAI. Released March 14, GPT-4 is available for paying ChatGPT Plus users and through a public API.",
+      "created": "2023-03-14T00:00:00Z"
+    },
+    {
+      "@id": "snap:event3",
+      "@type": "snap:event",
+      "eventTitle": "ChatGPT is available in Azure OpenAI service",
+      "eventSummary": "ChatGPT is generally available through the Azure OpenAI Service, Microsoft’s fully managed, corporate-focused offering.",
+      "created": "2023-02-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:event4",
+      "@type": "snap:event",
+      "eventTitle": "OpenAI launches an API for ChatGPT",
+      "eventSummary": "OpenAI makes another move toward monetization by launching a paid API for ChatGPT.",
+      "created": "2023-03-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:event5",
+      "@type": "snap:event",
+      "eventTitle": "Microsoft launches the new Bing with ChatGPT",
+      "eventSummary": "Microsoft announced its integration of OpenAI’s GPT-4 model into Bing, providing a ChatGPT-like experience within the search engine.",
+      "created": "2023-02-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:event6",
+      "@type": "snap:event",
+      "eventTitle": "OpenAI launches ChatGPT Plus",
+      "eventSummary": "OpenAI launched a new pilot subscription plan for ChatGPT called ChatGPT Plus, aiming to monetize the technology starting at $20 per month.",
+      "created": "2023-01-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:event7",
+      "@type": "snap:event",
+      "eventTitle": "OpenAI teases ChatGPT Professional",
+      "eventSummary": "OpenAI said that it’s starting to think about how to monetize ChatGPT in an announcement on the company’s official Discord server.",
+      "created": "2023-01-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:event8",
+      "@type": "snap:event",
+      "eventTitle": "ShareGPT lets you easily share your ChatGPT conversations",
+      "eventSummary": "Two developers made a Chrome extension called ShareGPT to make it easier to capture and share the AI’s answers with the world.",
+      "created": "2022-12-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:event9",
+      "@type": "snap:event",
+      "eventTitle": "ChatGPT first launched to the public",
+      "eventSummary": "GPT-3.5 broke cover with ChatGPT, a fine-tuned version of GPT-3.5 that’s essentially a general-purpose chatbot.",
+      "created": "2022-11-30T00:00:00Z"
+    }
+  ]
+}
+```

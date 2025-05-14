@@ -1,0 +1,53 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "FarmImplementsAndMachinery": {
+            "@id": "cropCult:FarmImplementsAndMachinery",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_special_features": "schema:Text",
+                "has_horticulture": {
+                    "@id": "cropCult:Horticulture",
+                    "@type": "schema:Thing",
+                    "@context": {
+                        "name": "schema:name",
+                        "has_tractor_operated_multi_purpose_hoist": {
+                            "@id": "cropCult:TractorOperatedMultiPurposeHoist",
+                            "@type": "schema:Thing",
+                            "@context": {
+                                "name": "schema:name",
+                                "has_special_features": "schema:Text",
+                                "has_harvesting_capacity": "schema:QuantitativeValue"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "cropCult:FarmImplementsAndMachinery",
+            "@type": "FarmImplementsAndMachinery",
+            "name": "FARM IMPLEMENTS AND MACHINERY",
+            "has_horticulture": {
+                "@id": "cropCult:Horticulture",
+                "@type": "Horticulture",
+                "name": "HORTICULTURE",
+                "has_tractor_operated_multi_purpose_hoist": {
+                    "@id": "cropCult:TractorOperatedMultiPurposeHoist",
+                    "@type": "TractorOperatedMultiPurposeHoist",
+                    "name": "TRACTOR OPERATED MULTI-PURPOSE HOIST",
+                    "has_special_features": "Special features",
+                    "has_harvesting_capacity": {
+                        "@type": "QuantitativeValue",
+                        "value": "45 trees/day",
+                        "description": "(38 trees/day for existing model)"
+                    }
+                }
+            }
+        }
+    ]
+}

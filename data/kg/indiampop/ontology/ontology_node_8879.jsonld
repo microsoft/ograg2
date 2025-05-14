@@ -1,0 +1,143 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "cropCult:BedSpawn",
+            "@type": "Crop",
+            "name": "Bed Spawn",
+            "has_types": {
+                "@id": "cropCult:CropType",
+                "name": "Spawn",
+                "used_for": "Bed"
+            },
+            "has_growing_zones": {
+                "@id": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Zone 1",
+                    "has_regions": ["Region 1", "Region 2"],
+                    "has_seed_recommendations": {
+                        "@id": "cropCult:SeedList",
+                        "variety_name": ["Variety 1", "Variety 2"],
+                        "has_early_sowing_time": {
+                            "@id": "cropCult:SowingTime",
+                            "start_date": "2022-01-01",
+                            "end_date": "2022-01-31"
+                        },
+                        "has_late_sowing_time": {
+                            "@id": "cropCult:SowingTime",
+                            "start_date": "2022-02-01",
+                            "end_date": "2022-02-28"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "100",
+                            "unitText": "bags per day"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@id": "cropCult:Fertilization",
+                            "nutrient_name": "Nutrient 1",
+                            "quantity": "1 kg",
+                            "stage_of_application": "Early growth"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@id": "cropCult:TemperatureRequirements",
+                "for_germination": "20-25°C",
+                "for_flowering": "15-20°C",
+                "for_grain_filling": "10-15°C",
+                "negative_effect": "Below 10°C"
+            },
+            "has_soil_requirements": {
+                "@id": "cropCult:SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Sandy",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@id": "cropCult:LandPreparation",
+                "instructions": "Plough the land to a fine tilth",
+                "with_soil_moisture": "Moist but not waterlogged"
+            },
+            "seed_germination_test_requirements_are": "Test for germination before sowing",
+            "has_seed_fungicide_requirements": {
+                "@id": "cropCult:Fungicide",
+                "name": "Fungicide 1",
+                "quantity": "1 litre"
+            },
+            "needs_seed_sowing_spacing": {
+                "@id": "cropCult:SeedSpacing",
+                "sowing_time": "Early morning",
+                "value": "15 cm",
+                "depth": "5 cm",
+                "method": "Direct sowing"
+            },
+            "weed_management_needs_are": {
+                "@id": "cropCult:WeedManagement",
+                "weed_name": "Weed 1",
+                "weed_types": ["Type 1", "Type 2"],
+                "herbicides": {
+                    "@id": "cropCult:HerbicideList",
+                    "name": "Herbicide 1",
+                    "quantity": "1 litre",
+                    "stage": "Early growth"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@id": "cropCult:IrrigationRequirement",
+                "quantity": "1 inch per week",
+                "stage_of_application": "Throughout the growing season"
+            },
+            "needs_disease_treatements": {
+                "@id": "cropCult:DiseaseTreatements",
+                "disease_name": "Disease 1",
+                "disease_symptoms": "Yellowing of leaves",
+                "disease_control": {
+                    "@id": "cropCult:HerbicideList",
+                    "name": "Herbicide 2",
+                    "quantity": "1 litre",
+                    "stage": "At the first sign of disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "@id": "cropCult:PestTreatements",
+                "pest_name": "Pest 1",
+                "pest_symptoms": "Holes in leaves",
+                "pest_control": {
+                    "@id": "cropCult:PesticideList",
+                    "name": "Pesticide 1",
+                    "quantity": "1 litre",
+                    "stage": "At the first sign of pests"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when the grains are dry and hard",
+            "storage_guidelines_are": "Store in a cool, dry place"
+        }
+    ]
+}

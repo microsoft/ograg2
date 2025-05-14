@@ -1,0 +1,269 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "title": "Padres stretch Lugo into full-time starter",
+            "author": "Mark Feinsand",
+            "summary": "The Padres stretched Lugo back into a full-time starter in 2023, and the 34-year-old posted a 3.57 ERA across 146.1 innings. Kansas City can use plenty of rotation help after a dismal 2023 season, so Lugo figures to be one of the Royals' top arms in 2024 and perhaps beyond.",
+            "created": "2023-12-12T00:00:00Z",
+            "published": "2023-12-12T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList1",
+                "Event": [
+                    {
+                        "eventTitle": "Yamamoto to meet with Red Sox, Blue Jays",
+                        "eventSummary": "MLB.com's Mark Feinsand reports Japanese ace Yoshinobu Yamamoto will meet with both the Red Sox and Blue Jays in the coming days.",
+                        "theme": "MLB",
+                        "mentions_persons": {
+                            "@id": "snap:personList1",
+                            "Person": [
+                                {
+                                    "name": "Yoshinobu Yamamoto",
+                                    "dateOfBirth": "1998-08-06",
+                                    "placeOfBirth": "Japan"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList1",
+                            "Organization": [
+                                {
+                                    "name": "Red Sox"
+                                },
+                                {
+                                    "name": "Blue Jays"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Dodgers formally announce Ohtani signing",
+                        "eventSummary": "The Dodgers have officially announced their signing of Ohtani, calling him a 'once-in-a-generation talent and one of the most exciting professional athletes in the world.'",
+                        "theme": "MLB",
+                        "mentions_persons": {
+                            "@id": "snap:personList2",
+                            "Person": [
+                                {
+                                    "name": "Shohei Ohtani",
+                                    "dateOfBirth": "1994-07-05",
+                                    "placeOfBirth": "Japan"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList2",
+                            "Organization": [
+                                {
+                                    "name": "Los Angeles Dodgers"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Ohtani to defer $680 million of $700 million Dodgers deal",
+                        "eventSummary": "According to The Athletic, Ohtani will defer a whopping $680 million of his $700 million contract from the Dodgers, receiving only $2 million per year.",
+                        "theme": "MLB",
+                        "mentions_persons": {
+                            "@id": "snap:personList3",
+                            "Person": [
+                                {
+                                    "name": "Shohei Ohtani"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList3",
+                            "Organization": [
+                                {
+                                    "name": "Los Angeles Dodgers"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Giants reportedly meet with Yamamoto",
+                        "eventSummary": "ESPN's Buster Olney reports the Giants met with Japanese ace Yoshinobu Yamamoto on Sunday, Dec. 10.",
+                        "theme": "MLB",
+                        "mentions_persons": {
+                            "@id": "snap:personList4",
+                            "Person": [
+                                {
+                                    "name": "Yoshinobu Yamamoto"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList4",
+                            "Organization": [
+                                {
+                                    "name": "Giants"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Royals agree to 1-year deal with reliever Will Smith",
+                        "eventSummary": "The Royals have agreed to a 1-year, $5 million contract with reliever Will Smith, who spent this past season with the Rangers.",
+                        "theme": "MLB",
+                        "mentions_persons": {
+                            "@id": "snap:personList5",
+                            "Person": [
+                                {
+                                    "name": "Will Smith",
+                                    "dateOfBirth": "1989-07-05",
+                                    "placeOfBirth": "USA"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList5",
+                            "Organization": [
+                                {
+                                    "name": "Kansas City Royals"
+                                },
+                                {
+                                    "name": "Rangers"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Shohei Ohtani agrees to mega contract with Dodgers",
+                        "eventSummary": "Two-time MVP Shohei Ohtani announced on Instagram that he is signing with the Los Angeles Dodgers, spurning the Blue Jays and remaining in the city where he became a sensation with the Angels.",
+                        "theme": "MLB",
+                        "mentions_persons": {
+                            "@id": "snap:personList6",
+                            "Person": [
+                                {
+                                    "name": "Shohei Ohtani"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList6",
+                            "Organization": [
+                                {
+                                    "name": "Los Angeles Dodgers"
+                                },
+                                {
+                                    "name": "Blue Jays"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Red Sox swing deal for Cardinals' Tyler O'Neill",
+                        "eventSummary": "Days after trading Alex Verdugo to the Yankees, the Red Sox have acquired OF Tyler O'Neill from the Cardinals in a deal that sends pitching prospects Nick Robertson and Victor Santos to St. Louis.",
+                        "theme": "MLB",
+                        "mentions_persons": {
+                            "@id": "snap:personList7",
+                            "Person": [
+                                {
+                                    "name": "Tyler O'Neill",
+                                    "dateOfBirth": "1995-06-22",
+                                    "placeOfBirth": "Canada"
+                                },
+                                {
+                                    "name": "Alex Verdugo"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList7",
+                            "Organization": [
+                                {
+                                    "name": "Red Sox"
+                                },
+                                {
+                                    "name": "Cardinals"
+                                },
+                                {
+                                    "name": "Yankees"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

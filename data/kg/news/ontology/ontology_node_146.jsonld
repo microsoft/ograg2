@@ -1,0 +1,224 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "The best shows to stream in December",
+            "author": "Craig Mathieson",
+            "published": "2023-11-30T22:00:00+00:00",
+            "theme": "entertainment",
+            "summary": "A comprehensive overview of the best shows to stream in December, including recommendations from various streaming platforms.",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Maestro",
+                        "eventSummary": "Bradley Cooper stars as legendary conductor-composer Leonard Bernstein in this biopic focusing on his life and relationships.",
+                        "theme": "Film",
+                        "mentions_persons": {
+                            "Person": [
+                                {
+                                    "name": "Bradley Cooper"
+                                },
+                                {
+                                    "name": "Carey Mulligan"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "Organization": [
+                                {
+                                    "name": "Netflix"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Yellowjackets",
+                        "eventSummary": "A horror thriller about a group of women confronting their traumatic past after being stranded in the wilderness.",
+                        "theme": "TV Series",
+                        "mentions_persons": {
+                            "Person": [
+                                {
+                                    "name": "Juliette Lewis"
+                                },
+                                {
+                                    "name": "Melanie Lynskey"
+                                },
+                                {
+                                    "name": "Christina Ricci"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "Organization": [
+                                {
+                                    "name": "Paramount+"
+                                },
+                                {
+                                    "name": "Netflix"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Strife",
+                        "eventSummary": "An Australian comic-drama based on Mia Freedman's memoir, focusing on a woman's struggles in her personal and professional life.",
+                        "theme": "TV Series",
+                        "mentions_persons": {
+                            "Person": [
+                                {
+                                    "name": "Asher Keddie"
+                                },
+                                {
+                                    "name": "Mia Freedman"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "Organization": [
+                                {
+                                    "name": "Binge"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Bump",
+                        "eventSummary": "A comic-drama series that follows the lives of a couple dealing with the challenges of teenage pregnancy.",
+                        "theme": "TV Series",
+                        "mentions_persons": {
+                            "Person": [
+                                {
+                                    "name": "Claudia Karvan"
+                                },
+                                {
+                                    "name": "Nathalie Morris"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "Organization": [
+                                {
+                                    "name": "Stan"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Reacher",
+                        "eventSummary": "An action series based on Lee Child's novels about a former military policeman who solves crimes.",
+                        "theme": "TV Series",
+                        "mentions_persons": {
+                            "Person": [
+                                {
+                                    "name": "Alan Ritchson"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "Organization": [
+                                {
+                                    "name": "Amazon Prime"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "The Snoopy Show: Happiness is Holiday Traditions",
+                        "eventSummary": "An animated special featuring the Peanuts gang, celebrating holiday traditions.",
+                        "theme": "Animation",
+                        "mentions_persons": {
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "Organization": [
+                                {
+                                    "name": "Apple TV+"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

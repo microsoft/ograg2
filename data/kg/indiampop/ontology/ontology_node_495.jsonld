@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Seasons": {
+            "@id": "cropCult:Seasons",
+            "@type": "schema:Thing",
+            "@context": {
+                "Rainfed_crop": "cropCult:SowingTime",
+                "Irrigated_crop": "cropCult:SowingTime"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Seasons",
+            "Rainfed_crop": {
+                "@type": "SowingTime",
+                "start_date": "May",
+                "end_date": "August"
+            },
+            "Irrigated_crop": {
+                "@type": "SowingTime",
+                "start_date": "January",
+                "end_date": "April"
+            }
+        }
+    ]
+}

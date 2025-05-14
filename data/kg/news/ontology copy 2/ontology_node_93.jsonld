@@ -1,0 +1,138 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "JLab EQ Presets",
+            "content": "JLab even bakes three different EQ presets directly into the earphones. If you’re looking for a cheap backup to your main wireless earphones, this is a great value."
+        },
+        {
+            "@id": "snap:asset2",
+            "@type": "schema:Thing",
+            "title": "Google Pixel Buds Pro",
+            "content": "The Google Pixel Buds Pro are available for a new low of $115 at Wellbots, which is about $50 off their average street price. Other retailers like Amazon and Best Buy have them for $5 more. We call the Pixel Buds Pro the best option for Android users in our wireless earbuds buying guide due to their tight integration with the OS (and Google’s Pixel phones in particular). Their ANC and V-shaped sound are solid (if not superlative) as well, and they can last between up to 11 hours depending on how often you use the former. The fit may be tricky for those with smaller ear canals, though. We gave this pair a score of 87 in our review last year."
+        },
+        {
+            "@id": "snap:asset3",
+            "@type": "schema:Thing",
+            "title": "Beyerdynamic DT 900 Pro X",
+            "content": "Beyerdynamic's DT 900 Pro X headphones are down to $249 at Amazon and Target from a trusted third-party seller. That’s only $20 off their usual going rate, but we haven’t seen many larger discounts over the past few months. The DT 900 Pro X is a wired pair of open-back headphones designed for critical listening at home. It’s currently the top pick in our guide to the best headphones for gaming, as its wonderfully spacious sound does well to envelop you in the fine details of any given game. Like most open-back cans, it can’t produce truly deep sub-bass, but it delivers enough low-end to give in-game explosions a powerful sense of impact. A set of soft velour earpads keep the whole thing comfortable, though it can’t fold up, and the open design means it won’t block much external noise when you’re outside of the house."
+        },
+        {
+            "@id": "snap:asset4",
+            "@type": "schema:Thing",
+            "title": "Sennheiser HD 560S",
+            "content": "The Sennheiser HD 560S is another open-back pair of wired headphones we highlight in our gaming headset guide. It’s down to $150 at Amazon, B&H, Sennheiser’s online store and other retailers — that’s not an incredible deal, as the pair often sold for the same rate earlier in the year, but it’s about $30 less than the street price we’ve seen since the summer. Regardless, the HD 560S offers a pleasingly balanced, spacious and detailed sound profile and a frame that’s comfortable to wear for extended periods. It can sometimes sound a little piercing in the treble, it’s not as sturdily built as the DT 900 Pro X and, again, it’ll leak and let in lots of noise. But if you want audio-centric headphones for less than $200, this is one of the better options in the price range."
+        },
+        {
+            "@id": "snap:asset5",
+            "@type": "schema:Thing",
+            "title": "Drop X Sennheiser HD 6XX",
+            "content": "In other Sennheiser deals, the Drop X Sennheiser HD 6XX is on sale for $169 at Drop, a $50 discount that’s only $10 more than the lowest price we’ve tracked. We haven’t formally reviewed this pair, but Engadget’s audio expert Billy Steele gave some positive impressions in a hands-on way back in 2016, and the pair upon which it’s based (the Sennheiser HD 650) has long been a favorite among audiophiles. If you’d prefer an open-back pair with a little more bass warmth, it might be worth a look."
+        },
+        {
+            "@id": "snap:asset6",
+            "@type": "schema:Thing",
+            "title": "Astro A40 TR",
+            "content": "Our favorite dedicated gaming headset for most people, the Astro A40 TR, is down to $100 at Amazon. That’s a $30 discount. This deal bundles the headset with Astro’s MixAmp M80, an optional amp that connects to Xbox controllers and provides various audio controls. Even without the accessory, we like the open-back A40 for providing a wider soundstage than most gaming headsets. It’s not as open or detailed as the Beyerdynamic DT 900 Pro X or Sennheiser HD 560S, and it misses more detail in the treble range, but it’s immersive, with a slight bass boost gives in-game effects a little extra boom. The headset as a whole looks “gamer-y,” but it’s comfortable. And while its built-in mic isn’t the clearest we’ve tested, it’s at least serviceable for basic chat."
+        },
+        {
+            "@id": "snap:asset7",
+            "@type": "schema:Thing",
+            "title": "HyperX Cloud Stinger 2",
+            "content": "If all you want is a decent gaming headset for as little as possible, the HyperX Cloud Stinger 2 is worth considering at $35. That’s only $5 below its usual going rate, but it matches the lowest price we’ve seen. The Cloud Stinger 2 is the budget pick in our gaming headset guide: It sounds narrower and less balanced than the Astro A40, but its built-in mic is great for the money and its bass-heavy profile at least makes action scenes feel a little more exciting. It’s all comfy, too, though it’s largely made of plastic."
+        },
+        {
+            "@id": "snap:asset8",
+            "@type": "schema:Thing",
+            "title": "Logitech G535",
+            "content": "The Logitech G535 is another honorable mention in our gaming headsets guide, one that should specifically appeal to those who want a wireless option for less than $100. If that’s you, good news: It’s available for just under $80 at Amazon, B&H and Best Buy, which is about $25 off its usual street price. The G535’s noticeably light frame, relatively balanced sound and Bluetooth support all impress for the price; just note that it doesn’t work with Xbox, and that its mic sounds a bit thinner than the wired headsets highlighted above. Its battery life clocks in at 30 to 35 hours per charge, which is decent but not great."
+        },
+        {
+            "@id": "snap:asset9",
+            "@type": "schema:Thing",
+            "title": "Shokz OpenRun Pro",
+            "content": "The Shokz OpenRun Pro is back down to $125 for Black Friday, which is $25 more than its all-time low but $55 less than its usual street price. These are bone conduction headphones, which means they go around the side of your head and deliver sound via vibrations to your skull. If you want to listen to music and podcasts without totally blocking the outside world, they might make sense. The flipsides are that they’re harder to use in noisier areas and, generally speaking, not as full-sounding as traditional in-ear headphones. Engadget Editor Jon Turi found this pair to deliver more low-end depth than most of its peers, however. It can also last up to 10 hours per charge."
+        }
+    ]
+}

@@ -1,0 +1,112 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "title": "Why do Americans celebrate Thanksgiving?",
+            "byline": "Chelsea Ritschel",
+            "published": "2023-11-11T09:04:08+00:00",
+            "summary": "Americans started preparing their Thanksgiving menus weeks ago, with the requisite turkeys and stuffing ingredients likely already purchased for the holiday, which is celebrated this year on Thursday 23 November. Apart from the food - arguably the main component of the day - the holiday is a beloved time of year when Americans come together to celebrate what they are thankful for, either with family or friends. In America, Thanksgiving is a cultural holiday that symbolises peace, thankfulness, and the beginning of the holiday season.",
+            "associatedAsset": {
+                "@type": "snap:imageAsset",
+                "image": "https://www.independent.co.uk/life-style/history-of-thanksgiving-americans-b2445625.html"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Thanksgiving",
+            "eventSummary": "Thanksgiving is a national holiday in the United States celebrated every fourth Thursday in November. The annual feast is in honour of the 'first' Thanksgivings in America, in 1619 in Virginia, and in 1621, when colonists in Plymouth, Massachusetts, later known as the Pilgrims, allegedly shared a meal with the Wampanoag Indians, who were native to the land. The later feast was in honour of the help the Pilgrims received from the Native Americans in cultivating crops and surviving their first harsh winter and it lasted three days.",
+            "theme": {
+                "@type": "snap:intangibleStuff",
+                "comment": "Cultural holiday, peace, thankfulness"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Macy's Thanksgiving Day Parade",
+            "eventSummary": "The Macy's Thanksgiving Day Parade takes place in New York City. The world’s largest Thanksgiving parade includes giant balloons of cartoons that float above the city sky, as well as marching bands and dancers."
+        }
+    ]
+}
+```

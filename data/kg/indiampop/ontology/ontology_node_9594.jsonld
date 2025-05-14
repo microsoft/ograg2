@@ -1,0 +1,61 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "FoodProcessing": {
+            "@id": "cropCult:FoodProcessing",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_ingredients": "cropCult:IngredientList",
+                "has_nutritional_value": "cropCult:NutritionalValue",
+                "has_shelf_life": "schema:Text"
+            }
+        },
+        "IngredientList": {
+            "@id": "cropCult:IngredientList",
+            "@type": "schema:ItemList",
+            "@context": {
+                "ingredient_name": "schema:Text"
+            }
+        },
+        "NutritionalValue": {
+            "@id": "cropCult:NutritionalValue",
+            "@type": "schema:Thing",
+            "@context": {
+                "protein": "schema:QuantitativeValue",
+                "iron": "schema:QuantitativeValue",
+                "calcium": "schema:QuantitativeValue"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:FoodProcessing",
+            "name": "Khakra",
+            "has_ingredients": {
+                "@type": "cropCult:IngredientList",
+                "ingredient_name": "defatted soya flour"
+            },
+            "has_nutritional_value": {
+                "@type": "cropCult:NutritionalValue",
+                "protein": {
+                    "@type": "schema:QuantitativeValue",
+                    "value": "70",
+                    "unitText": "%"
+                },
+                "iron": {
+                    "@type": "schema:QuantitativeValue",
+                    "value": "50",
+                    "unitText": "%"
+                },
+                "calcium": {
+                    "@type": "schema:QuantitativeValue",
+                    "value": "36",
+                    "unitText": "%"
+                }
+            },
+            "has_shelf_life": "The product has a shelf life upto 90 days at room temperature."
+        }
+    ]
+}

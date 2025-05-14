@@ -1,0 +1,33 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "CropProtection": {
+            "@id": "cropCult:CropProtection",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_nursery_management_strategies": "cropCult:NurseryManagementStrategies"
+            }
+        },
+        "NurseryManagementStrategies": {
+            "@id": "cropCult:NurseryManagementStrategies",
+            "@type": "schema:Thing",
+            "@context": {
+                "strategy_name": "schema:name",
+                "strategy_description": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "CropProtection",
+            "name": "CROP PROTECTION",
+            "has_nursery_management_strategies": {
+                "@type": "NurseryManagementStrategies",
+                "strategy_name": "i) Nursery",
+                "strategy_description": "Management strategies"
+            }
+        }
+    ]
+}

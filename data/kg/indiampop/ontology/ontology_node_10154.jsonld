@@ -1,0 +1,33 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_land_preperation_requirements": "cropCult:LandPreparation"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "RICE (Oryza sativa)",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the field thoroughly to incorporate the weeds and straw into the soil. Ensure a smooth, level field for transplanting the seedlings. It would be better to transplant 10-15 days after incorporating organic manure.",
+                "with_soil_moisture": "Not specified"
+            }
+        }
+    ]
+}

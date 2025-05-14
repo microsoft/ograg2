@@ -1,0 +1,131 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "Sheena Vasani",
+            "published": "2023-10-28T16:40:43+00:00",
+            "title": "Govee’s colorful LED light strips are on sale just in time for Halloween",
+            "summary": "Govee’s Matter-ready LED Strip Light M1 is on sale for an all-time low of $44.99 at Amazon. The customizable light strip is 6.56 feet long and can display millions of colors and shades of white.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://www.theverge.com/2023/10/28/23934752/govee-led-strip-light-m1-matter-google-pixel-buds-pro-watch-deal-sale"
+            }
+        },
+        {
+            "@type": "snap:asset",
+            "byline": "Sheena Vasani",
+            "published": "2023-10-28T16:40:43+00:00",
+            "title": "Google’s Pixel Buds Pro",
+            "summary": "Google’s Pixel Buds Pro are available for $117 at Wellbots with offer code VERGE83. They offer active noise cancellation, multipoint connectivity, and long battery life.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://www.theverge.com/2023/10/28/23934752/govee-led-strip-light-m1-matter-google-pixel-buds-pro-watch-deal-sale"
+            }
+        },
+        {
+            "@type": "snap:asset",
+            "byline": "Sheena Vasani",
+            "published": "2023-10-28T16:40:43+00:00",
+            "title": "Google Pixel Watch",
+            "summary": "Google’s first-gen Pixel Watch is available for $199.99 at Wellbots with promo code VERGEPIX80. It offers health and fitness-tracking features powered by Fitbit.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://www.theverge.com/2023/10/28/23934752/govee-led-strip-light-m1-matter-google-pixel-buds-pro-watch-deal-sale"
+            }
+        },
+        {
+            "@type": "snap:asset",
+            "byline": "Sheena Vasani",
+            "published": "2023-10-28T16:40:43+00:00",
+            "title": "Blink Video Doorbell (with Blink Outdoor 4)",
+            "summary": "Blink’s Video Doorbell and Blink Outdoor 4 are available for $89.99 at Amazon. They offer motion-activated recording, night vision, and two-way audio.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://www.theverge.com/2023/10/28/23934752/govee-led-strip-light-m1-matter-google-pixel-buds-pro-watch-deal-sale"
+            }
+        }
+    ]
+}
+```

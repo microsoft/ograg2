@@ -1,0 +1,130 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "Kyle Wiggers",
+            "published": "2023-11-30T14:10:43+00:00",
+            "title": "One year later, ChatGPT is still alive and kicking",
+            "summary": "ChatGPT, OpenAI’s viral AI chatbot, turns one today. A year ago, OpenAI released ChatGPT as a “low-key research preview” — reportedly spurred in part by an intense rivalry with AI startup Anthropic. The goal, OpenAI leadership told the OpenAI rank-and-file at the time, was to gather more data on how people use and interact with generative AI to inform the development of OpenAI’s future models. Initially a basic free-to-use, web-based and chat-focused interface on top of one of OpenAI’s existing models, GPT-3.5, ChatGPT would go on to become the company’s most popular product… ever — and the fastest-growing consumer app in history.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://techcrunch.com/2023/11/30/one-year-later-chatgpt-is-still-alive-and-kicking/"
+            }
+        },
+        {
+            "@type": "snap:organization",
+            "name": "TechCrunch"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "OpenAI"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Sam Altman"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Stella Biderman"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Ruoxi Shang"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Adam Hyland"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Kevin Roose"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Derek Thompson"
+        }
+    ]
+}
+```

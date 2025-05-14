@@ -1,0 +1,141 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Pulses",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Pulses",
+                "used_for": "Rich source of protein, soil fertility, moisture stress resistance, catch crops, mixed crops, intercrops"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Rainfed land, young orchards, coconut plantation",
+                    "has_regions": ["Arhar region", "Cotton region", "Sugarcane region", "Castor region"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Arhar", "Cotton", "Sugarcane", "Castor"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Start of rainy season",
+                            "end_date": "End of rainy season"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Start of winter season",
+                            "end_date": "End of winter season"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "1.5 to 2.0 kg/ha"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Nitrogen, Phosphorus, Potassium",
+                            "quantity": "20-25 kg/ha N, 40-60 kg/ha P2O5, 20-25 kg/ha K2O",
+                            "stage_of_application": "At sowing and 30 days after sowing"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "20-30°C",
+                "for_flowering": "15-20°C",
+                "for_grain_filling": "10-15°C",
+                "negative_effect": "Temperature above 35°C and below 10°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Well drained loamy to sandy loam",
+                "avoid_soil_type": "Heavy clayey and waterlogged soils",
+                "for_water": "Moderate water holding capacity",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Ploughing, harrowing and leveling",
+                "with_soil_moisture": "Moderate soil moisture"
+            },
+            "seed_germination_test_requirements_are": "Germination test required before sowing",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Thiram or Captan",
+                "quantity": "2-3 g/kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "At the onset of monsoon",
+                "value": "Row to row 20-30 cm, plant to plant 10-15 cm",
+                "depth": "3-4 cm depth",
+                "method": "Dibbling method"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Phalaris minor, Chenopodium album, Melilotus alba",
+                "weed_types": ["Grass weeds", "Broadleaf weeds", "Sedges"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Isoproturon, 2,4-D",
+                    "quantity": "0.75-1.0 kg/ha, 0.75-1.0 kg/ha",
+                    "stage": "Post-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "500-600 mm",
+                "stage_of_application": "Pre-sowing, flowering, pod development"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Fusarium wilt, Ascochyta blight, Botrytis grey mould",
+                "disease_symptoms": "Wilting of plants, leaf spots, grey mould on pods",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Carbendazim, Mancozeb",
+                    "quantity": "0.5-1.0 kg/ha",
+                    "stage": "At the onset of disease symptoms"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Pod borer, Aphids, Cutworms",
+                "pest_symptoms": "Holes in pods, curling of leaves, cutting of seedlings at base",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Quinalphos, Dimethoate, Chlorpyrifos",
+                    "quantity": "0.5-1.0 kg/ha",
+                    "stage": "At the onset of pest symptoms"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when pods are fully matured and dried",
+            "storage_guidelines_are":"Store in a cool and dry place"
+        }
+    ]
+}

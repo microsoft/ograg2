@@ -1,0 +1,82 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "RearingSeason": {
+            "@id": "cropCult:RearingSeason",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate",
+                "description": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "Apiculture",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "Honeybees",
+                "used_for": "Beekeeping"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Spring",
+                    "has_regions": ["Natural sources", "Beekeepers"],
+                    "has_seed_recommendations": {
+                        "@type": "cropCult:SeedList",
+                        "variety_name": ["Seeds", "Colonies"],
+                        "has_early_sowing_time": {
+                            "@type": "cropCult:SowingTime",
+                            "start_date": "February",
+                            "end_date": "March"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "cropCult:SowingTime",
+                            "start_date": "December",
+                            "end_date": "January"
+                        },
+                        "has_seeding_rate": {
+                            "value": "3-4 frame worker bee",
+                            "unitText": "Colony"
+                        }
+                    }
+                }
+            },
+            "has_land_preperation_requirements": {
+                "@type": "cropCult:LandPreparation",
+                "instructions": "Rearing can be started with three or four frame worker bee having one year mated queen."
+            },
+            "RearingSeason": {
+                "@type": "cropCult:RearingSeason",
+                "start_date": "February",
+                "end_date": "March",
+                "description": "Seeds or colonies are normally available during spring i.e. February to March as this is a peak-breeding season of the honeybees. Colonies can be collected from the natural sources or may be procured from the beekeepers."
+            }
+        }
+    ]
+}

@@ -1,0 +1,141 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "FOXTAIL MILLET (Setaria italica L.Beauv.)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "FOXTAIL MILLET",
+                "used_for": "Grain"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Rainfed",
+                    "has_regions": ["Region1", "Region2"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Variety1", "Variety2"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-01-01",
+                            "end_date": "2022-02-01"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-02-01",
+                            "end_date": "2022-03-01"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "50-100 qtl/ha"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Nutrient1",
+                            "quantity": "Quantity1",
+                            "stage_of_application": "Stage1"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Temperature1",
+                "for_flowering": "Temperature2",
+                "for_grain_filling": "Temperature3",
+                "negative_effect": "Temperature4"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "SoilType1",
+                "avoid_soil_type": "SoilType2",
+                "for_water": "Water1",
+                "for_nutrients": "Nutrients1"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Instructions1",
+                "with_soil_moisture": "SoilMoisture1"
+            },
+            "seed_germination_test_requirements_are": "TestRequirements1",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Fungicide1",
+                "quantity": "Quantity1"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "SowingTime1",
+                "value": "Value1",
+                "depth": "Depth1",
+                "method": "Method1"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Weed1",
+                "weed_types": ["WeedType1", "WeedType2"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Herbicide1",
+                    "quantity": "Quantity1",
+                    "stage": "Stage1"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Quantity1",
+                "stage_of_application": "Stage1"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Disease1",
+                "disease_symptoms": "Symptoms1",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Herbicide1",
+                    "quantity": "Quantity1",
+                    "stage": "Stage1"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Pest1",
+                "pest_symptoms": "Symptoms1",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Pesticide1",
+                    "quantity": "Quantity1",
+                    "stage": "Stage1"
+                }
+            },
+            "harvesting_guidelines_are": "HarvestingGuidelines1",
+            "storage_guidelines_are": "StorageGuidelines1"
+        }
+    ]
+}

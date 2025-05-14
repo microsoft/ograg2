@@ -1,0 +1,143 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "The Soccer Star on the Verge of Breaking an 89-Year-Old Record",
+            "byline": "The New York Times",
+            "published": "2023-11-17T21:47:19+00:00",
+            "summary": "Erling Haaland is just six away from Norway’s goalscoring record, so it is surely inevitable that he will soon be his nation’s most prolific striker ever. On one hand, that will have happened remarkably quickly – Haaland only scored his first goals for Norway in 2020. On the other, this has been an incredibly long time coming.",
+            "associatedAsset": {
+                "@type": "TextAsset",
+                "image": "https://theathletic.com/5065646/2023/11/16/erling-haaland-longest-international-goal-records/"
+            }
+        },
+        {
+            "@type": "Person",
+            "name": "Erling Haaland",
+            "notablyAssociatedWith": {
+                "@type": "Event",
+                "eventTitle": "Breaking Norway's Goalscoring Record",
+                "eventSummary": "Erling Haaland is on the verge of breaking Norway's longstanding goalscoring record set by Jorgen Juve."
+            }
+        },
+        {
+            "@type": "Person",
+            "name": "Jorgen Juve",
+            "notablyAssociatedWith": {
+                "@type": "Event",
+                "eventTitle": "Norway's Goalscoring Record",
+                "eventSummary": "Jorgen Juve set Norway's goalscoring record with 33 goals in 45 matches."
+            }
+        },
+        {
+            "@type": "Person",
+            "name": "Poul “Tist” Nielsen",
+            "notablyAssociatedWith": {
+                "@type": "Event",
+                "eventTitle": "Denmark's Goalscoring Record",
+                "eventSummary": "Poul “Tist” Nielsen scored 52 goals in 38 games for Denmark."
+            }
+        },
+        {
+            "@type": "Person",
+            "name": "Ferenc Puskas",
+            "notablyAssociatedWith": {
+                "@type": "Event",
+                "eventTitle": "Hungary's Goalscoring Record",
+                "eventSummary": "Ferenc Puskas scored 84 goals in 85 games for Hungary."
+            }
+        },
+        {
+            "@type": "Person",
+            "name": "Giga Riva",
+            "notablyAssociatedWith": {
+                "@type": "Event",
+                "eventTitle": "Italy's Goalscoring Record",
+                "eventSummary": "Giga Riva's record of 35 goals has stood since World Cup 1974."
+            }
+        }
+    ]
+}
+```

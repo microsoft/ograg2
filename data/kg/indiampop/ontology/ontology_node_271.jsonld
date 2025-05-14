@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WaterManagement": {
+            "@id": "cropCult:WaterManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "method": "schema:Text",
+                "parasitoid_release": "cropCult:ParasitoidRelease"
+            }
+        },
+        "ParasitoidRelease": {
+            "@id": "cropCult:ParasitoidRelease",
+            "@type": "schema:Thing",
+            "@context": {
+                "species": "schema:Text",
+                "quantity": "schema:QuantitativeValue"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WaterManagement",
+            "method": "Spraying",
+            "parasitoid_release": {
+                "@type": "cropCult:ParasitoidRelease",
+                "species": "Isotima javensis",
+                "quantity": {
+                    "@type": "schema:QuantitativeValue",
+                    "value": 125,
+                    "unitText": "females / ha"
+                }
+            }
+        }
+    ]
+}

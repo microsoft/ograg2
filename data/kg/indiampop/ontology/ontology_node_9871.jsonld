@@ -1,0 +1,73 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Carrot: Daucus carota L; Umbelliferae",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Carrot",
+                "used_for": "Vegetable"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": [
+                    {
+                        "name": "Hills",
+                        "has_regions": ["Ooty-1", "Early Nantes", "New Korda"],
+                        "has_seed_recommendations": {
+                            "@type": "SeedList",
+                            "variety_name": ["Ooty-1", "Early Nantes", "New Korda"]
+                        }
+                    },
+                    {
+                        "name": "Plains",
+                        "has_regions": ["India Gold", "Pusa Kesar", "Half Long Danvers"],
+                        "has_seed_recommendations": {
+                            "@type": "SeedList",
+                            "variety_name": ["India Gold", "Pusa Kesar", "Half Long Danvers"]
+                        }
+                    }
+                ]
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "15°C to 20°C",
+                "for_flowering": "15°C to 20°C",
+                "for_grain_filling": "15°C to 20°C",
+                "negative_effect": "Above 20°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Deep loose loamy soil",
+                "avoid_soil_type": "Clayey or Heavy soils",
+                "for_water": "Well-drained soil",
+                "for_nutrients": "pH ranging from 6.0 to 7.0"
+            }
+        }
+    ]
+}

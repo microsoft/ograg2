@@ -1,0 +1,143 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "byline": "Mike Meehall Wood",
+            "published": "2023-12-07T22:28:31+00:00",
+            "title": "Ange aghast as Spurs suffer ‘unbelievable’ West Ham turnaround – with two of the worst goals you’ll see",
+            "summary": "Spurs have fallen to their fourth defeat in five with a 2-1 reverse at home to West Ham – and they only have themselves to blame.",
+            "associatedAsset": {
+                "@type": "TextAsset",
+                "image": "https://www.theroar.com.au/2023/12/08/ange-aghast-as-spurs-suffer-unbelievable-west-ham-turnaround-with-two-of-the-worst-goals-youll-see/"
+            }
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "West Ham vs Tottenham Match",
+            "eventSummary": "Tottenham lost 2-1 to West Ham, marking their fourth defeat in five games.",
+            "theme": {
+                "@type": "intangibleStuff",
+                "comment": "sports"
+            }
+        },
+        {
+            "@type": "Person",
+            "name": "Ange Postecoglou"
+        },
+        {
+            "@type": "Person",
+            "name": "Heung-Min Son"
+        },
+        {
+            "@type": "Person",
+            "name": "David Moyes"
+        },
+        {
+            "@type": "Person",
+            "name": "Sean Dyche"
+        },
+        {
+            "@type": "Person",
+            "name": "Eddie Howe"
+        },
+        {
+            "@type": "Organization",
+            "name": "Tottenham Hotspur"
+        },
+        {
+            "@type": "Organization",
+            "name": "West Ham United"
+        },
+        {
+            "@type": "Organization",
+            "name": "Everton"
+        },
+        {
+            "@type": "Organization",
+            "name": "Newcastle United"
+        }
+    ]
+}
+```

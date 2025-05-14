@@ -1,0 +1,83 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "BeeSpecies": {
+            "@id": "cropCult:BeeSpecies",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "type": "schema:Text",
+                "color": "schema:Text",
+                "origin": "schema:Text",
+                "average_honey_yield": "schema:Text",
+                "foraging_range": "schema:Text",
+                "status": "schema:Text",
+                "location": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "Apiculture",
+            "has_types": [
+                {
+                    "@type": "cropCult:BeeSpecies",
+                    "name": "Rock bee",
+                    "type": "Apis dorsata",
+                    "status": "Wild"
+                },
+                {
+                    "@type": "cropCult:BeeSpecies",
+                    "name": "Little bee",
+                    "type": "Apis florae",
+                    "status": "Wild"
+                },
+                {
+                    "@type": "cropCult:BeeSpecies",
+                    "name": "Indian bee",
+                    "type": "Apis cerena",
+                    "color": "Brownish black",
+                    "origin": "Locally available domesticated Asiatic species",
+                    "average_honey_yield": "12 kg per hive per annum",
+                    "foraging_range": "0.8-1 km",
+                    "status": "Domesticated",
+                    "location": "North-East India"
+                },
+                {
+                    "@type": "cropCult:BeeSpecies",
+                    "name": "Western bee",
+                    "type": "Apis mellifera",
+                    "color": "Exotic golden yellow",
+                    "origin": "Most widely and commercially reared in the world",
+                    "average_honey_yield": "35-40 kg per annum",
+                    "foraging_range": "2 km",
+                    "status": "Domesticated",
+                    "location": "Northern India and North East India"
+                }
+            ]
+        }
+    ]
+}

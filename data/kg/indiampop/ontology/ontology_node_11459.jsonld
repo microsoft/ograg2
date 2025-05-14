@@ -1,0 +1,45 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "SeedProduction": {
+            "@id": "cropCult:SeedProduction",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_drying_process": "cropCult:DryingProcess"
+            }
+        },
+        "DryingProcess": {
+            "@id": "cropCult:DryingProcess",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "eco_friendly_treatment": "cropCult:EcoFriendlyTreatment"
+            }
+        },
+        "EcoFriendlyTreatment": {
+            "@id": "cropCult:EcoFriendlyTreatment",
+            "@type": "schema:Thing",
+            "@context": {
+                "mixture": "schema:Text",
+                "quantity_per_kg_of_seed": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:SeedProduction",
+            "name": "SEED PRODUCTION",
+            "has_drying_process": {
+                "@type": "cropCult:DryingProcess",
+                "instructions": "Drying",
+                "eco_friendly_treatment": {
+                    "@type": "cropCult:EcoFriendlyTreatment",
+                    "mixture": "halogen mixture (CaOCl2 + CaCO3 + arappu (Albizzia amara) leaf powder mixed in the ratio of 5:4:1)",
+                    "quantity_per_kg_of_seed": "3g"
+                }
+            }
+        }
+    ]
+}

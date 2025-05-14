@@ -1,0 +1,169 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "name": "SYSTEM OF RICE INTENSIFICATION ( SRI )",
+            "has_types": {
+                "@id": "cropCult:CropType",
+                "@type": "schema:Thing",
+                "name": "2. ATTRIBUTES OF HIGHER PRODUCTIVITY",
+                "used_for": "2.6 Use of organic manure as source of nutrition"
+            },
+            "has_growing_zones": {
+                "@id": "cropCult:CropGrowingZones",
+                "@type": "schema:ItemList",
+                "CropGrowingZone": {
+                    "@id": "cropCult:CropGrowingZone",
+                    "@type": "schema:Thing",
+                    "name": "3.SRI- PRACTICES",
+                    "has_regions": [
+                        "3.9. Harvesting",
+                        "3.2 Nutritional management"
+                    ],
+                    "has_seed_recommendations": {
+                        "@id": "cropCult:SeedList",
+                        "@type": "schema:Thing",
+                        "variety_name": [
+                            "CONSTRAINTS"
+                        ],
+                        "has_early_sowing_time": {
+                            "@id": "cropCult:SowingTime",
+                            "@type": "schema:Thing",
+                            "start_date": "N/A",
+                            "end_date": "N/A"
+                        },
+                        "has_late_sowing_time": {
+                            "@id": "cropCult:SowingTime",
+                            "@type": "schema:Thing",
+                            "start_date": "N/A",
+                            "end_date": "N/A"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "N/A"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@id": "cropCult:Fertilization",
+                            "@type": "schema:Thing",
+                            "nutrient_name": "N/A",
+                            "quantity": "N/A",
+                            "stage_of_application": "N/A"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@id": "cropCult:TemperatureRequirements",
+                "@type": "schema:Thing",
+                "for_germination": "N/A",
+                "for_flowering": "N/A",
+                "for_grain_filling": "N/A",
+                "negative_effect": "Seedling mortality"
+            },
+            "has_soil_requirements": {
+                "@id": "cropCult:SoilRequirements",
+                "@type": "schema:Thing",
+                "soil_type_name": "N/A",
+                "avoid_soil_type": "N/A",
+                "for_water": "N/A",
+                "for_nutrients": "N/A"
+            },
+            "has_land_preperation_requirements": {
+                "@id": "cropCult:LandPreparation",
+                "@type": "schema:Thing",
+                "instructions": "N/A",
+                "with_soil_moisture": "N/A"
+            },
+            "seed_germination_test_requirements_are": "N/A",
+            "has_seed_fungicide_requirements": {
+                "@id": "cropCult:Fungicide",
+                "@type": "schema:Thing",
+                "name": "N/A",
+                "quantity": "N/A"
+            },
+            "needs_seed_sowing_spacing": {
+                "@id": "cropCult:SeedSpacing",
+                "@type": "schema:Thing",
+                "sowing_time": "N/A",
+                "value": "N/A",
+                "depth": "N/A",
+                "method": "N/A"
+            },
+            "weed_management_needs_are": {
+                "@id": "cropCult:WeedManagement",
+                "@type": "schema:Thing",
+                "weed_name": "N/A",
+                "weed_types": [
+                    "N/A"
+                ],
+                "herbicides": {
+                    "@id": "cropCult:HerbicideList",
+                    "@type": "schema:List",
+                    "name": "N/A",
+                    "quantity": "N/A",
+                    "stage": "N/A"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@id": "cropCult:IrrigationRequirement",
+                "@type": "schema:Thing",
+                "quantity": "N/A",
+                "stage_of_application": "N/A"
+            },
+            "needs_disease_treatements": {
+                "@id": "cropCult:DiseaseTreatements",
+                "@type": "schema:Thing",
+                "disease_name": "N/A",
+                "disease_symptoms": "N/A",
+                "disease_control": {
+                    "@id": "cropCult:HerbicideList",
+                    "@type": "schema:List",
+                    "name": "N/A",
+                    "quantity": "N/A",
+                    "stage": "N/A"
+                }
+            },
+            "needs_pest_treatements": {
+                "@id": "cropCult:PestTreatements",
+                "@type": "schema:Thing",
+                "pest_name": "N/A",
+                "pest_symptoms": "N/A",
+                "pest_control": {
+                    "@id": "cropCult:PesticideList",
+                    "@type": "schema:List",
+                    "name": "N/A",
+                    "quantity": "N/A",
+                    "stage": "N/A"
+                }
+            },
+            "harvesting_guidelines_are": "N/A",
+            "storage_guidelines_are": "N/A"
+        }
+    ]
+}

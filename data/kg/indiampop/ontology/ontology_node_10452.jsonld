@@ -1,0 +1,107 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Rice (Oryza Sativa)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Transplanted Normal Ahu Rice (Autumn Rice)",
+                "used_for": "Manures and Fertilizers"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "In monocrop sali areas of Barak Valley Zone, sowing of dhaincha is recommended as green manuring crop before sali rice."
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Monocrop sali areas of Barak Valley Zone"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "SeedSpacing",
+                "sowing_time": "Before sali rice"
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Diammonium phosphate (DAP)",
+                "quantity": "At the recommended nutrient level (40:20:20)"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Not specified",
+                "disease_symptoms": "Not specified",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Not specified",
+                    "quantity": "Not specified",
+                    "stage": "Not specified"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Not specified",
+                "pest_symptoms": "Not specified",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Not specified",
+                    "quantity": "Not specified",
+                    "stage": "Not specified"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Not specified",
+                "stage_of_application": "Not specified"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Not specified",
+                "weed_types": [],
+                "herbicides": []
+            },
+            "harvesting_guidelines_are": "Not specified",
+            "storage_guidelines_are": "Not specified"
+        }
+    ]
+}

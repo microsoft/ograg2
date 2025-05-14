@@ -1,0 +1,102 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "ImageAsset",
+            "image": "Republic Records",
+            "comment": "Artwork for the re-recorded version of 1989 has a beach vibe, in contrast to the Polaroid aesthetics of the original"
+        },
+        {
+            "@type": "TextAsset",
+            "title": "New Romantics",
+            "summary": "Proof that even Taylor gets it wrong: New Romantics, one of her most beloved songs, was originally held back as a bonus track. It's a beast, though. An armour-plated anthem to resilience and power, where Taylor takes all the pain that's come her way and uses it to make herself bulletproof. \"Heartbreak is the national anthem, we sing it proudly,\" she declares, while glitterballs shatter around her. \"I could build a castle out of all the bricks they threw at me.\" That defiance also acts as a bridge to her next album, Reputation, which dismantled her critics, one-by-one. But that's for another article."
+        },
+        {
+            "@type": "TextAsset",
+            "title": "Tracks from the vault",
+            "summary": "In 2014, Taylor said she had recorded more than 100 songs for 1989 - so the relative scarcity of vault tracks is intriguing. Whereas previous re-recordings have featured full discs of bonus material, this album gets just five new additions: Slut!, Say Don't Go, Now That We Don't Talk, Suburban Legends and Is It Over Now? As a whole, they feel like dry runs for the songs that made the cut. The melodies aren't as crisp, the lyrics aren't as sharp. Suburban Legends has a particularly clunky line about letting a partner's indiscretions slide \"like a hose on a slippery plastic summer\". Slut! has piqued fans' interest for its title alone - who might she be talking about? No-one, it turns out. The song is thematically similar to Blank Space, commenting on the media's portrayal of Taylor's relationships: \"But if I'm all dressed up / They might as well be lookin' at us / And if they call me a slut / You know it might be worth it for once.\" The best of the new tracks is Is It Over Now. An angrier take on 1989's philosophical break-up songs, it calls back to the Harry Styles snowmobile incident (see also, Out Of The Woods) then, deliciously, references the \"Sad Taylor Boat\" meme - a photo of Taylor fleeing a vacation alone after the couple split up. She goes on to call an ex a \"lying traitor\", accuses them of parading their new relationships in public, and noting that every new girlfriend looks like her. \"If she's got blue eyes, I will surmise that you'll probably date her.\" The fact that all the new songs were co-written and produced by Jack Antonoff suggests there may have been rights issues over the tracks she wrote with Max Martin - who has not been involved with the new re-recordings. That means the vault tracks are all bathed in the dreamy, soft-focus atmospherics of Out Of The Woods, rather than the upfront pop of Shake It Off. Speaking in 2015, Taylor admitted she'd been brutal about pruning songs from 1989's original tracklist. \"There were so many songs I wrote for this album that were really good, but if I felt in any way that they would have belonged on my last album, Red, they got cut,\" she told New York radio's The Todd Show in the Morning. \"There are really, really good songs on the cutting room floor because they weren't innovative enough or new enough. It's so weird to look back on that - you've got heaping piles of discarded songs that I really loved when I wrote them and I still love now. \"I just need each album to have its own sound and if it doesn't fit that sound, it doesn't matter if it's a great song to me.\""
+        }
+    ]
+}
+```

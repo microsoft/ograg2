@@ -1,0 +1,109 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "Turtle Beach Recon Controller Review",
+            "author": "Antonio G. Di Benedetto",
+            "theme": "Technology",
+            "content": "The Turtle Beach Recon controller’s biggest strengths lie in its plethora of audio controls. It’s a bit much to take in at first, but these buttons allow for very handy audio controls when using a wired headset. The bumpers, shoulders, and customizable rear buttons have an excellent textured pattern that feels great. This pad isn’t going to win any beauty contests thanks to all those awkward buttons located smack-dab in the middle of its forehead, but each one has a valid purpose. There are four levels of microphone monitoring, overall game volume controls, game chat volume mix, four EQ presets, four programmable modes for mapping the two rear buttons, and four levels of optional right-stick sensitivity adjustments. That last feature, dubbed Pro Aim by Turtle Beach, lowers the sensitivity of the right analog stick while you hold the right-hand rear button, allowing for very small movements like sniping, though it’s a bit clumsy to use. Learning to use all these controls may sound daunting, but the controller’s quick-start guide makes it easier. Superhuman Hearing is very helpful for shooters and worth using extensively for games like Halo Infinite — just be aware that it’s going to muddy up the soundtrack a little, so you may want to leave it off during story-driven, single-player games. Audio controls aside, the Recon lacks fancy features like hair triggers and swappable thumbsticks, and the D-pad looks like the standard Xbox Wireless Controller but pales in comparison. The controller’s plastic build feels cheap, but the rubbery grips redeem it with a nice and comfy feel. As for the sticks, triggers, and additional rear buttons, they all feel tight and snappy. Combine that with Superhuman Hearing, and you’ve got a great recipe for shooters. The Recon has a bit of a learning curve, but if you play ranked matches and value a fairly priced wired controller with extra buttons and helpful audio functions, you can’t go wrong here.",
+            "created": "2023-10-01T00:00:00Z",
+            "hasThumbnail": "snap:imageAsset1",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Turtle Beach Recon Controller Launch",
+                    "eventSummary": "Launch of the Turtle Beach Recon Controller with advanced audio controls.",
+                    "theme": "Technology"
+                }
+            ]
+        },
+        {
+            "@id": "snap:imageAsset1",
+            "@type": "schema:ImageObject",
+            "url": "http://example.com/image.jpg",
+            "caption": "Photography by Antonio G. Di Benedetto / The Verge"
+        }
+    ]
+}

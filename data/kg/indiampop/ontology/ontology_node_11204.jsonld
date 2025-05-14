@@ -1,0 +1,52 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "COMMERCIAL PRODUCTION OF BIO-FERTILIZER",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "METHODS OF APPLICATION OF Trichoderma spp. 4. Soil application:  Mix 100 kg of dried cow dung with 10 kg of Mustard Oil Cake. Moisten by sprinkling water.  Add 1 kg commercial formulation of Trichoderma, mix thoroughly and cover with news paper or banana leaf for 3 days.  On 4th day open the cover, mix thoroughly, sprinkle water and cover it again.  On 7th day mix thoroughly the final product and apply to soil before planting. For 1 hectare of land, the requirement is approximately 500 kg of dried cow dung, 50 kg. of Mustard oil cake and 5 kg of Trichoderma formulation."
+            },
+            "has_fertilizer_application_requirements": {
+                "@type": "Fertilization",
+                "nutrient_name": "Trichoderma spp.",
+                "quantity": "5 kg",
+                "stage_of_application": "Soil application"
+            }
+        }
+    ]
+}

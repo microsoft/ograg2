@@ -1,0 +1,150 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "title": "Cheatham injured as 36ers upset Breakers",
+            "author": "AAP",
+            "theme": "Sports",
+            "content": "The New Zealand Breakers face a nervous wait after losing import Zylan Cheatham to a leg injury in the 97-85 upset loss to the Adelaide 36ers...",
+            "created": "2023-10-12T20:00:00Z",
+            "published": "2023-10-12T20:00:00Z",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Breakers vs 36ers Game",
+                    "eventSummary": "The New Zealand Breakers lost to the Adelaide 36ers with a score of 97-85.",
+                    "theme": "Basketball",
+                    "hasLocation": {
+                        "@type": "geo:SpatialThing",
+                        "geo:lat": -36.8485,
+                        "geo:long": 174.7633
+                    },
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Zylan Cheatham"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Will McDowell-White"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Sunday Dech"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Dejan Vasiljevic"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Isaac Humphries"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Anthony Lamb"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Mody Maor"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "CJ Bruton"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "New Zealand Breakers"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Adelaide 36ers"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

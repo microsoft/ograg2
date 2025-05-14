@@ -1,0 +1,91 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Ragi",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Kharif K2O",
+                "used_for": "2.68 T - 0.14 SK - 0.40 OK"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Initial soil tests (kg ha-1) | NPK (kg ha-1) + FYM @12.5 t ha-1 + Azospirillum @2 kg ha-1 + PSB @ 2 kg ha-1",
+                "with_soil_moisture": "40 q ha-1"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "SN | SP | SK | FN | FP2O5 | FK2O",
+                "avoid_soil_type": "180 | 10 | 300 | 55 | 15* | 25",
+                "for_water": "200 | 12 | 340 | 48 | 15* | 20",
+                "for_nutrients": "220 | 14 | 380 | 41 | 15* | 15*"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "@type": "CropGrowingZone",
+                    "name": "Kharif K2O",
+                    "has_regions": ["2.68 T", "0.14 SK", "0.40 OK"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Ragi"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "N/A",
+                            "end_date": "N/A"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "N/A",
+                            "end_date": "N/A"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "QuantitativeValue",
+                            "value": "N/A"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "NPK",
+                            "quantity": "12.5 t ha-1",
+                            "stage_of_application": "Initial soil tests"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

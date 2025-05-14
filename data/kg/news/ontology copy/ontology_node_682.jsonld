@@ -1,0 +1,227 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "byline": "Ian Valentino",
+      "published": "2023-12-18T22:29:26+00:00",
+      "title": "UTSA vs. Marshall odds, props, predictions: Roadrunners lay big spread in Frisco Bowl",
+      "summary": "The UTSA Roadrunners (8-4) take on the Marshall Thundering Herd (6-6) on Tuesday night in the Scooter's Coffee Frisco Bowl (9 p.m ET, ESPN). The matchup sees the Roadrunners as large betting favorites on odds boards. Currently, USTA is favored by on the point spread, with Marshall available for on the moneyline.",
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "image": "https://www.sportingnews.com/us/betting/news/utsa-vs-marshall-odds-props-predictions-spread-frisco-bowl/9f87d66235664608e5d678ba"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Scooter's Coffee Frisco Bowl",
+      "eventSummary": "UTSA Roadrunners vs. Marshall Thundering Herd in the Scooter's Coffee Frisco Bowl.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "sports"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "UTSA Roadrunners"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Marshall Thundering Herd"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Frank Harris"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Joshua Cephus"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Rasheen Ali"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Kevorian Barnes"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Robert Henry"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Trey Moore"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Syrus Dumas"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Xavier Spencer"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Kyle Eaves"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Cam Fancher"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Cole Pennington"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Chase Harrison"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Brandon McElroy"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Caleb Coombs"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Zion Odoms"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jayven Hall"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Thomas Lane"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Chinazo Obobi"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Maurice Jones"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Sean Sallis"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Myles Bell"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Trent Holler"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Joshua McTier"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jabarrek Hopkins"
+    },
+    {
+      "@type": "snap:person",
+      "name": "CK Obobi"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Sean Ellis"
+    },
+    {
+      "@type": "snap:person",
+      "name": "TyShawn Hurst"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Elijah Russell"
+    }
+  ]
+}
+```

@@ -1,0 +1,124 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "COCONUT (Cocos nucifera Linn.)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Tall varieties",
+                "used_for": "Yield ranges from 50- 150 nuts/palm/year"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "Tropical",
+                "has_regions": ["Asia", "Africa", "South America"]
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Warm",
+                "for_flowering": "Warm",
+                "for_grain_filling": "Warm",
+                "negative_effect": "Cold"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Sandy",
+                "avoid_soil_type": "Clay",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Clear land of debris, plow and harrow",
+                "with_soil_moisture": "Moist"
+            },
+            "seed_germination_test_requirements_are": "Warm temperature and moist soil",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Mancozeb",
+                "quantity": "2 kg/ha"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Early rainy season",
+                "value": "7.5 m x 7.5 m",
+                "depth": "15 cm",
+                "method": "Direct sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Grass weeds",
+                "weed_types": ["Annual", "Perennial"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1.5 kg/ha",
+                    "stage": "Post-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "2000 l/ha/week",
+                "stage_of_application": "Throughout the growing season"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Bud rot",
+                "disease_symptoms": "Wilting and yellowing of leaves",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Copper oxychloride",
+                    "quantity": "3 kg/ha",
+                    "stage": "At the onset of symptoms"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Coconut beetle",
+                "pest_symptoms": "Holes in the trunk and wilting of leaves",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Carbaryl",
+                    "quantity": "1.5 kg/ha",
+                    "stage": "At the onset of symptoms"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when nuts are mature, indicated by the browning of the husk",
+            "storage_guidelines_are": "Store in a cool, dry place"
+        },
+        {
+            "@type": "Crop",
+            "name": "COCONUT (Cocos nucifera Linn.)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Hybrid variety",
+                "used_for": "Yield is 100 nuts/palm/year"
+            }
+        }
+    ]
+}

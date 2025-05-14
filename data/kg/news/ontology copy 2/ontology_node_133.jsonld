@@ -1,0 +1,124 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "snap:asset",
+            "title": "Tears of the Kingdom Experience",
+            "author": "M. Myers",
+            "theme": "Video Games",
+            "content": "I mean, Ultrahand alone. Just absolutely slathering pieces of wood in what amounts to magical Gorilla Glue and watching in wonder as the game’s physics engine roars to life in response. I went into Tears of the Kingdom thinking I wouldn’t build much — I’d just follow the story and get through it; I left feeling like a genius engineer, building all manner of bizarre contraptions (but mostly long bridges) to sail through skies and trundle over mountaintops. I still catch my breath remembering that first time diving deep into the darkness of the Depths — the amazement I felt upon discovering a whole other world underneath the one I knew, filled with skeleton horses and gloom-splattered Bokoblins. And I remember when I realized where Princess Zelda really was… and then, many hours later, learning where she really was. I never wanted to stop playing Tears of the Kingdom. I did stop, eventually — the year of 2023 in video games has spoiled us all with hearty meals and sweet desserts — but I never stopped thinking about it. Every now and then, I picked my Switch back up to seek out another Lightroot, or solve another shrine’s puzzle, until there were none left. And then I’d just wander, collecting ingredients, talking to Great Fairies, imagining the next adventure. Tears of the Kingdom feels like someone holding my hands very close as they lean in to whisper, with eyes twinkling, “Can I tell you something?” The ride was wild; I laughed, I cried. And I can’t wait for the next time, when it’s completely different.",
+            "created": "2023-10-01T00:00:00",
+            "modified": "2023-10-01T00:00:00",
+            "published": "2023-10-01T00:00:00",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "snap:event",
+                    "eventTitle": "Ultrahand Experience",
+                    "eventSummary": "Building bizarre contraptions and long bridges.",
+                    "theme": "Gameplay",
+                    "mentions_persons": [],
+                    "mentions_organizations": []
+                },
+                {
+                    "@id": "snap:event2",
+                    "@type": "snap:event",
+                    "eventTitle": "Discovering the Depths",
+                    "eventSummary": "Exploring a world filled with skeleton horses and gloom-splattered Bokoblins.",
+                    "theme": "Exploration",
+                    "mentions_persons": [],
+                    "mentions_organizations": []
+                },
+                {
+                    "@id": "snap:event3",
+                    "@type": "snap:event",
+                    "eventTitle": "Realization about Princess Zelda",
+                    "eventSummary": "Discovering the true location of Princess Zelda.",
+                    "theme": "Story",
+                    "mentions_persons": [],
+                    "mentions_organizations": []
+                }
+            ]
+        }
+    ]
+}

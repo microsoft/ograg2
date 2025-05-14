@@ -1,0 +1,50 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Ragi blast (Pyricularia setariae) ’Mahisa roga’",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "@list": [
+                    {
+                        "name": "Ediphenophos",
+                        "quantity": "0.15%",
+                        "stage": "tillering"
+                    },
+                    {
+                        "name": "Carbendazim",
+                        "quantity": "0.15%",
+                        "stage": "tillering"
+                    },
+                    {
+                        "name": "Tricyclazole",
+                        "quantity": "0.1%",
+                        "stage": "boot leaf stage"
+                    }
+                ]
+            }
+        }
+    ]
+}

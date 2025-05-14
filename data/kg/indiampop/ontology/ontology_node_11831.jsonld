@@ -1,0 +1,84 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Black Gram",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Legume",
+                "used_for": "Food"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Seed coating with biofertilizers and micronutrients viz., Zn, Mo & Co @ 4, 1, 0.5 g/kg of seed is recommended.",
+                "with_soil_moisture": "Moderate"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical",
+                    "has_regions": ["South Asia", "Southeast Asia"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["V1", "V2", "V3"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-06-01",
+                            "end_date": "2022-06-30"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-07-01",
+                            "end_date": "2022-07-31"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "20",
+                            "unitText": "kg/ha"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Urea",
+                            "quantity": "1%",
+                            "stage_of_application": "Foliar spray for yield improvement"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

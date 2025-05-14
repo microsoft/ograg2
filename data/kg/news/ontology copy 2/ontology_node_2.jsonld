@@ -1,0 +1,102 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "54 Best Apple Black Friday Deals (2023): iPad, Apple Watch, AirPods",
+            "author": "Brenda Stolyar",
+            "theme": "technology",
+            "content": "Looking for a new Apple device? There's no time better than now. Whether you're on the hunt for a new iPad, MacBook, Apple Watch, or just a new iPhone case, there are more Apple products on sale for Cyber Monday than you'll typically find at any other time of year. Here are some of our favorites. For more gadgets on sale, be sure to check out our Best Cyber Monday Deals roundup. We test products year-round and handpicked these deals. The discounts we show are based on actual street prices at retailers in the past few months. Products that are sold out or no longer discounted as of publishing will be crossed out. We'll update this guide periodically. Updated November 27: We've added a new deal on a 14-inch MacBook Pro (M3 Pro, 2023) and updated pricing and live deals as Cyber Monday comes to an end. If you buy something using links in our stories, we may earn a commission. This helps support our journalism. Learn more. Apple's Cyber Monday Promotion Apple notoriously doesn't run sales on its own storefront. However, it does usually throw in a gift card for Apple Store credit if you purchase select items. This year, now through November 27, you can get up to $200 in Apple Store credit to use later if you purchase certain items. For example, if you buy an iPhone 14 or iPhone SE, you can get up to $75 in store credit. Buy a MacBook Air and you'll get up to $200. You can find the full list here. Separately, there's also a sale on Apple gift cards on Amazon. Each one has a unique corresponding coupon code that you can see on this page. For example, you can get a $100 Apple Gift Card and a free $15 Amazon credit with code APPLET5USAP. There are tons of cards to choose from. You can browse them all here. Jump to a Topic: iPads, MacBooks, Apple Watches, Beats and AirPods, Chargers, Cases and Accessories.",
+            "published": "2023-11-25T00:00:29+00:00",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Apple's Cyber Monday Promotion",
+                    "eventSummary": "Apple offers up to $200 in Apple Store credit for select purchases.",
+                    "theme": "technology"
+                }
+            ]
+        }
+    ]
+}

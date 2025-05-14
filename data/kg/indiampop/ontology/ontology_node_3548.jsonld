@@ -1,0 +1,101 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Alluvial",
+                "for_water": "Medium",
+                "for_nutrients": "High"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the field to a fine tilth and form ridges and furrows at 45 cm apart.",
+                "with_soil_moisture": "Medium"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Early morning",
+                "value": "15 cm",
+                "depth": "3 cm",
+                "method": "Drill method"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "500 mm",
+                "stage_of_application": "At crown root initiation stage"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Leaf rust",
+                "disease_symptoms": "Small uredospores on leaves",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Propiconazole",
+                    "quantity": "1 litre/ha",
+                    "stage": "At disease onset"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Aphids",
+                "pest_symptoms": "Yellowing and curling of leaves",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Imidacloprid",
+                    "quantity": "0.5 litre/ha",
+                    "stage": "At pest incidence"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when grains are hard and moisture content is around 20-25%",
+            "storage_guidelines_are": "Store in a cool and dry place"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "NPK",
+            "quantity": "50:50:40 kg/ha",
+            "stage_of_application": "Basal"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "N",
+            "quantity": "25 kg/ha",
+            "stage_of_application": "Top dressing after each cut"
+        }
+    ]
+}

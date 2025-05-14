@@ -1,0 +1,55 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Sigatoka leaf spot",
+            "disease_symptoms": [
+                "In severe conditions, the whole leaf dries form the tip (Fig 10).",
+                "Normally 15-18 functional leaves are necessary but due to Sigatoka leaf spot it is difficult to maintain even 10 leaves.",
+                "The disease inflicts serious yield losses in almost all the commercial cultivars.",
+                "Fingers do not fill out properly and often immature remain even after attaining the time of full maturity.",
+                "Peel spitting and premature ripening are also associated with the disease."
+            ],
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Not specified",
+                "quantity": "Not specified",
+                "stage": "Not specified"
+            }
+        }
+    ]
+}

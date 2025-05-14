@@ -1,0 +1,185 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:person",
+      "name": "Dak Prescott",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "Dallas Cowboys"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Brock Purdy",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "San Francisco 49ers"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jordan Love",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "Green Bay Packers"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Justin Fields",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "Chicago Bears"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Sam Howell",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "Washington Commanders"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Terry McLaurin",
+      "notablyAssociatedWith": {
+        "@type": "snap:organization",
+        "name": "Washington Commanders"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Dallas Cowboys",
+      "hasAsset": {
+        "asset": {
+          "@type": "snap:textAsset",
+          "summary": "Dallas' defense lost top cornerback Trevon Diggs and they're still red hot. They lead the league in pass rush pressure rate this season (55.6%) and they're in the top-10 in blitz rate (31.9%)."
+        }
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "San Francisco 49ers",
+      "hasAsset": {
+        "asset": {
+          "@type": "snap:textAsset",
+          "summary": "49ers are tops in football in catch rate allowed to tight ends (48.6%) and YAC/reception allowed (1.29 yards)."
+        }
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Green Bay Packers",
+      "hasAsset": {
+        "asset": {
+          "@type": "snap:textAsset",
+          "summary": "The Raiders' track record against QBs and Love getting Aaron Jones and Christian Watson back without snap limits are what provides the most optimism here."
+        }
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Chicago Bears",
+      "hasAsset": {
+        "asset": {
+          "@type": "snap:textAsset",
+          "summary": "Bears rank league-worst in pass rush pressure rate allowed at 47.4% of their snaps."
+        }
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Washington Commanders",
+      "hasAsset": {
+        "asset": {
+          "@type": "snap:textAsset",
+          "summary": "Commanders like limiting Howell's pass attempts in general -- he's only thrown over 31 times in high-scoring shootouts."
+        }
+      }
+    }
+  ]
+}
+```

@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Fungal blight (Alternaria/Cercosporella)",
+            "disease_symptoms": "Spray at 2 week intervals with Mancozeb (0.3%) or Carbendazim (0.15%) 1st spray after 4 weeks of planting.",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Chlorothalonil",
+                "quantity": "1.5 g/litre of water",
+                "stage": "1% Bordeaux mixture or any copper compound at 0.3% concentration may also be sprayed."
+            }
+        }
+    ]
+}

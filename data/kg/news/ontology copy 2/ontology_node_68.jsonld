@@ -1,0 +1,118 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Digital twin market: Analyzing growth and 4 emerging trends",
+      "author": "IoT.Business.News",
+      "theme": "business",
+      "content": "A new report from IoT Analytics highlights eight notable trends helping to advance and promote digital twins. Four of these trends are discussed in detail in this article. These trends are shaping the future of the digital twin market and influencing investment priorities for companies across various industries.",
+      "published": "2023-11-18T16:01:30+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Digital twins deployed to meet sustainability goals",
+          "eventSummary": "Sustainability was discussed in approximately 21% of recent CEO earnings calls and has remained a consistent topic throughout 2023.",
+          "theme": "sustainability"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Digital twins employed as virtual sensors in complex conditions",
+          "eventSummary": "Virtual sensors approximate data that otherwise cannot be obtained via physical sensors.",
+          "theme": "technology"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Partnerships forged in the clouds: Hyperscalers team up with OT and simulation specialists",
+          "eventSummary": "Cloud hyperscalers like AWS and Microsoft Azure have introduced digital twin platforms.",
+          "theme": "partnerships"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Initiatives promoting interoperability of digital twins across systems from different vendors",
+          "eventSummary": "Agreement on integration standards among the various digital twin technology providers is crucial.",
+          "theme": "interoperability"
+        }
+      ]
+    }
+  ]
+}

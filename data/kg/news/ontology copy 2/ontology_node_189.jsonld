@@ -1,0 +1,92 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "NMPA: Generative AI is ‘the greatest risk to the human creative class that has ever existed’",
+      "author": "Daniel Tencer",
+      "theme": "business",
+      "content": "MBW Reacts is a series of analytical commentaries from Music Business Worldwide written in response to major recent entertainment events or news stories. MBW Reacts is supported by JKBX, a technology platform that offers consumers access to music royalties as an asset class. Legislators and regulators around the world are grappling with how to address the many issues that have emerged since AI technology “went mainstream” about a year ago. In the US, one of the key efforts on that front is being spearheaded by the US Copyright Office, which this past summer issued a call for submissions on the issue of AI and copyright. The goal is for the USCO to put together a study to ”help assess whether legislative or regulatory steps in this area are warranted.” Numerous businesses involved in AI, and those with substantial copyright holdings, have submitted their thoughts on the issue, including Universal Music Group and AI developer Anthropic. However, to get the clearest view of the direction the music industry would like to see things head, it might help to read the submission from the National Music Publishers Association (NMPA). The NMPA’s submission, dated October 30, 2023, pulls no punches. It starts off by stressing that its membership – US music publishers major and independent – are “not opposed” to AI. “There is widespread belief in the music industry that great benefits could come from generative AI systems that can assist human creators,” the NMPA states. But then it goes for the jugular: “However, the development of the generative AI marketplace is marked by breathtaking speed, size and complexity. Hindsight may well prove that there is no hyperbole in saying that generative AI is the greatest risk to the human creative class that has ever existed.” “Hindsight may well prove that there is no hyperbole in saying that generative AI is the greatest risk to the human creative class that has ever existed.” NMPA The submission adds: “Even more alarming is that we do not know how long the window is to act before it is too late. We therefore implore the [US Copyright] Office to support proactive protections for human creators and, where there is uncertainty, to err on the side of protecting human creators.” That position might not come as a complete surprise from the NMPA, which earlier this year joined the fledgling Human Artistry Campaign, whose goal – in broadest terms – is to ensure that AI doesn’t replace or “erode” human culture. Yet the NMPA’s submission is hardly a Luddite diatribe against high tech; rather, it advocates for regulations and principles that it sees as the right approach to ensuring that the interests of musical artists – and music rights holders – don’t end up subjugated in the frenzy to build our brave new AI-powered world. Here are some of the key arguments the MNPA made in its submission… 1. Works created principally through AI should not be copyrightable In the view of the NMPA, simply giving a prompt to a AI music generator – “compose a power ballad about falling in love” – shouldn’t be enough to create a copyrightable work. “Policies surrounding copyrightability of AI-generated content will either serve to incentivize continued investment and effort into human creativity or to disincentivize it,” states the submission, which can be read in full here. “The law should never be such that human creators stand to gain more from repeatedly clicking a button to generate massive amounts of AI-produced materials than from putting their hearts, souls, experiences, skills, talents, and emotions into expressive works of art.” The law should treat a musical work created entirely by AI the same way it treats works that are in the public domain, the NMPA argues – not copyrightable, and free for anyone to use as they see fit, whether for commercial or other purposes. But the submission draws a clear distinction between music generated by AI, and music generated with the help of AI. “Where creators use AI technology as a tool in the creative process to make works that represent their original authorship, their works should be entitled to protection under copyright law,” the NMPA states. “Creators that use AI to refine, recast, or modify, or to create new derivative works based on their preexisting works, may also have legitimate claims of authorship over the resulting work in some circumstances.” “The law should never be such that human creators stand to gain more from repeatedly clicking a button to generate massive amounts of AI-produced materials than from putting their hearts, souls, experiences, skills, talents, and emotions into expressive works of art.” NMPA In this regard, US legal precedent is – at least so far – on the NMPA’s side. In a recent court case, an individual by the name of Stephen Thaler, who owns a computer system he calls the “Creativity Machine,” had a copyright application for an AI-generated “painting” rejected by the USCO on the grounds that the Creativity Machine had created it. In a ruling this past August, a US District Court in Washington, D.C., sided with the Copyright Office. “Copyright has never stretched so far… as to protect works generated by new forms of technology operating absent any guiding human hand, as plaintiff urges here,” Judge Beryl A. Howell commented. “Human authorship is a bedrock requirement of copyright.” 2. AI developers should be required to license materials and keep records of the materials they use for training Many key players in the music industry and beyond have been adamant that using copyrighted works to train AI algorithms without authorization is a copyright infringement, and a number of lawsuits have been launched against AI companies on these grounds. One such lawsuit was filed by Universal Music Group, Concord Music Group and ABKCO against AI developer Anthropic, seeking potentially tens of millions of dollars for the alleged “systematic and widespread infringement of their copyrighted song lyrics.” But that doesn’t mean key music industry players don’t want their materials ever used to train AI – they just want AI developers to license that music, not unlike how streaming services, bars and restaurants or movie producers license music. “Licensing musical works before training use is both required and practicable,” the NMPA’s submission states, adding that “there are well developed processes in place for technology ventures to obtain free market licenses on a large scale.” And indeed it would have to be on a “large scale,” given that AI algorithms such as large language models are trained on countless millions or even billions of pieces of digital data. “Transparency and recordkeeping requirements are needed to disincentivize infringing activity and to support enforcement activities by copyright owners.” NMPA The NMPA notes that work on licensing “is already underway,” pointing to news reports earlier this year that UMG, along with Warner Music Group, are in talks with Google to secure licenses for artists’ vocals and musical melodies to create AI-generated songs. However, enforcing copyright when it comes to AI algorithms could be exceedingly difficult for rights holders, a point the NMPA makes repeatedly in its submission: “Reverse-engineering” an AI algorithm to prove it was trained on content to which the developer had no right is no easy task, save for when that AI produces a work that is substantially similar to the original (as in the case of the lawsuits currently pending against AI companies). So the NMPA is arguing for a new regulation: That AI developers be required to keep records of what data their algorithms ingested. “Transparency and recordkeeping requirements are needed to disincentivize infringing activity and to support enforcement activities by copyright owners,” the NMPA’s submission states. “The primary parties who should be required to maintain records under a transparency and recordkeeping scheme are developers of AI models, those who use existing AI models to develop new AI tools and those who broker datasets for use in AI training.” On that front, the European Union may have gone some – if not all – of the way in making that a reality. Its proposed AI Act – currently the subject of back-and-forth negotiations between the European Commission and the European Parliament – contains a rule that would require AI developers to disclose whether their AI had been trained on copyrighted materials. Transparency in the use of AI is also becoming a rule on social media sites where AI-generated content is likely to appear: Both TikTok and YouTube have now passed rules requiring AI-generated content to be labeled as such. 3. The NMPA is opposed to an ‘opt-out’ regime for use of copyrighted works in AI One of the questions the US Copyright Office posed in its call for submissions was “should copyright owners have to affirmatively consent (opt in) to the use of their works for training [AI], or should they be provided with the means to object (opt out)?” The NMPA made it clear it’s on the side of “opt in.” “US copyright law is an opt-in system,” the NMPA said. “Opt-out regimes fundamentally undermine copyright protections by shifting the burden to obtain a license away from users.” The submission continued: “An opt-out scheme that requires rights holders to opt out on an AI company-by-AI company or application-by-application basis would not be feasible, given the sheer volume of AI companies and applications; it is nearly a full-time job to keep up with developments in the AI marketplace… Copyright owners, particularly individual creators and small businesses could not possibly meet such a burden. “NMPA strongly opposes consideration of such a measure.” “Opt-out regimes fundamentally undermine copyright protections by shifting the burden to obtain a license away from users.” NMPA On this issue, the NMPA is fully aligned with UMG, which made a similar argument in its own submission to the Copyright Office. “An opt-out system is based on the erroneous premise that training on copyrighted works without permission is by default lawful unless each copyright owner objects,” UMG stated in its submission. “That philosophy does violence to basic principles of copyright law, imposes undue burdens on copyright owners, creates the wrong incentives for AI developers, and is neither practicable nor effective for protecting the rights of copyright owners or ensuring the sensible use of copyrighted works for training purposes.” 4. Training AI on copyrighted works is not “fair use” under almost any circumstance Another area in which the NMPA and UMG are aligned is on the issue of whether using copyrighted material constitutes “fair use.” Fair use is the carve-out to copyright law that allows copyrighted materials to be used without permission in certain limited circumstances, such as for educational purposes or for reporting news. First, a quick reminder on the test US courts use to determine fair use, which has four factors: The purpose and character of the use – is the use of the copyrighted work for educational purposes or for commercial purposes? The nature of the copyrighted work – whether or not the work is particularly creative and original. The amount and substantiality of the portion taken – just how much of a copyrighted work was used without permission? The effect of the use on the potential market for, or value of, the copyrighted work. The NMPA’s submission argues that the way AI developers use materials to train AI would fail every one of these tests for determining fair use. AI algorithms are not used for non-profit or educational purposes, as “the training of AI models is fundamentally a commercial endeavor, especially in the case of generative AI,” the NMPA stated. “AI can be used to generate works that compete in the marketplace with the copied works, thereby reducing revenue from existing licensing markets.” NMPA Furthermore, it contends that any argument that an AI algorithm was trained on copyrighted material for “noncommercial” or “research” purposes should be “viewed skeptically.” Any business could claim it’s training AI for research or non-commercial purposes, “then shift entirely to commercial exploitation, leaving the creators of the copied works with no compensation,” the submission argued. AI training also fails the fair use test on the second factor, as generative AI can be used to create “expressive” works of music, and on the third, given that AI training means the entirety of a copyrighted work is ingested, “although there is no inherent need for that,” the NMPA states. AI training also fails the final test because “AI can be used to generate works that compete in the marketplace with the copied works, thereby reducing revenue from existing licensing markets as well,” the NMPA stated. The issue of fair use could prove to be one of the key battlegrounds between AI developers and copyright holders. In its own submission to the Copyright Office, Anthropic argued that using copyrighted works to train AI is, indeed, fair use. The copying of copyrighted works to feed it into the AI algorithm “is merely an intermediate step, extracting unprotectable elements about the entire corpus of works, in order to create new outputs,” Anthropic stated. “In this way, the use of the original copyrighted work is non-expressive; that is, it is not re-using the copyrighted expression to communicate it to users… To the extent copyrighted works are used in training data, it is for analysis (of statistical relationships between words and concepts) that is unrelated to any expressive purpose of the work.” “This sort of transformative use has been recognized as lawful in the past and should continue to be considered lawful in this case.” That argument could yet come into play in Anthropic’s legal battle with Universal. And given the high stakes involved – for the music industry, for the tech industry and for the shape of culture going forward – that case, along with the US Copyright Office’s study of AI and copyright, are worth keeping a close eye on. JKBX (pronounced "  },
+      "published_at"  ],
+      "url": "https://www.musicbusinessworldwide.com/nmpa-generative-ai-is-the-greatest-risk-to-the-human-creative-class-that-has-ever-existed/"
+    }
+  

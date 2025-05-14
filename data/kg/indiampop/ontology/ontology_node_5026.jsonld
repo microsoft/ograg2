@@ -1,0 +1,46 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "BBT",
+            "disease_symptoms": "Not specified",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "@list": [
+                    {
+                        "name": "momocrotophos or Dimethoate",
+                        "quantity": "0.05 to 0.2 ml per plant",
+                        "stage": "3-4 weeks interval"
+                    },
+                    {
+                        "name": "Imidachloprid",
+                        "quantity": "0.50 ml/l",
+                        "stage": "monthly intervals/or when aphid population starts building"
+                    }
+                ]
+            }
+        }
+    ]
+}

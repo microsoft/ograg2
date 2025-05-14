@@ -1,0 +1,49 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "DiseaseTreatements",
+            "disease_name": "B. DISEASES",
+            "disease_symptoms": "Management",
+            "disease_control": {
+                "@type": "HerbicideList",
+                "name": "Prochloraz",
+                "quantity": "1m/lit",
+                "stage": "pre harvest treatment before 15 days of harvest"
+            },
+            "disease_control": {
+                "@type": "HerbicideList",
+                "name": "Chlorothalonil",
+                "quantity": "1.5 ml/lit",
+                "stage": "pre harvest treatment before 15 days of harvest"
+            },
+            "disease_control": {
+                "@type": "HerbicideList",
+                "name": "carbendazim / Bitertanol/ Thiophenate methyl",
+                "quantity": "2g/ litre",
+                "stage": "pre harvest treatment before 15 days of harvest"
+            }
+        }
+    ]
+}

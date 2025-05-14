@@ -1,0 +1,120 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/"
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "Wheat (Triticum aestivum)",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "CEREALS",
+                "used_for": "Various food products"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Various regions",
+                    "has_regions": ["Region 1", "Region 2", "Region 3"],
+                    "has_seed_recommendations": {
+                        "@type": "cropCult:SeedList",
+                        "variety_name": ["Variety 1", "Variety 2", "Variety 3"],
+                        "has_early_sowing_time": {
+                            "@type": "cropCult:SowingTime",
+                            "start_date": "Early sowing start date",
+                            "end_date": "Early sowing end date"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "cropCult:SowingTime",
+                            "start_date": "Late sowing start date",
+                            "end_date": "Late sowing end date"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "Seeding rate"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "cropCult:Fertilization",
+                            "nutrient_name": "Fertilizer name",
+                            "quantity": "Fertilizer quantity",
+                            "stage_of_application": "Fertilizer application stage"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "cropCult:TemperatureRequirements",
+                "for_germination": "Temperature for germination",
+                "for_flowering": "Temperature for flowering",
+                "for_grain_filling": "Temperature for grain filling",
+                "negative_effect": "Negative effect of temperature"
+            },
+            "has_soil_requirements": {
+                "@type": "cropCult:SoilRequirements",
+                "soil_type_name": "Soil type name",
+                "avoid_soil_type": "Soil type to avoid",
+                "for_water": "Soil for water",
+                "for_nutrients": "Soil for nutrients"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "cropCult:LandPreparation",
+                "instructions": "Land preparation instructions",
+                "with_soil_moisture": "Soil moisture during land preparation"
+            },
+            "seed_germination_test_requirements_are": "Seed germination test requirements",
+            "has_seed_fungicide_requirements": {
+                "@type": "cropCult:Fungicide",
+                "name": "Fungicide name",
+                "quantity": "Fungicide quantity"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "cropCult:SeedSpacing",
+                "sowing_time": "Seed sowing time",
+                "value": "Seed spacing value",
+                "depth": "Seed spacing depth",
+                "method": "Seed spacing method"
+            },
+            "weed_management_needs_are": {
+                "@type": "cropCult:WeedManagement",
+                "weed_name": "Weed name",
+                "weed_types": ["Weed type 1", "Weed type 2", "Weed type 3"],
+                "herbicides": {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Herbicide name",
+                    "quantity": "Herbicide quantity",
+                    "stage": "Herbicide application stage"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "cropCult:IrrigationRequirement",
+                "quantity": "Irrigation quantity",
+                "stage_of_application": "Irrigation application stage"
+            },
+            "needs_disease_treatements": {
+                "@type": "cropCult:DiseaseTreatements",
+                "disease_name": "Disease name",
+                "disease_symptoms": "Disease symptoms",
+                "disease_control": {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Disease control herbicide name",
+                    "quantity": "Disease control herbicide quantity",
+                    "stage": "Disease control herbicide application stage"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "cropCult:PestTreatements",
+                "pest_name": "Pest name",
+                "pest_symptoms": "Pest symptoms",
+                "pest_control": {
+                    "@type": "cropCult:PesticideList",
+                    "name": "Pest control pesticide name",
+                    "quantity": "Pest control pesticide quantity",
+                    "stage": "Pest control pesticide application stage"
+                }
+            },
+            "harvesting_guidelines_are": "Harvesting guidelines",
+            "storage_guidelines_are": "Storage guidelines"
+        }
+    ]
+}

@@ -1,0 +1,166 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Pokémon is no longer just a game — it’s a lifestyle",
+            "author": "Alicia Haddick",
+            "published": "2023-11-23T18:00:00+00:00",
+            "summary": "A normal person in a rural town has dreams of becoming a master. As they come of age and spring approaches, it’s time for them to begin their journey to chase that dream. After saying goodbye to their mother and hometown, adventure awaits. They open the front door and take their first steps into a world full of new experiences and things to uncover.",
+            "has_events": {
+                "@list": []
+            },
+            "followUp": {
+                "@id": "snap:asset"
+            },
+            "derivedFrom": {
+                "@id": "snap:asset"
+            }
+        },
+        {
+            "@type": "EventList",
+            "Event": {
+                "eventTitle": "PokéTsume Premiere",
+                "eventSummary": "The premiere of the first live-action series in the Pokémon franchise.",
+                "theme": "entertainment",
+                "hasLocation": {
+                    "@id": "geo:SpatialThing"
+                },
+                "mentions_persons": {
+                    "@list": [
+                        {
+                            "name": "Madoka Akagi",
+                            "alias": "Nanase Nishino"
+                        }
+                    ]
+                },
+                "mentions_organizations": {
+                    "@list": [
+                        {
+                            "name": "ADventure"
+                        },
+                        {
+                            "name": "TV Tokyo"
+                        }
+                    ]
+                },
+                "subEventOf": {
+                    "@id": "snap:event"
+                },
+                "notablyAssociatedWith": {
+                    "@id": "snap:event"
+                }
+            }
+        },
+        {
+            "@type": "PersonList",
+            "Person": {
+                "name": "Alicia Haddick",
+                "dateOfBirth": "xmls:date",
+                "dateOfDeath": "xmls:date",
+                "placeOfBirth": {
+                    "@id": "geo:location"
+                },
+                "alias": "xmls:string"
+            }
+        },
+        {
+            "@type": "OrganizationList",
+            "Organization": {
+                "name": "The Verge",
+                "hasLocation": {
+                    "@id": "geo:SpatialThing"
+                },
+                "alias": "xmls:string",
+                "notablyAssociatedWith": {
+                    "@list": [
+                        {
+                            "name": "Pokémon Company"
+                        },
+                        {
+                            "name": "Game Freak"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}

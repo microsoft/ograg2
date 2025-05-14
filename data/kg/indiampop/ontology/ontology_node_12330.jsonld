@@ -1,0 +1,289 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "SeedList": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List",
+                "has_early_sowing_time": "cropCult:SowingTime",
+                "has_late_sowing_time": "cropCult:SowingTime",
+                "has_seeding_rate": "schema:QuantitativeValue",
+                "has_fertilizer_application_requirements": "cropCult:Fertilization"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CropGrowingZones":{
+                "@container": "@list",
+                "@id": "cropCult:CropGrowingZones",
+                "@type": "schema:ItemList",
+                "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List",
+                    "has_seed_recommendations": "cropCult:SeedList"
+                }
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "for_flowering": "schema:Text",
+                "for_grain_filling": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "seedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "SOYBEAN (Glycine max (L.) Merr.)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "CROP IMPROVEMENT",
+                "used_for": "Agriculture"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Midwest",
+                    "has_regions": ["Illinois", "Indiana", "Iowa"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Pioneer P35T58R", "Asgrow AG36X6"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-04-15",
+                            "end_date": "2022-05-15"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-05-15",
+                            "end_date": "2022-06-15"
+                        },
+                        "has_seeding_rate": {
+                            "value": "140,000 seeds per acre"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Nitrogen",
+                            "quantity": "50 lbs per acre",
+                            "stage_of_application": "At planting"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "68-86°F",
+                "for_flowering": "77-86°F",
+                "for_grain_filling": "77-86°F",
+                "negative_effect": "Temperatures above 95°F can reduce yields"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loam",
+                "avoid_soil_type": "Sandy",
+                "for_water": "Well-drained soil is necessary",
+                "for_nutrients": "Soil should be rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plow and harrow the field to prepare a fine seed bed",
+                "with_soil_moisture": "Soil should be moist but not wet at the time of land preparation"
+            },
+            "seed_germination_test_requirements_are": "Seeds should have a germination rate of at least 90%",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Apron XL",
+                "quantity": "0.64 fl oz per 100 lbs of seed"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Spring",
+                "value": "1.5-2 inches",
+                "depth": "1-1.5 inches",
+                "method": "Drill sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Waterhemp",
+                "weed_types": ["Broadleaf", "Grass"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Roundup",
+                    "quantity": "32 fl oz per acre",
+                    "stage": "Post-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "1 inch of water per week",
+                "stage_of_application": "Throughout the growing season"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Soybean cyst nematode",
+                "disease_symptoms": "Yellowing and stunting of plants",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "NemaStrike",
+                    "quantity": "4 fl oz per 100 lbs of seed",
+                    "stage": "At planting"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Soybean aphid",
+                "pest_symptoms": "Yellowing and curling of leaves",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Warrior II",
+                    "quantity": "1.92 fl oz per acre",
+                    "stage": "At first sign of aphids"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when pods are yellow and beans are hard",
+            "storage_guidelines_are":"Store in a cool, dry place"
+        }
+    ]
+}

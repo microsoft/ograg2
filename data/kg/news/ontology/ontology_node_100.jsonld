@@ -1,0 +1,166 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "He’s Hockey’s Brightest Young Star. This Is What Makes His Shot So Special.",
+            "author": "The New York Times",
+            "published": "2023-11-17T21:47:19+00:00",
+            "summary": "An in-depth analysis of Connor Bedard's unique shooting technique and its implications in the NHL.",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Connor Bedard's Shooting Technique Analysis",
+                        "eventSummary": "A detailed breakdown of Connor Bedard's shooting mechanics and skills.",
+                        "theme": "sports",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Tim Turk",
+                                    "dateOfBirth": "xmls:date",
+                                    "alias": "Shooting Coach"
+                                },
+                                {
+                                    "name": "Nick Quinn",
+                                    "dateOfBirth": "xmls:date",
+                                    "alias": "NHL Skills Coach"
+                                },
+                                {
+                                    "name": "Greg Landry",
+                                    "dateOfBirth": "xmls:date",
+                                    "alias": "Agent"
+                                },
+                                {
+                                    "name": "Jackson Unger",
+                                    "dateOfBirth": "xmls:date",
+                                    "alias": "Goalie"
+                                },
+                                {
+                                    "name": "Zach Benson",
+                                    "dateOfBirth": "xmls:date",
+                                    "alias": "First-round pick"
+                                },
+                                {
+                                    "name": "Scott Ratzlaff",
+                                    "dateOfBirth": "xmls:date",
+                                    "alias": "Goalie"
+                                },
+                                {
+                                    "name": "Luke Richardson",
+                                    "dateOfBirth": "xmls:date",
+                                    "alias": "Blackhawks Coach"
+                                },
+                                {
+                                    "name": "Kyle Davidson",
+                                    "dateOfBirth": "xmls:date",
+                                    "alias": "Blackhawks General Manager"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Newport Sports",
+                                    "alias": "Sports Agency"
+                                },
+                                {
+                                    "name": "Chicago Blackhawks",
+                                    "alias": "NHL Team"
+                                },
+                                {
+                                    "name": "Moose Jaw Warriors",
+                                    "alias": "Junior Hockey Team"
+                                },
+                                {
+                                    "name": "Buffalo Sabres",
+                                    "alias": "NHL Team"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

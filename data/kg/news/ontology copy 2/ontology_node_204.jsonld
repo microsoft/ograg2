@@ -1,0 +1,113 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "schema:Thing",
+      "title": "41 Best Prime Day Apple Deals (2023)",
+      "author": "Brenda Stolyar",
+      "theme": "technology",
+      "content": "Discounts on Apple products are few and far between. Luckily, with Amazon's second big sale event of the year (officially called Prime Big Deal Days), we've found a variety of Prime Day Apple deals. That includes iPads, Apple Watches, iPhone cases, and MagSafe accessories. These deals aren't just at Amazon either—we've linked to other retailers like Best Buy when available.",
+      "published": "2023-10-10T22:58:00+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "schema:Thing",
+          "eventTitle": "Prime Day Apple Deals",
+          "eventSummary": "Discounts on Apple products during Amazon's Prime Big Deal Days.",
+          "theme": "technology",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization1",
+              "@type": "schema:Thing",
+              "name": "Amazon"
+            },
+            {
+              "@id": "snap:organization2",
+              "@type": "schema:Thing",
+              "name": "Best Buy"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Mushroom",
+            "has_types": {
+                "@type": "CropType",
+                "name": "FORAGE CROPS",
+                "used_for": "MUSHROOM CULTIVATION"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Indoor",
+                    "has_regions": ["Not applicable"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Not applicable"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Not applicable",
+                            "end_date": "Not applicable"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Not applicable",
+                            "end_date": "Not applicable"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "High yield per unit time"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Not applicable",
+                            "quantity": "Not applicable",
+                            "stage_of_application": "Not applicable"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Not applicable",
+                "for_flowering": "Not applicable",
+                "for_grain_filling": "Not applicable",
+                "negative_effect": "Not applicable"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Not applicable",
+                "avoid_soil_type": "Not applicable",
+                "for_water": "Not applicable",
+                "for_nutrients": "Not applicable"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Not applicable",
+                "with_soil_moisture": "Not applicable"
+            },
+            "seed_germination_test_requirements_are": "Not applicable",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Not applicable",
+                "quantity": "Not applicable"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Not applicable",
+                "value": "Not applicable",
+                "depth": "Not applicable",
+                "method": "Not applicable"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Not applicable",
+                "weed_types": ["Not applicable"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Not applicable",
+                    "quantity": "Not applicable",
+                    "stage": "Not applicable"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Not applicable",
+                "stage_of_application": "Not applicable"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Not applicable",
+                "disease_symptoms": "Not applicable",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Not applicable",
+                    "quantity": "Not applicable",
+                    "stage": "Not applicable"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Not applicable",
+                "pest_symptoms": "Not applicable",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Not applicable",
+                    "quantity": "Not applicable",
+                    "stage": "Not applicable"
+                }
+            },
+            "harvesting_guidelines_are": "Not applicable",
+            "storage_guidelines_are": "Not applicable"
+        }
+    ]
+}

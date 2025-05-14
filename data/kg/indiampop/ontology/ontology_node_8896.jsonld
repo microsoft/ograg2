@@ -1,0 +1,67 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Bio-CROP",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Bio-CROP",
+                "used_for": "Enriched Organic Manure"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Coir Dust",
+                "for_nutrients": "Poultry Manure, Rock Phosphate"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Composting coir dust along with poultry manure, rock phosphate and microbial inoculants Pleurotus sajor-caju, Bacillus sp, Trichoderma sp and Pseudomonas sp within 60 days time."
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Microbial Inoculants",
+                "quantity": "Pleurotus sajor-caju, Bacillus sp, Trichoderma sp and Pseudomonas sp"
+            }
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Bio-CROP",
+            "quantity": "Coir Dust, Poultry Manure, Rock Phosphate, Microbial Inoculants",
+            "stage_of_application": "Composting Stage"
+        }
+    ]
+}

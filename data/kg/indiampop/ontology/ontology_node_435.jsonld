@@ -1,0 +1,101 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Tropical sugarbeet",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Tropical sugarbeet",
+                "used_for": "PRODUCTION TECHNOLOGY"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "North East monsoon",
+                "has_regions": ["September– November"],
+                "has_seed_recommendations": {
+                    "@type": "SeedList",
+                    "variety_name": "Tropical sugarbeet",
+                    "has_early_sowing_time": "September",
+                    "has_late_sowing_time": "November",
+                    "has_seeding_rate": "300 – 350 mm"
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "20 – 250C",
+                "for_flowering": "30 - 350C",
+                "for_grain_filling": "25– 350C",
+                "negative_effect": "High rainfall"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Well distributed",
+                "avoid_soil_type": "High soil moisture",
+                "for_water": "300 – 350 mm",
+                "for_nutrients": "Not specified"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Not specified",
+                "with_soil_moisture": "Not specified"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "September– November",
+                "value": "Not specified",
+                "depth": "Not specified",
+                "method": "Not specified"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Not specified",
+                "weed_types": [],
+                "herbicides": []
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "300 – 350 mm",
+                "stage_of_application": "Growing period"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Not specified",
+                "disease_symptoms": "Not specified",
+                "disease_control": []
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Not specified",
+                "pest_symptoms": "Not specified",
+                "pest_control": []
+            },
+            "harvesting_guidelines_are": "Not specified",
+            "storage_guidelines_are": "Not specified"
+        }
+    ]
+}

@@ -1,0 +1,347 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "title": "Fantasy Football WR PPR Rankings Week 14: Who to start, best sleepers at wide receiver",
+      "byline": "Nick Musial",
+      "published": "2023-12-07T22:11:00+00:00",
+      "summary": "As fantasy football owners gear up for the last week of the fantasy regular season (in most leagues), our Week 14 fantasy WR PPR rankings are loaded top to bottom with just two teams on bye. Rolling out a strong receiving corps in a potential must-win week is essential, and we're here to shore up your start 'em, sit 'em concerns.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Fantasy WR PPR Rankings Week 14: Who to start, sit at wide receiver",
+        "summary": "Rankings based on full-point PPR scoring formats",
+        "hasAsset": [
+          {
+            "asset": "Tyreek Hill, Dolphins vs. Titans"
+          },
+          {
+            "asset": "CeeDee Lamb, Cowboys vs. Eagles"
+          },
+          {
+            "asset": "Amon-Ra St. Brown, Lions @ Bears"
+          },
+          {
+            "asset": "A.J. Brown, Eagles @ Cowboys"
+          },
+          {
+            "asset": "Keenan Allen, Chargers vs. Broncos"
+          },
+          {
+            "asset": "Justin Jefferson, Vikings @ Raiders"
+          },
+          {
+            "asset": "Stefon Diggs, Bills @ Chiefs"
+          },
+          {
+            "asset": "Mike Evans, Buccaneers @ Falcons"
+          },
+          {
+            "asset": "Michael Pittman Jr., Colts @ Bengals"
+          },
+          {
+            "asset": "Davante Adams, Raiders vs. Vikings"
+          },
+          {
+            "asset": "Brandon Aiyuk, 49ers vs. Seahawks"
+          },
+          {
+            "asset": "Nico Collins, Texans @ Jets"
+          },
+          {
+            "asset": "Ja'Marr Chase, Bengals vs. Colts"
+          },
+          {
+            "asset": "Cooper Kupp, Rams @ Ravens"
+          },
+          {
+            "asset": "Chris Olave, Saints vs. Panthers"
+          },
+          {
+            "asset": "DK Metcalf, Seahawks @ 49ers"
+          },
+          {
+            "asset": "Garrett Wilson, Jets vs. Texans"
+          },
+          {
+            "asset": "DeVonta Smith, Eagles @ Cowboys"
+          },
+          {
+            "asset": "DJ Moore, Bears vs. Lions"
+          },
+          {
+            "asset": "Puka Nacua, Rams @ Ravens"
+          },
+          {
+            "asset": "Deebo Samuel, 49ers vs. Seahawks"
+          },
+          {
+            "asset": "Jaylen Waddle, Dolphins vs. Titans"
+          },
+          {
+            "asset": "DeAndre Hopkins, Titans @ Dolphins"
+          },
+          {
+            "asset": "Amari Cooper, Browns vs. Jaguars"
+          },
+          {
+            "asset": "Calvin Ridley, Jaguars @ Browns"
+          },
+          {
+            "asset": "Zay Flowers, Ravens vs. Rams"
+          },
+          {
+            "asset": "Noah Brown, Texans @ Jets"
+          },
+          {
+            "asset": "Courtland Sutton, Broncos @ Chargers"
+          },
+          {
+            "asset": "Romeo Doubs, Packers @ Giants"
+          },
+          {
+            "asset": "Jakobi Meyers, Raiders vs. Vikings"
+          },
+          {
+            "asset": "Chris Godwin, Buccaneers @ Falcons"
+          },
+          {
+            "asset": "Rashee Rice, Chiefs vs. Bills"
+          },
+          {
+            "asset": "Tee Higgins, Bengals vs. Colts"
+          },
+          {
+            "asset": "Jerry Jeudy, Broncos @ Chargers"
+          },
+          {
+            "asset": "Brandin Cooks, Cowboys vs. Eagles"
+          },
+          {
+            "asset": "Diontae Johnson, Steelers vs. Patriots"
+          },
+          {
+            "asset": "Elijah Moore, Browns vs. Jaguars"
+          },
+          {
+            "asset": "Adam Thielen, Panthers @ Saints"
+          },
+          {
+            "asset": "Tyler Lockett, Seahawks @ 49ers"
+          },
+          {
+            "asset": "Josh Downs, Colts @ Bengals"
+          },
+          {
+            "asset": "George Pickens, Steelers vs. Patriots"
+          },
+          {
+            "asset": "Jaxon Smith-Njigba, Seahawks @ 49ers"
+          },
+          {
+            "asset": "Drake London, Falcons vs. Buccaneers"
+          },
+          {
+            "asset": "Zay Jones, Jaguars @ Browns"
+          },
+          {
+            "asset": "Jordan Addison, Vikings @ Raiders"
+          },
+          {
+            "asset": "Jayden Reed, Packers @ Giants"
+          },
+          {
+            "asset": "Robert Woods, Texans @ Jets"
+          },
+          {
+            "asset": "Gabe Davis, Bills @ Chiefs"
+          },
+          {
+            "asset": "Tyler Boyd, Bengals vs. Colts"
+          },
+          {
+            "asset": "Odell Beckham Jr., Ravens vs. Rams"
+          },
+          {
+            "asset": "Jonathan Mingo, Panthers @ Saints"
+          },
+          {
+            "asset": "Jameson Williams, Lions @ Bears"
+          },
+          {
+            "asset": "Xavier Gipson, Jets vs. Texans"
+          },
+          {
+            "asset": "Jalen Guyton, Chargers vs. Broncos"
+          },
+          {
+            "asset": "Darius Slayton, Giants vs. Packers"
+          },
+          {
+            "asset": "Quentin Johnston, Chargers vs. Broncos"
+          },
+          {
+            "asset": "Trey Palmer, Buccaneers @ Falcons"
+          },
+          {
+            "asset": "K.J. Osborn, Vikings @ Raiders"
+          },
+          {
+            "asset": "JuJu Smith-Schuster, Patriots @ Steelers"
+          },
+          {
+            "asset": "DJ Chark, Panthers @ Saints"
+          },
+          {
+            "asset": "Wan'Dale Robinson, Giants vs. Packers"
+          },
+          {
+            "asset": "Khalil Shakir, Bills @ Chiefs"
+          },
+          {
+            "asset": "Alec Pierce, Colts @ Bengals"
+          },
+          {
+            "asset": "Justin Watson, Chiefs vs. Bills"
+          },
+          {
+            "asset": "Tutu Atwell, Rams @ Ravens"
+          },
+          {
+            "asset": "Treylon Burks, Titans @ Dolphins"
+          },
+          {
+            "asset": "Josh Reynolds, Lions @ Bears"
+          },
+          {
+            "asset": "Nick Westbrook-Ikhine, Titans @ Dolphins"
+          },
+          {
+            "asset": "Cedric Tillman, Browns vs. Jaguars"
+          },
+          {
+            "asset": "Marquez Valdes-Scantling, Chiefs vs. Bills"
+          },
+          {
+            "asset": "Dontayvion Wicks, Packers @ Giants"
+          },
+          {
+            "asset": "Hunter Renfrow, Raiders vs. Vikings"
+          },
+          {
+            "asset": "Darnell Mooney, Bears vs. Lions"
+          },
+          {
+            "asset": "Skyy Moore, Chiefs vs. Bills"
+          },
+          {
+            "asset": "Kalif Raymond, Lions @ Bears"
+          },
+          {
+            "asset": "A.T. Perry, Saints vs. Panthers"
+          },
+          {
+            "asset": "Cedrick Wilson, Dolphins vs. Titans"
+          },
+          {
+            "asset": "Trenton Irwin, Bengals vs. Colts"
+          },
+          {
+            "asset": "Michael Gallup, Cowboys vs. Eagles"
+          },
+          {
+            "asset": "Brandon Powell, Vikings @ Raiders"
+          },
+          {
+            "asset": "Chris Moore, Titans @ Dolphins"
+          },
+          {
+            "asset": "Rashod Bateman, Ravens vs. Rams"
+          }
+        ]
+      }
+    }
+  ]
+}
+```

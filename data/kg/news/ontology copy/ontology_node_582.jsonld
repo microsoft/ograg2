@@ -1,0 +1,142 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "Sarah Perez",
+            "published": "2023-12-05T15:00:57+00:00",
+            "title": "Beeper reversed engineered iMessage to bring blue bubble texts to Android users",
+            "summary": "The push to bring iMessage to Android users today adds a new contender. A startup called Beeper, which had been working on a multi-platform messaging aggregator, is now launching a new app called Beeper Mini which will allow Android users to send and receive end-to-end encrypted iMessage chats for just $1.99 per month. Beeper Mini was made possible because the team behind the app has managed to reverse-engineer the iMessage protocol, they say.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://techcrunch.com/2023/12/05/beeper-reversed-engineered-imessage-to-bring-blue-bubble-texts-to-android-users/"
+            }
+        },
+        {
+            "@type": "snap:organization",
+            "name": "TechCrunch"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Eric Migicovsky"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Beeper"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Y Combinator"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Pebble"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Fitbit"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Initialized Capital"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "SV Angel"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Samsung Next"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Liquid2 Ventures"
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Shrug Capital"
+        }
+    ]
+}
+```

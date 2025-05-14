@@ -1,0 +1,45 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "COCONUT (Cocos nucifera Linn.)",
+            "has_types": [
+                {
+                    "@type": "CropType",
+                    "name": "Tall",
+                    "used_for": ["West Coast Tall", "East Coast Tall", "Laccadive ordinary"]
+                },
+                {
+                    "@type": "CropType",
+                    "name": "Dwarf",
+                    "used_for": ["Chowghat Dwarf Orange", "Chowghat Dwarf Green", "Malayan Dwarf"]
+                },
+                {
+                    "@type": "CropType",
+                    "name": "Hybrid",
+                    "used_for": ["VHC 1", "VHC 2", "VHC 3", "VPM 3"]
+                }
+            ]
+        }
+    ]
+}

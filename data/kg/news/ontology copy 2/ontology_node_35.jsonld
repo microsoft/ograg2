@@ -1,0 +1,165 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "Headphone and Earbud Deals",
+            "author": "WIRED",
+            "theme": "Technology",
+            "content": "JBL's Endurance Peak 3 are that rare pair of earbuds you can feel comfortable wearing at the gym, on the trail, or even in the hot tub thanks to their hearty water resistance and sport-ready fit. They're light on extras like noise canceling but at this price, they're a great investment as your go-to workout companions.",
+            "hasThumbnail": "JBL",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "eventTitle": "JBL Endurance Peak 3",
+                    "eventSummary": "Earbuds with water resistance and sport-ready fit.",
+                    "theme": "Headphone and Earbud Deals"
+                },
+                {
+                    "@id": "snap:event2",
+                    "eventTitle": "Sony WF-1000XM5",
+                    "eventSummary": "Great sound, top features, and excellent noise canceling.",
+                    "theme": "Headphone and Earbud Deals"
+                },
+                {
+                    "@id": "snap:event3",
+                    "eventTitle": "Sennheiser HD 660S2",
+                    "eventSummary": "Bass-enriched audiophile headphones.",
+                    "theme": "Headphone and Earbud Deals"
+                }
+            ]
+        },
+        {
+            "@id": "snap:asset2",
+            "@type": "schema:Thing",
+            "title": "Smart Home Deals",
+            "author": "WIRED",
+            "theme": "Technology",
+            "content": "Want to smarten up your home? See our guides to setting up your smart home, the best smart lighting, and the best mesh routers to get started.",
+            "hasThumbnail": "Aura Frames",
+            "has_events": [
+                {
+                    "@id": "snap:event4",
+                    "eventTitle": "Aura Frames",
+                    "eventSummary": "Best digital picture frames.",
+                    "theme": "Smart Home Deals"
+                },
+                {
+                    "@id": "snap:event5",
+                    "eventTitle": "Nanoleaf Lines",
+                    "eventSummary": "Modular smart lighting bars.",
+                    "theme": "Smart Home Deals"
+                },
+                {
+                    "@id": "snap:event6",
+                    "eventTitle": "EufyCam 3",
+                    "eventSummary": "Smart security camera system.",
+                    "theme": "Smart Home Deals"
+                }
+            ]
+        },
+        {
+            "@id": "snap:asset3",
+            "@type": "schema:Thing",
+            "title": "Speaker Deals",
+            "author": "WIRED",
+            "theme": "Technology",
+            "content": "Want better sound? Have a read through our guides to the best speakers, best bluetooth speaker, and the best gear for audiophiles.",
+            "hasThumbnail": "Sonos",
+            "has_events": [
+                {
+                    "@id": "snap:event7",
+                    "eventTitle": "Sonos Sub (Gen 3)",
+                    "eventSummary": "Upgrade bass with better processing power.",
+                    "theme": "Speaker Deals"
+                },
+                {
+                    "@id": "snap:event8",
+                    "eventTitle": "Bose Soundlink Revolve+",
+                    "eventSummary": "Excellent sound in a neat and water-resistant design.",
+                    "theme": "Speaker Deals"
+                }
+            ]
+        }
+    ]
+}

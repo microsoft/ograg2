@@ -1,0 +1,204 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:person1",
+      "@type": "snap:person",
+      "name": "Phoenix Gothard",
+      "dateOfBirth": "2005-09-07",
+      "placeOfBirth": "geo:location",
+      "alias": "AFL player comparison: Tom Papley (Sydney Swans)"
+    },
+    {
+      "@id": "snap:person2",
+      "@type": "snap:person",
+      "name": "Will Graham",
+      "dateOfBirth": "2005-07-27",
+      "placeOfBirth": "geo:location",
+      "alias": "AFL player comparison: Dan Houston (Port Adelaide)"
+    },
+    {
+      "@id": "snap:person3",
+      "@type": "snap:person",
+      "name": "Will Green",
+      "dateOfBirth": "2005-09-08",
+      "placeOfBirth": "geo:location",
+      "alias": "AFL player comparison: Brodie Grundy (Sydney Swans)"
+    },
+    {
+      "@id": "snap:person4",
+      "@type": "snap:person",
+      "name": "Clay Hall",
+      "dateOfBirth": "2005-05-12",
+      "placeOfBirth": "geo:location",
+      "alias": "AFL player comparison: Jack Macrae (Western Bulldogs)"
+    },
+    {
+      "@id": "snap:person5",
+      "@type": "snap:person",
+      "name": "Riley Hardeman",
+      "dateOfBirth": "2005-02-27",
+      "placeOfBirth": "geo:location",
+      "alias": "AFL player comparison: Hayden Young (Fremantle)"
+    },
+    {
+      "@id": "snap:person6",
+      "@type": "snap:person",
+      "name": "Angus Hastie",
+      "dateOfBirth": "2005-09-19",
+      "placeOfBirth": "geo:location",
+      "alias": "AFL player comparison: Mason Redman (Essendon)"
+    },
+    {
+      "@id": "snap:person7",
+      "@type": "snap:person",
+      "name": "Tew Jiath",
+      "dateOfBirth": "2005-03-02",
+      "placeOfBirth": "geo:location",
+      "alias": "AFL player comparison: Will Day (Hawthorn)"
+    },
+    {
+      "@id": "snap:person8",
+      "@type": "snap:person",
+      "name": "James Leake",
+      "dateOfBirth": "2005-10-02",
+      "placeOfBirth": "geo:location",
+      "alias": "AFL player comparison: Callum Mills (Sydney Swans)"
+    },
+    {
+      "@id": "snap:person9",
+      "@type": "snap:person",
+      "name": "Kane McAuliffe",
+      "dateOfBirth": "2005-03-01",
+      "placeOfBirth": "geo:location",
+      "alias": "AFL player comparison: Jack Crisp (Collingwood)"
+    },
+    {
+      "@id": "snap:person10",
+      "@type": "snap:person",
+      "name": "Will McCabe",
+      "dateOfBirth": "2005-09-29",
+      "placeOfBirth": "geo:location",
+      "alias": "AFL player comparison: Jordan Ridley (Essendon)"
+    },
+    {
+      "@id": "snap:person11",
+      "@type": "snap:person",
+      "name": "Colby McKercher",
+      "dateOfBirth": "2005-04-12",
+      "placeOfBirth": "geo:location",
+      "alias": "AFL player comparison: Zac Merrett (Essendon)"
+    },
+    {
+      "@id": "snap:person12",
+      "@type": "snap:person",
+      "name": "Ashton Moya",
+      "dateOfBirth": "2005-04-15",
+      "placeOfBirth": "geo:location",
+      "alias": "AFL player comparison: Bayley Fritsch (Melbourne)"
+    },
+    {
+      "@id": "snap:person13",
+      "@type": "snap:person",
+      "name": "Ollie Murphy",
+      "dateOfBirth": "2005-09-16",
+      "placeOfBirth": "geo:location",
+      "alias": "AFL player comparison: Jake Lever (Melbourne)"
+    },
+    {
+      "@id": "snap:person14",
+      "@type": "snap:person",
+      "name": "Connor O’Sullivan",
+      "dateOfBirth": "2005-05-19",
+      "placeOfBirth": "geo:location",
+      "alias": "AFL player comparison: Sam Taylor (GWS Giants)"
+    },
+    {
+      "@id": "snap:person15",
+      "@type": "snap:person",
+      "name": "Ethan Read",
+      "dateOfBirth": "2005-07-07",
+      "placeOfBirth": "geo:location",
+      "alias": "AFL player comparison: Mark Blicavs (Geelong Cats)"
+    }
+  ]
+}

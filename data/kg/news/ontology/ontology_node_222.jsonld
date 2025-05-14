@@ -1,0 +1,168 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Israel's defense undone by reliance on technology",
+            "author": "Assaf Gilead",
+            "theme": "business",
+            "summary": "The article discusses the failures of Israel's defense systems, particularly the reliance on technology, and the implications of these failures in the context of recent events.",
+            "created": "2023-11-05T13:35:33+00:00",
+            "published": "2023-11-05T13:35:33+00:00",
+            "url": "https://en.globes.co.il/en/article-1001461695#utm_source=RSS",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Construction of the Berlin Wall",
+                        "eventSummary": "The Berlin Wall was built in 1961 to prevent East Germans from escaping to the West.",
+                        "theme": "historical",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Berlin"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Operation Protective Edge",
+                        "eventSummary": "A military operation in 2014 that revealed vulnerabilities in Israel's border defenses.",
+                        "theme": "military",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Gaza Strip"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Completion of the Gaza Barrier",
+                        "eventSummary": "The Gaza barrier was completed in December 2021 to protect against security threats.",
+                        "theme": "security",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Gaza Strip"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "October 7 Attack",
+                        "eventSummary": "On October 7, Hamas used drones to disable Israel's defense systems.",
+                        "theme": "attack",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Gaza Strip"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    }
+                ]
+            },
+            "followUp": "snap:asset",
+            "derivedFrom": "snap:asset"
+        }
+    ]
+}

@@ -1,0 +1,98 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Ron Miller",
+            "published": "2023-12-15T18:45:09+00:00",
+            "title": "When it comes to generative AI in the enterprise, CIOs are taking it slow",
+            "summary": "To hear the hype from vendors, you would think that enterprise buyers are all in when it comes to generative AI. But like any newer technology, large companies tend to move cautiously. Throughout this year, as vendors feverishly announced new generative AI-fueled products, CIOs took note. Some companies have actually been looking to cut back on spending, or at least stay even, not necessarily looking for new ways to spend money. The big exception is when technology enables companies to operate more efficiently, and do more with less. Generative AI certainly has the potential to do that, but it also has its own costs associated with it, whether it’s a higher cost for these features in a SaaS product or the price for hitting a large language model API if you’re building your own software internally. Either way, it’s important for the folks implementing the technology to understand if they are getting a return on their investment. A July Morgan Stanley survey of large company CIOs found that many were proceeding cautiously, with 56% of respondents reporting that generative AI was having an impact on their investment priorities, but only 4% had actually launched significant projects. In fact, most were still in the evaluation or proof of concept phase. This may be a fast moving area, but it fits with what we’re hearing in conversations with CIOs as well. That said, much like the consumerization of IT a decade ago, CIOs are under pressure to deliver the kind of experiences people are seeing when they play with ChatGPT online, says Jon Turow, a partner at Madrona Ventures. “I think it’s undeniable that enterprise employees, who are the internal customers of the CIO or CTO, have all tried ChatGPT and they know what amazing looks like. They know where it’s early, and they know where it’s inspiring, and for lack of a better word, where they see greatness. And so CIOs are under pressure to deliver that level,” Turow told TechCrunch. It has created a tension between this desire to please the internal customers, especially when some of that pressure could be coming from the CEO, and a CIO’s natural tendency to move cautiously, even with something as potentially transformative as generative AI. That’s going to take setting up some structure and organization around how this gets implemented over time, says Jim Rowan, principal at Deloitte, who is working with clients around how to build generative AI across companies in an organized fashion. “A lot of the way we’re working with companies is thinking about what is the infrastructure that they need to be successful. By infrastructure, I don’t necessarily mean technology, but who are the people, what are the processes and the governance…and giving them the capabilities to set that up,” Rowan said. A big part of that is talking about use cases and how to use the technology to address a given problem. This is in line with how CIOs we spoke to are approaching implementing this in their organizations. Monica Caldas, CIO at insurance company Liberty Mutual, started with a few-thousand-person proof of concept, and is looking for ways to expand that for her 45,000 employee company. “We know generative AI will continue to play a critical role in virtually every part of our company, so we’re investing in many use cases to further develop and refine them in service of supporting our employees and giving them better internal capabilities,” she said. Mike Haney, CIO at Battelle, a firm focused on science and technology, has also been exploring generative AI use cases this year. “So we’ve been doing this whole push for AI over the last maybe six or nine months and we’re at the point right now where we’re building specific use cases for each different team and function within the firm.” He cautions that it’s early, and they are still exploring ways in which it can help, but so far the results have been good in terms of offering more efficient ways to do things. Kathy Kay, executive VP and CIO at Principal Financial Group, a financial services company, says her company started from scratch with a study group. “So any employees who had an interest or passion, we allowed them to join so there’s about 100 people. It’s a combination of engineers and business people, and we are curating probably 25 use cases now that they’ve gone through, and three will be going into production [soon],” she said. Sharon Mandell, CIO at Juniper Networks, says that her company is participating in an initial pilot with Microsoft around Copilot for Office 365, and anecdotally, she has heard a range of feedback from people who love it to those who are less impressed, but she says trying to measure increased productivity remains a challenge, even with Microsoft beginning to provide dashboards that at least show the level of adoption and usage. “The hard thing about this is you don’t have data on people’s level of productivity. So no matter what, you’re using somewhat anecdotal information until you get really good at understanding these dashboards from Microsoft showing you how people are using it,” she said. As companies hear about the potential power of generative AI, it’s only natural that they would want to learn more about it and put it to work to help their organizations run more efficiently, but at the same time, executives are right to be somewhat cautious, recognizing that these are still early days and they have to learn through experimentation if this is truly transformative technology.",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "url": "https://techcrunch.com/2023/12/15/when-it-comes-to-generative-ai-in-the-enterprise-cios-are-taking-it-slow/"
+            }
+        }
+    ]
+}
+```

@@ -1,0 +1,142 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "schema:Thing",
+      "title": "‘I was being ritually tortured’: the most shocking moments in Britney Spears’ memoir",
+      "author": "Laura Snapes",
+      "theme": "entertainment",
+      "content": "She has never really known freedom...",
+      "published": "2023-10-24T18:37:25+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "schema:Thing",
+          "eventTitle": "Britney's Childhood and Rise to Fame",
+          "eventSummary": "Britney's difficult home life and early fame.",
+          "theme": "personal life",
+          "mentions_persons": [
+            {
+              "@id": "snap:person1",
+              "@type": "schema:Thing",
+              "name": "Britney Spears"
+            },
+            {
+              "@id": "snap:person2",
+              "@type": "schema:Thing",
+              "name": "Justin Timberlake"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event2",
+          "@type": "schema:Thing",
+          "eventTitle": "Conservatorship and Legal Battles",
+          "eventSummary": "Britney's life under conservatorship.",
+          "theme": "legal",
+          "mentions_persons": [
+            {
+              "@id": "snap:person3",
+              "@type": "schema:Thing",
+              "name": "Jamie Spears"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event3",
+          "@type": "schema:Thing",
+          "eventTitle": "Motherhood and Personal Struggles",
+          "eventSummary": "Britney's experiences as a mother.",
+          "theme": "family",
+          "mentions_persons": [
+            {
+              "@id": "snap:person4",
+              "@type": "schema:Thing",
+              "name": "Kevin Federline"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

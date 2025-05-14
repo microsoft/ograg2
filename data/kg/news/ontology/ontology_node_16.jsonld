@@ -1,0 +1,379 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Poland opens an investigation against OpenAI",
+            "author": "Unknown",
+            "summary": "The Polish authority publically announced it has opened an investigation regarding ChatGPT — accusing the company of a string of breaches of the EU’s General Data Protection Regulation (GDPR).",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Investigation by Polish Authority",
+                        "eventSummary": "Poland's authority investigates OpenAI for GDPR breaches.",
+                        "theme": "Legal",
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": {
+                                "name": "OpenAI"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "OpenAI unveils DALL-E 3",
+            "author": "Unknown",
+            "summary": "The upgraded text-to-image tool, DALL-E 3, uses ChatGPT to help fill in prompts.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Opera GX integrates ChatGPT-powered AI",
+            "author": "Unknown",
+            "summary": "Powered by OpenAI’s ChatGPT, the AI browser Aria launched on Opera in May to give users an easier way to search, ask questions and write code.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "OpenAI releases a guide for teachers using ChatGPT in the classroom",
+            "author": "Unknown",
+            "summary": "OpenAI wants to rehabilitate the system’s image a bit when it comes to education, as ChatGPT has been controversial in the classroom due to plagiarism.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "OpenAI launches ChatGPT Enterprise",
+            "author": "Unknown",
+            "summary": "ChatGPT Enterprise can perform the same tasks as ChatGPT, such as writing emails, drafting essays and debugging computer code.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Survey finds relatively few Americans use ChatGPT",
+            "author": "Unknown",
+            "summary": "Recent Pew polling suggests the language model isn’t quite as popular or threatening as some would have you think.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "OpenAI brings fine-tuning to GPT-3.5 Turbo",
+            "author": "Unknown",
+            "summary": "With fine-tuning, companies using GPT-3.5 Turbo through the company’s API can make the model better follow specific instructions.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "OpenAI acquires Global Illumination",
+            "author": "Unknown",
+            "summary": "In OpenAI’s first public acquisition in its seven-year history, the company announced it has acquired Global Illumination.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "The ‘custom instructions’ feature is extended to free ChatGPT users",
+            "author": "Unknown",
+            "summary": "OpenAI announced that it’s expanding custom instructions to all users, including those on the free tier of service.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "China requires AI apps to obtain an administrative license",
+            "author": "Unknown",
+            "summary": "Multiple generative AI apps have been removed from Apple’s China App Store ahead of the country’s latest generative AI regulations.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "ChatGPT for Android is now available in the US, India, Bangladesh and Brazil",
+            "author": "Unknown",
+            "summary": "OpenAI has flipped the switch and released ChatGPT for Android.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "ChatGPT is coming to Android",
+            "author": "Unknown",
+            "summary": "The ChatGPT app on Android looks to be more or less identical to the iOS one in functionality.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "OpenAI launches customized instructions for ChatGPT",
+            "author": "Unknown",
+            "summary": "OpenAI launched custom instructions for ChatGPT users.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "The FTC is reportedly investigating OpenAI",
+            "author": "Unknown",
+            "summary": "The FTC is reportedly in at least the exploratory phase of investigation over whether OpenAI’s flagship ChatGPT conversational AI made false statements.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "OpenAI announced the general availability of GPT-4",
+            "author": "Unknown",
+            "summary": "Starting July 6, all existing OpenAI developers can access GPT-4.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "ChatGPT app can now search the web only on Bing",
+            "author": "Unknown",
+            "summary": "OpenAI announced subscribers to ChatGPT Plus can now use a new feature on the app called Browsing.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Mercedes is adding ChatGPT to its infotainment system",
+            "author": "Unknown",
+            "summary": "U.S. owners of Mercedes models that use MBUX will be able to opt into a beta program activating the ChatGPT functionality.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "ChatGPT app is now available on iPad, adds support for Siri and Shortcuts",
+            "author": "Unknown",
+            "summary": "The new ChatGPT app version brings native iPad support to the app.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Texas judge orders all AI-generated content must be declared and checked",
+            "author": "Unknown",
+            "summary": "The Texas federal judge has added a requirement that any attorney appearing in his court must attest that no portion of the filing was drafted by generative artificial intelligence.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "ChatGPT app expanded to more than 30 countries",
+            "author": "Unknown",
+            "summary": "The list of new countries includes Algeria, Argentina, Azerbaijan, Bolivia, Brazil, Canada, Chile, Costa Rica, Ecuador, Estonia, Ghana, India, Iraq, Israel, Japan, Jordan, Kazakhstan, Kuwait, Lebanon, Lithuania, Mauritania, Mauritius, Mexico, Morocco, Namibia, Nauru, Oman, Pakistan, Peru, Poland, Qatar, Slovenia, Tunisia and the United Arab Emirates.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "ChatGPT app is now available in 11 more countries",
+            "author": "Unknown",
+            "summary": "OpenAI announced in a tweet that the ChatGPT mobile app is now available on iOS in the U.S., Europe, South Korea and New Zealand.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "OpenAI launches a ChatGPT app for iOS",
+            "author": "Unknown",
+            "summary": "ChatGPT is officially going mobile.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Hackers are using ChatGPT lures to spread malware on Facebook",
+            "author": "Unknown",
+            "summary": "Meta said in a report on May 3 that malware posing as ChatGPT was on the rise across its platforms.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "ChatGPT parent company OpenAI closes $300M share sale at $27B-29B valuation",
+            "author": "Unknown",
+            "summary": "VC firms including Sequoia Capital, Andreessen Horowitz, Thrive and K2 Global are picking up new shares.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "OpenAI previews new subscription tier, ChatGPT Business",
+            "author": "Unknown",
+            "summary": "Called ChatGPT Business, OpenAI describes the forthcoming offering as for professionals who need more control over their data.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "OpenAI wants to trademark “GPT”",
+            "author": "Unknown",
+            "summary": "OpenAI applied for a trademark for “GPT,” which stands for “Generative Pre-trained Transformer,” last December.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Auto-GPT is Silicon Valley’s latest quest to automate everything",
+            "author": "Unknown",
+            "summary": "Auto-GPT is an open-source app created by game developer Toran Bruce Richards that uses OpenAI’s latest text-generating models.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "FTC warns that AI technology like ChatGPT could ‘turbocharge’ fraud",
+            "author": "Unknown",
+            "summary": "FTC chair Lina Khan and fellow commissioners warned House representatives of the potential for modern AI technologies to be used to turbocharge fraud.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Superchat’s new AI chatbot lets you message historical and fictional characters via ChatGPT",
+            "author": "Unknown",
+            "summary": "The company behind the popular iPhone customization app Brass is out today with a new AI chat app called SuperChat.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Italy gives OpenAI to-do list for lifting ChatGPT suspension order",
+            "author": "Unknown",
+            "summary": "Italy’s data protection watchdog has laid out what OpenAI needs to do for it to lift an order against ChatGPT.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Researchers discover a way to make ChatGPT consistently toxic",
+            "author": "Unknown",
+            "summary": "A study co-authored by scientists at the Allen Institute for AI shows that assigning ChatGPT a persona increases its toxicity sixfold.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Y Combinator-backed startups are trying to build ‘ChatGPT for X’",
+            "author": "Unknown",
+            "summary": "YC Demo Day’s Winter 2023 batch features no fewer than four startups that claim to be building 'ChatGPT for X.'",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "Italy orders ChatGPT to be blocked",
+            "author": "Unknown",
+            "summary": "OpenAI has started geoblocking access to its generative AI chatbot, ChatGPT, in Italy.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "1,100+ signatories signed an open letter asking all ‘AI labs to immediately pause for 6 months’",
+            "author": "Unknown",
+            "summary": "The letter’s signatories include Elon Musk, Steve Wozniak and Tristan Harris of the Center for Humane Technology.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        },
+        {
+            "@type": "NewsAsset",
+            "title": "OpenAI connects ChatGPT to the internet",
+            "author": "Unknown",
+            "summary": "OpenAI launched plugins for ChatGPT, extending the bot’s functionality by granting it access to third-party knowledge sources.",
+            "created": "2023-08-01T00:00:00Z",
+            "published": "2023-08-01T00:00:00Z"
+        }
+    ]
+}

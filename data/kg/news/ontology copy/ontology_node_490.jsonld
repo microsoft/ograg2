@@ -1,0 +1,141 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Amber Raiken",
+      "published": "2023-10-16T15:48:10+00:00",
+      "title": "Jada Pinkett Smith reveals why she and Will Smith never signed a prenup",
+      "summary": "Jada Pinkett Smith has revealed why she and her husband Will Smith never signed a prenuptial agreement before getting married.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "url": "https://www.independent.co.uk/life-style/jada-pinkett-will-smith-prenup-b2430529.html"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "The Independent - Life and Style"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jada Pinkett Smith"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Will Smith"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jaden Smith"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Willow Smith"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Trey Smith"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Sheree Zampino"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Jada Pinkett Smith's Interview with Parade",
+      "eventSummary": "Jada Pinkett Smith discusses her marriage with Will Smith and their decision not to sign a prenup."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Jada Pinkett Smith's Interview with Hoda Kotb",
+      "eventSummary": "Jada Pinkett Smith confirms living separate lives with Will Smith."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Will Smith's Interview with New York Times",
+      "eventSummary": "Will Smith responds to Jada Pinkett Smith's comments about their marriage."
+    }
+  ]
+}
+```

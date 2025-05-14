@@ -1,0 +1,125 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Economics": {
+            "@id": "cropCult:Economics",
+            "@type": "schema:Thing",
+            "@context": {
+                "fixed_capital": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "CULTIVATION OF PADDY STRAW MUSHROOM (Volvarella volvacea)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Paddy Straw Mushroom",
+                "used_for": "Cultivation"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "Tropical and Subtropical Regions"
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "25-30°C",
+                "for_flowering": "Not applicable",
+                "for_grain_filling": "Not applicable",
+                "negative_effect": "Below 15°C and above 35°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Sandy",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Prepare beds of 1m width, 25cm height and of convenient length. The beds should be prepared in such a way that excess water does not accumulate on the bed.",
+                "with_soil_moisture": "Moist but not waterlogged"
+            },
+            "seed_germination_test_requirements_are": "Seeds should be sown at a depth of 1-2 cm. Germination occurs in 5-7 days.",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Mancozeb",
+                "quantity": "2g per kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Early morning or late evening",
+                "value": "15cm x 15cm",
+                "depth": "1-2 cm",
+                "method": "Line sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Grass weeds",
+                "weed_types": ["Echinochloa", "Eleusine", "Digitaria"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Butachlor",
+                    "quantity": "1.5-2.0 kg a.i./ha",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "25-30 mm at a time",
+                "stage_of_application": "Every 10-15 days"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Bacterial leaf blight",
+                "disease_symptoms": "Yellowing and wilting of leaves",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Streptomycin sulphate + Tetracycline",
+                    "quantity": "0.4 g/litre of water",
+                    "stage": "At the onset of disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Stem borer",
+                "pest_symptoms": "Yellowing and wilting of plants",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Carbaryl",
+                    "quantity": "1.5 kg a.i./ha",
+                    "stage": "At the onset of pest"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when the mushrooms are mature, i.e., when the caps are fully opened and the gills are visible.",
+            "storage_guidelines_are": "Store in a cool, dry place. Do not store in direct sunlight."
+        },
+        {
+            "@type": "Economics",
+            "fixed_capital": "A. Fixed capital"
+        }
+    ]
+}

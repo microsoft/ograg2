@@ -1,0 +1,198 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Office rents in Israel stay firm - for now",
+            "author": "Anat-Daniely Lev",
+            "published": "2023-12-03T15:15:32+00:00",
+            "summary": "Analysis of the current state of office rents in Israel amidst the ongoing Israel-Hamas war.",
+            "has_events": [
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "Impact of Israel-Hamas War on Office Rents",
+                    "eventSummary": "Discussion on how the ongoing conflict is affecting the office rental market in Israel.",
+                    "theme": "business",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "Israel"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Anat-Daniely Lev"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization",
+                            "name": "Globes English"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Azrieli Group"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Amot Investments"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Avison Young"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Marshall Strategic Real Estate"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Newmark Natam"
+                        }
+                    ]
+                }
+            ],
+            "followUp": "snap:asset",
+            "derivedFrom": "snap:asset"
+        },
+        {
+            "@id": "snap:person",
+            "name": "Anat-Daniely Lev",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "placeOfBirth": "geo:location",
+            "alias": "xmls:string"
+        },
+        {
+            "@id": "snap:organization",
+            "name": "Globes English",
+            "hasLocation": {
+                "@id": "geo:SpatialThing",
+                "name": "Israel"
+            },
+            "alias": "xmls:string"
+        },
+        {
+            "@id": "snap:organization",
+            "name": "Azrieli Group",
+            "hasLocation": {
+                "@id": "geo:SpatialThing",
+                "name": "Israel"
+            },
+            "alias": "xmls:string"
+        },
+        {
+            "@id": "snap:organization",
+            "name": "Amot Investments",
+            "hasLocation": {
+                "@id": "geo:SpatialThing",
+                "name": "Israel"
+            },
+            "alias": "xmls:string"
+        },
+        {
+            "@id": "snap:organization",
+            "name": "Avison Young",
+            "hasLocation": {
+                "@id": "geo:SpatialThing",
+                "name": "Israel"
+            },
+            "alias": "xmls:string"
+        },
+        {
+            "@id": "snap:organization",
+            "name": "Marshall Strategic Real Estate",
+            "hasLocation": {
+                "@id": "geo:SpatialThing",
+                "name": "Israel"
+            },
+            "alias": "xmls:string"
+        },
+        {
+            "@id": "snap:organization",
+            "name": "Newmark Natam",
+            "hasLocation": {
+                "@id": "geo:SpatialThing",
+                "name": "Israel"
+            },
+            "alias": "xmls:string"
+        }
+    ]
+}

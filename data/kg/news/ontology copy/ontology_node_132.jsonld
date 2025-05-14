@@ -1,0 +1,169 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Resident Evil 4 Remake",
+      "summary": "A lesser game would have shrunk in the face of such intimidating source material, but the Resident Evil 4 remake achieved the balancing act in spades.",
+      "byline": "M. Mahardy"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Armored Core 6: Fires of Rubicon",
+      "summary": "The giant robot you pilot heaves with the weight of a six-story building but flies into the sky as nimble as a hummingbird.",
+      "byline": "CA",
+      "associatedAsset": {
+        "asset": "snap:asset",
+        "comment": "Related Armored Core 6 brings mecha to the masses"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Jusant",
+      "summary": "When it comes to rock climbing, Jusant just gets it in a way few other games — if any — have.",
+      "byline": "Ari Notis"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Marvel’s Spider-Man 2",
+      "summary": "Marvel’s Spider-Man 2 builds on the successes of the first game, both narratively and in its immensely satisfying gameplay.",
+      "byline": "PV"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Street Fighter 6",
+      "summary": "Capcom has hit the gym and returned stronger than before with Street Fighter 6.",
+      "byline": "Michael McWhertor",
+      "associatedAsset": {
+        "asset": "snap:asset",
+        "comment": "Related Street Fighter 6 is the ultimate fighting game toolbox"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Cocoon",
+      "summary": "Cocoon presents challenges, but it’s also just a joy to play.",
+      "byline": "AD",
+      "associatedAsset": {
+        "asset": "snap:asset",
+        "comment": "Related Cocoon is impossibly good"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Pikmin 4",
+      "summary": "Pikmin 4 is like the perfect amalgamation of Pikmin games.",
+      "byline": "JL",
+      "associatedAsset": {
+        "asset": "snap:asset",
+        "comment": "Related Pikmin 4 will turn you into an obsessive collector"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Super Mario Bros. Wonder",
+      "summary": "Super Mario Bros. Wonder is a musical, a quiz show, a race, or a hidden object game.",
+      "byline": "N. Carpenter"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Alan Wake 2",
+      "summary": "Alan Wake 2 is full of words but few are in order.",
+      "byline": "JR"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Baldur’s Gate 3",
+      "summary": "Baldur’s Gate 3 hit at the perfect moment.",
+      "byline": "RG"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "The Legend of Zelda: Tears of the Kingdom",
+      "summary": "Tears of the Kingdom definitely didn’t seem like it was poised to make that happen.",
+      "byline": "N/A"
+    }
+  ]
+}
+```

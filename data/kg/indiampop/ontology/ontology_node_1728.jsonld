@@ -1,0 +1,50 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PolybagNursery": {
+            "@id": "cropCult:PolybagNursery",
+            "@type": "schema:Thing",
+            "@context": {
+                "description": "schema:Text",
+                "primary_nursery_sowing_time": "cropCult:SowingTime",
+                "transplanting_time": "cropCult:SowingTime",
+                "planting_time": "cropCult:SowingTime",
+                "nursery_period_reduction": "schema:QuantitativeValue"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PolybagNursery",
+            "description": "Polybags can be used for raising secondary seedlings.",
+            "primary_nursery_sowing_time": {
+                "@type": "cropCult:SowingTime",
+                "start_date": "September",
+                "end_date": "September"
+            },
+            "transplanting_time": {
+                "@type": "cropCult:SowingTime",
+                "start_date": "December",
+                "end_date": "January"
+            },
+            "planting_time": {
+                "@type": "cropCult:SowingTime",
+                "start_date": "June",
+                "end_date": "July"
+            },
+            "nursery_period_reduction": {
+                "@type": "schema:QuantitativeValue",
+                "value": "6 to 7 months"
+            }
+        }
+    ]
+}

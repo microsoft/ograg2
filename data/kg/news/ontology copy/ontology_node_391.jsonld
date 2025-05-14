@@ -1,0 +1,146 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "byline": "Paolo Confino",
+      "published": "2023-12-06T21:36:17+00:00",
+      "title": "Sen. Robert Menendez, facing bribery charges, stumps bank CEOs by asking how much their firms paid in settlements for allegedly ripping off consumers",
+      "summary": "Sen. Bob Menendez (D-N.J.), charged with bribery, gave Wall Street bank executives a pop quiz about their own corporate misbehavior that they all failed.",
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "image": "https://fortune.com/2023/12/06/sen-robert-menendez-bribery-charges-bank-ceos-cfpb-settlements/"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Robert Menendez"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "JPMorgan Chase"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Bank of America"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Citigroup"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Wells Fargo"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Consumer Financial Protection Bureau"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Community Financial Services Association of America"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jamie Dimon"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Brian Moynihan"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jane Fraser"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Charles Scharff"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Sherrod Brown"
+    }
+  ]
+}
+```

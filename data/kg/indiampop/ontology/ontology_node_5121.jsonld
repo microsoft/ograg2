@@ -1,0 +1,61 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_fertilizer_application_requirements": "cropCult:Fertilization"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "APPLE (Malus sylvestris)",
+            "has_fertilizer_application_requirements": [
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "Nitrogen as sulphate of ammonia",
+                    "quantity": "100-150 g",
+                    "stage_of_application": "Pruning"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "Phosphate",
+                    "quantity": "Similar quantities as Nitrogen",
+                    "stage_of_application": "When required"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "Potash",
+                    "quantity": "Similar quantities as Nitrogen",
+                    "stage_of_application": "When required"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "Bone meal",
+                    "quantity": "Five quintals per hectare",
+                    "stage_of_application": "Annually"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "Wood ash",
+                    "quantity": "Ten quintals per hectare",
+                    "stage_of_application": "Annually"
+                }
+            ]
+        }
+    ]
+}

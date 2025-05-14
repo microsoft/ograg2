@@ -1,0 +1,58 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Rice (Oryza Sativa) Transplanted Normal Ahu Rice (Autumn Rice)",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Before inoculation of fresh Azolla, it should be treated with carbofuran 3G @ 1g/kg of Azolla and covered with polythene sheet for 2 hours to avoid pest damage in the field. Such practice will encourage early establishment of Azolla in the field. Further, it is suggested to broadcast granular insecticide preferably carbofuran 3G @ 3g/sq.m on affected patches when damage is noticed."
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "carbofuran 3G",
+                "quantity": "1g/kg of Azolla"
+            }
+        }
+    ]
+}

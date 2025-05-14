@@ -1,0 +1,143 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "title": "NFL Fantasy Football Week 5 Lineup Decisions: Starts, Sits, Sleepers, Busts to know for every game",
+      "author": "Dave Richard",
+      "theme": "sports",
+      "content": "Fantasy Football is all about the matchups. Even though you drafted your team with certain hopes and intentions, your weekly lineup decisions shouldn't be determined by the order you picked your players in. You need to check who your players play and make sure you've got the right guys in -- and the wrong guys out. It's too early to be absolutely sure on which matchups will be easy and which ones will be tough, but we can take some educated guesses based on healthy personnel, defensive schemes, track records and key details of offenses. The things we know can help us minimize the impact of the things we don't know. This should lead to better decisions being made. We'll go through every game and highlight the players who aren't obvious starts and sits (because you don't need to be told to start Justin Jefferson). You should feel more comfortable starting or sitting players based on the information given, and feeling comfortable with your Fantasy lineup before the games start is the best feeling in the world. It's also important to have a keen eye for matchups dictated by the remaining schedule. I am now updating my projected strength of schedule rankings every week over at SportsLine. My objective is to break down how the schedule affects every Fantasy relevant player for the upcoming four weeks, the playoff stretch and the entire season. You'll also be able to find my key takeaways on which players you should buy low, sell high and more trade advice.",
+      "published": "2023-10-04T21:56:25+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event",
+          "@type": "schema:Thing",
+          "eventTitle": "Start Him (Lineup Decisions) Projections powered by Sportsline Trevor Lawrence QB JAC Jacksonville • #16",
+          "eventSummary": "Age: 24 • Experience: 3 yrs. Weekly Breakdown MATCHUP @ BUF BUF -5.5 O/U 48.5 OPP VS QB 1st PROJ PTS 15.7 QB RNK 12th YTD Stats PAYDS 943 RUYDS 101 TD 4 INT 2 FPTS/G 16.4 It stings to call Lawrence a dicey Fantasy start because he has potential for greatness, but he's got more upside than all but about 10 quarterbacks this week. Buffalo is savvy when it comes to defending the pass, so I can't say they'll fall off just because star cornerback Tre'Davious White won't play, but I wonder just how effective its pass rush will be without Greg Rousseau and with a sub-100 percent Von Miller (if he plays). Lawrence is a decent starter but I'd rather roll with Anthony Richardson, Jordan Love and Justin Fields.",
+          "theme": "sports"
+        },
+        {
+          "@id": "snap:event",
+          "@type": "schema:Thing",
+          "eventTitle": "Flex Starter (Lineup Decisions) Projections powered by Sportsline Gabe Davis WR BUF Buffalo • #13",
+          "eventSummary": "Age: 24 • Experience: 4 yrs. Weekly Breakdown MATCHUP vs JAC BUF -5.5 O/U 48.5 OPP VS WR 11th PROJ PTS 12.6 WR RNK 31st YTD Stats REC 12 TAR 18 REYDS 220 TD 3 FPTS/G 13 Until his role changes, Davis will be the same kind of Fantasy option every week -- one big play and he's a stud, one or two misses and he's a dud. The Jaguars have done well against deep-ball receivers but not enough to the point where benching Davis is a good idea. He's toward the top of the flex mix ahead of Tank Dell, Tutu Atwell, Christian Watson and Jerry Jeudy.",
+          "theme": "sports"
+        },
+        {
+          "@id": "snap:event",
+          "@type": "schema:Thing",
+          "eventTitle": "Sit Him (Lineup Decisions) Projections powered by Sportsline Dameon Pierce RB HOU Houston • #31",
+          "eventSummary": "Age: 23 • Experience: 2 yrs. Weekly Breakdown MATCHUP @ ATL ATL -2 O/U 41.5 OPP VS RB 2nd PROJ PTS 12 RB RNK 26th YTD Stats RUYDS 181 REC 8 REYDS 68 TD 1 FPTS/G 9.7 I genuinely believe Pierce will become a quality Fantasy starter in the near-term, but his matchup is a challenge to begin with and his offensive line makes his outlook even tougher to buy into. For now he's among the TD-needy running back tier who might only give 13 or 14 PPR points even if he does score (which no one has done against Atlanta). He's more than fine as a bye-week replacement RB (or a RB who you kind of have to start because you're thin at the position) but I'd prefer Breece Hall, Isiah Pacheco and Rhamondre Stevenson over Pierce.",
+          "theme": "sports"
+        },
+        {
+          "@id": "snap:event",
+          "@type": "schema:Thing",
+          "eventTitle": "Sit Him (Lineup Decision) Projections powered by Sportsline Tank Dell WR HOU Houston • #13",
+          "eventSummary": "Age: 24 • Experience: Rookie Weekly Breakdown MATCHUP @ ATL ATL -2 O/U 41.5 OPP VS WR 8th PROJ PTS 11 WR RNK 27th YTD Stats REC 16 TAR 24 REYDS 267 TD 2 FPTS/G 14 Dell's upside for one huge catch keeps him in play as a middle-of-the-pack flex, but you should be willing to consider other receivers with safer floors and nearly as much upside. And if the game is low-scoring or a one-sided win for Houston (don't laugh, they just did it last week), it further lowers Dell's ceiling. I'd rather start Romeo Doubs, Christian Watson and Adam Thielen.",
+          "theme": "sports"
+        },
+        {
+          "@id": "snap:event",
+          "@type": "schema:Thing",
+          "eventTitle": "Sit Him (Lineup Decisions) Projections powered by Sportsline Kyle Pitts TE ATL Atlanta • #8",
+          "eventSummary": "Age: 23 • Experience: 3 yrs. Weekly Breakdown MATCHUP vs HOU ATL -2 O/U 41.5 OPP VS TE 18th PROJ PTS 7.6 TE RNK 13th YTD Stats REC 11 TAR 21 REYDS 121 TD 0 FPTS/G 5.8 If Coach Smith is right, then holding on to Pitts in Fantasy makes sense. But it's hard to see the good in his game so far this season beyond him finding holes in zone coverage. Jonnu even has more red-zone targets than Pitts (by one, three to two). The matchup could create some receiving opportunities, so maybe he catches five passes for 50 yards, but that's not anything to be excited about. I'd rather start Jake Ferguson, Zach Ertz and Dallas Goedert.",
+          "theme": "sports"
+        },
+        {
+          "@id": "snap:event",
+          "@type": "schema:Thing",
+          "eventTitle": "Sneaky Sleeper (Lineup Decisions) Projections powered by Sportsline Jonnu Smith TE ATL Atlanta • #81",
+          "eventSummary": "Age: 28 • Experience: 7 yrs. Weekly Breakdown MATCHUP vs HOU ATL -2 O/U 41.5 OPP VS TE 18th PROJ PTS 5.2 TE RNK 24th YTD Stats REC 15 TAR 20 REYDS 179 TD 0 FPTS/G 8.2 I feel like Smith is doing what Pitts is supposed to do: get open and make plays after the catch. The hope is we keep seeing that for Smith, especially if the game is competitive like most Falcons games tend to be. He certainly hasn't done anything to lose his role. I don't mind chancing it with Smith as a streaming tight end, though I just don't have the conviction to start him over Pitts.",
+          "theme": "sports"
+        },
+        {
+          "@id": "snap:event",
+          "@type": "schema:Thing",
+          "eventTitle": "Flex Starter in PPR (Lineup Decisions) Projections powered by Sportsline Zay Flowers WR BAL Baltimore • #4",
+          "eventSummary": "Age: 23 • Experience: Rookie We've come to love (or hate) Ravens-Steelers games for their tough defense and low-scoring battles. That might hurt Flowers' chances of scoring -- it will probably take a little luck, which isn't necessarily too big of an ask given how the Steelers secondary has played recently. If you start Flowers, you're counting on the Steelers run defense staying strong and the Ravens using Flowers to create solid plays as a run-game extension and/or you're hoping for a splash play. That makes him a risky flex with a much safer floor in PPR than half- or non-PPR. In the catch-counting formats I'll start him over Tank Dell, the Broncos WRs, Jordan Addison and George Pickens.",
+          "theme": "sports"
+        }
+      ]
+    }
+  ]
+}

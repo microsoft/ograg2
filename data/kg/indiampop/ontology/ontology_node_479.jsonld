@@ -1,0 +1,85 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Begonia",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Flowering plant",
+                "used_for": "Ornamental purposes"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Temperate zones",
+                    "has_regions": ["North America", "Europe"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Begonia tuberhybrida", "Begonia semperflorens"]
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "15-20°C",
+                "for_flowering": "20-25°C",
+                "for_grain_filling": "Not applicable",
+                "negative_effect": "Below 10°C and above 30°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Sandy loam soil",
+                "avoid_soil_type": "Clay soil",
+                "for_water": "Good aeration",
+                "for_nutrients": "Organic matter, leaf mould or farmyard manure"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Incorporate farmyard manure and leaf-mould at the rate of 15-20 kg per m2 into the soil",
+                "with_soil_moisture": "Moist but not too damp"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "February or when there is no more fear of frost",
+                "value": "15x20 cm",
+                "depth": "5-6 cm",
+                "method": "Set the tubers in the garden with the concave part upwards"
+            },
+            "weed_management_needs_are": "Regular weeding",
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Keep the compost damp",
+                "stage_of_application": "After planting"
+            },
+            "needs_disease_treatements": "Regular monitoring for common diseases",
+            "needs_pest_treatements": "Regular monitoring for common pests",
+            "harvesting_guidelines_are": "Harvest when flowers are fully bloomed",
+            "storage_guidelines_are": "Store in a cool, dry place"
+        }
+    ]
+}

@@ -1,0 +1,83 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "SYSTEM OF RICE INTENSIFICATION ( SRI )",
+            "has_types": "2. ATTRIBUTES OF HIGHER PRODUCTIVITY",
+            "has_growing_zones": "2.6 Use of organic manure as source of nutrition",
+            "has_land_preperation_requirements": "3.SRI- PRACTICES",
+            "needs_seed_sowing_spacing": "3.9. Harvesting",
+            "weed_management_needs_are": "3.2 Nutritional management",
+            "needs_pest_treatements": "3.8. Pest management"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Amrit pani",
+            "quantity": "Cow urine one Litre + Cow dung 1Kg + Jaggery 250 g + Water 10 Litre",
+            "stage_of_application": "All these materials are mixed in an earthen pot. Allowed to ferment for 24 hrs. Diluted with water in 1:10 ratio, then filtered and sprayed."
+        },
+        {
+            "@type": "PestTreatements",
+            "pest_name": "Insects and microorganisms",
+            "pest_symptoms": "N/A",
+            "pest_control": {
+                "@type": "PesticideList",
+                "name": "Amrit pani",
+                "quantity": "Cow urine one Litre + Cow dung 1Kg + Jaggery 250 g + Water 10 Litre",
+                "stage": "All these materials are mixed in an earthen pot. Allowed to ferment for 24 hrs. Diluted with water in 1:10 ratio, then filtered and sprayed."
+            }
+        }
+    ]
+}

@@ -1,0 +1,216 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Cheatham injured as 36ers upset Breakers",
+            "author": "AAP",
+            "theme": "Basketball",
+            "summary": "The New Zealand Breakers face a nervous wait after losing import Zylan Cheatham to a leg injury in the 97-85 upset loss to the Adelaide 36ers.",
+            "created": "2023-10-05T00:00:00Z",
+            "modified": "2023-10-05T00:00:00Z",
+            "published": "2023-10-05T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Adelaide 36ers vs New Zealand Breakers",
+                        "eventSummary": "The 36ers clinched a victory against the Breakers after Cheatham's injury.",
+                        "theme": "Basketball Match",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Spark Arena, Auckland"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Zylan Cheatham",
+                                    "dateOfBirth": "1997-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "United States"
+                                    },
+                                    "alias": "Zy"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Mody Maor",
+                                    "dateOfBirth": "1980-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Israel"
+                                    },
+                                    "alias": "Coach Maor"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "CJ Bruton",
+                                    "dateOfBirth": "1979-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Australia"
+                                    },
+                                    "alias": "Coach Bruton"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Sam Waardenburg",
+                                    "dateOfBirth": "1998-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "New Zealand"
+                                    },
+                                    "alias": "Sam"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Dejan Vasiljevic",
+                                    "dateOfBirth": "1997-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Australia"
+                                    },
+                                    "alias": "Dejan"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Isaac Humphries",
+                                    "dateOfBirth": "1999-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Australia"
+                                    },
+                                    "alias": "Isaac"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Will McDowell-White",
+                                    "dateOfBirth": "1998-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "New Zealand"
+                                    },
+                                    "alias": "Will"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Anthony Lamb",
+                                    "dateOfBirth": "1998-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "United States"
+                                    },
+                                    "alias": "Anthony"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "New Zealand Breakers",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "New Zealand"
+                                    },
+                                    "alias": "Breakers"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Adelaide 36ers",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Australia"
+                                    },
+                                    "alias": "36ers"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

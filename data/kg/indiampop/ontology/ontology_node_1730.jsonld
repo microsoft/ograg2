@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Rhizome weevil (Prodioctes haematicus)",
+            "pest_symptoms": "The grubs feed on the rhizome and basal portion of the stem. This results in drying of leaves and breaking of stem at the base.",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "chlorpyrifos",
+                "quantity": "0.04 per cent",
+                "stage": "nursery beds"
+            }
+        }
+    ]
+}

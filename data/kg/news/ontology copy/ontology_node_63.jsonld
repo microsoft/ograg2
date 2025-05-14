@@ -1,0 +1,184 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:person",
+      "name": "Michael Pittman",
+      "alias": "Pittman",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Week 1 Performance",
+        "eventSummary": "Came alive in the second half against the Jaguars and finished with a season-high 97 yards on eight catches with a 39-yard catch-and-run for a touchdown."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Gardner Minshew",
+      "alias": "MINSHEW",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Performance with Pittman",
+        "eventSummary": "More of a developed downfield thrower than Anthony Richardson and has thrown at Pittman on 26.4% of his routes run."
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Jaguars",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Zone Coverage",
+        "eventSummary": "Rank fifth with a 77.7% zone coverage rate, consistently playing a lot of zone in every game."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Nico Collins",
+      "alias": "Collins",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Matchup vs NO",
+        "eventSummary": "Could see a lot of short targets against the Saints' aggressive man-to-man coverage."
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Saints",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Coverage Strategy",
+        "eventSummary": "Played the fifth-fewest snaps of zone coverage this season."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Brock Purdy",
+      "alias": "Purdy",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Performance vs Cowboys",
+        "eventSummary": "Took on one of the toughest pass rushes in football and slayed them for four touchdowns on just 24 pass attempts."
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Browns",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Defensive Strategy",
+        "eventSummary": "Played the least amount of zone coverage snaps of any team in football this season."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jerome Ford",
+      "alias": "Ford",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Performance Since Chubb Injury",
+        "eventSummary": "Averaged 4.3 yards per rush and 7.7 yards per catch with three total touchdowns."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Amari Cooper",
+      "alias": "Cooper",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Performance with Backup QBs",
+        "eventSummary": "In 30 career games without Dak Prescott, Derek Carr or Deshaun Watson, Cooper has 13 touchdowns and seven 100-plus yard games."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Rhamondre Stevenson",
+      "alias": "Stevenson",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Performance Analysis",
+        "eventSummary": "Averaged 0.97 yards before contact per rush this season, ranking 30th out of 41 qualifying running backs."
+      }
+    }
+  ]
+}
+```

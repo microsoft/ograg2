@@ -1,0 +1,47 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_sowing_time": "cropCult:SowingTime",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "main_season": "schema:Text",
+                "best_time": "schema:Text",
+                "avoid_time": "schema:Text"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "schedule": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "PINEAPPLE (Ananas comosus)",
+            "has_sowing_time": {
+                "@type": "SowingTime",
+                "main_season": "April-May and August-September",
+                "best_time": "August",
+                "avoid_time": "June-July"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "schedule": "During summer months, if there are no summer showers after planting, irrigation should be given three weeks after planting for proper establishment."
+            }
+        }
+    ]
+}

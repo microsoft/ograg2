@@ -1,0 +1,191 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "SeedList": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List",
+                "has_early_sowing_time": "cropCult:SowingTime",
+                "has_late_sowing_time": "cropCult:SowingTime",
+                "has_seeding_rate": "schema:QuantitativeValue",
+                "has_fertilizer_application_requirements": "cropCult:Fertilization"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CropGrowingZones":{
+                "@container": "@list",
+                "@id": "cropCult:CropGrowingZones",
+                "@type": "schema:ItemList",
+                "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List",
+                    "has_seed_recommendations": "cropCult:SeedList"
+                }
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "for_flowering": "schema:Text",
+                "for_grain_filling": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "seedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "Tropical Sugarbeet",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "Sweet Sorghum",
+                "used_for": "Oilseeds"
+            },
+            "has_soil_requirements": {
+                "@type": "cropCult:SoilRequirements",
+                "for_nutrients": "Based on the soil test value, inorganic fertilizer has to be applied. In the absence of soil test value, blanket recommendation of 150:75:75 NPK kg/ha"
+            }
+        }
+    ]
+}

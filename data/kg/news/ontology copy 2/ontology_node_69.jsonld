@@ -1,0 +1,136 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "title": "Patterns of Surface Warming Matter for Climate Sensitivity",
+      "author": "Maria Rugenstein, Mark Zelinka, Kristopher B. Karnauskas, Paulo Ceppi and Timothy Andrews",
+      "theme": "science",
+      "content": "One of the grand challenges in climate science is to reduce uncertainty in estimates of climate sensitivity, which quantifies how much Earth’s surface warms in response to a doubling of carbon dioxide relative to preindustrial levels. This uncertainty is large because climate sensitivity aggregates myriad processes, from microscale aerosol-cloud interactions to planetary-scale atmospheric and ocean circulations, into one number. Clouds, which are notoriously difficult to measure and simulate, are the main driver of the uncertainty. Various lines of evidence are used to estimate climate sensitivity, including climate model simulations of varying complexity, observations over the past century, proxies that measure climate change in the distant past, and theory. The likely range of estimates of climate sensitivity was stubbornly constant at a distressingly imprecise 1.5–4.5 K for several decades, but the research community’s efforts have recently chipped away at this range (Figure 1).",
+      "published": "2023-10-31T12:03:09+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event",
+          "@type": "schema:Thing",
+          "eventTitle": "US CLIVAR Workshop",
+          "eventSummary": "140 scientists from around the world and from different disciplines gathered for a US CLIVAR workshop in May 2022 in Boulder, Colo.",
+          "theme": "science",
+          "mentions_persons": [
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Maria Rugenstein"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Mark Zelinka"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Kristopher B. Karnauskas"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Paulo Ceppi"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Timothy Andrews"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization",
+              "@type": "schema:Thing",
+              "name": "US CLIVAR"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

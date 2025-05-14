@@ -1,0 +1,272 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "SeedList": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List",
+                "has_early_sowing_time": "cropCult:SowingTime",
+                "has_late_sowing_time": "cropCult:SowingTime",
+                "has_seeding_rate": "schema:QuantitativeValue",
+                "has_fertilizer_application_requirements": "cropCult:Fertilization"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CropGrowingZones":{
+                "@container": "@list",
+                "@id": "cropCult:CropGrowingZones",
+                "@type": "schema:ItemList",
+                "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List",
+                    "has_seed_recommendations": "cropCult:SeedList"
+                }
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "for_flowering": "schema:Text",
+                "for_grain_filling": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "seedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "ARHAR [Cajanus cajan (L) Mill sp]",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "Strip Crop",
+                "used_for": "Soil erosion control, nutrient enrichment"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "All types of soil except water logged areas",
+                    "has_regions": ["Dry weather conditions", "Moist hot climate"],
+                    "has_seed_recommendations": {
+                        "@type": "cropCult:SeedList",
+                        "variety_name": ["Extra early (120 days)", "Early (150 days)", "Medium (180 days)", "Late (200 days)"],
+                        "has_early_sowing_time": {
+                            "@type": "cropCult:SowingTime",
+                            "start_date": "Depends on variety",
+                            "end_date": "Depends on variety"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "Depends on variety"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "cropCult:Fertilization",
+                            "nutrient_name": "Atmospheric nitrogen",
+                            "quantity": "Manufactured by plant nodules",
+                            "stage_of_application": "Throughout growth"
+                        }
+                    }
+                }
+            },
+            "has_soil_requirements": {
+                "@type": "cropCult:SoilRequirements",
+                "soil_type_name": "All types except water logged areas",
+                "avoid_soil_type": "Water logged areas",
+                "for_water": "Can withstand dry weather conditions",
+                "for_nutrients": "Enriches soil through atmospheric nitrogen"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "cropCult:LandPreparation",
+                "instructions": "Grown in strips across slope for controlling soil erosion",
+                "with_soil_moisture": "Can withstand dry weather conditions"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "cropCult:SeedSpacing",
+                "sowing_time": "Depends on variety",
+                "value": "Depends on variety",
+                "depth": "Depends on variety",
+                "method": "Strip cropping"
+            },
+            "weed_management_needs_are": {
+                "@type": "cropCult:WeedManagement",
+                "weed_name": "Depends on region",
+                "weed_types": ["Depends on region"],
+                "herbicides": {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Depends on weed type",
+                    "quantity": "Depends on weed type",
+                    "stage": "Depends on weed type"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "cropCult:IrrigationRequirement",
+                "quantity": "Depends on weather conditions",
+                "stage_of_application": "Throughout growth"
+            },
+            "needs_disease_treatements": {
+                "@type": "cropCult:DiseaseTreatements",
+                "disease_name": "Depends on region",
+                "disease_symptoms": "Depends on disease",
+                "disease_control": {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Depends on disease",
+                    "quantity": "Depends on disease",
+                    "stage": "Depends on disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "cropCult:PestTreatements",
+                "pest_name": "Depends on region",
+                "pest_symptoms": "Depends on pest",
+                "pest_control": {
+                    "@type": "cropCult:PesticideList",
+                    "name": "Depends on pest",
+                    "quantity": "Depends on pest",
+                    "stage": "Depends on pest"
+                }
+            },
+            "harvesting_guidelines_are": "Depends on variety",
+            "storage_guidelines_are": "Depends on region and variety"
+        }
+    ]
+}

@@ -1,0 +1,156 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "snap:asset",
+            "title": "Jaguars vs. Saints live score, updates, highlights from NFL 'Thursday Night Football' game",
+            "author": "Bryan Murphy",
+            "theme": "sports",
+            "content": "Tis the season for horrors, and the Jaguars left New Orleans surviving a late scare against the Saints on 'Thursday Night Football.' Jacksonville improved to 5-2 on the season, as Doug Pederson's crew held off a late comeback attempt from New Orleans, emerging with a 31-24 victory. The win pushes the Jaguars' winning streak to four games, while the loss dropped the Saints' record to 3-4. The Jaguars controlled a majority of the game, getting out to an early lead in the first half and entering the fourth quarter up 24-9. At the time, the Saints offense was completely out of sync, as quarterback Derek Carr had just thrown a pick-six to Foye Oluokun and was struggling to connect with any of his key weapons, outside of running back Alvin Kamara. However, Trevor Lawrence and the Jags let the Saints stick around, failing to put away the opposition. It led to two fourth quarter touchdowns by New Orleans that tied the game with less than six minutes to go, and the momentum had fully shifted at Caesers SuperDome to the home side. That was until Christian Kirk came through for the Jaguars. After the two sides exchanged punts, the wide receiver broke loose for a 44-yard touchdown, re-taking the lead for Jacksonville with 3:08 left to go. The Saints nearly tied the game up in the final seconds of the game. Tight end Foster Moreau had a touchdown in his fingertips on third-and-goal, but he could not come up with the catch. A pass to Chris Olave on fourth down was broken up, as the Jags held on for the win.",
+            "published": "2023-10-19T22:00:04+00:00",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "snap:event",
+                    "eventTitle": "Jaguars vs. Saints Game",
+                    "eventSummary": "Jaguars win against Saints 31-24 in a thrilling game.",
+                    "theme": "sports",
+                    "hasLocation": {
+                        "@id": "geo:location1",
+                        "@type": "geo:SpatialThing",
+                        "name": "Caesers SuperDome"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person1",
+                            "@type": "snap:person",
+                            "name": "Derek Carr"
+                        },
+                        {
+                            "@id": "snap:person2",
+                            "@type": "snap:person",
+                            "name": "Foye Oluokun"
+                        },
+                        {
+                            "@id": "snap:person3",
+                            "@type": "snap:person",
+                            "name": "Trevor Lawrence"
+                        },
+                        {
+                            "@id": "snap:person4",
+                            "@type": "snap:person",
+                            "name": "Christian Kirk"
+                        },
+                        {
+                            "@id": "snap:person5",
+                            "@type": "snap:person",
+                            "name": "Foster Moreau"
+                        },
+                        {
+                            "@id": "snap:person6",
+                            "@type": "snap:person",
+                            "name": "Chris Olave"
+                        },
+                        {
+                            "@id": "snap:person7",
+                            "@type": "snap:person",
+                            "name": "Alvin Kamara"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "snap:organization",
+                            "name": "Jacksonville Jaguars"
+                        },
+                        {
+                            "@id": "snap:organization2",
+                            "@type": "snap:organization",
+                            "name": "New Orleans Saints"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

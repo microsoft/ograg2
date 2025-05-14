@@ -1,0 +1,371 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "The best new TV series on every streaming service",
+            "author": "Toussaint Egan",
+            "theme": "entertainment",
+            "summary": "Your time is precious, and your options are endless. The good news: We watch it all so you don’t have to. Polygon’s What to Watch highlights the best, the funniest, the scariest, and the most exciting in movies, TV, and everything in between. Stop scrolling, start watching! The streaming landscape is vast and hard to keep track of. TV shows pop up (and get canceled) seemingly overnight, and even if you’re in a place where you’re looking for a new show to sink hours into, it can be overwhelming to make the right choice. That’s what we’re here for. We’re going to keep this post updated with the most recent series on each of the major streaming platforms that we liked, as well as some other options if our pick doesn’t sound like your particular jam.",
+            "published": "2023-10-25T16:09:11+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Best New Shows on Netflix",
+                        "eventSummary": "Castlevania: Nocturne, a follow-up to Netflix’s Castlevania, set amid the French Revolution.",
+                        "theme": "entertainment",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Clive Bradley"
+                                },
+                                {
+                                    "name": "Edward Bluemel"
+                                },
+                                {
+                                    "name": "Thuso Mbedu"
+                                },
+                                {
+                                    "name": "Pixie Davies"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Powerhouse Animation Studios"
+                                },
+                                {
+                                    "name": "Netflix"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Best New Show on Hulu",
+                        "eventSummary": "Reservation Dogs, a show about misfits living on a reservation in Oklahoma.",
+                        "theme": "entertainment",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Sterlin Harjo"
+                                },
+                                {
+                                    "name": "Devery Jacobs"
+                                },
+                                {
+                                    "name": "D’Pharaoh Woon-A-Tai"
+                                },
+                                {
+                                    "name": "Lane Factor"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Hulu"
+                                },
+                                {
+                                    "name": "Taika Waititi"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Best New TV on Prime Video",
+                        "eventSummary": "Gen V, a superhero series set in the universe of The Boys.",
+                        "theme": "entertainment",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Michele Fazekas"
+                                },
+                                {
+                                    "name": "Tara Butters"
+                                },
+                                {
+                                    "name": "Jaz Sinclair"
+                                },
+                                {
+                                    "name": "Chance Perdomo"
+                                },
+                                {
+                                    "name": "Lizze Broadway"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Prime Video"
+                                },
+                                {
+                                    "name": "Vought International"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Best New TV on Max",
+                        "eventSummary": "Unicorn: Warriors Eternal, a fantasy action series by Genndy Tartakovsky.",
+                        "theme": "entertainment",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Genndy Tartakovsky"
+                                },
+                                {
+                                    "name": "Darrick Bachman"
+                                },
+                                {
+                                    "name": "Hazel Doupe"
+                                },
+                                {
+                                    "name": "Demari Hunte"
+                                },
+                                {
+                                    "name": "Tom Milligan"
+                                },
+                                {
+                                    "name": "Paul Tylak"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Max"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Best New TV on Disney Plus",
+                        "eventSummary": "Andor, a Star Wars origin story by Tony Gilroy.",
+                        "theme": "entertainment",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Tony Gilroy"
+                                },
+                                {
+                                    "name": "Diego Luna"
+                                },
+                                {
+                                    "name": "Kyle Soller"
+                                },
+                                {
+                                    "name": "Adria Arjona"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Disney Plus"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Best New TV on Paramount Plus",
+                        "eventSummary": "The Good Fight, a legal drama by Robert and Michelle King.",
+                        "theme": "entertainment",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Robert King"
+                                },
+                                {
+                                    "name": "Michelle King"
+                                },
+                                {
+                                    "name": "Christine Baranski"
+                                },
+                                {
+                                    "name": "Audra McDonald"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Paramount Plus"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Best New TV on Apple TV Plus",
+                        "eventSummary": "Hijack, a thriller series by George Kay and Jim Field Smith.",
+                        "theme": "entertainment",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "George Kay"
+                                },
+                                {
+                                    "name": "Jim Field Smith"
+                                },
+                                {
+                                    "name": "Idris Elba"
+                                },
+                                {
+                                    "name": "Neil Maskell"
+                                },
+                                {
+                                    "name": "Archie Panjabi"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Apple TV Plus"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Best New TV on Peacock",
+                        "eventSummary": "The Continental: From the World of John Wick, a prequel series to the John Wick movies.",
+                        "theme": "entertainment",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Greg Coolidge"
+                                },
+                                {
+                                    "name": "Kirk Ward"
+                                },
+                                {
+                                    "name": "Shawn Simmons"
+                                },
+                                {
+                                    "name": "Colin Woodell"
+                                },
+                                {
+                                    "name": "Mishel Prada"
+                                },
+                                {
+                                    "name": "Hubert Point-Du Jour"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Peacock"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,172 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Pete Volk",
+      "published": "2023-11-03T22:15:00+00:00",
+      "title": "Spider-Man: Across the Spider-Verse on Netflix, A Haunting in Venice, and every new movie to watch this weekend",
+      "summary": "Happy Friday, Polygon readers! Each week, we round up the most notable releases to streaming and video rental, highlighting the biggest and best new movies for you to watch at home.",
+      "associatedAsset": [
+        {
+          "@type": "TextAsset",
+          "title": "Spider-Man: Across the Spider-Verse",
+          "summary": "The highly anticipated follow-up to 2018’s Spider-Man: Into the Spider-Verse sees Miles Morales facing off not only against a dimension-hopping nemesis in the form of the Spot, but a whole multiverse of Spider-Mans, Spider-People, and even a Spider-Dinosaur as he attempts to save the day once again.",
+          "image": "https://www.polygon.com/2023/11/3/23938342/new-movies-watch-spider-man-across-spider-verse-netflix-jawan-haunting-venice-hulu"
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Jawan",
+          "summary": "The biggest Indian movie of the year has landed on Netflix. Directed by Atlee (Mersal), Jawan features megastar Shah Rukh Khan (between this and Pathaan, he is truly back) and is basically “Robin Hood meets Charlie’s Angels.”"
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Insidious: The Red Door",
+          "summary": "The fifth movie in the Insidious franchise is the directorial debut for star Patrick Wilson. It’s also a sequel to Insidious: Chapter 2, as the last two movies in the franchise were prequels."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Sly",
+          "summary": "This documentary takes a close look at the life of one of the great American movie stars and film writers: Sylvester Stallone."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Nyad",
+          "summary": "Nyad tells the (questionably) true story of swimmer Diana Nyad, who swam from Cuba to Florida at 64 years old, among many other swimming accomplishments."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Wingwomen",
+          "summary": "Mélanie Laurent (Inglourious Basterds) is both behind and in front of the camera in this action comedy about women thieves on the run looking to pull off one last job."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "A Haunting in Venice",
+          "summary": "Kenneth Branagh’s Poirot adaptations have generally been a fun time, even when they have problems (looking at you, Death on the Nile). A Haunting in Venice is his best yet, as Branagh’s confidence as director and performer in this mode only continues to grow. It’s perfect fall viewing."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Quiz Lady",
+          "summary": "Sandra Oh and Awkwafina play a pair of estranged sisters who try to win big on a game show to pay off their mom’s debts. The supporting cast includes Will Ferrell, Jason Schwartzman, Tony Hale, and the late Paul Reubens."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Freaks vs. the Reich",
+          "summary": "This offbeat Italian superhero movie follows a group of circus performers in World War II who are sought after by the Nazis and team up to stop them. I have heard it’s funny, sweet, and has strong action — definitely on my weekend watchlist."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "My Big Fat Greek Wedding 3",
+          "summary": "One of cinema’s most endearingly goofy families is back, in the most family-centric franchise this side of the Fast and Furious movies. It’s the first Greek Wedding movie since 2016, which came nearly 15 years after the original smash hit. This time, star-writer Nia Vardalos takes over directorial duties, following up her 2009 directorial debut I Hate Valentine’s Day."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Sympathy for the Devil",
+          "summary": "A largely two-person movie that sounds a bit like Collateral, Sympathy for the Devil stars Nicolas Cage as a passenger who holds a driver (Joel Kinnaman) hostage on a long car trip."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Paw Patrol: The Mighty Movie",
+          "summary": "The Paw Patrol is back — this sequel to the first movie sees the pup get superpowers in their quest to stop Mayor Humdinger from destroying Adventure City."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "The Kill Room",
+          "summary": "Joe Manganiello stars as a hitman turned artist in this funny comedy about how the worlds of fine art and high crime aren’t so separated after all. When he turns to art as a method of laundering money, the hitman becomes an unexpected overnight sensation in the high-art scene."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Outlaw Johnny Black",
+          "summary": "Michael Jai White’s long-awaited follow-up to Black Dynamite is finally here: a “West-ploitation” movie about an outlaw who pretends to be a preacher and settles in a new troubled town. The star and director spoke to us at length about the movie and the long road it took to get here."
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Sound of Freedom",
+          "summary": "One of the most surprising (and controversial) box-office hits of the year, Sound of Freedom purports to be a true story about stopping child trafficking. The truth is much more complicated than that."
+        }
+      ]
+    }
+  ]
+}
+```

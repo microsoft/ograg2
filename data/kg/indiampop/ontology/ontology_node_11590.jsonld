@@ -1,0 +1,140 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Cereal",
+                "used_for": "Food"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "Temperate",
+                "has_regions": ["North America", "Europe"],
+                "has_seed_recommendations": {
+                    "@type": "SeedList",
+                    "variety_name": ["Hard Red Winter", "Soft Red Winter"],
+                    "has_early_sowing_time": {
+                        "@type": "SowingTime",
+                        "start_date": "2021-09-01",
+                        "end_date": "2021-10-31"
+                    },
+                    "has_late_sowing_time": {
+                        "@type": "SowingTime",
+                        "start_date": "2022-02-01",
+                        "end_date": "2022-03-31"
+                    },
+                    "has_seeding_rate": {
+                        "@type": "QuantitativeValue",
+                        "value": "75",
+                        "unitText": "kg/ha"
+                    },
+                    "has_fertilizer_application_requirements": {
+                        "@type": "Fertilization",
+                        "nutrient_name": "Nitrogen",
+                        "quantity": "100 kg/ha",
+                        "stage_of_application": "At sowing"
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "4-12°C",
+                "for_flowering": "15-20°C",
+                "for_grain_filling": "15-20°C",
+                "negative_effect": "Above 30°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Sandy",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the field to a fine tilth",
+                "with_soil_moisture": "Moist but not waterlogged"
+            },
+            "seed_germination_test_requirements_are": "Select mature good quality seeds, free from pest damage and fungal attack.",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Thiram",
+                "quantity": "2 g/kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Early morning or late evening",
+                "value": "15 cm",
+                "depth": "3-4 cm",
+                "method": "Drill sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Wild oats",
+                "weed_types": ["Annual", "Perennial"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Atrazine",
+                    "quantity": "1.5 kg/ha",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "500-600 mm",
+                "stage_of_application": "Throughout the growing season"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Rust",
+                "disease_symptoms": "Yellow pustules on leaves",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Fungicide",
+                    "quantity": "2 kg/ha",
+                    "stage": "At first sign of disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Aphids",
+                "pest_symptoms": "Yellowing and curling of leaves",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Insecticide",
+                    "quantity": "1.5 kg/ha",
+                    "stage": "At first sign of pests"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when grains are hard and moisture content is around 12-14%",
+            "storage_guidelines_are":"Store in a cool, dry place"
+        }
+    ]
+}

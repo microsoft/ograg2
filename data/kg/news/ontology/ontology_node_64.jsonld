@@ -1,0 +1,197 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "NFL Weekly Breakdown",
+            "author": "Sportsline",
+            "theme": "Sports",
+            "summary": "Analysis of player performances and matchups in the NFL.",
+            "created": "2023-10-01T00:00:00Z",
+            "modified": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Week 1 Performance",
+                    "eventSummary": "That one went for 32 yards against the Eagles in Week 1.",
+                    "theme": "Performance",
+                    "hasLocation": {
+                        "@id": "geo:location1",
+                        "@type": "geo:SpatialThing",
+                        "name": "Eagles Stadium"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person1",
+                            "@type": "schema:Thing",
+                            "name": "Emari Demercado",
+                            "dateOfBirth": "1999-01-01",
+                            "placeOfBirth": {
+                                "@id": "geo:location2",
+                                "@type": "geo:SpatialThing",
+                                "name": "Arizona"
+                            },
+                            "alias": "Demercado"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "schema:Thing",
+                            "name": "Arizona Cardinals",
+                            "hasLocation": {
+                                "@id": "geo:location3",
+                                "@type": "geo:SpatialThing",
+                                "name": "Arizona"
+                            },
+                            "alias": "Cardinals"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event2",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Matchup Analysis",
+                    "eventSummary": "Analysis of the upcoming matchups and player performances.",
+                    "theme": "Matchup",
+                    "hasLocation": {
+                        "@id": "geo:location4",
+                        "@type": "geo:SpatialThing",
+                        "name": "Various Stadiums"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person2",
+                            "@type": "schema:Thing",
+                            "name": "Jared Goff",
+                            "dateOfBirth": "1994-10-14",
+                            "placeOfBirth": {
+                                "@id": "geo:location5",
+                                "@type": "geo:SpatialThing",
+                                "name": "California"
+                            },
+                            "alias": "Goff"
+                        },
+                        {
+                            "@id": "snap:person3",
+                            "@type": "schema:Thing",
+                            "name": "Garrett Wilson",
+                            "dateOfBirth": "2000-07-22",
+                            "placeOfBirth": {
+                                "@id": "geo:location6",
+                                "@type": "geo:SpatialThing",
+                                "name": "New Jersey"
+                            },
+                            "alias": "Wilson"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization2",
+                            "@type": "schema:Thing",
+                            "name": "Detroit Lions",
+                            "hasLocation": {
+                                "@id": "geo:location7",
+                                "@type": "geo:SpatialThing",
+                                "name": "Detroit"
+                            },
+                            "alias": "Lions"
+                        },
+                        {
+                            "@id": "snap:organization3",
+                            "@type": "schema:Thing",
+                            "name": "New York Jets",
+                            "hasLocation": {
+                                "@id": "geo:location8",
+                                "@type": "geo:SpatialThing",
+                                "name": "New York"
+                            },
+                            "alias": "Jets"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

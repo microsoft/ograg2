@@ -1,0 +1,157 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Jabra Elite 4 Active",
+      "summary": "Affordable earbuds with IP57 water resistance and active noise cancellation.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Jabra Elite 4 Active deals",
+        "summary": "Available for $69.99 at Amazon and Walmart."
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Sennheiser Momentum Wireless 4",
+      "summary": "Noise-canceling headphones with superb battery life.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Sennheiser Momentum Wireless 4 deals",
+        "summary": "Available for $269.89 at Amazon and $299.89 at Best Buy."
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "UE Fits",
+      "summary": "Earbuds that mold to the shape of your ears.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "UE Fits deals",
+        "summary": "Available for $149.99 at Ultimate Ears."
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Anker Soundcore Liberty 3 Pro",
+      "summary": "Noise-canceling earbuds with LDAC codec support.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Anker Soundcore Liberty 3 Pro deals",
+        "summary": "Available for $99.99 at Amazon and $109.99 at Walmart."
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Nothing Ear Stick",
+      "summary": "Stylish earbuds with a transparent look.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Nothing Ear Stick deals",
+        "summary": "Available for $59 at Nothing."
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Amazon Echo Buds (second-gen)",
+      "summary": "True wireless earbuds with improved comfort and noise cancellation.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Amazon Echo Buds (second-gen) deals",
+        "summary": "Available for $64.99 at Amazon and Best Buy."
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Amazon Echo Buds (third-gen)",
+      "summary": "Lightweight earbuds with a semi-open design.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Amazon Echo Buds (third-gen) deals",
+        "summary": "Available for $34.99 at Amazon."
+      }
+    }
+  ]
+}
+```

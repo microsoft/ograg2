@@ -1,0 +1,159 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "College Bowl Odds, Spreads, Money Lines and Totals - NCAAF 2023 Bowl Season",
+            "author": "Travis Pulver",
+            "published": "2023-12-15T20:37:00+00:00",
+            "summary": "College Bowl odds are posted at the best college football betting sites. Along with game odds, sportsbooks will offer a wider variety of prop bets to match the hype surrounding College Bowl odds, the College Football Playoff, and National Championship games.",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Military Bowl Presented by GoBowling.com: Virginia Tech vs. Tulane",
+                        "eventSummary": "The game will take place at the Navy-Marine Corps Memorial Stadium in Annapolis, MD. Kickoff is scheduled for 2 p.m. ET on Wednesday, Dec. 27. The game will be broadcast on ESPN.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Navy-Marine Corps Memorial Stadium, Annapolis, MD"
+                        }
+                    },
+                    {
+                        "eventTitle": "Duke’s Mayo Bowl: UNC vs. West Virginia",
+                        "eventSummary": "The game will take place at Bank of America Stadium in Charlotte, NC. Kickoff is scheduled for 5:30 p.m. ET on Wednesday, Dec. 27. The game will be broadcast on ESPN.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Bank of America Stadium, Charlotte, NC"
+                        }
+                    },
+                    {
+                        "eventTitle": "DIRECTV Holiday Bowl: Louisville vs. USC",
+                        "eventSummary": "The game will take place at Petco Park in San Diego, CA. Kickoff is scheduled for 8 p.m. ET on Wednesday, Dec. 27. The game will be broadcast on FOX.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Petco Park, San Diego, CA"
+                        }
+                    },
+                    {
+                        "eventTitle": "TaxAct Texas Bowl: Texas A&M vs. Oklahoma State",
+                        "eventSummary": "The game will take place at NRG Stadium in Houston, TX. Kickoff is scheduled for 9 p.m. ET on Wednesday, Dec. 27. The game will be broadcast on ESPN.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "NRG Stadium, Houston, TX"
+                        }
+                    },
+                    {
+                        "eventTitle": "Wasabi Fenway Bowl: SMU vs. Boston College",
+                        "eventSummary": "The game will take place at Fenway Park in Boston, MA. Kickoff is scheduled for 11 a.m. ET on Thursday, Dec. 27. The game will be broadcast on ESPN.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Fenway Park, Boston, MA"
+                        }
+                    },
+                    {
+                        "eventTitle": "Bad Boy Mowers Pinstripe Bowl: Rutgers vs. Miami",
+                        "eventSummary": "The game will take place at Yankee Stadium in Bronx, NY. Kickoff is scheduled for 2:15 p.m. ET on Thursday, Dec. 27. The game will be broadcast on ESPN.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Yankee Stadium, Bronx, NY"
+                        }
+                    },
+                    {
+                        "eventTitle": "Pop-Tarts Bowl: North Carolina State vs. Kansas State",
+                        "eventSummary": "The game will take place at Camping World Stadium in Orlando, FL. Kickoff is scheduled for 5:45 p.m. ET on Thursday, Dec. 27. The game will be broadcast on ESPN.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Camping World Stadium, Orlando, FL"
+                        }
+                    },
+                    {
+                        "eventTitle": "Valero Alamo Bowl: Arizona vs. Oklahoma",
+                        "eventSummary": "The game will take place at the Alamodome in San Antonio, TX. Kickoff is scheduled for 9:15 p.m. ET on Thursday, Dec. 27. The game will be broadcast on ESPN.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Alamodome, San Antonio, TX"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

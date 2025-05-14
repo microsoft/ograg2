@@ -1,0 +1,64 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Appendix": {
+            "@id": "cropCult:Appendix",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "RR": "cropCult:RecommendedRate",
+                "A": "cropCult:Area",
+                "ai": "cropCult:ActiveIngredient",
+                "DC": "cropCult:DesiredConcentration",
+                "PesticideMix": "cropCult:PesticideMix"
+            }
+        },
+        "RecommendedRate": {
+            "@id": "cropCult:RecommendedRate",
+            "@type": "schema:QuantitativeValue"
+        },
+        "Area": {
+            "@id": "cropCult:Area",
+            "@type": "schema:QuantitativeValue"
+        },
+        "ActiveIngredient": {
+            "@id": "cropCult:ActiveIngredient",
+            "@type": "schema:QuantitativeValue"
+        },
+        "DesiredConcentration": {
+            "@id": "cropCult:DesiredConcentration",
+            "@type": "schema:QuantitativeValue"
+        },
+        "PesticideMix": {
+            "@id": "cropCult:PesticideMix",
+            "@type": "schema:QuantitativeValue"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Appendix",
+            "name": "APPENDIX IX",
+            "RR": {
+                "@type": "RecommendedRate",
+                "value": "RR × A × 100"
+            },
+            "A": {
+                "@type": "Area",
+                "value": "Area in ha"
+            },
+            "ai": {
+                "@type": "ActiveIngredient",
+                "value": "Per cent active ingredient in the formulation"
+            },
+            "DC": {
+                "@type": "DesiredConcentration",
+                "value": "DC x 100"
+            },
+            "PesticideMix": {
+                "@type": "PesticideMix",
+                "value": "Millilitre of pesticide to be mixed per litre of water = DC x 100 / % a.i."
+            }
+        }
+    ]
+}

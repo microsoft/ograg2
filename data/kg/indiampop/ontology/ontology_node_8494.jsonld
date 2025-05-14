@@ -1,0 +1,296 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "SeedList": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List",
+                "has_early_sowing_time": "cropCult:SowingTime",
+                "has_late_sowing_time": "cropCult:SowingTime",
+                "has_seeding_rate": "schema:QuantitativeValue",
+                "has_fertilizer_application_requirements": "cropCult:Fertilization"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CropGrowingZones":{
+                "@container": "@list",
+                "@id": "cropCult:CropGrowingZones",
+                "@type": "schema:ItemList",
+                "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List",
+                    "has_seed_recommendations": "cropCult:SeedList"
+                }
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "for_flowering": "schema:Text",
+                "for_grain_filling": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "seedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "FORAGE CROPS > FODDER CHOLAM > CROP IMPROVEMENT > II. PARTICULARS OF FODDER CHOLAM VARIETIES",
+            "has_types": [
+                {
+                    "@type": "cropCult:CropType",
+                    "name": "CO 27",
+                    "used_for": "Derivative of the cross CO 11 x Sorghum halepense"
+                },
+                {
+                    "@type": "cropCult:CropType",
+                    "name": "K 11",
+                    "used_for": "K 7 x A 6552"
+                },
+                {
+                    "@type": "cropCult:CropType",
+                    "name": "CO (FS) 29",
+                    "used_for": "Derivative of the cross TNS 30 x Sorghum sudanense"
+                }
+            ],
+            "has_growing_zones": [
+                {
+                    "@type": "cropCult:CropGrowingZones",
+                    "CropGrowingZone": [
+                        {
+                            "@type": "cropCult:CropGrowingZone",
+                            "name": "Single cut (60-65 days)",
+                            "has_regions": [
+                                "35-40 Morphological characters"
+                            ],
+                            "has_seed_recommendations": [
+                                {
+                                    "@type": "cropCult:SeedList",
+                                    "variety_name": [
+                                        "CO 27"
+                                    ],
+                                    "has_early_sowing_time": {
+                                        "@type": "cropCult:SowingTime",
+                                        "start_date": "60 days",
+                                        "end_date": "65 days"
+                                    },
+                                    "has_seeding_rate": {
+                                        "@type": "schema:QuantitativeValue",
+                                        "value": "35-40 t/ha"
+                                    },
+                                    "has_fertilizer_application_requirements": {
+                                        "@type": "cropCult:Fertilization",
+                                        "nutrient_name": "Protein",
+                                        "quantity": "9.82%",
+                                        "stage_of_application": "Single cut"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "@type": "cropCult:CropGrowingZone",
+                            "name": "Single cut (95-100 days)",
+                            "has_regions": [
+                                "30-45 Grain yield: 1500 kg"
+                            ],
+                            "has_seed_recommendations": [
+                                {
+                                    "@type": "cropCult:SeedList",
+                                    "variety_name": [
+                                        "K 11"
+                                    ],
+                                    "has_early_sowing_time": {
+                                        "@type": "cropCult:SowingTime",
+                                        "start_date": "95 days",
+                                        "end_date": "100 days"
+                                    },
+                                    "has_seeding_rate": {
+                                        "@type": "schema:QuantitativeValue",
+                                        "value": "30-45 t/ha"
+                                    },
+                                    "has_fertilizer_application_requirements": {
+                                        "@type": "cropCult:Fertilization",
+                                        "nutrient_name": "Protein",
+                                        "quantity": "7.44%",
+                                        "stage_of_application": "Single cut"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "@type": "cropCult:CropGrowingZone",
+                            "name": "Multicut (3 years)",
+                            "has_regions": [
+                                "160-170 (5-6 cuts)"
+                            ],
+                            "has_seed_recommendations": [
+                                {
+                                    "@type": "cropCult:SeedList",
+                                    "variety_name": [
+                                        "CO (FS) 29"
+                                    ],
+                                    "has_early_sowing_time": {
+                                        "@type": "cropCult:SowingTime",
+                                        "start_date": "3 years",
+                                        "end_date": "3 years"
+                                    },
+                                    "has_seeding_rate": {
+                                        "@type": "schema:QuantitativeValue",
+                                        "value": "160-170 t/ha"
+                                    },
+                                    "has_fertilizer_application_requirements": {
+                                        "@type": "cropCult:Fertilization",
+                                        "nutrient_name": "Protein",
+                                        "quantity": "8.41%",
+                                        "stage_of_application": "Multicut"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

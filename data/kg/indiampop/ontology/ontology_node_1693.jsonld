@@ -1,0 +1,111 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "INDIAN GOOSEBERRY (Phyllanthus emblica)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Phyllanthus emblica",
+                "used_for": "Fruit"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical",
+                    "has_regions": ["India"]
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Warm",
+                "for_flowering": "Warm",
+                "for_grain_filling": "Cool",
+                "negative_effect": "Frost"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Well-drained",
+                "avoid_soil_type": "Water-logged",
+                "for_water": "Moderate",
+                "for_nutrients": "Rich"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Clear land of weeds and rocks, plough to a fine tilth",
+                "with_soil_moisture": "Moist"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "SeedSpacing",
+                "sowing_time": "Spring",
+                "value": "6-8 feet",
+                "depth": "1-2 inches",
+                "method": "Direct sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Grass weeds",
+                "weed_types": ["Annual", "Perennial"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1 litre per acre",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "1 inch per week",
+                "stage_of_application": "Throughout growing season"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Fungal leaf spot",
+                "disease_symptoms": "Brown spots on leaves",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Copper fungicide",
+                    "quantity": "2 kg per acre",
+                    "stage": "At first sign of disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Aphids",
+                "pest_symptoms": "Yellowing and curling of leaves",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Imidacloprid",
+                    "quantity": "1 litre per acre",
+                    "stage": "At first sign of pests"
+                }
+            },
+            "harvesting_guidelines_are": "Seedlings will commence bearing from the 10 th year and the grafts in 3-4 years. The vegetative growth of the tree continues from April to July. Along with the new growth in the spring, flowering commences. Fruits will mature by January-February. Yield ranges between 30-50 kg per tree per year when full grown.",
+            "storage_guidelines_are": "Store in a cool, dry place"
+        }
+    ]
+}

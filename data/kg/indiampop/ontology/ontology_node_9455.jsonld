@@ -1,0 +1,58 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "FarmImplementsAndMachinery": {
+            "@id": "cropCult:FarmImplementsAndMachinery",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "category": "schema:Text",
+                "equipment": "cropCult:Equipment"
+            }
+        },
+        "Equipment": {
+            "@id": "cropCult:Equipment",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "capacity": "schema:QuantitativeValue",
+                "efficiency_of_pulping": "schema:QuantitativeValue",
+                "juice_wastage": "schema:QuantitativeValue",
+                "cost_of_equipment": "schema:MonetaryAmount",
+                "cost_of_operation": "schema:MonetaryAmount"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:FarmImplementsAndMachinery",
+            "name": "FARM IMPLEMENTS AND MACHINERY",
+            "category": "HORTICULTURE",
+            "equipment": {
+                "@type": "cropCult:Equipment",
+                "name": "HAND OPERATED ANOLA SEED REMOVER",
+                "capacity": {
+                    "@type": "schema:QuantitativeValue",
+                    "value": "20 Kg/hr (or) 530 fruits / hr"
+                },
+                "efficiency_of_pulping": {
+                    "@type": "schema:QuantitativeValue",
+                    "value": "90 Percent"
+                },
+                "juice_wastage": {
+                    "@type": "schema:QuantitativeValue",
+                    "value": "2 Percent"
+                },
+                "cost_of_equipment": {
+                    "@type": "schema:MonetaryAmount",
+                    "value": "Rs. 1000"
+                },
+                "cost_of_operation": {
+                    "@type": "schema:MonetaryAmount",
+                    "value": "Rs. 10/hr"
+                }
+            }
+        }
+    ]
+}

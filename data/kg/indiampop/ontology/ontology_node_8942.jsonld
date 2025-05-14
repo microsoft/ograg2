@@ -1,0 +1,96 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Composting": {
+            "@id": "cropCult:Composting",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CompostType",
+                "has_materials": "cropCult:CompostMaterials",
+                "has_methods": "cropCult:CompostMethods",
+                "has_benefits": "cropCult:CompostBenefits"
+            }
+        },
+        "CompostType": {
+            "@id": "cropCult:CompostType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CompostMaterials": {
+            "@id": "cropCult:CompostMaterials",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CompostMethods": {
+            "@id": "cropCult:CompostMethods",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CompostBenefits": {
+            "@id": "cropCult:CompostBenefits",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Composting",
+            "name": "COMPOSTING OF SOLID WASTES",
+            "has_types": {
+                "@type": "cropCult:CompostType",
+                "name": "Ipomea",
+                "used_for": "Biofilm"
+            },
+            "has_materials": {
+                "@type": "cropCult:CompostMaterials",
+                "name": "Solid Wastes",
+                "used_for": "Composting"
+            },
+            "has_methods": {
+                "@type": "cropCult:CompostMethods",
+                "name": "Traditional Composting",
+                "used_for": "Solid Waste Management"
+            },
+            "has_benefits": {
+                "@type": "cropCult:CompostBenefits",
+                "name": "Nitrogen conservation",
+                "used_for": "poultry droppings"
+            }
+        }
+    ]
+}

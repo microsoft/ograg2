@@ -1,0 +1,131 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "byline": "Howard Mustoe",
+            "published": "2023-10-16T20:58:51+00:00",
+            "title": "The airline parts scandal sparking panic and introspection in aerospace",
+            "summary": "His company is accused of falsifying the records that come with aviation components to show they are the real deal. CFM, a joint venture between GE and Safran that manufactures engines, is now pursuing a legal case against AOG in Britain’s High Court. Zamora is defending the case. Verification documents are important because of the exacting specifications of airline parts. Engine modules must tolerate temperatures that would melt many materials and even basic parts must be certified. Because of these demands, even a bolt can cost thousands of dollars if it is holding an engine in place. As a result, the market for airline parts is a very lucrative one. Since 2015, Zamora has charmed his way deep into the complex network of companies and decision makers who move billions of dollars worth of airline parts around the world.",
+            "associatedAsset": {
+                "@type": "TextAsset",
+                "image": "https://www.smh.com.au/business/companies/the-airline-parts-scandal-sparking-panic-and-introspection-in-aerospace-20231016-p5ecmf.html?ref=rss&utm_medium=rss&utm_source=rss_business"
+            }
+        },
+        {
+            "@type": "Organization",
+            "name": "AOG"
+        },
+        {
+            "@type": "Organization",
+            "name": "CFM"
+        },
+        {
+            "@type": "Person",
+            "name": "Zamora",
+            "placeOfBirth": {
+                "@type": "geo:location",
+                "geo:latitude": "10.5000",
+                "geo:longitude": "-66.9167"
+            }
+        },
+        {
+            "@type": "Organization",
+            "name": "B&H Worldwide"
+        },
+        {
+            "@type": "Organization",
+            "name": "Multiflight"
+        },
+        {
+            "@type": "Person",
+            "name": "Steve Borrowdale"
+        },
+        {
+            "@type": "Person",
+            "name": "Mary Schiavo"
+        }
+    ]
+}
+```

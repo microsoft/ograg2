@@ -1,0 +1,43 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement"
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "negative_effect": "schema:Text"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "PEARL MILLET (Pennisetum typhoides L.)",
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "negative_effect": "Prolonged spells of warm, rainless weather may be detrimental and may lead to reduced crop yields."
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "The optimum rainfall requirement of pearl millet ranges between 35 to 50 cm. Although pearl millet can respond to good moisture supplies during its growth, it is nevertheless one of the toughest, drought tolerant crops available."
+            }
+        }
+    ]
+}

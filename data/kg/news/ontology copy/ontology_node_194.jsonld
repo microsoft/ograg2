@@ -1,0 +1,313 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "title": "The Verge’s 2023 holiday gift guide for kids",
+      "byline": "Antonio G. Di Benedetto",
+      "published": "2023-12-18T23:14:07+00:00",
+      "summary": "A comprehensive guide to holiday gifts for kids, featuring technology and unique ideas.",
+      "associatedAsset": [
+        {
+          "@type": "TextAsset",
+          "title": "Poetry for Neanderthals",
+          "summary": "A fun game for up to six players using single-syllable words.",
+          "price": "$19.99",
+          "availableAt": ["Amazon", "Walmart", "Target"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Disney Illusion Island (Nintendo Switch)",
+          "summary": "A 2D side-scrolling game for kids with co-op mode.",
+          "price": "$39.88+",
+          "availableAt": ["Walmart", "Target", "GameStop"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Magna-Tiles Jungle Animals (25-piece set)",
+          "summary": "A jungle-themed magnetic set for kids.",
+          "price": "$39.99",
+          "availableAt": ["Amazon", "Walmart", "Macy’s"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Pokémon Matching Family Pajamas",
+          "summary": "Family pajamas with Pokémon theme.",
+          "price": "$19.99",
+          "availableAt": ["Hanna Andersson"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Custom Face Socks",
+          "summary": "Socks with customizable faces.",
+          "price": "$24+",
+          "availableAt": ["DivvyUp"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Chatbooks Subscription Photo Book",
+          "summary": "Monthly photo book subscription.",
+          "price": "$21+",
+          "availableAt": ["Chatbooks"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Parchie watches",
+          "summary": "Waterproof watches for kids.",
+          "price": "$55.25+",
+          "availableAt": ["Amazon", "Parchie", "Hodinkee"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Keith Haring Kids’ Chair",
+          "summary": "A decorative chair with Keith Haring artwork.",
+          "price": "$116.10+",
+          "availableAt": ["The Shop at The Broad", "MoMA Design Store"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Arteza Gel Ink Pens (60-pack)",
+          "summary": "A set of gel pens with various finishes.",
+          "price": "$17.84+",
+          "availableAt": ["Amazon", "Target", "Arteza"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "We’re Not Really Strangers Kids Edition",
+          "summary": "A game for deeper conversations with kids.",
+          "price": "$10+",
+          "availableAt": ["Amazon", "We’re Not Really Strangers", "Toys R Us"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Kit Adam mechanical keyboard",
+          "summary": "A customizable mechanical keyboard with Lego-style bricks.",
+          "price": "$99.99",
+          "availableAt": ["KBDcraft"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "BuddyPhones Cosmos Plus",
+          "summary": "Noise-canceling headphones for kids.",
+          "price": "$79.90+",
+          "availableAt": ["Amazon", "Walmart", "BuddyPhones"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "The Super Mario Bros. Movie – Van Playset",
+          "summary": "A playset inspired by the Super Mario Bros. movie.",
+          "price": "$9.99+",
+          "availableAt": ["Amazon", "Walmart", "GameStop"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Kindle Kids (2022)",
+          "summary": "An ad-free ebook reader for kids.",
+          "price": "$119.99",
+          "availableAt": ["Amazon", "Best Buy"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "8BitDo SN30 Pro (Special Edition)",
+          "summary": "A nostalgic controller for modern games.",
+          "price": "$44.99+",
+          "availableAt": ["Amazon", "Walmart", "8BitDo"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Nintendo Switch Lite (Isabelle’s Aloha Edition)",
+          "summary": "A travel-friendly gaming console with Animal Crossing design.",
+          "price": "$199.99",
+          "availableAt": ["Target"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Skullcandy Jib True 2",
+          "summary": "Wireless earbuds with Tile tracking.",
+          "price": "$28.17+",
+          "availableAt": ["Amazon", "Best Buy", "Walmart"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Amazmic Kids Karaoke Microphone",
+          "summary": "A Bluetooth karaoke microphone for kids.",
+          "price": "$15.29",
+          "availableAt": ["Amazon"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Samba de Amigo: Party Central (Nintendo Switch)",
+          "summary": "A music rhythm game with modern pop songs.",
+          "price": "$14.99+",
+          "availableAt": ["Amazon", "Best Buy", "GameStop"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Apple iPad (2021)",
+          "summary": "A versatile tablet with a 3.5mm headphone jack.",
+          "price": "$249+",
+          "availableAt": ["Best Buy", "Walmart", "Target"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Mark-my-time digital bookmark",
+          "summary": "A bookmark with a built-in timer for reading sessions.",
+          "price": "$8.95+",
+          "availableAt": ["Amazon", "Mark-My-Time"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Echo Dot Kids (fifth-gen)",
+          "summary": "An Alexa speaker with age-appropriate games.",
+          "price": "$27.99",
+          "availableAt": ["Amazon", "Best Buy", "Target"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Shadows in the Forest",
+          "summary": "A tabletop game played in the dark.",
+          "price": "$31.99",
+          "availableAt": ["Amazon", "Legacy Toys"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "A Very Spidey Christmas",
+          "summary": "A vinyl EP of Spider-Man's holiday album.",
+          "price": "$19.99+",
+          "availableAt": ["Merchbar", "Discogs Marketplace"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Pokémon Carry Case Playset",
+          "summary": "A backpack that opens into a Pokémon playset.",
+          "price": "$33.99+",
+          "availableAt": ["Walmart", "Target", "Macy’s"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Hurry Up Chicken Butt",
+          "summary": "A hot potato game for kids and parents.",
+          "price": "$19.99",
+          "availableAt": ["Target", "Exploding Kittens"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Furby",
+          "summary": "A voice-activated animatronic plushie.",
+          "price": "$49",
+          "availableAt": ["Amazon", "Walmart"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Original Bazooka Bubble Gun",
+          "summary": "A bubble gun that produces over 5,000 bubbles per minute.",
+          "price": "$32.39",
+          "availableAt": ["Amazon"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Nerf Perses MXIX-5000 Motorized Blaster",
+          "summary": "A motorized blaster that shoots foam balls.",
+          "price": "$59.99+",
+          "availableAt": ["Amazon", "Walmart", "Electronics Express"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Quick Push electronic sensory fidget toy (frog-green)",
+          "summary": "A sensory toy with lights and sounds.",
+          "price": "$16.99",
+          "availableAt": ["Amazon"]
+        },
+        {
+          "@type": "TextAsset",
+          "title": "Pinecil portable soldering iron",
+          "summary": "A portable soldering iron for electronics tinkering.",
+          "price": "$25.99+",
+          "availableAt": ["Amazon", "Pine64"]
+        }
+      ]
+    }
+  ]
+}
+```

@@ -1,0 +1,549 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "title": "The best Black Friday headphone deals from Sony, Apple, Bose, Beats and more",
+            "author": "Jeff Dunn",
+            "theme": "technology",
+            "summary": "Engadget has been testing and reviewing consumer tech since 2004. Our stories may include affiliate links; if you buy something through a link, we may earn a commission. Read more about how we evaluate products. Black Friday is often a boon for deals on headphones and earbuds, and this year is no different. The shopping holiday has brought a plethora of deals on all kinds of headphones, include several top picks from our guides to the best wireless headphones, wireless earbuds, budget wireless earbuds and gaming headsets. Other popular models from the likes of Sony, Beats, Bose and Apple are discounted as well. All of this means it's an ideal time to pick up a new set, whether it's to give as a gift to someone on your holiday shopping list or just to replace your own aging cans. To help you get a good bargain, we've rounded up the best Black Friday deals on headphones and earbuds we could find for 2023.",
+            "created": "2023-11-24T14:30:56+00:00",
+            "published": "2023-11-24T14:30:56+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Sony WH-1000XM5 Sale",
+                        "eventSummary": "$328 at Amazon, B&H and other retailers, which is a $72 drop and ties the lowest price we’ve seen.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "name": "B&H"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event2",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Sony WF-1000XM5 Sale",
+                        "eventSummary": "$248 at Amazon, B&H and others.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "name": "B&H"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event3",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Sony WH-1000XM4 Sale",
+                        "eventSummary": "$248 at Amazon, Adorama and B&H.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "name": "Adorama"
+                                },
+                                {
+                                    "name": "B&H"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event4",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Apple AirPods Pro Sale",
+                        "eventSummary": "$190 at Amazon, Walmart, Target and Best Buy.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "name": "Walmart"
+                                },
+                                {
+                                    "name": "Target"
+                                },
+                                {
+                                    "name": "Best Buy"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event5",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Apple AirPods (3rd-gen) Sale",
+                        "eventSummary": "$140 at Amazon, Target, Best Buy and others.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "name": "Target"
+                                },
+                                {
+                                    "name": "Best Buy"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event6",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Apple AirPods (2nd Gen) Sale",
+                        "eventSummary": "$80 at Amazon and Target.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "name": "Target"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event7",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Apple AirPods Max Sale",
+                        "eventSummary": "$450 at Amazon and Best Buy.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "name": "Best Buy"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event8",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Bose QuietComfort Ultra Headphones Sale",
+                        "eventSummary": "$379 at multiple retailers.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event9",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Bose QuietComfort Ultra Earbuds Sale",
+                        "eventSummary": "$249 at several stores.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event10",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Beats Fit Pro Sale",
+                        "eventSummary": "$159 at multiple retailers.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event11",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Beats Studio Pro Sale",
+                        "eventSummary": "$170 at Amazon, Target and Best Buy.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "name": "Target"
+                                },
+                                {
+                                    "name": "Best Buy"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event12",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Amazon Echo Buds Sale",
+                        "eventSummary": "$35 at Amazon.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Amazon"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event13",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Anker Soundcore Space A40 Sale",
+                        "eventSummary": "$54 for Black Friday.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event14",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Anker Soundcore Liberty 4 NC Sale",
+                        "eventSummary": "$70 at Amazon, B&H and Best Buy.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "name": "B&H"
+                                },
+                                {
+                                    "name": "Best Buy"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event15",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Anker Soundcore Space Q45 Sale",
+                        "eventSummary": "$100 for Black Friday.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "name": "Anker"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event16",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Audio-Technica ATH-M20xBT Sale",
+                        "eventSummary": "$69 for Black Friday.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event17",
+                        "@type": "schema:Thing",
+                        "eventTitle": "EarFun Free 2S Sale",
+                        "eventSummary": "$24.59 at Amazon.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Amazon"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event18",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Samsung Galaxy Buds 2 Pro Sale",
+                        "eventSummary": "$160 for Black Friday with a $10 Amazon gift card.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event19",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Jabra Elite 3 Sale",
+                        "eventSummary": "$40 at Best Buy.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Best Buy"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event20",
+                        "@type": "schema:Thing",
+                        "eventTitle": "JLab Go Air Pop Sale",
+                        "eventSummary": "$17 at Amazon.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Amazon"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event21",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Google Pixel Buds Pro Sale",
+                        "eventSummary": "$115 at Wellbots.",
+                        "theme": "Black Friday Deals",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Wellbots"
+                                },
+                                {
+                                    "name": "Amazon"
+                                },
+                                {
+                                    "name": "Best Buy"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

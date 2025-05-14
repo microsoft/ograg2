@@ -1,0 +1,144 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "The New York Times",
+      "published": "2023-10-16T23:58:53+00:00",
+      "title": "N.F.L. Executives on the Biggest Questions Facing Super Bowl Contenders",
+      "summary": "Cover 7 | Monday A daily NFL destination that provides in-depth analysis of football’s biggest stories. Each Monday, Mike Sando breaks down the six most impactful takeaways from the week.",
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "title": "San Francisco 49ers: What do they have in Purdy?",
+        "summary": "The 49ers knew they needed a good quarterback to win the Super Bowl, and they knew they could help Purdy be that. Give him a great receiving tight end, two good receivers and a great halfback who fits the system, and they’ll get someone open on every pass play."
+      },
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "title": "Kansas City Chiefs: Is the explosive passing game gone for good?",
+        "summary": "The Chiefs have never scored less per game on offense through six games or a full season since Patrick Mahomes became their quarterback."
+      },
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "title": "Philadelphia Eagles: Has Jalen Hurts regressed?",
+        "summary": "Explosive passing is down through most of the league, including for the Eagles."
+      },
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "title": "Buffalo Bills: Are the defensive injuries too much to overcome?",
+        "summary": "The Bills are diminished. They have imperfections. But Buffalo already defeated the Dolphins."
+      },
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "title": "Miami Dolphins: Has Tua Tagovailoa proven he’s built to last?",
+        "summary": "It was tough watching Tagovailoa last season without worrying for his physical well-being."
+      },
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "title": "Dallas Cowboys: Is this team any better than previous Dallas teams that fell short?",
+        "summary": "It’s a tough time to evaluate the Cowboys fairly because they were so bad against San Francisco on a big stage in their most recent game."
+      },
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "title": "Detroit Lions: Have they fixed their defense?",
+        "summary": "The Lions are 11.3 EPA per game better on defense from last season to this season."
+      },
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "title": "Baltimore Ravens: Are the Ravens better off shifting to more of a pass-oriented offense?",
+        "summary": "Baltimore has never scored fewer points or amassed less offensive EPA through the first six games of a season with Lamar Jackson in the lineup."
+      },
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "title": "Jacksonville Jaguars: Are they ready for prime time?",
+        "summary": "Trevor Lawrence’s knee injury was the big concern coming out of Sunday."
+      },
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "title": "Cincinnati Bengals: Can Joe Burrow hold up for a full season?",
+        "summary": "Burrow is looking healthier over the past two weeks."
+      }
+    }
+  ]
+}
+```

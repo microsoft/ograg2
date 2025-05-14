@@ -1,0 +1,53 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "AwarenessCampaign": {
+            "@id": "cropCult:AwarenessCampaign",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "description": "schema:Text",
+                "target_audience": "schema:Text",
+                "importance": "schema:Text",
+                "recommended_insecticides": "cropCult:PesticideList",
+                "proper_dose": "schema:Text",
+                "spray_volume": "schema:Text",
+                "effects_of_lower_doses": "schema:Text",
+                "development_of_resistance_in_insects": "schema:Text",
+                "resurgence": "schema:Text",
+                "secondary_pest_outbreak": "schema:Text"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "AwarenessCampaign",
+            "name": "APICULTURE",
+            "description": "Farmers must be educated on the importance of applying recommended insecticides at proper dose and spray volume.",
+            "target_audience": "Farmers",
+            "importance": "It should be kept in mind that application of insecticides at doses below the recommended ones are not effective, rather it produce some undesirable effects, such as development of resistance in insects, resurgence (abrupt increase of target pest) and secondary pest outbreak.",
+            "recommended_insecticides": {
+                "@type": "PesticideList",
+                "name": "Recommended Insecticides",
+                "quantity": "Proper Dose",
+                "stage": "Spray Volume"
+            },
+            "proper_dose": "Recommended Dose",
+            "spray_volume": "Recommended Spray Volume",
+            "effects_of_lower_doses": "Not Effective",
+            "development_of_resistance_in_insects": "Possible",
+            "resurgence": "Possible",
+            "secondary_pest_outbreak": "Possible"
+        }
+    ]
+}

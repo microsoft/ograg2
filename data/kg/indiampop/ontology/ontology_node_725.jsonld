@@ -1,0 +1,141 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Pulses",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Pulses",
+                "used_for": "Rich source of protein, soil fertility, moisture stress resistance, catch crops, mixed crops, intercrops"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Rainfed land, young orchards, coconut plantation",
+                    "has_regions": ["Arhar region", "Cotton region", "Sugarcane region", "Castor region"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Arhar", "Cotton", "Sugarcane", "Castor"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Early season",
+                            "end_date": "Late season"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Late season",
+                            "end_date": "Next season"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "Standard rate"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Standard nutrients",
+                            "quantity": "Standard quantity",
+                            "stage_of_application": "Standard stage"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Standard temperature",
+                "for_flowering": "Standard temperature",
+                "for_grain_filling": "Standard temperature",
+                "negative_effect": "None"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Standard soil",
+                "avoid_soil_type": "None",
+                "for_water": "Standard water",
+                "for_nutrients": "Standard nutrients"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Standard instructions",
+                "with_soil_moisture": "Standard moisture"
+            },
+            "seed_germination_test_requirements_are": "Standard test",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Standard fungicide",
+                "quantity": "Standard quantity"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Standard time",
+                "value": "Standard value",
+                "depth": "Standard depth",
+                "method": "Standard method"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Standard weed",
+                "weed_types": ["Standard types"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Standard herbicide",
+                    "quantity": "Standard quantity",
+                    "stage": "Standard stage"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Standard quantity",
+                "stage_of_application": "Standard stage"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Standard disease",
+                "disease_symptoms": "Standard symptoms",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Standard herbicide",
+                    "quantity": "Standard quantity",
+                    "stage": "Standard stage"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Standard pest",
+                "pest_symptoms": "Standard symptoms",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Standard pesticide",
+                    "quantity": "Standard quantity",
+                    "stage": "Standard stage"
+                }
+            },
+            "harvesting_guidelines_are": "Standard guidelines",
+            "storage_guidelines_are": "Standard guidelines"
+        }
+    ]
+}

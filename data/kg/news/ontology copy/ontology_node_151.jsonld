@@ -1,0 +1,200 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:Event",
+      "eventTitle": "Unholy Release",
+      "eventSummary": "Sam's record 'Unholy' became a smash hit, breaking records at streaming services and winning a Grammy with Kim Petras.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": "snap:event"
+    },
+    {
+      "@type": "snap:Person",
+      "name": "Sam",
+      "notablyAssociatedWith": "snap:organization"
+    },
+    {
+      "@type": "snap:Organization",
+      "name": "Capitol UK"
+    },
+    {
+      "@type": "snap:Person",
+      "name": "Arjun"
+    },
+    {
+      "@type": "snap:Person",
+      "name": "Jo Charrington"
+    },
+    {
+      "@type": "snap:Person",
+      "name": "Jack Street"
+    },
+    {
+      "@type": "snap:Person",
+      "name": "Sam Evitt"
+    },
+    {
+      "@type": "snap:Event",
+      "eventTitle": "Ice Spice Signing",
+      "eventSummary": "Ice Spice was co-signed by Capitol and 10K, marking her as a future global superstar.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": "snap:event"
+    },
+    {
+      "@type": "snap:Person",
+      "name": "Ice Spice"
+    },
+    {
+      "@type": "snap:Organization",
+      "name": "10K"
+    },
+    {
+      "@type": "snap:Person",
+      "name": "Elliot"
+    },
+    {
+      "@type": "snap:Person",
+      "name": "Jeremy Vuernick"
+    },
+    {
+      "@type": "snap:Person",
+      "name": "Zach Friedman"
+    },
+    {
+      "@type": "snap:Person",
+      "name": "Tony Talamo"
+    },
+    {
+      "@type": "snap:Person",
+      "name": "James Rosemond Jr."
+    },
+    {
+      "@type": "snap:Organization",
+      "name": "Universal Music Publishing Group"
+    },
+    {
+      "@type": "snap:Person",
+      "name": "Jody Gerson"
+    },
+    {
+      "@type": "snap:Event",
+      "eventTitle": "The Beatles 'Now And Then' Release",
+      "eventSummary": "The release of a new Beatles single 'Now And Then' in 2023, a significant cultural event.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": "snap:event"
+    },
+    {
+      "@type": "snap:Person",
+      "name": "Paul McCartney"
+    },
+    {
+      "@type": "snap:Organization",
+      "name": "Apple Corp"
+    },
+    {
+      "@type": "snap:Organization",
+      "name": "UMG UK"
+    },
+    {
+      "@type": "snap:Person",
+      "name": "Bruce Resnikoff"
+    },
+    {
+      "@type": "snap:Event",
+      "eventTitle": "Diversity in Music Industry",
+      "eventSummary": "A focus on increasing diversity and representation within the music industry, particularly at senior levels.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": "snap:event"
+    },
+    {
+      "@type": "snap:Person",
+      "name": "Cindy Mabe"
+    },
+    {
+      "@type": "snap:Organization",
+      "name": "Capitol Music Group"
+    }
+  ]
+}
+```

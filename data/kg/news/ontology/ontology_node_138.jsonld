@@ -1,0 +1,222 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "title": "Bears vs. Panthers live score, updates, highlights from NFL 'Thursday Night Football' game",
+            "author": "Dan Treacy",
+            "published": "2023-11-09T23:04:33+00:00",
+            "summary": "The Bears and Panthers entered Thursday night looking for progress, not playoff contention. If any team achieved that goal, it was Chicago. It wasn't an aesthetically pleasing game, but that was never the expectation. The Bears grinded out a 16-13 victory behind a terrific defensive performance, a solid running game, and a few timely throws by Tyson Bagent.",
+            "has_events": {
+                "@id": "snap:eventList",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Bears vs. Panthers Final Score",
+                        "eventSummary": "Bears 16, Panthers 13",
+                        "theme": "sports",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "NFL Stadium"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Dan Treacy"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Tyson Bagent"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Bryce Young"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "D'Onta Foreman"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Ihmir Smith-Marsette"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Frank Reich"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Eddy Pineiro"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "David Tepper"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "D.J. Moore"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Miles Sanders"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Cole Kmet"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Terrace Marshall Jr."
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Adam Thielen"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Chuba Hubbard"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Roschon Johnson"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Deion Jones"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Justin Jones"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Yannick Ngakoue"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Tyrique Stevenson"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Mike Strachan"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Trenton Gill"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Cairo Santos"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Chicago Bears"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Carolina Panthers"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "NFL"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Sporting News"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "PULSES",
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "The pulse crops in rabi and pre-rabi season are mostly grown on residual soil moisture without irrigation. However, rajmash in rabi season and the pulses in summer season require irrigation.",
+                "stage_of_application": "Flowering and pod development stage are critical for irrigation."
+            }
+        }
+    ]
+}

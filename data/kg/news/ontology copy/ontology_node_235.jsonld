@@ -1,0 +1,142 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "title": "Charlie Sheen is 'single dad' to twins, follows John Travolta, Liam Neeson raising kids solo",
+      "published": "2023-12-17T10:00:59+00:00",
+      "summary": "Charlie Sheen is speaking out about his current experience with fatherhood. The actor claims that he is currently raising his two youngest children, 14-year-old twins Max and Bob, on his own.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://www.foxnews.com/entertainment/charlie-sheen-single-dad-twins-follows-john-travolta-liam-neeson-raising-kids-solo"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Charlie Sheen",
+      "notablyAssociatedWith": {
+        "@type": "Event",
+        "eventTitle": "Single Fatherhood",
+        "eventSummary": "Raising twins Max and Bob on his own."
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "John Travolta",
+      "notablyAssociatedWith": {
+        "@type": "Event",
+        "eventTitle": "Single Fatherhood",
+        "eventSummary": "Raising children Ella and Benjamin after the passing of Kelly Preston."
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Liam Neeson",
+      "notablyAssociatedWith": {
+        "@type": "Event",
+        "eventTitle": "Single Fatherhood",
+        "eventSummary": "Raising sons Micheál and Daniel after the death of Natasha Richardson."
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Kevin Federline",
+      "notablyAssociatedWith": {
+        "@type": "Event",
+        "eventTitle": "Single Fatherhood",
+        "eventSummary": "Raising sons Preston and Jayden after divorce from Britney Spears."
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Dean Cain",
+      "notablyAssociatedWith": {
+        "@type": "Event",
+        "eventTitle": "Single Fatherhood",
+        "eventSummary": "Raising son Christopher after custody battle."
+      }
+    }
+  ]
+}
+```

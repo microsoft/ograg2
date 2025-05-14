@@ -1,0 +1,207 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "schema:Thing",
+      "title": "ATTI Series Final Installment",
+      "author": "Munkao",
+      "theme": "TTRPG",
+      "content": "The three schemes are presented as both traditional adventures and as collections of facts...",
+      "created": "2023-10-01T00:00:00Z",
+      "modified": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "schema:Thing",
+          "eventTitle": "Village Chaos",
+          "eventSummary": "Events will quickly throw a small village, a monastery, and a necropolis into chaos.",
+          "theme": "Adventure",
+          "hasLocation": {
+            "@id": "geo:location1",
+            "@type": "geo:SpatialThing"
+          }
+        }
+      ]
+    },
+    {
+      "@id": "snap:asset2",
+      "@type": "schema:Thing",
+      "title": "Monsterhearts",
+      "author": "Anonymous",
+      "theme": "TTRPG",
+      "content": "A really pleasant TTRPG memory I had from this year was playing Monsterhearts...",
+      "created": "2023-10-01T00:00:00Z",
+      "modified": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:asset3",
+      "@type": "schema:Thing",
+      "title": "Mörk Borg",
+      "author": "Jasmine Bhullar",
+      "theme": "TTRPG",
+      "content": "Of the games I delved into this year, although several afforded hours of entertainment...",
+      "created": "2023-10-01T00:00:00Z",
+      "modified": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:asset4",
+      "@type": "schema:Thing",
+      "title": "I’m Sorry Did You Say Street Magic",
+      "author": "Madison Durham",
+      "theme": "TTRPG",
+      "content": "To me, some of the most joyful moments in tabletop gaming come from the experience of creative collaboration...",
+      "created": "2023-10-01T00:00:00Z",
+      "modified": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:asset5",
+      "@type": "schema:Thing",
+      "title": "Triangle Agency",
+      "author": "Anonymous",
+      "theme": "TTRPG",
+      "content": "I love a game with style and a clear, fun point of view, so I’ve been a fan of Triangle Agency...",
+      "created": "2023-10-01T00:00:00Z",
+      "modified": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:asset6",
+      "@type": "schema:Thing",
+      "title": "Twilight: 2000",
+      "author": "Charlie Hall",
+      "theme": "TTRPG",
+      "content": "I firmly believe that tabletop role-play should always take into account the audience...",
+      "created": "2023-10-01T00:00:00Z",
+      "modified": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:asset7",
+      "@type": "schema:Thing",
+      "title": "Project ECCO",
+      "author": "Anonymous",
+      "theme": "TTRPG",
+      "content": "It’s a near-impossible task to get a consistent group together, so solo TTRPGs have become my primary method...",
+      "created": "2023-10-01T00:00:00Z",
+      "modified": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:asset8",
+      "@type": "schema:Thing",
+      "title": "The Quiet Year",
+      "author": "Em Friedman",
+      "theme": "TTRPG",
+      "content": "Look, The Quiet Year appeared not once but twice on last year’s roundup, I know...",
+      "created": "2023-10-01T00:00:00Z",
+      "modified": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:asset9",
+      "@type": "schema:Thing",
+      "title": "What Dust Remains",
+      "author": "Danny Quach",
+      "theme": "TTRPG",
+      "content": "Despite my generally sunny disposition, big smile, and boisterous laughter...",
+      "created": "2023-10-01T00:00:00Z",
+      "modified": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:asset10",
+      "@type": "schema:Thing",
+      "title": "The Wildsea",
+      "author": "Anonymous",
+      "theme": "TTRPG",
+      "content": "Earlier this year, I searched for the perfect system to kickstart my new actual-play campaign...",
+      "created": "2023-10-01T00:00:00Z",
+      "modified": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    }
+  ]
+}

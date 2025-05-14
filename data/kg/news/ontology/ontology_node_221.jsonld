@@ -1,0 +1,165 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Musk's Departure from OpenAI and the Formation of Anthropic",
+            "author": "Unnamed Sources",
+            "theme": "Artificial Intelligence, Corporate Strategy",
+            "summary": "In late 2017, Musk attempted to take control of OpenAI, leading to his departure and the eventual formation of Anthropic by former OpenAI researchers.",
+            "created": "2023-10-01T00:00:00Z",
+            "modified": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "eventTitle": "Musk's Plan to Control OpenAI",
+                        "eventSummary": "Musk aimed to transform OpenAI into a commercial operation.",
+                        "theme": "Corporate Control",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "name": "Elon Musk",
+                                    "dateOfBirth": "1971-06-28",
+                                    "placeOfBirth": "Pretoria, South Africa"
+                                },
+                                {
+                                    "name": "Sam Altman",
+                                    "dateOfBirth": "1985-04-22",
+                                    "placeOfBirth": "Chicago, Illinois, USA"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "OpenAI",
+                                    "hasLocation": "San Francisco, California, USA"
+                                },
+                                {
+                                    "name": "Tesla",
+                                    "hasLocation": "Palo Alto, California, USA"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Formation of Anthropic",
+                        "eventSummary": "A group of former OpenAI researchers formed a new lab called Anthropic.",
+                        "theme": "AI Development",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "name": "Dario Amodei",
+                                    "dateOfBirth": "1986-01-01",
+                                    "placeOfBirth": "USA"
+                                },
+                                {
+                                    "name": "Sally Aldous",
+                                    "dateOfBirth": "1990-01-01",
+                                    "placeOfBirth": "USA"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Anthropic",
+                                    "hasLocation": "San Francisco, California, USA"
+                                },
+                                {
+                                    "name": "Amazon",
+                                    "hasLocation": "Seattle, Washington, USA"
+                                },
+                                {
+                                    "name": "Google",
+                                    "hasLocation": "Mountain View, California, USA"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "followUp": "snap:asset",
+            "derivedFrom": "snap:asset"
+        }
+    ]
+}

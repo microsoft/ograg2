@@ -1,0 +1,65 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "weed_management_needs_are": "cropCult:WeedManagement"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "RICE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "TRANSPLANTED RICE",
+                "used_for": "Interculture"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Weed",
+                "weed_types": [
+                    "Weed within 3 weeks of transplanting"
+                ],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Herbicides for direct sown medium land rice",
+                    "quantity": "50 kg/ha",
+                    "stage": "3 days after transplanting"
+                }
+            }
+        }
+    ]
+}

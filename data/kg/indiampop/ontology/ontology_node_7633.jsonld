@@ -1,0 +1,121 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "OILSEEDS > COCONUT (Cocos nucifera) > OILPALM",
+            "has_types": {
+                "@type": "CropType",
+                "name": "OILPALM",
+                "used_for": "Oil production"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical",
+                    "has_regions": ["South East Asia", "Africa", "Central America"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Dura", "Pisifera", "Tenera"]
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "25-30°C",
+                "for_flowering": "28-33°C",
+                "for_grain_filling": "28-33°C",
+                "negative_effect": "Below 15°C and above 38°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Well drained, deep loamy soil",
+                "avoid_soil_type": "Sandy and water logged soils",
+                "for_water": "High",
+                "for_nutrients": "High"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Land should be ploughed and harrowed to make the soil fine tilth.",
+                "with_soil_moisture": "High"
+            },
+            "seed_germination_test_requirements_are": "Seeds should be soaked in water for 48 hours before sowing.",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Mancozeb",
+                "quantity": "2g per kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "June-July",
+                "value": "8-10 m",
+                "depth": "1-2 cm",
+                "method": "Direct sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Grass weeds",
+                "weed_types": ["Annual", "Perennial"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1.5-2.0 kg a.i./ha",
+                    "stage": "Post-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "200-250 cm annually",
+                "stage_of_application": "Throughout the year"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Bud rot",
+                "disease_symptoms": "Wilting and rotting of the bud",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Mancozeb",
+                    "quantity": "2g per litre of water",
+                    "stage": "At the onset of disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Rhynchophorus ferrugineus",
+                "pest_symptoms": "Wilting and yellowing of leaves",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Chlorpyrifos",
+                    "quantity": "2.5 ml per litre of water",
+                    "stage": "At the onset of pest"
+                }
+            },
+            "harvesting_guidelines_are": "Harvesting should be done when fruits are fully matured.",
+            "storage_guidelines_are":"Fruits should be stored in a cool and dry place."
+        }
+    ]
+}

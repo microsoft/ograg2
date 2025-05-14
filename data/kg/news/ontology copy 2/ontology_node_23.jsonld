@@ -1,0 +1,338 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "title": "The best comedies you’ll find on streaming right now",
+            "author": "Toussaint Egan",
+            "theme": "entertainment",
+            "content": "Your time is precious, and your options are endless. The good news: We watch it all so you don’t have to. Polygon’s What to Watch highlights the best, the funniest, the scariest, and the most exciting in movies, TV, and everything in between. Stop scrolling, start watching! Comedy can feel like an ignored genre in modern moviemaking. Horror’s having a fantastic 2023. Thrillers come out on a weekly basis. Even action movies have had some stellar recent releases. But Hollywood has been in a comedic rut in recent years, with fewer and fewer notable releases from big studios. But fear not, dear reader — we know how to find some good laughs. We’ve compiled a list of the best comedy movies you can watch at home, scraping streaming services like Netflix, Hulu, Prime Video, and HBO Max, as well as free services, to find the best of the best. Whether it’s a romantic comedy that makes your heart sing while bringing out a smile or a gut-busting laugh-out-loud comedy, we have a variety of options sure to bring you laughter and brighten up your night. Here are our picks for the best comedy movies you can watch at home right now. If you’re only looking for the best comedy movies on Netflix, we’ve got you covered there, too. Our latest update to this list added The Road to El Dorado as an editor’s pick.",
+            "published": "2023-10-16T16:54:09+00:00",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "The Road to El Dorado",
+                    "eventSummary": "The animated buddy comedy came out during the transition point between the Disney Renaissance and the eventual wave of crass CG movies ushered in by Shrek. But even though it failed spectacularly in theaters, home video turned it into a cult classic and a meme powerhouse.",
+                    "theme": "comedy",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Kevin Kline"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Kenneth Branagh"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Rosie Perez"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Book Club",
+                    "eventSummary": "This delightful and raunchy romantic comedy stars Diane Keaton, Jane Fonda, Candice Bergen, and Mary Steenburgen as a group of best friends who have been a part of a long-standing book club.",
+                    "theme": "romantic comedy",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Diane Keaton"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Jane Fonda"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Candice Bergen"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Mary Steenburgen"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Catherine Called Birdy",
+                    "eventSummary": "Lena Dunham’s adaptation of the beloved children’s novel is an outstanding coming-of-age story that is the rare book-to-movie adaptation done right.",
+                    "theme": "coming-of-age",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Bella Ramsey"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Andrew Scott"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Billie Piper"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Charade",
+                    "eventSummary": "The heist at the center of Charade was successful years prior to the movie, and without realizing it, Reggie (Audrey Hepburn) has been living off the profits from her husband’s crime.",
+                    "theme": "thriller",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Cary Grant"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Audrey Hepburn"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Walter Matthau"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Clueless",
+                    "eventSummary": "Clueless takes the general framework of Emma — a rich, bored young woman who just can’t stop getting involved in everyone’s business — and transports the story from Regency-era England to 1990s Beverly Hills.",
+                    "theme": "teen comedy",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Alicia Silverstone"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Brittany Murphy"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Paul Rudd"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Coming to America",
+                    "eventSummary": "Eddie Murphy stars in the 1988 romantic comedy Coming to America as Akeem Joffer, the crown prince of the fictional African country of Zamunda.",
+                    "theme": "romantic comedy",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Eddie Murphy"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Arsenio Hall"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "James Earl Jones"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Don’t Go Breaking My Heart",
+                    "eventSummary": "Johnnie To is one of our great modern directors, equally adept in hard-boiled triad crime dramas and light-hearted romantic comedies alike.",
+                    "theme": "romantic comedy",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Louis Koo"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Daniel Wu"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Gao Yuanyuan"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Eega",
+                    "eventSummary": "A whirlwind slapstick comedy revenge thriller from the director of RRR and the Baahubali movies, Eega is about a man who is murdered by a romantic rival and reincarnated as a fly.",
+                    "theme": "comedy",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Sudeepa"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Nani"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Samantha"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "The Gold Rush",
+                    "eventSummary": "Charlie Chaplin’s adventurous comedy is nearly 100 years old, and it absolutely still holds up for the modern sense of humor.",
+                    "theme": "comedy",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Charlie Chaplin"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Georgia Hale"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Mack Swain"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "I Married a Witch",
+                    "eventSummary": "René Clair, who made his name in early French silent and sound cinema, spent a few years making movies in the U.S. during World War II.",
+                    "theme": "romantic comedy",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Fredric March"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Veronica Lake"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Robert Benchley"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Kiss Kiss Bang Bang",
+                    "eventSummary": "Kiss Kiss Bang Bang is, without a doubt, one of if not the funniest and most effortlessly cool movies I have ever seen.",
+                    "theme": "comedy",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Robert Downey Jr."
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Val Kilmer"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Michelle Monaghan"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "The Life Aquatic with Steve Zissou",
+                    "eventSummary": "Wes Anderson’s eccentric 2004 ensemble comedy is dedicated to Jacques Cousteau and is a loving (and hilarious) homage to the legendary French oceanographer.",
+                    "theme": "comedy",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Bill Murray"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Owen Wilson"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Cate Blanchett"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

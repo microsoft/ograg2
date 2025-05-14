@@ -1,0 +1,92 @@
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "schema:Thing",
+      "title": "The Ray-Ban Meta smart glasses actually make the future look cool",
+      "author": "Victoria Song",
+      "theme": "technology",
+      "content": "I’m a smart glasses skeptic. Not because the technology is impossible but because I’ve tested several pairs and even dove deep into the category for a two-part mini-documentary a while back. So when I say I was impressed by the $299 Ray-Ban Meta smart glasses, it’s not just that mine came with rose-colored lenses. To be clear, nothing about the Ray-Ban Meta smart glasses is revolutionary. The Google Glass Explorer Edition first introduced us to modern-day smart glasses in 2013. Several other companies, big and small, have since jumped on the bandwagon, including Snap, Bose, Razer, Epson, Amazon, and the now-defunct Focals by North. Most were underwhelming, with potato cameras, washed-out displays, useless voice assistants, and middling mics. I had a hard time imagining the average person liking them enough to own a pair. I know multiple people who have already bought these. 7 Verge Score Ray-Ban Meta Smart Glasses $ 299 The Good Improved photo, video, and audio quality You sound good on calls! Stylish, with many options for frames and lenses Importing photos and videos is easy Charging case design is also much better The Bad Voice assistant is a lil slow Cool AI features not available yet LED privacy indicator still too subtle Battery life improved but could be better $299 at Amazon$299 at Best Buy How we rate and review products I get why. These glasses look good. They officially come in 150 style variations across two frame styles, seven colors, and multiple lens options (including color, prescription, and transitions). The camera has been upgraded from 5MP to 12MP. Photo resolution has improved to 3024 x 4032 pixels, while videos are now 1080p at 30 frames per second. There are now five mics instead of one, so you sound better on calls. The speaker quality has also improved. It’s louder, with more bass, less audio leakage, and spatial audio support. They stuffed some AI in there, and you can now livestream to Facebook or Instagram. These are significant updates. It’d be one thing if Meta failed to deliver, but like I said: I’m impressed. But that, in turn, has raised a lot of questions that I don’t have answers for. All I can say is whatever you think of Meta, these are a turning point for smart glasses. Glasses fit for Bond (Or Eggsy) I’ve only seen a handful of Bond flicks, but even I know two things about Agent 007. James Bond looks good, always, and the spy gadgets Q gives him are discreet. The Meta glasses are both and, in many ways, feel like they belong in a spy movie. I often felt like I was in a spy movie when wearing these. The thing about smart glasses is that you’ll never wear a pair if they make you look like a low-rent Warby Parker model. Aside from the original Bose Frames, I’ve never really liked the way I’ve looked in smart glasses so far. That’s why it matters that these are Ray-Bans and come in more styles than typical smart glasses. While Wayfarers are considered to be universally flattering, rounder frames look better on me. Most smart glasses come in tortoiseshell or black, and I’m tired of both, so I was happy that I could pick a round, transparent blue frame with pink lenses. They’re more my style, and while I wish the colors were more noticeable in darker lighting, I dug the extra pop of color in sunlight. I wore these in various scenarios: dolled up for a wedding, clad in functional but hideous running gear, bumming it in sweatpants, and rocking leather jackets. You name it — it goes with everything. On top of looking good, no one will know you’re wearing tech on your face unless you walk around saying “Hey Meta” at the top of your lungs. Nobody knew I was listening to EXO’s EXIST album on my commute. You can hear some faint audio leakage when you’re at full volume, but that’s only necessary when trying to block out the squeaky rails of the New York City subway system. Your fellow commuters likely won’t notice because they’ve got AirPods in or the ambient noise is louder. More troubling, no one batted an eye whenever I took photos and videos in public or private areas. These can look black in dark lighting, but in the right light, I dig the way the blue and pink pop. You can see the capture button on the top of the right arm. All this made me feel like Eggsy from Kingsman: The Golden Circle — another high-tech spy film. There’s a scene where Eggsy takes a call through the glasses during an important dinner. To everyone else, he looked like a dapper gent with some snazzy frames about to eat some fancy food. But because of his glasses, Eggsy was able to hear (and see) things they couldn’t. My experience wasn’t exactly the same. (I had no imminent bombs to defuse.) But the point is I spent a lot of time wearing these in public doing and listening to things that people looking straight at me weren’t aware of. It doesn’t get more incognito than that. That comes with pros and cons. I’ll get to privacy in a bit, but if you’re worried about looking like a total jabroni, like this pic of me wearing the Bose Frames Tempo, fear not. In the name of content creation I have my priorities straight. As soon as I unboxed and paired these glasses, the first thing I did was take a photo and a video of my cats Petey and Pablo. I uploaded them to The Verge’s Slack and sent the video to my spouse and friends. My tech-savvy co-workers found the quality to be surprisingly good for smart glasses. My friends and family thought it was something I took on my phone. Several times during this review process, our own video team remarked that the quality was better than they’d expected. That’s wild. If you’re into photography, you’ll be able to suss that the quality doesn’t match up to the latest and greatest phones. But it’s good enough to match a phone from a few years ago and, therefore, shareable on social media and in the group chat. That’s a Big Deal. To take photos or videos, you can use the “Hey Meta” command or use the capture button on the top of the right arm. You press once for photos and long-press to start recording video. There are also accompanying audio cues and an LED in your right peripheral vision. This is the LED capture indicator on the right side of the frame. It’s off in this picture. The camera is opposite, in front of the left hinge. I’m not a camera expert, so I asked our resident camera expert Becca Farsace to weigh in. One thing Becca pointed out was the stabilization on the camera is surprisingly good. While there’s some wobbliness, it doesn’t look like garbage, especially when viewed on a phone. Low-light performance was also better than I anticipated. When you move from light to dark environments, you don’t really notice a massive drop in video quality. Color reproduction and details are also solid in good lighting. I appreciated taking phone-free, hands-free videos in my day-to-day life. I now have so many videos of Petey and Pablo being adorable that would have been difficult to capture otherwise because both my cats get weird when they see my phone come out. They either refuse to look at the camera, leave, or — in Petey’s case — try to eat the camera. It’s also easier to film and interact with my cats when I have both hands free. Case in point, I have enjoyed partaking in the cat-twirling meme — even if it was quite the feat lifting a 19-pound Pablo. Had to get in on the cat twirling meme. Even if you aren’t obsessed with your pets, I can see this being a more discreet alternative for a GoPro. It’d be easy to film cooking instructions, parts of running or cycling routes, a scenic drive, or even capturing slice-of-life candids of your kids before they grow up too fast. That said, there are quirks. What you see isn’t what the camera sees because it’s not actually in your eyeball. It’s in front of the left hinge. You have to remember that when framing your shots, or everything will be mildly off-center. This is also how I learned I often tilt my head like a confused puppy. Many times, I went back to photos and videos I’d shot to find they featured unintentional Dutch angles and wisps (or full chunks) of my bangs. Becca had issues with her hat popping up in shots as well. Also, there’s a one- to two-second delay when taking photos. While walking, a lot of my landscape photos came out blurry if I didn’t stand completely still. It’d be easier if there was a way to preview images via your phone, but there isn’t unless you’re livestreaming. Speaking of which, livestreaming was hard to test organically, mainly because none of my Instagram followers expect me to livestream. What I can say is that a glasses icon pops up automatically on the livestream screen in Facebook or Instagram. (Though, let’s be real — most content creators aren’t livestreaming to Facebook.) You can either tap the icon or double-click the capture button to seamlessly switch views between your phone camera and glasses. There’s a teeny lag between what you see versus what gets livestreamed, but nothing egregious. Livestreaming is an example where Meta sort of shot itself in the foot as far as content creation goes. I have no doubt some streamers would love this if they could use this on TikTok or Twitch. But they can’t. Instead, they’re corralled into Meta’s services. It makes sense — Big Tech loves protecting its walled gardens — but from a broader adoption perspective, this is silly. It’s one of the reasons Snap’s Spectacles never took off. Meta’s mostly lucky that Instagram is still popular with influencers.",
+      "published": "2023-10-20T14:00:00+00:00"
+    }
+  ]
+}

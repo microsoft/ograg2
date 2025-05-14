@@ -1,0 +1,252 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "N. Clark",
+            "title": "Related Pizza Tower is platformer paradise for Wario freaks",
+            "summary": "37. Subpar Pool",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "title": "Subpar Pool",
+                "summary": "Developer: grapefrukt games",
+                "associatedAsset": {
+                    "@type": "snap:asset",
+                    "title": "Where to play",
+                    "summary": "Android, iOS, Nintendo Switch, and Windows PC"
+                }
+            }
+        },
+        {
+            "@type": "snap:asset",
+            "byline": "M. Mahardy",
+            "title": "Amnesia: The Bunker",
+            "summary": "Where to play: PlayStation 4, PlayStation 5, Windows PC, Xbox One, and Xbox Series X"
+        },
+        {
+            "@type": "snap:asset",
+            "byline": "Chris Grant",
+            "title": "Lil Gator Game",
+            "summary": "Developer: MegaWobble",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "title": "Where to play",
+                "summary": "Nintendo Switch, PlayStation 4, PlayStation 5, Windows PC, Xbox One, and Xbox Series X"
+            }
+        },
+        {
+            "@type": "snap:asset",
+            "byline": "Clayton Ashley",
+            "title": "Starfield",
+            "summary": "Developer: Bethesda Game Studios",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "title": "Where to play",
+                "summary": "Windows PC and Xbox Series X"
+            }
+        },
+        {
+            "@type": "snap:asset",
+            "byline": "CA",
+            "title": "System Shock",
+            "summary": "Developer: Nightdive Studios",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "title": "Where to play",
+                "summary": "Windows PC"
+            }
+        },
+        {
+            "@type": "snap:asset",
+            "byline": "CA",
+            "title": "Star Wars Jedi: Survivor",
+            "summary": "Developer: Respawn Entertainment",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "title": "Where to play",
+                "summary": "PlayStation 5, Windows PC, and Xbox Series X"
+            }
+        },
+        {
+            "@type": "snap:asset",
+            "byline": "Matt Patches",
+            "title": "Connections",
+            "summary": "Developer: The New York Times",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "title": "Where to play",
+                "summary": "Android, browser, and iOS"
+            }
+        },
+        {
+            "@type": "snap:asset",
+            "byline": "N. Clark",
+            "title": "Hi-Fi Rush",
+            "summary": "Developer: Tango Gameworks",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "title": "Where to play",
+                "summary": "Windows PC and Xbox Series X"
+            }
+        },
+        {
+            "@type": "snap:asset",
+            "byline": "Matt Leone",
+            "title": "Monster Hunter Now",
+            "summary": "Developer: Niantic",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "title": "Where to play",
+                "summary": "Android and iOS"
+            }
+        },
+        {
+            "@type": "snap:asset",
+            "byline": "RG",
+            "title": "Diablo 4",
+            "summary": "Developer: Blizzard Entertainment",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "title": "Where to play",
+                "summary": "PlayStation 4, PlayStation 5, Windows PC, Xbox One, and Xbox Series X"
+            }
+        },
+        {
+            "@type": "snap:asset",
+            "byline": "Samit Sarkar",
+            "title": "Hitman World of Assassination: Freelancer mode",
+            "summary": "Developer: IO Interactive",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "title": "Where to play",
+                "summary": "PlayStation 4, PlayStation 5, Windows PC, Xbox One, and Xbox Series X"
+            }
+        },
+        {
+            "@type": "snap:asset",
+            "byline": "N. Carpenter",
+            "title": "Venba",
+            "summary": "Developer: Visai Games",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "title": "Where to play",
+                "summary": "Nintendo Switch, PlayStation 4, PlayStation 5, Windows PC, Xbox One, and Xbox Series X"
+            }
+        },
+        {
+            "@type": "snap:asset",
+            "byline": "CA",
+            "title": "Viewfinder",
+            "summary": "Developer: Sad Owl Studios",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "title": "Where to play",
+                "summary": "PlayStation 5 and Windows PC"
+            }
+        },
+        {
+            "@type": "snap:asset",
+            "byline": "ML",
+            "title": "Humanity",
+            "summary": "Developer: tha",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "title": "Where to play",
+                "summary": "PlayStation 4, PlayStation 5, and Windows PC"
+            }
+        },
+        {
+            "@type": "snap:asset",
+            "byline": "Chris Plante",
+            "title": "Paranormasight: The Seven Mysteries of Honjo",
+            "summary": "Developer: Square Enix",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "title": "Where to play",
+                "summary": "Android, iOS, Nintendo Switch, and Windows PC"
+            }
+        }
+    ]
+}
+```

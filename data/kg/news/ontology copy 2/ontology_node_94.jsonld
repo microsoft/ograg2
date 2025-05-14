@@ -1,0 +1,165 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "Blackhawks vs. Penguins live score, updates, highlights from Connor Bedard's NHL debut",
+            "author": "Bryan Murphy",
+            "theme": "sports",
+            "content": "First game, first point, first win. Connor Bedard's debut did not disappoint on Tuesday, as the Chicago rookie helped the Blackhawks to a 4-2 win over the Penguins on opening night. The Blackhawks rallied from a 2-0 deficit, scoring four unanswered goals to pick up the victory in Pittsburgh. Bryan Rust opened the scoring for the Penguins in the first period, and a Sidney Crosby goal in the second doubled the Pittsburgh lead. However, Bedard helped set up a Ryan Donato goal in the middle frame to get the Blackhawks on the board, picking up his first NHL point in the process. In the third period, Cole Guttman potted the equalizer for Chicago early in the frame. With less than five minutes left in regulation, Jason Dickinson fired home a shot from the slot that gave Chicago its first lead of the night. A Nick Foligno empty net goal sealed the deal for the Blackhawks. Bedard was as advertised in his NHL debut. The Chicago rookie led all players on his club in shots on goal, recording five in his first game on 11 shot attempts. His 21:29 time on ice was second to only Seth Jones, as Chicago head coach Luke Richardson did not hold the 18-year-old back. He did struggle in the faceoff dot, winning just two of 13 draws, but it was a strong first impression at the NHL level. For the Penguins, the third period struggles from last season have seemingly carried over to start this year. Last year, Pittsburgh finished tied for the most losses after taking a lead into the third period. The crew followed that trend on Tuesday night, letting a 2-1 lead to start the final frame slip away. Bedard and the Blackhawks are back in action on national TV tomorrow, as Chicago heads to Boston for a Wednesday night date with the Bruins. MORE: Watch Blackhawks vs. Penguins live on Fubo (free trial) The Sporting News provided updates and highlights from Connor Bedard's NHL debut in the Blackhawks vs. Penguins game.",
+            "published": "2023-10-10T22:30:03+00:00",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Blackhawks vs. Penguins Game",
+                    "eventSummary": "Connor Bedard's NHL debut with Blackhawks winning 4-2 over Penguins.",
+                    "theme": "sports",
+                    "hasLocation": {
+                        "@type": "geo:SpatialThing",
+                        "geo:location": "Pittsburgh"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person1",
+                            "@type": "schema:Thing",
+                            "name": "Connor Bedard"
+                        },
+                        {
+                            "@id": "snap:person2",
+                            "@type": "schema:Thing",
+                            "name": "Bryan Rust"
+                        },
+                        {
+                            "@id": "snap:person3",
+                            "@type": "schema:Thing",
+                            "name": "Sidney Crosby"
+                        },
+                        {
+                            "@id": "snap:person4",
+                            "@type": "schema:Thing",
+                            "name": "Ryan Donato"
+                        },
+                        {
+                            "@id": "snap:person5",
+                            "@type": "schema:Thing",
+                            "name": "Cole Guttman"
+                        },
+                        {
+                            "@id": "snap:person6",
+                            "@type": "schema:Thing",
+                            "name": "Jason Dickinson"
+                        },
+                        {
+                            "@id": "snap:person7",
+                            "@type": "schema:Thing",
+                            "name": "Nick Foligno"
+                        },
+                        {
+                            "@id": "snap:person8",
+                            "@type": "schema:Thing",
+                            "name": "Seth Jones"
+                        },
+                        {
+                            "@id": "snap:person9",
+                            "@type": "schema:Thing",
+                            "name": "Luke Richardson"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "schema:Thing",
+                            "name": "Chicago Blackhawks"
+                        },
+                        {
+                            "@id": "snap:organization2",
+                            "@type": "schema:Thing",
+                            "name": "Pittsburgh Penguins"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

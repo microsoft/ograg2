@@ -1,0 +1,752 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "NewsAsset",
+            "title": "Black Friday Deals on Electronics",
+            "author": "Tech Review Team",
+            "theme": "Black Friday Sales",
+            "summary": "A comprehensive list of Black Friday deals on various electronics including Sonos, Google, Sony, and more.",
+            "created": "2023-11-01T00:00:00Z",
+            "modified": "2023-11-01T00:00:00Z",
+            "published": "2023-11-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "@type": "Event",
+                        "eventTitle": "Sonos Gear Sale",
+                        "eventSummary": "Deals on Sonos gear running through November 27.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location1",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event2",
+                        "@type": "Event",
+                        "eventTitle": "Google Nest Thermostat Sale",
+                        "eventSummary": "Google’s Nest Thermostat on sale for $90.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location2",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "name": "Google"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event3",
+                        "@type": "Event",
+                        "eventTitle": "Google Pixel 8 Pro Sale",
+                        "eventSummary": "Google’s Pixel 8 Pro discounted to $799.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location3",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "name": "Google"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event4",
+                        "@type": "Event",
+                        "eventTitle": "Google Pixel Buds Pro Sale",
+                        "eventSummary": "Google Pixel Buds Pro on sale for $115.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location4",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "name": "Google"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event5",
+                        "@type": "Event",
+                        "eventTitle": "Google Pixel Tablet Sale",
+                        "eventSummary": "Google Pixel Tablet on sale for $399.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location5",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "name": "Google"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event6",
+                        "@type": "Event",
+                        "eventTitle": "iRobot Roomba Combo j5+ Sale",
+                        "eventSummary": "Roomba Combo j5+ discounted to $500.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location6",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization2",
+                                    "name": "iRobot"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event7",
+                        "@type": "Event",
+                        "eventTitle": "Breville Smart Oven Air Fryer Pro Sale",
+                        "eventSummary": "Breville Smart Oven Air Fryer Pro down to $320.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location7",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization3",
+                                    "name": "Breville"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event8",
+                        "@type": "Event",
+                        "eventTitle": "Fitbit Charge 6 Sale",
+                        "eventSummary": "Fitbit Charge 6 down to $100.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location8",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization4",
+                                    "name": "Fitbit"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event9",
+                        "@type": "Event",
+                        "eventTitle": "Amazon Fire TV Stick Lite Sale",
+                        "eventSummary": "Fire TV Stick Lite down to $16.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location9",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization5",
+                                    "name": "Amazon"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event10",
+                        "@type": "Event",
+                        "eventTitle": "Sony WH-1000XM5 Sale",
+                        "eventSummary": "Sony WH-1000XM5 down to $328.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location10",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization6",
+                                    "name": "Sony"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event11",
+                        "@type": "Event",
+                        "eventTitle": "Sony WF-1000XM5 Sale",
+                        "eventSummary": "Sony WF-1000XM5 down to $248.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location11",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization6",
+                                    "name": "Sony"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event12",
+                        "@type": "Event",
+                        "eventTitle": "Bose QuietComfort Ultra Sale",
+                        "eventSummary": "Bose QuietComfort Ultra down to $379.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location12",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization7",
+                                    "name": "Bose"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event13",
+                        "@type": "Event",
+                        "eventTitle": "Anker Soundcore Space A40 Sale",
+                        "eventSummary": "Anker Soundcore Space A40 down to $54.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location13",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization8",
+                                    "name": "Anker"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event14",
+                        "@type": "Event",
+                        "eventTitle": "Dyson V15 Detect Absolute Sale",
+                        "eventSummary": "Dyson V15 Detect Absolute down to $550.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location14",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization9",
+                                    "name": "Dyson"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event15",
+                        "@type": "Event",
+                        "eventTitle": "Amazon Echo Black Friday Sale",
+                        "eventSummary": "Amazon Echo devices on sale for Black Friday.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location15",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization5",
+                                    "name": "Amazon"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event16",
+                        "@type": "Event",
+                        "eventTitle": "Amazon Echo Show Black Friday Sale",
+                        "eventSummary": "Amazon Echo Show devices discounted for Black Friday.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location16",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization5",
+                                    "name": "Amazon"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event17",
+                        "@type": "Event",
+                        "eventTitle": "Google Nest Hub Sale",
+                        "eventSummary": "Google Nest Hub on sale for $50.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location17",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "name": "Google"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event18",
+                        "@type": "Event",
+                        "eventTitle": "Samsung T9 SSD Sale",
+                        "eventSummary": "Samsung T9 portable SSD down to $110.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location18",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization10",
+                                    "name": "Samsung"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event19",
+                        "@type": "Event",
+                        "eventTitle": "Samsung microSD Card Sale",
+                        "eventSummary": "Samsung microSD cards at their lowest prices.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location19",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization10",
+                                    "name": "Samsung"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event20",
+                        "@type": "Event",
+                        "eventTitle": "PlayStation DualSense Wireless Controller Sale",
+                        "eventSummary": "PlayStation DualSense controllers down to $50.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location20",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization11",
+                                    "name": "PlayStation"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event21",
+                        "@type": "Event",
+                        "eventTitle": "Xbox Wireless Controller Sale",
+                        "eventSummary": "Xbox Series X/S Wireless Controllers down to $40.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location21",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization12",
+                                    "name": "Xbox"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event22",
+                        "@type": "Event",
+                        "eventTitle": "PS5 + Marvel’s Spider-Man 2 Bundle Sale",
+                        "eventSummary": "PS5 console with Spider-Man 2 for no extra cost.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location22",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization11",
+                                    "name": "PlayStation"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event23",
+                        "@type": "Event",
+                        "eventTitle": "PS5 Slim + Call of Duty: Modern Warfare III Bundle Sale",
+                        "eventSummary": "PS5 Slim with Call of Duty: Modern Warfare III for free.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location23",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization11",
+                                    "name": "PlayStation"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event24",
+                        "@type": "Event",
+                        "eventTitle": "Nintendo Switch OLED + Super Smash Bros. Ultimate Bundle Sale",
+                        "eventSummary": "Nintendo Switch OLED with Super Smash Bros. Ultimate for no extra cost.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location24",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization13",
+                                    "name": "Nintendo"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event25",
+                        "@type": "Event",
+                        "eventTitle": "Backbone One Sale",
+                        "eventSummary": "Backbone One mobile game controller down to $70.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location25",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization14",
+                                    "name": "Backbone"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event26",
+                        "@type": "Event",
+                        "eventTitle": "PlayStation, Xbox and Switch Video Game Sales",
+                        "eventSummary": "Various video games discounted for Black Friday.",
+                        "theme": "Electronics Sale",
+                        "hasLocation": {
+                            "@id": "geo:location26",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization11",
+                                    "name": "PlayStation"
+                                },
+                                {
+                                    "@id": "snap:organization12",
+                                    "name": "Xbox"
+                                },
+                                {
+                                    "@id": "snap:organization13",
+                                    "name": "Nintendo"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

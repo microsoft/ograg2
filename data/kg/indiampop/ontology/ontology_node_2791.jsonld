@@ -1,0 +1,147 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Transplanted Puddled Lowland Rice",
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Main Field Management",
+                "herbicides": [
+                    {
+                        "@type": "Fertilization",
+                        "nutrient_name": "N",
+                        "quantity": "150 kg/ha",
+                        "stage_of_application": "Short duration varieties (dry season) - Cauvery delta & Coimbatore tract"
+                    },
+                    {
+                        "@type": "Fertilization",
+                        "nutrient_name": "P2O5",
+                        "quantity": "50 kg/ha",
+                        "stage_of_application": "Short duration varieties (dry season) - Cauvery delta & Coimbatore tract"
+                    },
+                    {
+                        "@type": "Fertilization",
+                        "nutrient_name": "K2O",
+                        "quantity": "50 kg/ha",
+                        "stage_of_application": "Short duration varieties (dry season) - Cauvery delta & Coimbatore tract"
+                    },
+                    {
+                        "@type": "Fertilization",
+                        "nutrient_name": "N",
+                        "quantity": "120 kg/ha",
+                        "stage_of_application": "Short duration varieties (dry season) - For other tracts"
+                    },
+                    {
+                        "@type": "Fertilization",
+                        "nutrient_name": "P2O5",
+                        "quantity": "40 kg/ha",
+                        "stage_of_application": "Short duration varieties (dry season) - For other tracts"
+                    },
+                    {
+                        "@type": "Fertilization",
+                        "nutrient_name": "K2O",
+                        "quantity": "40 kg/ha",
+                        "stage_of_application": "Short duration varieties (dry season) - For other tracts"
+                    },
+                    {
+                        "@type": "Fertilization",
+                        "nutrient_name": "N",
+                        "quantity": "150 kg/ha",
+                        "stage_of_application": "Medium and long duration varieties (wet season)"
+                    },
+                    {
+                        "@type": "Fertilization",
+                        "nutrient_name": "P2O5",
+                        "quantity": "50 kg/ha",
+                        "stage_of_application": "Medium and long duration varieties (wet season)"
+                    },
+                    {
+                        "@type": "Fertilization",
+                        "nutrient_name": "K2O",
+                        "quantity": "50 kg/ha",
+                        "stage_of_application": "Medium and long duration varieties (wet season)"
+                    },
+                    {
+                        "@type": "Fertilization",
+                        "nutrient_name": "N",
+                        "quantity": "175 kg/ha",
+                        "stage_of_application": "Hybrid rice"
+                    },
+                    {
+                        "@type": "Fertilization",
+                        "nutrient_name": "P2O5",
+                        "quantity": "60 kg/ha",
+                        "stage_of_application": "Hybrid rice"
+                    },
+                    {
+                        "@type": "Fertilization",
+                        "nutrient_name": "K2O",
+                        "quantity": "60 kg/ha",
+                        "stage_of_application": "Hybrid rice"
+                    },
+                    {
+                        "@type": "Fertilization",
+                        "nutrient_name": "N",
+                        "quantity": "75 kg/ha",
+                        "stage_of_application": "Low N responsive cultivars (like Improved White Ponni)"
+                    },
+                    {
+                        "@type": "Fertilization",
+                        "nutrient_name": "P2O5",
+                        "quantity": "50 kg/ha",
+                        "stage_of_application": "Low N responsive cultivars (like Improved White Ponni)"
+                    },
+                    {
+                        "@type": "Fertilization",
+                        "nutrient_name": "K2O",
+                        "quantity": "50 kg/ha",
+                        "stage_of_application": "Low N responsive cultivars (like Improved White Ponni)"
+                    }
+                ]
+            }
+        }
+    ]
+}

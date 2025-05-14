@@ -1,0 +1,47 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DeficiencySymptoms": {
+            "@id": "cropCult:DeficiencySymptoms",
+            "@type": "schema:Thing",
+            "@context": {
+                "phosphorus_deficiency": "schema:Text",
+                "potassium_deficiency": "schema:Text",
+                "magnesium_deficiency": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Irrigated Maize",
+            "DeficiencySymptoms": {
+                "phosphorus_deficiency": "Leaves are purplish green during early growth. Growth spindly, slow maturity, irregular ear formation.",
+                "potassium_deficiency": "Leaves show yellow or yellowish green streaks, become corrugated. Tips and marginal scorch. Tips end in ears are poorly filled. Stalks have short internode. Plants become weak and may fall down.",
+                "magnesium_deficiency": "Older leaves are the first to become chlorotic at margins and between veins. Streaked appearance of leaves. Necrotic or chlorotic spots seen in leaves."
+            }
+        }
+    ]
+}

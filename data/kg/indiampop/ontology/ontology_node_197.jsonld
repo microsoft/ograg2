@@ -1,0 +1,51 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Sugarcane",
+            "weed_types": ["Pure Crop"],
+            "herbicides": [
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Atrazine",
+                    "quantity": "1.0 kg a.i. ha-1",
+                    "stage": "3 DAP"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1.0 lit ha-1",
+                    "stage": "45 DAP"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Hand Weeding",
+                    "quantity": "One",
+                    "stage": "90 DAP"
+                }
+            ]
+        }
+    ]
+}

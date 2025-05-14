@@ -1,0 +1,55 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "SeedProduction": {
+            "@id": "cropCult:SeedProduction",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_drying_process": "cropCult:DryingProcess",
+                "has_grading_process": "cropCult:GradingProcess"
+            }
+        },
+        "DryingProcess": {
+            "@id": "cropCult:DryingProcess",
+            "@type": "schema:Thing",
+            "@context": {
+                "description": "schema:Text"
+            }
+        },
+        "GradingProcess": {
+            "@id": "cropCult:GradingProcess",
+            "@type": "schema:Thing",
+            "@context": {
+                "description": "schema:Text",
+                "uses_tool": "cropCult:Tool"
+            }
+        },
+        "Tool": {
+            "@id": "cropCult:Tool",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:SeedProduction",
+            "name": "SEED PRODUCTION",
+            "has_drying_process": {
+                "@type": "cropCult:DryingProcess",
+                "description": "Drying"
+            },
+            "has_grading_process": {
+                "@type": "cropCult:GradingProcess",
+                "description": "Grade the seeds using BSS 7x7 wire mesh sieve for large seeded varieties.",
+                "uses_tool": {
+                    "@type": "cropCult:Tool",
+                    "name": "BSS 7x7 wire mesh sieve"
+                }
+            }
+        }
+    ]
+}

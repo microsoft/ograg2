@@ -1,0 +1,302 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Michelle Jubelirer on Ice Spice, The Beatles, and reinventing Capitol Music Group",
+      "byline": "Tim Ingham",
+      "published": "2023-12-07T20:57:51+00:00",
+      "summary": "I don’t think any label group has been able to turn things around as quickly as my team and I have done in less than two years.",
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "image": "https://www.musicbusinessworldwide.com/michelle-jubelirer-on-ice-spice-the-beatles-and-reinventing-capitol/"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Capitol Music Group"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Michelle Jubelirer"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Universal Music Group"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Music Business Worldwide"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Motown"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Quality Control"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "10K Projects"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Sony"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Columbia"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Signal Records"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "HYBE America"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Warner Music Group"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Top Dawg"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "TDE"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Virgin Music Group"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Priority Records"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Astralwerks"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Capitol Christian"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Tamla"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Blue Note"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Steve Barnett"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jeff Vaughn"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Elliot Grainge"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Arjun Pulijal"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jeremy Vuernick"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Orlando Wharton"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Kenoe Jordan"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Gordan Dillard"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jacqueline Saturn"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Sam Smith"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Ice Spice"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Doechii"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Toosii"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Offset"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Troye Sivan"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Niall Horan"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Fletcher"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Maggie Rogers"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Paul McCartney"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Olivia Rodrigo"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Nicki Minaj"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Quavo"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Lil Yachty"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Lil Baby"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Young Miko"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Rylo Rodriguez"
+    },
+    {
+      "@type": "snap:person",
+      "name": "YoungBoy NBA"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Kodak Black"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jack Street"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Sam Evitt"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jo Charrington"
+    }
+  ]
+}
+```

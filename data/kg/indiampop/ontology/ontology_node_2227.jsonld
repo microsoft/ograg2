@@ -1,0 +1,64 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Sugarcane",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Apply full P2O5 and 50% K2O at the time of planting in trenches."
+            },
+            "has_fertilizer_application_requirements": {
+                "@type": "Fertilization",
+                "nutrient_name": "Nitrogen",
+                "quantity": "Three equal splits at 45, 75 and 105 days after planting.",
+                "stage_of_application": "Topdress"
+            },
+            "has_fertilizer_application_requirements": {
+                "@type": "Fertilization",
+                "nutrient_name": "K2O",
+                "quantity": "Rest amount at the time of the third top dressing of N.",
+                "stage_of_application": "Topdress"
+            },
+            "has_fertilizer_application_requirements": {
+                "@type": "Fertilization",
+                "nutrient_name": "Azospirillum and PSB mixed with 1.0 t of FYM/ha",
+                "quantity": "10 kg each in two equal splits at 30 and 60 DAP",
+                "stage_of_application": "Apply at the base of the clumps"
+            }
+        }
+    ]
+}

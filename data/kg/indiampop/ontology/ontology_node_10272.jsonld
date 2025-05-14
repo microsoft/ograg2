@@ -1,0 +1,62 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "RICE (Oryza sativa)",
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Seedling root dip",
+                "disease_symptoms": "Dip the roots of the seedlings before transplanting in solution of P. fluorescens (20 g / litre) for 30 minutes. Seedling root dip can be easily done in the field itself. Water is to be impounded in the field by taking pits or making bunds and mix the talc based formulation in water. The pulled out seedlings are to be kept in such a way so as to immerse the roots in P.fluorescens mixed water. After half an hour seedlings are planted in the main field.",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "P. fluorescens",
+                    "quantity": "2.5kg per ha",
+                    "stage": "one week after transplanting or 30-40 days after sowing for the direct sown crop"
+                }
+            }
+        }
+    ]
+}

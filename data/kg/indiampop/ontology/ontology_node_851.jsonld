@@ -1,0 +1,82 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Tapioca",
+            "has_types": {
+                "name": "Manihot esculenta Crantz.",
+                "used_for": "Euphorbiaceae"
+            },
+            "has_land_preperation_requirements": {
+                "instructions": "Apply 25 t FYM/ha and incorporate at the time of planting."
+            },
+            "needs_seed_sowing_spacing": {
+                "sowing_time": "90 days after planting during earthing up",
+                "value": "2 kg",
+                "depth": "30 – 60 days after planting on receipt of showers",
+                "method": "soil application"
+            },
+            "needs_irrigation_schedule": {
+                "quantity": "45:90:120 kg NPK/ha as basal and 45:120 kg NK/ha",
+                "stage_of_application": "at the time of planting"
+            },
+            "needs_pest_treatements": {
+                "pest_name": "Azatobactor",
+                "pest_symptoms": "Not specified",
+                "pest_control": {
+                    "name": "Azatobactor",
+                    "quantity": "2.0 kg Azatobactor + 20 kg FYM + 20 kg soil per hectare",
+                    "stage": "30 – 60 days after planting on receipt of showers"
+                }
+            },
+            "needs_disease_treatements": {
+                "disease_name": "Not specified",
+                "disease_symptoms": "Not specified",
+                "disease_control": {
+                    "name": "Not specified",
+                    "quantity": "Not specified",
+                    "stage": "Not specified"
+                }
+            },
+            "Fertilization": {
+                "nutrient_name": "FYM",
+                "quantity": "12.5 t/ha along with 50 kg N, 65 kg P and 125 kg K/ha",
+                "stage_of_application": "as basal"
+            }
+        }
+    ]
+}

@@ -1,0 +1,63 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "SeedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "METHODS OF RICE INTENSIFICATION (SRI)",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "In SRI system the most important point is to avoid “shock” or “trauma” while transplanting the seedlings by carefully planting it in the field without plunging too deep into the soil. Seed should be attached to the seedling and transplanted as soon as possible after being removed from the nursery within 15 minutes or half an hour to avoid dessication and traumatization of the plant. While transplanting, the root tips are not inverted, hence, do not thrust seedlings downwards. Each seedlings should be slipped into the soil very gently and close to the surface so that its roots lie horizontally in the moist soil.",
+                "with_soil_moisture": "Only single seedlings are planted at the intersection rather than clumps of 2or 3"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "SeedSpacing",
+                "sowing_time": "Seedlings are planted in square pattern at 25 cm x 25 cm wide leaving enough space between each plant to ensure that roots have adequate room to grow and plant is exposed to more sunlight, air and nutrients which results in more root growth and more tillering.",
+                "value": "25 cm x 25 cm",
+                "depth": "close to the surface",
+                "method": "Square planting ensures free weeding in both directions."
+            }
+        }
+    ]
+}

@@ -1,0 +1,115 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "BROCCOLI (Brassica oleracea var. italica)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Brassica oleracea var. italica",
+                "used_for": "Vegetable"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Temperate",
+                    "has_regions": ["North America", "Europe"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Calabrese", "De Cicco"]
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "18-24°C",
+                "for_flowering": "15-20°C",
+                "for_grain_filling": "N/A",
+                "negative_effect": "Below 10°C and above 30°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Sandy",
+                "for_water": "Well-drained",
+                "for_nutrients": "High in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the land to a fine tilth and add well-rotted farmyard manure.",
+                "with_soil_moisture": "Moist but well-drained"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Spring",
+                "value": "30-60 cm apart",
+                "depth": "1 cm",
+                "method": "Direct sowing or transplanting"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Crabgrass",
+                "weed_types": ["Annual"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1.5 kg/ha",
+                    "stage": "Post-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "1-1.5 inches per week",
+                "stage_of_application": "Throughout the growing season"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Clubroot",
+                "disease_symptoms": "Wilting during the day and recovery at night, yellowing of leaves, stunted growth",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Bordeaux mixture",
+                    "quantity": "1 kg/10 litres of water",
+                    "stage": "At the first sign of disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Cabbage worm",
+                "pest_symptoms": "Holes in leaves, presence of green caterpillars",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Bacillus thuringiensis",
+                    "quantity": "1-2 kg/ha",
+                    "stage": "At the first sign of pests"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when the heads are firm and tight, before the buds start to open into flowers. Cut the stalk at an angle to prevent water from sitting on the cut surface and causing rot.",
+            "storage_guidelines_are": "Store in a cool, humid place. Do not wash before storing. Use within 1-2 weeks."
+        }
+    ]
+}

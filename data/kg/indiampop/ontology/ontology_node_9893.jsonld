@@ -1,0 +1,62 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Thinning and weeding",
+            "herbicides": [
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "pendimethalin/alachlor",
+                    "quantity": "1.0 kg/ha",
+                    "stage": "Pre-emergence"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "oxyfluorfen",
+                    "quantity": "0.025 kg/ha",
+                    "stage": "Pre-emergence"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "fluchloralin",
+                    "quantity": "1.0 kg/ha",
+                    "stage": "Pre-planting"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "paraquat",
+                    "quantity": "0.4 kg/ha",
+                    "stage": "Post-emergence"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "glyphosate",
+                    "quantity": "1.0 kg/ha",
+                    "stage": "Post-emergence"
+                }
+            ]
+        }
+    ]
+}

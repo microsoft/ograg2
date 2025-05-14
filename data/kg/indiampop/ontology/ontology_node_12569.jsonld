@@ -1,0 +1,97 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "SUNFLOWER",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Sunflower",
+                "used_for": "Oilseed crop in the rabi season"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Inland districts and super cyclone affected coastal districts of the state",
+                    "has_regions": ["Inland districts", "Coastal districts"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": "Sunflower",
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Rabi season start",
+                            "end_date": "Rabi season end"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "Recommended seeding rate for sunflower"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Sunflower specific nutrients",
+                            "quantity": "Recommended quantity",
+                            "stage_of_application": "Recommended stage of application"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Sunflower germination temperature",
+                "for_flowering": "Sunflower flowering temperature",
+                "for_grain_filling": "Sunflower grain filling temperature",
+                "negative_effect": "Temperature range that negatively affects sunflower growth"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Soil type suitable for sunflower",
+                "avoid_soil_type": "Soil type to avoid for sunflower",
+                "for_water": "Water requirements for sunflower",
+                "for_nutrients": "Nutrient requirements for sunflower"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Land preparation instructions for sunflower",
+                "with_soil_moisture": "Soil moisture requirements for sunflower"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Sowing time for sunflower",
+                "value": "Seed spacing for sunflower",
+                "depth": "Seed sowing depth for sunflower",
+                "method": "Seed sowing method for sunflower"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Irrigation quantity for sunflower",
+                "stage_of_application": "Irrigation stage for sunflower"
+            },
+            "harvesting_guidelines_are": "Harvesting guidelines for sunflower",
+            "storage_guidelines_are": "Storage guidelines for sunflower"
+        }
+    ]
+}

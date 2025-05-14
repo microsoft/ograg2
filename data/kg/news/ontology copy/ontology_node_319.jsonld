@@ -1,0 +1,99 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Daniel Dockery",
+            "published": "2023-11-23T16:04:00+00:00",
+            "title": "Thanksgiving is Spider-Man’s holiday",
+            "summary": "Marvel built its comic book revolution on the back of one idea: rendering colorful superheroes as relatable. In the mid 20th century, DC do-gooders were essentially square-jawed Sunday school teachers, which let Marvel corner the market on heroes with human depth and fragility. The Fantastic Four were vulnerable to insecurity and in-fighting. The X-Men represented the cost of bigotry on a wide scale. But Spider-Man represented this new wave best. Consumed by youthful everyman angst and desperate to find balance in his life, Spider-Man is broadly sympathetic. We identify with his struggles and his little glimmers of connection and triumph — which makes him the perfect superhero for Thanksgiving. And Spider-Man writers know it. Thanksgiving has a complicated history, tied to the roots of American colonialism, and more recently processed through a lens of joyful capitalism. But feeding friends and family is perhaps one of the most humane acts we can pursue. It’s less about the spirit of giving, and more about admitting that people have innate, basic needs, like food and social comfort, and that those needs are best fulfilled when people work in tandem. Honestly, we should try to do it more on every other day of the year: The number of people volunteering to help feed the homeless and families in need peaks around November and December, but that energy needs to be carried through the preceding 10 months, too. Spider-Man represents these needs, even though very few of us have to balance photojournalist work, a fraught dating life, and pummeling Dr. Octopus. Peter Parker is often the most financially strapped among his Avengers buddies, and frequently the loneliest, too. Those are recognizable traits among many young people, even those without radioactive-spider powers. When you’re growing up and trying to figure out the world, it’s easy to feel lost and isolated. But feelings of loneliness spike during the holidays, meaning that there’s a good chance you’ll feel even more like Peter Parker when late November rolls around. It’s what makes the Thanksgiving scene in the 2002 Spider-Man film so engaging. That whole movie is an exercise in heart-on-your-sleeve sweetness. Everyone who’s seen it knows the Thanksgiving dinner rapidly descends into chaos, with Norman Osborn ominously sticking his fingers into Aunt May’s sweet-potato casserole, figuring out Spider-Man’s secret identity, and delivering a grossly sexist diatribe to his son Harry, leaving Harry and Mary Jane at odds with each other. Aunt May and Peter clearly wind up with a ton of leftovers after everyone else storms out. But for Peter, who’s just lost his Uncle Ben and has been facing the initial trials of being Spider-Man, there’s a nice moment of personal respite at the opening of that scene, where he walks into a room where he knows he’s loved, bearing an offering of cranberry sauce,. Sure, everyone in that room is trying to hold things together. Mary Jane wants to impress Norman, Harry wants to impress Norman and Mary Jane, Peter loves Mary Jane but doesn’t dare hurt Harry, and Aunt May is finishing what’s presumably a dope turkey, in an attempt to care for all of them. It’s the trying that counts: Life can be hard, weird, and cruel, but while sitting down for a meal with our nearest and dearest, maybe for at least a little while, we won’t need to have it all figured out. Not all Spider-Man Thanksgiving dinners end up falling apart, and some succeed in reminding Peter that he isn’t alone. The first season of The Spectacular Spider-Man ends with a bang: One of Peter’s closest pals, Eddie Brock, has become Venom, and has threatened everyone Peter holds dear. This comes just after Peter himself was infected by the symbiote, and went through the now-iconic throes of pushing everyone away. Aunt May has just gotten out of the hospital, and even noted jerk “Flash” Thompson has given Peter hell for how awful he’s been acting. Peter, attempting to make things right, opts to cook the Thanksgiving meal all by himself, but mostly succeeds in ruining the kitchen. No worries — Gwen Stacy and her father, along with a recuperating Aunt May and her doctor, all help out, and the episode concludes with a pleasant dinner. There are no big turns or twists, aside from Aunt May revealing that she’s publishing a cookbook. It’s just simple, earned solace in a life marked by chaos. Peter even gets a kiss from Gwen on his porch, a sequence conducted with a John Hughes sense of satisfying romantic flair. Various Spider-Man comics have also dabbled in seeing what Thanksgiving looks like when you’re young and arachnid-themed, but real life has associated Spider-Man with the holiday, too. Spider-Man is the only Marvel character to rate a balloon in the Macy’s Thanksgiving Parade. Other Marvel characters have appeared on floats, but only Spider-Man has been inflated to 80 feet and pulled through the Upper West Side. (That also makes him the only Marvel character to have his head horrifically torn open by a tree branch.) From his first comic book appearance, Spider-Man has been a reminder that life is hard and complicated, and being a superhero doesn’t preclude anyone from experiencing ordinary frustrations, setbacks, and confusion. But no matter how Spider-Man’s Thanksgiving escapades turn out, they remind readers and viewers that the holiday is about the hope of mutual connection, support, and nurturing. Even if the girl of your dreams is out of reach and the Green Goblin is on your case, a table, some friends, and Aunt May’s rad turkey might just make everything better for a little while.",
+            "associatedAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "image": "https://www.polygon.com/23971196/spider-man-thanksgiving-connection-holiday"
+        }
+    ]
+}
+```

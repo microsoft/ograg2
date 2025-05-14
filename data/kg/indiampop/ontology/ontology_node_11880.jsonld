@@ -1,0 +1,67 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "CropProtection": {
+            "@id": "cropCult:CropProtection",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_control_measures": "cropCult:ControlMeasures"
+            }
+        },
+        "ControlMeasures": {
+            "@id": "cropCult:ControlMeasures",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_pest_treatments": "cropCult:PestTreatements",
+                "has_disease_treatments": "cropCult:DiseaseTreatements",
+                "has_weed_management": "cropCult:WeedManagement"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "CropProtection",
+            "name": "Crop Protection",
+            "has_control_measures": {
+                "@type": "ControlMeasures",
+                "name": "Control Measures",
+                "has_pest_treatments": {
+                    "@type": "PestTreatements",
+                    "pest_name": "Aphids",
+                    "pest_symptoms": "Yellowing and curling of leaves, stunted growth",
+                    "pest_control": {
+                        "@type": "PesticideList",
+                        "name": "Aphicide",
+                        "quantity": "2 litres per acre",
+                        "stage": "Early growth stage"
+                    }
+                },
+                "has_disease_treatments": {
+                    "@type": "DiseaseTreatements",
+                    "disease_name": "Fusarium Wilt",
+                    "disease_symptoms": "Wilting and yellowing of leaves, stunted growth",
+                    "disease_control": {
+                        "@type": "HerbicideList",
+                        "name": "Fungicide",
+                        "quantity": "3 litres per acre",
+                        "stage": "Early growth stage"
+                    }
+                },
+                "has_weed_management": {
+                    "@type": "WeedManagement",
+                    "weed_name": "Blackgrass",
+                    "weed_types": ["Annual", "Perennial"],
+                    "herbicides": {
+                        "@type": "HerbicideList",
+                        "name": "Glyphosate",
+                        "quantity": "4 litres per acre",
+                        "stage": "Before planting"
+                    }
+                }
+            }
+        }
+    ]
+}

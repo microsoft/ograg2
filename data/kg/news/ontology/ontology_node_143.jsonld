@@ -1,0 +1,169 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Chiefs vs. Packers live score, updates, highlights from NFL 'Sunday Night Football' game",
+            "author": "David Suggs",
+            "published": "2023-12-03T23:00:04+00:00",
+            "theme": "sports",
+            "summary": "For 59 minutes, the story of Week 13's 'Sunday Night Football' clash was Jordan Love. The first-year starter continued to showcase his evolution as a big-game player, dicing up Kansas City's All-World defense with incredible efficiency. Then came the blown calls. The Packers edged past the Chiefs on Sunday, beneficiaries of another Love masterpiece — an increasingly common sight in the 2023 season. But it was the game's final moments that drew the most intrigue, mostly because of their incredulous nature. Jonathan Owens was whistled for an unnecessary roughness that never was on the game's final drive, penalized for crashing into a scrambling Patrick Mahomes on the field of play. Soon after, Marquez Valdes-Scantling was seemingly impeded by Green Bay cornerback Carrington Valentine on a streak play, an unabashed pass interference call in most circumstances. The umpires fell silent. If that weren't enough, Owens then barged into Kelce's back on the final play of the game and Mahomes' Hail Mary tumbled onto the turf. And like the previous play, the contact went unrecognized by the zebras. It was a sorry end to an enthralling contest. Love and Mahomes dueled like gladiators, each painting pictures atop the verdant green canvas. Love was the better man on the day. He completed 25-of-36 passes for 267 yards, three touchdowns and no interceptions. It's his fourth game with three touchdowns and no interceptions this year. That's tied for most in the league. MORE: Watch Chiefs vs. Packers live with Fubo (free trial) It was beautiful, chaotic, messy and eye-catching. Above all else, it was cold. And although there are a number of ballads to be written about the calls that could have been, for now, the Packers won't care. They're back in the postseason race, all on the back of their lithe young hurler.",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Chiefs vs. Packers Final Score",
+                        "eventSummary": "Chiefs 19, Packers 27",
+                        "theme": "sports",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Lambeau Field, Green Bay"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Jordan Love",
+                                    "dateOfBirth": "1999-11-02",
+                                    "placeOfBirth": "California, USA"
+                                },
+                                {
+                                    "name": "Patrick Mahomes",
+                                    "dateOfBirth": "1995-09-17",
+                                    "placeOfBirth": "Texas, USA"
+                                },
+                                {
+                                    "name": "Jonathan Owens",
+                                    "dateOfBirth": "1995-01-01",
+                                    "placeOfBirth": "Texas, USA"
+                                },
+                                {
+                                    "name": "Marquez Valdes-Scantling",
+                                    "dateOfBirth": "1994-10-10",
+                                    "placeOfBirth": "Florida, USA"
+                                },
+                                {
+                                    "name": "Travis Kelce",
+                                    "dateOfBirth": "1989-10-05",
+                                    "placeOfBirth": "Ohio, USA"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Kansas City Chiefs",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Kansas City, Missouri"
+                                    }
+                                },
+                                {
+                                    "name": "Green Bay Packers",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Green Bay, Wisconsin"
+                                    }
+                                },
+                                {
+                                    "name": "NBC",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "New York, USA"
+                                    }
+                                },
+                                {
+                                    "name": "Sporting News",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "USA"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "url": "https://www.sportingnews.com/us/ncaa-football/news/chiefs-packers-live-score-highlights-sunday-night-football/515656cb05afc1845e0dd402"
+        }
+    ]
+}

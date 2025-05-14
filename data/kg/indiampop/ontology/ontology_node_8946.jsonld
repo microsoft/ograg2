@@ -1,0 +1,46 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Application of Treated Distillery Effluent to Crops",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "It can also be used as one time application to fallow land at the rate 20,000 to 40, 000 litres per hectare. It should be allowed for complete drying over a period of 20 to 30 days. The effluent applied field is to be thoroughly ploughed two times for the natural oxidation and mineralization of organic matter. After that, crops can be raised in the effluent applied field adopting the conventional methods. Application of this effluent again to the next crop/season or year after year and also to the land nearby drinking water sources is not advocated.",
+                "with_soil_moisture": "Dry"
+            }
+        }
+    ]
+}

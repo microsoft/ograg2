@@ -1,0 +1,363 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "NewsAsset",
+            "title": "Top 10 Video Games of 2023",
+            "author": "Various Authors",
+            "theme": "Video Games",
+            "summary": "A comprehensive list of the top 10 video games of 2023, highlighting their unique features and gameplay.",
+            "created": "2023-10-01T00:00:00Z",
+            "modified": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event1",
+                        "@type": "EventList.Event",
+                        "eventTitle": "Armored Core 6: Fires of Rubicon",
+                        "eventSummary": "A game that combines giant robots with agile gameplay.",
+                        "theme": "Action",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person1",
+                                    "@type": "PersonList.Person",
+                                    "name": "M. Mahardy"
+                                },
+                                {
+                                    "@id": "snap:person2",
+                                    "@type": "PersonList.Person",
+                                    "name": "CA"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "@type": "OrganizationList.Organization",
+                                    "name": "FromSoftware"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event2",
+                        "@type": "EventList.Event",
+                        "eventTitle": "Jusant",
+                        "eventSummary": "A rock climbing game that captures the spirit of bouldering.",
+                        "theme": "Adventure",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person3",
+                                    "@type": "PersonList.Person",
+                                    "name": "Ari Notis"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization2",
+                                    "@type": "OrganizationList.Organization",
+                                    "name": "Don’t Nod"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event3",
+                        "@type": "EventList.Event",
+                        "eventTitle": "Marvel’s Spider-Man 2",
+                        "eventSummary": "A sequel that builds on the successes of the first game.",
+                        "theme": "Action-Adventure",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person4",
+                                    "@type": "PersonList.Person",
+                                    "name": "PV"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization3",
+                                    "@type": "OrganizationList.Organization",
+                                    "name": "Insomniac Games"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event4",
+                        "@type": "EventList.Event",
+                        "eventTitle": "Street Fighter 6",
+                        "eventSummary": "Capcom's latest fighting game that revitalizes the franchise.",
+                        "theme": "Fighting",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person5",
+                                    "@type": "PersonList.Person",
+                                    "name": "Michael McWhertor"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization4",
+                                    "@type": "OrganizationList.Organization",
+                                    "name": "Capcom"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event5",
+                        "@type": "EventList.Event",
+                        "eventTitle": "Cocoon",
+                        "eventSummary": "A puzzle game that intertwines worlds and challenges.",
+                        "theme": "Puzzle",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person6",
+                                    "@type": "PersonList.Person",
+                                    "name": "AD"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization5",
+                                    "@type": "OrganizationList.Organization",
+                                    "name": "Geometric Interactive"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event6",
+                        "@type": "EventList.Event",
+                        "eventTitle": "Pikmin 4",
+                        "eventSummary": "A whimsical game that combines old and new Pikmin types.",
+                        "theme": "Strategy",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person7",
+                                    "@type": "PersonList.Person",
+                                    "name": "JL"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization6",
+                                    "@type": "OrganizationList.Organization",
+                                    "name": "Nintendo EPD"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event7",
+                        "@type": "EventList.Event",
+                        "eventTitle": "Super Mario Bros. Wonder",
+                        "eventSummary": "A reinvention of the classic platformer with new mechanics.",
+                        "theme": "Platformer",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person8",
+                                    "@type": "PersonList.Person",
+                                    "name": "N. Carpenter"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization7",
+                                    "@type": "OrganizationList.Organization",
+                                    "name": "Nintendo EPD"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event8",
+                        "@type": "EventList.Event",
+                        "eventTitle": "Alan Wake 2",
+                        "eventSummary": "A narrative-driven game that explores dreams and stories.",
+                        "theme": "Horror",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person9",
+                                    "@type": "PersonList.Person",
+                                    "name": "JR"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization8",
+                                    "@type": "OrganizationList.Organization",
+                                    "name": "Remedy Entertainment"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event9",
+                        "@type": "EventList.Event",
+                        "eventTitle": "Baldur’s Gate 3",
+                        "eventSummary": "A CRPG that captures the essence of Dungeons & Dragons.",
+                        "theme": "Role-Playing",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person10",
+                                    "@type": "PersonList.Person",
+                                    "name": "RG"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization9",
+                                    "@type": "OrganizationList.Organization",
+                                    "name": "Larian Studios"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@id": "snap:event10",
+                        "@type": "EventList.Event",
+                        "eventTitle": "The Legend of Zelda: Tears of the Kingdom",
+                        "eventSummary": "A sequel that expands the world of Hyrule with new mechanics.",
+                        "theme": "Action-Adventure",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person11",
+                                    "@type": "PersonList.Person",
+                                    "name": "Various Authors"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization10",
+                                    "@type": "OrganizationList.Organization",
+                                    "name": "Nintendo EPD"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

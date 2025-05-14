@@ -1,0 +1,51 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "weed_management_needs_are": "cropCult:WeedManagement"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "SNAKE GOURD (Trichosanthes cucumerina)",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Erect pandals for trailing snake gourd."
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Unknown",
+                "weed_types": [],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Unknown",
+                    "quantity": "Conduct weeding and raking of the soil at the time of fertilizer application."
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,98 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Barry Divola",
+            "published": "2023-11-30T18:30:00+00:00",
+            "title": "Subtle as a sledgehammer, a pop icon returns",
+            "summary": "Tate McRae’s career, until recently, had a stench of desperation about it. That’s a wild thing to say about someone who’s only 20, but how else to describe the feeling you get watching an artist who trades explicitly in classic pop moves failing to grab the mode such musical expression necessitates, ie: popularity? Tate McRae’s Think Later: a second stab at superstardom. Despite her age, the Calgary-born musician’s already had a journey. A professionally trained dancer since 6, at 13 she finished third on the US version of So You Think You Can Dance and attracted record label attention with songs uploaded to YouTube. In 2020, her weeper You Broke Me First had a chart moment, leading to her debut I Used To Think I Can Fly in 2022, an intriguing album of thrashy bangers and post-Billie Eilish sad-pop featuring production from pop titans Greg Kurstin (Adele) and Finneas (Eilish). It had at least one could’ve been smash – the spiky What Would You Do? – but, fairly listless despite her swaggering delivery, it failed to ignite with either mainstream audiences or pop aesthetes. But then, this past August, Greedy happened. Used in a video by popular TikToker Tube Girl and then in countless hair-flip transition clips, the song went viral, eventually amassing over 320 million streams globally, topping charts internationally, and becoming McRae’s proper breakthrough and a rare reintroduction. It even landed her a slot on Saturday Night Live, that pop superstar rite-of-passage, and sold out shows for her upcoming Australian tour next November. That Greedy’s the thing that’s pushed McRae to the next level is somewhat confounding. Is it even a good song? It’s not particularly memorable, and McRae’s debut had better tracks that slipped listeners by. But its sassy sentiment – “I would want myself”, particularly suited to clips of youthful coming-of-age expression – clearly caught on with the TikTok crowd, which is how pop stardom happens these days. In another popstar move, McRae also channelled an alter ego (Tatiana, who’s “ballsy, loud and obnoxious”) for Greedy’s vibrant music video, a fun throwback to choreographed Y2K-era aesthetics – McRae dancing all lustily on a Zamboni (so Canadian) – which surely helped. In this context comes Think Later, McRae’s sophomore release. Almost completely produced and co-written with Ryan Tedder (OneRepublic), it sports his hit-making trademarks, for better or worse – pristine songcraft hooked around off-kilter concepts that can’t help but catch the ear, but punishingly midtempo, songs searching for gravitas over, say, fun. For an album that’s supposed to be McRae’s bold, confident, cheeky makeover, parts of it lack spark. Tellingly, the best songs on the album – Exes, Hurt My Feelings and Guilty Conscience – follow the Greedy template: skittering Timbaland-style beats recalling Y2K-era pop, all syncopated and staccato and sultry kiss-offs to dumb boys. They feel strong and personally nostalgic – like McRae’s nodding to her countrywoman Nelly Furtado’s classic mid-’00s run – but driven by McRae’s playfulness. We’re Not Alike shows another promising side to McRae’s sound, a post-punky thing built on an Interpol-ish riff that slyly builds into something anthemic, recalling her pal Olivia Rodrigo’s sleeper Guts track, Pretty Isn’t Pretty (the post-punk revival has officially returned to pop, it seems). That these songs are so interesting makes the album’s overemphasis on understated ballads frustrating. Songs like opener Cut My Hair, Grave and Stay Done are slick but dour affairs, the classic Tedder formula. Messier, which weirdly is not another Canadian nod to ice hockey great Mark, shows McRae has the range, a bitter ballad where she allows her vocals to get raw and unhinged. But the real pleasure of Think Later lies in McRae’s idiosyncrasies and their potential; she’s a throwback in the classic singing-dancing Britney mould. With a pop landscape led by serious singer-songwriters like Taylor Swift, SZA, Rodrigo and Eilish; Dua “go girl, give us nothing” Lipa; the fame-trolling Doja Cat; and the introverted to the point of obscurity PinkPantheress, there’s a vacancy for McRae’s particular set of popstar skills. If she’s greedy enough, the platform feels like it’s hers to grab. Robert Moran I/O, Peter Gabriel For a guy who spent much of the ’70s at the forefront of prog-rock as the singer for Genesis, creating sprawling concept albums, wearing a series of increasingly bizarre stage outfits that suggested he had ingested a truckload of acid on the way to a Halloween party, and being one of the main reasons punk had to happen, Peter Gabriel sure did go on to personify big, shiny ’80s pop. The most played video on MTV? That would be Sledgehammer, his body slam of a hit from 1986 that did just what it said on the tin. The song blaring from that boombox John Cusack held aloft under Ione Skye’s window in the iconic scene from 1989’s Say Anything? That would be Gabriel’s In Your Eyes. And, somewhat bizarrely, you can barely watch an old episode of Miami Vice without hearing a Gabriel song in the background. After two decades, Peter Gabriel returns – overcooked and overlong. From popularising the massive, heavily gated drum sound that dominated the era to becoming one of world music’s greatest champions by co-founding the WOMAD festival, for a while there Gabriel was seemingly everywhere. And then… he wasn’t. In fact, I/O is his first solo album of new original material in over two decades. Some wags are calling it his Chinese Democracy, but the rarely punctual Axl Rose only took a comparatively brisk 18 years to finally release the follow-up to Use Your Illusion. Some things haven’t changed. From the get-go, on opening track Panopticom, there’s that gunshots-in-an-echo-chamber drum sound and the instantly recognisable fat, slithering tones of long-time bassist Tony Levin. And the subject matter is the familiar, big-world thinking we’ve come to expect, too – in this case, Gabriel’s utopian idea of an infinitely expandable and accessible world database, but, you know, one that doesn’t peddle untruths. The title track could almost come from Coldplay, with its singalong chorus designed for arena crowds waving lit-up smartphones, while Gabriel sings “stuff coming out, stuff going in, I’m just a part of everything”. In the late ’90s, Gabriel collaborated with Randy Newman on That’ll Do from the Babe soundtrack. Should Newman be indisposed for the next Pixar film soundtrack, Gabriel’s Playing For Time could easily slot in for that reflective, tear-inducing, life-affirming ballad Newman routinely provides for the end of the second act. In fact, there’s a palpable sense of mortality on I/O. Gabriel is 73, and he’s mining a seam of material here about taking stock, feeling at one with the world and the (admittedly, not exactly original) realisation that love is all we need. This reaches its most intense moment in And Still, a song he wrote to deal with the death of his mother in 2016. It’s a fragile, delicate thing that has an almost Nick Drake transparency to it, as he remembers leaning his head against her skin and the feeling of her brushing his hair as a young boy. But with all that time spent cooking up these songs, some have been left in the oven too long, stretching to five, six, seven minutes, and in need of an edit or at least a change in tempo. Olive Tree and Live and Let Live overload the “one with the world” barrow he’s pushing – the former, a Sting-like concoction that seems to be two different songs bolted together; the latter, coming from a fine place (inspired by Nelson Mandela and The Elders project) but littered with cliches such as “When we can forgive, we can move on” and “An eye for an eye, again and again, until the whole world is blind”. On top of all this, there are two mixes of the album, one a “bright-side mix” by Mark “Spike” Stent, and the other a “dark-side mix” by Tchad Blake. Yes, it’s a lot to take in. But then, it’s been a while in the making. And who knows when, or if, we’ll get a follow-up? Barry Divola To read more from Spectrum, visit our page here.",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "url": "https://www.theage.com.au/culture/music/new-music-to-listen-to-in-december-20231128-p5ene9.html?ref=rss&utm_medium=rss&utm_source=rss_culture"
+            }
+        }
+    ]
+}
+```

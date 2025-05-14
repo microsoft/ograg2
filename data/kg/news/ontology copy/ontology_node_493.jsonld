@@ -1,0 +1,98 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "byline": "Ellie Muir",
+            "published": "2023-11-01T15:36:20+00:00",
+            "title": "Fast fashion retailer ASOS struggles to engage consumers as company losses balloon",
+            "summary": "Stay ahead of the trend in fashion and beyond with our free weekly Lifestyle Edit newsletter Stay ahead of the trend in fashion and beyond with our free weekly Lifestyle Edit newsletter Please enter a valid email address Please enter a valid email address SIGN UP I would like to be emailed about offers, events and updates from The Independent. Read our privacy notice Thanks for signing up to the Lifestyle Edit email {{ #verifyErrors }} {{ message }} {{ /verifyErrors }} {{ ^verifyErrors }} Something went wrong. Please try again later {{ /verifyErrors }} We’ve all been there. A friend’s wedding is three days away and you don’t have anything to wear. The last thing you want to do is drag yourself around high-street shops, so inevitably you turn to ASOS. After all, the company is known for its next day delivery and easy returns service. Though many of us are reliant on the online fast fashion retailer for last-minute holiday purchases or big seasonal shops, a new report shows that ASOS’s pre-tax losses ballooned to almost £300m in the year to 3 September, compared with £31m the previous year, according to the results published on Wednesday (1 November). Despite its huge popularity, the once undisputed queen of online retailers now faces stiff competition from abroad, challenging economic headwinds, and a maturing clientele potentially seeking a more tailored experience. Leading some to ask, is ASOS in SOS? When ASOS was launched in 2000, the online retailer was considered revolutionary. It was like a supersize department store at your fingertips and became the first online retailer that UK customers could visit and find hundreds of dresses for £30 all in one place. But, in recent years, the company has been cutting its stock as it faces severe profit and revenue losses. In July and August, the retailer said it was hit by wet during the summer months, forcing the retailer to cut its stock by 30 per cent. Some experts now say that the holes within ASOS’s business model are becoming apparent. Rick Smith, Managing Director of business recovery firm Forbes Burton tells The Independent that ASOS’s business model of allowing large numbers of free returns makes the company susceptible to financial losses during challenging economic conditions. “The buying culture within their target demographic sees several items returned for each order placed, which can make for slim profit margins,” Smith explains. “ASOS has enjoyed a stratospheric rise since their inception, but have perhaps reached their ceiling now and need to cut their cloth accordingly, especially given the amount of economic headwinds [such as as the cost of living crisis] in play at the moment.” The buying habits of consumers have also shifted in the 23 years since ASOS launched. Smith says that sifting through hundreds of products has become a painstaking and often unenjoyable task for its customers. “Once large online retailers get to a certain size, it can become laborious for customers to scour their whole catalogue,” Smith explains. “The online fashion landscape is evolving now to a point that customers are looking for a more tailored service from websites.” With the rise of shopping on social media, too, young people are increasingly buying individual items from retailers on Instagram and TikTok or instead shopping directly from the brands that ASOS stocks, such as Pull and Bear, Stüssy and Bershka, which all have their own websites. ASOS distribution centre near Barnsley, South Yorkshire. (PA) “ASOS’s busy 20-something [target] market doesn’t necessarily have the time to sift through dozens of item pages,” adds Smith. “So curated collections and recommendations based on user input may be one of the changes they eventually look at.” ASOS, which originally stood for As Seen On Screen, initially started trading with the tagline “Buy what you see on film and TV” as it exclusively sold imitations of clothing worn by celebrities. That business model quickly expanded away from the world of replica products: ASOS now offers 850 affordable to mid-range high-street brands and ships to 196 countries. But the company is also now tackling a debt issue, with net debt including leases now at £648.5m, up from £533m the year before. Analysts predict that the online fashion site may need to raise quick cash soon – potentially through the rumoured sale of its Topshop brand, which ASOS acquired when the Arcadia Group went bust in 2021 and closed Topshop’s bricks and mortar stores. Despite the profit slump and predicted future losses, José Antonio Ramos Calamonte, ASOS’s chief executive, said in the report that the company has made “good progress” in “a very challenging environment” and would continue to invest in its brand and stock more fashionable lines of clothing. The company plans to spend £30m more on marketing and said it was going “back to fashion” with its products “geared around fashion and excitement”. As ASOS faces huge losses, it was reported this week that the Chinese-founded retailer Shein has acquired UK company Missguided, with plans to “reignite” the online retailer that was only bought out of administration by Mike Ashley’s Frasers Group a year and a half ago. Despite calls for boycotts from anti-fashion campaigners, Shein is currently valued at around £53bn, having expanded globally and bought many of its rival brands. In 2022, it was the most-googled fashion brand in the world and made a reported £18.9bn in revenue, suggesting that fast fashion is not falling out of favour with consumers who want to find entire outfits on a budget.",
+            "associatedAsset": {
+                "@type": "TextAsset",
+                "image": "https://www.independent.co.uk/life-style/fashion/fashion-retailer-asos-struggles-to-engage-consumers-as-company-losses-balloon-b2439673.html"
+            }
+        }
+    ]
+}
+```

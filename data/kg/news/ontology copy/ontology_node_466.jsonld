@@ -1,0 +1,98 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "Nick Brinkerhoff",
+            "published": "2023-09-28T21:41:00+00:00",
+            "title": "FanDuel 'Prop Stars' Picks: Best bets for Travis Kelce & Taylor Swift-inspired props for Chiefs-Jets Week 4",
+            "summary": "Travis Kelce has been catching a lot more than footballs lately, and fans everywhere have been swift to hop on the Taylor Swift bandwagon. The celebrity couple has been in the news for well over a week now, and despite the fatigue from many -- Chris 'Mad Dog' Russo's rant being among the most vocal -- companies like FanDuel just can't help but lean into a profitable storyline. Are they for real or is this 'Love Story' just some extravagant publicity stunt? Time will tell, but one thing's for certain when it comes to the media, social media, newspapers, football fans, Swifties, and just about everyone else within the 50 states and U.S. territories, including Puerto Rico and Guam: 'You need to calm down.' Regardless, Kelce and Swift take their tour on the road to Broadway, a place that puts on all the great shows. The traditional circus hasn't been in town for a few years now, but that's simply because the New York Jets exist and there was only room for one. It seems like ages since Aaron Rodgers marched out of the MetLife Stadium tunnel holding an American flag, but this is Zach Wilson's team now, whether you like it or not. One of the most hyped 'Sunday Night Football' games of the year was expected to feature Rodgers against Patrick Mahomes for the first time. Instead, we're more likely to be treated to non-stop split screens involving Swift and Rodgers, two people who won't be on the field. There will be some actual football, though, even if it is just a sideshow to the event everyone can't stop talking about. So, buckle up and enjoy whatever this is, and for all the fans paying ridiculous prices for a glimpse of Ms. Swift — make sure your phone is charged. To Travis and Taylor, 'Welcome to New York.' It's been waiting for you. Well, actually, the swamps of northern New Jersey have. Enjoy the traffic and a look at the famous skyline. For bettors, where there is hype, there's also an opportunity to make some money. FanDuel has released a special prop bets menu, cleverly called 'Prop Stars' for the Swift-inspired wagers. Here's a look at how you can catch some cash in prime time.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://www.sportingnews.com/us/nfl/news/best-chiefs-jets-prop-stars-bets-fanduel-kelce-swift-snf/581275901fe0e3011cdcb562"
+            }
+        }
+    ]
+}
+```

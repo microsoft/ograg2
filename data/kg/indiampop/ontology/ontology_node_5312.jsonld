@@ -1,0 +1,141 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "DEEP WATER RICE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Rice",
+                "used_for": "Deep water cultivation"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Monsoon",
+                    "has_regions": ["South Asia", "Southeast Asia"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Deep water rice"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "June",
+                            "end_date": "July"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "July",
+                            "end_date": "August"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "QuantitativeValue",
+                            "value": "100 kg/ha"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Nitrogen",
+                            "quantity": "80 kg/ha",
+                            "stage_of_application": "At the time of sowing"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "25-30°C",
+                "for_flowering": "25-30°C",
+                "for_grain_filling": "25-30°C",
+                "negative_effect": "Temperature above 35°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Clayey soil",
+                "avoid_soil_type": "Sandy soil",
+                "for_water": "High water holding capacity",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the field to a fine tilth and level it. Puddle the field 2-3 times and incorporate Azospirillum at 2 kg/ha.",
+                "with_soil_moisture": "High"
+            },
+            "seed_germination_test_requirements_are": "Seeds should be soaked in water for 24 hours and then incubated at 25-30°C for 48 hours.",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Thiram",
+                "quantity": "2 g/kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "June-July",
+                "value": "20 cm x 15 cm",
+                "depth": "5-7 cm",
+                "method": "Transplanting"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Echinochloa colona",
+                "weed_types": ["Grass", "Broadleaf", "Sedge"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Butachlor",
+                    "quantity": "1.5 kg a.i./ha",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "5-7 cm of standing water",
+                "stage_of_application": "Throughout the crop period"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Blast",
+                "disease_symptoms": "Lesions on leaves and nodes",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Tricyclazole",
+                    "quantity": "0.6 kg a.i./ha",
+                    "stage": "At the time of disease appearance"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Stem borer",
+                "pest_symptoms": "Dead hearts or white ears",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Carbaryl",
+                    "quantity": "1 kg a.i./ha",
+                    "stage": "At the time of pest appearance"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest the crop when the grains harden and the straw turns yellow.",
+            "storage_guidelines_are":"Store the grains in a cool and dry place."
+        }
+    ]
+}

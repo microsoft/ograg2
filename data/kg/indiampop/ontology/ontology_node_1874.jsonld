@@ -1,0 +1,47 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList",
+                "interculture_instructions": "schema:Text"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Not specified",
+            "weed_types": [],
+            "herbicides": [
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "pendimethalin",
+                    "quantity": "0.75 kg/ha",
+                    "stage": "Pre-emergence"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "fluchloralin",
+                    "quantity": "0.75 kg/ha",
+                    "stage": "Pre-plant"
+                }
+            ],
+            "interculture_instructions": "Take up gap filling at 10 days stage and hoeing and weeding at three week stage followed by earthing up. A second weeding and earthing should be given at 6 weeks stage which will provide better anchorage and conserve the residual soil moisture."
+        }
+    ]
+}

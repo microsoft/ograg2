@@ -1,0 +1,54 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Biocapsule": {
+            "@id": "cropCult:Biocapsule",
+            "@type": "schema:Thing",
+            "@context": {
+                "description": "schema:Text",
+                "contains": "cropCult:OrganicManureMix",
+                "outer_coating_dissolve_time": "schema:Text"
+            }
+        },
+        "OrganicManureMix": {
+            "@id": "cropCult:OrganicManureMix",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "components": "schema:List",
+                "biofertilizer_inoculum": "cropCult:BiofertilizerInoculum"
+            }
+        },
+        "BiofertilizerInoculum": {
+            "@id": "cropCult:BiofertilizerInoculum",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "multiplication_process": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "cropCult:Biocapsule",
+            "@type": "Biocapsule",
+            "description": "Biocapsule has been developed for precisely placing organic manure and biofertilizer inoculum in the rhizosphere of plants.",
+            "contains": {
+                "@id": "cropCult:OrganicManureMix",
+                "@type": "OrganicManureMix",
+                "quantity": "0.5g",
+                "components": ["composted coirdust", "composted poultry manure", "vermicompost"],
+                "biofertilizer_inoculum": {
+                    "@id": "cropCult:BiofertilizerInoculum",
+                    "@type": "BiofertilizerInoculum",
+                    "name": "Azophos",
+                    "quantity": "0.2%",
+                    "multiplication_process": "is inoculated and allowed to multiply in the compost"
+                }
+            },
+            "outer_coating_dissolve_time": "20 minutes"
+        }
+    ]
+}

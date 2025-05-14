@@ -1,0 +1,43 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Interculture": {
+            "@id": "cropCult:Interculture",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "negative_effect": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Interculture",
+            "weed_management_needs_are": {
+                "@type": "cropCult:WeedManagement",
+                "instructions": "Three weedings and light hoeings at 20, 40 and 60 days after planting are required for the crop."
+            },
+            "needs_irrigation_schedule": {
+                "@type": "cropCult:IrrigationRequirement",
+                "instructions": "In early stage, irrigate the crop at short interval and increased the frequency of irrigation with the increase in age of the crop and decrease with maturity."
+            },
+            "negative_effect": "Moisture stress decreases yield."
+        }
+    ]
+}

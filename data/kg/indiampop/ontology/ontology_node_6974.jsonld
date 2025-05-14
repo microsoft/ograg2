@@ -1,0 +1,77 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "SOYBEAN (Glycine max (L.) Merr.)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "FIELD LAB-LAB (MOCHAI)",
+                "used_for": "CROP MANAGEMENT"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "IV. MANAGEMENT OF FIELD OPERATIONS",
+                "with_soil_moisture": "as basal dressing"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "4. FERTILIZER APPLICATION",
+                "value": "Soil application of 25 kg ZnSo4/ha under irrigated condition",
+                "depth": "ii) Foliar spray of NAA 40 mg/litre and Salicylic acid 100 mg/litre once at pre-flowering and another at 15 days thereafter",
+                "method": "iii) Foliar spray of DAP 20 g/litre or urea 20 g/litre once at flowering and another at 15 days thereafter"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Irrigated",
+                "avoid_soil_type": "Not specified",
+                "for_water": "25 kg ZnSo4/ha",
+                "for_nutrients": "Foliar spray of NAA 40 mg/litre and Salicylic acid 100 mg/litre"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "25 kg ZnSo4/ha",
+                "stage_of_application": "Pre-flowering and 15 days thereafter"
+            },
+            "Fertilization": {
+                "@type": "Fertilization",
+                "nutrient_name": "ZnSo4, NAA, Salicylic acid, DAP, Urea",
+                "quantity": "25 kg/ha, 40 mg/litre, 100 mg/litre, 20 g/litre, 20 g/litre",
+                "stage_of_application": "Pre-flowering and 15 days thereafter"
+            }
+        }
+    ]
+}

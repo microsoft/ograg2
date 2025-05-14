@@ -1,0 +1,177 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Jets vs. Raiders live score, updates, highlights from NFL 'Sunday Night Football' game",
+            "author": "Edward Sutelan",
+            "theme": "sports",
+            "summary": "The Jets and Raiders were locked into an old-school, defense-heavy primetime clash that featured nothing but six field goals through the first three quarters of the game. It wasn't until 50 seconds into the fourth quarter that Las Vegas finally picked up the first touchdown, with Michael Mayer making a leaping grab in the end zone to put the Raiders up 16-9. In such a low-scoring game, that touchdown felt, even as early as it was, that it could be a game-winner. And indeed, it was as the Raiders held the Jets to just a field goal the rest of the game and picked off Zach Wilson late to stymy New York in a 16-12 win.",
+            "created": "2023-11-12T23:30:03+00:00",
+            "published": "2023-11-12T23:30:03+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Jets vs. Raiders Final Score",
+                        "eventSummary": "Jets 12, Raiders 16",
+                        "theme": "NFL",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Allegiant Stadium, Las Vegas"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Zach Wilson",
+                                    "dateOfBirth": "1999-05-03",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Murray, Utah"
+                                    }
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Michael Mayer",
+                                    "dateOfBirth": "1999-05-02",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Las Vegas, Nevada"
+                                    }
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Josh Jacobs",
+                                    "dateOfBirth": "1998-02-26",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Tulsa, Oklahoma"
+                                    }
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Aidan O'Connell",
+                                    "dateOfBirth": "1998-01-25",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Oak Brook, Illinois"
+                                    }
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "New York Jets",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "MetLife Stadium, East Rutherford, New Jersey"
+                                    }
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Las Vegas Raiders",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Allegiant Stadium, Las Vegas"
+                                    }
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Sporting News",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "United States"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

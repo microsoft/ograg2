@@ -1,0 +1,33 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_land_preperation_requirements": "cropCult:LandPreparation"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "OILPALM",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Transplanting to the main field has to be done during the onset of rainy season. In very impermeable soils and where there is chance for the seedlings to suffer severely during rainy season, proper drainage has to be ensured.",
+                "with_soil_moisture": "Rainy season"
+            }
+        }
+    ]
+}

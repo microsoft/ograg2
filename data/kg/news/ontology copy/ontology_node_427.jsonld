@@ -1,0 +1,135 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Jacquelyn Melinek",
+      "published": "2023-11-21T17:34:32+00:00",
+      "title": "Binance to pay $4.3B in fines and CEO ‘CZ’ to step down, plead guilty to anti-money laundering charges",
+      "summary": "It’s been an eventful week for crypto exchanges and the U.S. government. Changpeng Zhao, also known as “CZ,” the founder and CEO of Binance, is stepping down and has pleaded guilty to a number of violations brought on through the Department of Justice and other U.S. agencies. He appeared in a Seattle federal court on Tuesday to enter his plea. Richard Teng, Binance’s former global head of regional markets, will be the exchange’s new CEO, Zhao shared in a post on X Tuesday afternoon. Teng previously was the CEO of the Financial Services Regulatory Authority at Abu Dhabi Global Market, among other executive roles. In response to stepping down, Zhao said, “it is the right thing to do” adding, “I made mistakes, and I must take responsibility.” Zhao will remain a shareholder and said he will be “available to the team to consult as needed.” Binance, the world’s largest crypto exchange, has also agreed to pay about $4.3 billion to resolve the DOJ’s investigations, the agency said in a press release on Tuesday. As a part of Binance’s guilty plea, it has also reached agreements with the Department of Treasury’s Financial Crimes Enforcement Network (FinCEN), the Office of Foreign Assets Control (OFAC) and the Commodity Futures Trading Commission (CFTC) and will credit about $1.8 billion toward those resolutions. The crypto exchange “admits it engaged in anti-money laundering, unlicensed money transmitting and sanctions violations,” the DOJ release stated, calling it the “largest corporate resolution” that included criminal charges for an executive. Zhao pleaded guilty to failing to maintain an anti-money laundering program. “The message here should be clear: using new technology to break the law does not make you a disruptor, it makes you a criminal,” U.S. Attorney General Merrick Garland said in a statement. Binance, Zhao and other related parties “knowingly failed to register as a money services business” and violated the Bank Secrecy Act by failing to implement an anti-money laundering program, a filing on the charges stated. It added that the respective parties allegedly violated U.S. economic sanctions “in a deliberate and calculated effort to profit from the U.S. market,” without following U.S. laws. The crypto exchange collected about $1.35 billion in trading fees from U.S. customers, according to Chairman Rostin Behnam of the CFTC. According to court documents, Zhao told Binance employees it was “better to ask for forgiveness than permission” and prioritized the exchange’s growth there over complying with U.S. law. “Any institution, wherever located, that wants to reap the benefits of the U.S. financial system must also play by the rules that keep us all safe from terrorists, foreign adversaries, and crime or face the consequences,” Secretary of Treasury Janet Yellen said in the release. Under Zhao’s plea agreement, he will agree to the recommendation that the court impose a $150 million fine to the CFTC and won’t make any statements “contradicting his acceptance of responsibility,” according to a separate filing from Monday. As for Binance’s plea agreement, the company will accept the resignation of Zhao and prohibit him “from any present or future involvement in operating” the business from the beginning of the plea acceptance and “ends three years from the date a monitor is appointed,” the Monday filing stated. The company will also “maintain and enhance” its compliance program and appoint an independent compliance monitor during that three year period. The crypto exchange did not respond to multiple requests for comment from TechCrunch on the charges. Binance launched in June 2017 and within 180 days became the largest crypto exchange in the world. It had over $12.65 billion in trading volume during the past 24-hours, 532% higher than $2 billion in trading volume from the second largest crypto exchange, Coinbase, according to CoinMarketCap data. This comes less than a day after the SEC charged Kraken, the third largest crypto exchange by trading volume, with allegedly operating as an “unregistered securities exchange, broker, dealer and clearing agency.” Separately, in February, Kraken agreed to end crypto staking services for U.S. clients and settled a past suit with the SEC after agreeing to pay $30 million in charges for “disgorgement, prejudgment interest and civil penalties.” The DOJ charges against Binance come over five months after the U.S. Securities and Exchange Commission accused the exchange and Zhao of lying to regulators about its operations, filing 13 charges against the defendants in the federal case. Zhao and Binance were allegedly “intimately involved” in directing the trading entity’s business operations and providing crypto-related services to the Binance.US platform, which claims it’s an independent exchange in the SEC filing. In late March the U.S. CFTC also filed a suit against Binance, Zhao and its Chief Compliance Officer Samuel Lim for allegedly breaking trading and derivatives rules. Binance has made headlines this past year for a range of reasons, including Zhao’s comments contributing to the collapse of FTX, which was once one of its top competitors. In April, Binance.US, its American sister company, broke off its $1.3 billion deal to buy crypto broker Voyager Digital’s assets due to a “hostile and uncertain regulatory climate.” In August, Checkout.com cut ties with Binance over concerns about the crypto firm’s alleged issues with anti-money laundering, sanctions and compliance controls. At the time, Binance’s spokesperson said it does not agree with “Checkout’s purported basis for termination and are considering our options for legal action.” The article has been updated to reflect the latest developments on charges against Binance and Zhao and include the former CEO’s statement.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://techcrunch.com/2023/11/21/binance-to-pay-4-3b-in-fines-and-ceo-cz-to-step-down-plead-guilty-to-anti-money-laundering-charges/"
+      }
+    },
+    {
+      "@type": "Person",
+      "name": "Changpeng Zhao",
+      "alias": "CZ"
+    },
+    {
+      "@type": "Person",
+      "name": "Richard Teng"
+    },
+    {
+      "@type": "Organization",
+      "name": "Binance"
+    },
+    {
+      "@type": "Organization",
+      "name": "Department of Justice"
+    },
+    {
+      "@type": "Organization",
+      "name": "Financial Crimes Enforcement Network"
+    },
+    {
+      "@type": "Organization",
+      "name": "Office of Foreign Assets Control"
+    },
+    {
+      "@type": "Organization",
+      "name": "Commodity Futures Trading Commission"
+    },
+    {
+      "@type": "Organization",
+      "name": "U.S. Securities and Exchange Commission"
+    },
+    {
+      "@type": "Organization",
+      "name": "TechCrunch"
+    }
+  ]
+}
+```

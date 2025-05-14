@@ -1,0 +1,289 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "SeedList": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List",
+                "has_early_sowing_time": "cropCult:SowingTime",
+                "has_late_sowing_time": "cropCult:SowingTime",
+                "has_seeding_rate": "schema:QuantitativeValue",
+                "has_fertilizer_application_requirements": "cropCult:Fertilization"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        },
+        "CropGrowingZones":{
+                "@container": "@list",
+                "@id": "cropCult:CropGrowingZones",
+                "@type": "schema:ItemList",
+                "CropGrowingZone": {
+                "@id": "cropCult:CropGrowingZone",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "schema:name",
+                    "has_regions": "schema:List",
+                    "has_seed_recommendations": "cropCult:SeedList"
+                }
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_germination": "schema:Text",
+                "for_flowering": "schema:Text",
+                "for_grain_filling": "schema:Text",
+                "negative_effect": "schema:Text"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "seedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "MANGO (Mangifera indica)",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "Mango",
+                "used_for": "Fruit"
+            },
+            "has_growing_zones": {
+                "@type": "cropCult:CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical",
+                    "has_regions": ["Sea level", "1500 m above mean sea level"],
+                    "has_seed_recommendations": {
+                        "@type": "cropCult:SeedList",
+                        "variety_name": ["Alphonso", "Kalapady", "Neelum", "Mundappa", "Pairi", "Baneshan", "Alampur Baneshan", "Mulgoa", "Suvarnarekha"],
+                        "has_early_sowing_time": {
+                            "@type": "cropCult:SowingTime",
+                            "start_date": "Monsoon showers",
+                            "end_date": "Before the rains"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "cropCult:SowingTime",
+                            "start_date": "August",
+                            "end_date": "September"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "1 year old grafts"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "cropCult:Fertilization",
+                            "nutrient_name": "FYM/compost and fertilizers",
+                            "quantity": "10 kg of compost or FYM per pit",
+                            "stage_of_application": "One month before planting"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "cropCult:TemperatureRequirements",
+                "for_germination": "22-26ºC",
+                "for_flowering": "22-26ºC",
+                "for_grain_filling": "22-26ºC",
+                "negative_effect": "Low temperature and frost"
+            },
+            "has_soil_requirements": {
+                "@type": "cropCult:SoilRequirements",
+                "soil_type_name": "Rich, well-drained soil",
+                "avoid_soil_type": "Waterlogged soil",
+                "for_water": "Does not tolerate waterlogging",
+                "for_nutrients": "Rich soil"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "cropCult:LandPreparation",
+                "instructions": "Prepare pits of size 1 m x 1 m x 1 m at a spacing of 9 m, one month before planting and allow to weather. Refill pits with mixture of topsoil and 10 kg of compost or FYM per pit to a level higher than the adjoining ground. Plant the grafts at the same depth as they were in the containers, preferably in the late evening. Deep planting results in poor growth of the plant. Ensure that the graft joint is above the soil level. Tie the plants to stakes to prevent snapping at the graft joints.",
+                "with_soil_moisture": "Moisture required"
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "cropCult:Fungicide",
+                "name": "Bordeaux mixture",
+                "quantity": "1 per cent"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "cropCult:SeedSpacing",
+                "sowing_time": "Monsoon showers",
+                "value": "9 m",
+                "depth": "1 m",
+                "method": "Square system or hexagonal system"
+            },
+            "weed_management_needs_are": {
+                "@type": "cropCult:WeedManagement",
+                "weed_name": "Not specified",
+                "weed_types": [],
+                "herbicides": {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Not specified",
+                    "quantity": "Not specified",
+                    "stage": "Not specified"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "cropCult:IrrigationRequirement",
+                "quantity": "Twice a week during summer months till the plants are 4-5 years old",
+                "stage_of_application": "Summer months"
+            },
+            "needs_disease_treatements": {
+                "@type": "cropCult:DiseaseTreatements",
+                "disease_name": "Dieback of twigs and branches",
+                "disease_symptoms": "Affected twigs below the infected region",
+                "disease_control": {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Bordeaux paste",
+                    "quantity": "Apply to the cut ends",
+                    "stage": "When symptoms appear"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "cropCult:PestTreatements",
+                "pest_name": "Hoppers, stem borers, shoot midges, leaf feeding insects, fruit flies and psyllids",
+                "pest_symptoms": "Not specified",
+                "pest_control": {
+                    "@type": "cropCult:PesticideList",
+                    "name": "Carbaryl, Malathion, Crude carbolic acid, Soft soap, Hot water",
+                    "quantity": "0.1 per cent",
+                    "stage": "At the time of flowering"
+                }
+            },
+            "harvesting_guidelines_are": "Not specified",
+            "storage_guidelines_are":"Not specified"
+        }
+    ]
+}

@@ -1,0 +1,376 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "snap:asset",
+            "title": "Fantasy Football Week 13 Lineup Decisions: Starts, Sits, Sleepers, Busts to know for every game",
+            "author": "Dave Richard",
+            "theme": "sports",
+            "content": "Fantasy Football is all about the matchups. Even though you drafted your team with certain hopes and intentions, your weekly lineup decisions shouldn't be determined by the order you picked your players in. You need to check who your players play and make sure you've got the right guys in -- and the wrong guys out. It's too early to be absolutely sure on which matchups will be easy and which ones will be tough, but we can take some educated guesses based on healthy personnel, defensive schemes, track records and key details of offenses. The things we know can help us minimize the impact of the things we don't know. This should lead to better decisions being made. We'll go through every game and highlight the players who aren't obvious starts and sits (because you don't need to be told to start Christian McCaffrey). You should feel more comfortable starting or sitting players based on the information given, and feeling comfortable with your Fantasy lineup before the games start is the best feeling in the world. It's also important to have a keen eye for matchups dictated by the remaining schedule. I am now updating my projected Strength of Schedule rankings broken down by position available on SportsLine. My objective is to break down how the schedule affects every Fantasy relevant player for the upcoming four weeks, the playoff stretch and the entire season. You'll also be able to find my key takeaways on which players you should buy low, sell high and more trade advice. If you'd like to try out SportsLine, use the promo code RICHARD at checkout and you'll pay just a dollar for the first month. Easy peasy!",
+            "published": "2023-11-30T22:10:58+00:00",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "snap:event",
+                    "eventTitle": "Fantasy Football Week 13 Lineup Decisions",
+                    "eventSummary": "Starts, Sits, Sleepers, Busts to know for every game",
+                    "theme": "sports",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person1",
+                            "@type": "snap:person",
+                            "name": "Dak Prescott"
+                        },
+                        {
+                            "@id": "snap:person2",
+                            "@type": "snap:person",
+                            "name": "CeeDee Lamb"
+                        },
+                        {
+                            "@id": "snap:person3",
+                            "@type": "snap:person",
+                            "name": "Tony Pollard"
+                        },
+                        {
+                            "@id": "snap:person4",
+                            "@type": "snap:person",
+                            "name": "DK Metcalf"
+                        },
+                        {
+                            "@id": "snap:person5",
+                            "@type": "snap:person",
+                            "name": "Jake Ferguson"
+                        },
+                        {
+                            "@id": "snap:person6",
+                            "@type": "snap:person",
+                            "name": "Tyler Lockett"
+                        },
+                        {
+                            "@id": "snap:person7",
+                            "@type": "snap:person",
+                            "name": "Geno Smith"
+                        },
+                        {
+                            "@id": "snap:person8",
+                            "@type": "snap:person",
+                            "name": "Jaxon Smith-Njigba"
+                        },
+                        {
+                            "@id": "snap:person9",
+                            "@type": "snap:person",
+                            "name": "Zach Charbonnet"
+                        },
+                        {
+                            "@id": "snap:person10",
+                            "@type": "snap:person",
+                            "name": "Michael Gallup"
+                        },
+                        {
+                            "@id": "snap:person11",
+                            "@type": "snap:person",
+                            "name": "Brandin Cooks"
+                        },
+                        {
+                            "@id": "snap:person12",
+                            "@type": "snap:person",
+                            "name": "C.J. Stroud"
+                        },
+                        {
+                            "@id": "snap:person13",
+                            "@type": "snap:person",
+                            "name": "Tank Dell"
+                        },
+                        {
+                            "@id": "snap:person14",
+                            "@type": "snap:person",
+                            "name": "Nico Collins"
+                        },
+                        {
+                            "@id": "snap:person15",
+                            "@type": "snap:person",
+                            "name": "Courtland Sutton"
+                        },
+                        {
+                            "@id": "snap:person16",
+                            "@type": "snap:person",
+                            "name": "Devin Singletary"
+                        },
+                        {
+                            "@id": "snap:person17",
+                            "@type": "snap:person",
+                            "name": "Javonte Williams"
+                        },
+                        {
+                            "@id": "snap:person18",
+                            "@type": "snap:person",
+                            "name": "Russell Wilson"
+                        },
+                        {
+                            "@id": "snap:person19",
+                            "@type": "snap:person",
+                            "name": "Jerry Jeudy"
+                        },
+                        {
+                            "@id": "snap:person20",
+                            "@type": "snap:person",
+                            "name": "Justin Herbert"
+                        },
+                        {
+                            "@id": "snap:person21",
+                            "@type": "snap:person",
+                            "name": "Keenan Allen"
+                        },
+                        {
+                            "@id": "snap:person22",
+                            "@type": "snap:person",
+                            "name": "Austin Ekeler"
+                        },
+                        {
+                            "@id": "snap:person23",
+                            "@type": "snap:person",
+                            "name": "Rhamondre Stevenson"
+                        },
+                        {
+                            "@id": "snap:person24",
+                            "@type": "snap:person",
+                            "name": "Hunter Henry"
+                        },
+                        {
+                            "@id": "snap:person25",
+                            "@type": "snap:person",
+                            "name": "Quentin Johnston"
+                        },
+                        {
+                            "@id": "snap:person26",
+                            "@type": "snap:person",
+                            "name": "Jared Goff"
+                        },
+                        {
+                            "@id": "snap:person27",
+                            "@type": "snap:person",
+                            "name": "Amon-Ra St. Brown"
+                        },
+                        {
+                            "@id": "snap:person28",
+                            "@type": "snap:person",
+                            "name": "Jahmyr Gibbs"
+                        },
+                        {
+                            "@id": "snap:person29",
+                            "@type": "snap:person",
+                            "name": "Alvin Kamara"
+                        },
+                        {
+                            "@id": "snap:person30",
+                            "@type": "snap:person",
+                            "name": "Chris Olave"
+                        },
+                        {
+                            "@id": "snap:person31",
+                            "@type": "snap:person",
+                            "name": "David Montgomery"
+                        },
+                        {
+                            "@id": "snap:person32",
+                            "@type": "snap:person",
+                            "name": "Sam LaPorta"
+                        },
+                        {
+                            "@id": "snap:person33",
+                            "@type": "snap:person",
+                            "name": "Taysom Hill"
+                        },
+                        {
+                            "@id": "snap:person34",
+                            "@type": "snap:person",
+                            "name": "Derek Carr"
+                        },
+                        {
+                            "@id": "snap:person35",
+                            "@type": "snap:person",
+                            "name": "Bijan Robinson"
+                        },
+                        {
+                            "@id": "snap:person36",
+                            "@type": "snap:person",
+                            "name": "Garrett Wilson"
+                        },
+                        {
+                            "@id": "snap:person37",
+                            "@type": "snap:person",
+                            "name": "Breece Hall"
+                        },
+                        {
+                            "@id": "snap:person38",
+                            "@type": "snap:person",
+                            "name": "Drake London"
+                        },
+                        {
+                            "@id": "snap:person39",
+                            "@type": "snap:person",
+                            "name": "Kyle Pitts"
+                        },
+                        {
+                            "@id": "snap:person40",
+                            "@type": "snap:person",
+                            "name": "Tyler Conklin"
+                        },
+                        {
+                            "@id": "snap:person41",
+                            "@type": "snap:person",
+                            "name": "Tyler Allgeier"
+                        },
+                        {
+                            "@id": "snap:person42",
+                            "@type": "snap:person",
+                            "name": "Kenny Pickett"
+                        },
+                        {
+                            "@id": "snap:person43",
+                            "@type": "snap:person",
+                            "name": "Najee Harris"
+                        },
+                        {
+                            "@id": "snap:person44",
+                            "@type": "snap:person",
+                            "name": "Kyler Murray"
+                        },
+                        {
+                            "@id": "snap:person45",
+                            "@type": "snap:person",
+                            "name": "Trey McBride"
+                        },
+                        {
+                            "@id": "snap:person46",
+                            "@type": "snap:person",
+                            "name": "Marquise Brown"
+                        },
+                        {
+                            "@id": "snap:person47",
+                            "@type": "snap:person",
+                            "name": "Pat Freiermuth"
+                        },
+                        {
+                            "@id": "snap:person48",
+                            "@type": "snap:person",
+                            "name": "Diontae Johnson"
+                        },
+                        {
+                            "@id": "snap:person49",
+                            "@type": "snap:person",
+                            "name": "Jaylen Warren"
+                        },
+                        {
+                            "@id": "snap:person50",
+                            "@type": "snap:person",
+                            "name": "James Conner"
+                        },
+                        {
+                            "@id": "snap:person51",
+                            "@type": "snap:person",
+                            "name": "Rondale Moore"
+                        },
+                        {
+                            "@id": "snap:person52",
+                            "@type": "snap:person",
+                            "name": "Greg Dortch"
+                        },
+                        {
+                            "@id": "snap:person53",
+                            "@type": "snap:person",
+                            "name": "George Pickens"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "snap:organization",
+                            "name": "CBSSports.com"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

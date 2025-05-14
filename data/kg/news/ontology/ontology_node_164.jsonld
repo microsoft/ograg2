@@ -1,0 +1,165 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "How U.S. Women’s Soccer Team Lured Emma Hayes Away From Chelsea",
+            "author": "The New York Times",
+            "published": "2023-11-15T21:40:47+00:00",
+            "theme": "sports",
+            "summary": "Chelsea Women had created a frenzy. On Nov. 4, the English club released a statement saying their coach Emma Hayes was leaving at the end of the season to pursue a new opportunity outside of the Women’s Super League and club football. Hayes had just entered her second decade in charge of the club, and few knew where she would land next.",
+            "has_events": [
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "Emma Hayes Appointed as USWNT Head Coach",
+                    "eventSummary": "U.S. Soccer made the appointment of Emma Hayes official on November 14, 2023.",
+                    "theme": "sports",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "United States"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "name": "Emma Hayes",
+                            "dateOfBirth": "xmls:date",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "London, England"
+                            },
+                            "alias": "Coach Hayes"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Cindy Parlow Cone",
+                            "dateOfBirth": "xmls:date",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "North Carolina, USA"
+                            },
+                            "alias": "Cindy"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "name": "Matt Crocker",
+                            "dateOfBirth": "xmls:date",
+                            "placeOfBirth": {
+                                "@id": "geo:location",
+                                "name": "England"
+                            },
+                            "alias": "Director Crocker"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization",
+                            "name": "U.S. Soccer",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "Chicago, Illinois"
+                            },
+                            "alias": "US Soccer"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "name": "Chelsea FC",
+                            "hasLocation": {
+                                "@id": "geo:SpatialThing",
+                                "name": "London, England"
+                            },
+                            "alias": "Chelsea"
+                        }
+                    ]
+                }
+            ],
+            "followUp": {
+                "@id": "snap:asset",
+                "title": "Emma Hayes' Future with Chelsea",
+                "summary": "Questions surrounding Hayes’ future have cropped up previously in her tenure at Chelsea. She was linked to several jobs in the men’s English Football League in the past and has always been interested in managing Spain’s national team."
+            },
+            "derivedFrom": {
+                "@id": "snap:asset",
+                "title": "Emma Hayes' Coaching Journey",
+                "summary": "Hayes has been a prominent figure in women's soccer, leading Chelsea to multiple titles."
+            }
+        }
+    ]
+}

@@ -1,0 +1,136 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:organization",
+            "name": "BetRivers Sportsbook",
+            "comment": "BetRivers Sportsbook is another site that has launched in many states and could be among those coming to Vermont. BetRivers has a lot to offer and many have found it a great choice elsewhere."
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "BetRivers Vermont Promo Code",
+            "eventSummary": "BetRivers Sportsbook offers a 'second chance' welcome offer that gives new sign-ups a free bet refund worth up to $500 should they lose their first wager.",
+            "theme": {
+                "@type": "snap:intangibleStuff",
+                "comment": "Types of Vermont sportsbook promo and bonus offers"
+            }
+        },
+        {
+            "@type": "snap:stuff",
+            "alias": "Vermont Sportsbook Bonus Pros",
+            "comment": "Thousands of dollars in value will be up for grabs. Bonuses can be claimed easily via links or promo codes. Bonuses can be used to bet on almost any sport."
+        },
+        {
+            "@type": "snap:stuff",
+            "alias": "Vermont Sportsbook Bonus Cons",
+            "comment": "Refunds are site credit or bonus bets, not cash. Playthrough requirements are attached to site credit and bonus bets. You won't earn back the stake on winning bonus bets or bets with site credit."
+        },
+        {
+            "@type": "snap:stuff",
+            "alias": "Types of Vermont sportsbook promo and bonus offers",
+            "comment": "Deposit match bonuses, Referral bonuses, First-bet offers, Odds boosts, Bet insurance, Bet & get bonuses, App-only offers, Special event offers, Loyalty offers and programs."
+        },
+        {
+            "@type": "snap:stuff",
+            "alias": "Important Vermont sportsbook bonus and promo conditions",
+            "comment": "Banking options, Wagering requirements, Betting limitations, Time limits, Maximum withdrawals."
+        },
+        {
+            "@type": "snap:stuff",
+            "alias": "Vermont sport-specific betting promos",
+            "comment": "Vermont has no teams in the four major US pro sports leagues. However, state residents have been known to support Boston-based teams, like the Red Sox (MLB), the Celtics (NBA), the Bruins (NHL), and the Patriots (NFL)."
+        },
+        {
+            "@type": "snap:stuff",
+            "alias": "How do I claim a Vermont sportsbook bonus?",
+            "comment": "Sign up for a new account through the links on this page to claim a bonus from a Vermont online sportsbook. Sometimes, you may need to enter the promo or bonus code."
+        },
+        {
+            "@type": "snap:stuff",
+            "alias": "Vermont sportsbook promo codes FAQ",
+            "comment": "Can I get more than one bonus from a Vermont online sportsbook? What sports can these bonuses be used on? Why should I use the promo codes here on The Sporting News? Are these promo codes for regular customers, too?"
+        }
+    ]
+}
+```

@@ -1,0 +1,54 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "harvesting_guidelines_are": "The canes are cut 3–5 cm below the ground level, the dried leaves are stripped off upto top most internode. The harvested canes should be crushed quickly otherwise canes lose weight unless kept moist. In tropical areas quick processing is essential to avoid deterioration of the quality due to activity of Leuconostoc bacteria."
+        },
+        {
+            "@type": "DiseaseTreatements",
+            "disease_name": "Leuconostoc bacteria",
+            "disease_symptoms": "Deterioration of the quality of harvested canes",
+            "disease_control": {
+                "@type": "HerbicideList",
+                "name": "Not specified",
+                "quantity": "Not specified",
+                "stage": "Not specified"
+            }
+        }
+    ]
+}

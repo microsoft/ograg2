@@ -1,0 +1,154 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "The best Black Friday deals you can get for under $25",
+            "author": "Antonio G. Di Benedetto",
+            "published": "2023-11-23T17:58:09+00:00",
+            "summary": "Every Black Friday and Cyber Monday, there’s always a ton of hype about the discounts on big-ticket items — you know, the deals on the OLED TVs, game consoles, and tablets of the world. But it never fails that many of the ultra-cheap items make for some of the most clutch deals, namely because spending very little on a small accessory you end up using all the time can be the most gratifying. This year, throughout the annual shopping weekend, we’re once again keeping an eye out for the best tech deals on those little gadgets and gizmos under $25.",
+            "url": "https://www.theverge.com/23971355/black-friday-2023-tech-deals-under-25-cyber-monday",
+            "has_events": {
+                "@list": []
+            },
+            "followUp": {
+                "@id": "snap:asset"
+            },
+            "derivedFrom": {
+                "@id": "snap:asset"
+            }
+        },
+        {
+            "@type": "EventList",
+            "Event": [
+                {
+                    "eventTitle": "Black Friday Sales",
+                    "eventSummary": "Sales on various tech gadgets and accessories.",
+                    "theme": "technology",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing"
+                    },
+                    "mentions_persons": {
+                        "@list": []
+                    },
+                    "mentions_organizations": {
+                        "@list": []
+                    },
+                    "subEventOf": {
+                        "@id": "snap:event"
+                    },
+                    "notablyAssociatedWith": {
+                        "@id": "snap:event"
+                    }
+                }
+            ]
+        },
+        {
+            "@type": "PersonList",
+            "Person": [
+                {
+                    "name": "Antonio G. Di Benedetto",
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "placeOfBirth": {
+                        "@id": "geo:location"
+                    },
+                    "alias": "xmls:string"
+                }
+            ]
+        },
+        {
+            "@type": "OrganizationList",
+            "Organization": [
+                {
+                    "name": "The Verge",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing"
+                    },
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": {
+                        "@list": []
+                    }
+                }
+            ]
+        }
+    ]
+}

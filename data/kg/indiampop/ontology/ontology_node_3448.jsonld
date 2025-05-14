@@ -1,0 +1,163 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "name": "FORAGE CROPS FODDER CHOLAM",
+            "has_types": {
+                "@id": "cropCult:CropType",
+                "@type": "schema:Thing",
+                "name": "FORAGE CROPS FODDER CHOLAM",
+                "used_for": "Fodder"
+            },
+            "has_growing_zones": {
+                "@id": "cropCult:CropGrowingZones",
+                "@type": "schema:ItemList",
+                "CropGrowingZone": {
+                    "@id": "cropCult:CropGrowingZone",
+                    "@type": "schema:Thing",
+                    "name": "Tropical and Subtropical",
+                    "has_regions": ["South Asia", "Africa"],
+                    "has_seed_recommendations": {
+                        "@id": "cropCult:SeedList",
+                        "@type": "schema:Thing",
+                        "variety_name": ["Variety1", "Variety2"],
+                        "has_early_sowing_time": {
+                            "@id": "cropCult:SowingTime",
+                            "@type": "schema:Thing",
+                            "start_date": "2022-01-01",
+                            "end_date": "2022-02-01"
+                        },
+                        "has_late_sowing_time": {
+                            "@id": "cropCult:SowingTime",
+                            "@type": "schema:Thing",
+                            "start_date": "2022-02-01",
+                            "end_date": "2022-03-01"
+                        },
+                        "has_seeding_rate": {
+                            "@id": "schema:QuantitativeValue",
+                            "@type": "schema:Thing",
+                            "value": "20 kg/ha"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@id": "cropCult:Fertilization",
+                            "@type": "schema:Thing",
+                            "nutrient_name": "Nitrogen",
+                            "quantity": "50 kg/ha",
+                            "stage_of_application": "At sowing"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@id": "cropCult:TemperatureRequirements",
+                "@type": "schema:Thing",
+                "for_germination": "25-30°C",
+                "for_flowering": "20-25°C",
+                "for_grain_filling": "15-20°C",
+                "negative_effect": "Below 10°C and above 35°C"
+            },
+            "has_soil_requirements": {
+                "@id": "cropCult:SoilRequirements",
+                "@type": "schema:Thing",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Sandy",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@id": "cropCult:LandPreparation",
+                "@type": "schema:Thing",
+                "instructions": "Plough the field to a fine tilth and level it.",
+                "with_soil_moisture": "Moist but not waterlogged"
+            },
+            "seed_germination_test_requirements_are": "Seeds should have a germination rate of at least 80%",
+            "has_seed_fungicide_requirements": {
+                "@id": "cropCult:Fungicide",
+                "@type": "schema:Thing",
+                "name": "Thiram",
+                "quantity": "2 g/kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "@id": "cropCult:SeedSpacing",
+                "@type": "schema:Thing",
+                "sowing_time": "Early morning or late evening",
+                "value": "15 cm between rows",
+                "depth": "3-4 cm",
+                "method": "Drilling"
+            },
+            "weed_management_needs_are": {
+                "@id": "cropCult:WeedManagement",
+                "@type": "schema:Thing",
+                "weed_name": "Barnyard grass",
+                "weed_types": ["Annual", "Perennial"],
+                "herbicides": {
+                    "@id": "cropCult:HerbicideList",
+                    "@type": "schema:List",
+                    "name": "Glyphosate",
+                    "quantity": "1.5 l/ha",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@id": "cropCult:IrrigationRequirement",
+                "@type": "schema:Thing",
+                "quantity": "500-600 mm per season",
+                "stage_of_application": "At sowing, flowering and grain filling"
+            },
+            "needs_disease_treatements": {
+                "@id": "cropCult:DiseaseTreatements",
+                "@type": "schema:Thing",
+                "disease_name": "Downy mildew",
+                "disease_symptoms": "Yellow spots on leaves",
+                "disease_control": {
+                    "@id": "cropCult:HerbicideList",
+                    "@type": "schema:List",
+                    "name": "Metalaxyl",
+                    "quantity": "2 g/l of water",
+                    "stage": "At first sign of disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "@id": "cropCult:PestTreatements",
+                "@type": "schema:Thing",
+                "pest_name": "Aphids",
+                "pest_symptoms": "Yellowing and curling of leaves",
+                "pest_control": {
+                    "@id": "cropCult:PesticideList",
+                    "@type": "schema:List",
+                    "name": "Imidacloprid",
+                    "quantity": "1 ml/l of water",
+                    "stage": "At first sign of pests"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when the grains are hard and the straw turns yellow",
+            "storage_guidelines_are": "Store in a cool, dry place away from pests"
+        }
+    ]
+}

@@ -1,0 +1,214 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Blackhawks vs. Penguins live score, updates, highlights from Connor Bedard's NHL debut",
+            "author": "Bryan Murphy",
+            "theme": "sports",
+            "summary": "Connor Bedard's debut did not disappoint on Tuesday, as the Chicago rookie helped the Blackhawks to a 4-2 win over the Penguins on opening night.",
+            "created": "2023-10-10T22:30:03+00:00",
+            "published": "2023-10-10T22:30:03+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event",
+                        "eventTitle": "Blackhawks vs. Penguins Game",
+                        "eventSummary": "The Blackhawks rallied from a 2-0 deficit, scoring four unanswered goals to pick up the victory in Pittsburgh.",
+                        "theme": "NHL",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Pittsburgh"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Connor Bedard",
+                                    "dateOfBirth": "2005-07-09",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "North Vancouver, Canada"
+                                    },
+                                    "alias": "Bedard"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Bryan Rust",
+                                    "dateOfBirth": "1992-05-11",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Nashville, Tennessee, USA"
+                                    },
+                                    "alias": "Rust"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Sidney Crosby",
+                                    "dateOfBirth": "1987-08-07",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Halifax, Nova Scotia, Canada"
+                                    },
+                                    "alias": "Crosby"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Ryan Donato",
+                                    "dateOfBirth": "1996-04-09",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Scituate, Massachusetts, USA"
+                                    },
+                                    "alias": "Donato"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Cole Guttman",
+                                    "dateOfBirth": "1999-01-14",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Los Angeles, California, USA"
+                                    },
+                                    "alias": "Guttman"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Jason Dickinson",
+                                    "dateOfBirth": "1995-01-04",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Fort Vancouver, Washington, USA"
+                                    },
+                                    "alias": "Dickinson"
+                                },
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Nick Foligno",
+                                    "dateOfBirth": "1987-10-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Buffalo, New York, USA"
+                                    },
+                                    "alias": "Foligno"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Chicago Blackhawks",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Chicago, Illinois, USA"
+                                    },
+                                    "alias": "Blackhawks"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Pittsburgh Penguins",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Pittsburgh, Pennsylvania, USA"
+                                    },
+                                    "alias": "Penguins"
+                                },
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Sporting News",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "USA"
+                                    },
+                                    "alias": "Sporting News"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

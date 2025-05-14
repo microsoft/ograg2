@@ -1,0 +1,141 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "CASTOR (Ricinus communis)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "OILSEEDS",
+                "used_for": "SEED PRODUCTION"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Unknown",
+                    "has_regions": [],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": [],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Unknown",
+                            "end_date": "Unknown"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Unknown",
+                            "end_date": "Unknown"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "Unknown"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Unknown",
+                            "quantity": "Unknown",
+                            "stage_of_application": "Unknown"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Unknown",
+                "for_flowering": "Unknown",
+                "for_grain_filling": "Unknown",
+                "negative_effect": "Unknown"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Unknown",
+                "avoid_soil_type": "Unknown",
+                "for_water": "Unknown",
+                "for_nutrients": "Unknown"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Unknown",
+                "with_soil_moisture": "Unknown"
+            },
+            "seed_germination_test_requirements_are": "Unknown",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Unknown",
+                "quantity": "Unknown"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Unknown",
+                "value": "Unknown",
+                "depth": "Unknown",
+                "method": "Unknown"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Unknown",
+                "weed_types": [],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": [],
+                    "quantity": [],
+                    "stage": []
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Unknown",
+                "stage_of_application": "Unknown"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Unknown",
+                "disease_symptoms": "Unknown",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": [],
+                    "quantity": [],
+                    "stage": []
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Unknown",
+                "pest_symptoms": "Unknown",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": [],
+                    "quantity": [],
+                    "stage": []
+                }
+            },
+            "harvesting_guidelines_are": "Drying",
+            "storage_guidelines_are": "Seed treatment"
+        }
+    ]
+}

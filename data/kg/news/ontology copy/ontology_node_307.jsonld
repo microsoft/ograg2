@@ -1,0 +1,97 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Bill Bender",
+            "published": "2023-11-11T21:32:44+00:00",
+            "title": "Michigan didn't need Jim Harbaugh against Penn State, but Ohio State is a different game",
+            "summary": "Did Michigan really need Jim Harbaugh on Saturday? Perhaps the result provides the short-term answer. No. 3 Michigan beat No. 10 Penn State 24-15 at Beaver Stadium on Saturday. The Wolverines threw one pass in the second half – and that didn't even technically count – in a risk-averse game plan under acting coach Sherrone Moore. The defense smothered the Nittany Lions, and that will lead to more buildup ahead of the showdown with No. 1 Ohio State on Nov. 25. Then Moore let it all there in the Fox postgame interview with Jenny Taft. Even if the answer is no, Harbaugh was ever-present. \"I want to thank the Lord and I want to thank Coach Harbaugh,\" Moore said. \"I f------ love you man. I love the s--- out of you, man. I did this for you, for this university, the president, our AD. We've got the best players, best university, and the best alumni in the country. I love these guys. These f------ guys right here. These guys right here. These guys did it.\" MORE: Sherrone Moore gives tearful interview after Penn State win Whoa, let's add the FCC standards to the Wolverines' list of potential violations. If Michigan (10-0, 7-0 Big Ten) was not the college football heel heading into the final two weeks of the regular season, then they are public enemy No. 1 now. It might be “Michigan vs. Everybody,” and everybody has the same question. Will Harbaugh be on the field before the end of the regular season? The Big Ten made a Friday ruling that will prohibit Harbaugh from being on the field for the final three regular-season games as a result of the in-person scouting and sign-stealing scandal that led to the resignation of staffer Conor Stallions. ESPN reported there will be a temporary restraining order hearing on Nov. 17 that will answer that question. On the field, Michigan answered the question about its College Football Playoff. Sort of. The Wolverines proved they could beat Penn State (8-2, 5-2) in a 20-yard box. Neither team completed a pass of 20 yards or more. Michigan trailed 3-0 after the first quarter. The Wolverines had eight carries for 10 yards, and Penn State's Abdul Carter set the tone with a jarring hit on Blake Corum that nearly resulted in a fumble. Michigan took control with the running game. Donovan Edwards ripped off a 22-yard run, and Corum added a 44-yard run to set up a 3-yard TD run. Edwards added a 22-yard TD run on the next drive. The same “Lightning and Lightning” tandem that burned the Nittany Lions last year staked Michigan to a 14-9 halftime lead. MORE: Michigan got off easy with Harbaugh suspension Then, the Wolverines took the ball out of quarterback J.J. McCarthy's hand. The Wolverines had 30 rushing attempts and zero passing attempts save a pass to tight end Colston Loveland that drew a pass interference call. McCarthy finished 7 of 8 passing for 60 yards in what has to be the most conservative play-calling victory in a top-10 showdown in recent memory. Was this old-school Big Ten football or Big Ten West football in disguise? Michigan's defense clamped on Penn State quarterback Drew Allar (10 of 22, 70 yards, TD), and the Nittany Lions had one play of more than 20 yards. Corum closed the drama with a 30-yard TD. The same-old questions about Nittany Lions coach James Franklin in big games resurfaced, but those are back-page headlines in the Big Ten East race. The quirky tiebreaker involving Big Ten West opponents? That's out the door. The winner-take-all showdown between Ohio State and Michigan? There are a full two weeks of anticipation for that now. Harbaugh reportedly watched the game from the team hotel, and now the leading piece of drama returns. Moore's postgame emotion was a headline, but there is a reality that set in through a brutal watch of a second half. McCarthy is a leader. Corum (26–145, 2 TDs) and Edwards (10-52, TD) can grind on anybody. The defense now has allowed just 7.5 points per game. But the Wolverines will not be able to beat Ohio State the same way they beat Penn State. That 20-yard box will stretch across the entire country, and it requires a coach ready to make those legacy-defining decisions. The Buckeyes have Heisman Trophy candidate Marvin Harrison Jr., and he was the separator when Ohio State beat Penn State 20-12 on Oct. 21. The Buckeyes have a top-five defense, too, and all of the back-and-forth rage between those rivals will reach a 1970s pitch – 1973 for those who know – as they barrel toward another 11-0 vs. 11-0 showdown at the Big House. Who is the good guy? Who is the villain? Ohio State and Michigan locked in their answers a long time ago. More than 17 million people watched last year's matchup – a 45-23 Michigan victory where Stalions' involvement continues to be scrutinized through a double-barrel Big Ten and NCAA investigation. Big Ten commissioner Tony Petitti's ruling sent a shockwave through the conference Friday, mainly because the third game means Harbaugh will not be on the sideline for The Game. Early forecasts say 20 million will tune in for The Game this year. Will Harbaugh really not be there? That is for the courts to decide, but Moore’s comments suggest Harbaugh, president Santa Ono and athletic director Warde Manuel are on a united front; consequences be damned in 2024 and beyond. In the short term? The College Football Playoff committee could slide Michigan up to No. 2 now, and the debate with the Buckeyes and No. 1 Georgia is going to perk up more than ever. They are the three best teams in the country, but only one has uncertainty with the head coach. Whether they admit it or not, Michigan still needs Harbaugh for those moments, especially in two weeks. The reality is he might not be present for that one either.",
+            "associatedAsset": {
+                "asset": "https://www.sportingnews.com/us/ncaa-football/news/michigan-jim-harbaugh-penn-state-ohio-state-different-game/91a7f796bb8ff2fdc9c27698"
+            }
+        }
+    ]
+}
+```

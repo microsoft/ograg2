@@ -1,0 +1,142 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "byline": "Sarah Perez",
+      "published": "2023-12-12T16:47:19+00:00",
+      "title": "Temu was the most-downloaded iPhone app in the U.S. in 2023",
+      "summary": "Temu, the Chinese e-commerce company whose app is now attracting longer engagement times than Amazon, is Apple’s most downloaded free app in the U.S. for 2023. The Cupertino-based tech giant today released an App Store feature that showcases the top iPhone apps of the year, free and paid, as measured by app installs — its proxy for overall popularity. This year, apps from Chinese-based companies have taken over spots previously held by U.S. tech giants like Meta and Google, as CapCut and TikTok, which hail from Beijing-based ByteDance, came in at No. 3 and No. 5, respectively.",
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "image": "https://techcrunch.com/2023/12/12/temu-was-the-most-downloaded-iphone-app-in-the-u-s-in-2023/"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "TechCrunch"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Top Free iPhone Apps",
+      "eventSummary": "Temu: Shop Like a Billionaire, CapCut – Video Editor, Max: Stream HBO, TV, & Movies, Threads, an Instagram app, TikTok, Instagram, Google, YouTube: Watch, Listen, Stream, WhatsApp Messenger, Gmail – Email by Google"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Top Paid iPhone Apps",
+      "eventSummary": "Shadowrocket, HotSchedules, Procreate Pocket, The Wonder Weeks, 75 Hard, AutoSleep Track Sleep on Watch, Goblin Tools, TonalEnergy Tuner & Metronome, SkyView, AnkiMobile Flashcards"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Top Free iPhone Games",
+      "eventSummary": "MONOPOLY GO!, Roblox, Royal Match, Subway Surfers, Gardenscapes, Call of Duty: Mobile, Block Blast!, Makeover Studio: Makeup Games, Parking Jam 3D, Survivor!.io"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Top Paid iPhone Games",
+      "eventSummary": "Minecraft, Heads Up!, Geometry Dash, Bloons TD 6, MONOPOLY, Papa’s Freezeria To Go!, Plague Inc., Red’s First Flight, Five Nights at Freddy’s, Grand Theft Auto: San Andreas"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Top Free iPad Apps",
+      "eventSummary": "Max: Stream HBO, TV, & Movies, YouTube: Watch, Listen, Stream, Netflix, Google Chrome, Disney+, Goodnotes 6, TikTok, Amazon Prime Video, Temu: Shop Like a Billionaire, Peacock TV: Stream TV & Movies"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Top Paid iPad Apps",
+      "eventSummary": "Procreate, Shadowrocket, Nomad Sculpt, forScore, Toca Life: Hospital, Bluebeam Revu for iPad, Teach Your Monster to Read, AnkiMobile Flashcards, Endless Paper, ToonSquid"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Top Free iPad Games",
+      "eventSummary": "Roblox, Magic Tiles 3: Piano Game, Subway Surfers, Royal Match, Among Us!, Duet Cats: Cute Cat Games, Stumble Guys, MONOPOLY GO!, Bridge Race, Gardenscapes"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Top Paid iPad Games",
+      "eventSummary": "Minecraft, Geometry Dash, Bloons TD 6, Stardew Valley, MONOPOLY, Five Nights at Freddy’s, Red’s First Flight, Poppy Playtime Chapter 1, Plague Inc., Garten of Banban 2"
+    }
+  ]
+}
+```

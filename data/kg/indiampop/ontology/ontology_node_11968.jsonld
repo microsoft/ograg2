@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "WeedManagement",
+            "weed_name": "Not specified",
+            "weed_types": ["Not specified"],
+            "herbicides": {
+                "@type": "HerbicideList",
+                "name": ["Pendimethalin", "quizalofop ethyl", "imazethapyr"],
+                "quantity": ["3.3 litres/ha under irrigated condition 2.5 litres/ha under rainfed condition", "50 g ai/ha-1", "50 g ai ha-1"],
+                "stage": ["3 days after sowing", "15 – 20 DAS", "15 – 20 DAS"]
+            }
+        }
+    ]
+}

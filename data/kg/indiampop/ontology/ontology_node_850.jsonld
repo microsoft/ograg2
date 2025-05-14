@@ -1,0 +1,54 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Tapioca",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Manihot esculenta Crantz.",
+                "used_for": "Euphorbiaceae"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the field 4-5 times to get a fine tilth. The soil depth should be atleast 30 cm. Form ridges and furrows at the following spacings: Irrigated: 75 x 75 cm (17,777 setts) and 90 x 90 cm (12,345 setts) Rainfed: 60 x 60 cm (27,777 setts) Under Kanyakumari conditions: 90 x 90 cm (12,345 setts)",
+                "with_soil_moisture": "First irrigation is given at the time of planting. Life irrigation is given on the 3rd day followed by once in 7 – 10 days upto 3rd month and once in 20 – 30 days upto 8th month."
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "CO 2 vegetable cowpea",
+                "weed_types": ["CO 2 vegetable cowpea"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "CO 2 vegetable cowpea",
+                    "quantity": "50% reduction in application of FYM (12.5 t/ha) and P (30 kg/ha)",
+                    "stage": "Raise during March and harvest green pods before planting cassava during June –July. After green pod harvest, incorporate the cowpea haulms into the field by disc ploughing."
+                }
+            }
+        }
+    ]
+}

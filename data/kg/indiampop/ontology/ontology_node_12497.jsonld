@@ -1,0 +1,55 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "SeedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Rose",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "The beds should be dug deep during summer and exposed to sun. For planting individually in pits the size should be 60cm x 60cm x 60cm.",
+                "with_soil_moisture": "During planting, 4-5 kg of well rotted cowdung manure and one handful bonemeal or sterameal and 3-5 g chlorpyriphos dust per pit should be applied."
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "SeedSpacing",
+                "sowing_time": "Ideal time for planting is September-October and can be continued upto December.",
+                "value": "Roses are planted at a spacing of 60cm x 60 cm in the beds of size 6.0 m x 1.2 m. prepared at 0.75 to 1.0m apart.",
+                "depth": "60cm",
+                "method": "Planting individually in pits"
+            }
+        }
+    ]
+}

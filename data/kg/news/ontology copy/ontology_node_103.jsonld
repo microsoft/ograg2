@@ -1,0 +1,257 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "M3GAN",
+      "summary": "A refreshingly goofy spin on AI horror movies.",
+      "byline": "TR",
+      "associatedAsset": {
+        "@type": "snap:videoAsset",
+        "video": "schema:movingImage"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "When Evil Lurks",
+      "summary": "A gory possession movie with a focus on human drama.",
+      "byline": "TR",
+      "associatedAsset": {
+        "@type": "snap:videoAsset",
+        "video": "schema:movingImage"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Polite Society",
+      "summary": "A wedding heist to rescue a sister.",
+      "byline": "ZM",
+      "associatedAsset": {
+        "@type": "snap:videoAsset",
+        "video": "schema:movingImage"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Talk to Me",
+      "summary": "Possession as a party drug in a stylish horror movie.",
+      "byline": "AG",
+      "associatedAsset": {
+        "@type": "snap:videoAsset",
+        "video": "schema:movingImage"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Skinamarink",
+      "summary": "A peculiar horror film with an unsettling scenario.",
+      "byline": "TE",
+      "associatedAsset": {
+        "@type": "snap:videoAsset",
+        "video": "schema:movingImage"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Are You There God? It’s Me, Margaret",
+      "summary": "A coming-of-age movie based on Judy Blume’s novel.",
+      "byline": "PR",
+      "associatedAsset": {
+        "@type": "snap:videoAsset",
+        "video": "schema:movingImage"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Teenage Mutant Ninja Turtles: Mutant Mayhem",
+      "summary": "A visually impressive animated film with a modern reboot.",
+      "byline": "TE",
+      "associatedAsset": {
+        "@type": "snap:videoAsset",
+        "video": "schema:movingImage"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Dungeons & Dragons: Honor Among Thieves",
+      "summary": "A romp for fantasy fans with a bard-and-barbarian relationship.",
+      "byline": "TR",
+      "associatedAsset": {
+        "@type": "snap:videoAsset",
+        "video": "schema:movingImage"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Napoleon",
+      "summary": "A biopic of Napoleon Bonaparte with humor and scale.",
+      "byline": "AG",
+      "associatedAsset": {
+        "@type": "snap:videoAsset",
+        "video": "schema:movingImage"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Jawan",
+      "summary": "A genre-bending, crowd-pleasing spectacle with Shah Rukh Khan.",
+      "byline": "PV",
+      "associatedAsset": {
+        "@type": "snap:videoAsset",
+        "video": "schema:movingImage"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Saltburn",
+      "summary": "A story about toxic obsession with a rich family.",
+      "byline": "TR",
+      "associatedAsset": {
+        "@type": "snap:videoAsset",
+        "video": "schema:movingImage"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Dream Scenario",
+      "summary": "A black comedy about viral fame with Nicolas Cage.",
+      "byline": "JR",
+      "associatedAsset": {
+        "@type": "snap:videoAsset",
+        "video": "schema:movingImage"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "The Zone of Interest",
+      "summary": "A Holocaust film set near Auschwitz with a unique perspective.",
+      "byline": "AG",
+      "associatedAsset": {
+        "@type": "snap:videoAsset",
+        "video": "schema:movingImage"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Priscilla",
+      "summary": "A biopic of Priscilla Presley with a dreamy, uneasy study.",
+      "byline": "OW",
+      "associatedAsset": {
+        "@type": "snap:videoAsset",
+        "video": "schema:movingImage"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Anatomy of a Fall",
+      "summary": "A procedural film with a deep and lingering payoff.",
+      "byline": "OW",
+      "associatedAsset": {
+        "@type": "snap:videoAsset",
+        "video": "schema:movingImage"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Knock at the Cabin",
+      "summary": "A film about religious terror and despair.",
+      "byline": "TE",
+      "associatedAsset": {
+        "@type": "snap:videoAsset",
+        "video": "schema:movingImage"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Mission: Impossible — Dead Reckoning Part One",
+      "summary": "A confident and artful action movie with Tom Cruise.",
+      "byline": "OW",
+      "associatedAsset": {
+        "@type": "snap:videoAsset",
+        "video": "schema:movingImage"
+      }
+    }
+  ]
+}
+```

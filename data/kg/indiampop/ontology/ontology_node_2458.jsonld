@@ -1,0 +1,121 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "LITCHI (Litchi chinensis Sqnn.)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Litchi chinensis Sqnn.",
+                "used_for": "Fruit Production"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical and Subtropical",
+                    "has_regions": ["Asia", "Africa", "South America"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Mauritius", "Brewster", "Sweet Cliff"]
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "20-25°C",
+                "for_flowering": "15-20°C",
+                "for_grain_filling": "25-30°C",
+                "negative_effect": "Below 10°C and above 35°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Well-drained loamy to sandy loam",
+                "avoid_soil_type": "Heavy clay and waterlogged soils",
+                "for_water": "Moderate water requirement",
+                "for_nutrients": "High nutrient requirement"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Ploughing and harrowing to prepare a fine tilth",
+                "with_soil_moisture": "Moderate soil moisture"
+            },
+            "seed_germination_test_requirements_are": "Seeds should germinate within 2-3 weeks",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Mancozeb",
+                "quantity": "2g per kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Spring",
+                "value": "10m x 10m",
+                "depth": "2-3 cm",
+                "method": "Direct sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Grass weeds",
+                "weed_types": ["Annual", "Perennial"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1.5-2.0 kg/ha",
+                    "stage": "Post-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "800-1000 mm per year",
+                "stage_of_application": "Throughout the growing season"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Litchi Downy Blight",
+                "disease_symptoms": "Yellowing and wilting of leaves",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Mancozeb",
+                    "quantity": "2g per litre of water",
+                    "stage": "At the onset of disease symptoms"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Litchi Fruit Borer",
+                "pest_symptoms": "Holes in fruits and frass",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Carbaryl",
+                    "quantity": "1.5-2.0 kg/ha",
+                    "stage": "At the onset of pest symptoms"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when fruits turn red and are fully mature",
+            "storage_guidelines_are": "Store at 5-10°C with high humidity"
+        }
+    ]
+}

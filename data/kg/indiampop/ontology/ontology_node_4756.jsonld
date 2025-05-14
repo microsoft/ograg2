@@ -1,0 +1,62 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "has_types": "Winter Wheat",
+            "has_growing_zones": "North America",
+            "has_temperature_requirements": "Cold",
+            "has_soil_requirements": "Loamy",
+            "has_land_preperation_requirements": "Ploughing",
+            "seed_germination_test_requirements_are": "Moisture and Warmth",
+            "has_seed_fungicide_requirements": "Fungicide X",
+            "needs_seed_sowing_spacing": "15 cm",
+            "weed_management_needs_are": "Herbicide Y",
+            "needs_irrigation_schedule": "Once a week",
+            "needs_disease_treatements": "Fungicide Z",
+            "needs_pest_treatements": "Pesticide A",
+            "harvesting_guidelines_are": "Harvest in dry conditions",
+            "storage_guidelines_are":"Store in a cool, dry place"
+        },
+        {
+            "@type": "PesticideList",
+            "name": "Pesticide A",
+            "quantity": "1 ml or gram per litre of water",
+            "stage": "Spraying"
+        }
+    ]
+}

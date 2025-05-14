@@ -1,0 +1,131 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "byline": "Emily Dozier",
+            "published": "2023-10-28T22:08:03+00:00",
+            "title": "Colorado vs. UCLA live score, updates, highlights from Week 9 college football game",
+            "summary": "UCLA topped Colorado 28-16 at the Rose Bowl in Deion Sanders and Chip Kelly's only Pac-12 matchup. The Bruins improved to 6-2, clinching bowl eligibility and keeping them alive in the Pac-12 race with a 3-2 league mark. In his third start of the season, Bruins' QB Ethan Garbers passed for 269 yards and two touchdowns. He and Collin Schlee combined for two interceptions in UCLA's first-half turnover-fest. It had four, including two fumbles by Carson Steele. Luckily for Kelly, his team fixed the issue and did not have any turnovers in the second-half. Colorado, on the other hand, could not figure out how to protect QB Shedeur Sanders, who tossed for 217 yards and one touchdown. He was sacked seven times, tying a season-high. It didn't help that the Colorado running game was absent in the second half. Sanders handed the ball off only four times through the final two quarters, with the first one coming halfway into the final frame; the Buffaloes scored their only touchdown on that drive. They finished with 38 rushing yards, the lowest in a game this season. Safety Shilo Sanders missed much of the game after being ejected late in the first half for targeting, but Travis Hunter shined in his second game back on the field after injury. He recorded the game's two picks. Colorado's quest for bowl eligibility continues after dropping to 4-4. Two of the Buffs' final four opponents -- Oregon State and Utah, are ranked.",
+            "associatedAsset": {
+                "@type": "TextAsset",
+                "image": "https://www.sportingnews.com/us/ncaa-football/news/colorado-ucla-live-score-highlights-college-football/01a78f0b290d93746e3e17bb"
+            }
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "Colorado vs. UCLA Week 9 college football game",
+            "eventSummary": "UCLA topped Colorado 28-16 at the Rose Bowl in Deion Sanders and Chip Kelly's only Pac-12 matchup. The Bruins improved to 6-2, clinching bowl eligibility and keeping them alive in the Pac-12 race with a 3-2 league mark."
+        },
+        {
+            "@type": "Organization",
+            "name": "Sporting News"
+        },
+        {
+            "@type": "Person",
+            "name": "Ethan Garbers"
+        },
+        {
+            "@type": "Person",
+            "name": "Collin Schlee"
+        },
+        {
+            "@type": "Person",
+            "name": "Carson Steele"
+        },
+        {
+            "@type": "Person",
+            "name": "Shedeur Sanders"
+        },
+        {
+            "@type": "Person",
+            "name": "Shilo Sanders"
+        },
+        {
+            "@type": "Person",
+            "name": "Travis Hunter"
+        }
+    ]
+}
+```

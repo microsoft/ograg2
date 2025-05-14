@@ -1,0 +1,142 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "WEST INDIAN CHERRY212",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Cherry",
+                "used_for": "Fruit"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical",
+                    "has_regions": ["West Indies"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["WEST INDIAN CHERRY212"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-01-01",
+                            "end_date": "2022-02-01"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-02-01",
+                            "end_date": "2022-03-01"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "100",
+                            "unitText": "seeds per square meter"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Nitrogen",
+                            "quantity": "50kg per hectare",
+                            "stage_of_application": "Before sowing"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "20-25°C",
+                "for_flowering": "25-30°C",
+                "for_grain_filling": "20-25°C",
+                "negative_effect": "Below 15°C and above 35°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Clayey",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the land to a fine tilth. Add well-rotted farmyard manure.",
+                "with_soil_moisture": "Moist but not waterlogged"
+            },
+            "seed_germination_test_requirements_are": "Seeds should be viable and free from disease.",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Mancozeb",
+                "quantity": "2g per kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Early morning or late evening",
+                "value": "15cm",
+                "depth": "2cm",
+                "method": "Direct sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Grass weeds",
+                "weed_types": ["Barnyard grass", "Foxtail"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1.5L per hectare",
+                    "stage": "Before sowing"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "1 inch per week",
+                "stage_of_application": "Throughout the growing season"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Cherry leaf spot",
+                "disease_symptoms": "Spots on leaves, defoliation",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Chlorothalonil",
+                    "quantity": "2L per hectare",
+                    "stage": "At the first sign of disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Cherry fruit fly",
+                "pest_symptoms": "Larvae in fruit, fruit drop",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Spinosad",
+                    "quantity": "1L per hectare",
+                    "stage": "At the first sign of pests"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when fruits are fully ripe and dark red in color.",
+            "storage_guidelines_are": "Store at 0-2°C with high humidity."
+        }
+    ]
+}

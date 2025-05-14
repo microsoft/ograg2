@@ -1,0 +1,59 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Pineapple",
+            "has_land_preperation_requirements": {
+                "instructions": "Removal of suckers, slips or crown"
+            },
+            "has_growing_zones": {
+                "CropGrowingZone": {
+                    "name": "Tropical",
+                    "has_seed_recommendations": {
+                        "variety_name": "Pineapple",
+                        "has_early_sowing_time": {
+                            "start_date": "January",
+                            "end_date": "December"
+                        },
+                        "has_seeding_rate": {
+                            "value": "45",
+                            "unitText": "leaves per plant"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "for_germination": "Warm",
+                "for_flowering": "Warm",
+                "for_grain_filling": "Warm",
+                "negative_effect": "Cold"
+            },
+            "harvesting_guidelines_are": "It takes about 10- 12 months (1 year) for flowering and about 3-4 months for maturity and harvesting from the date of flowering."
+        }
+    ]
+}

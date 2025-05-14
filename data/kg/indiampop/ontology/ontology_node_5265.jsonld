@@ -1,0 +1,48 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "SYSTEM OF RICE INTENSIFICATION ( SRI )",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "In SRI method, utmost care is taken in preparation of nursery beds, as 10-12 days old seedlings (2 leaf stage) are transplanted. Nursery may be raised near the main field to overcome the problems of transportation and reduce the time lag between uprooting and planting. Nursery is grown on raised beds of 15 cm height. The beds should be 1.5 m wide and of convenient length. The bed is covered with a thick mat of powdered FYM to facilitate easy penetration of roots, uprooting of seedlings and their separation for planting. A channel is made around the bed for letting in and draining out of water. The bed is made secure on all sides with wooden planks or bamboos to prevent the wet soil dropping down.",
+                "with_soil_moisture": "The bed is covered with a thick mat of powdered FYM to facilitate easy penetration of roots, uprooting of seedlings and their separation for planting."
+            },
+            "harvesting_guidelines_are": "3.9. Harvesting",
+            "storage_guidelines_are": "3.3. Nursery raising"
+        }
+    ]
+}

@@ -1,0 +1,134 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Nicole Clark",
+            "published": "2023-12-24T15:00:00+00:00",
+            "title": "6 games to play first on your new Nintendo Switch",
+            "summary": "Many games are huge. Others are endless. Some are so exciting that they swallow our news feeds whole. That’s where Polygon’s What to Play comes in: We curate the best, most innovative, and most intriguing games on every platform, so you can spend less time searching, and more time playing.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "title": "The best classic Nintendo Switch games to play first",
+                "summary": "Nintendo is home to some of the most iconic gaming franchises, and a great place to start for any first time Switch owner is with these modern-day Zelda, Mario, and Animal Crossing games."
+            },
+            "derivedFrom": {
+                "@type": "snap:textAsset",
+                "title": "Acclaimed indie games perfect for the Switch’s portability",
+                "summary": "With so many celebrated indie games, it can be hard to know which platform is the best to play them on. Here are three of our absolute favorites for the Switch."
+            }
+        },
+        {
+            "@type": "snap:textAsset",
+            "title": "The Legend of Zelda: Breath of the Wild",
+            "summary": "There are two standout Zelda games for the Switch that have gained the status of modern classic: Breath of the Wild and the sequel that came out this year, The Legend of Zelda: Tears of the Kingdom."
+        },
+        {
+            "@type": "snap:textAsset",
+            "title": "Animal Crossing: New Horizons",
+            "summary": "Animal Crossing games have long been loved for their chill farming sim vibes and adorable villagers, but Animal Crossing: New Horizons perfected the genre."
+        },
+        {
+            "@type": "snap:textAsset",
+            "title": "Super Mario Odyssey",
+            "summary": "In a sea of truly excellent Mario games, Super Mario Odyssey stands out as the choice for the Switch."
+        },
+        {
+            "@type": "snap:textAsset",
+            "title": "Hades",
+            "summary": "In Hades, you play as Zagreus, prince of the underworld, fighting your way out of hell and onto the surface in this truly excellent roguelite."
+        },
+        {
+            "@type": "snap:textAsset",
+            "title": "Stardew Valley",
+            "summary": "Solo developer and composer Eric Barone created both a game and a phenomenon with this one, which is inspired by the Harvest Moon series."
+        },
+        {
+            "@type": "snap:textAsset",
+            "title": "Hollow Knight",
+            "summary": "You’re a lonely knight, wandering through the crumbling halls of an enormous and wending kingdom — home to a defunct civilization of bugs — with only a nail as a weapon."
+        }
+    ]
+}
+```

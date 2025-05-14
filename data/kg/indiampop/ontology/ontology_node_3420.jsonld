@@ -1,0 +1,39 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Interculture": {
+            "@id": "cropCult:Interculture",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "staking_information": "schema:Text",
+                "hoeing_weeding_earthing_information": "schema:Text",
+                "root_injury_information": "schema:Text",
+                "irrigation_requirements": "cropCult:IrrigationRequirement"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "effects_of_lack_of_irrigation": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Interculture",
+            "name": "Tomato",
+            "staking_information": "Tomato produces good quality of fruit under staking. Staking is a must for tall F1 hybrid varieties and all tall growing cultivars.",
+            "hoeing_weeding_earthing_information": "Provide 2 to 3 hoeings, weedings and earthing. Hoeing, weeding and earthing should coincide with top dressing.",
+            "root_injury_information": "Care should be taken to cause less injury to root as it increases incidence of wilting.",
+            "irrigation_requirements": {
+                "@type": "cropCult:IrrigationRequirement",
+                "quantity": "Depending on the varieties, tomato requires 6-8 irrigations.",
+                "effects_of_lack_of_irrigation": "Lack of irrigation produces empty locule and light colour fruits."
+            }
+        }
+    ]
+}

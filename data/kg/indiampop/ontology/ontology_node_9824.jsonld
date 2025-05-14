@@ -1,0 +1,57 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Seed Potato",
+            "has_land_preperation_requirements": {
+                "instructions": "Seed potato kept in cold store should be taken out 15 days before planting and spread on the floor of a well ventilated room in dark condition for proper sprouting."
+            },
+            "has_seed_fungicide_requirements": [
+                {
+                    "@type": "Fungicide",
+                    "name": "Thiourea",
+                    "quantity": "1%"
+                },
+                {
+                    "@type": "Fungicide",
+                    "name": "GA3",
+                    "quantity": "1 ppm"
+                }
+            ],
+            "seed_germination_test_requirements_are": "If seed potato procured from monsoon harvest of Shimla or any other place then those tubers are to be treated with 1% thiourea + 1 ppm GA3 for half an hour and then allowed for sprouting. Thiourea and GA3 helps in breaking dormancy."
+        }
+    ]
+}

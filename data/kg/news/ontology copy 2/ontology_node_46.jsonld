@@ -1,0 +1,255 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Malignant",
+      "author": "Matt Patches",
+      "theme": "Horror",
+      "content": "Strung together with a melodramatic cover of The Pixies’ “Where Is My Mind,” reveling in horror tropes to the point of parody, the final twists of Malignant are some of the most gratifying lunacy of the year, and the acrobatic actor Marina Mazepa brings it all home in a display of gruesome ballet. I won’t explain anything more out of fear of spoilers — just get on the Malignant train. Wan put his dream (nightmare?) on screen for us all to enjoy.",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Malignant Release",
+          "eventSummary": "Release of the movie Malignant.",
+          "theme": "Horror"
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "The Mist",
+      "author": "TE",
+      "theme": "Horror",
+      "content": "Director: Frank Darabont. Cast: Thomas Jane, Marcia Gay Harden, Laurie Holden. Where to watch: Digital rental/purchase. Any fan of Stephen King worth their salt knows that the so-called king of horror has a lot of movie adaptations of his work. Few films have managed to eclipse, let alone successfully adapt, King’s capacity for horror storytelling, with the exception of (a) Stanley Kubrick’s The Shining and (b) Frank Darabont’s The Mist.",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "The Mist Release",
+          "eventSummary": "Release of the movie The Mist.",
+          "theme": "Horror"
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Night of the Living Dead",
+      "author": "PV",
+      "theme": "Horror",
+      "content": "Director: George A. Romero. Cast: Duane Jones, Judith O’Dea, Marilyn Eastman. Where to watch: Max, Peacock, MGM Plus, Paramount Plus, Roku Channel. The movie that launched the modern zombie film in the United States, George A. Romero’s debut feature was written, directed, photographed, and edited by the nascent zombie film master on a shoestring budget, which only adds to the eerie atmosphere and grounded terror.",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Night of the Living Dead Release",
+          "eventSummary": "Release of the movie Night of the Living Dead.",
+          "theme": "Horror"
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Possession",
+      "author": "TE",
+      "theme": "Horror",
+      "content": "Director: Andrzej Żuławski. Cast: Isabelle Adjani, Sam Neill, Heinz Bennent. Where to watch: Shudder, AMC Plus, Metrograph. Outside of the most ardent of cinephile circles, Andrzej Żuławski isn’t a name that inspires enthusiastic recognition in the United States.",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Possession Release",
+          "eventSummary": "Release of the movie Possession.",
+          "theme": "Horror"
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "[REC]",
+      "author": "AG",
+      "theme": "Horror",
+      "content": "Directors: Jaume Balaguero, Paco Plaza. Cast: Manuela Velasco, Ferran Terraza, Martha Carbonell. Where to watch: Prime Video. One of the best and most disturbing found-footage movies ever, [REC] follows a TV reporter and camera person who follow emergency workers into an apartment building, only to discover the dark truth inside.",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "[REC] Release",
+          "eventSummary": "Release of the movie [REC].",
+          "theme": "Horror"
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Sputnik",
+      "author": "TE",
+      "theme": "Horror",
+      "content": "Director: Egor Abramenko. Cast: Oksana Akinshina, Fedor Bondarchuk, Pyotr Fyodorov. Where to watch: Hulu. If you’re hungry for a great piece of contemporary Russian sci-fi horror, then Egor Abramenko’s 2020 directorial debut is just the film you’re looking for.",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Sputnik Release",
+          "eventSummary": "Release of the movie Sputnik.",
+          "theme": "Horror"
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Suspiria",
+      "author": "AG",
+      "theme": "Horror",
+      "content": "Director: Dario Argento. Cast: Jessica Harper, Stefania Casini, Flavio Bucci. Where to watch: Tubi, Kanopy. One of the best-looking movies of all time with one of the best soundtracks of all time.",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Suspiria Release",
+          "eventSummary": "Release of the movie Suspiria.",
+          "theme": "Horror"
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "The Texas Chain Saw Massacre",
+      "author": "PV",
+      "theme": "Horror",
+      "content": "Director: Tobe Hooper. Cast: Marilyn Burns, Gunnar Hansen, Allen Danziger. Where to watch: Peacock, Shudder, AMC Plus, Tubi, Freevee. Another shoestring production gone huge, Tobe Hooper’s 1974 masterpiece made over $30 million at the box office on a budget of around $140,000.",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "The Texas Chain Saw Massacre Release",
+          "eventSummary": "Release of the movie The Texas Chain Saw Massacre.",
+          "theme": "Horror"
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "The Thing",
+      "author": "AG",
+      "theme": "Horror",
+      "content": "Director: John Carpenter. Cast: Kurt Russell, Wilford Brimley, Keith David. Where to watch: Peacock. John Carpenter’s postmodern creature feature takes the idea of alien monsters and makes them simultaneously more recognizable and more gross and unworldly than in any other movie in history.",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "The Thing Release",
+          "eventSummary": "Release of the movie The Thing.",
+          "theme": "Horror"
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "The Unfriended movies",
+      "author": "PV",
+      "theme": "Horror",
+      "content": "Director: Levan “Leo” Gabriadze (Unfriended); Stephen Susco (Unfriended: Dark Web). Cast: Shelley Hennig, Moses Storm, Renee Olstead (Unfriended); Colin Woodell, Rebecca Rittenhouse, Betty Gabriel (Unfriended: Dark Web). Where to watch: Criterion Channel (Unfriended); Digital rental/purchase (Both movies).",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Unfriended Release",
+          "eventSummary": "Release of the movie Unfriended.",
+          "theme": "Horror"
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Unfriended: Dark Web Release",
+          "eventSummary": "Release of the movie Unfriended: Dark Web.",
+          "theme": "Horror"
+        }
+      ]
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Us",
+      "author": "AG",
+      "theme": "Horror",
+      "content": "Director: Jordan Peele. Cast: Lupita Nyong’o, Winston Duke, Elisabeth Moss. Where to watch: Netflix. Jordan Peele’s already a horror master just three movies into his career, but Us probably still doesn’t have the reputation it deserves.",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Us Release",
+          "eventSummary": "Release of the movie Us.",
+          "theme": "Horror"
+        }
+      ]
+    }
+  ]
+}

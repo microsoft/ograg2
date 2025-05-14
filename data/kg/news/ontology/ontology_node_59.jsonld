@@ -1,0 +1,182 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Raiders vs. Lions live score, updates, highlights from NFL 'Monday Night Football' game",
+            "author": "Dan Treacy",
+            "published": "2023-10-30T22:20:03+00:00",
+            "summary": "The Lions just needed to get themselves back in the win column after a blowout loss in Baltimore, and they did just that in front of their home fans on Monday night. Detroit rolled to a 26-14 victory over the Raiders in a game that felt much more one-sided than the score indicates. The Lions thoroughly outplayed the Raiders, out-gaining Las Vegas by 329 yards, but critical mistakes by Detroit left points on the board. The offense struggled to turn red zone opportunities into touchdowns in the first half, and two turnovers deep in Raiders territory -- including a pick-six by Jared Goff -- kept Las Vegas in the game in the second half. Nonetheless, the Lions' defense dominated. The Raiders were abysmal on the offensive side of the ball, outside of a second-quarter touchdown drive led by Josh Jacobs. Jimmy Garoppolo completed just 10 passes, badly missing a wide-open Davante Adams on multiple occasions. Adams was seen slamming his helmet down on the sideline in the fourth quarter, and it's tough to blame the star receiver after an 11-yard performance that could have been exponentially better with better quarterback play. The story of the night was Lions rookie Jahmyr Gibbs, who finally broke through after entering the season with sky-high expectations. Tasked with leading the backfield in David Montgomery's absence, Gibbs exploded for 189 scrimmage yards and a touchdown in the win. It was the first 100-yard rushing performance of his career. Meanwhile, Amon-Ra St. Brown notched his third consecutive 100-yard game despite entering Monday as questionable with an illness. The Lions enter their bye in sole possession of the No. 2 seed in the NFC, while the Raiders drop their second consecutive game against an NFC North opponent and have what might be a must-win game against the Giants in Week 9 if they want any chance to linger in the AFC playoff race.",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Raiders vs. Lions Final Score",
+                        "eventSummary": "Lions 26, Raiders 14",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Ford Field, Detroit, Mich."
+                        },
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Dan Treacy"
+                                },
+                                {
+                                    "name": "Jared Goff"
+                                },
+                                {
+                                    "name": "Josh Jacobs"
+                                },
+                                {
+                                    "name": "Jimmy Garoppolo"
+                                },
+                                {
+                                    "name": "Davante Adams"
+                                },
+                                {
+                                    "name": "Jahmyr Gibbs"
+                                },
+                                {
+                                    "name": "Amon-Ra St. Brown"
+                                },
+                                {
+                                    "name": "Kalif Raymond"
+                                },
+                                {
+                                    "name": "Riley Patterson"
+                                },
+                                {
+                                    "name": "Maxx Crosby"
+                                },
+                                {
+                                    "name": "Aidan Hutchinson"
+                                },
+                                {
+                                    "name": "Craig Reynolds"
+                                },
+                                {
+                                    "name": "Alex Anzalone"
+                                },
+                                {
+                                    "name": "Alim McNeill"
+                                },
+                                {
+                                    "name": "Michael Mayer"
+                                },
+                                {
+                                    "name": "Jakobi Meyers"
+                                },
+                                {
+                                    "name": "Jameson Williams"
+                                },
+                                {
+                                    "name": "Marcus Peters"
+                                },
+                                {
+                                    "name": "Julian Okwara"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Sporting News"
+                                },
+                                {
+                                    "name": "NFL"
+                                },
+                                {
+                                    "name": "Detroit Lions"
+                                },
+                                {
+                                    "name": "Las Vegas Raiders"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

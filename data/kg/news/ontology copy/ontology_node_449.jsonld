@@ -1,0 +1,111 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "Isaac Thorn",
+            "published": "2023-12-21T19:35:54+00:00",
+            "title": "Bills vs. Chargers odds, props, predictions: Buffalo faces struggling L.A. with eyes on AFC playoff picture",
+            "summary": "The Buffalo Bills (8-6) will be the first foes Los Angeles Chargers (5-9) interim head coach Giff Smith will face when the teams meet at SoFi Stadium in this Week 16 Saturday matchup. The Bills enter QB Josh Allen’s home state as 12-point favorites with the OVER/UNDER set at 44.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://www.sportingnews.com/us/betting/news/bills-chargers-odds-props-predictions-nfl-saturday-week-16/5d7340266e84d215213e2b1b"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Bills vs. Chargers Week 16 Game",
+            "eventSummary": "Buffalo is in the thick of the AFC wild card hunt, trailing three other 8-6 teams (Bengals, Colts, Texans) by tiebreakers going into this week. They’re also riding high on the heels of their dominant 31-10 Week 15 home win over the Cowboys, led by RB James Cook’s 25-179-1 rushing bonanza.",
+            "theme": {
+                "@type": "snap:intangibleStuff",
+                "comment": "sports"
+            }
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Sporting News"
+        }
+    ]
+}
+```

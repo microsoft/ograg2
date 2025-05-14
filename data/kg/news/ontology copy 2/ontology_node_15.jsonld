@@ -1,0 +1,144 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "schema:Thing",
+      "title": "ChatGPT: Everything you need to know about the AI-powered chatbot",
+      "author": "Alyssa Stringer",
+      "theme": "technology",
+      "content": "ChatGPT, OpenAI’s text-generating AI chatbot, has taken the world by storm...",
+      "published": "2023-09-28T20:03:39+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "schema:Thing",
+          "eventTitle": "OpenAI re-opens ChatGPT Plus subscriptions",
+          "eventSummary": "After pausing ChatGPT Plus subscriptions in November due to a 'surge of usage,' OpenAI CEO Sam Altman announced they have once again enabled sign-ups.",
+          "theme": "technology",
+          "mentions_persons": [
+            {
+              "@id": "snap:person1",
+              "@type": "schema:Thing",
+              "name": "Sam Altman"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event2",
+          "@type": "schema:Thing",
+          "eventTitle": "OpenAI and Axel Springer partner up for a 'real-time' ChatGPT news deal",
+          "eventSummary": "OpenAI has struck a new deal with Berlin-based news publisher Axel Springer...",
+          "theme": "technology",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization1",
+              "@type": "schema:Thing",
+              "name": "Axel Springer"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event3",
+          "@type": "schema:Thing",
+          "eventTitle": "Stanford researchers say ChatGPT didn’t cause an influx in cheating in high schools",
+          "eventSummary": "New research from Stanford University shows that the popularization of chatbots like ChatGPT have not caused an increase in cheating across U.S. high schools.",
+          "theme": "education"
+        },
+        {
+          "@id": "snap:event4",
+          "@type": "schema:Thing",
+          "eventTitle": "Judges in the U.K. are now allowed to use ChatGPT in legal rulings",
+          "eventSummary": "The U.K. Judicial Office issued guidance that permits judges to use ChatGPT...",
+          "theme": "law"
+        },
+        {
+          "@id": "snap:event5",
+          "@type": "schema:Thing",
+          "eventTitle": "Lawmakers in Brazil enact an ordinance written by ChatGPT",
+          "eventSummary": "City lawmakers in Brazil enacted a piece of legislation written entirely by ChatGPT...",
+          "theme": "law"
+        }
+      ]
+    }
+  ]
+}

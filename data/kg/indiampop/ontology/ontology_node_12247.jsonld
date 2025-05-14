@@ -1,0 +1,48 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "DiseaseTreatements",
+            "disease_name": "ciceri",
+            "disease_symptoms": "Soil application with P. fluorescens @ 2.5 kg/ha + 50 kg of well decomposed FYM or sand.",
+            "disease_control": {
+                "@type": "HerbicideList",
+                "name": "P. fluorescens",
+                "quantity": "2.5 kg/ha + 50 kg of well decomposed FYM or sand",
+                "stage": "Soil application"
+            }
+        },
+        {
+            "@type": "DiseaseTreatements",
+            "disease_name": "Root rot: Macrophomina phaseolina (Rhizoctonia bataticola)",
+            "disease_symptoms": "Soil application P. fluorescens or T. viride– 2.5 kg / ha + 50 kg of well decomposed FYM or sand. Spot drenching with Carbendazim @ 1 gm/ litre",
+            "disease_control": {
+                "@type": "HerbicideList",
+                "name": "P. fluorescens or T. viride",
+                "quantity": "2.5 kg / ha + 50 kg of well decomposed FYM or sand",
+                "stage": "Soil application"
+            }
+        }
+    ]
+}

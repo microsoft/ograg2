@@ -1,0 +1,123 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Ben Miller",
+      "published": "2023-12-05T20:30:03+00:00",
+      "title": "Man United vs Chelsea head to head record, all-time results between Premier League giants",
+      "summary": "Manchester United would love a repeat of last season's 4-1 home win over Chelsea when the Blues visit Old Trafford this Wednesday. The pressure on United has grown again following their lacklustre 1-0 defeat at Newcastle on Saturday and another setback against a Chelsea side – who beat Brighton & Hove Albion 3-2 the following day – would worsen the misery around Old Trafford. Two heavyweights of world football, United and Chelsea are two of only seven teams to have won the modern Premier League and are only behind Liverpool when it comes to English success with European trophies. Chelsea's recent record against United is poor, but they have won the Premier League twice since United last did so in the 2012/13 season and could exploit the poor form of Ten Hag's side here. The Sporting News looks at a rivalry that stretches back decades and has been sharply in focus over recent years.",
+      "associatedAsset": {
+        "asset": "https://www.sportingnews.com/us/soccer/news/man-united-vs-chelsea-head-head-record-all-time-results-between-premier-league-giants/b22c86de60fa22873714abc1"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Man United vs Chelsea head-to-head record, all-time results",
+      "eventSummary": "United have the edge in the historical head-to-head, helped by their run of seven wins and only one defeat in the first 12 meetings between the teams, from 1905 to 1913. One of Chelsea's best runs in the fixture came after Roman Abramovich took over the club in 2004. From the start of the following season, United lost five and won one of the nine games between the teams. The game has provided the FA Cup final on three occasions, Chelsea winning the most recent of those through Eden Hazard's penalty in 2018. Hazard scored the only goal of the game to repeat the scoreline when Chelsea beat United in the final after extra time in 2007, avenging a 4-0 defeat to Sir Alex Ferguson's side in 1994. Arguably the most memorable game between the pair is the 2008 UEFA Champions League final, when United goalkeeper Edwin van der Sar saved Nicholas Anelka's penalty to give his side victory following a 1-1 draw after extra time.",
+      "theme": "sports"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Man United vs Chelsea all-time results (all competitions)",
+      "eventSummary": "Games: 193, Man United wins: 82, Chelsea wins: 55, Draws: 56"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Man United vs Chelsea recent results",
+      "eventSummary": "Ahead of their visit to Old Trafford in December 2023, Chelsea’s most recent Premier League away win against Manchester United was a 1-0 win in May 2013. At that point, they had won more Premier League games at Old Trafford (six) than any other side, but they proceeded to draw six and lose four of their next 10 trips to M16. Manchester United are currently 11 Premier League games unbeaten against Chelsea since November 2017. However, the fact that seven of those matches ended all square has helped to make the game the most drawn fixture in Premier League history. Some 19 of those draws have featured goals for both teams. A 1-1 draw in the fixture is the most common exact scoreline in Premier League history, occurring 14 times."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Last 10 matches between Chelsea and Man United",
+      "eventSummary": "Premier League May. 25, 2023 Old Trafford Man United 4-1 Chelsea, Premier League Oct. 22, 2022 Stamford Bridge Chelsea 1-1 Man United, Premier League Apr. 28, 2022 Old Trafford Man United 1-1 Chelsea, Premier League Nov. 28, 2021 Stamford Bridge Chelsea 1-1 Man United, Premier League Feb. 28, 2021 Stamford Bridge Chelsea 0-0 Man United, Premier League Oct. 24, 2020 Old Trafford Man United 0-0 Chelsea, FA Cup Jul. 19, 2020 Wembley Stadium Man United 1-3 Chelsea, Premier League Feb. 17, 2020 Stamford Bridge Chelsea 0-2 Man United, League Cup Oct. 30, 2019 Stamford Bridge Chelsea 1-2 Man United, Premier League Aug. 11, 2019 Old Trafford Man United 4-0 Chelsea"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Do Man United vs Chelsea have a rivalry?",
+      "eventSummary": "Although the matches between United and Chelsea have tended to be closely contested, they do not have as fierce a rivalry as the Red Devils do with the likes of Manchester City and Liverpool, or the west London club holds with neighbours such as Tottenham and Arsenal. Abramovich's takeover gave Chelsea a new level of wealth that temporarily turned them into the dominant force in the English game, briefly supplanting United, who had won the title in eight of the previous 12 Premier League seasons. Under the brash Jose Mourinho – an antagonist to his legendary United counterpart Sir Alex Ferguson – Chelsea embarrassed third-placed United in 2004/05, winning the trophy while finishing 18 points ahead of them and, at one point, forcing Ferguson's players to give them a guard of honour at Old Trafford because of the timing of their title win. United closed the gap to finish eight points behind Chelsea in second the following season, then returned to the top in 2006/07, the deposed champions coming six points short of their total. Two points separated the teams as United won the Premier League again in 2007/08, and there would be one more changing of the guard to come when Chelsea finished first above United in 2009/10 – only for United to finish top a year later. That ultra-tight Champions League final encapsulated how close the rivalry had become in a competitive sense, and both teams have won the Premier League since then, leaving United on a record 20 titles and Chelsea on six. Chelsea have won the Champions League and Europa League twice each, while United have won the former trophy three times and the latter once. United's tally of 12 FA Cup triumphs is eight more than Chelsea have claimed, but both sets of supporters will be hoping their teams can become superpowers again after barren periods by their 21st-century standards. The rise of mega-wealthy Manchester City to become arguably the best team in the world has not helped, and nor has Liverpool's resurgence under Jurgen Klopp. United finished well off the pace albeit in a respectable third at the end of 2022/23, a season in which Chelsea came 12th – their lowest final position for 29 years."
+    }
+  ]
+}
+```

@@ -1,0 +1,88 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Pulses",
+            "has_types": {
+                "@type": "CropType",
+                "name": "IV. Management of Field Operations",
+                "used_for": "4. Fertilizer Application"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Irrigated",
+                "for_nutrients": "ZnSo4"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Prepare enriched FYM at 1:10 ratio of MN mixture & FYM ; mix at friable moisture &incubate for one month in shade"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "25 kg ZnSo4/ha"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Yield Improvement",
+                "disease_symptoms": "Black Gram",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Urea",
+                    "quantity": "1%",
+                    "stage": "Foliar Spray"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "TNAU Micronutrient Mixture",
+                "pest_symptoms": "Enriched FYM",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "TNAU Micronutrient Mixture",
+                    "quantity": "5 kg/ha",
+                    "stage": "Soil Application"
+                }
+            }
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "FN, FP2O5 and K2O",
+            "quantity": "T is the yield target in q ha-1; SN, SP and SK respectively are available N,P and K in kg ha-1 and ON, OP and OK are the quantities of N, P and K supplied through organic manure in kg ha-1",
+            "stage_of_application": "Maintenance Dose"
+        }
+    ]
+}

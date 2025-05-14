@@ -1,0 +1,107 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "Michael Idato",
+            "published": "2023-10-19T18:00:00+00:00",
+            "title": "Inside the $US2.3b venue that will transform the concert industry",
+            "summary": "Breathtaking is fair. Like the ABBA Voyage show in London, it is hard to capture in words. In many ways, it’s a conventional space: there is tiered seating inside, and wallet-bruising bar snacks and merchandise for sale outside. Some parts of the rock concert experience will never change. But when the lights go down, everything changes. Around you, Sphere splits open to reveal a succession of environments, each more stunning than the one before. Though the structure is familiar - the audience seated in rows, the band on a single, central stage - the effect is overwhelming. In U2’s show, we journey through a succession of environments referencing the band’s creative history. For other projects, such as Darren Aronofsky’s Postcard From Earth, the Sphere’s sound system uses “haptics” to make the audience feel the sounds. U2 perform at the Sphere in Las Vegas. Credit: Stufish Entertainment Architects These are the technical specs: an interior 16K x 16K spherical video surface, the highest-resolution LED screen ever made with 268,435,456 pixels, and an exterior covered by 1.2 million hockey-puck-sized LEDs. There are 157,000 ultra-directional speakers – the boffins call it “beam-forming acoustics” – and there are “infrasound haptics”, which means the soundwaves are shaped to create both vibrations and waves of air pressure.",
+            "associatedAsset": {
+                "@type": "snap:imageAsset",
+                "image": "https://www.smh.com.au/culture/music/inside-the-us2-3b-venue-that-will-transform-the-concert-industry-20231012-p5ebvv.html?ref=rss&utm_medium=rss&utm_source=rss_culture"
+            }
+        },
+        {
+            "@type": "snap:organization",
+            "name": "The Sydney Morning Herald"
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "U2 Concert at Sphere",
+            "eventSummary": "U2 perform at the Sphere in Las Vegas. Credit: Stufish Entertainment Architects The screens, for example, are a bespoke assembly of state-of-the-art screens. But behind those screens are “a whole new kind of speaker,” Lipson says. “In a regular show, the speakers are at one end pushing the sound down the room, so it’s louder at the stage end and quieter further away. [But here] because everybody’s sort of getting their own feed, everybody’s getting an equal volume. So hearing the show in there, sonically, may be better than anywhere.”"
+        }
+    ]
+}
+```

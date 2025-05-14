@@ -1,0 +1,360 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "snap:asset",
+            "title": "Pan’s Labyrinth",
+            "author": "Joshua Rivera",
+            "theme": "Film Review",
+            "content": "It is both a refuge from a turbulent time and an attempt to understand it...",
+            "created": "2023-10-23T00:00:00",
+            "published": "2023-10-23T00:00:00",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "snap:event",
+                    "eventTitle": "Eyes Without a Face",
+                    "eventSummary": "A dark horror fable about love, guilt, and madness.",
+                    "theme": "Film",
+                    "hasLocation": {
+                        "@type": "geo:SpatialThing",
+                        "geo:lat": "48.8566",
+                        "geo:long": "2.3522"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person1",
+                            "@type": "snap:person",
+                            "name": "Henri-Georges Clouzot"
+                        },
+                        {
+                            "@id": "snap:person2",
+                            "@type": "snap:person",
+                            "name": "Eugen Schüfftan"
+                        },
+                        {
+                            "@id": "snap:person3",
+                            "@type": "snap:person",
+                            "name": "Maurice-Alexis Jarre"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "snap:organization",
+                            "name": "Criterion Channel"
+                        },
+                        {
+                            "@id": "snap:organization2",
+                            "@type": "snap:organization",
+                            "name": "Max"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event2",
+                    "@type": "snap:event",
+                    "eventTitle": "Overlord",
+                    "eventSummary": "A genre-mashing gem with Nazi zombies.",
+                    "theme": "Film",
+                    "hasLocation": {
+                        "@type": "geo:SpatialThing",
+                        "geo:lat": "51.1657",
+                        "geo:long": "10.4515"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person4",
+                            "@type": "snap:person",
+                            "name": "Julius Avery"
+                        },
+                        {
+                            "@id": "snap:person5",
+                            "@type": "snap:person",
+                            "name": "Jovan Adepo"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization3",
+                            "@type": "snap:organization",
+                            "name": "Paramount Plus"
+                        },
+                        {
+                            "@id": "snap:organization4",
+                            "@type": "snap:organization",
+                            "name": "Pluto TV"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event3",
+                    "@type": "snap:event",
+                    "eventTitle": "Curve",
+                    "eventSummary": "A horror short that inspires visceral physical response.",
+                    "theme": "Film",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person6",
+                            "@type": "snap:person",
+                            "name": "Tim Egan"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization5",
+                            "@type": "snap:organization",
+                            "name": "YouTube"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event4",
+                    "@type": "snap:event",
+                    "eventTitle": "The Texas Chainsaw Massacre 2",
+                    "eventSummary": "A sequel with a different energy.",
+                    "theme": "Film",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person7",
+                            "@type": "snap:person",
+                            "name": "Tobe Hooper"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization6",
+                            "@type": "snap:organization",
+                            "name": "Max"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event5",
+                    "@type": "snap:event",
+                    "eventTitle": "Possessor",
+                    "eventSummary": "A psychological horror with sci-fi elements.",
+                    "theme": "Film",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person8",
+                            "@type": "snap:person",
+                            "name": "Brandon Cronenberg"
+                        },
+                        {
+                            "@id": "snap:person9",
+                            "@type": "snap:person",
+                            "name": "Andrea Riseborough"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization7",
+                            "@type": "snap:organization",
+                            "name": "Hulu"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event6",
+                    "@type": "snap:event",
+                    "eventTitle": "Opera",
+                    "eventSummary": "A horror-thriller by Dario Argento.",
+                    "theme": "Film",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person10",
+                            "@type": "snap:person",
+                            "name": "Dario Argento"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization8",
+                            "@type": "snap:organization",
+                            "name": "Shudder"
+                        },
+                        {
+                            "@id": "snap:organization9",
+                            "@type": "snap:organization",
+                            "name": "Tubi"
+                        },
+                        {
+                            "@id": "snap:organization10",
+                            "@type": "snap:organization",
+                            "name": "Vudu"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event7",
+                    "@type": "snap:event",
+                    "eventTitle": "House of 1000 Corpses",
+                    "eventSummary": "A grisly, grotesque film.",
+                    "theme": "Film",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person11",
+                            "@type": "snap:person",
+                            "name": "Rob Zombie"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization11",
+                            "@type": "snap:organization",
+                            "name": "AMC Plus"
+                        },
+                        {
+                            "@id": "snap:organization12",
+                            "@type": "snap:organization",
+                            "name": "Pluto TV"
+                        },
+                        {
+                            "@id": "snap:organization13",
+                            "@type": "snap:organization",
+                            "name": "Tubi"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event8",
+                    "@type": "snap:event",
+                    "eventTitle": "Thirst",
+                    "eventSummary": "A steamy horror film by Park Chan-wook.",
+                    "theme": "Film",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person12",
+                            "@type": "snap:person",
+                            "name": "Park Chan-wook"
+                        },
+                        {
+                            "@id": "snap:person13",
+                            "@type": "snap:person",
+                            "name": "Song Kang-ho"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization14",
+                            "@type": "snap:organization",
+                            "name": "Peacock"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event9",
+                    "@type": "snap:event",
+                    "eventTitle": "The Exorcist III",
+                    "eventSummary": "A terrifying film by William Peter Blatty.",
+                    "theme": "Film",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person14",
+                            "@type": "snap:person",
+                            "name": "William Peter Blatty"
+                        },
+                        {
+                            "@id": "snap:person15",
+                            "@type": "snap:person",
+                            "name": "George C. Scott"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization15",
+                            "@type": "snap:organization",
+                            "name": "Prime Video"
+                        },
+                        {
+                            "@id": "snap:organization16",
+                            "@type": "snap:organization",
+                            "name": "Criterion Channel"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

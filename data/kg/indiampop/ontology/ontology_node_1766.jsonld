@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Cardamom root grubs (Basilepta fulvicorne)",
+            "pest_symptoms": "The symptoms start as yellowing of leaves, which later result in the drying up and death of the plant.",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Management",
+                "quantity": "N/A",
+                "stage": "Control of pests and diseases in the plantation"
+            }
+        }
+    ]
+}

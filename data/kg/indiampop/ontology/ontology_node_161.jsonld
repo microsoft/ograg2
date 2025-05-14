@@ -1,0 +1,105 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Sugarcane",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Sugarcane",
+                "used_for": "BASAL APPLICATION OF PERTILIZER"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Red Coastal alluvium(Gadillum series)",
+                "for_water": "0.87 ON Season",
+                "for_nutrients": "FN Annual FP2O5 = 0.71 T - 1.09 SP - 0.72"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "= 4.06 T - 0.74 SN",
+                "with_soil_moisture": "0.87 ON Season"
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "OP",
+                "quantity": "Target : 125 t ha-1"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "BASAL APPLICATION OF PERTILIZER",
+                "value": "2",
+                "depth": "2",
+                "method": "BASAL APPLICATION OF PERTILIZER"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "FK2O = 2.67 T - 0.57 SK - 1.3",
+                "stage_of_application": "BASAL APPLICATION OF PERTILIZER"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "None",
+                "disease_symptoms": "None",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "None",
+                    "quantity": "None",
+                    "stage": "None"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "None",
+                "pest_symptoms": "None",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "None",
+                    "quantity": "None",
+                    "stage": "None"
+                }
+            },
+            "harvesting_guidelines_are": "None",
+            "storage_guidelines_are": "None"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "FP2O5",
+            "quantity": "0.71 T - 1.09 SP - 0.72",
+            "stage_of_application": "BASAL APPLICATION OF PERTILIZER"
+        }
+    ]
+}

@@ -1,0 +1,57 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Apiculture": {
+            "@id": "cropCult:Apiculture",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_items": "cropCult:ApicultureItemList"
+            }
+        },
+        "ApicultureItemList": {
+            "@id": "cropCult:ApicultureItemList",
+            "@type": "schema:ItemList",
+            "@context": {
+                "Beehive": {
+                    "@id": "cropCult:Beehive",
+                    "@type": "schema:Thing",
+                    "@context": {
+                        "name": "schema:name"
+                    }
+                },
+                "Smoker": {
+                    "@id": "cropCult:Smoker",
+                    "@type": "schema:Thing",
+                    "@context": {
+                        "name": "schema:name",
+                        "purpose": "schema:Text"
+                    }
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "cropCult:Apiculture",
+            "@type": "Apiculture",
+            "name": "APICULTURE",
+            "has_items": {
+                "@id": "cropCult:ApicultureItemList",
+                "@type": "ApicultureItemList",
+                "Beehive": {
+                    "@id": "cropCult:Beehive",
+                    "@type": "Beehive",
+                    "name": "Beehive"
+                },
+                "Smoker": {
+                    "@id": "cropCult:Smoker",
+                    "@type": "Smoker",
+                    "name": "Smoker",
+                    "purpose": "to produce smoke for effective handling of the colony"
+                }
+            }
+        }
+    ]
+}

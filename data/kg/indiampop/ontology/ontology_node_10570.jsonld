@@ -1,0 +1,92 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text",
+                "method_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Maize (Zea mays)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Zea mays",
+                "used_for": "Cultivation"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "The remaining half of urea should be top dressed in two equal doses followed by earthing up; in each case. The first ¼ at 35 days after germination or when the plants are at knee high stage and the second ¼ at the tassel initiation stage of the crop i.e. 45-60 days after germination or at the time of elongation of the flag leaf whichever is earlier. The fertilizer should be applied on both sides of row and weeds should also be removed from the field during this operation. However, before application of the fertilizer a light hoeing is to be given between the lines 2-3 days ahead.",
+                "with_soil_moisture": "Normal"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "35-60 days after germination",
+                "value": "Normal",
+                "depth": "Normal",
+                "method": "Top dressing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Not specified",
+                "weed_types": [],
+                "herbicides": []
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Normal",
+                "stage_of_application": "35-60 days after germination"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Not specified",
+                "disease_symptoms": "Not specified",
+                "disease_control": []
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Not specified",
+                "pest_symptoms": "Not specified",
+                "pest_control": []
+            },
+            "harvesting_guidelines_are": "Not specified",
+            "storage_guidelines_are": "Not specified"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Urea",
+            "quantity": "Half",
+            "stage_of_application": "35-60 days after germination",
+            "method_of_application": "Top dressing"
+        }
+    ]
+}

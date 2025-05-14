@@ -1,0 +1,50 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "CropProtection": {
+            "@id": "cropCult:CropProtection",
+            "@type": "schema:Thing",
+            "@context": {
+                "PestManagement": {
+                    "@id": "cropCult:PestManagement",
+                    "@type": "schema:Thing",
+                    "@context": {
+                        "Nursery": {
+                            "@id": "cropCult:Nursery",
+                            "@type": "schema:Thing",
+                            "@context": {
+                                "area_required": "schema:QuantitativeValue",
+                                "spray_fluid_required": "schema:QuantitativeValue"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "cropCult:CropProtection",
+            "@type": "CropProtection",
+            "PestManagement": {
+                "@id": "cropCult:PestManagement",
+                "@type": "PestManagement",
+                "Nursery": {
+                    "@id": "cropCult:Nursery",
+                    "@type": "Nursery",
+                    "area_required": {
+                        "@type": "QuantitativeValue",
+                        "value": "800",
+                        "unitText": "sq.m."
+                    },
+                    "spray_fluid_required": {
+                        "@type": "QuantitativeValue",
+                        "value": "40",
+                        "unitText": "litres"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,31 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements"
+            }
+        },
+        "TemperatureRequirements": {
+            "@id": "cropCult:TemperatureRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "negative_effect": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "LIME (Citrus aurantifoilia Swing)",
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "negative_effect": "It is distinctly tropical plant and is susceptible to cold and frost."
+            }
+        }
+    ]
+}

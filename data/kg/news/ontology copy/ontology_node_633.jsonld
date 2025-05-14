@@ -1,0 +1,142 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:NewsAsset",
+            "byline": "Uma Gurav",
+            "published": "2023-10-20T21:34:28+00:00",
+            "title": "Liverpool vs Everton begins epic Saturday with World Cup semi-final as well as Chelsea vs Arsenal – and it could end with a bang",
+            "summary": "As the Premier League returns with a Saturday packed full of huge matches, talkSPORT gets the action started at Anfield. But that's not all there is, with a Rugby World Cup semi-final, a London derby and a packed UFC card among the other offerings.",
+            "associatedAsset": [
+                {
+                    "@type": "snap:TextAsset",
+                    "image": "https://talksport.com/football/1608383/liverpool-everton-chelsea-arsenal-england-saturday-sport/"
+                }
+            ]
+        },
+        {
+            "@type": "snap:Event",
+            "eventTitle": "Merseyside derby",
+            "eventSummary": "Liverpool are sitting in a comfortable fourth place in the Premier League table having picked up five wins out of their opening eight games. The bad news for Jurgen Klopp is that the Reds lost to Tottenham and only managed a draw with Brighton just before the international break.",
+            "theme": "sports"
+        },
+        {
+            "@type": "snap:Event",
+            "eventTitle": "Crystal Palace vs Newcastle",
+            "eventSummary": "The Magpies have been on an impressive run of form across all competitions, knocking last year's treble winners Manchester City out the Carabao Cup while defeating Paris Saint-Germain 4-1 in the Champions League.",
+            "theme": "sports"
+        },
+        {
+            "@type": "snap:Event",
+            "eventTitle": "Arsenal vs Chelsea",
+            "eventSummary": "Mikel Arteta's side go into the 5.30pm London derby clash full of confidence having beaten Manchester City in their last match.",
+            "theme": "sports"
+        },
+        {
+            "@type": "snap:Event",
+            "eventTitle": "Sheffield United vs Manchester United",
+            "eventSummary": "With just one point on the board, Sheffield United's season could not be going much worse given they are rock bottom.",
+            "theme": "sports"
+        },
+        {
+            "@type": "snap:Event",
+            "eventTitle": "England vs South Africa Rugby",
+            "eventSummary": "It's crunch time for England in the World Cups as they face South Africa in the semi-final of the Rugby World Cup.",
+            "theme": "sports"
+        },
+        {
+            "@type": "snap:Event",
+            "eventTitle": "England vs South Africa Cricket",
+            "eventSummary": "Over in India, England's Cricket World Cup hopes hang by a thread after their latest shock defeat to Afghanistan.",
+            "theme": "sports"
+        },
+        {
+            "@type": "snap:Event",
+            "eventTitle": "UFC 294 in Abu Dhabi",
+            "eventSummary": "Islam Makhachev is hoping to successfully defend his UFC lightweight belt against Alexander Volkanovski at UFC 294.",
+            "theme": "sports"
+        }
+    ]
+}
+```

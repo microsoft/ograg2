@@ -1,0 +1,172 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "NFL Fantasy Football Week 6 Lineup Decisions: Starts, Sits, Sleepers, Busts to know for every game",
+      "author": "Dave Richard",
+      "theme": "sports",
+      "content": "Fantasy Football is all about the matchups. Even though you drafted your team with certain hopes and intentions, your weekly lineup decisions shouldn't be determined by the order you picked your players in. You need to check who your players play and make sure you've got the right guys in -- and the wrong guys out. It's too early to be absolutely sure on which matchups will be easy and which ones will be tough, but we can take some educated guesses based on healthy personnel, defensive schemes, track records and key details of offenses. The things we know can help us minimize the impact of the things we don't know. This should lead to better decisions being made. We'll go through every game and highlight the players who aren't obvious starts and sits (because you don't need to be told to start Justin Jefferson). You should feel more comfortable starting or sitting players based on the information given, and feeling comfortable with your Fantasy lineup before the games start is the best feeling in the world. It's also important to have a keen eye for matchups dictated by the remaining schedule. I am now updating my projected Strength of Schedule rankings our broken down by position available on SportsLine. My objective is to break down how the schedule affects every Fantasy relevant player for the upcoming four weeks, the playoff stretch and the entire season. You'll also be able to find my key takeaways on which players you should buy low, sell high and more trade advice.",
+      "published": "2023-10-12T21:23:16+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Sit Him (Lineup Decisions)",
+          "eventSummary": "Projections powered by Sportsline Jaleel McLaughlin RB DEN Denver • #38",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Jaleel McLaughlin",
+              "alias": "RB DEN Denver • #38"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Flex Starter in PPR (Lineup Decisions)",
+          "eventSummary": "Projections powered by Sportsline Zay Flowers WR BAL Baltimore • #4",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Zay Flowers",
+              "alias": "WR BAL Baltimore • #4"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Sneaky Sleeper in PPR (Lineup Decisions)",
+          "eventSummary": "Projections powered by Sportsline Justice Hill RB BAL Baltimore • #43",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Justice Hill",
+              "alias": "RB BAL Baltimore • #43"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Sit Him (Lineup Decisions)",
+          "eventSummary": "Projections powered by Sportsline Terry McLaurin WR WAS Washington • #17",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Terry McLaurin",
+              "alias": "WR WAS Washington • #17"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Start Him (Lineup Decisions)",
+          "eventSummary": "Projections powered by Sportsline Logan Thomas TE WAS Washington • #82",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Logan Thomas",
+              "alias": "TE WAS Washington • #82"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Start Him (Lineup Decisions)",
+          "eventSummary": "Projections powered by Sportsline Kyle Pitts TE ATL Atlanta • #8",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Kyle Pitts",
+              "alias": "TE ATL Atlanta • #8"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

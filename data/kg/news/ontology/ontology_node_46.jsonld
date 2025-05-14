@@ -1,0 +1,492 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "Horror Movie Reviews",
+            "author": "Matt Patches, TE, PV, AG",
+            "theme": "Horror Movies",
+            "summary": "A collection of reviews for various horror films, highlighting their unique qualities and impact on the genre.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event1",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Review of Malignant",
+                        "eventSummary": "Strung together with a melodramatic cover of The Pixies’ 'Where Is My Mind,' reveling in horror tropes to the point of parody.",
+                        "theme": "Horror",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person1",
+                                    "@type": "schema:Thing",
+                                    "name": "Matt Patches"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event2",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Review of The Mist",
+                        "eventSummary": "Darabont’s third adaptation of a Stephen King story, the film stars Thomas Jane as a Hollywood poster artist living in Maine.",
+                        "theme": "Horror",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person2",
+                                    "@type": "schema:Thing",
+                                    "name": "Frank Darabont"
+                                },
+                                {
+                                    "@id": "snap:person3",
+                                    "@type": "schema:Thing",
+                                    "name": "Thomas Jane"
+                                },
+                                {
+                                    "@id": "snap:person4",
+                                    "@type": "schema:Thing",
+                                    "name": "Marcia Gay Harden"
+                                },
+                                {
+                                    "@id": "snap:person5",
+                                    "@type": "schema:Thing",
+                                    "name": "Laurie Holden"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event3",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Review of Night of the Living Dead",
+                        "eventSummary": "The movie that launched the modern zombie film in the United States, written, directed, photographed, and edited by George A. Romero.",
+                        "theme": "Horror",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person6",
+                                    "@type": "schema:Thing",
+                                    "name": "George A. Romero"
+                                },
+                                {
+                                    "@id": "snap:person7",
+                                    "@type": "schema:Thing",
+                                    "name": "Duane Jones"
+                                },
+                                {
+                                    "@id": "snap:person8",
+                                    "@type": "schema:Thing",
+                                    "name": "Judith O’Dea"
+                                },
+                                {
+                                    "@id": "snap:person9",
+                                    "@type": "schema:Thing",
+                                    "name": "Marilyn Eastman"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event4",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Review of Possession",
+                        "eventSummary": "A film whose cult status among horror connoisseurs has only been amplified in the decades since its release.",
+                        "theme": "Horror",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person10",
+                                    "@type": "schema:Thing",
+                                    "name": "Andrzej Żuławski"
+                                },
+                                {
+                                    "@id": "snap:person11",
+                                    "@type": "schema:Thing",
+                                    "name": "Isabelle Adjani"
+                                },
+                                {
+                                    "@id": "snap:person12",
+                                    "@type": "schema:Thing",
+                                    "name": "Sam Neill"
+                                },
+                                {
+                                    "@id": "snap:person13",
+                                    "@type": "schema:Thing",
+                                    "name": "Heinz Bennent"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event5",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Review of [REC]",
+                        "eventSummary": "Follows a TV reporter and camera person who follow emergency workers into an apartment building.",
+                        "theme": "Horror",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person14",
+                                    "@type": "schema:Thing",
+                                    "name": "Jaume Balaguero"
+                                },
+                                {
+                                    "@id": "snap:person15",
+                                    "@type": "schema:Thing",
+                                    "name": "Paco Plaza"
+                                },
+                                {
+                                    "@id": "snap:person16",
+                                    "@type": "schema:Thing",
+                                    "name": "Manuela Velasco"
+                                },
+                                {
+                                    "@id": "snap:person17",
+                                    "@type": "schema:Thing",
+                                    "name": "Ferran Terraza"
+                                },
+                                {
+                                    "@id": "snap:person18",
+                                    "@type": "schema:Thing",
+                                    "name": "Martha Carbonell"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event6",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Review of Sputnik",
+                        "eventSummary": "Centers on Tatyana, an uncompromising young psychiatrist recruited by the Soviet military.",
+                        "theme": "Horror",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person19",
+                                    "@type": "schema:Thing",
+                                    "name": "Egor Abramenko"
+                                },
+                                {
+                                    "@id": "snap:person20",
+                                    "@type": "schema:Thing",
+                                    "name": "Oksana Akinshina"
+                                },
+                                {
+                                    "@id": "snap:person21",
+                                    "@type": "schema:Thing",
+                                    "name": "Fedor Bondarchuk"
+                                },
+                                {
+                                    "@id": "snap:person22",
+                                    "@type": "schema:Thing",
+                                    "name": "Pyotr Fyodorov"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event7",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Review of Suspiria",
+                        "eventSummary": "Tells the story of Suzy Bannion, an American dancer who moves to Germany to study at the prestigious Tanz Akademie.",
+                        "theme": "Horror",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person23",
+                                    "@type": "schema:Thing",
+                                    "name": "Dario Argento"
+                                },
+                                {
+                                    "@id": "snap:person24",
+                                    "@type": "schema:Thing",
+                                    "name": "Jessica Harper"
+                                },
+                                {
+                                    "@id": "snap:person25",
+                                    "@type": "schema:Thing",
+                                    "name": "Stefania Casini"
+                                },
+                                {
+                                    "@id": "snap:person26",
+                                    "@type": "schema:Thing",
+                                    "name": "Flavio Bucci"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event8",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Review of The Texas Chain Saw Massacre",
+                        "eventSummary": "Follows a group of friends who find themselves hunted by a family of cannibals in the middle of Texas.",
+                        "theme": "Horror",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person27",
+                                    "@type": "schema:Thing",
+                                    "name": "Tobe Hooper"
+                                },
+                                {
+                                    "@id": "snap:person28",
+                                    "@type": "schema:Thing",
+                                    "name": "Marilyn Burns"
+                                },
+                                {
+                                    "@id": "snap:person29",
+                                    "@type": "schema:Thing",
+                                    "name": "Gunnar Hansen"
+                                },
+                                {
+                                    "@id": "snap:person30",
+                                    "@type": "schema:Thing",
+                                    "name": "Allen Danziger"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event9",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Review of The Thing",
+                        "eventSummary": "Follows a group of researchers working at an Antarctic base who discover an alien that can transform into any living creature.",
+                        "theme": "Horror",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person31",
+                                    "@type": "schema:Thing",
+                                    "name": "John Carpenter"
+                                },
+                                {
+                                    "@id": "snap:person32",
+                                    "@type": "schema:Thing",
+                                    "name": "Kurt Russell"
+                                },
+                                {
+                                    "@id": "snap:person33",
+                                    "@type": "schema:Thing",
+                                    "name": "Wilford Brimley"
+                                },
+                                {
+                                    "@id": "snap:person34",
+                                    "@type": "schema:Thing",
+                                    "name": "Keith David"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event10",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Review of The Unfriended movies",
+                        "eventSummary": "A masterfully contained horror movie that takes place entirely on a character’s laptop screen.",
+                        "theme": "Horror",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person35",
+                                    "@type": "schema:Thing",
+                                    "name": "Levan Gabriadze"
+                                },
+                                {
+                                    "@id": "snap:person36",
+                                    "@type": "schema:Thing",
+                                    "name": "Stephen Susco"
+                                },
+                                {
+                                    "@id": "snap:person37",
+                                    "@type": "schema:Thing",
+                                    "name": "Shelley Hennig"
+                                },
+                                {
+                                    "@id": "snap:person38",
+                                    "@type": "schema:Thing",
+                                    "name": "Moses Storm"
+                                },
+                                {
+                                    "@id": "snap:person39",
+                                    "@type": "schema:Thing",
+                                    "name": "Renee Olstead"
+                                },
+                                {
+                                    "@id": "snap:person40",
+                                    "@type": "schema:Thing",
+                                    "name": "Colin Woodell"
+                                },
+                                {
+                                    "@id": "snap:person41",
+                                    "@type": "schema:Thing",
+                                    "name": "Rebecca Rittenhouse"
+                                },
+                                {
+                                    "@id": "snap:person42",
+                                    "@type": "schema:Thing",
+                                    "name": "Betty Gabriel"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": []
+                        }
+                    },
+                    {
+                        "@id": "snap:event11",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Review of Us",
+                        "eventSummary": "Follows the Wilson family whose vacation is interrupted by a group of doppelgängers.",
+                        "theme": "Horror",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person43",
+                                    "@type": "schema:Thing",
+                                    "name": "Jordan Peele"
+                                },
+                                {
+                                    "@id": "snap:person44",
+                                    "@type": "schema:Thing",
+                                    "name": "Lupita Nyong’o"
+                                },
+                                {
+                                    "@id": "snap:person45",
+                                    "@type": "schema:Thing",
+                                    "name": "Winston Duke"
+                                },
+                                {
+                                    "@id": "snap:person46",
+                                    "@type": "schema:Thing",
+                                    "name": "Elisabeth Moss"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": []
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,370 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "title": "Top 25 MLB offseason trade candidates",
+            "author": "Anthony Franco, MLB Trade Rumors",
+            "theme": "sports",
+            "content": "While the offseason has gotten rolling, trade season hasn’t quite arrived. The Tigers acquired Mark Canha from Milwaukee in the biggest swap of the first couple weeks. Otherwise, the GM Meetings simply served to set the stage for future transactions. That’ll surely involve some notable trades. Unlike the summer deadline, projecting which players will change hands is difficult at this stage of the offseason. Aside from the A’s, there aren’t any teams clearly in rebuild mode. Clubs like the Rockies, Royals, White Sox, Nationals and Angels have uphill paths to contention, yet none has indicated they’re prepared to punt on the 2024 season entirely. The Padres, Twins, Rays, Brewers and Guardians are all aiming to contend but have questions about their payroll. That’s standard operating procedure for Tampa Bay, Milwaukee and Cleveland. San Diego and, to a lesser extent, Minnesota have shown a willingness to spend in recent years but are scaling back — in both cases, likely tied to their uncertain local television rights contracts. That informs the offseason trade landscape, which is headlined by a few stars deep into their arbitration windows. Without many clear rebuilders, it’s possible we see more swaps of big leaguers at positions of need between teams that expect to compete. Before we get to the list, a note on methodology. This isn’t a strict ranking of players’ trade value, nor is it solely about likelihood of being moved. We’re trying to balance both of those things, an inherently subjective exercise. All projected salaries for arbitration-eligible players are courtesy of MLBTR contributor Matt Swartz.",
+            "published": "2023-11-13T23:16:32+00:00",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Juan Soto Trade Speculation",
+                    "eventSummary": "Juan Soto, LF, Padres - Other than Shohei Ohtani’s free agency, there may be no bigger story of the offseason than Soto’s future in San Diego.",
+                    "theme": "sports",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Juan Soto"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Padres"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Corbin Burnes and Willy Adames Trade Speculation",
+                    "eventSummary": "Burnes and Adames are tied together with good reason. They’re each one year from the open market and projected for a noteworthy arbitration salary.",
+                    "theme": "sports",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Corbin Burnes"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Willy Adames"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Brewers"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Shane Bieber Trade Speculation",
+                    "eventSummary": "Bieber, one year from free agency with a projected $12.2M salary, could be next.",
+                    "theme": "sports",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Shane Bieber"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Guardians"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Tyler Glasnow Trade Speculation",
+                    "eventSummary": "The big right-hander is set to make $25M next season, the largest single-year salary in franchise history.",
+                    "theme": "sports",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Tyler Glasnow"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Rays"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Dylan Cease Trade Speculation",
+                    "eventSummary": "Cease had a disappointing follow-up to his Cy Young runner-up campaign.",
+                    "theme": "sports",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Dylan Cease"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "White Sox"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Alex Verdugo Trade Speculation",
+                    "eventSummary": "Verdugo’s name has been floated in trade rumors for a few seasons.",
+                    "theme": "sports",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Alex Verdugo"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Red Sox"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Trent Grisham and Ha-Seong Kim Trade Speculation",
+                    "eventSummary": "If the Padres hold Soto, dealing Grisham and/or Kim could be an alternative means of trimming payroll.",
+                    "theme": "sports",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Trent Grisham"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Ha-Seong Kim"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Padres"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Gleyber Torres Trade Speculation",
+                    "eventSummary": "Another player one year from free agency, Torres is projected for a $15.3M salary in his last arbitration season.",
+                    "theme": "sports",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Gleyber Torres"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Yankees"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Jonathan India Trade Speculation",
+                    "eventSummary": "The Reds’ infield surplus has fueled trade speculation on India back to the deadline.",
+                    "theme": "sports",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Jonathan India"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Reds"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Eloy Jiménez Trade Speculation",
+                    "eventSummary": "Jiménez no longer looks like a core piece for the White Sox.",
+                    "theme": "sports",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Eloy Jiménez"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "White Sox"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Max Kepler and Jorge Polanco Trade Speculation",
+                    "eventSummary": "Minnesota president of baseball operations Derek Falvey has confirmed the team is paring back payroll.",
+                    "theme": "sports",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Max Kepler"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Jorge Polanco"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Twins"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Randy Arozarena Trade Speculation",
+                    "eventSummary": "Arozarena hasn’t been the subject of the same level of trade speculation as Glasnow has.",
+                    "theme": "sports",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Randy Arozarena"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Rays"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Mariners SP Trade Speculation",
+                    "eventSummary": "We initially had Bryan Woo in this spot. It could just as easily have been Bryce Miller or Emerson Hancock.",
+                    "theme": "sports",
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Mariners"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Dylan Carlson Trade Speculation",
+                    "eventSummary": "It was a bit of a surprise that Carlson didn’t change hands over the summer.",
+                    "theme": "sports",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Dylan Carlson"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Cardinals"
+                        }
+                    ]
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Paul Blackburn Trade Speculation",
+                    "eventSummary": "Blackburn is arguably the most desirable realistic trade candidate on the Oakland roster.",
+                    "theme": "sports",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Paul Blackburn"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "A’s"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

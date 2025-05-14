@@ -1,0 +1,53 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "Wheat"
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Blast (Pyricularia grisea)’Mahisa roga’",
+            "disease_symptoms": "Small brown coloured spots appear on the leaves which later become spindle shaped with pointed ends having reddish or purplish brown margin and ashy coloured centre. In severe cases the spindle shaped spots coalesce and the leaves wither. If the infection starts earlier, the culm and nodes are also affected causing chaffy grains. In severe cases of infection, dark brown to almost black lesions appear on the rachis at panicle base, as a result of which, the grain the affected panicles may become chaffy or shriveled. The affected panicles become lighter in weight and dry up soon. This is called neck infection.",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Blast Control",
+                "quantity": "As per severity",
+                "stage": "July to September"
+            }
+        }
+    ]
+}

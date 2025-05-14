@@ -1,0 +1,190 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "Banana",
+            "needs_pest_treatements": [
+                {
+                    "@type": "cropCult:PestTreatements",
+                    "pest_name": "Rhizome (corm) weevil",
+                    "pest_control": {
+                        "@type": "cropCult:PesticideList",
+                        "name": "IPM Schedule",
+                        "stage": "1-2"
+                    }
+                },
+                {
+                    "@type": "cropCult:PestTreatements",
+                    "pest_name": "Pseudo stem borer",
+                    "pest_control": {
+                        "@type": "cropCult:PesticideList",
+                        "name": "IPM Schedule",
+                        "stage": "2-3"
+                    }
+                },
+                {
+                    "@type": "cropCult:PestTreatements",
+                    "pest_name": "Banana aphid",
+                    "pest_control": {
+                        "@type": "cropCult:PesticideList",
+                        "name": "IPM Schedule",
+                        "stage": "4"
+                    }
+                },
+                {
+                    "@type": "cropCult:PestTreatements",
+                    "pest_name": "Leaf eating caterpillar",
+                    "pest_control": {
+                        "@type": "cropCult:PesticideList",
+                        "name": "IPM Schedule",
+                        "stage": "4"
+                    }
+                },
+                {
+                    "@type": "cropCult:PestTreatements",
+                    "pest_name": "Flea beetles",
+                    "pest_control": {
+                        "@type": "cropCult:PesticideList",
+                        "name": "IPM Schedule",
+                        "stage": "4"
+                    }
+                },
+                {
+                    "@type": "cropCult:PestTreatements",
+                    "pest_name": "Burrowing nematode",
+                    "pest_control": {
+                        "@type": "cropCult:PesticideList",
+                        "name": "IPM Schedule",
+                        "stage": "4-5"
+                    }
+                },
+                {
+                    "@type": "cropCult:PestTreatements",
+                    "pest_name": "Root knot nematode",
+                    "pest_control": {
+                        "@type": "cropCult:PesticideList",
+                        "name": "IPM Schedule",
+                        "stage": "5-6"
+                    }
+                }
+            ],
+            "needs_disease_treatements": [
+                {
+                    "@type": "cropCult:DiseaseTreatements",
+                    "disease_name": "Sigatoka Leaf spot",
+                    "disease_control": {
+                        "@type": "cropCult:HerbicideList",
+                        "name": "IPM Schedule",
+                        "stage": "6-8"
+                    }
+                },
+                {
+                    "@type": "cropCult:DiseaseTreatements",
+                    "disease_name": "Leaf Spot (Anthracnose)",
+                    "disease_control": {
+                        "@type": "cropCult:HerbicideList",
+                        "name": "IPM Schedule",
+                        "stage": "9-10"
+                    }
+                },
+                {
+                    "@type": "cropCult:DiseaseTreatements",
+                    "disease_name": "Cigar end rot",
+                    "disease_control": {
+                        "@type": "cropCult:HerbicideList",
+                        "name": "IPM Schedule",
+                        "stage": "10-11"
+                    }
+                },
+                {
+                    "@type": "cropCult:DiseaseTreatements",
+                    "disease_name": "Finger tip or black tip rot",
+                    "disease_control": {
+                        "@type": "cropCult:HerbicideList",
+                        "name": "IPM Schedule",
+                        "stage": "11"
+                    }
+                },
+                {
+                    "@type": "cropCult:DiseaseTreatements",
+                    "disease_name": "Banana bract mosaic",
+                    "disease_control": {
+                        "@type": "cropCult:HerbicideList",
+                        "name": "IPM Schedule",
+                        "stage": "11-13"
+                    }
+                },
+                {
+                    "@type": "cropCult:DiseaseTreatements",
+                    "disease_name": "Banana streak disease",
+                    "disease_control": {
+                        "@type": "cropCult:HerbicideList",
+                        "name": "IPM Schedule",
+                        "stage": "13-15"
+                    }
+                },
+                {
+                    "@type": "cropCult:DiseaseTreatements",
+                    "disease_name": "Bunchy top",
+                    "disease_control": {
+                        "@type": "cropCult:HerbicideList",
+                        "name": "IPM Schedule",
+                        "stage": "15-17"
+                    }
+                }
+            ]
+        }
+    ]
+}

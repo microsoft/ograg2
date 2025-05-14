@@ -1,0 +1,43 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Apiculture": {
+            "@id": "cropCult:Apiculture",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_beehive": "cropCult:Beehive"
+            }
+        },
+        "Beehive": {
+            "@id": "cropCult:Beehive",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_uncapping_knife": "cropCult:UncappingKnife"
+            }
+        },
+        "UncappingKnife": {
+            "@id": "cropCult:UncappingKnife",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Apiculture",
+            "name": "APICULTURE",
+            "has_beehive": {
+                "@type": "cropCult:Beehive",
+                "name": "Beehive",
+                "has_uncapping_knife": {
+                    "@type": "cropCult:UncappingKnife",
+                    "name": "Uncapping knife"
+                }
+            }
+        }
+    ]
+}

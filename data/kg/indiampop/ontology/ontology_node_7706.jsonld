@@ -1,0 +1,57 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Economics": {
+            "@id": "cropCult:Economics",
+            "@type": "schema:Thing",
+            "@context": {
+                "investment_first_year": "schema:Text",
+                "investment_rainfed_conditions": "schema:Text",
+                "annual_returns": "schema:Text",
+                "total_returns_sixth_year": "schema:Text",
+                "expected_yield_tenth_year": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "OILSEEDS > COCONUT (Cocos nucifera) > OILPALM",
+            "has_types": "ECONOMICS",
+            "has_growing_zones": "India",
+            "has_land_preperation_requirements": "Government owned land, leased land, or already owned property",
+            "needs_irrigation_schedule": "Drip irrigation system",
+            "harvesting_guidelines_are": "From the fourth year, the yield of bunches increases upto tenth year, and a stabilized bearing is attained thereafter."
+        },
+        {
+            "@type": "Economics",
+            "investment_first_year": "The investment during first year under irrigation will be almost three times of that under rainfed conditions mainly on account of the initial expenditure required to install the drip irrigation system.",
+            "investment_rainfed_conditions": "The investment during first year under rainfed conditions will be one third of that under irrigation.",
+            "annual_returns": "With irrigation the annual returns will exceed the annual expenses from the first harvest itself, i.e, during the fourth year after planting.",
+            "total_returns_sixth_year": "By the end of sixth year the total returns will be more than total investments including all the expenditure for installing pumpset and the drip irrigation system.",
+            "expected_yield_tenth_year": "A minimum of 22 FFB per hectare can be expected from the tenth year onwards."
+        }
+    ]
+}

@@ -1,0 +1,203 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Seahawks vs. Giants live score, updates, highlights from NFL 'Monday Night Football' game",
+            "author": "Gilbert McGregor",
+            "theme": "sports",
+            "summary": "It was all Seahawks on “Monday Night Football” as the team turned in a dominant defensive effort en route to a 24-3 win over the Giants to wrap up Week 4 of the NFL season.",
+            "created": "2023-10-02T22:00:04+00:00",
+            "published": "2023-10-02T22:00:04+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Seahawks vs. Giants Final Score",
+                        "eventSummary": "Seahawks 24, Giants 3",
+                        "theme": "sports",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "MetLife Stadium, East Rutherford, N.J."
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Daniel Jones",
+                                    "dateOfBirth": "1997-01-27",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Charlotte, North Carolina"
+                                    },
+                                    "alias": "DJ"
+                                },
+                                {
+                                    "name": "Geno Smith",
+                                    "dateOfBirth": "1990-10-10",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Miramar, Florida"
+                                    },
+                                    "alias": "Geno"
+                                },
+                                {
+                                    "name": "Devon Witherspoon",
+                                    "dateOfBirth": "2000-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Chicago, Illinois"
+                                    },
+                                    "alias": "Devon"
+                                },
+                                {
+                                    "name": "Bobby Wagner",
+                                    "dateOfBirth": "1990-06-27",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Los Angeles, California"
+                                    },
+                                    "alias": "Bobby"
+                                },
+                                {
+                                    "name": "Jason Myers",
+                                    "dateOfBirth": "1990-05-12",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Los Angeles, California"
+                                    },
+                                    "alias": "Jason"
+                                },
+                                {
+                                    "name": "Noah Fant",
+                                    "dateOfBirth": "1997-11-20",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Wyoming"
+                                    },
+                                    "alias": "Noah"
+                                },
+                                {
+                                    "name": "Saquon Barkley",
+                                    "dateOfBirth": "1997-02-09",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Pennsylvania"
+                                    },
+                                    "alias": "Saquon"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Seattle Seahawks",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Seattle, Washington"
+                                    },
+                                    "alias": "Seahawks"
+                                },
+                                {
+                                    "name": "New York Giants",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "East Rutherford, New Jersey"
+                                    },
+                                    "alias": "Giants"
+                                },
+                                {
+                                    "name": "Sporting News",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "United States"
+                                    },
+                                    "alias": "Sporting News"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

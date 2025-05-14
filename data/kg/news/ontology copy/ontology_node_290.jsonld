@@ -1,0 +1,97 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "title": "Dissecting impact of Israel-Hamas conflict on markets",
+            "byline": "Group President & Head - Institutional Equities, YES Securities India",
+            "published": "2023-10-14T15:20:36+00:00",
+            "summary": "The world can ill-afford another full-fledged war, when economies are already battling high inflation and interest rates, an ongoing Russia-Ukraine war and now, a slowing China. This is precisely why many countries are trying to restrict any escalation in the ongoing Israel-Hamas conflict. The non-escaltion of the current hostilities seems to be the base case presumed by the Indian stock market presently, going by the market movement in the last week. The US treasury secretary also stated that the current conflict is not likely to significantly impact global economic outlook. History too shows that the these conflicts tend to have limited impact on markets. We studied the history of conflicts between Israel and Hamas, and found that these tend to have limited impact on global financial markets, across crude oil, US 10-year yields, US equities and market volatility (see charts). However, as far as trade goes, there may be some impact. In 2022-23, Israel’s share in exports from India stood at 1.87 per cent. India shipped goods around $8billion to Israel. Petroleum products account for 65 per cent of the exports, followed by gems and jewellery (15 per cent) and electrical machinery (3 per cent). Trade can be adversely impacted if operations at the Israeli ports are disrupted. Fertiliser movement from Israel’s Port of Ashdod accounts for 3 per cent of global potash supply. Any disruption on this front will also be a dampener. But, what if the current hostilities turn into a full-scale conflict? What supports this proposition is the fact that while there have been many conflicts between Israel and Hamas in the past decades, there have been none of this intensity. With at least 1,200 Israelis killed, this has been the biggest single-day killing of Jews since Holocaust, and Israel opposition is also united in retaliating. Israel has termed it a ‘War’, formed a war management cabinet with a key opposition member, and vowed to change the look of the ‘Middle East’. A massive strike by Israel in Gaza, potentially killing civilians in collateral damage, may attract more of the Middle East countries, including the de-facto leader Saudi Arabia to raise serious issues against Israel on humanitarian grounds. It will surely slow down the deal between Saudi and Israel that the US was facilitating. Besides Gaza, clashes have already been ongoing along Israel’s borders with Syria and Lebanon. If Iran gets dragged into the conflict, on account of claims of funding Hamas, this could embroil the entire Middle East in crisis. In this scenario, we see a major upward pressure on world inflation, on account of disruption in crude oil and world trade logistics. Possible disruption in crude and trade logistics Even before the Hamas attack, Saudi Arabia and Russia further cut oil production, in an already tight supply market. Iran is a big incremental supplier of oil, contributing 3 per cent to the global supply and any escalation risks taking energy prices higher. For security reasons, Israel has already told Chevron to shut down its offshore energy platform. The Middle East crisis brings back memories of the Arab oil embargo of 1973, when OPEC cut oil to supporters of Israel. It used to account for 50 per cent of the oil production back then. Although non-OPEC production has picked up and OPEC contribution is lower at 32 per cent, it is still sizeable to take oil prices higher. A 10 per cent rise in crude price will result in global inflation being 0.4 percentage points higher next year. The war may also impact Suez Canal trade, which is a key maritime route between Asia and Europe and accounts for 12 per cent of global trade by value and much larger by volume; also 5 per cent of world oil trade. As things stand today, trade may not yet be impacted through the Strait of Hormuz, which lies between Oman and Iran. But a spread of the crisis to the whole Middle East can risk trade through this route, which accounts for 20 per cent of global oil trade passage. If Iran is embroiled into this conflict, then trade with landlocked Central Asia, which is a big agricultural producer, raw materials and minerals like copper, cotton, uranium, gold, natural gas, gets disrupted. Central Asia also hosts a network of road, rail, and air routes that link China, Europe, and South Asia. Impact on Indian markets In the above scenario, supply disruption will lead to higher inflation and central bankers will have to adjust their policies and hold rates higher for longer than anticipated. We may witness a scenario where rates are held higher till the year 2025. Higher crude oil bill and higher global rates will prompt the RBI to also remain hawkish in its approach with regards to rates and liquidity measures. EBITDA margins of India Inc. may again get impacted on account of higher input costs and higher freight and fuel costs. Rural India is a key engine that is not firing at the moment. Valuations also are rich and do not offer margin of safety in the near to medium term. Near-term attractiveness of equities will reduce, as investors will demand a higher risk premium. The Indian stock market will likely correct materially, as FIIs look to withdraw funds from risk assets and seek safe havens in US Dollar, US treasuries offering high yields and Gold. Sectors which will be negatively impacted include Petrochemicals, Oil Marketing, Paints, Packaging, Textiles and Chemicals.",
+            "url": "https://www.thehindubusinessline.com/portfolio/personal-finance/dissecting-impact-of-israel-hamas-conflict-on-markets/article67413157.ece",
+            "source": "Business Line",
+            "category": "business"
+        }
+    ]
+}
+```

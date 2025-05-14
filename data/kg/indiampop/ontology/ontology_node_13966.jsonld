@@ -1,0 +1,75 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Cultivar": {
+            "@id": "cropCult:Cultivar",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "planting_time": "cropCult:SowingTime",
+                "flowering_time": "cropCult:FloweringTime"
+            }
+        },
+        "SowingTime": {
+            "@id": "cropCult:SowingTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        },
+        "FloweringTime": {
+            "@id": "cropCult:FloweringTime",
+            "@type": "schema:Thing",
+            "@context": {
+                "start_date": "schema:startDate",
+                "end_date": "schema:endDate"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Cultivar",
+            "name": "Low Hills",
+            "planting_time": {
+                "@type": "SowingTime",
+                "start_date": "July",
+                "end_date": "October"
+            },
+            "flowering_time": {
+                "@type": "FloweringTime",
+                "start_date": "November",
+                "end_date": "March"
+            }
+        },
+        {
+            "@type": "Cultivar",
+            "name": "Mid Hills",
+            "planting_time": {
+                "@type": "SowingTime",
+                "start_date": "February",
+                "end_date": "May"
+            },
+            "flowering_time": {
+                "@type": "FloweringTime",
+                "start_date": "May",
+                "end_date": "October"
+            }
+        },
+        {
+            "@type": "Cultivar",
+            "name": "High Hills",
+            "planting_time": {
+                "@type": "SowingTime",
+                "start_date": "April",
+                "end_date": "May"
+            },
+            "flowering_time": {
+                "@type": "FloweringTime",
+                "start_date": "July",
+                "end_date": "November"
+            }
+        }
+    ]
+}

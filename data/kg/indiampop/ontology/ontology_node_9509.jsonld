@@ -1,0 +1,60 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "FarmImplementsAndMachinery": {
+            "@id": "cropCult:FarmImplementsAndMachinery",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_horticulture": "cropCult:Horticulture"
+            }
+        },
+        "Horticulture": {
+            "@id": "cropCult:Horticulture",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_needle_type_tray_seeder_for_vegetable_nursery": "cropCult:NeedleTypeTraySeederForVegetableNursery"
+            }
+        },
+        "NeedleTypeTraySeederForVegetableNursery": {
+            "@id": "cropCult:NeedleTypeTraySeederForVegetableNursery",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "salient_features": "schema:Text",
+                "saving_in_time": "schema:QuantitativeValue",
+                "saving_in_labour": "schema:QuantitativeValue"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "cropCult:FarmImplementsAndMachinery",
+            "@type": "FarmImplementsAndMachinery",
+            "name": "FARM IMPLEMENTS AND MACHINERY",
+            "has_horticulture": {
+                "@id": "cropCult:Horticulture",
+                "@type": "Horticulture",
+                "name": "HORTICULTURE",
+                "has_needle_type_tray_seeder_for_vegetable_nursery": {
+                    "@id": "cropCult:NeedleTypeTraySeederForVegetableNursery",
+                    "@type": "NeedleTypeTraySeederForVegetableNursery",
+                    "name": "NEEDLE TYPE TRAY SEEDER FOR VEGETABLE NURSERY",
+                    "salient_features": "Salient features",
+                    "saving_in_time": {
+                        "@type": "QuantitativeValue",
+                        "value": "300",
+                        "unitText": "%"
+                    },
+                    "saving_in_labour": {
+                        "@type": "QuantitativeValue",
+                        "value": "60",
+                        "unitText": "%"
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -1,0 +1,273 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "MLB Winter Meetings tracker: Live updates on news, rumors, signings and trades for 2023 free agency",
+      "author": "Edward Sutelan",
+      "theme": "sports",
+      "published": "2023-12-03T23:24:00+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Diamondbacks reportedly land Eduardo Rodriguez",
+          "eventSummary": "The reigning NL champions have landed one of the free agent market's top pitchers. Left-hander Eduardo Rodriguez has reportedly agreed to a four-year contract with Arizona worth around $20 million per year.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Eduardo Rodriguez"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Arizona Diamondbacks"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Juan Soto reportedly traded to Yankees",
+          "eventSummary": "The Padres have reportedly sent Juan Soto to the Yankees in exchange for four pitchers and catcher Kyle Higashioka.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Juan Soto"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Kyle Higashioka"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "New York Yankees"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "San Diego Padres"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Craig Kimbrel signs with Orioles",
+          "eventSummary": "The Orioles are bolstering their bullpen, signing Craig Kimbrel to a one-year, $13 million deal.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Craig Kimbrel"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Baltimore Orioles"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Trent Grisham likely headed to New York in Soto deal",
+          "eventSummary": "The Yankees won't just be getting one outfielder from the Padres; it appears they'll be getting two.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Trent Grisham"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "New York Yankees"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "San Diego Padres"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Ohtani decision expected to be made before end of weekend",
+          "eventSummary": "MLB free agency remains largely on hold as teams wait for Ohtani to sign.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Shohei Ohtani"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Yoshinobu Yamamoto meeting with Yankees, already met with Mets",
+          "eventSummary": "The Yankees are reportedly going to meet with Yoshinobu Yamamoto in New York.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Yoshinobu Yamamoto"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "New York Yankees"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "New York Mets"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Victor Caratini lands with Astros",
+          "eventSummary": "Veteran catcher Victor Caratini is headed to Houston on a two-year deal worth $12 million.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Victor Caratini"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Houston Astros"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Pirates acquire Marco Gonzales from Braves",
+          "eventSummary": "Gonzales is being re-routed to Pittsburgh for cash and a player to be named later.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Marco Gonzales"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Pittsburgh Pirates"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Atlanta Braves"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Yankees land Alex Verdugo from Red Sox",
+          "eventSummary": "Boston will send starting OF Alex Verdugo to New York for RHP Richard Fitts, RHP Greg Weissert and RHP Nicholas Judice.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Alex Verdugo"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "New York Yankees"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Boston Red Sox"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "NUTMEG (Myristica fragrans)",
+            "has_land_preperation_requirements": "Manuring",
+            "needs_disease_treatements": "Nutmeg requires heavy manuring. Cow dung or compost is found to be good. Apply 10 kg cattle manure or compost per seedling during the first year and increase the quantity of organic manure to 50 kg gradually till the tree attains an age of 15 years. This can be applied in two or three split doses. Application of poultry manure, vermi compost, neem cake and bone meal is also beneficial to enhance the growth and yield (Table 19)."
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Cow dung or compost",
+            "quantity": "10 kg cattle manure or compost per seedling during the first year and increase the quantity of organic manure to 50 kg gradually till the tree attains an age of 15 years",
+            "stage_of_application": "This can be applied in two or three split doses"
+        }
+    ]
+}

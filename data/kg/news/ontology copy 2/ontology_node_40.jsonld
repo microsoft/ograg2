@@ -1,0 +1,179 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "schema:Thing",
+      "title": "The best Xbox controller to buy right now",
+      "author": "Antonio G. Di Benedetto",
+      "theme": "technology",
+      "content": "You may not realize it, but we’re living in a golden age of gaming controllers...",
+      "published": "2023-11-21T20:04:33+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "schema:Thing",
+          "eventTitle": "Xbox Wireless Controller",
+          "eventSummary": "The official Xbox Wireless Controller has a dedicated share button...",
+          "theme": "technology",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization1",
+              "@type": "schema:Thing",
+              "name": "Microsoft"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event2",
+          "@type": "schema:Thing",
+          "eventTitle": "PowerA Enhanced Wired Controller",
+          "eventSummary": "The PowerA Enhanced Wired Controller is a budget-minded wired controller...",
+          "theme": "technology",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization2",
+              "@type": "schema:Thing",
+              "name": "PowerA"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event3",
+          "@type": "schema:Thing",
+          "eventTitle": "Xbox Elite Wireless Controller Series 2",
+          "eventSummary": "The Xbox Elite Series 2 is easily one of our favorite controllers...",
+          "theme": "technology",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization1",
+              "@type": "schema:Thing",
+              "name": "Microsoft"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event4",
+          "@type": "schema:Thing",
+          "eventTitle": "Scuf Instinct Pro",
+          "eventSummary": "The Scuf Instinct Pro finds itself in a bit of a weird spot...",
+          "theme": "technology",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization3",
+              "@type": "schema:Thing",
+              "name": "Scuf"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event5",
+          "@type": "schema:Thing",
+          "eventTitle": "RIG Nacon Revolution X",
+          "eventSummary": "RIG’s Nacon Revolution X may be worthy of an award for terrible naming...",
+          "theme": "technology",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization4",
+              "@type": "schema:Thing",
+              "name": "Nacon"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event6",
+          "@type": "schema:Thing",
+          "eventTitle": "Turtle Beach Recon",
+          "eventSummary": "Turtle Beach is known for its headsets, so it makes sense...",
+          "theme": "technology",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization5",
+              "@type": "schema:Thing",
+              "name": "Turtle Beach"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

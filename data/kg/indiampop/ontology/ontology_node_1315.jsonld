@@ -1,0 +1,41 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "CropProtection": {
+            "@id": "cropCult:CropProtection",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "salt_solution": "schema:Text",
+                "seed_treatment": "schema:Text",
+                "seed_washing": "schema:Text",
+                "seed_drying": "schema:Text",
+                "fungicide_treatment": "cropCult:Fungicide"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "CropProtection",
+            "instructions": "Dissolve 1 kg of common salt in 10 litres of water. Drop the seeds into the salt solution. Remove the ergot and sclerotia affected seeds which will float. Wash seeds in fresh water 2 or 3 times to remove the salt on the seeds. Dry the seeds in shade.",
+            "salt_solution": "1 kg of common salt in 10 litres of water",
+            "seed_treatment": "Drop the seeds into the salt solution. Remove the ergot and sclerotia affected seeds which will float.",
+            "seed_washing": "Wash seeds in fresh water 2 or 3 times to remove the salt on the seeds.",
+            "seed_drying": "Dry the seeds in shade.",
+            "fungicide_treatment": {
+                "@type": "Fungicide",
+                "name": "Thiram",
+                "quantity": "2g /kg of seed"
+            }
+        }
+    ]
+}

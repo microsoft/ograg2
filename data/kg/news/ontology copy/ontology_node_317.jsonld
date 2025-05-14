@@ -1,0 +1,134 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "title": "Young Taylor Swift fans go viral for struggling to open the star's CD: 'Making me laugh'",
+            "published": "2023-11-11T10:00:36+00:00",
+            "summary": "A young group of 'Swifties' have gone viral after a video showing their attempts to open a '1989 (Taylor's Version)' compact disc (CD) was uploaded to TikTok — and the megastar herself responded.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://www.foxnews.com/lifestyle/young-taylor-swift-fans-go-viral-struggling-open-stars-cd-making-me-laugh"
+            }
+        },
+        {
+            "@type": "snap:organization",
+            "name": "FOX News - Lifestyle"
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Viral TikTok of Young Swifties",
+            "eventSummary": "A video of young Taylor Swift fans struggling to open a CD goes viral, capturing the attention of Taylor Swift herself."
+        },
+        {
+            "@type": "snap:person",
+            "name": "Taylor Swift"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Annika"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Lilly"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Henslee"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Shannon Schmidt"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Jody"
+        },
+        {
+            "@type": "snap:person",
+            "name": "Tia"
+        }
+    ]
+}
+```

@@ -1,0 +1,129 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Mike Butcher",
+      "published": "2023-10-14T07:46:27+00:00",
+      "title": "Palestine’s growing tech industry has been literally blown apart by Israel’s war on Hamas",
+      "summary": "Palestine’s growing tech industry has been literally blown apart by the war between Israel and Hamas. Gaza, despite being one of the most economically challenged regions in the world, has ironically always been a tech hub — not only for Palestine and Palestinians, but also for the world: International companies have, for many years, sought out a presence there to collaborate with talented tech freelancers and the startups that gradually emerged from the region. For example, according to sources who helped build those bridges, Nvidia, famed for its role in the new AI boom, has been working with at least 100 engineers from the region for years. (Tragically, the initiative to employ Palestinians in this outsourcing was that of Mellanox founder Eyal Waldman, whose daughter was brutally murdered in the attacks by Hamas).",
+      "associatedAsset": {
+        "@type": "snap:organization",
+        "name": "TechCrunch"
+      },
+      "url": "https://techcrunch.com/2023/10/14/palestine-tech-industry-hamas-israel-war/"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Gaza Sky Geeks",
+      "comment": "An Alphabet-backed initiative based in Gaza that provides pre-seed investments, training and technology resources to Palestine’s Gazan population."
+    },
+    {
+      "@type": "snap:person",
+      "name": "Ryan Sturgill",
+      "comment": "Former head of the Gaza Sky Geeks (GSG) accelerator run by sponsor Mercy Corps, an NGO aid organization."
+    },
+    {
+      "@type": "snap:person",
+      "name": "Iliana Montauk",
+      "comment": "Co-founder and CEO of Manara — a social impact startup funded by Y Combinator, Seedcamp, Reid Hoffman, Eric Ries, Marc Benioff, Paul Graham, and Jessica Livingston, among others."
+    },
+    {
+      "@type": "snap:person",
+      "name": "Dalia Awad",
+      "comment": "Returned to Gaza after her internships at Google and Datadog to graduate from university. She had a full-time job offer at Datadog in Paris but decided to stay home in Gaza."
+    },
+    {
+      "@type": "snap:person",
+      "name": "Leen Abubaker",
+      "comment": "Of Flow Accelerator and co-founder at Sawaed19."
+    },
+    {
+      "@type": "snap:person",
+      "name": "Mohammad Alnobani",
+      "comment": "Palestinian founder of The Middle Frame, an Arab stock image platform powered by AI tools."
+    }
+  ]
+}
+```

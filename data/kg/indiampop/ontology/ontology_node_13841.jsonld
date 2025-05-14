@@ -1,0 +1,35 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_soil_requirements": "cropCult:SoilRequirements"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "GROUNDNUT",
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Well drained, sandy loam soil, well supplied with calcium and moderate amount of organic matter",
+                "for_water": "These soils are ideally suited to rainfed rabi groundnut",
+                "for_nutrients": "The optimum soil pH for groundnut is 6.0 to 6.5, but a range of 5.5 to 7.0 is acceptable"
+            }
+        }
+    ]
+}

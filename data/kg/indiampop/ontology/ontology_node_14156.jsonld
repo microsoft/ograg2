@@ -1,0 +1,45 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_land_preperation_requirements": "cropCult:LandPreparation"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "RICE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "UPLAND RICE"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Stale seed bed (Paga Bhangiba) method may be followed by allowing 5-7 days time after a pre-monsoon shower to have the first batch of weeds come up and destroyed by the final ploughing. Apply adequate amount of compost or FYM @ 5t/ha for improving soil structure and water holding capacity of soil.",
+                "with_soil_moisture": "5t/ha"
+            }
+        }
+    ]
+}

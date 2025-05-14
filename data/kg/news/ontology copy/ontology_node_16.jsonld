@@ -1,0 +1,257 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:event",
+      "eventTitle": "Poland opens an investigation against OpenAI",
+      "eventSummary": "The Polish authority publically announced it has opened an investigation regarding ChatGPT — accusing the company of a string of breaches of the EU’s General Data Protection Regulation (GDPR)."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "OpenAI unveils DALL-E 3",
+      "eventSummary": "The upgraded text-to-image tool, DALL-E 3, uses ChatGPT to help fill in prompts. Subscribers to OpenAI’s premium ChatGPT plans, ChatGPT Plus and ChatGPT Enterprise, can type in a request for an image and hone it through conversations with the chatbot — receiving the results directly within the chat app."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Opera GX integrates ChatGPT-powered AI",
+      "eventSummary": "Powered by OpenAI’s ChatGPT, the AI browser Aria launched on Opera in May to give users an easier way to search, ask questions and write code. Today, the company announced it is bringing Aria to Opera GX, a version of the flagship Opera browser that is built for gamers. The new feature allows Opera GX users to interact directly with a browser AI to find the latest gaming news and tips."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "OpenAI releases a guide for teachers using ChatGPT in the classroom",
+      "eventSummary": "OpenAI wants to rehabilitate the system’s image a bit when it comes to education, as ChatGPT has been controversial in the classroom due to plagiarism. OpenAI has offered up a selection of ways to put the chatbot to work in the classroom."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "OpenAI launches ChatGPT Enterprise",
+      "eventSummary": "ChatGPT Enterprise can perform the same tasks as ChatGPT, such as writing emails, drafting essays and debugging computer code. However, the new offering also adds “enterprise-grade” privacy and data analysis capabilities on top of the vanilla ChatGPT, as well as enhanced performance and customization options."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Survey finds relatively few American use ChatGPT",
+      "eventSummary": "Recent Pew polling suggests the language model isn’t quite as popular or threatening as some would have you think. Ongoing polling by Pew Research shows that although ChatGPT is gaining mindshare, only about 18% of Americans have ever actually used it."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "OpenAI brings fine-tuning to GPT-3.5 Turbo",
+      "eventSummary": "With fine-tuning, companies using GPT-3.5 Turbo through the company’s API can make the model better follow specific instructions. For example, having the model always respond in a given language. Or improving the model’s ability to consistently format responses, as well as hone the “feel” of the model’s output, like its tone, so that it better fits a brand or voice. Most notably, fine-tuning enables OpenAI customers to shorten text prompts to speed up API calls and cut costs."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "OpenAI acquires Global Illumination",
+      "eventSummary": "In OpenAI’s first public acquisition in its seven-year history, the company announced it has acquired Global Illumination, a New York-based startup leveraging AI to build creative tools, infrastructure and digital experiences."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "The ‘custom instructions’ feature is extended to free ChatGPT users",
+      "eventSummary": "OpenAI announced that it’s expanding custom instructions to all users, including those on the free tier of service. The feature allows users to add various preferences and requirements that they want the AI chatbot to consider when responding."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "China requires AI apps to obtain an administrative license",
+      "eventSummary": "Multiple generative AI apps have been removed from Apple’s China App Store ahead of the country’s latest generative AI regulations that are set to take effect August 15."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "ChatGPT for Android is now available in the US, India, Bangladesh and Brazil",
+      "eventSummary": "A few days after putting up a preorder page on Google Play, OpenAI has flipped the switch and released ChatGPT for Android. The app is now live in a handful of countries."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "OpenAI launches customized instructions for ChatGPT",
+      "eventSummary": "OpenAI launched custom instructions for ChatGPT users, so they don’t have to write the same instruction prompts to the chatbot every time they interact with it."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "The FTC is reportedly investigating OpenAI",
+      "eventSummary": "The FTC is reportedly in at least the exploratory phase of investigation over whether OpenAI’s flagship ChatGPT conversational AI made “false, misleading, disparaging or harmful” statements about people."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "OpenAI announced the general availability of GPT-4",
+      "eventSummary": "Starting July 6, all existing OpenAI developers “with a history of successful payments” can access GPT-4. OpenAI plans to open up access to new developers by the end of July."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "ChatGPT app can now search the web only on Bing",
+      "eventSummary": "OpenAI announced that subscribers to ChatGPT Plus can now use a new feature on the app called Browsing, which allows ChatGPT to search Bing for answers to questions."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Mercedes is adding ChatGPT to its infotainment system",
+      "eventSummary": "U.S. owners of Mercedes models that use MBUX will be able to opt into a beta program starting June 16 activating the ChatGPT functionality."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "ChatGPT app is now available on iPad, adds support for Siri and Shortcuts",
+      "eventSummary": "The new ChatGPT app version brings native iPad support to the app, as well as support for using the chatbot with Siri and Shortcuts."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Texas judge orders all AI-generated content must be declared and checked",
+      "eventSummary": "The Texas federal judge has added a requirement that any attorney appearing in his court must attest that “no portion of the filing was drafted by generative artificial intelligence,” or if it was, that it was checked “by a human being.”"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "ChatGPT app expanded to more than 30 countries",
+      "eventSummary": "The list of new countries includes Algeria, Argentina, Azerbaijan, Bolivia, Brazil, Canada, Chile, Costa Rica, Ecuador, Estonia, Ghana, India, Iraq, Israel, Japan, Jordan, Kazakhstan, Kuwait, Lebanon, Lithuania, Mauritania, Mauritius, Mexico, Morocco, Namibia, Nauru, Oman, Pakistan, Peru, Poland, Qatar, Slovenia, Tunisia and the United Arab Emirates."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "ChatGPT app is now available in 11 more countries",
+      "eventSummary": "OpenAI announced in a tweet that the ChatGPT mobile app is now available on iOS in the U.S., Europe, South Korea and New Zealand, and soon more will be able to download the app from the app store."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "OpenAI launches a ChatGPT app for iOS",
+      "eventSummary": "ChatGPT is officially going mobile. The new ChatGPT app will be free to use, free from ads and will allow for voice input, the company says, but will initially be limited to U.S. users at launch."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Hackers are using ChatGPT lures to spread malware on Facebook",
+      "eventSummary": "Meta said in a report on May 3 that malware posing as ChatGPT was on the rise across its platforms."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "ChatGPT parent company OpenAI closes $300M share sale at $27B-29B valuation",
+      "eventSummary": "VC firms including Sequoia Capital, Andreessen Horowitz, Thrive and K2 Global are picking up new shares, according to documents seen by TechCrunch."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "OpenAI previews new subscription tier, ChatGPT Business",
+      "eventSummary": "Called ChatGPT Business, OpenAI describes the forthcoming offering as “for professionals who need more control over their data as well as enterprises seeking to manage their end users.”"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "OpenAI wants to trademark “GPT”",
+      "eventSummary": "OpenAI applied for a trademark for “GPT,” which stands for “Generative Pre-trained Transformer,” last December."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Auto-GPT is Silicon Valley’s latest quest to automate everything",
+      "eventSummary": "Auto-GPT is an open-source app created by game developer Toran Bruce Richards that uses OpenAI’s latest text-generating models, GPT-3.5 and GPT-4, to interact with software and services online."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "FTC warns that AI technology like ChatGPT could ‘turbocharge’ fraud",
+      "eventSummary": "FTC chair Lina Khan and fellow commissioners warned House representatives of the potential for modern AI technologies, like ChatGPT, to be used to “turbocharge” fraud in a congressional hearing."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Superchat’s new AI chatbot lets you message historical and fictional characters via ChatGPT",
+      "eventSummary": "The company behind the popular iPhone customization app Brass, sticker maker StickerHub and others is out today with a new AI chat app called SuperChat, which allows iOS users to chat with virtual characters powered by OpenAI’s ChatGPT."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Italy gives OpenAI to-do list for lifting ChatGPT suspension order",
+      "eventSummary": "Italy’s data protection watchdog has laid out what OpenAI needs to do for it to lift an order against ChatGPT issued at the end of last month."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Researchers discover a way to make ChatGPT consistently toxic",
+      "eventSummary": "A study co-authored by scientists at the Allen Institute for AI shows that assigning ChatGPT a “persona” increases its toxicity sixfold."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Y Combinator-backed startups are trying to build ‘ChatGPT for X’",
+      "eventSummary": "YC Demo Day’s Winter 2023 batch features no fewer than four startups that claim to be building “ChatGPT for X.”"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Italy orders ChatGPT to be blocked",
+      "eventSummary": "OpenAI has started geoblocking access to its generative AI chatbot, ChatGPT, in Italy."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "1,100+ signatories signed an open letter asking all ‘AI labs to immediately pause for 6 months’",
+      "eventSummary": "The letter’s signatories include Elon Musk, Steve Wozniak and Tristan Harris of the Center for Humane Technology, among others."
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "OpenAI connects ChatGPT to the internet",
+      "eventSummary": "OpenAI launched plugins for ChatGPT, extending the bot’s functionality by granting it access to third-party knowledge sources and databases, including the web."
+    }
+  ]
+}
+```

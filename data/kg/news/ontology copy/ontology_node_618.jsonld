@@ -1,0 +1,138 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "title": "5 myths about ketamine, the drug tied to Matthew Perry's death, according to doctors",
+      "byline": null,
+      "published": "2023-12-19T01:50:33+00:00",
+      "summary": "After Matthew Perry’s cause of death was listed as 'acute effects of ketamine' on Friday, experts are speaking out about misconceptions surrounding the drug.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "MATTHEW PERRY CAUSE OF DEATH LISTED AS 'ACUTE EFFECTS OF KETAMINE'",
+        "summary": "Ketamine is primarily used as an anesthetic during surgical procedures — but in recent years it's been used as a remedy for treatment-resistant depression."
+      },
+      "derivedFrom": {
+        "@type": "snap:asset",
+        "title": "WHAT IS KETAMINE, THE DRUG THAT KILLED MATTHEW PERRY ON OCTOBER 28?",
+        "summary": "The Alcohol and Drug Foundation (ADF) describes ketamine as a 'dissociative drug,' which means it causes people to feel 'separated or detached' from their bodies or physical surroundings."
+      },
+      "hasThumbnail": {
+        "@type": "snap:imageAsset",
+        "image": "https://www.foxnews.com/health/5-myths-ketamine-drug-tied-matthew-perry-death-according-doctors"
+      },
+      "comment": "FOX News - Health"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "FOX News - Health"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Matthew Perry",
+      "dateOfDeath": "2023-10-28"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Lewis Nelson",
+      "comment": "Chair of the Department of Emergency Medicine and chief of medical toxicology at Rutgers New Jersey Medical School"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Dr. Bankole Johnson",
+      "comment": "CEO and founder of Casa Privée in Miami"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Dr. Patrick Sullivan",
+      "comment": "Medical director of Initia Nova Medical Solutions in New Jersey"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Dr. Sandhya Prashad",
+      "comment": "President of the American Society Of Ketamine Physicians, Psychotherapists and Practitioners (ASKP3) in Florida"
+    }
+  ]
+}
+```

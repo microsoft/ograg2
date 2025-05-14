@@ -1,0 +1,1461 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Layoffs Announced by Various Companies",
+            "author": "News Agency",
+            "theme": "Business",
+            "summary": "A comprehensive list of layoffs announced by various companies in 2023.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Divvy Homes Layoffs",
+                        "eventSummary": "Announced on September 11 that it is laying off 94 employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Divvy Homes"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Sensor Tower Layoffs",
+                        "eventSummary": "Announced on September 8 that it laid off approximately 40 people out of the 270+ at the company, including C-suite executives.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Sensor Tower"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Roku Layoffs",
+                        "eventSummary": "Announced September 6 that it plans to lay off approximately 10% of its workforce, representing over 300 employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Roku"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Malwarebytes Layoffs",
+                        "eventSummary": "Announced on August 31 that it laid off 100 employees, mainly impacting corporate employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Malwarebytes"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Twiga Layoffs",
+                        "eventSummary": "Announced on August 21 that it is laying off 283 employees, or 33% of its workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Twiga"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "SecureWorks Layoffs",
+                        "eventSummary": "Announced on August 14 that it will let go of 15% of its workforce, impacting about 300 employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "SecureWorks"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "CoinDesk Layoffs",
+                        "eventSummary": "Announced on August 14 that it is cutting 16% of staff.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "CoinDesk"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "NCC Group Layoffs",
+                        "eventSummary": "Confirmed on August 10 that it is making more layoffs, its second round of layoffs in just six months.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "NCC Group"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Rapid7 Layoffs",
+                        "eventSummary": "Announced on August 9 that it plans to lay off 18% of its workforce, affecting more than 400 employees globally.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Rapid7"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Mobile Premier League Layoffs",
+                        "eventSummary": "Announced on August 8 that it is laying off approximately 50% of its employees or 350 people.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Mobile Premier League"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Astra Layoffs",
+                        "eventSummary": "Announced on August 4 that it has laid off 25% of its workforce since the beginning of the quarter.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Astra"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Discord Layoffs",
+                        "eventSummary": "Announced on August 3 that it has let go of nearly 40 employees or 4% of its workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Discord"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "HackerOne Layoffs",
+                        "eventSummary": "Announced on August 2 that it is laying off 12% of its workforce, approximately 50 employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "HackerOne"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Tekion Layoffs",
+                        "eventSummary": "Announced on August 2 that it laid off around 300 employees or 10% of its workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Tekion"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Planet Layoffs",
+                        "eventSummary": "Announced on August 1 that it is laying off 117 employees, or 10% of staff.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Planet"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Dunzo Layoffs",
+                        "eventSummary": "Announced July 19 that it is postponing employee salaries for a month and plans a new wave of layoffs as soon as July 20.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Dunzo"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Cameo Layoffs",
+                        "eventSummary": "Announced on July 18 that it intends to lay off 80 workers.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Cameo"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Skill-Lync Layoffs",
+                        "eventSummary": "Announced on July 13 that the Indian startup has laid off 20% of its workforce, around 225 employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Skill-Lync"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Crunchbase Layoffs",
+                        "eventSummary": "Announced on LinkedIn on July 9 that the company is laying off 52 employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Crunchbase"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Microsoft Layoffs",
+                        "eventSummary": "Announced July 10 that the company is eliminating additional jobs a week after the start of its 2023 fiscal year.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Microsoft"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "ClickUp Layoffs",
+                        "eventSummary": "Announced on July 4 that it has laid off 10% of its workforce, about 90 people.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "ClickUp"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Niantic Layoffs",
+                        "eventSummary": "Announced June 29 that it laid off 230 employees — one year after it laid off around 90 employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Niantic"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Plex Layoffs",
+                        "eventSummary": "Announced June 29 that it laid off approximately 20% of its staff, or 37 employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Plex"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Grab Layoffs",
+                        "eventSummary": "Announced the week of June 23 that it laid off more than a thousand people, or 11% of its staff.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Grab"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Olx Group Layoffs",
+                        "eventSummary": "Announced on June 20 that it has cut around 800 jobs globally.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Olx Group"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Mojocare Layoffs",
+                        "eventSummary": "Announced on June 18 that the company will be laying off some 150 employees, a majority of the workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Mojocare"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Tada Layoffs",
+                        "eventSummary": "Operated by Korean ride-sharing company Socar’s subsidiary VCNC announced on June 15 that it plans to let go of at least 50% of its staff or about 45 people at Tada.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Tada"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Better.com Layoffs",
+                        "eventSummary": "Announced on June 7 that it laid off its real estate team, it is not clear how many people were impacted.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Better.com"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Ursa Major Layoffs",
+                        "eventSummary": "At least 14 people have been laid off from the rocket engine startup, announced on June 7.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Ursa Major"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Spotify Layoffs",
+                        "eventSummary": "Announced June 5 that it will cut 200 jobs in its podcast unit, leading to a workforce reduction of 2%.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Spotify"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Taxfix Layoffs",
+                        "eventSummary": "Announced on May 30 that it has laid off 20% of staff—120 employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Taxfix"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Meta Layoffs",
+                        "eventSummary": "Announced May 24 that it is laying off about 6,000 people.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Meta"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "JioMart Layoffs",
+                        "eventSummary": "Reliance Retail’s online shopping platform laid off over 1,000 employees on May 22.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "JioMart"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Krebs Stamos Group Layoffs",
+                        "eventSummary": "Announced May 18 that the consulting firm laid off six people.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Krebs Stamos Group"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "TuSimple Layoffs",
+                        "eventSummary": "Announced May 18 that it is laying off about 30% of employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "TuSimple"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Nuro Layoffs",
+                        "eventSummary": "Announced May 12 that it will lay off 30%, or about 340 employees across the company.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Nuro"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "LinkedIn Layoffs",
+                        "eventSummary": "Announced May 8 that it is cutting 716 jobs, or about 3.6% of total employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "LinkedIn"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Rapid Layoffs",
+                        "eventSummary": "Announced May 5 that Rapid has laid off another 70 employees less than two weeks after letting go of 50% of its staff.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Rapid"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Meesho Layoffs",
+                        "eventSummary": "Announced May 4 that it has cut 15% of its workforce, or 251 roles.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Meesho"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Shopify Layoffs",
+                        "eventSummary": "Announced May 4 that it is laying off 20% of its workforce, impacting more than 2,000 people.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Shopify"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Bishop Fox Layoffs",
+                        "eventSummary": "Announced May 3 that it laid off around 50 employees — or 13% of its workforce — on May 2.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Bishop Fox"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Neato Robotics Layoffs",
+                        "eventSummary": "Announced May 1 that Vorwerk-owned Neato Robotics is shutting down, with nearly 100 employees impacted by the move.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Neato Robotics"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Clubhouse Layoffs",
+                        "eventSummary": "Announced April 27 that it has laid off more than 50% of staff.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Clubhouse"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Dropbox Layoffs",
+                        "eventSummary": "Announced April 27 that it would be laying off 500 employees or 16% of staff.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Dropbox"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Amazon Layoffs",
+                        "eventSummary": "Announced on April 26 that it is shutting down its Halo Health division, effective July 31.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Amazon"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Rapid Layoffs",
+                        "eventSummary": "Announced on April 25, Rapid lays off 50% of its staff.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Rapid"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Anthemis Group Layoffs",
+                        "eventSummary": "Announced on April 25 that it will lay off 16 people from its staff, or 28% of employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Anthemis Group"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Lyft Layoffs",
+                        "eventSummary": "Announced on April 21 that employees will learn whether they have a job or not via an email that will be sent out April 27.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Lyft"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Meta Layoffs",
+                        "eventSummary": "Announced April 18th that it is expected to lay off 10,000 jobs in the coming months.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Meta"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Redfin Layoffs",
+                        "eventSummary": "Announced April 13th that it has laid off 201 employees, about 4% of its workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Redfin"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Apple Layoffs",
+                        "eventSummary": "Bloomberg reported on April 3 that Apple is laying off a small number of roles on its corporate retail teams.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Apple"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Netflix Layoffs",
+                        "eventSummary": "Announced on March 31, Netflix confirms a “handful of layoffs,” which includes two longtime executives.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Netflix"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Roku Layoffs",
+                        "eventSummary": "Announced March 30 that it is letting go of about 200 employees, or 6% of its workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Roku"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Unacademy Layoffs",
+                        "eventSummary": "Announced March 30 that it has laid off more than 350 roles, or 12% of its workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Unacademy"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Shift Technologies Layoffs",
+                        "eventSummary": "Announced March 29 that it laid off 30% of its workforce in Q1 2023.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Shift Technologies"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Lucid Layoffs",
+                        "eventSummary": "Announced March 28 that it is laying off 1,300 employees, or 18% of its workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Lucid"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "GitHub Layoffs",
+                        "eventSummary": "Announced on March 28 that it has eliminated over 100 jobs in the South Asian market.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "GitHub"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Disney Layoffs",
+                        "eventSummary": "On March 27 in an internal memo to employees, Disney revealed there will be three rounds of layoffs, the first beginning this week.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Disney"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Salesforce Layoffs",
+                        "eventSummary": "On March 24, Bloomberg reported that more layoffs could be on the way at Salesforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Salesforce"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Accenture Layoffs",
+                        "eventSummary": "Announced March 23 that it plans to cut 19,000 jobs, or 2.5% of its workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Accenture"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Indeed Layoffs",
+                        "eventSummary": "Announced March 22 that it will lay off 2,200 employees, or 15% of its staff.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Indeed"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Roofstock Layoffs",
+                        "eventSummary": "Announced March 22 that it has laid off 27% of its staff, approximately 100 employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Roofstock"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Twitch Layoffs",
+                        "eventSummary": "Announced March 20 that it will lay off 400 employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Twitch"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Amazon Layoffs",
+                        "eventSummary": "Announced March 20 another round of substantial layoffs, this time 9,000 people are set to lose their jobs.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Amazon"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Livespace Layoffs",
+                        "eventSummary": "Announced March 20 that it has laid off at least 100 employees, about 2% of the company’s workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Livespace"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Course Hero Layoffs",
+                        "eventSummary": "Announced March 16 that it has cut 15% of staff, or 42 people.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Course Hero"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Klaviyo Layoffs",
+                        "eventSummary": "Announced March 15 that it has laid off 140 of its staff across all teams.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Klaviyo"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Microsoft Layoffs",
+                        "eventSummary": "As a part of its recent announcement to layoff 10,000 people, Microsoft laid off an entire team dedicated to guiding AI innovation.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Microsoft"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Meta Layoffs",
+                        "eventSummary": "CEO Mark Zuckerberg confirmed rumors March 14 that the company will be cutting 10,000 people from its workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Meta"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Y Combinator Layoffs",
+                        "eventSummary": "Announced March 13 that it will impact 20% of staff, or 17 team members.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Y Combinator"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Salesforce Layoffs",
+                        "eventSummary": "Salesforce first announced that it was laying off 10% of the workforce in January.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Salesforce"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Atlassian Layoffs",
+                        "eventSummary": "Announced on March 6, Atlassian is laying off about 500 employees, or 5% of its total workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Atlassian"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "SiriusXM Layoffs",
+                        "eventSummary": "Announced on March 6, the company laid off 475 employees, or 8% of its total workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "SiriusXM"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Alerzo Layoffs",
+                        "eventSummary": "The Nigerian B2B e-commerce platform had a headcount of more than 2,000 before a first round of layoffs in September 2022.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Alerzo"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Cerebral Layoffs",
+                        "eventSummary": "Announced March 1, the company is letting go 15% of its workforce — roughly 285 employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Cerebral"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Waymo Layoffs",
+                        "eventSummary": "Announced March 1, Alphabet’s Waymo issued a second round of layoffs this year.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Waymo"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Twitter Layoffs",
+                        "eventSummary": "Announced on February 26, the company laid off more than 200 employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Twitter"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Poshmark Layoffs",
+                        "eventSummary": "Announced February 24, Poshmark confirmed with TechCrunch that less than 2% of its workforce was affected.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Poshmark"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Green Labs Layoffs",
+                        "eventSummary": "We do not have an exact figure of how many Green Labs plans to lay off its staff.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Green Labs"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Chipper Cash Layoffs",
+                        "eventSummary": "Announced on February 20, the African cross-border payments platform conducted a second round of layoffs.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Chipper Cash"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Evernote Layoffs",
+                        "eventSummary": "On February 17 the company confirmed laying off 129 people.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Evernote"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Jumia Layoffs",
+                        "eventSummary": "Announced February 16 that it cut 20% of its staff, or more than 900 positions.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Jumia"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Convoy Layoffs",
+                        "eventSummary": "Announced on February 16 that it is shuttering its Atlanta office and laying off workers.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Convoy"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Sprinklr Layoffs",
+                        "eventSummary": "Announced on February 15 that it will impact 4% of its global workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Sprinklr"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "iRobot Layoffs",
+                        "eventSummary": "Announced on February 13 that it will lay off 7% of its workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "iRobot"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Twilio Layoffs",
+                        "eventSummary": "Announced on February 13 that it will impact around 17% of its global workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Twilio"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "GitHub Layoffs",
+                        "eventSummary": "Announced February 9, 10% of its staff will be impacted.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "GitHub"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Yahoo Layoffs",
+                        "eventSummary": "Announced on February 9, 20% of its staff, impacting 1,600 employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Yahoo"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "GitLab Layoffs",
+                        "eventSummary": "Announced February 9 that it’s reducing its headcount by 7%.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "GitLab"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Affirm Layoffs",
+                        "eventSummary": "Announced on February 8 that it is reducing its staff by 19%.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Affirm"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Zoom Layoffs",
+                        "eventSummary": "Announced the cut of 15% of its staff, or 1,300 people on February 7.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Zoom"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "VinFast Layoffs",
+                        "eventSummary": "VinFast has not shared how many employees have been cut.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "VinFast"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Dell Layoffs",
+                        "eventSummary": "Announced February 6, impacting 6,650 people, or 5% of worldwide workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Dell"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Getaround Layoffs",
+                        "eventSummary": "Announced February 2, 10% of staff — about 42 employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Getaround"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Pinterest Layoffs",
+                        "eventSummary": "Announced February 2, 150 employees impacted.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Pinterest"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Rivian Layoffs",
+                        "eventSummary": "Announced on February 1, cutting 6% of its workforce for the second time.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Rivian"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "SoFi Technologies Layoffs",
+                        "eventSummary": "Announced on January 31, cutting 65 jobs, or about 5% of its 1,300-person workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "SoFi Technologies"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "NetApp Layoffs",
+                        "eventSummary": "Announced on January 31, impacting 8% of its staff — about 960 people.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "NetApp"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Groupon Layoffs",
+                        "eventSummary": "Impacting another 500 employees announced on January 31.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Groupon"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Impossible Foods Layoffs",
+                        "eventSummary": "Reportedly affecting 20% of its staff, over 100 employees.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Impossible Foods"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "PayPal Layoffs",
+                        "eventSummary": "Announced on January 30, about 2,000 full-time employees, or 7% of its workforce, were affected.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "PayPal"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Arrival Layoffs",
+                        "eventSummary": "Announced on January 30, slashing 50% of its workforce — 800 employees globally.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Arrival"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Waymo Layoffs",
+                        "eventSummary": "The self-driving technology unit under Alphabet quietly laid off workers on January 24.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Waymo"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Spotify Layoffs",
+                        "eventSummary": "Announced on January 23, impacting around 6% of its global workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Spotify"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "@type": "Event",
+                        "eventTitle": "Alphabet Layoffs",
+                        "eventSummary": "Google’s parent company announced laying off 6% of its global workforce.",
+                        "theme": "Layoffs",
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "Alphabet"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

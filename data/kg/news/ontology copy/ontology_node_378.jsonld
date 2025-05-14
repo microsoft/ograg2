@@ -1,0 +1,228 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Joel Sritharan",
+      "published": "2023-09-30T21:27:02+00:00",
+      "title": "VAR apology list in Premier League: Updated list of PGMOL apologies for referee mistakes in English football",
+      "summary": "Referees once again took the headlines on the opening matchday of the 2023/24 Premier League season following an incorrect VAR decision in Manchester United's fixture against Wolves.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://www.sportingnews.com/us/soccer/news/var-apology-list-premier-league-pgmol-referee-mistakes/hhw8byssj025djuce3gbd2pp"
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Tottenham 2-1 Liverpool",
+      "eventSummary": "Liverpool had their hearts broken as Joel Matip's stoppage-time own-goal gave Tottenham a 2-1 victory.",
+      "subEventOf": {
+        "@type": "Event",
+        "eventTitle": "VAR Apology",
+        "eventSummary": "PGMOL issued a statement after the match stating the goal should have stood."
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Manchester United 1-0 Wolves",
+      "eventSummary": "After Onana clattered into Kalajdzic in the box, O'Neil thought a penalty would certainly be awarded.",
+      "subEventOf": {
+        "@type": "Event",
+        "eventTitle": "VAR Apology",
+        "eventSummary": "PGMOL's Jonathan Moss did apologise for the mistake after the match."
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Tottenham 2-1 Brighton",
+      "eventSummary": "Chief Refereeing Officer Howard Webb had to give to Brighton an apology after they were denied a penalty.",
+      "subEventOf": {
+        "@type": "Event",
+        "eventTitle": "VAR Apology",
+        "eventSummary": "Mitoma penalty, Dunk penalty, Mitoma handball, Mac Allister handball."
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Arsenal 1-1 Brentford",
+      "eventSummary": "Arsenal were denied two points in their race for the title after VAR's Lee Mason did not use the right player.",
+      "subEventOf": {
+        "@type": "Event",
+        "eventTitle": "VAR Apology",
+        "eventSummary": "Mikel Arteta was not happy after the game."
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Crystal Palace 1-1 Brighton",
+      "eventSummary": "Referees made another wrong offside decision on the same day.",
+      "subEventOf": {
+        "@type": "Event",
+        "eventTitle": "VAR Apology",
+        "eventSummary": "John Brooks was taken off VAR duty for two games."
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Aston Villa 3-1 Manchester United",
+      "eventSummary": "Lucas Digne's free-kick was one of the highlights in Aston Villa's victory over Man United.",
+      "subEventOf": {
+        "@type": "Event",
+        "eventTitle": "VAR Apology",
+        "eventSummary": "The Red Devils' wall was set more than 10 yards behind the ball."
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Nottingham Forest 2-2 Brentford",
+      "eventSummary": "Brentford were awarded a penalty after a collision between Dean Henderson and Yoane Wissa.",
+      "subEventOf": {
+        "@type": "Event",
+        "eventTitle": "VAR Apology",
+        "eventSummary": "Webb apologised to Forest after the match."
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Fulham 3-0 Aston Villa",
+      "eventSummary": "Douglas Luiz was wrongly sent off for Aston Villa.",
+      "subEventOf": {
+        "@type": "Event",
+        "eventTitle": "VAR Apology",
+        "eventSummary": "The real perpetrator was Aleksandar Mitrovic."
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Manchester United 3-1 Arsenal",
+      "eventSummary": "Arsenal's first defeat of the season came at Old Trafford.",
+      "subEventOf": {
+        "@type": "Event",
+        "eventTitle": "VAR Apology",
+        "eventSummary": "PGMOL later revealed that the goal should have stood."
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Newcastle 0-0 Crystal Palace",
+      "eventSummary": "Crystal Palace were let off the hook when Tyrick Mitchell's own goal was ruled out.",
+      "subEventOf": {
+        "@type": "Event",
+        "eventTitle": "VAR Apology",
+        "eventSummary": "It turned out to be the wrong decision."
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Chelsea 2-1 West Ham",
+      "eventSummary": "Maxwell Cornet thought he scored late on against Chelsea.",
+      "subEventOf": {
+        "@type": "Event",
+        "eventTitle": "VAR Apology",
+        "eventSummary": "Webb apologised to David Moyes after the incident."
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Crystal Palace 3-1 Aston Villa",
+      "eventSummary": "Webb's first apology in his new role came during Villa's defeat at Selhurst Park.",
+      "subEventOf": {
+        "@type": "Event",
+        "eventTitle": "VAR Apology",
+        "eventSummary": "The decision, which went against Digne, was the wrong call."
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Everton 0-1 Manchester City",
+      "eventSummary": "Man City were given a helping hand in their title race against Liverpool.",
+      "subEventOf": {
+        "@type": "Event",
+        "eventTitle": "VAR Apology",
+        "eventSummary": "Mike Riley apologised to Everton."
+      }
+    }
+  ]
+}
+```

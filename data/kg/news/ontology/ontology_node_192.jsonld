@@ -1,0 +1,257 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "MLB Winter Meetings tracker: Live updates on news, rumors, signings and trades for 2023 free agency",
+            "author": "Edward Sutelan",
+            "published": "2023-12-03T23:24:00+00:00",
+            "summary": "MLB's winter meetings are always a prime time for moves to happen as many of the top executives, players and agents all come together at the same spot. Last year's winter meetings wound up being explosive. Aaron Judge, Justin Verlander, Trea Turner and Xander Bogaerts all came away with new contracts. This year's winter meetings could wind up being similarly busy. There is a growing sense Shohei Ohtani could sign during the winter meetings, and a move of that magnitude could kick off the next wave of moves. There's also a number of top players on the trade market, including star Padres outfielder Juan Soto. Starting Sunday, Dec. 3, and running through Wednesday, Dec. 6, expect MLB's offseason to really kick into high gear.",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "eventTitle": "Diamondbacks reportedly land Eduardo Rodriguez",
+                        "eventSummary": "The reigning NL champions have landed one of the free agent market's top pitchers. Left-hander Eduardo Rodriguez has reportedly agreed to a four-year contract with Arizona worth around $20 million per year, according to ESPN's Jeff Passan. The deal is still pending a physical, per Passan's report.",
+                        "date": "2023-12-06"
+                    },
+                    {
+                        "@id": "snap:event2",
+                        "eventTitle": "Juan Soto reportedly traded to Yankees",
+                        "eventSummary": "The biggest star on the trade market has reportedly been traded. The Padres have reportedly sent Juan Soto to the Yankees in exchange for four pitchers and catcher Kyle Higashioka, according to the New York Post's Joel Sherman.",
+                        "date": "2023-12-06"
+                    },
+                    {
+                        "@id": "snap:event3",
+                        "eventTitle": "Craig Kimbrel signs with Orioles",
+                        "eventSummary": "The Orioles are bolstering their bullpen, signing Craig Kimbrel to a one-year, $13 million deal, according to The Athletic's Ken Rosenthal.",
+                        "date": "2023-12-06"
+                    },
+                    {
+                        "@id": "snap:event4",
+                        "eventTitle": "Trent Grisham likely headed to New York in Soto deal",
+                        "eventSummary": "The Yankees won't just be getting one outfielder from the Padres; it appears they'll be getting two.",
+                        "date": "2023-12-06"
+                    },
+                    {
+                        "@id": "snap:event5",
+                        "eventTitle": "Juan Soto to Yankees 'close to being finalized'",
+                        "eventSummary": "A trade between the Yankees and Padres for Soto is reportedly 'close to being finalized,' with right handers Michael King and Drew Thorpe expected to highlight the return to San Diego.",
+                        "date": "2023-12-06"
+                    },
+                    {
+                        "@id": "snap:event6",
+                        "eventTitle": "Ohtani decision expected to be made before end of weekend",
+                        "eventSummary": "MLB free agency remains largely on hold as teams wait for Ohtani to sign.",
+                        "date": "2023-12-06"
+                    },
+                    {
+                        "@id": "snap:event7",
+                        "eventTitle": "Yoshinobu Yamamoto meeting with Yankees, already met with Mets",
+                        "eventSummary": "The Yankees could be on the verge of adding Soto, but they might not be done.",
+                        "date": "2023-12-06"
+                    },
+                    {
+                        "@id": "snap:event8",
+                        "eventTitle": "'Decent chance' Corbin Burnes is traded this winter",
+                        "eventSummary": "Corbin Burnes has been named as one of the top trade candidates in the offseason.",
+                        "date": "2023-12-06"
+                    },
+                    {
+                        "@id": "snap:event9",
+                        "eventTitle": "Marlins 'listening' to offers on young pitchers",
+                        "eventSummary": "Miami made a run to the postseason last year on the strength of its young pitching.",
+                        "date": "2023-12-06"
+                    },
+                    {
+                        "@id": "snap:event10",
+                        "eventTitle": "Alex Verdugo 'expected' to stay with Yankees despite potential Juan Soto trade",
+                        "eventSummary": "The Yankees acquired Alex Verdugo yesterday from the Red Sox.",
+                        "date": "2023-12-06"
+                    },
+                    {
+                        "@id": "snap:event11",
+                        "eventTitle": "Juan Soto trade to Yankees 'is likely'",
+                        "eventSummary": "New York landed Alex Verdugo last night in a deal with the Red Sox.",
+                        "date": "2023-12-06"
+                    },
+                    {
+                        "@id": "snap:event12",
+                        "eventTitle": "Orioles 'close to deal' with reliever Craig Kimbrel",
+                        "eventSummary": "The Orioles are said to be 'close' to a deal with free agent and former Phillies closer Kimbrel.",
+                        "date": "2023-12-06"
+                    },
+                    {
+                        "@id": "snap:event13",
+                        "eventTitle": "Victor Caratini lands with Astros",
+                        "eventSummary": "Veteran catcher Victor Caratini is headed to Houston on a two-year deal worth $12 million.",
+                        "date": "2023-12-05"
+                    },
+                    {
+                        "@id": "snap:event14",
+                        "eventTitle": "Pirates acquire Marco Gonzales from Braves",
+                        "eventSummary": "Gonzales, who was acquired by the Braves in the trade that helped them land Jarred Kelenic on Sunday, is being re-routed to Pittsburgh.",
+                        "date": "2023-12-05"
+                    },
+                    {
+                        "@id": "snap:event15",
+                        "eventTitle": "Yankees land Alex Verdugo from Red Sox",
+                        "eventSummary": "For just the seventh time in the last 50 years, the Red Sox and Yankees have agreed to a deal.",
+                        "date": "2023-12-05"
+                    },
+                    {
+                        "@id": "snap:event16",
+                        "eventTitle": "Relievers Yates, Devenski get one-year deals for 2024",
+                        "eventSummary": "Veteran relievers Kirby Yates and Chris Devenski know where they'll be pitching in 2024.",
+                        "date": "2023-12-05"
+                    },
+                    {
+                        "@id": "snap:event17",
+                        "eventTitle": "Dave Roberts says Dodgers met with Ohtani",
+                        "eventSummary": "Dodgers manager Dave Roberts told reporters Tuesday that the team met with Ohtani for 2-3 hours over the weekend.",
+                        "date": "2023-12-05"
+                    },
+                    {
+                        "@id": "snap:event18",
+                        "eventTitle": "Pair of pitchers could be signed after Ohtani deal",
+                        "eventSummary": "MLB is largely in a holding pattern as it awaits news on Ohtani.",
+                        "date": "2023-12-05"
+                    },
+                    {
+                        "@id": "snap:event19",
+                        "eventTitle": "Cubs losing optimism in signing Ohtani",
+                        "eventSummary": "The Cubs have been viewed as one of Ohtani's likeliest destinations for a while.",
+                        "date": "2023-12-05"
+                    },
+                    {
+                        "@id": "snap:event20",
+                        "eventTitle": "Ohtani has 'positive feeling' about Blue Jays",
+                        "eventSummary": "The Blue Jays reported met with Ohtani on Monday.",
+                        "date": "2023-12-05"
+                    },
+                    {
+                        "@id": "snap:event21",
+                        "eventTitle": "Mariners considering Cody Bellinger",
+                        "eventSummary": "Following the trade the Mariners made with the Braves, MLB Network's Jon Morosi believes Seattle has cleared payroll space.",
+                        "date": "2023-12-05"
+                    },
+                    {
+                        "@id": "snap:event22",
+                        "eventTitle": "Blue Jays 'believed' to have met with Shohei Ohtani",
+                        "eventSummary": "While one report earlier Monday indicated Ohtani isn't expected to sign before the end of the Winter Meetings, the process seems to be moving along.",
+                        "date": "2023-12-04"
+                    },
+                    {
+                        "@id": "snap:event23",
+                        "eventTitle": "Shohei Ohtani, Yoshinobu Yamamoto decision not expected until after winter meetings",
+                        "eventSummary": "The baseball markets are waiting for the first major domino to fall this offseason in free agency.",
+                        "date": "2023-12-04"
+                    },
+                    {
+                        "@id": "snap:event24",
+                        "eventTitle": "Wade Miley back with Brewers on 1-year deal",
+                        "eventSummary": "Amid a turbulent offseason, the Brewers will keep one piece of their rotation intact as Wade Miley has agreed to return on a one-year deal for 2024.",
+                        "date": "2023-12-04"
+                    },
+                    {
+                        "@id": "snap:event25",
+                        "eventTitle": "Braves are reportedly 'engaged' with Shohei Ohtani's camp",
+                        "eventSummary": "It's not surprising that any and all teams should be interested in Ohtani's services.",
+                        "date": "2023-12-04"
+                    },
+                    {
+                        "@id": "snap:event26",
+                        "eventTitle": "Korean star Jung Hoo Lee to be posted Monday",
+                        "eventSummary": "Star Korean outfielder Jung Hoo Lee is set for a move to MLB.",
+                        "date": "2023-12-04"
+                    },
+                    {
+                        "@id": "snap:event27",
+                        "eventTitle": "Braves land Jarred Kelenic, Marco Gonzales from Mariners",
+                        "eventSummary": "The Braves have made a splash.",
+                        "date": "2023-12-03"
+                    }
+                ]
+            }
+        }
+    ]
+}

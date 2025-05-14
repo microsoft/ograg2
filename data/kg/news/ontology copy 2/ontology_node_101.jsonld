@@ -1,0 +1,123 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "West Indies v England: first T20 international – live",
+      "author": "James Wallace",
+      "theme": "sports",
+      "content": "13 Dec 2023 02.36 GMT James Wallace That’s it from me this evening/morning. Time to haul myself out of the OBO armchair and skulk off for some kip. That was an intriguing game and sets up this T20I series nicely. A real statement has been laid down by Rovman Powell and his men, West Indies were up against it early doors with England crunching their way to 112-2 off the first ten overs but Jos Buttler’s side only managed to make 59 runs off the next ten, losing eight wickets along the way. A total of 171 was thirty or more shy of where England would have liked to have ended up and so it proved as West Indies peeled up their sleeves and showed how muscular their own batting card is – the home side cleared the ropes fourteen times compared to England’s six. Andre Russell and Rovman Powell found the stands with ease at the business end of the match to get West Indies over the line with eleven balls remaining. We’ll be back to cover the second match in Grenada on Thursday, do join us for that. Until then, thank you and goodnight.",
+      "created": "2023-12-12T21:49:56+00:00",
+      "published": "2023-12-12T21:49:56+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "West Indies win by 4 wickets",
+          "eventSummary": "Andre Russell smashes the winning runs off Sam Curran! A length ball is spanked over point for a one bounce four to give the home side the win, they go 1-0 up in the series.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Andre Russell"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Sam Curran"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Player of the Match: Andre Russell",
+          "eventSummary": "In his first T20I in over two years he took 3-29 and smashed 29* off just 14 deliveries with the game in the balance.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Andre Russell"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

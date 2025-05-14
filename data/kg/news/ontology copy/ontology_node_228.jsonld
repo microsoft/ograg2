@@ -1,0 +1,95 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Ingrid Lunden",
+      "published": "2023-10-13T19:10:07+00:00",
+      "title": "Israel’s startup ecosystem: down but not out",
+      "summary": "The world is still coming to terms with Hamas’ deadly attacks on Israelis last weekend — and everything else that has unfolded so far in the aftermath, including the barrage of retaliation strikes on Gaza. Undoubtedly, the ramifications for the technology ecosystem pale in comparison to the human toll that the fighting is taking, on both sides. But when considering how the wider region will weather the destruction, and one day recover, it’s an important industry to consider. Please also read here about how this is playing out for Palestinians in Gaza and beyond. And a below, we show how a look at how the situation is playing out in the startup ecosystem in Israel sheds light on its impact to the country as a whole. In such a small country, just about everyone knows someone who was directly affected by the attacks, or someone involved in the subsequent defense and retaliation — and often all three. Technology is, without question, a giant part of Israel’s economy. In 2022, it contributed more than 18% of the country’s GDP, the most of any single sector, according to the latest annual report from the Israel Innovation Authority. A total of 14% of Israeli citizens work in high tech, which in a country of just 9.2 million people works out to about 1.3 million. The active number of startups in the country is 9,000 (third-highest in the world after the Bay Area and NYC) and these startups have collectively, in the last five years, brought $95 billion into the country by way of venture capital. Combining the business development of startups with larger tech companies in the country — Intel, Microsoft, Nvidia, Google and many others have operations in Israel — they collectively exported $71 billion last year, 48.3% of the total amount exported across all industries. Undoubtedly, those numbers are all going to be significantly lower this year, not least because the disruptions of this war are coming directly on the heels of a major protest movement. The tech industry led opposition to the government’s bid for judicial reform. Even before the fighting started, it was voting with its feet, and some companies and investors are already refusing to do business in the country with the prospect of the reforms getting pushed through. (That effort, in turn, has been brought to a halt: People on the two sides of that debate are now standing together for what they see as the significantly bigger fight and threat.) Even before last weekend’s assault, startup investment in Israel was way down from the prior year. As TechCrunch’s Anna Heim reported in July, “With a provisional tally of $3.2 billion for the first half of the year, funding activity in Israel dropped by 73% compared to the same period in 2022, IVC data shows.” Other countries and regions have reported similar declines in their private-market capital flows this year. As the war enters its sixth day, many people are being called up to the reserves, or volunteering to help in other ways. With the tech industry skewing younger, it’s estimated that anywhere between 10% and 30% of all of Israel’s tech employees are getting mobilized. More than 500 VCs have pledged their support of the efforts, too. “In the spirit of peace and unity, we encourage the global venture community to support and engage with Israeli startups, entrepreneurs, and investors as they navigate through these challenging times,” the signatories wrote. To better understand the on-the-ground situation for Israeli entrepreneurs, we spoke to a number of startup founders, PR people who work with startups and investors. The predominant response was that the businesses have to continue to operate as best they can, to help ensure the economic viability of the country. Making sure everyone is OK The founders and operators that we spoke to stressed after they ensured the safety of their teams, they have gingerly started to approach how to resume work. It’s not a simple formula. “Currently, the emphasis is on finding a balance between supporting Israeli team members, some of whom want to keep working to clear their minds a little from what’s happening, and some who cannot even think of working,” Omer Davidi, CEO & co-founder, BeeHero, an Israeli agritech startup, told TechCrunch. “The priority is to focus on core company operations, especially in the short term, as we await a clearer understanding of the unfolding situation,” Davidi said. Yonatan Cohen, co-founder and CTO of Quantum Machines, says that the war is clearly affecting people, but they are returning to work. “I can’t deny that we all had trouble concentrating on work during the first few days of the war, ” he said. He points out that several of his employees have been called to active duty, but those who weren’t are beginning to concentrate on work again in spite of the circumstances. Shuly Galili, founding partner at venture capital firm UpWest, says the situation is complex, but companies are doing their best to navigate the challenges of operating in war conditions. “People are being called up,” she said, adding that there are some startup denizens, who are in the U.S. and are looking to get back and serve, but responses to the war extend beyond military service. “At this point many who are not called to serve are volunteering to provide equipment, medical supplies and food. Many technical developers are building tech to manage logistics and help communities deal with the aftermath of the situation,” she added. “The call for reserve duty has affected a notable percentage of our workforce. I’d estimate that at least 10% of our citizens have either enlisted or volunteered for the army,” said Kfir ben Shooshan, founder and chairman of scooter startup Inokim. “This has inevitably strained many businesses,” he said. Lazer Cohen, whose company Concrete Media works with many startups, says people are contributing however they can, but the businesses need to keep running, too. “Looking at our clients and my agency, 10-25% of Israeli team members have been called up to reserve duty,” he said. Others on the team are helping by donating blood, hosting survivors of the attacks, packing supplies for soldiers or covering for a team member who was called up. The economy matters, too While everyone is concerned about the war and its fallout, startup founders and their investors also recognize the importance of keeping these businesses going. For most Israeli startups, the customer base is global and for many, their go-to-market teams are in the U.S. and hence not directly affected by the war. The current situation may slow down product development but won’t directly affect sales in the short run. While customers have been understanding for the most part, Cohen says that companies are working to continue operating under difficult conditions. “As we come out of the initial shock and horror of the attack, many tech workers and executives see it as their duty to keep the tech industry up and running. Technology is Israel’s biggest export and the main engine of our economy and with a long and difficult war ahead, it’s crucial that we keep working and innovating,” he told TechCrunch. Sharon Seeman, a partner at YL Ventures, says that it’s important that companies maintain communication with customers. “Ensuring the continuity of business operations is vital for Israeli startups in maintaining their customer relationships,” she said. What might be a more tricky situation will be when startups come around to the inevitable cadence of their existence: raising money to scale their operations, and then doubling down and scaling those operations. Should the region and country continue to be at war, how will that play out with would-be startup investors and the LPs of startup investors? OurCrowd founder and CEO Jon Medved believes that in the long run, the Israeli startup ecosystem will remain reslient. “There is no doubt that in the long run — a year or more — Israel’s tech ecosystem will emerge from this war, stronger, bigger, with more investment and returns for investors,” he said. “Israel’s tech ecosystem has well proven its resilience in past conflicts with Hamas. Israel is focused on deep tech, semiconductors, AI, mobility, fintech, cybersecurity, quantum, agtech, the cloud, devops, clean energy and so much more and as the future unrolls, these areas will grow in importance and Israel will continue to play a leading role in all of them.” Oren Yunger, managing partner at GGV, says his firm will do what it takes to make sure that the Israeli startups in his company’s portfolio don’t go bankrupt due to the war. “I can say with absolute confidence — even if we don’t know how long it’s going to take and who’s going to be affected — I am 100% sure that none of our companies will go bust as a result from this moment in time,” he said. Mike Butcher, Frederic Lardinois, Anna Heim and Kyle Wiggers also contributed to this report.",
+      "url": "https://techcrunch.com/2023/10/13/israels-startup-ecosystem-down-but-not-out/"
+    }
+  ]
+}
+```

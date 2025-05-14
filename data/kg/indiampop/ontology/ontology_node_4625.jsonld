@@ -1,0 +1,41 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "WeedManagement",
+            "weed_name": "OTHER CROPS",
+            "weed_types": [
+                "In the first year, hand weeding around the collar region of the plant and cheeling between the hedges should be done."
+            ],
+            "herbicides": [
+                {
+                    "@type": "HerbicideList",
+                    "name": "Herbicide sprays",
+                    "quantity": "@ 350 to 500 lit per hectare",
+                    "stage": "mature tea from April to September"
+                }
+            ]
+        }
+    ]
+}

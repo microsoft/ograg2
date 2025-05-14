@@ -1,0 +1,98 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Sean Hollister",
+            "published": "2023-11-05T11:00:00+00:00",
+            "title": "Epic v. Google, explained",
+            "summary": "On Monday, Fortnite publisher Epic Games will drag a tech giant into court, alleging that its mobile app store is an illegal monopoly. You may be feeling some déjà vu! After all, didn’t Epic already go to trial with Apple, resulting in a ruling where Apple (mostly) won? Didn’t Epic fail to #FreeFortnite with its Llamacorn legal gambit? Didn’t that all happen years ago? What are we doing here again? The short answer: while Epic’s antitrust claims against Apple got their day in court, a similar lawsuit against Google never did. On November 6th, Epic v. Google will finally go to trial... a mere 1,180 days after Epic originally sued. Hi, I’m Sean, and I’ll be your guide to this whole delightful mess. Update, December 15th, 2023: It’s basically over now. What happened? Read this, this, and this to get the whole picture. Original story continues: Llamacorn what now? What is happening? Before we get to the Llamacorn, a little background. Epic is of course the studio behind Fortnite, the extraordinarily popular free-to-play game. Fortnite makes money by selling in-game items with its virtual currency V-Bucks. Players often buy V-Bucks the same place they play Fortnite. And until August 13th, 2020, if the player used an Android or iOS device and installed the game through an official app store, that purchase triggered an in-app payment fee to Google or Apple. Critics call such fees the “Google tax” or the “Apple tax,” and Epic definitely wasn’t a fan. When Epic decided to take action against these respective “taxes,” it made August 13th, 2020 a very busy day for Apple, Google, Epic, and us here at The Verge. First, Epic announced it was bypassing Apple and Google’s app store fees. It deployed a hotfix update to Fortnite without either company’s knowledge, letting you purchase V-Bucks directly through its own payment processing option at a discount. Apple and Google almost immediately reacted by kicking Fortnite off their app stores for breaking the rules. Then: surprise! Epic was ready and waiting with two lawsuits and an attack ad, depicting a Fortnite hero throwing a unicorn-llama hammer into a giant screen reminiscent of Apple’s famous “1984” Macintosh ad. It was a striking publicity blitz followed by a lot of slow-moving court proceedings. While the Apple lawsuit went to court in 2021, the Google one was delayed again and again. A ruling came down for the Apple trial that September, and it was mostly decided in Apple’s favor, though both parties are waiting for the Supreme Court to potentially weigh in. Meanwhile, the machinations for its fight against Google continued, and now… It is time for trial number two. That sounds fascinating, but if I don’t care about Fortnite or rich companies suing each other, what’s in it for me? The future of Google’s app store could depend on this trial — both Epic and Google agree on that. Epic wants to break up Google’s alleged monopoly on Android app stores and payment methods, so developers aren’t stuck paying the “Google Tax” or passing that fee along to you. But if Epic wins — according to Google, anyhow — it could make Android phones less safe by dismantling basic protections against sideloaded apps, and damage Android’s ability to compete with the iPhone because it (arguably) can’t run a competitive app store by giving it away for free. Or maybe you just want juicy dirt on both companies? More on that later! What exactly is Epic claiming? Epic argues that Google makes it so difficult for developers and users to get around its Android app store, and that app store’s standard fees, that it’s created an illegal monopoly that unjustly enriches Google while artificially driving up app prices because other stores can’t compete. Epic also claims that Google is illegally tying its Google Play payments platform to the Google Play app store, keeping other potential app payment mechanisms from competing as well. So, does Google have a monopoly? A monopoly on what? That’s one of the biggest questions the court will decide. Epic claims that Google has illegal monopolies in “Android app distribution” and “Android in-app payment processing.” It’ll argue that if you buy or develop for Android phones, you’re stuck paying the Google tax. But Google will say the real competition is from Apple, because people can choose to buy an iPhone instead. It’s pretty tough to argue Google has a monopoly on app stores in general. This whole line of argument is called “market definition.” If the court decides the relevant market is phones and app stores, not specifically Android ones, then Google’s on the road to victory. If it accepts that Android apps are their own market, Epic will be in better shape. Or, it could pick a different market definition entirely, like the judge in the Apple case ended up doing. Looking at this from a less academic perspective, it’s worth noting that Google charges up to ten times more per transaction than you pay with PayPal or a credit card, which does seem like a lot! And though Epic can’t argue it in court, I’ll point out that Apple wasn’t able to explicitly justify a 30 percent fee to that case’s judge. On the other hand, it does kinda seem like Epic wants something for nothing! As far as I can tell, Epic hasn’t stated what kind of fee would actually be reasonable for Google to charge in exchange for placement in Google’s store — instead, Epic CEO Tim Sweeney seemingly suggests there shouldn’t be a Google fee at all if a developer wants to use its own payment system. How did Epic’s argument fare against Apple? Well… both sides lost! But Epic arguably lost more. Even though Apple has incredible power over the iPhone, Judge Yvonne Gonzalez Rogers ruled the company didn’t have an unfair monopoly in this case – partly because she decided the relevant market for Fortnite was “digital mobile gaming transactions” rather than, say, iPhone apps. She also decided that Epic violated its developer agreement with Apple and would have to pay. But she also barred Apple from keeping iPhone users in the dark about alternate ways they can pay for apps – and may have even allowed developers to add their own payment mechanisms. I won’t dwell on the Apple ruling, as I’m ethically bound, but my colleague Adi Robertson has a comprehensive breakdown. How can Epic possibly have a case against Google when Apple already won? Epic declined to answer this on the record, among other questions we asked... but three things to consider: 1) That was a different case. Also, that one’s not over till the Supreme Court weighs in or declines to take a look. 2) Google can’t tell jurors that Apple won its case, or that other plaintiffs settled. The judge in this case says so! 3) Oh, and by the way, this is a jury trial. Wait, why does that matter? Epic and Google have to convince a jury, not the judge, which is totally different from how the Apple case played out. (That one was a “bench trial.”) Maybe all the evidence of tricky deals inside Google might sway a jury against the company? Maybe Google scaremongering that sideloaded apps equal gaping security holes will sway a jury against Epic instead? Who knows! (If you’re a Epic juror reading this — stop! Judge Donato explicitly said you’re in a “news-free bubble” through mid-December, folks.) Didn’t other parties sue Google too? They did! And then, they all settled. All 50 state attorneys general and a number of consumers have tentatively settled with Google over app store antitrust claims, though it’s not clear what the deal might include. Match Group, the company behind Tinder, Match.com, OkCupid and other dating apps, just reached a surprise last-minute settlement too, one that makes it sound like Match effectively gave up. Epic stands alone. Could we get a settlement between Google and Epic as well? Epic seems to have no interest in settling as long as the “Google tax” exists, and the company’s repeatedly said it’s not interested in cash. So far, the company’s been willing to push these cases all the way through multiple appeals, cost be damned. It’s not clear what Google could proactively offer that would satisfy Epic, since CEO Tim Sweeney has also publicly suggested that Google would simply circumvent any settlement it offers. But if you do want to see a vision of a future that Epic would accept, look no further than this letter it sent to state attorneys general — laying out a settlement that would basically prohibit Google from doing the anticompetitive things that Epic claims it did. There’s also this tweet from Sweeney: Google wouldn’t tell The Verge if it’s offered Epic any kind of settlement yet. Why if I just want the dirty laundry on both these companies? You promised dirt... Oh, it could get good. The allegations made before trial suggest Google was playing loads of dirty tricks with names like “Project Hug,” “Project Agave,” and “Project Banyan”, with Epic claiming it’s seen evidence Google was paying off game developers and phone makers not to abandon its app store — to the tune of hundreds of millions of dollars. Google allegedly even toyed with the idea of buying Epic to keep Fortnite from inspiring other game developers to abandon ship. Plus, there’s evidence Google deleted potentially incriminating messages to keep them out of a court’s hands. Enough that the judge has decided to explicitly tell the jury we’re not seeing all the evidence, because Google employees all the way up to CEO Sundar Pichai were caught setting those conversations to auto-delete. This issue has come up in the US v. Google antitrust trial in Washington, DC — still ongoing at the start of Epic’s trial — as well. And the dirt isn’t all on Google’s side. Epic was caught straight-up admitting it premeditated the whole plan to bypass Google’s payment systems. Since Google is countersuing over that, it could be a big deal. When you say “straight-up admitting...” Here is an email from Epic CEO Tim Sweeney that, I think, speaks for itself: “Here is our official plan for communicating with Google about bypassing the Google Play Store: SAY NOTHING TILL IT SHIPS” Image via Epic v. Apple We’ll have a whole cast of intriguing people called as witnesses during the trial who might dish even more. Who will Epic and Google call as witnesses? We are going straight to the top of the org chart, folks. Google CEO Sundar Pichai and Epic CEO Tim Sweeney are absolutely expected to attend. Android co-founder Andy Rubin might be deposed, and Google says we’ll hear from current Android (and Chrome, and Chrome OS) boss Hiroshi Lockheimer. Google also tells us representatives from Apple, Netflix, Motorola, and AT&T should testify as well. How much hypocrisy can we expect in the courtroom? I’d say quite a bit! For example: Epic says it’s not in this for the money, it’s only suing to end Google’s monopoly — but Epic would surely profit if it doesn’t have to pay Google’s cut. It looks like Epic’s going to argue that you’re locked into Android after buying an Android phone, but I can personally attest that switching back and forth between the platforms is easier than ever. Google will say that every Samsung Galaxy phone has “a competing app store right there on the homescreen,” even though Google apparently tried to quash that store, too, fearing it could cost the company billions. We caught Google trying to play the China card in a pre-briefing with press, reminding us that Epic is 40 percent owned by Chinese company Tencent — even though Google itself allegedly considered teaming up with Tencent to eliminate the Epic threat. While the parties can’t argue it in court, Google can attempt to subtly play the China card: “Google may ask a witness once about Tencent’s domicile,” reads one of Judge Donato’s orders. In the same press briefing, Google suggested to journalists that Epic should have joined the company’s “User Choice Billing” program if it wanted an alternative payment system, instead of suing. But that program didn’t exist until 2022, long after the lawsuit, and it only knocks 4 percentage points off Google’s fee. When should we expect a jury verdict? Judge Donato told jurors that we’re looking at roughly five weeks of trial starting November 6th and extending through early December. The schedule suggests the court will take Thanksgiving off, finish looking at all the evidence by December 4th, take a couple more days off before closing arguments, and then let jurors come to a decision. “I fully expect we’ll have plenty of time to reach a verdict well before the December holiday period,” said Judge Donato. Okay, I’m sold — how can I watch the trial unfold?",
+            "associatedAsset": {
+                "@type": "snap:asset",
+                "url": "https://www.theverge.com/23944251/epic-google-antitrust-trial-explainer-monopoly"
+            }
+        }
+    ]
+}
+```

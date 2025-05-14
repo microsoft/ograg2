@@ -1,0 +1,141 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "title": "Featuring Cynthia Erivo in a star-making role",
+            "summary": "Chris Hemsworth in a part that makes the most of his sex appeal, and plenty of other familiar names (Jon Hamm, Dakota Johnson, Nick Offerman, Jeff Bridges) doing what they do, this one’s a powder keg of a movie that assembles a motley crew of unrelated guests (or are they?) at a seedy motel, then keeps revealing secrets in a deliriously dizzy way as it all comes together.",
+            "byline": "TR"
+        },
+        {
+            "@type": "snap:asset",
+            "title": "Twilight (1998)",
+            "summary": "No, not that Twilight. There isn’t a sparkle-vampire in sight in this celebrity-crammed, steamy crime drama. But if you have a Noirvember buddy or viewing group, we recommend springing this on them at the last minute: “Hey, we’re watching Twilight tonight!” If they don’t break your neck and throw you under a train, Double Indemnity-style, they’ll probably thank you after watching this one, a surprisingly winning (and winningly surprising) crime drama starring Paul Newman, Susan Sarandon, Gene Hackman, Reese Witherspoon, Stockard Channing, James Garner, Giancarlo Esposito, Liev Schreiber, Margo Martindale, M. Emmet Walsh… It’s the kind of movie where you can play “Oh wow, they’re in this movie too?” in almost every scene.",
+            "byline": "TR",
+            "associatedAsset": [
+                {
+                    "@type": "snap:asset",
+                    "title": "Bound"
+                },
+                {
+                    "@type": "snap:asset",
+                    "title": "Fargo"
+                },
+                {
+                    "@type": "snap:asset",
+                    "title": "Lost Highway"
+                },
+                {
+                    "@type": "snap:asset",
+                    "title": "U-Turn"
+                },
+                {
+                    "@type": "snap:asset",
+                    "title": "Body Heat"
+                },
+                {
+                    "@type": "snap:asset",
+                    "title": "The Drowning Pool"
+                },
+                {
+                    "@type": "snap:asset",
+                    "title": "Memento"
+                },
+                {
+                    "@type": "snap:asset",
+                    "title": "Shutter Island"
+                },
+                {
+                    "@type": "snap:asset",
+                    "title": "Blade Runner"
+                },
+                {
+                    "@type": "snap:asset",
+                    "title": "Nightmare Alley (2021)"
+                }
+            ]
+        }
+    ]
+}
+```

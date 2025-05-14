@@ -1,0 +1,52 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:SeedSpacing",
+            "sowing_time": "Main field planting",
+            "value": "Spacing",
+            "depth": "Cultural operations",
+            "method": "Sufficient mulch should be applied at the base of the plant during December to reduce the ill effects of drought during summer months and to conserve soil moisture."
+        },
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Sickle weeding",
+            "weed_types": ["Sickle weeding"],
+            "herbicides": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Sickle weeding",
+                "quantity": "Frequent",
+                "stage": "Depending upon the intensity of weeds"
+            }
+        },
+        {
+            "@type": "cropCult:LandPreparation",
+            "instructions": "Forking is necessary in hard soils, which is to be carried out in OctoberNovember.",
+            "with_soil_moisture": "N/A"
+        }
+    ]
+}

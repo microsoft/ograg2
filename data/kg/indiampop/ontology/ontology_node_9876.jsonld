@@ -1,0 +1,47 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Carrot: Daucus carota L; Umbelliferae",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Hills: Prepare the land to a fine tilth and form raised beds of one metre breadth and convenient length. Plains: Two ploughings are given and ridges and furrows are formed at 30 cm spacing.",
+                "with_soil_moisture": "Not specified"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Once in five days",
+                "stage_of_application": "Not specified"
+            }
+        }
+    ]
+}

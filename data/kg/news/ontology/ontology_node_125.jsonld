@@ -1,0 +1,227 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "The 53 best Black Friday deals we could find at Amazon, Walmart, Target and more",
+            "author": [
+                {
+                    "name": "Jeff Dunn"
+                },
+                {
+                    "name": "Valentina Palladino"
+                },
+                {
+                    "name": "Amy Skorheim"
+                }
+            ],
+            "theme": "technology",
+            "summary": "Engadget has been testing and reviewing consumer tech since 2004. Our stories may include affiliate links; if you buy something through a link, we may earn a commission. Read more about how we evaluate products. Black Friday is almost here, but we wouldn't blame you if you've felt like it's been here for a while. What was once a one-day event filled with limited-time deals has grown into a month-long event with a plethora of sales to sift through each day. This year, Amazon, Target, Best Buy and Walmart and several other retailers kicked off their Black Friday deals early, with some starting as soon as late October. If you're overwhelmed by the amount of discounts showing up in your feeds, you're not alone. To help, we at Engadget have collected all of the best Black Friday deals you can shop right now, primarily on tech we've tested and reviewed. These are the best tech deals you can get this year, on the gadgets we know to be worth your money. There's a possibility we'll see slightly lower prices on Black Friday proper — but with each passing day, that likelihood becomes less and less as even more early Black Friday deals pop up across the web. We'll be updating our list regularly in the lead-up to Black Friday, so check back to catch all of the latest Black Friday deals.",
+            "created": "2023-11-19T15:13:23+00:00",
+            "published": "2023-11-19T15:13:23+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Apple iPad (9th Gen)",
+                        "eventSummary": "Apple's 9th-gen iPad is down to a new low of $230 at Amazon and Target. This is the budget pick in our iPad buying guide, and it earned a review score of 86 in 2021.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Apple AirTags",
+                        "eventSummary": "A four-pack of Apple’s AirTags have dropped to $80, which is just about $5 more than the pack’s record-low price.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Apple Watch Series 9",
+                        "eventSummary": "The new Apple Watch Series 9 has dropped to $329 at Amazon, Walmart and Target in a Black Friday deal.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Apple Watch SE",
+                        "eventSummary": "The Apple Watch SE has dropped to a record low of $179 for Black Friday.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Apple AirPods Pro (2nd Gen)",
+                        "eventSummary": "The latest version of Apple's AirPods Pro is back on sale for $190 at Amazon, Target and Best Buy.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Apple AirPods (3rd Gen)",
+                        "eventSummary": "The third-gen Apple AirPods are back down to $140 at Amazon and Best Buy.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Apple iPad Air",
+                        "eventSummary": "The iPad Air M1 is back down to a record low of $500 right now ahead of Black Friday.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Apple iPad (10th gen)",
+                        "eventSummary": "The 10th-generation iPad is down to its lowest price ever at Amazon, Target and Best Buy.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Apple M2 Mac Mini",
+                        "eventSummary": "Apple's M2-powered Mac Mini desktops are also discounted for Black Friday.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Apple MacBook Pro M3",
+                        "eventSummary": "Apple released its new M3-powered MacBook Pros just before Halloween, but the new notebooks are already on sale.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Hulu Black Friday deal",
+                        "eventSummary": "Hulu’s Black Friday deal is a great one for anyone who has not subscribed to the ad-supported tier yet.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Dyson Airwrap",
+                        "eventSummary": "The coveted Dyson Airwrap is down to the cheapest price we’ve ever seen, just $480.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Ember Smart Mugs",
+                        "eventSummary": "Ember Smart Mugs are down to record-low prices for Black Friday.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "TP-Link Kasa Smart Plug Mini",
+                        "eventSummary": "The smart plug we recommend for most homes is TP-Link's Kasa Smart Plug mini.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Xbox gift card",
+                        "eventSummary": "You can pick up a $50 Xbox gift card for $45 right now at Amazon and Target.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "TP-Link Deco EX75 Wi-Fi 6E mesh router",
+                        "eventSummary": "TP-Link’s Deco EX75 mesh router system with two beacons is $100 off and down to a record low of $200.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Xbox Series X",
+                        "eventSummary": "The Xbox Series X bundled with Diablo IV is down to $439 from Walmart.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Xbox Series S",
+                        "eventSummary": "A starter bundle that includes a 512GB capacity Xbox Series S and a three-month subscription to Game Pass Ultimate is currently $240 at Microsoft.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Anker accessories sale",
+                        "eventSummary": "A slew of Anker chargers, cables, power adapters and other accessories are on sale for Black Friday at Amazon.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Meta Quest 2 VR headset",
+                        "eventSummary": "The Meta Quest 2 VR headset is $50 off and down to $249 at several retailers.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Roku Streaming Stick 4K",
+                        "eventSummary": "Roku's Black Friday sale knocks the price of its Streaming Stick 4K down to $30 at Amazon.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Sonos Black Friday sale",
+                        "eventSummary": "Sonos has kicked off its Black Friday sale for the year, bringing a range of discounts on smart speakers and home theater gear.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Google Nest Thermostat",
+                        "eventSummary": "Google’s Nest Thermostat is on sale for $90 right now.",
+                        "theme": "technology"
+                    },
+                    {
+                        "eventTitle": "Google Pixel 8 Pro",
+                        "eventSummary": "Google’s latest flagship smartphones are up to $200 off for Black Friday.",
+                        "theme": "technology"
+                    }
+                ]
+            }
+        }
+    ]
+}

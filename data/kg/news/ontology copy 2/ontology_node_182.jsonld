@@ -1,0 +1,144 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Sony Music’s artists aren’t involved in YouTube’s new voice-cloning AI experiment. Not unrelated: Google’s recent filing with the US Copyright Office.",
+      "author": "Tim Ingham",
+      "theme": "business",
+      "content": "MBW Explains is a series of analytical features in which we explore the context behind major music industry talking points – and suggest what might happen next. MBW Explains is supported by JKBX, a technology platform that offers consumers access to music royalties as an asset class.",
+      "published": "2023-11-23T18:48:48+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "YouTube's 'Dream Track' Experiment",
+          "eventSummary": "YouTube unveiled a revolutionary new experiment – ‘Dream Track’ – enabling creators to clone the vocals, via AI tech and with official consent, of well-known stars.",
+          "theme": "technology",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Charlie Puth"
+            },
+            {
+              "@type": "snap:person",
+              "name": "John Legend"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Demi Lovato"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Warner Music Group"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Universal Music Group"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Sony Music Entertainment"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Google's US Copyright Office Filing",
+          "eventSummary": "Google issued a filing with the US Copyright Office that outlined its core position on ‘Artificial Intelligence and Copyright’.",
+          "theme": "legal",
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Google"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Sony Music Entertainment"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,694 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "NewsAsset",
+            "title": "Related Pizza Tower is platformer paradise for Wario freaks",
+            "author": "N. Clark",
+            "summary": "A delightful physics puzzler best described as dynamic minigolf on a pool table.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList1",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "eventTitle": "Subpar Pool",
+                        "eventSummary": "Developer: grapefrukt games. Where to play: Android, iOS, Nintendo Switch, and Windows PC.",
+                        "theme": "Gaming",
+                        "hasLocation": {
+                            "@id": "geo:location1"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList1",
+                            "Person": [
+                                {
+                                    "@id": "snap:person1",
+                                    "name": "Martin Jonasson",
+                                    "dateOfBirth": "1990-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location2"
+                                    },
+                                    "alias": "grapefrukt"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList1",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset2",
+            "@type": "NewsAsset",
+            "title": "Amnesia: The Bunker",
+            "author": "M. Mahardy",
+            "summary": "A horror game set in a seemingly abandoned bunker during World War I.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList2",
+                "Event": [
+                    {
+                        "@id": "snap:event2",
+                        "eventTitle": "Amnesia: The Bunker",
+                        "eventSummary": "Developer: Frictional Games. Where to play: PlayStation 4, PlayStation 5, Windows PC, Xbox One, and Xbox Series X.",
+                        "theme": "Gaming",
+                        "hasLocation": {
+                            "@id": "geo:location3"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList2",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList2",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "name": "Frictional Games",
+                                    "hasLocation": {
+                                        "@id": "geo:location4"
+                                    },
+                                    "alias": "Frictional"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset3",
+            "@type": "NewsAsset",
+            "title": "Lil Gator Game",
+            "author": "Chris Grant",
+            "summary": "A game that captures the heart of Wind Waker and the adventure of Breath of the Wild.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList3",
+                "Event": [
+                    {
+                        "@id": "snap:event3",
+                        "eventTitle": "Lil Gator Game",
+                        "eventSummary": "Developer: MegaWobble. Where to play: Nintendo Switch, PlayStation 4, PlayStation 5, Windows PC, Xbox One, and Xbox Series X.",
+                        "theme": "Gaming",
+                        "hasLocation": {
+                            "@id": "geo:location5"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList3",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList3",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization2",
+                                    "name": "MegaWobble",
+                                    "hasLocation": {
+                                        "@id": "geo:location6"
+                                    },
+                                    "alias": "MegaWobble"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset4",
+            "@type": "NewsAsset",
+            "title": "Starfield",
+            "author": "Clayton Ashley",
+            "summary": "A game that offers top-tier world-building and customizable ship builder.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList4",
+                "Event": [
+                    {
+                        "@id": "snap:event4",
+                        "eventTitle": "Starfield",
+                        "eventSummary": "Developer: Bethesda Game Studios. Where to play: Windows PC and Xbox Series X.",
+                        "theme": "Gaming",
+                        "hasLocation": {
+                            "@id": "geo:location7"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList4",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList4",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization3",
+                                    "name": "Bethesda Game Studios",
+                                    "hasLocation": {
+                                        "@id": "geo:location8"
+                                    },
+                                    "alias": "Bethesda"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset5",
+            "@type": "NewsAsset",
+            "title": "System Shock",
+            "author": "CA",
+            "summary": "A remake of the 1994 classic that preserves its thrilling elements.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList5",
+                "Event": [
+                    {
+                        "@id": "snap:event5",
+                        "eventTitle": "System Shock",
+                        "eventSummary": "Developer: Nightdive Studios. Where to play: Windows PC.",
+                        "theme": "Gaming",
+                        "hasLocation": {
+                            "@id": "geo:location9"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList5",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList5",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization4",
+                                    "name": "Nightdive Studios",
+                                    "hasLocation": {
+                                        "@id": "geo:location10"
+                                    },
+                                    "alias": "Nightdive"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset6",
+            "@type": "NewsAsset",
+            "title": "Star Wars Jedi: Survivor",
+            "author": "CA",
+            "summary": "A sequel that improves upon Star Wars Jedi: Fallen Order.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList6",
+                "Event": [
+                    {
+                        "@id": "snap:event6",
+                        "eventTitle": "Star Wars Jedi: Survivor",
+                        "eventSummary": "Developer: Respawn Entertainment. Where to play: PlayStation 5, Windows PC, and Xbox Series X.",
+                        "theme": "Gaming",
+                        "hasLocation": {
+                            "@id": "geo:location11"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList6",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList6",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization5",
+                                    "name": "Respawn Entertainment",
+                                    "hasLocation": {
+                                        "@id": "geo:location12"
+                                    },
+                                    "alias": "Respawn"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset7",
+            "@type": "NewsAsset",
+            "title": "Connections",
+            "author": "Matt Patches",
+            "summary": "A puzzle game that challenges players to detect common threads between words.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList7",
+                "Event": [
+                    {
+                        "@id": "snap:event7",
+                        "eventTitle": "Connections",
+                        "eventSummary": "Developer: The New York Times. Where to play: Android, browser, and iOS.",
+                        "theme": "Gaming",
+                        "hasLocation": {
+                            "@id": "geo:location13"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList7",
+                            "Person": [
+                                {
+                                    "@id": "snap:person7",
+                                    "name": "Wyna Liu",
+                                    "dateOfBirth": "1985-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location14"
+                                    },
+                                    "alias": "Wyna"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList7",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization6",
+                                    "name": "The New York Times",
+                                    "hasLocation": {
+                                        "@id": "geo:location15"
+                                    },
+                                    "alias": "NYT"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset8",
+            "@type": "NewsAsset",
+            "title": "Hi-Fi Rush",
+            "author": "N. Clark",
+            "summary": "An action-rhythm game where you explore and fight to the beat of the music.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList8",
+                "Event": [
+                    {
+                        "@id": "snap:event8",
+                        "eventTitle": "Hi-Fi Rush",
+                        "eventSummary": "Developer: Tango Gameworks. Where to play: Windows PC and Xbox Series X.",
+                        "theme": "Gaming",
+                        "hasLocation": {
+                            "@id": "geo:location16"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList8",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList8",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization7",
+                                    "name": "Tango Gameworks",
+                                    "hasLocation": {
+                                        "@id": "geo:location17"
+                                    },
+                                    "alias": "Tango"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset9",
+            "@type": "NewsAsset",
+            "title": "Monster Hunter Now",
+            "author": "Matt Leone",
+            "summary": "A refined combat system and extensive character upgrades in a real-world setting.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList9",
+                "Event": [
+                    {
+                        "@id": "snap:event9",
+                        "eventTitle": "Monster Hunter Now",
+                        "eventSummary": "Developer: Niantic. Where to play: Android and iOS.",
+                        "theme": "Gaming",
+                        "hasLocation": {
+                            "@id": "geo:location18"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList9",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList9",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization8",
+                                    "name": "Niantic",
+                                    "hasLocation": {
+                                        "@id": "geo:location19"
+                                    },
+                                    "alias": "Niantic"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset10",
+            "@type": "NewsAsset",
+            "title": "Diablo 4",
+            "author": "RG",
+            "summary": "A living game that combines action, RPG systems, and dark tone.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList10",
+                "Event": [
+                    {
+                        "@id": "snap:event10",
+                        "eventTitle": "Diablo 4",
+                        "eventSummary": "Developer: Blizzard Entertainment. Where to play: PlayStation 4, PlayStation 5, Windows PC, Xbox One, and Xbox Series X.",
+                        "theme": "Gaming",
+                        "hasLocation": {
+                            "@id": "geo:location20"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList10",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList10",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization9",
+                                    "name": "Blizzard Entertainment",
+                                    "hasLocation": {
+                                        "@id": "geo:location21"
+                                    },
+                                    "alias": "Blizzard"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset11",
+            "@type": "NewsAsset",
+            "title": "Hitman World of Assassination: Freelancer mode",
+            "author": "Samit Sarkar",
+            "summary": "A roguelike twist on Agent 47’s globe-trotting murder-for-hire missions.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList11",
+                "Event": [
+                    {
+                        "@id": "snap:event11",
+                        "eventTitle": "Hitman World of Assassination: Freelancer mode",
+                        "eventSummary": "Developer: IO Interactive. Where to play: PlayStation 4, PlayStation 5, Windows PC, Xbox One, and Xbox Series X.",
+                        "theme": "Gaming",
+                        "hasLocation": {
+                            "@id": "geo:location22"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList11",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList11",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization10",
+                                    "name": "IO Interactive",
+                                    "hasLocation": {
+                                        "@id": "geo:location23"
+                                    },
+                                    "alias": "IO"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset12",
+            "@type": "NewsAsset",
+            "title": "Venba",
+            "author": "N. Carpenter",
+            "summary": "A cooking game that focuses on an immigrant family's journey.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList12",
+                "Event": [
+                    {
+                        "@id": "snap:event12",
+                        "eventTitle": "Venba",
+                        "eventSummary": "Developer: Visai Games. Where to play: Nintendo Switch, PlayStation 4, PlayStation 5, Windows PC, Xbox One, and Xbox Series X.",
+                        "theme": "Gaming",
+                        "hasLocation": {
+                            "@id": "geo:location24"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList12",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList12",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization11",
+                                    "name": "Visai Games",
+                                    "hasLocation": {
+                                        "@id": "geo:location25"
+                                    },
+                                    "alias": "Visai"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset13",
+            "@type": "NewsAsset",
+            "title": "Viewfinder",
+            "author": "CA",
+            "summary": "A game that distorts reality through photography.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList13",
+                "Event": [
+                    {
+                        "@id": "snap:event13",
+                        "eventTitle": "Viewfinder",
+                        "eventSummary": "Developer: Sad Owl Studios. Where to play: PlayStation 5 and Windows PC.",
+                        "theme": "Gaming",
+                        "hasLocation": {
+                            "@id": "geo:location26"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList13",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList13",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization12",
+                                    "name": "Sad Owl Studios",
+                                    "hasLocation": {
+                                        "@id": "geo:location27"
+                                    },
+                                    "alias": "Sad Owl"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset14",
+            "@type": "NewsAsset",
+            "title": "Humanity",
+            "author": "ML",
+            "summary": "A game that shifts genres from puzzle to tower defense.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList14",
+                "Event": [
+                    {
+                        "@id": "snap:event14",
+                        "eventTitle": "Humanity",
+                        "eventSummary": "Developer: tha. Where to play: PlayStation 4, PlayStation 5, and Windows PC.",
+                        "theme": "Gaming",
+                        "hasLocation": {
+                            "@id": "geo:location28"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList14",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList14",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization13",
+                                    "name": "tha",
+                                    "hasLocation": {
+                                        "@id": "geo:location29"
+                                    },
+                                    "alias": "tha"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset15",
+            "@type": "NewsAsset",
+            "title": "Paranormasight: The Seven Mysteries of Honjo",
+            "author": "Chris Plante",
+            "summary": "A horror mystery set in 1980s Japan.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList15",
+                "Event": [
+                    {
+                        "@id": "snap:event15",
+                        "eventTitle": "Paranormasight: The Seven Mysteries of Honjo",
+                        "eventSummary": "Developer: Square Enix. Where to play: Android, iOS, Nintendo Switch, and Windows PC.",
+                        "theme": "Gaming",
+                        "hasLocation": {
+                            "@id": "geo:location30"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList15",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList15",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization14",
+                                    "name": "Square Enix",
+                                    "hasLocation": {
+                                        "@id": "geo:location31"
+                                    },
+                                    "alias": "Square Enix"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

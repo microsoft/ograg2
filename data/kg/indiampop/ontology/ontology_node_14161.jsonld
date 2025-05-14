@@ -1,0 +1,56 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "RICE",
+            "has_types": {
+                "@type": "CropType",
+                "name": "UPLAND RICE"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Apply well decomposed FYM or compost @ 5 t /ha with chemical fertilizers. It is better to apply fertilizer on the basis of soil test recommendation."
+            },
+            "has_fertilizer_application_requirements": {
+                "@type": "Fertilization",
+                "nutrient_name": "N:P:K",
+                "quantity": "40:20:20, 30:20:20 and 60:30:30 kg/ha for improved, local and HYV, respectively",
+                "stage_of_application": "Full P & K be applied as basal by broadcasting and mixing at final ploughing. Wherever possible, these should be preferably placed below the seed with a seed-cum-fertilizer drill. In case of placement, 25% of N should be supplied as basal application to have early vigour of the seedlings where line sowing has been done. When no basal application is possible, 75% N be applied as first top dressing at the time of interculture (hoeing and weeding) in the third week from germination and the rest 25% at the panicle initiation (PI) stage (18-20 days before panicle emergence). In well drained sandy soil, apply full P as basal and N & K in split. In other soils, apply full P & K as basal and N in splits."
+            }
+        }
+    ]
+}

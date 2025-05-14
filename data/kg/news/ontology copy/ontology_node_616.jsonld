@@ -1,0 +1,98 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:NewsAsset",
+      "title": "India to be one of world's fastest growing economies over next decade",
+      "byline": "zee business",
+      "published": "2023-10-14T12:17:33+00:00",
+      "summary": "The IMF. in its latest update. has said that India is one of the large emerging economies that has been doing better than expected. The IMF said India has been doing better for a while now and that India is, in fact, one of the growth engines in the world economy at this point. The IMF said important divergences are appearing. The slowdown is more pronounced in advanced economies than in emerging markets and developing economies. Among the advanced economies, the US has been revised up, with resilient consumption and investment, while the euro area has been revised down, as tighter monetary policy and the energy crisis took a toll. There is divergence also among emerging markets and developing economies, with China facing growing headwinds, while Brazil, India. and Russia are revised up. After two years of rapid economic growth in 2021 and 2022, the near-term economic outlook for India is for continued rapid expansion during 2023-24, underpinned by strong growth in private consumption and investment, S&P Global Market Intelligence said in a recent update. The acceleration of foreign direct investment inflows into India over the past decade reflects the favourable long-term growth outlook for the Indian economy, helped by a youthful demographic profile and rapidly rising urban household incomes. India's nominal GDP measured in USD terms is forecast to rise from $3.5 trillion in 2022 to $7.3 trillion by 2030. This rapid pace of economic expansion would result in the size of the Indian GDP exceeding the Japanese GDP by 2030, making India the second largest economy in the Asia-Pacific region. By 2022, the size of the Indian GDP had already become larger than the GDP of the UK and also France. By 2030, India's GDP is also forecast to surpass Germany, the research said. The long-term outlook for the Indian economy is supported by a number of key growth drivers. An important positive factor for India is its large and fast-growing middle class, which is helping to drive consumer spending. The rapidly growing Indian domestic consumer market as well as its large industrial sector have made India an increasingly important investment destination for a wide range of multinationals in many sectors, including manufacturing, infrastructure and services, the report said. The digital transformation of India that is currently underway is expected to accelerate the growth of e-commerce, changing the retail consumer market landscape over the next decade. This is attracting leading global multinationals in technology and e-commerce to the Indian market. By 2030, 1.1 billion people in India will have internet access, more than doubling from the estimated 500 million internet users in 2020. The rapid growth of e-commerce and the shift to 4G and 5G smartphone technology will boost home-grown unicorns. The large increase in FDI inflows to India that has been evident over the past five years is also continuing with strong momentum evident even during the pandemic years of 2020-2022. India's strong FDI inflows have been boosted by large inflows of investments from global technology MNCs such as Google and Facebook that are attracted to India's large, fast-growing domestic consumer market, as well as a strong upturn in foreign direct investment inflows from manufacturing firms. Overall, India is expected to continue to be one of the world's fastest growing economies over the next decade. This will make India one of the most important long-term growth markets for multinationals in a wide range of industries, including manufacturing industries such as autos, electronics and chemicals to services industries such as banking, insurance, asset management, health care and information technology, it added. Brahma Chellaney, professor of strategic studies at the New Delhi-based Center for Policy Research, wrote in a recent article that as India's geopolitical, economic and cultural clout grows, so does its global footprint. China's “decline,” as some have begun to call the conclusion of the country's four-decade-long economic boom, opens new opportunities for the Indian economy and other developing and emerging countries. Earlier this year, India reached another milestone when its population officially surpassed that of China, which had been the world's most populous country for more than 300 years. While China's shrinking, rapidly aging population is likely to impede economic growth and may curtail its geopolitical ambitions, India -- one of the world's youngest countries, with a median age of 28.2 -- is poised to reap a huge demographic dividend, the article said. But the driving force behind India's emergence as a major global power is its rapid economic growth. While India's gross domestic product is still smaller than China's, the country is currently the world's fastest-growing major economy and is projected to account for 12.9 per cent of global growth over the next five years, surpassing the United States' 11.3 per cent share, the article said. The seventeenth round of the FICCI-IBA survey was carried out for the period January to June 2023. A total of 24 banks including public sector, private sector and foreign banks participated in the survey. These banks together represent about 79 per cent of the banking industry, as classified by asset size. The Indian economy posted an impressive 7.2 per cent growth in the financial year ended March 2023 and 7.8 per cent in first quarter of current fiscal year. Credit growth also continued to rise, signalling robust demand conditions in the Indian economy, as well as banks' improved appetite towards retail borrowers. The health of the banking sector has witnessed an encouraging turnaround, marked by healthier bank balance sheets and gross NPA ratio at a decade low. The survey findings show that long term credit demand has seen continued growth in sectors such as Infrastructure, textiles and chemicals. food processing and metals. Iron & steel have also witnessed accelerated long-term loan disbursements in the past six months. Infrastructure is witnessing an increase in credit flow with 67 per cent of the respondents indicating an increase in long-term loans as against 57 per cent in the previous round. The survey suggests that the outlook on expectation on growth of non-food industry credit over next six months is optimistic with 42 per cent of the participating banks expecting non-food industry credit growth to be above 12 per cent (as compared to 36 per cent in the previous round). Rajan Jain, Head, Credit Research, SBI Caps, said in a note that whether the yield curve dynamics mean the US is moving to a structurally higher-rate economy vs. post GFC normal remains a moot question, with important implications for investment demand and system risk. These movements have had a cascading effect on global economies, which have seen routs in their respective bond markets, besides a fresh round of currency depreciation. Emerging market economies with large volumes of USD denominated debt are especially vulnerable as they could be caught in a vicious circle of their external debt (in local currency terms) ballooning due to strong DXY and their servicing ability being impaired by tepid economic activity owing to high rates. Even advanced economies have felt the heat, and the ECB etc. have maintained a hawkish narrative, Jain said. Another developing story seems to be the greenshoots of recovery in China backed by domestic consumption in the Golden week, and tourism related to the Asian Games. For now, these seem to buttressed on stimulus and base effects as China is now fully open. The long-term trajectory remains to be seen. In any case, for now this has provided a floor for commodity prices, especially base metals. Fickle commodity prices will also be victims of fresh geopolitical tensions in West Asia, which has pushed up Brent crude. Food prices could also play truant with climate change affecting cropping area worldwide: sugar and rice prices are booming, the note said. In this challenging environment, Indian real GDP growth, estimated to be 6.2 per cent y/y in real terms in FY24, is resilient. High frequency indicators suggest strong construction and infrastructure activity, and soaring urban demand. Manufacturing production has been unusually strong in Q2FY24, especially in infrastructure-oriented structures such as cement and steel. Power supply grew vastly in Q2 after a tepid Q1, helped by a dry August 2023 and buzzing industrial activity. Both the Union and States have front ended capex in H1FY24, and this remains the engine of expansion. Capital expenditure was up 48 per cent y/y for the Union in the same period. Reports suggest capex of major states was also up 45 per cent y/y in 5MFY24. Carrying forward this capex in H2FY24 would be important to sustain the multiplier. The fiscal deficit for the 5MFY24 stood at 36% of the FY24BE. Gross direct tax revenue experienced a substantial increase of 18 per cent y/y up to October 9, allaying concerns of fiscal slippage, the note said.",
+      "associatedAsset": {
+        "@type": "snap:TextAsset",
+        "image": "https://www.zeebiz.com/economy-infra/news-india-to-be-one-of-worlds-fastest-growing-economies-over-next-decade-259584"
+      }
+    }
+  ]
+}
+```

@@ -1,0 +1,106 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are": "schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Leaffolder",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Triazophos 40% EC",
+                "quantity": "625-1250 ml/ha"
+            }
+        },
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Case worm Nymphula depunctalis",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Carbaryl 10% DP",
+                "quantity": "25 kg/ha"
+            }
+        },
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Hispa/ spiny beetle Dicladispa armigera",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Carbofuran 3% CG",
+                "quantity": "50 kg/ha"
+            }
+        },
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Grasshopper",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Chlorpyriphos 1.5% DP",
+                "quantity": "25 kg/ha"
+            }
+        },
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Cutworm",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Dichlorvos 76 % SC",
+                "quantity": "470 g/ha"
+            }
+        },
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Thrips Stenchaetothrips biformis",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Phosphamidon 40 SL",
+                "quantity": "600 ml /ha"
+            }
+        },
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Brown planthopper Nilaparvata lugens",
+            "pest_symptoms": "Avoid excessive use of nitrogen, Control irrigation by intermittent draining, Set up light traps during night or yellow pan traps during day time, Drain the water before use of insecticides and direct the spray towards the base of the plants."
+        }
+    ]
+}

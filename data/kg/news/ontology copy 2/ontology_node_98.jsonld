@@ -1,0 +1,309 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "NBL Round 4: Creek pours in points as Phoenix swamp Sixers, CJ claims Kings didn’t look after DJ",
+      "author": "The Roar",
+      "theme": "sports",
+      "published": "2023-10-19T21:03:08+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Tasmania JackJumpers vs Sydney Kings",
+          "eventSummary": "Jordon Crawford leads Tasmania to victory over Sydney Kings.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Jordon Crawford"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Jaylin Galloway"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Jonah Bolden"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Milton Doyle"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Majok Deng"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Jaylen Adams"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Jordan Hunter"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Mahmoud Abdelfattah"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Tasmania JackJumpers"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Sydney Kings"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Melbourne United vs New Zealand Breakers",
+          "eventSummary": "Chris Goulding leads Melbourne United to victory over New Zealand Breakers.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Chris Goulding"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Jo Lual-Acuil"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Ian Clark"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Zylan Cheatham"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Parker Jackson-Cartwright"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Anthony Lamb"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Mody Maor"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Melbourne United"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "New Zealand Breakers"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Adelaide 36ers vs Perth Wildcats",
+          "eventSummary": "Adelaide 36ers defeat Perth Wildcats.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Isaac Humphries"
+            },
+            {
+              "@type": "snap:person",
+              "name": "CJ Bruton"
+            },
+            {
+              "@type": "snap:person",
+              "name": "John Rillie"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Adelaide 36ers"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Perth Wildcats"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "South East Melbourne Phoenix vs Brisbane Bullets",
+          "eventSummary": "South East Melbourne Phoenix defeat Brisbane Bullets.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Alan Williams"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Justin Schueller"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "South East Melbourne Phoenix"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Brisbane Bullets"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Melbourne United vs Illawarra Hawks",
+          "eventSummary": "Melbourne United defeat Illawarra Hawks.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Ariel Hukporti"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Jacob Jackomas"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Melbourne United"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Illawarra Hawks"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "South East Melbourne Phoenix vs Adelaide 36ers",
+          "eventSummary": "South East Melbourne Phoenix defeat Adelaide 36ers.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Mitch Creek"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Gary Browne"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Will Cummings"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Trey Kell"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Dejan Vasiljevic"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "South East Melbourne Phoenix"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "Adelaide 36ers"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

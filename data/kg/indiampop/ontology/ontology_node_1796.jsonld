@@ -1,0 +1,43 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "avoid_soil_type": "schema:Text"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "for_water": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "COCONUT (Cocos nucifera Linn.)",
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "avoid_soil_type": "Shallow soils with underlying hard rock, low lying areas subject to water stagnation and clayey soils"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "for_water": "Proper supply of moisture either through well distributed rainfall or through irrigation should be ensured before planting."
+            }
+        }
+    ]
+}

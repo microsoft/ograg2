@@ -1,0 +1,101 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "SeedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:LandPreparation",
+            "instructions": "After preparing the site properly, form nursery beds of 6m x 1m x 0.3 m. Mixing of well decomposed cattle manure and wood ash with the top layer of the soil will help the seedlings to establish well and to grow vigorously.",
+            "with_soil_moisture": "Mulching the bed with dry leaves will help to conserve soil moisture."
+        },
+        {
+            "@type": "cropCult:SeedSpacing",
+            "sowing_time": "During June-July",
+            "value": "25-30 cm",
+            "method": "the seedlings from the primary nursery are transplanted"
+        },
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Not specified",
+            "weed_types": [],
+            "herbicides": []
+        },
+        {
+            "@type": "cropCult:IrrigationRequirement",
+            "quantity": "Regular watering during dry months",
+            "stage_of_application": "Not specified"
+        },
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Not specified",
+            "pest_symptoms": "Not specified",
+            "pest_control": []
+        }
+    ]
+}

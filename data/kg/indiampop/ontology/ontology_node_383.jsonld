@@ -1,0 +1,48 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Unknown",
+            "disease_symptoms": "Unknown",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Carbandazim 50 WP",
+                "quantity": "0.1 %",
+                "stage": "Early"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Unknown",
+            "disease_symptoms": "Unknown",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Lime",
+                "quantity": "0.25 %",
+                "stage": "Early"
+            }
+        }
+    ]
+}

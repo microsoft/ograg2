@@ -1,0 +1,137 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Christine Hall",
+      "published": "2023-10-08T14:16:01+00:00",
+      "title": "Here’s how Rainforest, a budding Stripe rival, aims to win over software companies",
+      "summary": "Welcome back to The Interchange, where we take a look at the hottest fintech news of the previous week. If you want to receive The Interchange directly in your inbox every Sunday, head here to sign up! After a bit of a quiet period, things in the world of fintech picked up in a big way this past week. We wrote about some notable fundraises, how PayPal was hit with an antitrust lawsuit, how Bolt is trying to move on after an SEC probe, and much more.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "title": "Rainforest takes on the bigger players",
+        "summary": "It’s not every day that we’re pitched companies that feel like they are taking on bigger players in a really meaningful way. This past week, I wrote about Rainforest, an Atlanta-based startup that is taking on incumbents such as Fiserv and FIS, as well as trying to take market share from other fintechs such as Stripe with its offering. Rainforest works with software companies to help them embed financial services and payments into their platforms. In an interview with TechCrunch, CEO and co-founder Joshua Silver respectfully disagreed with a16z general partner Angela Strange about her 2019 statement that every company would become a fintech. In his view, most software companies don’t actually want to be fintechs and deal with all the regulatory and compliance issues that go with that. They really just want to be able to accept payments and generate more revenue from being able to do so.",
+        "byline": "Christine Hall",
+        "published": "2023-10-08T14:16:01+00:00"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "TechCrunch"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Rainforest"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Joshua Silver"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Accel"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Infinity Ventures"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "BoxGroup"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "The Fintech Fund"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Tech Square Ventures"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Ardent Venture Partners"
+    }
+  ]
+}
+```

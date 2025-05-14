@@ -1,0 +1,195 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:event",
+      "eventTitle": "Weekly Breakdown",
+      "eventSummary": "MATCHUP @ PIT PIT -5.5 O/U 41 OPP VS RB 8th PROJ PTS 10.1 RB RNK 27th YTD Stats RUYDS 526 REC 14 REYDS 36 TD 2 FPTS/G 10.3",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Kyler Murray's return has changed the math on Conner's expectations."
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Start 'em",
+      "eventSummary": "10.0-7.00 6.99 - 5.01 5.00 - 0 Sit 'em",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Expect plenty of rushing."
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "STARTS",
+      "eventSummary": "Michael Pittman, Derrick Henry, Zack Moss",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "SITS: DeAndre Hopkins (PPR flex at best), Josh Downs (PPR flex at best), Will Levis, Titans DST"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "SLEEPERS",
+      "eventSummary": "Colts DST, Gardner Minshew",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Start 'em 10.0-7.00 6.99 - 5.01 5.00 - 0 Sit 'em"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "STARTS",
+      "eventSummary": "Tyreek Hill, Jaylen Waddle, Raheem Mostert, Tua Tagovailoa, Terry McLaurin (low-end WR2), De'Von Achane (low-end RB2), Dolphins DST",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "SITS: Sam Howell (low-end starter at best), Brian Robinson (desperation RB starter), Logan Thomas (PPR bye-week replacement), Antonio Gibson (PPR bye-week replacement), Commanders DST"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "SLEEPERS",
+      "eventSummary": "Curtis Samuel (especially PPR), Jahan Dotson (non-PPR only)",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Start 'em 10.0-7.00 6.99 - 5.01 5.00 - 0 Sit 'em"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "STARTS",
+      "eventSummary": "Rachaad White, Mike Evans, Adam Thielen, Baker Mayfield (low-end QB1)",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "SITS: Chris Godwin (PPR flex), Cade Otton (PPR bye-week replacement), Bryce Young, Panthers DST"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "SLEEPERS",
+      "eventSummary": "Chuba Hubbard (low-end RB2/high-end flex), Buccaneers DST",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Sit Him (Lineup Decisions) Projections powered by Sportsline"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "STARTS",
+      "eventSummary": "Kyren Williams, Amari Cooper, Puka Nacua, David Njoku, Jerome Ford",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "SITS: Cooper Kupp (flex at best), Kareem Hunt, Tutu Atwell, Tyler Higbee, Royce Freeman, both QBs, both DSTs (low-end options)"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "SLEEPERS",
+      "eventSummary": "Elijah Moore (PPR flex)",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Start Him (Lineup Decisions) Projections powered by Sportsline"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "STARTS",
+      "eventSummary": "Jalen Hurts, Christian McCaffrey, A.J. Brown, DeVonta Smith, Brock Purdy, Brandon Aiyuk, Deebo Samuel, George Kittle, D'Andre Swift, 49ers DST",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "SITS: Eagles DST"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "STARTS",
+      "eventSummary": "Patrick Mahomes, Travis Kelce, Isiah Pacheco, Rashee Rice (worth a look as a WR2), Jayden Reed (low-end WR2/high-end PPR flex), Chiefs DST",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "SITS: Jordan Love (low-end QB1 at best), Christian Watson (bye-week replacement at best), A.J. Dillon (flex at best), Romeo Doubs, Packers DST"
+      }
+    }
+  ]
+}
+```

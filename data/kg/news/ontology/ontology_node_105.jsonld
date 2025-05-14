@@ -1,0 +1,408 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "NewsAsset",
+            "title": "Asteroid City",
+            "author": "ZM",
+            "theme": "Film Review",
+            "summary": "Asteroid City is a meta story-within-a-story sci-fi film about an alien encounter, exploring art and creativity.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList1",
+                "Event": [
+                    {
+                        "eventTitle": "Asteroid City Premiere",
+                        "eventSummary": "The premiere of Wes Anderson's Asteroid City.",
+                        "theme": "Film Premiere",
+                        "hasLocation": {
+                            "@id": "geo:location1",
+                            "name": "Los Angeles"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList1",
+                            "Person": [
+                                {
+                                    "name": "Wes Anderson",
+                                    "dateOfBirth": "1969-05-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location2",
+                                        "name": "Houston, Texas"
+                                    }
+                                },
+                                {
+                                    "name": "Jason Schwartzman",
+                                    "dateOfBirth": "1980-06-26"
+                                },
+                                {
+                                    "name": "Scarlett Johansson",
+                                    "dateOfBirth": "1984-11-22"
+                                },
+                                {
+                                    "name": "Tom Hanks",
+                                    "dateOfBirth": "1956-07-09"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList1",
+                            "Organization": [
+                                {
+                                    "name": "Focus Features"
+                                },
+                                {
+                                    "name": "Peacock"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset2",
+            "@type": "NewsAsset",
+            "title": "How to Blow Up a Pipeline",
+            "author": "PV",
+            "theme": "Film Review",
+            "summary": "An unconventional adaptation of the controversial 2021 nonfiction novel, focusing on environmental activism.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList2",
+                "Event": [
+                    {
+                        "eventTitle": "How to Blow Up a Pipeline Release",
+                        "eventSummary": "The release of the film adaptation of How to Blow Up a Pipeline.",
+                        "theme": "Film Release",
+                        "hasLocation": {
+                            "@id": "geo:location3",
+                            "name": "Texas"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList2",
+                            "Person": [
+                                {
+                                    "name": "Daniel Goldhaber",
+                                    "dateOfBirth": "1990-01-01"
+                                },
+                                {
+                                    "name": "Ariela Barer",
+                                    "dateOfBirth": "1996-01-01"
+                                },
+                                {
+                                    "name": "Lukas Gage",
+                                    "dateOfBirth": "1995-05-28"
+                                },
+                                {
+                                    "name": "Forrest Goodluck",
+                                    "dateOfBirth": "1998-01-01"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList2",
+                            "Organization": [
+                                {
+                                    "name": "Hulu"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset3",
+            "@type": "NewsAsset",
+            "title": "Killers of the Flower Moon",
+            "author": "JR",
+            "theme": "Film Review",
+            "summary": "A cinematic adaptation of the reign of terror that plagued the Osage in the 1920s.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList3",
+                "Event": [
+                    {
+                        "eventTitle": "Killers of the Flower Moon Premiere",
+                        "eventSummary": "The premiere of Killers of the Flower Moon.",
+                        "theme": "Film Premiere",
+                        "hasLocation": {
+                            "@id": "geo:location4",
+                            "name": "New York"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList3",
+                            "Person": [
+                                {
+                                    "name": "Martin Scorsese",
+                                    "dateOfBirth": "1942-11-17"
+                                },
+                                {
+                                    "name": "Leonardo DiCaprio",
+                                    "dateOfBirth": "1974-11-11"
+                                },
+                                {
+                                    "name": "Lily Gladstone",
+                                    "dateOfBirth": "1986-01-01"
+                                },
+                                {
+                                    "name": "Robert De Niro",
+                                    "dateOfBirth": "1943-08-17"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList3",
+                            "Organization": [
+                                {
+                                    "name": "Apple TV+"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset4",
+            "@type": "NewsAsset",
+            "title": "The Holdovers",
+            "author": "TR",
+            "theme": "Film Review",
+            "summary": "A touching drama about starting over when there’s no other choice available.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList4",
+                "Event": [
+                    {
+                        "eventTitle": "The Holdovers Release",
+                        "eventSummary": "The release of The Holdovers.",
+                        "theme": "Film Release",
+                        "hasLocation": {
+                            "@id": "geo:location5",
+                            "name": "Los Angeles"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList4",
+                            "Person": [
+                                {
+                                    "name": "Alexander Payne",
+                                    "dateOfBirth": "1961-02-10"
+                                },
+                                {
+                                    "name": "Paul Giamatti",
+                                    "dateOfBirth": "1967-06-06"
+                                },
+                                {
+                                    "name": "Da’Vine Joy Randolph",
+                                    "dateOfBirth": "1987-01-01"
+                                },
+                                {
+                                    "name": "Dominic Sessa",
+                                    "dateOfBirth": "2000-01-01"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList4",
+                            "Organization": [
+                                {
+                                    "name": "Focus Features"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset5",
+            "@type": "NewsAsset",
+            "title": "Past Lives",
+            "author": "OW",
+            "theme": "Film Review",
+            "summary": "A radiant romantic drama about love and the complicated relationships people have with themselves.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList5",
+                "Event": [
+                    {
+                        "eventTitle": "Past Lives Release",
+                        "eventSummary": "The release of Past Lives.",
+                        "theme": "Film Release",
+                        "hasLocation": {
+                            "@id": "geo:location6",
+                            "name": "New York"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList5",
+                            "Person": [
+                                {
+                                    "name": "Celine Song",
+                                    "dateOfBirth": "1988-01-01"
+                                },
+                                {
+                                    "name": "Greta Lee",
+                                    "dateOfBirth": "1983-01-01"
+                                },
+                                {
+                                    "name": "Teo Yoo",
+                                    "dateOfBirth": "1985-01-01"
+                                },
+                                {
+                                    "name": "John Magaro",
+                                    "dateOfBirth": "1983-01-01"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList5",
+                            "Organization": [
+                                {
+                                    "name": "A24"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset6",
+            "@type": "NewsAsset",
+            "title": "Oppenheimer",
+            "author": "MP",
+            "theme": "Film Review",
+            "summary": "A biopic on the life of J. Robert Oppenheimer, exploring the moral implications of the atomic bomb.",
+            "created": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@id": "snap:eventList6",
+                "Event": [
+                    {
+                        "eventTitle": "Oppenheimer Premiere",
+                        "eventSummary": "The premiere of Oppenheimer.",
+                        "theme": "Film Premiere",
+                        "hasLocation": {
+                            "@id": "geo:location7",
+                            "name": "Los Angeles"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList6",
+                            "Person": [
+                                {
+                                    "name": "Christopher Nolan",
+                                    "dateOfBirth": "1970-07-30"
+                                },
+                                {
+                                    "name": "Cillian Murphy",
+                                    "dateOfBirth": "1976-05-25"
+                                },
+                                {
+                                    "name": "Robert Downey Jr.",
+                                    "dateOfBirth": "1965-04-04"
+                                },
+                                {
+                                    "name": "Florence Pugh",
+                                    "dateOfBirth": "1996-01-03"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList6",
+                            "Organization": [
+                                {
+                                    "name": "Warner Bros."
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

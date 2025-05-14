@@ -1,0 +1,114 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Sugarcane",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Sugarcane",
+                "used_for": "Sugarcane Syrup"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "Tropical and Subtropical Regions"
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "20-30°C",
+                "for_flowering": "25-30°C",
+                "for_grain_filling": "25-30°C",
+                "negative_effect": "Below 20°C and above 35°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy Soil",
+                "avoid_soil_type": "Sandy Soil",
+                "for_water": "Well-drained soil",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the land to a depth of 15-20 cm and level it properly.",
+                "with_soil_moisture": "Maintain adequate soil moisture"
+            },
+            "seed_germination_test_requirements_are": "Seeds should germinate within 7-10 days",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Mancozeb",
+                "quantity": "2 kg per hectare"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Early Spring",
+                "value": "1.5 m between rows and 30 cm between plants",
+                "depth": "15-20 cm",
+                "method": "Ridge and furrow method"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Grass Weeds",
+                "weed_types": ["Barnyard grass", "Crabgrass"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1.5 kg per hectare",
+                    "stage": "Post-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "800-1200 mm per year",
+                "stage_of_application": "Throughout the growing season"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Sugarcane Smut",
+                "disease_symptoms": "Black, whip-like structure growing out of the stalk",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Propiconazole",
+                    "quantity": "1 kg per hectare",
+                    "stage": "At the onset of disease symptoms"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Sugarcane Borer",
+                "pest_symptoms": "Holes in the stalk and frass",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Chlorpyrifos",
+                    "quantity": "2 kg per hectare",
+                    "stage": "At the onset of pest symptoms"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when the cane is mature and the juice has maximum sugar content",
+            "storage_guidelines_are": "Store in a cool and dry place"
+        }
+    ]
+}

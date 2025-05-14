@@ -1,0 +1,57 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Weed control",
+            "weed_types": [
+                "During early stages, complete control of weeds could be obtained by raising cowpea in the interspaces.",
+                "In gardens where this is not possible, pre-emergence application of diuron 1.5 kg ha-1 or oxyfluorfen 0.2 kg ha-1 is effective.",
+                "Weeds emerging later could be controlled by the application of glyphosate 0.4 kg ha-1.",
+                "If hand weeding is resorted to, give 4-5 surface diggings depending on weed growth.",
+                "Avoid deep digging.",
+                "Do not disturb soil after plants start producing bunches.",
+                "If green manure crop is grown, weeding operations can be reduced to 1-2 diggings."
+            ],
+            "herbicides": {
+                "@type": "cropCult:HerbicideList",
+                "name": [
+                    "diuron",
+                    "oxyfluorfen",
+                    "glyphosate"
+                ],
+                "quantity": [
+                    "1.5 kg ha-1",
+                    "0.2 kg ha-1",
+                    "0.4 kg ha-1"
+                ],
+                "stage": [
+                    "pre-emergence",
+                    "pre-emergence",
+                    "post-emergence"
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,264 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "schema:Thing",
+            "title": "M3GAN",
+            "author": "TR",
+            "theme": "Horror, AI",
+            "content": "2023 was such a big year for big conversations about AI...",
+            "created": "2023-01-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "schema:Thing",
+                    "eventTitle": "M3GAN Release",
+                    "eventSummary": "A refreshingly goofy spin on AI horror movies.",
+                    "theme": "Film, AI",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person1",
+                            "@type": "schema:Thing",
+                            "name": "Gerard Johnstone"
+                        },
+                        {
+                            "@id": "snap:person2",
+                            "@type": "schema:Thing",
+                            "name": "Allison Williams"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "schema:Thing",
+                            "name": "Prime Video"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "@id": "snap:asset2",
+            "@type": "schema:Thing",
+            "title": "When Evil Lurks",
+            "author": "TR",
+            "theme": "Horror, Possession",
+            "content": "Demián Rugna’s gory possession movie isn’t just the usual barrage...",
+            "created": "2023-01-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event2",
+                    "@type": "schema:Thing",
+                    "eventTitle": "When Evil Lurks Release",
+                    "eventSummary": "A shocking film that crosses lines in unusual ways.",
+                    "theme": "Film, Horror",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person3",
+                            "@type": "schema:Thing",
+                            "name": "Demián Rugna"
+                        },
+                        {
+                            "@id": "snap:person4",
+                            "@type": "schema:Thing",
+                            "name": "Ezequiel Rodríguez"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization2",
+                            "@type": "schema:Thing",
+                            "name": "Shudder"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "@id": "snap:asset3",
+            "@type": "schema:Thing",
+            "title": "Polite Society",
+            "author": "ZM",
+            "theme": "Comedy, Action",
+            "content": "Ria dreams of being a stuntwoman and loves her sister deeply...",
+            "created": "2023-01-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event3",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Polite Society Release",
+                    "eventSummary": "A wedding heist to rescue her sister.",
+                    "theme": "Film, Comedy",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person5",
+                            "@type": "schema:Thing",
+                            "name": "Nida Manzoor"
+                        },
+                        {
+                            "@id": "snap:person6",
+                            "@type": "schema:Thing",
+                            "name": "Priya Kansara"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization3",
+                            "@type": "schema:Thing",
+                            "name": "Prime Video"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "@id": "snap:asset4",
+            "@type": "schema:Thing",
+            "title": "Talk to Me",
+            "author": "AG",
+            "theme": "Horror, Possession",
+            "content": "Talk to Me is like the horror movie version of a perfect comedy sketch...",
+            "created": "2023-01-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event4",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Talk to Me Release",
+                    "eventSummary": "Possession as a party drug.",
+                    "theme": "Film, Horror",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person7",
+                            "@type": "schema:Thing",
+                            "name": "Danny Philippou"
+                        },
+                        {
+                            "@id": "snap:person8",
+                            "@type": "schema:Thing",
+                            "name": "Michael Philippou"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization4",
+                            "@type": "schema:Thing",
+                            "name": "Digital Rental"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "@id": "snap:asset5",
+            "@type": "schema:Thing",
+            "title": "Skinamarink",
+            "author": "TE",
+            "theme": "Horror, Experimental",
+            "content": "Skinamarink is hands down the most peculiar and divisive horror film...",
+            "created": "2023-01-01T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event5",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Skinamarink Release",
+                    "eventSummary": "A pair of siblings awake in the middle of the night...",
+                    "theme": "Film, Horror",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person9",
+                            "@type": "schema:Thing",
+                            "name": "Kyle Edward Ball"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization5",
+                            "@type": "schema:Thing",
+                            "name": "Hulu"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

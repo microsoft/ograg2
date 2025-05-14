@@ -1,0 +1,42 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "FarmImplementsAndMachinery": {
+            "@id": "cropCult:FarmImplementsAndMachinery",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_subcategory": "cropCult:Subcategory",
+                "has_cost": "schema:MonetaryAmount"
+            }
+        },
+        "Subcategory": {
+            "@id": "cropCult:Subcategory",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_subcategory": "cropCult:Subcategory"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:FarmImplementsAndMachinery",
+            "name": "FARM IMPLEMENTS AND MACHINERY",
+            "has_subcategory": {
+                "@type": "cropCult:Subcategory",
+                "name": "HORTICULTURE",
+                "has_subcategory": {
+                    "@type": "cropCult:Subcategory",
+                    "name": "TRACTOR OPERATED SUBSOIL COIRPITH APPLICATOR"
+                }
+            },
+            "has_cost": {
+                "@type": "schema:MonetaryAmount",
+                "value": "20000",
+                "currency": "INR"
+            }
+        }
+    ]
+}

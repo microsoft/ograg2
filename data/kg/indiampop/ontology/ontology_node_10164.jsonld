@@ -1,0 +1,123 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "RICE (Oryza sativa)",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Liming. In general, addition of lime is absolutely necessary when the pH is lower than 5.5 and it is advisable when pH varies between 5.5 and 6.5. For direct seeded crops during the first season, apply lime @ 600 kg/ha in two split doses, the first dose of 350 kg/ha as basal dressing at the time of first ploughing and the second dose of 250 kg/ha as top dressing about one month after sowing. For transplanted crop, apply lime @ 600 kg/ha in two split doses, 350 kg/ha as basal dressing and 250 kg/ha as top dressing about one month after transplanting. For Pokkali areas, apply lime @ 1000 kg/ha, 50% at the time of preparation of mounds and the rest at the time of dismantling the mounds. For top dressing, lime may be applied one week prior to the application of manures."
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "All types",
+                "avoid_soil_type": "None",
+                "for_water": "Normal",
+                "for_nutrients": "Normal"
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Normal",
+                "for_flowering": "Normal",
+                "for_grain_filling": "Normal",
+                "negative_effect": "None"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Normal",
+                "value": "Normal",
+                "depth": "Normal",
+                "method": "Normal"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Normal",
+                "stage_of_application": "Normal"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "None",
+                "disease_symptoms": "None",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "None",
+                    "quantity": "None",
+                    "stage": "None"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "None",
+                "pest_symptoms": "None",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "None",
+                    "quantity": "None",
+                    "stage": "None"
+                }
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "None",
+                "quantity": "None"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "None",
+                "weed_types": [],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "None",
+                    "quantity": "None",
+                    "stage": "None"
+                }
+            },
+            "has_types": {
+                "@type": "CropType",
+                "name": "Rice",
+                "used_for": "Food"
+            },
+            "harvesting_guidelines_are": "Normal",
+            "storage_guidelines_are": "Normal"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Lime",
+            "quantity": "600 kg/ha for direct seeded crops, 600 kg/ha for transplanted crop, 1000 kg/ha for Pokkali areas",
+            "stage_of_application": "First dose as basal dressing at the time of first ploughing, second dose as top dressing about one month after sowing or transplanting. For Pokkali areas, 50% at the time of preparation of mounds and the rest at the time of dismantling the mounds."
+        }
+    ]
+}

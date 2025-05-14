@@ -1,0 +1,248 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "NewsAsset",
+            "title": "Best Prime Day Deals on Gadgets",
+            "author": "WIRED",
+            "theme": "Gadgets",
+            "summary": "A comprehensive list of the best Prime Day deals on various gadgets including headphones, blenders, and smart home devices.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event1",
+                        "@type": "Event",
+                        "eventTitle": "Prime Day Headphone Deals",
+                        "eventSummary": "A selection of the best headphone deals available during Prime Day.",
+                        "theme": "Headphones",
+                        "hasLocation": {
+                            "@id": "geo:location1",
+                            "@type": "geo:SpatialThing"
+                        },
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person1",
+                                    "@type": "Person",
+                                    "name": "Louryn Strampe",
+                                    "dateOfBirth": "1990-01-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location2",
+                                        "@type": "geo:SpatialThing"
+                                    },
+                                    "alias": "Reviewer"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "@type": "Organization",
+                                    "name": "WIRED",
+                                    "hasLocation": {
+                                        "@id": "geo:location3",
+                                        "@type": "geo:SpatialThing"
+                                    },
+                                    "alias": "WIRED Magazine"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset2",
+            "@type": "NewsAsset",
+            "title": "Best Prime Day Kitchen Deals",
+            "author": "WIRED",
+            "theme": "Kitchen Appliances",
+            "summary": "A roundup of the best kitchen deals available during Prime Day, featuring blenders, cookers, and more.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event2",
+                        "@type": "Event",
+                        "eventTitle": "Prime Day Kitchen Deals",
+                        "eventSummary": "Highlighting the best kitchen appliance deals for Prime Day.",
+                        "theme": "Kitchen",
+                        "hasLocation": {
+                            "@id": "geo:location4",
+                            "@type": "geo:SpatialThing"
+                        },
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person2",
+                                    "@type": "Person",
+                                    "name": "Joe Ray",
+                                    "dateOfBirth": "1985-05-15",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location5",
+                                        "@type": "geo:SpatialThing"
+                                    },
+                                    "alias": "Reviewer"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization2",
+                                    "@type": "Organization",
+                                    "name": "WIRED",
+                                    "hasLocation": {
+                                        "@id": "geo:location6",
+                                        "@type": "geo:SpatialThing"
+                                    },
+                                    "alias": "WIRED Magazine"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset3",
+            "@type": "NewsAsset",
+            "title": "Best Prime Day Coffee Deals",
+            "author": "WIRED",
+            "theme": "Coffee Equipment",
+            "summary": "A selection of the best coffee equipment deals available during Prime Day.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "has_events": {
+                "@list": [
+                    {
+                        "@id": "snap:event3",
+                        "@type": "Event",
+                        "eventTitle": "Prime Day Coffee Deals",
+                        "eventSummary": "Showcasing the best coffee maker deals for Prime Day.",
+                        "theme": "Coffee",
+                        "hasLocation": {
+                            "@id": "geo:location7",
+                            "@type": "geo:SpatialThing"
+                        },
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "@id": "snap:person3",
+                                    "@type": "Person",
+                                    "name": "Scott Gilbertson",
+                                    "dateOfBirth": "1982-03-20",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location8",
+                                        "@type": "geo:SpatialThing"
+                                    },
+                                    "alias": "Reviewer"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "@id": "snap:organization3",
+                                    "@type": "Organization",
+                                    "name": "WIRED",
+                                    "hasLocation": {
+                                        "@id": "geo:location9",
+                                        "@type": "geo:SpatialThing"
+                                    },
+                                    "alias": "WIRED Magazine"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

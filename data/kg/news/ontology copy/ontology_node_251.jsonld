@@ -1,0 +1,267 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:event",
+      "eventTitle": "The Life Aquatic with Steve Zissou",
+      "eventSummary": "Zissou sets out for his next project: to find and kill the shark, and film the whole thing.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "The Life Aquatic with Steve Zissou",
+        "eventSummary": "The hilarious ensemble cast includes Anjelica Huston, Willem Dafoe, Owen Wilson, and Jeff Goldblum.",
+        "theme": "snap:intangibleStuff"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Little Monsters",
+      "eventSummary": "Director Abe Forsythe’s 2019 horror comedy Little Monsters stars Alexander England as Dave.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "Little Monsters",
+        "eventSummary": "Dave agrees to chaperone the class’ field trip to a petting zoo next to a U.S. Army base experiencing a zombie outbreak.",
+        "theme": "snap:intangibleStuff"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Love & Friendship",
+      "eventSummary": "Whit Stillman’s uproarious adaptation of Jane Austen’s Lady Susan stars Kate Beckinsale.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "Love & Friendship",
+        "eventSummary": "Lady Susan flirts and schemes her way throughout the movie.",
+        "theme": "snap:intangibleStuff"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Magic Mike and Magic Mike XXL",
+      "eventSummary": "Two joyous celebrations of bodies in motion contained within working class stories.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "Magic Mike and Magic Mike XXL",
+        "eventSummary": "Channing Tatum, Joe Manganiello, and the rest of the ensemble cast soar.",
+        "theme": "snap:intangibleStuff"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Moonstruck",
+      "eventSummary": "A widow is convinced her ill-fated first marriage was doomed by bad luck.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "Moonstruck",
+        "eventSummary": "She accepts a proposal but ends up falling for his estranged brother.",
+        "theme": "snap:intangibleStuff"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Multiple Maniacs",
+      "eventSummary": "The early transgressive comedies of John Waters have been anointed by Criterion as art.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "Multiple Maniacs",
+        "eventSummary": "Lady Divine spirals out of control on a murder spree.",
+        "theme": "snap:intangibleStuff"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "The Paper Tigers",
+      "eventSummary": "Tran Quoc Bao’s kung fu action comedy stars Alain Uy, Ron Yuan, and Mykel Shannon Jenkins.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "The Paper Tigers",
+        "eventSummary": "Three former martial arts prodigies avenge their master's murder.",
+        "theme": "snap:intangibleStuff"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Plus One",
+      "eventSummary": "Netflix may be cranking out romantic comedies, but the best still come from a more personal place.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "Plus One",
+        "eventSummary": "Maya Erskine and Jack Quaid star as best buds who’ve seen all of their friends get hitched.",
+        "theme": "snap:intangibleStuff"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Singin’ in the Rain",
+      "eventSummary": "What is there to say about one of the most well-loved movies of all time?",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "Singin’ in the Rain",
+        "eventSummary": "Stanley Donen and Gene Kelly’s timeless 1952 classic is as joyous and funny as you remember.",
+        "theme": "snap:intangibleStuff"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Spy",
+      "eventSummary": "A sendup of espionage movies from director Paul Feig.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "Spy",
+        "eventSummary": "Melissa McCarthy stars as a desk worker for the CIA forced into active duty.",
+        "theme": "snap:intangibleStuff"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Support the Girls",
+      "eventSummary": "This terrific day-in-the-life comedy from writer-director Andrew Bujalski.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "Support the Girls",
+        "eventSummary": "Regina Hall gives a tremendously layered performance.",
+        "theme": "snap:intangibleStuff"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Tampopo",
+      "eventSummary": "This 1985 “ramen western” is a hilarious romp.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "Tampopo",
+        "eventSummary": "A lovely story of community, passion, and human nature.",
+        "theme": "snap:intangibleStuff"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "To Be or Not to Be",
+      "eventSummary": "Ernst Lubitsch’s 1942 masterpiece is an uproarious and touching anti-war story.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "To Be or Not to Be",
+        "eventSummary": "A group of actors use their theatrical skills to dupe Nazi soldiers.",
+        "theme": "snap:intangibleStuff"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "The Unauthorized Bash Brothers Experience",
+      "eventSummary": "The Lonely Island dropped this musical movie out of nowhere in 2019.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "The Unauthorized Bash Brothers Experience",
+        "eventSummary": "A spoof of Beyoncé’s Lemonade focused on Jose Canseco and Mark McGwire.",
+        "theme": "snap:intangibleStuff"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Wheels on Meals",
+      "eventSummary": "Few creative teams have ever managed the consistent level of excellence.",
+      "theme": "snap:intangibleStuff",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "Wheels on Meals",
+        "eventSummary": "Jackie Chan, Sammo Hung, and Yuen Biao star in this Hong Kong martial arts action comedy.",
+        "theme": "snap:intangibleStuff"
+      }
+    }
+  ]
+}
+```

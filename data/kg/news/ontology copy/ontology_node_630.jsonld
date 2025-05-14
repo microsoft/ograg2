@@ -1,0 +1,276 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:person",
+      "name": "Sam",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Unholy Release",
+        "eventSummary": "Sam's record 'Unholy' broke streaming records and won a Grammy with Kim Petras."
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Capitol UK",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Unholy Release",
+        "eventSummary": "Collaboration with Sam's managers and global teams for the release of 'Unholy'."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Arjun",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Unholy Release",
+        "eventSummary": "Led the team for the global campaign of 'Unholy'."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jo Charrington",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Unholy Release",
+        "eventSummary": "Worked closely with Arjun and Sam's managers for the release."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jack Street",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Unholy Release",
+        "eventSummary": "Manager of Sam, involved in the release of 'Unholy'."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Sam Evitt",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Unholy Release",
+        "eventSummary": "Manager of Sam, involved in the release of 'Unholy'."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Ice Spice",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Co-signing with Capitol and 10K",
+        "eventSummary": "Ice Spice co-signed by Capitol and 10K, becoming a global superstar."
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "10K",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Co-signing with Ice Spice",
+        "eventSummary": "Co-signed Ice Spice with Capitol."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Elliot",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Dinner with Ice Spice",
+        "eventSummary": "Attended the dinner leading to Ice Spice's co-signing."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jeremy Vuernick",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Dinner with Ice Spice",
+        "eventSummary": "Attended the dinner leading to Ice Spice's co-signing."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Zach Friedman",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Dinner with Ice Spice",
+        "eventSummary": "Attended the dinner leading to Ice Spice's co-signing."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Tony Talamo",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Dinner with Ice Spice",
+        "eventSummary": "Attended the dinner leading to Ice Spice's co-signing."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "James Rosemond Jr.",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Ice Spice Management",
+        "eventSummary": "Manager of Ice Spice, involved in her development."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jody Gerson",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Ice Spice Signing",
+        "eventSummary": "Signed Ice Spice to Universal Music Publishing Group."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Ambrosia Healey",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Ice Spice Media Appearance",
+        "eventSummary": "Secured Ice Spice's appearance on Saturday Night Live."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Paul McCartney",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Now And Then Release",
+        "eventSummary": "Signed to Capitol, involved in the release of 'Now And Then'."
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Apple Corp",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Now And Then Release",
+        "eventSummary": "Collaborated on the release of The Beatles' 'Now And Then'."
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "UMG UK",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Now And Then Release",
+        "eventSummary": "Collaborated on the release of The Beatles' 'Now And Then'."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Bruce Resnikoff",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Now And Then Release",
+        "eventSummary": "Involved in the global campaign for 'Now And Then'."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Cindy Mabe",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Diversity in Music Industry",
+        "eventSummary": "Focus on increasing diversity and representation in the music industry."
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Lucian",
+      "notablyAssociatedWith": {
+        "@type": "snap:event",
+        "eventTitle": "Diversity in Music Industry",
+        "eventSummary": "Agrees on the need for more diversity in the music industry."
+      }
+    }
+  ]
+}
+```

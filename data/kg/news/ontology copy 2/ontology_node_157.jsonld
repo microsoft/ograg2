@@ -1,0 +1,131 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "title": "Vikings vs. Broncos live score, updates, highlights from NFL 'Sunday Night Football' game",
+            "author": "Kyle Irving",
+            "theme": "sports",
+            "content": "The Broncos completed a major comeback in the Mile High City. Both Denver and Minnesota entered 'Sunday Night Football' on red-hot win streaks but only one team could keep the momentum rolling. It looked like it was going to be Joshua Dobbs and the Vikings for the majority of the contest, but the Broncos wouldn't let up. Trailing by eight points going into the final frame, Denver's offense finally woke up in the game's biggest moment. The Broncos hadn't found the end zone all night but Russell Wilson still found a way to lead an impressive game-winning drive in the final three minutes. Courtland Sutton was as clutch as can be, coming up with a key catch on fourth down to keep the drive alive. When Denver brought the ball into the red zone where it had stalled out several times throughout the night, Wilson went right back to his guy Sutton. Sutton hauled in a monster touchdown reception to give the Broncos a one-point lead with a minute remaining, and Dobbs had run out of magic. Denver forced a turnover on downs on Minnesota's final drive, extending its win streak to four games while handing the Vikings their first loss in five weeks. If you missed any of the 'Sunday Night Football' action, The Sporting News had you covered with live updates, highlights and more throughout the game.",
+            "published": "2023-11-19T23:00:04+00:00",
+            "has_events": [
+                {
+                    "@id": "snap:event",
+                    "@type": "schema:Thing",
+                    "eventTitle": "Vikings vs. Broncos final score",
+                    "eventSummary": "Final: Broncos 21, Vikings 20",
+                    "theme": "sports",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person",
+                            "@type": "schema:Thing",
+                            "name": "Joshua Dobbs"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "@type": "schema:Thing",
+                            "name": "Russell Wilson"
+                        },
+                        {
+                            "@id": "snap:person",
+                            "@type": "schema:Thing",
+                            "name": "Courtland Sutton"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization",
+                            "@type": "schema:Thing",
+                            "name": "Denver Broncos"
+                        },
+                        {
+                            "@id": "snap:organization",
+                            "@type": "schema:Thing",
+                            "name": "Minnesota Vikings"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

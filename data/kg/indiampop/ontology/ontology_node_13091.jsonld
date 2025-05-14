@@ -1,0 +1,130 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Wheat",
+            "needs_pest_treatements": [
+                {
+                    "@type": "PestTreatements",
+                    "pest_name": "Stem borer",
+                    "pest_symptoms": "2 egg masses/m2 or 10% dead hearts",
+                    "pest_control": {
+                        "@type": "PesticideList",
+                        "name": "Pesticide A",
+                        "quantity": "As per requirement",
+                        "stage": "Nursery"
+                    }
+                },
+                {
+                    "@type": "PestTreatements",
+                    "pest_name": "Leaffolder",
+                    "pest_symptoms": "10% leaf damage at vegetative phase and 5% of flag leaf damage at flowering",
+                    "pest_control": {
+                        "@type": "PesticideList",
+                        "name": "Pesticide B",
+                        "quantity": "As per requirement",
+                        "stage": "Nursery"
+                    }
+                },
+                {
+                    "@type": "PestTreatements",
+                    "pest_name": "Gall midge",
+                    "pest_symptoms": "10% silver shoots",
+                    "pest_control": {
+                        "@type": "PesticideList",
+                        "name": "Pesticide C",
+                        "quantity": "As per requirement",
+                        "stage": "Nursery"
+                    }
+                },
+                {
+                    "@type": "PestTreatements",
+                    "pest_name": "Whorl maggot",
+                    "pest_symptoms": "25% damaged leaves",
+                    "pest_control": {
+                        "@type": "PesticideList",
+                        "name": "Pesticide D",
+                        "quantity": "As per requirement",
+                        "stage": "Nursery"
+                    }
+                },
+                {
+                    "@type": "PestTreatements",
+                    "pest_name": "Thrips",
+                    "pest_symptoms": "60 numbers in 12 passes or rolling of the first and second leaves in 10% of seedlings.",
+                    "pest_control": {
+                        "@type": "PesticideList",
+                        "name": "Pesticide E",
+                        "quantity": "As per requirement",
+                        "stage": "Nursery"
+                    }
+                },
+                {
+                    "@type": "PestTreatements",
+                    "pest_name": "Brown planthopper Green leafhopper",
+                    "pest_symptoms": "1 hopper/ tiller in the absence of predatory spider and 2 hoppers /tiller when spider is present at 1/hill. 60/25 net sweeps or 5/hill at vegetative stage or 10/hill at flowering or 2/hill in tungro endemic area",
+                    "pest_control": {
+                        "@type": "PesticideList",
+                        "name": "Pesticide F",
+                        "quantity": "As per requirement",
+                        "stage": "Nursery"
+                    }
+                },
+                {
+                    "@type": "PestTreatements",
+                    "pest_name": "Earhead bug",
+                    "pest_symptoms": "5 bugs/100 earheads at flowering and 16 bugs/100 earheads from milky stage to grain maturity",
+                    "pest_control": {
+                        "@type": "PesticideList",
+                        "name": "Pesticide G",
+                        "quantity": "As per requirement",
+                        "stage": "Nursery"
+                    }
+                }
+            ]
+        }
+    ]
+}

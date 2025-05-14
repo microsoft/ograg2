@@ -1,0 +1,61 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "SettTreatment": {
+            "@id": "cropCult:SettTreatment",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "fungicide": "cropCult:Fungicide",
+                "pesticide": "cropCult:PesticideList",
+                "fertilizer": "cropCult:Fertilization"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "SettTreatment",
+            "instructions": "The setts should be soaked in 100 litres of water for 15 minutes.",
+            "fungicide": {
+                "@type": "Fungicide",
+                "name": "Carbendazim",
+                "quantity": "50g"
+            },
+            "pesticide": {
+                "@type": "PesticideList",
+                "name": "malathion",
+                "quantity": "200ml"
+            },
+            "fertilizer": {
+                "@type": "Fertilization",
+                "nutrient_name": "urea",
+                "quantity": "1 kg"
+            }
+        }
+    ]
+}

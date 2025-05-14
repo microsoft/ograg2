@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Cut worm",
+            "pest_symptoms": "Occurrence and damage Earhead cutting caterpillars appear in the ripening stage of the crop. The caterpillar cuts earheads particularly in the night hours and hides in the cracks, crevices and under debris during day time.",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Threshold",
+                "quantity": "1 larvae/hill",
+                "stage": "Ripening"
+            }
+        }
+    ]
+}

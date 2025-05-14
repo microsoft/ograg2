@@ -1,0 +1,121 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "title": "Could CRISPR cure HIV someday?",
+      "summary": "Scientists have been experimenting with how to use CRISPR to treat and potentially cure HIV since the gene-editing tool was developed.",
+      "published": "2023-11-30T21:34:30+00:00",
+      "byline": "Live Science: The Most Interesting Articles",
+      "category": "science",
+      "url": "https://www.livescience.com/health/hiv/could-crispr-cure-hiv-someday"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "EBT-101 Clinical Trial",
+      "eventSummary": "In an ongoing clinical trial, researchers are testing whether just one dose of a new gene therapy that might effectively cure HIV infections is safe in humans.",
+      "theme": "snap:intangibleStuff"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "United Nations Programme on HIV/AIDS (UNAIDS)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Thomas Hope",
+      "comment": "A professor of cell and developmental biology at Northwestern University"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Elena Herrera-Carrillo",
+      "comment": "An associate professor of infectious disease at Amsterdam University Medical Centers"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Kamel Kahlili",
+      "comment": "A professor of neurovirology and gene editing at Temple University and co-founder of Excision BioTherapeutics"
+    }
+  ]
+}
+```

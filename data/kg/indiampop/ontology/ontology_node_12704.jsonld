@@ -1,0 +1,123 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "CARROT",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Daucus carota"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "High ranges",
+                "has_regions": ["August", "January"]
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Well-drained sandy loam soil"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Carrot can be grown in high ranges from August to January."
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "SeedSpacing",
+                "sowing_time": "One month after sowing"
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "37.5 kg N per ha"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "None",
+                "disease_symptoms": "None",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "None",
+                    "quantity": "None",
+                    "stage": "None"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "None",
+                "pest_symptoms": "None",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "None",
+                    "quantity": "None",
+                    "stage": "None"
+                }
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "None",
+                "quantity": "None"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "None",
+                "weed_types": [],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "None",
+                    "quantity": "None",
+                    "stage": "None"
+                }
+            },
+            "harvesting_guidelines_are": "None",
+            "storage_guidelines_are": "None"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "N, P2O5, K2O",
+            "quantity": "37.5 kg N, 62.5 kg P2O5, 50 kg K2O per ha",
+            "stage_of_application": "Basal"
+        }
+    ]
+}

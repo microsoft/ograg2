@@ -1,0 +1,66 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "OILPALM",
+            "has_types": {
+                "@type": "CropType",
+                "name": "PRUNING OF LEAVES"
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "weevils",
+                "pest_symptoms": "The weevils are dark brown in colour. Adult weevils feed on the anther filament. Eggs are deposited inside the male flowers and larva feeds on the spent flowers. Lifecycle is completed within 11 to 13 days. Males live longer than females. The activity of the insects is in accordance with the receptivity of the male and female inflorescences. It was roughly estimated that 40 palms in a grove might be the minimum to sustain a sufficiently high continuous population of pollinators to pollinate. All are receptive female inflorescences. The weevils carry maximum pollen during the third day of antheses. Antennae, rostrum, thorax, legs etc. are the main sites of pollen land. E.kamerunicushas a fairly good searching ability. It can survive in dry as well as in wet seasons.",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Not specified",
+                    "quantity": "Not specified",
+                    "stage": "Not specified"
+                }
+            }
+        }
+    ]
+}

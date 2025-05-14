@@ -1,0 +1,72 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Rapeseed-Mustard",
+            "has_types": [
+                {
+                    "@type": "CropType",
+                    "name": "Brassica campestris",
+                    "used_for": "Yellow sarson, Brown sarson, Toria"
+                },
+                {
+                    "@type": "CropType",
+                    "name": "Brassica juncea",
+                    "used_for": "Indian Mustard, Rai, Raya"
+                },
+                {
+                    "@type": "CropType",
+                    "name": "Eruca",
+                    "used_for": "Taramira"
+                },
+                {
+                    "@type": "CropType",
+                    "name": "Synapsis",
+                    "used_for": "Not cultivated in our state"
+                }
+            ]
+        },
+        {
+            "@type": "Crop",
+            "name": "Toria",
+            "has_types": [
+                {
+                    "@type": "CropType",
+                    "name": "Brassica campestris",
+                    "used_for": "Cultivated in our state"
+                }
+            ]
+        },
+        {
+            "@type": "Crop",
+            "name": "Mustard",
+            "has_types": [
+                {
+                    "@type": "CropType",
+                    "name": "Brassica juncea",
+                    "used_for": "Cultivated in our state"
+                }
+            ]
+        }
+    ]
+}

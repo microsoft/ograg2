@@ -1,0 +1,135 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:person",
+      "name": "Paul Blackburn",
+      "comment": "SP, A’s",
+      "summary": "Blackburn is arguably the most desirable realistic trade candidate on the Oakland roster. The A’s have torn things to the studs. They’re unlikely to compete within the two remaining years of Blackburn’s arbitration window. The right-hander (30 next month) worked to a 4.43 ERA with a decent 22.4% strikeout rate over 103 2/3 innings this past season. He’s projected for a $3.2M salary. A Blackburn trade isn’t going to be an offseason defining move, but he has a good chance to be flipped to a contender seeking affordable back-end starting pitching."
+    },
+    {
+      "@type": "snap:person",
+      "name": "Alek Manoah",
+      "comment": "SP, Blue Jays",
+      "summary": "Perhaps no player had a more disappointing 2023 performance than Manoah. Within one season, he went from Cy Young finalist to essentially unplayable. The right-hander pitched to a 5.87 ERA over 19 big league outings. His walks more than doubled while his strikeouts fell from 22.9% to a modest 19% clip. He lost his spot in the Toronto rotation and was eventually demoted to the minors. Manoah never pitched in Triple-A and received an injection in his throwing shoulder at the end of the season."
+    },
+    {
+      "@type": "snap:person",
+      "name": "Brandon Drury",
+      "comment": "2B, Angels",
+      "summary": "The Halos signed Drury to a two-year free agent deal last winter. The righty-hitting infielder turned in a nice season, connecting on 26 home runs with a .262/.306/.497 line across 523 plate appearances. Next year’s $8.5M salary looks like strong value, particularly in an offseason where the supply of up-the-middle players is thin."
+    },
+    {
+      "@type": "snap:person",
+      "name": "Brendan Donovan",
+      "comment": "2B, Cardinals",
+      "summary": "Donovan is a longer shot trade possibility if the Cards move a controllable hitter for starting pitching. He’s more valuable than Carlson and less likely to be on the move. The 26-year-old hit .284/.365/.422 with 11 homers through 371 plate appearances this past season. A flexor tendon injury pushed him to designated hitter and eventually required surgery that ended his year a couple months early. He’s expected back for spring training."
+    },
+    {
+      "@type": "snap:person",
+      "name": "Christopher Morel",
+      "comment": "DH, Cubs",
+      "summary": "Morel is likely to be a divisive player around the league. He has huge raw power and connected on 26 home runs while slugging .508 in 107 games for the Cubs. The right-handed hitter owns a .241/.311/.471 line in just over 850 MLB plate appearances over the past two seasons. When he’s hot, he can carry a lineup."
+    },
+    {
+      "@type": "snap:person",
+      "name": "Christian Vázquez",
+      "comment": "C, Twins",
+      "summary": "Trading Vázquez is another route Minnesota could consider to clear money. The Twins signed the veteran catcher to a three-year, $30M free agent deal last offseason. He had a tough first season in Minneapolis, limping to a .223/.280/.318 line over 355 plate appearances — albeit with his typical brand of excellent defense."
+    },
+    {
+      "@type": "snap:person",
+      "name": "Luis Robert Jr.",
+      "comment": "CF, White Sox",
+      "summary": "Robert has the most trade value of any player on this list. He may also be the least likely to move. Last week, Getz called him a franchise building block and noted he had no plans to proactively shop Robert even as he left open the possibility of listening to offers on anyone."
+    },
+    {
+      "@type": "snap:person",
+      "name": "Pete Alonso",
+      "comment": "1B, Mets",
+      "summary": "Alonso was the subject of early offseason trade speculation. With the Mets projecting a less active offseason and placing a priority on 2025, it wasn’t out of the question he could be available. Alonso is projected for a $22M arbitration salary and will be a free agent after next year."
+    }
+  ]
+}
+```

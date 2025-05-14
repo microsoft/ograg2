@@ -1,0 +1,177 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:film",
+      "@type": "snap:asset",
+      "title": "Film Analysis",
+      "summary": "Two things helped Pitts out: One, he looked a little quicker off the snap and a little faster when running straight. He's still lumbering when he changes directions in his routes but perhaps he's slowly getting healthier. Two, Desmond Ridder seemed very comfortable throwing into tighter windows to Pitts in zone coverage as the two had some good timing down, mainly on dig and out-breaking routes."
+    },
+    {
+      "@id": "snap:pitts",
+      "@type": "snap:asset",
+      "title": "Pitts Performance",
+      "summary": "Continues to harvest a high ADOT -- last week it was 11.36 yards and on the season it's 11.72, the highest among all qualifying tight ends. He also has the lowest catch rate (56.3%) and worst YAC/reception average (1.33 yards) among all qualifying tight ends. Of his 208 yards, just 24 have come after the catch."
+    },
+    {
+      "@id": "snap:commanders",
+      "@type": "snap:asset",
+      "title": "Commanders Defense",
+      "summary": "Play zone coverage at a slightly lower-than-league-average rate, typically turning to man coverage as soon as games get sideways. Opponents average 32.0 pass attempts per game against them, ninth-fewest in football, and against tight ends that line up in the slot or out wide like Pitts, the Commanders rank among the top-five in yards per catch, YAC/reception and have yet to allow a reception of 20-plus yards."
+    },
+    {
+      "@id": "snap:deepPasses",
+      "@type": "snap:asset",
+      "title": "Deep Passes Analysis",
+      "summary": "The Commanders have allowed the seventh-most receptions of throws that traveled 15-plus Air Yards this season with 19. Of those 19, only two were caught by tight ends and neither went for more than 23 yards."
+    },
+    {
+      "@id": "snap:osborn",
+      "@type": "snap:asset",
+      "title": "Osborn Performance",
+      "summary": "Has a 50% catch rate on the year and that includes whether he faces zone coverage or man coverage. He sees more targets per route run against man coverage and averages more yards per catch and yards after catch against man coverage."
+    },
+    {
+      "@id": "snap:bears",
+      "@type": "snap:asset",
+      "title": "Bears Defense",
+      "summary": "Play zone coverage at the fourth-highest rate of any defense this season (79.2%). And because Cousins is much more explosive of a passer against man coverage, expect Chicago to keep up their zone defense."
+    },
+    {
+      "@id": "snap:kmet",
+      "@type": "snap:asset",
+      "title": "Kmet Performance",
+      "summary": "If you start Kmet, you're buying into his role as Fields' change-up to D.J. Moore -- and in the case of this week, a change-up to the Bears' depleted run game. I especially like his red-zone role and his touchdown opportunities."
+    },
+    {
+      "@id": "snap:vikings",
+      "@type": "snap:asset",
+      "title": "Vikings Defense",
+      "summary": "Allow the fewest yards per catch to rival tight ends (5.9 yards), even keeping a lid on Travis Kelce last week (6.7 yards per catch)."
+    },
+    {
+      "@id": "snap:lockett",
+      "@type": "snap:asset",
+      "title": "Lockett Performance",
+      "summary": "Already the team leader in target share for the season, Lockett sees more targets on a route-run basis against man coverage (28%) compared to zone (21%)."
+    },
+    {
+      "@id": "snap:bengals",
+      "@type": "snap:asset",
+      "title": "Bengals Defense",
+      "summary": "Consistently tailor their defensive coverage to the weaknesses of the offenses they face. So when a quarterback struggles against zone coverage, they'll play more zone."
+    },
+    {
+      "@id": "snap:wilson",
+      "@type": "snap:asset",
+      "title": "Wilson Performance",
+      "summary": "Started practicing this week after being sidelined with finger and abdomen injuries since late August. He and his fresh legs are back just in time as rookie sensation De'Von Achane hit Injured Reserve this week with a knee injury."
+    },
+    {
+      "@id": "snap:dolphins",
+      "@type": "snap:asset",
+      "title": "Dolphins Rushing",
+      "summary": "Aren't quite the bastion of rushing that some headlines have made them out to be, but they're just over league average in rush rate at 43.7% and above league average in RB runs per game at 22.6."
+    },
+    {
+      "@id": "snap:moss",
+      "@type": "snap:asset",
+      "title": "Moss Performance",
+      "summary": "The Colts have an edge with their offensive line getting a step on the Jaguars' front; Moss already averages 2.13 yards before contact and the Jags give up 1.35 yards before contact."
+    },
+    {
+      "@id": "snap:taylor",
+      "@type": "snap:asset",
+      "title": "Taylor Performance",
+      "summary": "Because Taylor is still ramping up and it takes as many as four weeks to 'get right,' Moss should lead the way and could see as many as 15 touches and Taylor as many as 10."
+    },
+    {
+      "@id": "snap:pitman",
+      "@type": "snap:asset",
+      "title": "Pittman Performance",
+      "summary": "If you're starting Pittman you're banking on him and Minshew landing on the same page a bunch. It also helps the cause that the Jaguars aren't exactly terrible against the run."
+    }
+  ]
+}
+```

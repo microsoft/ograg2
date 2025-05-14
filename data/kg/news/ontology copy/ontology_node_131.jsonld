@@ -1,0 +1,213 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:Paranormasight",
+      "@type": "snap:asset",
+      "title": "Paranormasight",
+      "summary": "A horror mystery set in 1980s Japan, exploring urban legends and deadly rituals.",
+      "byline": "Chris Plante",
+      "created": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:MarvelsMidnightSuns",
+      "@type": "snap:asset",
+      "title": "Marvel’s Midnight Suns",
+      "summary": "A card-based strategy game combining tactical battles with a humorous storyline.",
+      "byline": "Maddy Myers",
+      "created": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:HonkaiStarRail",
+      "@type": "snap:asset",
+      "title": "Honkai: Star Rail",
+      "summary": "A turn-based combat game with a focus on character development and exploration.",
+      "byline": "JL",
+      "created": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:ChantsOfSennaar",
+      "@type": "snap:asset",
+      "title": "Chants of Sennaar",
+      "summary": "A puzzle game about deciphering languages in a Tower of Babel-like setting.",
+      "byline": "N. Clark",
+      "created": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:MetroidPrimeRemastered",
+      "@type": "snap:asset",
+      "title": "Metroid Prime Remastered",
+      "summary": "A remastered version of the classic 2002 game, offering a first-person adventure.",
+      "byline": "M. Myers",
+      "created": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:ShadowGambitTheCursedCrew",
+      "@type": "snap:asset",
+      "title": "Shadow Gambit: The Cursed Crew",
+      "summary": "A tactical stealth game set in a world of zombie pirates and supernatural abilities.",
+      "byline": "M. Mahardy",
+      "created": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:Dredge",
+      "@type": "snap:asset",
+      "title": "Dredge",
+      "summary": "A Lovecraftian horror experience disguised as a fishing game.",
+      "byline": "RG",
+      "created": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:FinalFantasy16",
+      "@type": "snap:asset",
+      "title": "Final Fantasy 16",
+      "summary": "An action RPG with a Game of Thrones-esque adventure and dynamic combat.",
+      "byline": "Ana Diaz",
+      "created": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:Cyberpunk2077PhantomLiberty",
+      "@type": "snap:asset",
+      "title": "Cyberpunk 2077: Phantom Liberty",
+      "summary": "A DLC expansion that enhances the base game with new content and improvements.",
+      "byline": "M. Mahardy",
+      "created": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:DeadSpace",
+      "@type": "snap:asset",
+      "title": "Dead Space",
+      "summary": "A remake of the classic sci-fi horror game set on a deteriorating spaceship.",
+      "byline": "M. Mahardy",
+      "created": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:OctopathTraveler2",
+      "@type": "snap:asset",
+      "title": "Octopath Traveler 2",
+      "summary": "A JRPG with eight distinct storylines and turn-based combat.",
+      "byline": "M. Mahardy",
+      "created": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:DaveTheDiver",
+      "@type": "snap:asset",
+      "title": "Dave the Diver",
+      "summary": "A fishing and restaurant management game with a quirky storyline.",
+      "byline": "N. Carpenter",
+      "created": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:ResidentEvil4Remake",
+      "@type": "snap:asset",
+      "title": "Resident Evil 4 Remake",
+      "summary": "A reimagined version of the 2005 action-survival-horror game.",
+      "byline": "M. Mahardy",
+      "created": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    },
+    {
+      "@id": "snap:ArmoredCore6FiresOfRubicon",
+      "@type": "snap:asset",
+      "title": "Armored Core 6: Fires of Rubicon",
+      "summary": "A mech combat game with agile and resilient giant robots.",
+      "byline": "Unknown",
+      "created": "2023-10-01T00:00:00Z",
+      "published": "2023-10-01T00:00:00Z"
+    }
+  ]
+}
+```

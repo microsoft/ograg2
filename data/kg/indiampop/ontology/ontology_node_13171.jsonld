@@ -1,0 +1,69 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Bacterial leaf blight Xanthomonas oryzae pv. oryzae",
+            "disease_symptoms": "Botanical / others",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Spray fresh cowdung extract 20% twice (starting from initial appearance of the disease and another at fortnightly interval)",
+                "quantity": "20%",
+                "stage": "Initial appearance of the disease and another at fortnightly interval"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Bacterial leaf streak",
+            "disease_symptoms": "Botanical / others",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Neem oil 60 EC 3% (or) NSKE 5%",
+                "quantity": "3% (or) 5%",
+                "stage": "Recommended for the control of sheath rot, sheath blight, grain discolouration and bacterial blight"
+            }
+        }
+    ]
+}

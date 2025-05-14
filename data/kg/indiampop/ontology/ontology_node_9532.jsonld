@@ -1,0 +1,50 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "FarmImplementsAndMachinery": {
+            "@id": "cropCult:FarmImplementsAndMachinery",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_horticulture": "cropCult:Horticulture"
+            }
+        },
+        "Horticulture": {
+            "@id": "cropCult:Horticulture",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_palmyrah_tree_climbing_device": "cropCult:PalmyrahTreeClimbingDevice"
+            }
+        },
+        "PalmyrahTreeClimbingDevice": {
+            "@id": "cropCult:PalmyrahTreeClimbingDevice",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "weight": "schema:weight",
+                "cost": "schema:price"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "cropCult:FarmImplementsAndMachinery",
+            "@type": "FarmImplementsAndMachinery",
+            "name": "FARM IMPLEMENTS AND MACHINERY",
+            "has_horticulture": {
+                "@id": "cropCult:Horticulture",
+                "@type": "Horticulture",
+                "name": "HORTICULTURE",
+                "has_palmyrah_tree_climbing_device": {
+                    "@id": "cropCult:PalmyrahTreeClimbingDevice",
+                    "@type": "PalmyrahTreeClimbingDevice",
+                    "name": "PALMYRAH TREE CLIMBING DEVICE",
+                    "weight": "17 kg",
+                    "cost": "Rs. 6000"
+                }
+            }
+        }
+    ]
+}

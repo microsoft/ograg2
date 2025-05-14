@@ -1,0 +1,144 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Cowboys vs. 49ers live score, updates, highlights from NFL 'Sunday Night Football' game",
+      "author": "Dan Treacy",
+      "theme": "sports",
+      "content": "Jerry Jones said earlier in the week that Sunday night's game would show him how the Cowboys stack up against the NFL's best. The answer? Not very well. Everything that could go wrong for Dallas on Sunday did go wrong, in a game that confirmed a 49ers team that ended the Cowboys' season in each of the last two years remains a level above its NFC counterpart. The 49ers carved up Dallas' defense on the opening drive, and that was a sign of what was to come. Brock Purdy threw four touchdowns in the 42-10 rout, including three to George Kittle. Christian McCaffrey scored a touchdown for a 14th consecutive game as all of San Francisco's offensive weapons got involved. MORE: Comparing stats for NFC stars Nick Bosa, Micah Parsons Defensively, the 49ers were relentless. Nobody had a larger impact than Fred Warner, who finished the night with an interception, sack and forced fumble in a swarming performance. The Cowboys' offense looked very much like it did in last season's playoff exit -- uncomfortable and out of sorts. Dallas was sluggish through the first half of the game, and the night unraveled quickly when Dak Prescott threw three interceptions in the second half. It got out of hand so quickly that Sam Darnold entered the game for the 49ers with more than 12 minutes remaining. For Prescott and the Cowboys, questions about whether they can get over the hump against the class of the NFC will persist. While their wins have been dominant, Dallas already sits two games behind the Eagles in the NFC East. The 49ers are rolling right along, with all of their major offensive weapons now healthy and the defense living up to its billing as well. San Francisco, now 5-0, doesn't face a team with a winning record until Week 10, though the Browns, Vikings and Bengals are far from automatic wins for Kyle Shanahan's team. MORE: Why Brock Purdy remains one of the NFL's cheapest starting quarterbacks The Sporting News tracked live scoring updates and highlights from 'Sunday Night Football' between the Cowboys and 49ers. Check out all of the key moments you might have missed.",
+      "published": "2023-10-08T22:47:03+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Cowboys vs. 49ers Game",
+          "eventSummary": "The 49ers trounce the Cowboys and reassert themselves as one of the NFL's most dominant teams.",
+          "theme": "sports",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "geo:location": "Levi's Stadium, Santa Clara, Calif."
+          },
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Jerry Jones"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Brock Purdy"
+            },
+            {
+              "@type": "snap:person",
+              "name": "George Kittle"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Christian McCaffrey"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Fred Warner"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Dak Prescott"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Sam Darnold"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Dallas Cowboys"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "San Francisco 49ers"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

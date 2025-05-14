@@ -1,0 +1,202 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "snap:asset",
+            "title": "Chicago Bears vs. Minnesota Vikings Game Summary",
+            "author": "NFL",
+            "theme": "Sports",
+            "content": "Summary of the game between Chicago Bears and Minnesota Vikings on November 27, 2023.",
+            "created": "2023-11-28T21:22:00",
+            "published": "2023-11-28T21:22:00",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "snap:event",
+                    "eventTitle": "Bears vs. Vikings Game",
+                    "eventSummary": "NFL game between Chicago Bears and Minnesota Vikings.",
+                    "theme": "Sports",
+                    "hasLocation": {
+                        "@type": "geo:SpatialThing",
+                        "geo:lat": "44.974",
+                        "geo:long": "-93.258"
+                    },
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person1",
+                            "@type": "snap:person",
+                            "name": "Justin Fields"
+                        },
+                        {
+                            "@id": "snap:person2",
+                            "@type": "snap:person",
+                            "name": "D.J. Moore"
+                        },
+                        {
+                            "@id": "snap:person3",
+                            "@type": "snap:person",
+                            "name": "Jaylon Johnson"
+                        },
+                        {
+                            "@id": "snap:person4",
+                            "@type": "snap:person",
+                            "name": "Josh Dobbs"
+                        },
+                        {
+                            "@id": "snap:person5",
+                            "@type": "snap:person",
+                            "name": "Jordan Addison"
+                        },
+                        {
+                            "@id": "snap:person6",
+                            "@type": "snap:person",
+                            "name": "Jaquan Brisker"
+                        },
+                        {
+                            "@id": "snap:person7",
+                            "@type": "snap:person",
+                            "name": "Montez Sweat"
+                        },
+                        {
+                            "@id": "snap:person8",
+                            "@type": "snap:person",
+                            "name": "Ivan Pace Jr."
+                        },
+                        {
+                            "@id": "snap:person9",
+                            "@type": "snap:person",
+                            "name": "Cairo Santos"
+                        },
+                        {
+                            "@id": "snap:person10",
+                            "@type": "snap:person",
+                            "name": "Khalil Herbert"
+                        },
+                        {
+                            "@id": "snap:person11",
+                            "@type": "snap:person",
+                            "name": "Adrian Peterson"
+                        },
+                        {
+                            "@id": "snap:person12",
+                            "@type": "snap:person",
+                            "name": "D'Onta Foreman"
+                        },
+                        {
+                            "@id": "snap:person13",
+                            "@type": "snap:person",
+                            "name": "Tyrique Stevenson"
+                        },
+                        {
+                            "@id": "snap:person14",
+                            "@type": "snap:person",
+                            "name": "Justin Jefferson"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "snap:organization",
+                            "name": "Chicago Bears"
+                        },
+                        {
+                            "@id": "snap:organization2",
+                            "@type": "snap:organization",
+                            "name": "Minnesota Vikings"
+                        },
+                        {
+                            "@id": "snap:organization3",
+                            "@type": "snap:organization",
+                            "name": "ESPN"
+                        },
+                        {
+                            "@id": "snap:organization4",
+                            "@type": "snap:organization",
+                            "name": "NFL"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

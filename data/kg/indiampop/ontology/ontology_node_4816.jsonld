@@ -1,0 +1,135 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "SWEET POTATO (Ipomoea batatas)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Sweet Potato",
+                "used_for": "Food"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Irrigated",
+                    "has_regions": ["Region 1", "Region 2"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Variety 1", "Variety 2"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-01-01",
+                            "end_date": "2022-02-01"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-02-01",
+                            "end_date": "2022-03-01"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "QuantitativeValue",
+                            "value": "350-400qtl/ha"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Nitrogen",
+                            "quantity": "100kg/ha",
+                            "stage_of_application": "Pre-planting"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "20-30°C",
+                "for_flowering": "25-35°C",
+                "for_grain_filling": "20-30°C",
+                "negative_effect": "Below 15°C and above 40°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Clayey",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the land to a fine tilth. Apply well decomposed farmyard manure at the time of land preparation.",
+                "with_soil_moisture": "Moist but well-drained"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Early morning or late evening",
+                "value": "30cm x 30cm",
+                "depth": "5-7cm",
+                "method": "Dibbling"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Grass weeds",
+                "weed_types": ["Annual", "Perennial"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1.5kg/ha",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "500-600mm",
+                "stage_of_application": "Every 10-15 days"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Fusarium wilt",
+                "disease_symptoms": "Yellowing and wilting of leaves",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Mancozeb",
+                    "quantity": "2kg/ha",
+                    "stage": "At the onset of disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Aphids",
+                "pest_symptoms": "Yellowing and curling of leaves",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Imidacloprid",
+                    "quantity": "0.5kg/ha",
+                    "stage": "At the onset of pest"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when the leaves start yellowing and drying. Use a spade or digging fork to lift the tubers.",
+            "storage_guidelines_are": "After harvesting, tubers are allowed for curing for four to five days. After curing, sorting is done."
+        }
+    ]
+}

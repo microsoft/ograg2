@@ -1,0 +1,67 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "GROUNDNUT (Arachis hypogaea L.)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Intercropping",
+                "used_for": "Groundnut can be grown successfully grown as an inter crop in upland rice (3:1 or 4:1 row ratio) or maize (1:1 or paired row).The intercropping system is found to increase total productivity per hectare."
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Rice",
+                    "has_regions": ["May/June"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Groundnut"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "May",
+                            "end_date": "June"
+                        }
+                    }
+                },
+                "CropGrowingZone": {
+                    "name": "Maize",
+                    "has_regions": ["Last week of April", "After 2025 days of maize sowing"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Groundnut"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Last week of April",
+                            "end_date": "After 2025 days of maize sowing"
+                        }
+                    }
+                }
+            }
+        }
+    ]
+}

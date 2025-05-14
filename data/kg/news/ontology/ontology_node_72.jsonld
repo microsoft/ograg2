@@ -1,0 +1,284 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "NFL Player Analysis",
+            "author": "Sportsline",
+            "theme": "Football",
+            "summary": "Analysis of various NFL players and their performances.",
+            "created": "2023-10-01T00:00:00Z",
+            "modified": "2023-10-01T00:00:00Z",
+            "published": "2023-10-01T00:00:00Z",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Analysis of Najee Harris",
+                        "eventSummary": "Najee Harris's performance against the Ravens and Steelers.",
+                        "theme": "Player Performance",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Najee Harris",
+                                    "dateOfBirth": "1998-03-09",
+                                    "placeOfBirth": "California, USA",
+                                    "alias": "Najee"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Pittsburgh Steelers",
+                                    "hasLocation": "Pittsburgh, PA",
+                                    "alias": "Steelers"
+                                },
+                                {
+                                    "name": "Baltimore Ravens",
+                                    "hasLocation": "Baltimore, MD",
+                                    "alias": "Ravens"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Analysis of Miles Sanders",
+                        "eventSummary": "Miles Sanders's performance against the Lions.",
+                        "theme": "Player Performance",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Miles Sanders",
+                                    "dateOfBirth": "1997-05-01",
+                                    "placeOfBirth": "Pennsylvania, USA",
+                                    "alias": "Miles"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Carolina Panthers",
+                                    "hasLocation": "Charlotte, NC",
+                                    "alias": "Panthers"
+                                },
+                                {
+                                    "name": "Detroit Lions",
+                                    "hasLocation": "Detroit, MI",
+                                    "alias": "Lions"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Analysis of Jared Goff",
+                        "eventSummary": "Jared Goff's performance against the Panthers.",
+                        "theme": "Player Performance",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Jared Goff",
+                                    "dateOfBirth": "1994-10-14",
+                                    "placeOfBirth": "California, USA",
+                                    "alias": "Jared"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Detroit Lions",
+                                    "hasLocation": "Detroit, MI",
+                                    "alias": "Lions"
+                                },
+                                {
+                                    "name": "Carolina Panthers",
+                                    "hasLocation": "Charlotte, NC",
+                                    "alias": "Panthers"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Analysis of Rhamondre Stevenson",
+                        "eventSummary": "Rhamondre Stevenson's performance against the Saints.",
+                        "theme": "Player Performance",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Rhamondre Stevenson",
+                                    "dateOfBirth": "1998-01-01",
+                                    "placeOfBirth": "California, USA",
+                                    "alias": "Rhamondre"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "New England Patriots",
+                                    "hasLocation": "Foxborough, MA",
+                                    "alias": "Patriots"
+                                },
+                                {
+                                    "name": "New Orleans Saints",
+                                    "hasLocation": "New Orleans, LA",
+                                    "alias": "Saints"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Analysis of Raheem Mostert",
+                        "eventSummary": "Raheem Mostert's performance against the Giants.",
+                        "theme": "Player Performance",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Raheem Mostert",
+                                    "dateOfBirth": "1992-04-09",
+                                    "placeOfBirth": "Florida, USA",
+                                    "alias": "Raheem"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Miami Dolphins",
+                                    "hasLocation": "Miami, FL",
+                                    "alias": "Dolphins"
+                                },
+                                {
+                                    "name": "New York Giants",
+                                    "hasLocation": "East Rutherford, NJ",
+                                    "alias": "Giants"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "eventTitle": "Analysis of DeAndre Hopkins",
+                        "eventSummary": "DeAndre Hopkins's performance against the Colts.",
+                        "theme": "Player Performance",
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "DeAndre Hopkins",
+                                    "dateOfBirth": "1992-06-06",
+                                    "placeOfBirth": "Texas, USA",
+                                    "alias": "DeAndre"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "Tennessee Titans",
+                                    "hasLocation": "Nashville, TN",
+                                    "alias": "Titans"
+                                },
+                                {
+                                    "name": "Indianapolis Colts",
+                                    "hasLocation": "Indianapolis, IN",
+                                    "alias": "Colts"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

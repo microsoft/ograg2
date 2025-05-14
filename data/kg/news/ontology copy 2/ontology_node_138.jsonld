@@ -1,0 +1,156 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "title": "Bears vs. Panthers live score, updates, highlights from NFL 'Thursday Night Football' game",
+      "author": "Dan Treacy",
+      "theme": "sports",
+      "content": "The Bears and Panthers entered Thursday night looking for progress, not playoff contention. If any team achieved that goal, it was Chicago. It wasn't an aesthetically pleasing game, but that was never the expectation. The Bears grinded out a 16-13 victory behind a terrific defensive performance, a solid running game, and a few timely throws by Tyson Bagent. The Panthers jumped out to an early lead on a punt returned for a touchdown by Ihmir Smith-Marsette, but they never found the end zone again. The only offensive touchdown of the night came in the third quarter, when D'Onta Foreman rumbled his way into the end zone to give Chicago a 16-10 lead. NFL WEEK 10 PICKS: Straight up | Against the spread As it turned out, 16 points was all the Bears needed. After Eddy Pineiro cut Carolina's deficit to three early in the fourth quarter, Frank Reich put his trust in Pineiro again with the game on the line, sending him out for a 59-yard attempt on fourth-and-10 in the final minutes rather than trusting the offense to pick up the 10 yards. Pineiro's kick was short. While the decision to kick from 59 yards out might be second-guessed, Carolina's offense didn't give Reich much reason to believe. Bryce Young struggled to develop any kind of rhythm through the first three quarters, and even the Panthers' most successful drives were laborious, consistently requiring conversions on third and fourth down. While Young got little help from his receivers, who failed to get open all night, his struggles — including multiple passes that were nearly intercepted — are a reminder that the Panthers' offense is still a long way from resembling anything like the unit owner David Tepper envisioned when the franchise traded for the No. 1 pick in March. MORE: Why Frank Reich's job might already be at risk The Bears (3-7) are hoping to get Justin Fields back in time for their Week 11 game in Detroit, but they've gotten a shot in the arm from Bagent, who improved to 2-2 as a starter with the win. The victory on Thursday was a win-win for Chicago, as the franchise owns the first-round pick of the Panthers (1-8). The Sporting News tracked live scoring updates and highlights from Bears vs. Panthers on 'Thursday Night Football.' Check out all of the key moments you might have missed.",
+      "published": "2023-11-09T23:04:33+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event",
+          "@type": "schema:Thing",
+          "eventTitle": "Bears vs. Panthers Game",
+          "eventSummary": "The Bears defeated the Panthers 16-13 in a Thursday Night Football game.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Tyson Bagent"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Ihmir Smith-Marsette"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "D'Onta Foreman"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Eddy Pineiro"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Bryce Young"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "David Tepper"
+            },
+            {
+              "@id": "snap:person",
+              "@type": "schema:Thing",
+              "name": "Frank Reich"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization",
+              "@type": "schema:Thing",
+              "name": "Chicago Bears"
+            },
+            {
+              "@id": "snap:organization",
+              "@type": "schema:Thing",
+              "name": "Carolina Panthers"
+            },
+            {
+              "@id": "snap:organization",
+              "@type": "schema:Thing",
+              "name": "NFL"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

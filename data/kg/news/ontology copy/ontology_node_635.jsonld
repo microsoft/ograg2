@@ -1,0 +1,146 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "byline": "zee business",
+      "published": "2023-11-11T19:12:00+00:00",
+      "title": "ICC World Cup 2023: India at Cricket World Cup semi-finals so far",
+      "summary": "ICC World Cup 2023: Rohit Sharma-led India are playing Netherlands in their ninth ICC World Cup 2023 round-robin match at the M Chinnaswamy Stadium in Bengaluru on Sunday (November 12, 2023). India have already booked a place in semi-finals, thrashing Sri Lanka by 302 runs at the Wankhede Stadium in Mumbai on November 2, 2023. India will face New Zealand in the ongoing World Cup semi-final match at the Wankhede Stadium in Mumbai on Wednesday (November 15). This is the seventh time India have entered into the last-four stage of the 50-over World Cup.",
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "image": "https://www.zeebiz.com/trending/sports/news-icc-world-cup-2023-india-at-cricket-world-cup-semifinals-so-far-indias-journey-in-world-cup-semifinals-rohit-sharma-sachin-tendulkar-kohli-ind-vs-sa-australia-eden-gardens-wankhede-south-africa-england-sri-lanka-262883"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "1983 Prudential Cup, against England",
+      "eventSummary": "India reached semi-finals and played against England in Manchester on June 22. India won by six wickets.",
+      "theme": "snap:intangibleStuff"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "1987 Reliance Cup, against England",
+      "eventSummary": "India lost to England by 35 runs at the Wankhede Stadium, Mumbai, on November 5.",
+      "theme": "snap:intangibleStuff"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "1996 Wills World Cup, against Sri Lanka",
+      "eventSummary": "India lost to Sri Lanka at Eden Gardens, Kolkata, on March 13 due to crowd disruption.",
+      "theme": "snap:intangibleStuff"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "2003 World Cup, against Kenya",
+      "eventSummary": "India beat Kenya by 91 runs in Durban on March 20.",
+      "theme": "snap:intangibleStuff"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "2011 World Cup, against Pakistan",
+      "eventSummary": "India beat Pakistan by 29 runs at the IS Bindra Stadium, Mohali, on March 30.",
+      "theme": "snap:intangibleStuff"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "2015 World Cup, against Australia",
+      "eventSummary": "India lost to Australia by 95 runs in Sydney on March 26.",
+      "theme": "snap:intangibleStuff"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "2019 World Cup, against New Zealand",
+      "eventSummary": "India lost to New Zealand by 18 runs in Manchester.",
+      "theme": "snap:intangibleStuff"
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "2023 World Cup, against New Zealand",
+      "eventSummary": "To be played",
+      "theme": "snap:intangibleStuff"
+    }
+  ]
+}
+```

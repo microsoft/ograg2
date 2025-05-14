@@ -1,0 +1,52 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Irrigated sunflower",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Mix 12. Apply TNAU MN mixture @ 12.5 kg ha-1 as enriched FYM for variety and 15 kg ha-1 as enriched FYM for hybrid (Prepare enriched FYM at 1:10 ratio of MN mixture & FYM; mix at friable moisture &incubate for one month in shade)."
+            },
+            "has_fertilizer_application_requirements": {
+                "@type": "Fertilization",
+                "nutrient_name": "TNAU MN mixture",
+                "quantity": "12.5 kg ha-1 for variety, 15 kg ha-1 for hybrid",
+                "stage_of_application": "Field Preparation"
+            }
+        }
+    ]
+}

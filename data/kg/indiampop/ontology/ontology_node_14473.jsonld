@@ -1,0 +1,54 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text",
+                "deficiency_symptoms": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Irrigated Maize",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Maize",
+                "used_for": "Irrigation"
+            },
+            "needs_fertilizer_application_requirements": {
+                "@type": "Fertilization",
+                "nutrient_name": "O and K",
+                "stage_of_application": "4. Application of Fertilizers",
+                "deficiency_symptoms": "Potassium deficiency : Leaves show yellow or yellowish green streaks, become corrugated. Tips and marginal scorch. Tips end in ears are poorly filled. Stalks have short internode. Plants become weak and may fall down. Magnesium deficiency : Older leaves are the first to become chlorotic at margins and between veins. Streaked appearance of leaves. Necrotic or chlorotic spots seen in leaves. Zinc deficiency : Older leaves have yellow streaks or chlorotic striping between veins. In several cases, unfolding of young leaves, which may be white or yellow. Iron deficiency : Interveinal chlorosis. The entire crop may exhibit bleached appearance."
+            }
+        }
+    ]
+}

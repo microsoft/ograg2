@@ -1,0 +1,98 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Josh Edwards",
+      "published": "2023-11-17T20:07:09+00:00",
+      "title": "2024 NFL Mock Draft: Bengals' Joe Burrow gets another playmaker; four QBs go in Round 1, but Pats opt for WR",
+      "summary": "From From Carolina Panthers Round 1 - Pick 1 Caleb Williams QB USC • Jr • 6'1\" / 215 lbs Projected Team Chicago PROSPECT RNK 2nd POSITION RNK 1st Justin Fields is expected to return to the field this week, but is it too little, too late? Chicago will have a chance to take a quarterback No. 1 overall and it may be too much to pass up a second consecutive year. Round 1 - Pick 2 Drake Maye QB North Carolina • Soph • 6'4\" / 230 lbs Projected Team N.Y. Giants PROSPECT RNK 5th POSITION RNK 2nd There was doubt about Daniel Jones' viability as a long-term starter when he signed his extension. Following his ACL injury, there is no less concern. New York will have to eat a grandiose amount of dead salary cap but it is a small price to pay if Drake Maye ends up being the quarterback many expect he could be. Round 1 - Pick 3 Marvin Harrison Jr. WR Ohio State • Jr • 6'4\" / 205 lbs Projected Team New England PROSPECT RNK 1st POSITION RNK 1st Marvin Harrison Jr. is arguably the best talent available in the 2024 NFL Draft, but does that matter if he is catching passes from Mac Jones or Bailey Zappe? The Patriots have to be hopeful that they find themselves in a position to draft one of the two top quarterback prospects. Round 1 - Pick 4 Olumuyiwa Fashanu OT Penn State • Jr • 6'6\" / 317 lbs Projected Team Arizona PROSPECT RNK 3rd POSITION RNK 1st When a new homeowner moves in, they often have a different vision of how to decorate the space. Jonathan Gannon and Monti Ossenfort are the new homeowners and they could move on from D.J. Humphries and save money toward the salary cap while likely upgrading at the position. Round 1 - Pick 5 Dallas Turner EDGE Alabama • Jr • 6'4\" / 252 lbs Projected Team Chicago PROSPECT RNK 14th POSITION RNK 3rd Chicago traded for and signed Montez Sweat to a lucrative contract extension but Yannick Ngakoue has given them nothing. The addition of Dallas Turner allows them to have a potentially dynamic duo. Round 1 - Pick 6 Joe Alt OT Notre Dame • Jr • 6'7\" / 322 lbs Projected Team Green Bay PROSPECT RNK 7th POSITION RNK 3rd The David Bakhtiari experience may be over in Green Bay but there is a tantalizing off-ramp with the addition of Joe Alt. Round 1 - Pick 7 JC Latham OT Alabama • Jr • 6'6\" / 360 lbs Projected Team L.A. Rams PROSPECT RNK 6th POSITION RNK 2nd Los Angeles' offensive tackles have had two of the highest beaten rates in the NFL this season, according to TruMedia. JC Latham allows them to upgrade on one side of the line. Round 1 - Pick 8 Brock Bowers TE Georgia • Jr • 6'4\" / 240 lbs Projected Team Tennessee PROSPECT RNK 4th POSITION RNK 1st Brock Bowers is the lone remaining blue-chip talent. If Will Levis is the future then they need to surround him with the skill talent that may give him a chance to succeed. Round 1 - Pick 9 Jared Verse EDGE Florida State • Jr • 6'4\" / 260 lbs Projected Team Atlanta PROSPECT RNK 12th POSITION RNK 2nd Atlanta likes heavy-handed pass rushers who can set the edge and Jared Verse falls into that category. The Falcons have added some older veterans at the position but it is not a viable long-term solution. Round 1 - Pick 10 Laiatu Latu EDGE UCLA • Sr • 6'5\" / 265 lbs Projected Team Washington PROSPECT RNK 11th POSITION RNK 1st After moving on from Chase Young and Montez Sweat, Washington has a need for rushing the passer. Laiatu Latu may end up being the best out of this draft class. Round 1 - Pick 11 J.J. McCarthy QB Michigan • Jr • 6'3\" / 202 lbs Projected Team Tampa Bay PROSPECT RNK 21st POSITION RNK 4th Baker Mayfield is replaced in Tampa Bay with J.J. McCarthy. It was a Michigan quarterback that led the Buccaneers to the promised land last time so perhaps lightning strikes twice. Round 1 - Pick 12 Amarius Mims OT Georgia • Jr • 6'7\" / 340 lbs Projected Team N.Y. Jets PROSPECT RNK 23rd POSITION RNK 4th The top-10 selections were not kind to a New York team that desperately needs offensive tackle help. The Jets select Amarius Mims, who is young and inexperienced, to upgrade the ceiling of their protection. Round 1 - Pick 13 Jer'Zhan Newton DL Illinois • Jr • 6'2\" / 295 lbs Projected Team Denver PROSPECT RNK 27th POSITION RNK 2nd Jer'Zhan Newton infuses some youth into a unit that was not long ago a strength for the Broncos. Newton is a high-motor player who will help establish the culture in Denver. Round 1 - Pick 14 Kool-Aid McKinstry CB Alabama • Jr • 6'1\" / 195 lbs Projected Team L.A. Chargers PROSPECT RNK 9th POSITION RNK 2nd J.C. Jackson never became what the Chargers had hoped when they signed him. His spot in the lineup has not been filled with a long-term candidate. Kool-Aid McKinstry is a good value midway through the first round. Round 1 - Pick 15 Malik Nabers WR LSU • Jr • 6'0\" / 200 lbs Projected Team Indianapolis PROSPECT RNK 13th POSITION RNK 2nd Michael Pittman Jr. is scheduled to be a free agent at season's end. If the two parties can not come to terms, Malik Nabers is a good partner for Josh Downs. Round 1 - Pick 16 Nate Wiggins CB Clemson • Jr • 6'2\" / 185 lbs Projected Team Las Vegas PROSPECT RNK 19th POSITION RNK 3rd The thought of Las Vegas taking another cornerback in the first round has to be terrifying for Raiders fans but the reality is that it remains a position of need for the AFC franchise despite adding Patriots castoff Jack Jones this week. Round 1 - Pick 17 Cooper DeJean CB Iowa • Jr • 6'1\" / 207 lbs Projected Team Buffalo PROSPECT RNK 38th POSITION RNK 7th It was learned Wednesday that Cooper DeJean's season, and potentially Iowa career, is over. Buffalo adds him in the first round to fill out its secondary. Round 1 - Pick 18 Keon Coleman WR Florida State • Jr • 6'4\" / 215 lbs Projected Team Cincinnati PROSPECT RNK 16th POSITION RNK 3rd Tee Higgins and Cincinnati will likely part ways after the season, which creates a need in that offense. Keon Coleman is a big-bodied receiver who can win jump balls down the field. Round 1 - Pick 19 JT Tuimoloau EDGE Ohio State • Jr • 6'4\" / 270 lbs Projected Team New Orleans PROSPECT RNK 15th POSITION RNK 4th New Orleans adds a powerful rusher to its repertoire. Cam Jordan is 34 years old and has two years remaining on his contract. The Saints have a quality rotation of rushers until JT Tuimoloau eventually takes over. From From Houston Texans Round 1 - Pick 20 Chop Robinson EDGE Penn State • Jr • 6'3\" / 254 lbs Projected Team Arizona PROSPECT RNK 29th POSITION RNK 6th Arizona adds an edge rusher with higher upside to Jonathan Gannon's defense. Round 1 - Pick 21 Jayden Daniels QB LSU • Sr • 6'4\" / 210 lbs Projected Team Minnesota PROSPECT RNK 76th POSITION RNK 8th The Joshua Dobbs story has been fun but the reality is that Kirk Cousins will be a free agent after the season and the organization could opt for a change. Jayden Daniels has been one of the most productive quarterbacks in football. Round 1 - Pick 22 Emeka Egbuka WR Ohio State • Jr • 6'1\" / 206 lbs Projected Team Dallas PROSPECT RNK 20th POSITION RNK 4th Dallas retools at wide receiver with CeeDee Lamb and Emeka Egbuka. The franchise has struggled to find a reliable complement to Lamb since the departure of Amari Cooper. Round 1 - Pick 23 Taliese Fuaga OL Oregon State • Jr • 6'6\" / 334 lbs Projected Team Pittsburgh PROSPECT RNK 17th POSITION RNK 1st Pittsburgh probably has some offensive soul-searching ahead but there is no question that the addition of more protection is a sound investment. From From Cleveland Browns Round 1 - Pick 24 Bralen Trice EDGE Washington • Jr • 6'4\" / 274 lbs Projected Team Houston PROSPECT RNK 26th POSITION RNK 5th DeMeco Ryans is not going to settle for one or two pass rushers. He wants an Army. Bralen Trice paired with Jonathan Greenard and Will Anderson Jr. is a solid foundation. Round 1 - Pick 25 Denzel Burke CB Ohio State • Jr • 6'1\" / 190 lbs Projected Team Miami PROSPECT RNK 36th POSITION RNK 6th Injuries have plagued Miami's cornerback room. So the Dolphins add more depth in the form of Ohio State's Denzel Burke. Round 1 - Pick 26 Tyler Nubin S Minnesota • Sr • 6'2\" / 210 lbs Projected Team Seattle PROSPECT RNK 44th POSITION RNK 2nd Seattle adds a ballhawk who can help capitalize on the chaos created by a surprisingly active defensive front over the past month. The Seahawks have already invested in the unit with the additions of Riq Woolen and Devon Witherspoon in back-to-back years. Round 1 - Pick 27 Rome Odunze WR Washington • Jr • 6'3\" / 215 lbs Projected Team Jacksonville PROSPECT RNK 31st POSITION RNK 6th Jacksonville clears the deck and starts anew with Calvin Ridley and Rome Odunze. The Jaguars have to figure out their protection issues this offseason, though. Round 1 - Pick 28 Kingsley Suamataia OT BYU • Soph • 6'6\" / 325 lbs Projected Team San Francisco PROSPECT RNK 37th POSITION RNK 7th San Francisco needs to make multiple changes to its offensive line this offseason. Replacing Colton McKivitz with Kingsley Suamataia is Stage 1 of the transformation. Round 1 - Pick 29 Kalen King CB Penn State • Jr • 5'11\" / 190 lbs Projected Team Baltimore PROSPECT RNK 8th POSITION RNK 1st Marlon Humphrey and the entire Baltimore secondary has struggled to stay healthy. Kalen King adds some depth to the unit. Round 1 - Pick 30 Graham Barton OT Duke • Sr • 6'5\" / 314 lbs Projected Team Detroit PROSPECT RNK 35th POSITION RNK 6th Jonah Jackson and Halapoulivaati Vaitai are slated to hit free agency. If one or both leave, then it creates a void in Detroit's offensive line. Enter Graham Barton, who has played left tackle for the Blue Devils but projects inside. Round 1 - Pick 31 Kris Jenkins DL Michigan • Sr • 6'3\" / 305 lbs Projected Team Kansas City PROSPECT RNK 43rd POSITION RNK 5th Kansas City adds depth to its interior defensive line with the addition of Michigan's Kris Jenkins.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://www.cbssports.com/nfl/draft/news/2024-nfl-mock-draft-bengals-joe-burrow-gets-another-playmaker-four-qbs-go-in-round-1-but-pats-opt-for-wr/"
+      }
+    }
+  ]
+}
+```

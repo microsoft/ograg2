@@ -1,0 +1,203 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "NBL Round 4: Creek pours in points as Phoenix swamp Sixers, CJ claims Kings didn’t look after DJ",
+            "author": "The Roar",
+            "published": "2023-10-19T21:03:08+00:00",
+            "summary": "A powerful second quarter propelled South East Melbourne Phoenix to a clinical 102-85 NBL victory against the Adelaide 36ers at the Adelaide Entertainment Centre.",
+            "has_events": {
+                "@list": [
+                    {
+                        "@type": "Event",
+                        "eventTitle": "NBL Round 4 Match: Phoenix vs Sixers",
+                        "eventSummary": "South East Melbourne Phoenix defeated Adelaide 36ers 102-85.",
+                        "theme": "sports",
+                        "mentions_persons": {
+                            "@list": [
+                                {
+                                    "name": "Mitch Creek"
+                                },
+                                {
+                                    "name": "Gary Browne"
+                                },
+                                {
+                                    "name": "Will Cummings"
+                                },
+                                {
+                                    "name": "Alan Williams"
+                                },
+                                {
+                                    "name": "Dejan Vasiljevic"
+                                },
+                                {
+                                    "name": "CJ Bruton"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@list": [
+                                {
+                                    "name": "South East Melbourne Phoenix"
+                                },
+                                {
+                                    "name": "Adelaide 36ers"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "modified": "2023-10-19T21:03:08+00:00"
+        },
+        {
+            "@type": "PersonList",
+            "Person": {
+                "name": "Mitch Creek",
+                "dateOfBirth": "xmls:date",
+                "placeOfBirth": "geo:location",
+                "alias": "Creek"
+            }
+        },
+        {
+            "@type": "PersonList",
+            "Person": {
+                "name": "Gary Browne",
+                "dateOfBirth": "xmls:date",
+                "placeOfBirth": "geo:location",
+                "alias": "Browne"
+            }
+        },
+        {
+            "@type": "PersonList",
+            "Person": {
+                "name": "Will Cummings",
+                "dateOfBirth": "xmls:date",
+                "placeOfBirth": "geo:location",
+                "alias": "Cummings"
+            }
+        },
+        {
+            "@type": "PersonList",
+            "Person": {
+                "name": "Alan Williams",
+                "dateOfBirth": "xmls:date",
+                "placeOfBirth": "geo:location",
+                "alias": "Williams"
+            }
+        },
+        {
+            "@type": "PersonList",
+            "Person": {
+                "name": "Dejan Vasiljevic",
+                "dateOfBirth": "xmls:date",
+                "placeOfBirth": "geo:location",
+                "alias": "Vasiljevic"
+            }
+        },
+        {
+            "@type": "PersonList",
+            "Person": {
+                "name": "CJ Bruton",
+                "dateOfBirth": "xmls:date",
+                "placeOfBirth": "geo:location",
+                "alias": "Bruton"
+            }
+        },
+        {
+            "@type": "OrganizationList",
+            "Organization": {
+                "name": "South East Melbourne Phoenix",
+                "hasLocation": "geo:SpatialThing",
+                "alias": "Phoenix"
+            }
+        },
+        {
+            "@type": "OrganizationList",
+            "Organization": {
+                "name": "Adelaide 36ers",
+                "hasLocation": "geo:SpatialThing",
+                "alias": "36ers"
+            }
+        }
+    ]
+}

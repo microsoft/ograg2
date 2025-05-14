@@ -1,0 +1,155 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:person",
+            "name": "Xherdan Shaqiri",
+            "alias": "Chicago Fire",
+            "comment": "Xherdan Shaqiri comments on Messi",
+            "summary": "I’m always a big Messi admirer, if I have to choose now I will go with Messi. He won the WC which was the only thing he missed. So for sure Messi.",
+            "hasAsset": {
+                "asset": "pic.twitter.com/Tv4rVXddrU"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Chicago Fire vs. Inter Miami",
+            "eventSummary": "Lineups and team news for Chicago Fire vs. Inter Miami",
+            "theme": "snap:intangibleStuff",
+            "subEventOf": "snap:event",
+            "hasAsset": {
+                "asset": "pic.twitter.com/W1DRc9NJNo"
+            }
+        },
+        {
+            "@type": "snap:person",
+            "name": "Kei Kamara",
+            "alias": "Chicago Fire",
+            "comment": "Kei Kamara could tie Landon Donovan on the all-time MLS scoring list",
+            "summary": "Kamara's 144 goals are just one behind the former USMNT great.",
+            "hasAsset": {
+                "asset": "pic.twitter.com/Svq79fvbBG"
+            }
+        },
+        {
+            "@type": "snap:person",
+            "name": "Lionel Messi",
+            "alias": "Inter Miami",
+            "comment": "Messi's availability for the match is uncertain",
+            "summary": "Messi did not arrive with the team to Soldier Field.",
+            "hasAsset": {
+                "asset": "pic.twitter.com/U7doZYX491"
+            }
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Chicago Fire FC",
+            "comment": "Chicago Fire media team jokes about Messi's availability",
+            "summary": "We have the 🐐 in the building",
+            "hasAsset": {
+                "asset": "pic.twitter.com/aPt7b0waFq"
+            }
+        },
+        {
+            "@type": "snap:organization",
+            "name": "Inter Miami",
+            "comment": "Inter Miami's preparation varies depending on Messi's availability",
+            "summary": "Tata Martino has been tight-lipped about Messi's injury.",
+            "hasAsset": {
+                "asset": "pic.twitter.com/hp8KHzkwNB"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Chicago Fire vs. Inter Miami",
+            "eventSummary": "Match details and lineups",
+            "theme": "snap:intangibleStuff",
+            "subEventOf": "snap:event",
+            "hasAsset": {
+                "asset": "pic.twitter.com/U7doZYX491"
+            }
+        }
+    ]
+}
+```

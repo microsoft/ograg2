@@ -1,0 +1,55 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Leaf spot / blight",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "@list": [
+                    {
+                        "name": "Thiram",
+                        "quantity": "0.2%",
+                        "stage": "seed treatment"
+                    },
+                    {
+                        "name": "Mancozeb 75% W.D.P.",
+                        "quantity": "0.3%",
+                        "stage": "spray after initiation of disease"
+                    },
+                    {
+                        "name": "Captafol 80 WP",
+                        "quantity": "0.25%",
+                        "stage": "spray 2-3 times after initiation of disease"
+                    },
+                    {
+                        "name": "copper oxychloride",
+                        "quantity": "2-3 times",
+                        "stage": "spray after initiation of disease"
+                    }
+                ]
+            }
+        }
+    ]
+}

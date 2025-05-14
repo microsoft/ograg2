@@ -1,0 +1,123 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "AfroFuture’s vision is to bring African art, cuisine, fashion, and music to a global audience.",
+            "author": "Murray Stassen",
+            "published": "2023-10-30T20:29:31+00:00",
+            "summary": "Trailblazers is an MBW interview series that turns the spotlight on music entrepreneurs with the potential to become the global business’s power players of tomorrow. This time, we speak to Abdul Karim Abdullah, Co-Founder and CEO of Ghana-based cultural entertainment platform AfroFuture. Trailblazers is supported by TuneCore.",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "AfroFuture Festival",
+                        "eventSummary": "The music, art, and culture festival (formerly known as Afrochella) was launched in Accra in 2017, and in addition to the core music festival, it offers travel experiences and runs various non-profit initiatives.",
+                        "hasLocation": {
+                            "@type": "geo:SpatialThing",
+                            "name": "Accra, Ghana"
+                        },
+                        "mentions_persons": {
+                            "@type": "PersonList",
+                            "Person": [
+                                {
+                                    "name": "Abdul Karim Abdullah",
+                                    "alias": "CEO of AfroFuture"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@type": "OrganizationList",
+                            "Organization": [
+                                {
+                                    "name": "TuneCore"
+                                },
+                                {
+                                    "name": "BBnZ Live"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

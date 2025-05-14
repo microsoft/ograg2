@@ -1,0 +1,163 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "title": "How Did the Houston Astros Cheat in 2017? Everything to Know About a Dark Moment in MLB History",
+      "byline": "Arunima Bhanot",
+      "published": "2023-10-22T21:30:14+00:00",
+      "summary": "A decade ago, the Houston Astros were struggling to stay afloat...",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "url": "https://www.essentiallysports.com/mlb-baseball-news-how-did-the-houston-astros-cheat-in-twenty-seventeen-everything-to-know-about-a-dark-moment-in-mlb-history/"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "The Story Behind the Cheating Scandal That Rocked the 2017 MLB Season",
+      "eventSummary": "Jeff Luhnow had always been more about the numbers than people...",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Cheating in sports"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Houston Astros"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jim Crane"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jeff Luhnow"
+    },
+    {
+      "@type": "snap:person",
+      "name": "A.J. Hinch"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Bo Porter"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Alex Cora"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Ken Rosenthal"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Evan Drellich"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Mike Fiers"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jose Altuve"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Alex Bregman"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Lance McCullers Jr."
+    },
+    {
+      "@type": "snap:person",
+      "name": "Justin Verlander"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Robert Manfred"
+    }
+  ]
+}
+```

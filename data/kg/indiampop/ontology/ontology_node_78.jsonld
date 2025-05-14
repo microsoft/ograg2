@@ -1,0 +1,33 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_irrigation_schedule": "cropCult:IrrigationRequirement"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "BROCCOLI (Brassica oleracea var. italica)",
+            "has_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Frequent irrigation at 10 - 15 days depending upon weather conditions",
+                "stage_of_application": "Sufficient moisture in the soil for uniform and continuous growth of plants. The dry conditions adversely affect the quality and yield of shoots by being more fibrous. On the other hand, water logging condition depresses plant growth."
+            }
+        }
+    ]
+}

@@ -1,0 +1,78 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "PULSES",
+            "has_types": "CROP PROTECTION",
+            "needs_pest_treatements": [
+                {
+                    "@type": "cropCult:PestTreatements",
+                    "pest_name": "Apids",
+                    "pest_control": [
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Maruca vitrata",
+                            "quantity": "Spray fluid 625 ml/ha",
+                            "stage": "When the activity of coccinellid predator (both grubs and adults) is seen, insecticide application should be avoided."
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Pod bugs",
+                            "quantity": "Spray fluid 500 l/ha",
+                            "stage": "Spray any one of the following insectcides Dimethoate 30% EC 500ml/ha Methyl demeton 25%EC 500ml/ha Imidacloprid 17.8 SL 100-125 ml/ha Thiamethoxam 25% WG 100 g/ha"
+                        },
+                        {
+                            "@type": "cropCult:PesticideList",
+                            "name": "Storage pests",
+                            "quantity": "Dry the seeds adequately",
+                            "stage": "to reduce moisture level to 10 %."
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

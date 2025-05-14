@@ -1,0 +1,115 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "GINGER",
+            "has_types": {
+                "@type": "CropType",
+                "name": "GINGER",
+                "used_for": "Culinary"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "Tropical",
+                "has_regions": ["South Asia", "Southeast Asia"]
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "20-30°C",
+                "for_flowering": "25-30°C",
+                "for_grain_filling": "Not applicable",
+                "negative_effect": "Below 15°C and above 35°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Clayey",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the land to a fine tilth",
+                "with_soil_moisture": "Moist but not waterlogged"
+            },
+            "seed_germination_test_requirements_are": "Not applicable",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Mancozeb",
+                "quantity": "2g per kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Early spring",
+                "value": "15-20 cm",
+                "depth": "2-3 cm",
+                "method": "Direct sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Grass weeds",
+                "weed_types": ["Annual", "Perennial"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1.5 kg/ha",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "1-2 inches per week",
+                "stage_of_application": "Throughout the growing season"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Rhizome rot",
+                "disease_symptoms": "Yellowing and wilting of leaves",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Metalaxyl",
+                    "quantity": "2g per kg of seeds",
+                    "stage": "At sowing"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Shoot borer",
+                "pest_symptoms": "Holes in the stem",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Carbaryl",
+                    "quantity": "1.5 kg/ha",
+                    "stage": "At pest sighting"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when the leaves start to yellow and die back",
+            "storage_guidelines_are": "Dig a pit of 30 cm deep, 1 m width and 2 m length in a well drained upland. Paste the floor of the pit with the cowdung slurry and dry it for 3 days. Spread the pit floor with dried paddy straw 5 cm thickness. Treat the rhizomes and dry in shade before storage. Treated rhizomes are put in the pit to a height of 2 feet from the surface. Cover the pit with paddy straw 2.5 cm thickness and 7.5 cm loose soil. Provide shade over the pit to prevent direct exposure of sun and rain. Ginger and turmeric can be stored safely for a period of 4-5 months in this method."
+        }
+    ]
+}

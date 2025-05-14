@@ -1,0 +1,61 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Transplanted Puddled Lowland Rice",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the land during summer to economize the water requirement for initial preparation of land. Flood the field 1 or 2 days before ploughing and allow water to soak in. Keep the surface of the field covered with water. Keep water to a depth of 2.5cm at the time of puddling. Special technologies for problem soils: a) For fluffy paddy soils: compact the soil by passing 400kg stone roller or oil-drum with stones inside, eight times at proper moisture level (moisture level at friable condition of soil which is approximately 13 to18%) once in three years, to prevent the sinking of draught animals and workers during puddling. b) For sodic soils with pH values of more than 8.5, plough at optimum moisture regime, apply gypsum at 50% gypsum requirement uniformly, impound water, provide drainage for leaching out soluble salts and apply green leaf manure at 5 t/ha, 10 to 15 days before transplanting. Mix 37.5 kg of zinc sulphate per ha with sand to make a total quantity of 75 kg and spread the mixture uniformly on the leveled field. Do not incorporate the mixture in the soil. Rice under sodic soil responds well to these practices. c) For saline soils with EC values of more than 4 dS/m, provide lateral and main drainage channels (60cm deep and 45cm wide), apply green leaf manure at 5 t/ha at 10 to 15 days before transplanting and 25% extra dose of nitrogen in addition to recommended P and K and ZnSO",
+                "with_soil_moisture": "13 to 18%"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Not specified",
+                "weed_types": [],
+                "herbicides": []
+            }
+        }
+    ]
+}

@@ -1,0 +1,151 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "byline": "James Gregory",
+            "published": "2023-10-31T21:42:17+00:00",
+            "title": "Wullaert Fires Belgium to 3-2 Home Win over England In UEFA Women’s Nations League",
+            "summary": "Tessa Wullaert’s brace fired Belgium to a dramatic 3-2 home win over England in League A1 of 2023-24 UEFA Women’s Nations League.",
+            "associatedAsset": {
+                "@type": "TextAsset",
+                "image": "https://sportgrill.co.uk/2023/10/31/wullaert-fires-belgium-to-3-2-home-win-over-england-in-uefa-womens-nations-league/"
+            }
+        },
+        {
+            "@type": "Event",
+            "eventTitle": "UEFA Women’s Nations League Match",
+            "eventSummary": "Belgium vs England match in the UEFA Women’s Nations League.",
+            "theme": {
+                "@type": "intangibleStuff",
+                "comment": "sports"
+            }
+        },
+        {
+            "@type": "Organization",
+            "name": "Sport Grill"
+        },
+        {
+            "@type": "Person",
+            "name": "Tessa Wullaert"
+        },
+        {
+            "@type": "Person",
+            "name": "Laura De Neve"
+        },
+        {
+            "@type": "Person",
+            "name": "Alex Greenwood"
+        },
+        {
+            "@type": "Person",
+            "name": "Lucy Bronze"
+        },
+        {
+            "@type": "Person",
+            "name": "Fran Kirby"
+        },
+        {
+            "@type": "Person",
+            "name": "Georgia Stanway"
+        },
+        {
+            "@type": "Person",
+            "name": "Janice Cayman"
+        },
+        {
+            "@type": "Person",
+            "name": "Mary Earps"
+        },
+        {
+            "@type": "Person",
+            "name": "Nicky Evrard"
+        },
+        {
+            "@type": "Person",
+            "name": "Esther Staubli"
+        }
+    ]
+}
+```

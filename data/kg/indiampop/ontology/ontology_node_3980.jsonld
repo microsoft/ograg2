@@ -1,0 +1,68 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Rice (Oryza sativa) Boro Rice",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Raising of Seedlings: > (a) Seed-bed Preparation: Alternatively, either carbofuran @ 3 g/sq.m or phorate 1 g/sq.m may be applied in the seed bed 5 to 7 days before uprooting of seedlings, or chlorpyriphos 0.05% may be sprayed in the nursery bed before uprooting of seedlings."
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "carbofuran",
+                "quantity": "3 g/sq.m"
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "phorate",
+                "quantity": "1 g/sq.m"
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "chlorpyriphos",
+                "quantity": "0.05%"
+            }
+        }
+    ]
+}

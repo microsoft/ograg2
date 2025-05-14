@@ -1,0 +1,59 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Apiculture": {
+            "@id": "cropCult:Apiculture",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "description": "schema:description",
+                "has_beehive": "cropCult:Beehive",
+                "has_beekeeping_equipments": "schema:Text"
+            }
+        },
+        "Beehive": {
+            "@id": "cropCult:Beehive",
+            "@type": "schema:Thing",
+            "@context": {
+                "description": "schema:description",
+                "has_brood_chamber": "cropCult:BroodChamber",
+                "has_honey_chamber": "cropCult:HoneyChamber"
+            }
+        },
+        "BroodChamber": {
+            "@id": "cropCult:BroodChamber",
+            "@type": "schema:Thing",
+            "@context": {
+                "description": "schema:description"
+            }
+        },
+        "HoneyChamber": {
+            "@id": "cropCult:HoneyChamber",
+            "@type": "schema:Thing",
+            "@context": {
+                "description": "schema:description"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Apiculture",
+            "name": "APICULTURE",
+            "description": "Honeybees are reared in the modern beehive based on principle of bee space.",
+            "has_beehive": {
+                "@type": "cropCult:Beehive",
+                "description": "Beehive is composed of brood chamber and honey chamber.",
+                "has_brood_chamber": {
+                    "@type": "cropCult:BroodChamber",
+                    "description": "The brood chamber is meant for rearing progeny"
+                },
+                "has_honey_chamber": {
+                    "@type": "cropCult:HoneyChamber",
+                    "description": "The super or honey chamber is used for secreting honey."
+                }
+            },
+            "has_beekeeping_equipments": "The following beekeeping equipments are required for honeybee rearing."
+        }
+    ]
+}

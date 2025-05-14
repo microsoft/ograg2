@@ -1,0 +1,151 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Accurate!",
+      "summary": "Photograph: Loop",
+      "byline": "Adrienne",
+      "associatedAsset": {
+        "@type": "snap:imageAsset",
+        "image": "schema:image"
+      }
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Best Earplugs for Sleep",
+      "summary": "Stylish, reusable ear plugs with different-sized ear tips.",
+      "byline": "Adrienne"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Pet Fur Removal Tool",
+      "summary": "Handy tool for trapping pet fur from furniture.",
+      "byline": "Adrienne"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Basepaws Cat DNA Test",
+      "summary": "Learn about your feline's breed percentages and health risks.",
+      "byline": "Adrienne"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Versatile Running Shoes",
+      "summary": "Shoes with a wide toe box for trails and roads.",
+      "byline": "Adrienne"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Recycled Clothing Brand",
+      "summary": "Best recycled workout clothes available on Amazon.",
+      "byline": "Adrienne"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Best Prime Day Vacuum Deals",
+      "summary": "Top picks for vacuum deals including Dyson and Shark models.",
+      "byline": "Adrienne"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Best Prime Day Lego and Toy Deals",
+      "summary": "Deals on Lego sets and other toys for kids.",
+      "byline": "Adrienne"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Best Prime Day TV and Soundbar Deals",
+      "summary": "Top deals on TVs and soundbars including Samsung and Hisense.",
+      "byline": "Adrienne"
+    },
+    {
+      "@type": "snap:asset",
+      "title": "Best Prime Day Camera Deals",
+      "summary": "Deals on cameras and accessories including GoPro and Canon.",
+      "byline": "Adrienne"
+    }
+  ]
+}
+```

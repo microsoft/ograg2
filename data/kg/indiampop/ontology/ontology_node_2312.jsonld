@@ -1,0 +1,57 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "SeedList": {
+            "@id": "cropCult:SeedList",
+            "@type": "schema:Thing",
+            "@context": {
+                "variety_name": "schema:List",
+                "has_seeding_rate": "schema:QuantitativeValue",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing"
+            }
+        },
+        "SeedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "SeedList",
+            "variety_name": ["Variety", "Hybrid"],
+            "has_seeding_rate": [
+                {
+                    "@type": "QuantitativeValue",
+                    "value": "10 kg/ha",
+                    "unitText": "kg/ha"
+                },
+                {
+                    "@type": "QuantitativeValue",
+                    "value": "5 kg/ha",
+                    "unitText": "kg/ha"
+                }
+            ],
+            "needs_seed_sowing_spacing": [
+                {
+                    "@type": "SeedSpacing",
+                    "value": "45 cm x 30 cm",
+                    "method": "Firm seed-soil contact in the moist soil is essential for good stand establishment",
+                    "depth": "5 to 7 cm"
+                },
+                {
+                    "@type": "SeedSpacing",
+                    "value": "60 cm x 30 cm",
+                    "method": "Firm seed-soil contact in the moist soil is essential for good stand establishment",
+                    "depth": "5 to 7 cm"
+                }
+            ]
+        }
+    ]
+}

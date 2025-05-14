@@ -1,0 +1,151 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "Here are over 40 last-minute gifts you can still nab before Christmas",
+            "author": "Sheena Vasani",
+            "published": "2023-12-24T19:15:58+00:00",
+            "summary": "Yes, Christmas is tomorrow — and yes, we know you have yet to buy a gift. We understand that life gets busy, though, and sometimes it feels like the holidays creep up on you out of nowhere. But before you spiral into a full-blown panic attack, take a deep breath. Luckily for you, the internet is filled with a treasure trove of gift cards, subscriptions, and other great digital gifts you can buy as late as Christmas Day itself.",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "Gifts for film and TV buffs",
+                        "eventSummary": "Regardless of whether you’re shopping for a movie buff or an avid sports fan, there are a number of subscriptions on the market that’ll grant your giftee access to a wide range of content.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        }
+                    },
+                    {
+                        "eventTitle": "Gifts for the gamers",
+                        "eventSummary": "If you’re not sure which type of games your giftee prefers, you can gift them an Xbox, PlayStation, or Nintendo subscription.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        }
+                    },
+                    {
+                        "eventTitle": "Gifts for the adventurers and globe-trotters",
+                        "eventSummary": "Is your giftee in dire need of a screen break? Fortunately, the internet is filled with travel-oriented gifts.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        }
+                    },
+                    {
+                        "eventTitle": "Gifts for health and wellness fans",
+                        "eventSummary": "For health and wellness enthusiasts, many services offer a wealth of streamable fitness classes to help them get fit at home.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        }
+                    },
+                    {
+                        "eventTitle": "Gifts for foodies",
+                        "eventSummary": "Whether they’re a diehard foodie, a wine connoisseur, or a caffeine addict, the internet is filled with subscriptions and gift cards for all types.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        }
+                    },
+                    {
+                        "eventTitle": "Gifts for music lovers",
+                        "eventSummary": "Whether your giftee is a musician or just loves to unwind with some music, there are a lot of digital presents you can buy.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        }
+                    },
+                    {
+                        "eventTitle": "Gifts for the bookworms",
+                        "eventSummary": "Obviously, you could just gift a bibliophile a book and they’d probably be happy.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        }
+                    },
+                    {
+                        "eventTitle": "Gifts for the creatives",
+                        "eventSummary": "Movie buffs and bibliophiles are easy to shop for, but what do you get the creative type?",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

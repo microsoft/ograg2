@@ -1,0 +1,167 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "The best Apple Black Friday deals on iPads, AirPods, Apple Watches and more",
+            "author": "Amy Skorheim",
+            "theme": "technology",
+            "summary": "Engadget has been testing and reviewing consumer tech since 2004. Our stories may include affiliate links; if you buy something through a link, we may earn a commission. Read more about how we evaluate products. There are still tons of Apple Black Friday deals you can shop for online; these are our favorites.",
+            "created": "2023-11-24T09:30:32+00:00",
+            "published": "2023-11-24T09:30:32+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "AirPod Black Friday deals",
+                        "eventSummary": "AirPods Pro (2nd gen, USB-C) dropped to $190 at Amazon, Target, Best Buy.",
+                        "theme": "technology",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList"
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList"
+                        }
+                    },
+                    {
+                        "eventTitle": "MacBook Black Friday Day deals",
+                        "eventSummary": "MacBook Pro (14-inch, 2023, M3) is $150 off for Black Friday.",
+                        "theme": "technology",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList"
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList"
+                        }
+                    },
+                    {
+                        "eventTitle": "Apple Watch Black Friday deals",
+                        "eventSummary": "Apple Watch Ultra 2 has hit a new low price of $730.",
+                        "theme": "technology",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList"
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList"
+                        }
+                    },
+                    {
+                        "eventTitle": "Apple iPad Black Friday deals",
+                        "eventSummary": "iPad (9th generation) dropped to a new all-time low of $249.",
+                        "theme": "technology",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList"
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList"
+                        }
+                    },
+                    {
+                        "eventTitle": "Apple accessories Black Friday deals",
+                        "eventSummary": "$100 Apple Gift Card + $15 Amazon credit offer.",
+                        "theme": "technology",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList"
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList"
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

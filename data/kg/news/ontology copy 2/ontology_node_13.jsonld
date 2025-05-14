@@ -1,0 +1,185 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "Michigan Violation of Big Ten Sportsmanship Policy",
+      "author": "Chris Vannini",
+      "theme": "Sports",
+      "content": "Michigan has been found in violation of the Big Ten Sportsmanship Policy for conducting an impermissible, in-person scouting operation over multiple years...",
+      "created": "2023-11-10T00:00:00",
+      "published": "2023-11-10T00:00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Jim Harbaugh Joins Michigan for Trip to State College",
+          "eventSummary": "Jim Harbaugh is on the team bus and heading to the airport with his team as Michigan awaits word on a potential suspension.",
+          "theme": "Sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Jim Harbaugh"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Michigan"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Michigan Still Awaiting Word from Big Ten",
+          "eventSummary": "Michigan still hasn't heard about an impending punishment from the Big Ten as its 1 p.m. ET flight looms.",
+          "theme": "Sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Adam Rittenberg"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Big Ten"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Punishment Options for Michigan",
+          "eventSummary": "Punishment could range from indefinite suspension to public reprimand or lofty fine.",
+          "theme": "Sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Heather Dinich"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Big Ten"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Michigan's 10-page Letter to Big Ten Released",
+          "eventSummary": "Michigan's letter outlines its belief that the Big Ten would be acting too hastily in suspending Harbaugh.",
+          "theme": "Sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Dan Wetzel"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Michigan"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Ohio State Denies Sharing Michigan's Play Signals",
+          "eventSummary": "Ohio State coach Ryan Day denied allegations of sharing Michigan's play signals with Purdue.",
+          "theme": "Sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Ryan Day"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "Ohio State"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

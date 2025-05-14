@@ -1,0 +1,226 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "Edward Sutelan",
+            "published": "2023-12-01T22:05:46+00:00",
+            "title": "Shohei Ohtani rumors tracker: Latest news, updates on Dodgers, Cubs & more as free agency short list emerges",
+            "summary": "All eyes since the start of the offseason have been on Shohei Ohtani. And for the most part, there hasn't been much to see. The two-way phenom is the most sought-after free agent in MLB history, with his combination of talent and marketability making him a franchise-changing player. And the bidding for Ohtani could be winding down soon. Multiple reports have indicated Ohtani could sign at some point during the winter meetings, which are scheduled to take place from Dec. 3 through Dec. 6. Many of the top teams are expected to be in the mix for Ohtani. The Dodgers and Cubs are among the top teams expected to be aiming to sign the two-time AL MVP, and plenty of others should continue to compete through the end to land him. Here's the latest on Ohtani's free agency pursuits.",
+            "associatedAsset": [
+                {
+                    "@type": "snap:textAsset",
+                    "image": "https://www.sportingnews.com/us/mlb/news/shohei-ohtani-rumors-tracker-free-agency-updates/5749c16d66b36883ecd888d9"
+                }
+            ]
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Ohtani agrees to 10-year, $700 million deal with Dodgers",
+            "eventSummary": "Shohei Ohtani announced Saturday that he has agreed to a contract with the Dodgers. It's a colossal 10-year, $700 million deal with 'significant deferrals,' so while Los Angeles won't pay him $70 million per year, the franchise will be paying him beyond those 10 seasons. While rumors connected Ohtani to the Blue Jays on Friday, it's the Dodgers who hand him a record-shattering contract and pair the two-time MVP with two former MVPs in Mookie Betts and Freddie Freeman.",
+            "subEventOf": {
+                "@type": "snap:event",
+                "eventTitle": "Shohei Ohtani news: Latest updates, rumors for MLB free agency"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Ohtani not headed to Toronto, at his home in Southern California",
+            "eventSummary": "Ohtani had a change of plans, apparently. Hours after MLB Network's Jon Morosi reported that the two-way star was headed to Toronto for a meeting on Friday, USA Today's Nightengale and Sportsnet's Nicholson-Smith reported that Ohtani is at his home in Southern California. The Blue Jays are still finalists to land Ohtani but his landing spot is not official yet.",
+            "subEventOf": {
+                "@type": "snap:event",
+                "eventTitle": "Shohei Ohtani news: Latest updates, rumors for MLB free agency"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Ohtani headed to Toronto on Friday",
+            "eventSummary": "Ohtani might not have officially picked a team, but he is headed to Toronto, per MLB Network's Jon Morosi. It had been previously reported he had picked the Blue Jays, though several reports have since denied that he has made a decision.",
+            "subEventOf": {
+                "@type": "snap:event",
+                "eventTitle": "Shohei Ohtani news: Latest updates, rumors for MLB free agency"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Report: Ohtani picks Blue Jays over Dodgers",
+            "eventSummary": "The Blue Jays have reportedly won the sweepstakes for Ohtani. According to Dodgers Nation's J.P. Hoornstra, Ohtani has selected the Blue Jays. The official details have not been reported, though the report indicated it will shatter Mike Trout's record 12-year, $426.5 million deal. However, Sportsnet's Ben Nicholson-Smith reported Ohtani has not yet made his decision, and there is not a timeline, though he noted Toronto is a finalist.",
+            "subEventOf": {
+                "@type": "snap:event",
+                "eventTitle": "Shohei Ohtani news: Latest updates, rumors for MLB free agency"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Decision from Ohtani 'imminent'",
+            "eventSummary": "The wait could soon be over. MLB Network's Jon Morosi reported Ohtani is expected to make his decision soon, reporting it could come as early as Friday. Coincidentally, Ohtani made his original decision to sign with the Angels on Dec. 8, 2017, six years to the day.",
+            "subEventOf": {
+                "@type": "snap:event",
+                "eventTitle": "Shohei Ohtani news: Latest updates, rumors for MLB free agency"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Dave Roberts says Dodgers met with Ohtani",
+            "eventSummary": "Dodgers manager Dave Roberts told reporters Tuesday that the team met with Ohtani for 2-3 hours over the weekend. Roberts said Ohtani is 'clearly' the Dodgers' top priority, adding that the team is confident the two-time MVP will pitch again. Roberts wasn't able to offer a timeline for Ohtani's decision.",
+            "subEventOf": {
+                "@type": "snap:event",
+                "eventTitle": "Shohei Ohtani news: Latest updates, rumors for MLB free agency"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Cubs losing optimism in signing Ohtani",
+            "eventSummary": "The Cubs have been viewed as one of Ohtani's likeliest destinations for a while. It appears that might no longer be the case. USA Today's Bob Nightengale reported one high-ranking executive believes the Cubs' optimism of signing Ohtani 'has now significantly wanted.' The report stated that leaves the Dodgers, Blue Jays, Angels and Giants as the remaining finalists.",
+            "subEventOf": {
+                "@type": "snap:event",
+                "eventTitle": "Shohei Ohtani news: Latest updates, rumors for MLB free agency"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Ohtani has 'positive feeling' about Blue Jays",
+            "eventSummary": "The Blue Jays reported met with Ohtani on Monday, but even before he went to talk with the team, Ohtani reportedly had a 'positive feeling about Toronto,' along with other cities and teams, including the Dodgers. He has been linked to Toronto and Los Angeles throughout the process.",
+            "subEventOf": {
+                "@type": "snap:event",
+                "eventTitle": "Shohei Ohtani news: Latest updates, rumors for MLB free agency"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Blue Jays 'believed' to have met with Shohei Ohtani",
+            "eventSummary": "While one report earlier Monday indicated Ohtani isn't expected to sign before the end of the Winter Meetings, the process seems to be moving along. The Athletic's Ken Rosenthal reports Ohtani is 'believed' to have met with the Blue Jays at the team's complex in Florida on Monday, far away from the meetings in Nashville. The Blue Jays have been pursuing Ohtani and Juan Soto in hopes of striking a deal for one of the two stars.",
+            "subEventOf": {
+                "@type": "snap:event",
+                "eventTitle": "Shohei Ohtani news: Latest updates, rumors for MLB free agency"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Braves are reportedly 'engaged' with Ohtani's camp",
+            "eventSummary": "It's not surprising that any and all teams should be interested in Ohtani's services, but imagine the Braves landing the superstar? According to MLB Network's Jon Morosi, the Braves are 'engaged' in talks with Ohtani's camp. Imagine a lineup consisting of Ohtani, Ronald Acuna Jr., Ozzie Albies, Austin Riley and Matt Olson?",
+            "subEventOf": {
+                "@type": "snap:event",
+                "eventTitle": "Shohei Ohtani news: Latest updates, rumors for MLB free agency"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Ohtani has already received several $500+ million offers",
+            "eventSummary": "It's no surprise the bidding for Ohtani is heating up, with the star expected to sign soon. And New York Post's Jon Heyman reported Ohtani has already received several deals that have topped $500 million, which could mean he winds up being the first $600 million player in MLB history. He added there are believed to be five teams in the running for Ohtani.",
+            "subEventOf": {
+                "@type": "snap:event",
+                "eventTitle": "Shohei Ohtani news: Latest updates, rumors for MLB free agency"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Ohtani decision coming this week",
+            "eventSummary": "With the winter meetings set to begin in Nashville, it seems a resolution is near for Ohtani. MLB Network's Jon Morosi reports the superstar is 'likely to decide on a team within the next week,' according to a source.",
+            "subEventOf": {
+                "@type": "snap:event",
+                "eventTitle": "Shohei Ohtani news: Latest updates, rumors for MLB free agency"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Ohtani race starting to clear up",
+            "eventSummary": "Two days before the start of the winter meetings, the picture on Ohtani is beginning to clear a bit more. ESPN's Jeff Passan reported the Rangers, Red Sox and Mets appear to be out of the running for Ohtani, while the Dodgers, Cubs, Blue Jays and Angels remain in the mix. The Giants are considered to be an unknown. In addition to the teams, Passan also reported Ohtani is expecting a contract somewhere between $550 and $600 million, which would be the largest guaranteed contract in North American sports.",
+            "subEventOf": {
+                "@type": "snap:event",
+                "eventTitle": "Shohei Ohtani news: Latest updates, rumors for MLB free agency"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Blue Jays could alter roster with Ohtani signing",
+            "eventSummary": "The Blue Jays are one of the teams believed to still be among the strongest in the mix for Ohtani. The New York Post's Jon Heyman reported there could be some changes if Ohtani signs with the Blue Jays, however, reporting that some rivals believe Bo Bichette and Vladimir Guerrero Jr. could hit the trade block if Toronto lands the star. Trading the two infielders might seem counterproductive to signing Ohtani in the first place. Those two would be the biggest supporting bats in the lineup around Ohtani. However, both are free agents after the 2025 season, and given the added payroll of signing Ohtani, it's possible Toronto would view keeping the other two phenoms as too pricey.",
+            "subEventOf": {
+                "@type": "snap:event",
+                "eventTitle": "Shohei Ohtani news: Latest updates, rumors for MLB free agency"
+            }
+        }
+    ]
+}
+```

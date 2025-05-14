@@ -1,0 +1,120 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Early blight",
+            "disease_symptoms": "Important fungal disease",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Zineb",
+                "quantity": "2 g per litre of water",
+                "stage": "Effective to control early blight"
+            }
+        },
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Late blight",
+            "disease_symptoms": "Important fungal disease",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Copper fungicides",
+                "quantity": "Not specified",
+                "stage": "Can control late blight"
+            }
+        },
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Cut worms",
+            "pest_symptoms": "Common pest of potato",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Carbaryl 10 per cent DP",
+                "quantity": "Not specified",
+                "stage": "Immediately after planting"
+            }
+        },
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Leaf eating caterpillars",
+            "pest_symptoms": "Not specified",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Carbaryl 0.2 per cent",
+                "quantity": "Not specified",
+                "stage": "Not specified"
+            }
+        },
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Aphids and jassids",
+            "pest_symptoms": "Common pests of potato",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "Dimethoate",
+                "quantity": "0.05 per cent",
+                "stage": "Effective to control aphids and jassids"
+            }
+        }
+    ]
+}

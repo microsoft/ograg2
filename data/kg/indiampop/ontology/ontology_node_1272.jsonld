@@ -1,0 +1,57 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:LandPreparation",
+            "instructions": "For transplanted crop, open a furrow more than 5 cm deep on the side of the ridge (1/3 distance from the bottom), place the fertilizer and cover. For the direct sown crop, mark the lines more than 5 cm deep 45 cm apart in the beds. Place the fertilizer below 5 cm depth and cover upto 2 cm from the top before sowing. In the case of intercropping with pulses, mark lines more than 5 cm deep 30 cm apart in the beds. Apply fertilizer only in the rows in which cumbu is to be sown and cover upto 2 cm.",
+            "with_soil_moisture": "When azospirillum inoculant is used for seeds, seedlings use only 50 kg N/ha for variety, 60 kg N/ha for hybrid, as soil application in other words, reduce 25% N of soil test recommendations."
+        },
+        {
+            "@type": "cropCult:Fertilization",
+            "nutrient_name": "N",
+            "quantity": "50 kg N/ha for variety, 60 kg N/ha for hybrid",
+            "stage_of_application": "Soil application"
+        }
+    ]
+}

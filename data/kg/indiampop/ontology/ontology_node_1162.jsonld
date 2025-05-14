@@ -1,0 +1,57 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:WeedManagement",
+            "weed_name": "Sorghum",
+            "weed_types": ["Sorghum based intercropping system with pulses", "Rainfed sorghum intercropped with cowpea"],
+            "herbicides": [
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Atrazine",
+                    "quantity": "0.25 kg/ha",
+                    "stage": "Pre-emergence application within 3 days after the receipt of the soaking rainfall"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Pendimethalin",
+                    "quantity": "0.75 kg/ha",
+                    "stage": "Use for sorghum based intercropping system with pulses"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Isoproturba",
+                    "quantity": "0.5 kg ha-1",
+                    "stage": "Pre-plant incorporation for rainfed sorghum intercropped with cowpea"
+                },
+                {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Pendimethalin",
+                    "quantity": "1.0 kg ha-1",
+                    "stage": "Apply after 1st and 2nd spell of rainfall for rainfed sorghum intercropped with cowpea"
+                }
+            ]
+        }
+    ]
+}

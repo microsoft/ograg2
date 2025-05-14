@@ -1,0 +1,206 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "schema:Thing",
+      "title": "The Halloween Countdown: 31 days of horror to watch",
+      "author": "Toussaint Egan",
+      "theme": "entertainment",
+      "content": "Your time is precious, and your options are endless. The good news: We watch it all so you don’t have to. Polygon’s What to Watch highlights the best, the funniest, the scariest, and the most exciting in movies, TV, and everything in between. Stop scrolling, start watching! If there’s one thing we love here at Polygon, it’s the Halloween season. We cover horror year-round, whether it’s the best horror movies you can stream at home or the best horror movies on Netflix, and generally, we have our finger on the undead pulse of the newest and ghastliest releases in horror. We even have a list of the best horror movies of the year (ranked by scariness, of course). Even still, Halloween is an especially spooky time of year, and it warrants special attention and celebration. For the past three years, Polygon has put together a Halloween countdown calendar, selecting 31 of our staff’s top horror-themed or Halloween-adjacent picks across movies and TV throughout the month of October, all available to watch at home. We’ve loved doing it, so much so that we’re bringing it back again — this time with a whole new batch of films and shows to choose from. Every day for the month of October, we’ll add a new recommendation to this countdown and tell you where you can watch it. So curl up on the couch, dim the lights, and grab some popcorn for a terrifying and entertaining marathon of horrific delights.",
+      "created": "2023-10-10T15:27:53+00:00",
+      "published": "2023-10-10T15:27:53+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "eventTitle": "Messiah of Evil",
+          "eventSummary": "A undersung classic of ’70s cosmic horror, Willard Huyck and Gloria Katz’s Messiah of Evil is a surreal and nightmarish experience that more than deserves its status as a cult horror classic.",
+          "theme": "horror",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "name": "Prime Video, Shudder, Pluto TV, Plex"
+          }
+        },
+        {
+          "@id": "snap:event2",
+          "eventTitle": "Ginger Snaps",
+          "eventSummary": "Directed by future Orphan Black co-creator John Fawcett, Ginger Snaps is a delightfully gruesome story about two sisters. One of them has gotten her period for the first time, and is turned into a werewolf shortly after.",
+          "theme": "horror",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "name": "Criterion Channel, Shudder, Peacock, Vudu, Tubi, Freevee, Plex"
+          }
+        },
+        {
+          "@id": "snap:event3",
+          "eventTitle": "Creepshow",
+          "eventSummary": "The new Creepshow home video release — presented in vibrant 4K UHD Blu-ray — is the best way to revisit this horror anthology classic.",
+          "theme": "horror",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "name": "Kanopy"
+          }
+        },
+        {
+          "@id": "snap:event4",
+          "eventTitle": "Pulse",
+          "eventSummary": "Kiyoshi Kurosawa’s post-Y2K horror-thriller Pulse explores the idea of technology being used to communicate with the dead.",
+          "theme": "horror",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "name": "Prime Video"
+          }
+        },
+        {
+          "@id": "snap:event5",
+          "eventTitle": "Apostle",
+          "eventSummary": "Evans’ mesmerizing Apostle deliberately starts in roughly the same place as the classic 1973 suspense thriller The Wicker Man.",
+          "theme": "horror",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "name": "Netflix"
+          }
+        },
+        {
+          "@id": "snap:event6",
+          "eventTitle": "Dracula 2000",
+          "eventSummary": "Dracula 2000 finds a group of thieves transporting a stolen silver coffin from London to New Orleans.",
+          "theme": "horror",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "name": "Max"
+          }
+        },
+        {
+          "@id": "snap:event7",
+          "eventTitle": "Prince of Darkness",
+          "eventSummary": "Prince of Darkness follows a group of college researchers who are sent to study a strange canister found in the basement of a church.",
+          "theme": "horror",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "name": "Peacock"
+          }
+        },
+        {
+          "@id": "snap:event8",
+          "eventTitle": "Gravity Falls - Northwest Mansion Mystery",
+          "eventSummary": "A ghost has taken up residence in the mansion estate of the wealthiest family in Gravity Falls.",
+          "theme": "horror",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "name": "Hulu, Disney Plus"
+          }
+        },
+        {
+          "@id": "snap:event9",
+          "eventTitle": "The Scooby-Doo Project",
+          "eventSummary": "The Scooby-Doo Project is a parody of The Blair Witch Project that stars the Mystery Inc. gang.",
+          "theme": "horror",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "name": "YouTube"
+          }
+        },
+        {
+          "@id": "snap:event10",
+          "eventTitle": "Saloum",
+          "eventSummary": "Saloum follows three extremely cool mercenaries whose post-mission flight home gets interrupted.",
+          "theme": "horror",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "name": "Shudder, AMC Plus"
+          }
+        },
+        {
+          "@id": "snap:event11",
+          "eventTitle": "Heck",
+          "eventSummary": "Heck is a short film told from the perspective of a young child who wakes in the dead of night.",
+          "theme": "horror",
+          "hasLocation": {
+            "@type": "geo:SpatialThing",
+            "name": "YouTube"
+          }
+        }
+      ]
+    }
+  ]
+}

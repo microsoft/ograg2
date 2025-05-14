@@ -1,0 +1,103 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Cotton",
+            "has_types": {
+                "name": "Fiber Crop",
+                "used_for": "Textile Industry"
+            },
+            "has_growing_zones": {
+                "CropGrowingZone": {
+                    "name": "Tropical and Subtropical",
+                    "has_regions": ["India", "China", "USA", "Pakistan", "Brazil"]
+                }
+            },
+            "has_temperature_requirements": {
+                "for_germination": "15-20°C",
+                "for_flowering": "20-30°C",
+                "for_grain_filling": "20-30°C",
+                "negative_effect": "Below 15°C and above 35°C"
+            },
+            "has_soil_requirements": {
+                "soil_type_name": "Black Cotton Soil",
+                "avoid_soil_type": "Sandy Soil",
+                "for_water": "Well Drained",
+                "for_nutrients": "Rich in Organic Matter"
+            },
+            "has_land_preperation_requirements": {
+                "instructions": "Deep Ploughing followed by harrowing",
+                "with_soil_moisture": "Moderate"
+            },
+            "seed_germination_test_requirements_are": "Moisture Content 8-10%, Purity 98%, Germination 75%",
+            "has_seed_fungicide_requirements": {
+                "name": "Thiram",
+                "quantity": "2-3 grams per kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "sowing_time": "June-July",
+                "value": "90 x 60 cm",
+                "depth": "3-4 cm",
+                "method": "Dibbling Method"
+            },
+            "weed_management_needs_are": {
+                "weed_name": "Echinochloa crusgalli",
+                "weed_types": ["Grassy Weeds", "Broadleaf Weeds"],
+                "herbicides": {
+                    "name": "Glyphosate",
+                    "quantity": "1.5-2.0 kg/ha",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "quantity": "6-8 irrigations at 10-15 days interval",
+                "stage_of_application": "From Flowering to Boll Formation"
+            },
+            "needs_disease_treatements": {
+                "disease_name": "Cotton Leaf Curl Virus",
+                "disease_symptoms": "Leaf Curling, Vein Thickening, Enations",
+                "disease_control": {
+                    "name": "Imidacloprid",
+                    "quantity": "0.5 ml/litre of water",
+                    "stage": "At the time of disease appearance"
+                }
+            },
+            "needs_pest_treatements": {
+                "pest_name": "Cotton Bollworm",
+                "pest_symptoms": "Larvae feed on bolls causing shedding",
+                "pest_control": {
+                    "name": "Endosulfan",
+                    "quantity": "2 ml/litre of water",
+                    "stage": "At the time of pest appearance"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when 2/3 of bolls are opened",
+            "storage_guidelines_are":"Store in cool and dry place"
+        }
+    ]
+}

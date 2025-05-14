@@ -1,0 +1,63 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "WeedManagement",
+            "weed_name": "Interculture",
+            "weed_types": ["pendimethalin", "metolachlor", "alachlor", "fluchloralin", "quizalofop ethyl 5 EC", "fluazifop-p-butyl 28 EC"],
+            "herbicides": [
+                {
+                    "@type": "HerbicideList",
+                    "name": "pendimethalin/metolachlor",
+                    "quantity": "0.75 kg/ha",
+                    "stage": "Pre-emergence"
+                },
+                {
+                    "@type": "HerbicideList",
+                    "name": "alachlor",
+                    "quantity": "1.0 kg/ha",
+                    "stage": "Pre-emergence"
+                },
+                {
+                    "@type": "HerbicideList",
+                    "name": "fluchloralin",
+                    "quantity": "0.75 kg/ha",
+                    "stage": "Pre-planting"
+                },
+                {
+                    "@type": "HerbicideList",
+                    "name": "quizalofop ethyl 5 EC",
+                    "quantity": "0.05 kg/ha",
+                    "stage": "Post emergence at 20 days after sowing"
+                },
+                {
+                    "@type": "HerbicideList",
+                    "name": "fluazifop-p-butyl 28 EC",
+                    "quantity": "0.25 kg/ha",
+                    "stage": "Post emergence at 20 days after sowing"
+                }
+            ]
+        }
+    ]
+}

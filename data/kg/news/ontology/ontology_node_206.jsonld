@@ -1,0 +1,136 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "title": "We could end the AIDS epidemic in less than a decade. Here's how.",
+            "author": "None",
+            "theme": "science",
+            "summary": "Countries have teamed up through a United Nations program to end the AIDS epidemic by 2030. Can it be done? An HIV diagnosis hasn't been a death sentence for years, thanks to powerful medications. Despite incredible progress, however, HIV (human immunodeficiency virus) remains a global public health threat, with 1.3 million new infections and around half that many deaths in 2022 alone.",
+            "created": "2023-12-01T12:00:17+00:00",
+            "published": "2023-12-01T12:00:17+00:00",
+            "url": "https://www.livescience.com/health/hiv/we-could-end-the-aids-epidemic-in-less-than-a-decade-heres-how",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "@id": "snap:event",
+                        "@type": "schema:Thing",
+                        "eventTitle": "UNAIDS Program to End AIDS",
+                        "eventSummary": "Countries around the world have signed onto an ambitious United Nations program with a goal to reduce the rate of new HIV infections and AIDS-related deaths to below the reproductive rate of 1.",
+                        "theme": "health",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Global"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Quarraisha Abdool Karim",
+                                    "dateOfBirth": "xmls:date",
+                                    "placeOfBirth": "geo:location",
+                                    "alias": "UNAIDS Special Ambassador"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "UNAIDS",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Global"
+                                    },
+                                    "alias": "Joint United Nations Programme on HIV/AIDS"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

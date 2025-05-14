@@ -1,0 +1,68 @@
+model:
+  api_base: 
+  api_key: 
+  deployment_name: gpt-4 # -32k
+  api_type: openai
+  api_version: '2024-02-01' 
+  # MODEL_NAME: gpt-4-32k
+
+# model:
+#   RESOURCE_ENDPOINT: 
+#   api_base: 
+#   api_key: 
+#   deployment_name: chatgpt432k
+#   api_type: openai
+#   api_version: '2024-02-01' 
+#   # MODEL_NAME: gpt-4-32k
+
+embedding_model:
+  api_base: 
+  api_key: 
+  deployment_name: text-embedding-3-small # sentence-transformers/all-mpnet-base-v2
+  api_type: openai #huggingface
+  api_version: '2024-02-01' 
+
+data:
+  documents_dir: data/news/corpora_reduced
+  ontology_path: data/ontology/snap_ontology.jsonld
+  kg_storage_path: data/kg_temp/news
+  index_dir: index_openai/vector_news
+  subdir: False
+  smart_pdf: True
+  full_text: True
+  chunk_size: 4096
+  
+query:
+  method: ontohypergraph-rag #kg-rag
+  batch_size: 10
+  mode: json
+  questions_file: 
+    # - data/kg/news/questions/ragas/testset_10_0p0,0p0,1p0.csv 
+    - data/kg/news/questions/ragas/testset_100_0p0,1p0,0p0.csv 
+    # - data/kg/news/questions/ragas/testset_10_0p5,0p25,0p25.csv 
+    # - data/kg/news/questions/ragas/testset_10_0p25,0p5,0p25.csv 
+    # - data/kg/news/questions/ragas/testset_10_0p25,0p25,0p5.csv 
+    # - data/kg/news/questions/ragas/testset_10_1p0,0p0,0p0.csv
+  answers_file: results/news/ragas_answers_ontohypergraphrag.json
+
+question_generator:
+  framework: ragas
+  test_size: 10
+  distr: 
+    simple: 1.0
+    reasoning: 0.0
+    multi_context: 0.0 
+
+evaluator:
+  eval_file: results/news/ragas_answers.json
+  reference_free: True
+  type: single
+  metrics: 
+    - answer_correctness
+    - faithfulness
+    - answer_similarity
+    - answer_relevancy
+    - context_relevancy
+    - context_precision
+    - context_recall
+    - context_entity_recall

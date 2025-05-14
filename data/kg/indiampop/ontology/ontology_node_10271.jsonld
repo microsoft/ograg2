@@ -1,0 +1,47 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_disease_treatements": "cropCult:DiseaseTreatements"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "RICE (Oryza sativa)",
+            "has_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Fungal and bacterial diseases",
+                "disease_control": {
+                    "@type": "PesticideList",
+                    "name": "Pseudomonas fluorescens P1",
+                    "quantity": "10 g per kg of seed",
+                    "stage": "Seed treatment"
+                }
+            }
+        }
+    ]
+}

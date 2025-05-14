@@ -1,0 +1,189 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:event1",
+            "@type": "snap:event",
+            "eventTitle": "Jamaica vs Canada Rescheduled Match",
+            "eventSummary": "The match between Jamaica and Canada has been rescheduled due to adverse weather conditions.",
+            "subEventOf": "snap:event",
+            "theme": "snap:intangibleStuff"
+        },
+        {
+            "@id": "snap:organization1",
+            "@type": "snap:organization",
+            "name": "Canada Soccer"
+        },
+        {
+            "@id": "snap:organization2",
+            "@type": "snap:organization",
+            "name": "Jamaica Football Federation"
+        },
+        {
+            "@id": "snap:person1",
+            "@type": "snap:person",
+            "name": "Mark-Anthony Kaye"
+        },
+        {
+            "@id": "snap:person2",
+            "@type": "snap:person",
+            "name": "John Herdman"
+        },
+        {
+            "@id": "snap:person3",
+            "@type": "snap:person",
+            "name": "Karoy Anderson"
+        },
+        {
+            "@id": "snap:person4",
+            "@type": "snap:person",
+            "name": "Cory Burke"
+        },
+        {
+            "@id": "snap:person5",
+            "@type": "snap:person",
+            "name": "Liam Millar"
+        },
+        {
+            "@id": "snap:asset1",
+            "@type": "snap:textAsset",
+            "title": "Jamaica vs Canada Match Update",
+            "summary": "The match has been postponed due to weather conditions and rescheduled for tomorrow morning.",
+            "created": "2023-11-18T20:35:00",
+            "modified": "2023-11-18T20:35:00",
+            "published": "2023-11-18T20:35:00"
+        },
+        {
+            "@id": "snap:asset2",
+            "@type": "snap:imageAsset",
+            "image": "https://pic.twitter.com/Duc0R5tnn4"
+        },
+        {
+            "@id": "snap:asset3",
+            "@type": "snap:imageAsset",
+            "image": "https://pic.twitter.com/JsTuer642p"
+        },
+        {
+            "@id": "snap:asset4",
+            "@type": "snap:imageAsset",
+            "image": "https://pic.twitter.com/COjBxNgQ8z"
+        },
+        {
+            "@id": "snap:asset5",
+            "@type": "snap:imageAsset",
+            "image": "https://pic.twitter.com/sVfKRZHXMl"
+        },
+        {
+            "@id": "snap:asset6",
+            "@type": "snap:imageAsset",
+            "image": "https://pic.twitter.com/iPhqIdvgCo"
+        },
+        {
+            "@id": "snap:asset7",
+            "@type": "snap:imageAsset",
+            "image": "https://pic.twitter.com/FRlizvoajM"
+        },
+        {
+            "@id": "snap:asset8",
+            "@type": "snap:imageAsset",
+            "image": "https://pic.twitter.com/QvZZCIeI69"
+        },
+        {
+            "@id": "snap:asset9",
+            "@type": "snap:imageAsset",
+            "image": "https://pic.twitter.com/sF7P7IkL0v"
+        },
+        {
+            "@id": "snap:asset10",
+            "@type": "snap:imageAsset",
+            "image": "https://pic.twitter.com/XzBldBSXfX"
+        },
+        {
+            "@id": "snap:asset11",
+            "@type": "snap:imageAsset",
+            "image": "https://pic.twitter.com/A0mVyGdaAZ"
+        }
+    ]
+}
+```

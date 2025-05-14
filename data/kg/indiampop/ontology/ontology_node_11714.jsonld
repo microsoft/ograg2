@@ -1,0 +1,85 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:DiseaseTreatements",
+            "disease_name": "Cercospora blight",
+            "disease_symptoms": "Initiation of the disease (August-October)",
+            "disease_control": {
+                "@type": "cropCult:HerbicideList",
+                "name": "Carbendazim",
+                "quantity": "0.2%",
+                "stage": "2-3 times at 12 days intervals"
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "Utkal Gaurav",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "Resistant variety",
+                "used_for": "Cercospora blight resistance"
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "Arka Anamika",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "Resistant variety",
+                "used_for": "Cercospora blight resistance"
+            }
+        },
+        {
+            "@type": "cropCult:Crop",
+            "name": "Pusa Sawani",
+            "has_types": {
+                "@type": "cropCult:CropType",
+                "name": "Non-resistant variety",
+                "used_for": "YVMV susceptibility"
+            }
+        }
+    ]
+}

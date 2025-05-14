@@ -1,0 +1,35 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "harvesting_guidelines_are": "schema:Text"
+            }
+        },
+        "CropType": {
+            "@id": "cropCult:CropType",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "used_for": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Sugarcane",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Sugar Crop",
+                "used_for": "Harvesting"
+            },
+            "harvesting_guidelines_are": "Sugarcane should be harvested at the ground level. Late suckers should be removed at the time of harvesting."
+        }
+    ]
+}

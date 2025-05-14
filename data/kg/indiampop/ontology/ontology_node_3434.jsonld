@@ -1,0 +1,63 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "LandPreparation": {
+            "@id": "cropCult:LandPreparation",
+            "@type": "schema:Thing",
+            "@context": {
+                "instructions": "schema:Text",
+                "with_soil_moisture": "schema:Text"
+            }
+        },
+        "SeedSpacing": {
+            "@id": "cropCult:SeedSpacing",
+            "@type": "schema:Thing",
+            "@context": {
+                "sowing_time": "schema:Text",
+                "value": "schema:Text",
+                "depth": "schema:Text",
+                "method": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "NUTMEG (Myristica fragrans)",
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Nutmeg requires shade for optimum growth. Hence suitable banana varieties can be planted on both sides at a distance of 1m from the pit. This will provide shade in the early stages. Generally nutmeg is cultivated as an intercrop in coconut gardens. Hence the required shade for the growth of plants will be provided by the main crop like coconut. Pits of 90cm x 90cm x 90 cm are dug at a spacing of 8m x 8m with the onset of South West monsoon. The pits are filled with top soil and compost or well decomposed cattle manure and seedlings are planted.",
+                "with_soil_moisture": "High"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "SeedSpacing",
+                "sowing_time": "South West monsoon",
+                "value": "8m x 8m",
+                "depth": "90cm",
+                "method": "Pits are filled with top soil and compost or well decomposed cattle manure and seedlings are planted"
+            }
+        }
+    ]
+}

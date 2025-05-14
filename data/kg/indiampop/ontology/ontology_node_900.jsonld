@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_soil_requirements": "cropCult:SoilRequirements"
+            }
+        },
+        "SoilRequirements": {
+            "@id": "cropCult:SoilRequirements",
+            "@type": "schema:Thing",
+            "@context": {
+                "soil_type_name": "schema:Text",
+                "avoid_soil_type": "schema:Text",
+                "for_water": "schema:Text",
+                "for_nutrients": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "PEPPER (Piper nigrum)",
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Sites with slight to moderate slope",
+                "avoid_soil_type": "Slopes facing south",
+                "for_water": "Ideal for pepper cultivation, as they promote drainage",
+                "for_nutrients": "When such slopes are to be used for cultivation, the young plants may be sufficiently protected from the scorching sun during summer"
+            }
+        }
+    ]
+}

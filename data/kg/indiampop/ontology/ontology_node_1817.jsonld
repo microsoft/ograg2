@@ -1,0 +1,33 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "WHEAT",
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "6 cm of water",
+                "stage_of_application": "The critical stages of water requirement are crown root initiation, tillering, jointing, flowering and grain filling. Excess irrigation and standing water in the field is harmful as the plants become yellow and yield decreases. At sowing the top 5 cm of soil should be moist to facilitate quick germination. In loamy sand soils, sow the seeds and irrigate. In loam and clay loam soils give a soaking irrigation, prepare the land and sow the seeds. Otherwise, the field has to be given light irrigation. The first irrigation should be given at crown root initiation stage 18-20 days after sowing, soon after top dressing, hoeing and weeding which helps root growth and tillering. In very light soils, it may be necessary to irrigate the crop at 10 to 12 days after sowing. Thereafter irrigate at an interval of 12 to 15 days depending on the texture of the soil. The last irrigation may be given when the plants start yellowing and grains are at the hard dough stage."
+            }
+        }
+    ]
+}

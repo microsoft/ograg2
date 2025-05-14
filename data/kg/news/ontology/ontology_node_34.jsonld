@@ -1,0 +1,182 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "title": "These Are Our Favorite Walmart Cyber Monday Deals",
+            "author": "Matt Jancer",
+            "published": "2023-11-27T14:22:26+00:00",
+            "theme": "technology",
+            "summary": "A comprehensive guide to the best Walmart Cyber Monday deals on various devices.",
+            "has_events": {
+                "@type": "EventList",
+                "Event": [
+                    {
+                        "eventTitle": "PC and Gaming Deals",
+                        "eventSummary": "Deals on laptops and gaming consoles.",
+                        "theme": "technology",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Home and Kitchen Deals",
+                        "eventSummary": "Discounts on kitchen appliances and tools.",
+                        "theme": "home",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "TV Deals",
+                        "eventSummary": "Sales on various TV models.",
+                        "theme": "entertainment",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Watch and Fitness Tracker Deals",
+                        "eventSummary": "Offers on fitness trackers and smartwatches.",
+                        "theme": "health",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    },
+                    {
+                        "eventTitle": "Headphone and Earbud Deals",
+                        "eventSummary": "Discounts on various audio devices.",
+                        "theme": "audio",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": []
+                        }
+                    }
+                ]
+            },
+            "followUp": {
+                "@id": "snap:asset"
+            },
+            "derivedFrom": {
+                "@id": "snap:asset"
+            }
+        }
+    ]
+}

@@ -1,0 +1,536 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "NewsAsset",
+            "title": "Apple 35-Watt Dual USB-C Port Compact Power Adapter",
+            "author": "Tech Reviewer",
+            "theme": "Technology",
+            "summary": "Apple's dual USB-C port power adapter is an essential accessory if you have a tendency to forget to pack chargers for your devices on the go.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "hasThumbnail": "http://example.com/image1.jpg",
+            "has_events": {
+                "@id": "snap:eventList1",
+                "Event": [
+                    {
+                        "@id": "snap:event1",
+                        "eventTitle": "Product Launch",
+                        "eventSummary": "Launch of the new Apple power adapter.",
+                        "theme": "Product Launch",
+                        "hasLocation": {
+                            "@id": "geo:location1",
+                            "@type": "geo:SpatialThing",
+                            "name": "Apple Headquarters"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList1",
+                            "Person": [
+                                {
+                                    "@id": "snap:person1",
+                                    "name": "Tim Cook",
+                                    "dateOfBirth": "1960-11-01",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location2",
+                                        "name": "Mobile, Alabama, USA"
+                                    },
+                                    "alias": "CEO of Apple"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList1",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization1",
+                                    "name": "Apple Inc.",
+                                    "hasLocation": {
+                                        "@id": "geo:location3",
+                                        "name": "Cupertino, California, USA"
+                                    },
+                                    "alias": "Apple"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset2",
+            "@type": "NewsAsset",
+            "title": "iOttie Velox Pro Magnetic Wireless Cooling Car Dash Mount",
+            "author": "Tech Reviewer",
+            "theme": "Technology",
+            "summary": "iOttie's Velox Pro Magnetic Wireless Cooling Charger is great for those who prefer a mount on your dash or windshield.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "hasThumbnail": "http://example.com/image2.jpg",
+            "has_events": {
+                "@id": "snap:eventList2",
+                "Event": [
+                    {
+                        "@id": "snap:event2",
+                        "eventTitle": "Product Review",
+                        "eventSummary": "Review of the iOttie Velox Pro.",
+                        "theme": "Product Review",
+                        "hasLocation": {
+                            "@id": "geo:location4",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList2",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList2",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset3",
+            "@type": "NewsAsset",
+            "title": "Anker Nano USB-C Power Bank",
+            "author": "Tech Reviewer",
+            "theme": "Technology",
+            "summary": "This is a great power bank if you don't want to worry about carrying a cable around.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "hasThumbnail": "http://example.com/image3.jpg",
+            "has_events": {
+                "@id": "snap:eventList3",
+                "Event": [
+                    {
+                        "@id": "snap:event3",
+                        "eventTitle": "Product Review",
+                        "eventSummary": "Review of the Anker Nano USB-C Power Bank.",
+                        "theme": "Product Review",
+                        "hasLocation": {
+                            "@id": "geo:location5",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList3",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList3",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset4",
+            "@type": "NewsAsset",
+            "title": "Anker 737 Power Bank",
+            "author": "Tech Reviewer",
+            "theme": "Technology",
+            "summary": "We just added this power bank as our top upgrade pick in our guide to the Best Portable Chargers.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "hasThumbnail": "http://example.com/image4.jpg",
+            "has_events": {
+                "@id": "snap:eventList4",
+                "Event": [
+                    {
+                        "@id": "snap:event4",
+                        "eventTitle": "Product Review",
+                        "eventSummary": "Review of the Anker 737 Power Bank.",
+                        "theme": "Product Review",
+                        "hasLocation": {
+                            "@id": "geo:location6",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList4",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList4",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset5",
+            "@type": "NewsAsset",
+            "title": "Nomad's Wireless Charger",
+            "author": "Tech Reviewer",
+            "theme": "Technology",
+            "summary": "Nomad's wireless charger is one of our favorite MagSafe wireless chargers.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "hasThumbnail": "http://example.com/image5.jpg",
+            "has_events": {
+                "@id": "snap:eventList5",
+                "Event": [
+                    {
+                        "@id": "snap:event5",
+                        "eventTitle": "Product Review",
+                        "eventSummary": "Review of Nomad's Wireless Charger.",
+                        "theme": "Product Review",
+                        "hasLocation": {
+                            "@id": "geo:location7",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList5",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList5",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset6",
+            "@type": "NewsAsset",
+            "title": "ESR Travel Kit",
+            "author": "Tech Reviewer",
+            "theme": "Technology",
+            "summary": "This travel kit from ESR works well if you want something that can prop your iPhone in portrait or landscape orientation.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "hasThumbnail": "http://example.com/image6.jpg",
+            "has_events": {
+                "@id": "snap:eventList6",
+                "Event": [
+                    {
+                        "@id": "snap:event6",
+                        "eventTitle": "Product Review",
+                        "eventSummary": "Review of the ESR Travel Kit.",
+                        "theme": "Product Review",
+                        "hasLocation": {
+                            "@id": "geo:location8",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList6",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList6",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset7",
+            "@type": "NewsAsset",
+            "title": "Glass Elite Privacy 360",
+            "author": "Tech Reviewer",
+            "theme": "Technology",
+            "summary": "What we like best about this phone mount is that you can use it one-handed.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "hasThumbnail": "http://example.com/image7.jpg",
+            "has_events": {
+                "@id": "snap:eventList7",
+                "Event": [
+                    {
+                        "@id": "snap:event7",
+                        "eventTitle": "Product Review",
+                        "eventSummary": "Review of Glass Elite Privacy 360.",
+                        "theme": "Product Review",
+                        "hasLocation": {
+                            "@id": "geo:location9",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList7",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList7",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset8",
+            "@type": "NewsAsset",
+            "title": "Casetify Case",
+            "author": "Tech Reviewer",
+            "theme": "Technology",
+            "summary": "Casetify offers an overwhelming variety of case designs, but they can get pricey.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "hasThumbnail": "http://example.com/image8.jpg",
+            "has_events": {
+                "@id": "snap:eventList8",
+                "Event": [
+                    {
+                        "@id": "snap:event8",
+                        "eventTitle": "Product Review",
+                        "eventSummary": "Review of Casetify Case.",
+                        "theme": "Product Review",
+                        "hasLocation": {
+                            "@id": "geo:location10",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList8",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList8",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset9",
+            "@type": "NewsAsset",
+            "title": "OtterBox Figura",
+            "author": "Tech Reviewer",
+            "theme": "Technology",
+            "summary": "We like OtterBox cases, and many are 20 percent off.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "hasThumbnail": "http://example.com/image9.jpg",
+            "has_events": {
+                "@id": "snap:eventList9",
+                "Event": [
+                    {
+                        "@id": "snap:event9",
+                        "eventTitle": "Product Review",
+                        "eventSummary": "Review of OtterBox Figura.",
+                        "theme": "Product Review",
+                        "hasLocation": {
+                            "@id": "geo:location11",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList9",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList9",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset10",
+            "@type": "NewsAsset",
+            "title": "Case-Mate Blox",
+            "author": "Tech Reviewer",
+            "theme": "Technology",
+            "summary": "If you're looking for a trendy case, look no further than this blocky and rectangular one.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "hasThumbnail": "http://example.com/image10.jpg",
+            "has_events": {
+                "@id": "snap:eventList10",
+                "Event": [
+                    {
+                        "@id": "snap:event10",
+                        "eventTitle": "Product Review",
+                        "eventSummary": "Review of Case-Mate Blox.",
+                        "theme": "Product Review",
+                        "hasLocation": {
+                            "@id": "geo:location12",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList10",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList10",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset11",
+            "@type": "NewsAsset",
+            "title": "Apple AirTags",
+            "author": "Tech Reviewer",
+            "theme": "Technology",
+            "summary": "Apple AirTags are our favorite Bluetooth trackers for iPhone users.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "hasThumbnail": "http://example.com/image11.jpg",
+            "has_events": {
+                "@id": "snap:eventList11",
+                "Event": [
+                    {
+                        "@id": "snap:event11",
+                        "eventTitle": "Product Review",
+                        "eventSummary": "Review of Apple AirTags.",
+                        "theme": "Product Review",
+                        "hasLocation": {
+                            "@id": "geo:location13",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList11",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList11",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:asset12",
+            "@type": "NewsAsset",
+            "title": "Nomad Lightning Cables",
+            "author": "Tech Reviewer",
+            "theme": "Technology",
+            "summary": "Those with an iPhone 14 or earlier can never have too many Lightning cables.",
+            "created": "2023-10-01T10:00:00Z",
+            "modified": "2023-10-01T12:00:00Z",
+            "published": "2023-10-01T10:00:00Z",
+            "hasThumbnail": "http://example.com/image12.jpg",
+            "has_events": {
+                "@id": "snap:eventList12",
+                "Event": [
+                    {
+                        "@id": "snap:event12",
+                        "eventTitle": "Product Review",
+                        "eventSummary": "Review of Nomad Lightning Cables.",
+                        "theme": "Product Review",
+                        "hasLocation": {
+                            "@id": "geo:location14",
+                            "@type": "geo:SpatialThing",
+                            "name": "Online"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList12",
+                            "Person": []
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList12",
+                            "Organization": []
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}

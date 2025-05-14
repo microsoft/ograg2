@@ -1,0 +1,47 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "CropProtection": {
+            "@id": "cropCult:CropProtection",
+            "@type": "schema:Thing",
+            "@context": {
+                "has_pest_management": "cropCult:PestManagement"
+            }
+        },
+        "PestManagement": {
+            "@id": "cropCult:PestManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "CropProtection",
+            "has_pest_management": {
+                "@type": "PestManagement",
+                "pest_name": "Aphids",
+                "pest_symptoms": "Yellowing and curling of leaves, stunted growth",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Acephate",
+                    "quantity": "1.5 kg per acre",
+                    "stage": "Early growth stage"
+                }
+            }
+        }
+    ]
+}

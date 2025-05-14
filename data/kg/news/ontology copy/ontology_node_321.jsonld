@@ -1,0 +1,209 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:NewsAsset",
+      "title": "Michigan Violation of Big Ten Sportsmanship Policy",
+      "summary": "Michigan has been found in violation of the Big Ten Sportsmanship Policy for conducting an impermissible, in-person scouting operation over multiple years.",
+      "byline": "Chris Vannini",
+      "published": "2023-11-10",
+      "associatedAsset": {
+        "@type": "snap:TextAsset",
+        "image": "https://t.co/htnUkshmnF"
+      }
+    },
+    {
+      "@type": "snap:Event",
+      "eventTitle": "Jim Harbaugh Joins Michigan for Trip to State College",
+      "eventSummary": "Jim Harbaugh is on the team bus and heading to the airport with his team as Michigan awaits word on a potential suspension.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Sports Event"
+      }
+    },
+    {
+      "@type": "snap:NewsAsset",
+      "title": "Michigan Still Awaiting Word from Big Ten",
+      "summary": "Michigan still hasn't heard about an impending punishment from the Big Ten as its 1 p.m. ET flight looms.",
+      "byline": "Adam Rittenberg",
+      "published": "2023-11-10"
+    },
+    {
+      "@type": "snap:Event",
+      "eventTitle": "Harbaugh Expected to Fly to State College",
+      "eventSummary": "Harbaugh's attorney, Tom Mars, reportedly told ESPN the coach will be headed to State College.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Legal Event"
+      }
+    },
+    {
+      "@type": "snap:NewsAsset",
+      "title": "Punishment Options for Michigan",
+      "summary": "Punishment could range from indefinite suspension to public reprimand or lofty fine.",
+      "byline": "Heather Dinich",
+      "published": "2023-11-10"
+    },
+    {
+      "@type": "snap:Event",
+      "eventTitle": "Punishment Expected on Friday",
+      "eventSummary": "The punishment is expected to be announced early Friday afternoon.",
+      "theme": {
+        "@type": "snap:intangibleStuff",
+        "comment": "Disciplinary Event"
+      }
+    },
+    {
+      "@type": "snap:NewsAsset",
+      "title": "Big Ten Considering Range of Possibilities for Harbaugh",
+      "summary": "The Big Ten is considering a range of possibilities, including a significant fine.",
+      "byline": "Adam Rittenberg",
+      "published": "2023-11-09"
+    },
+    {
+      "@type": "snap:NewsAsset",
+      "title": "Michigan's 10-page Letter to Big Ten Released",
+      "summary": "Michigan's letter outlines its belief that the Big Ten would be acting too hastily in suspending Harbaugh.",
+      "byline": "Dan Wetzel",
+      "published": "2023-11-09"
+    },
+    {
+      "@type": "snap:NewsAsset",
+      "title": "No Timetable for Big Ten Decision",
+      "summary": "The Big Ten is reviewing the lengthy official response from Michigan and Jim Harbaugh.",
+      "byline": "Pete Thamel",
+      "published": "2023-11-09"
+    },
+    {
+      "@type": "snap:NewsAsset",
+      "title": "Ohio State Denies Sharing Michigan's Play Signals",
+      "summary": "Ohio State coach Ryan Day denied allegations of sharing Michigan's signals with Purdue.",
+      "byline": "Columbus Dispatch",
+      "published": "2023-11-08"
+    },
+    {
+      "@type": "snap:NewsAsset",
+      "title": "Michigan Submits Response to Big Ten",
+      "summary": "Michigan has submitted its response to the Big Ten's notice of discipline.",
+      "byline": "Adam Rittenberg",
+      "published": "2023-11-08"
+    },
+    {
+      "@type": "snap:NewsAsset",
+      "title": "Michigan Says Three Other Big Ten Schools Shared Decoded Signals",
+      "summary": "Michigan shared evidence with the Big Ten and NCAA showing staff members at Ohio State, Purdue, and Rutgers shared intelligence on the Wolverines' signals.",
+      "byline": "The Athletic",
+      "published": "2023-11-07"
+    },
+    {
+      "@type": "snap:NewsAsset",
+      "title": "No Connection Between Buckeyes Coach and Michigan Investigation",
+      "summary": "Ohio State coach Ryan Day and his family have no connection to the Big Ten and NCAA investigations into Michigan.",
+      "byline": "Yahoo Sports",
+      "published": "2023-11-06"
+    },
+    {
+      "@type": "snap:NewsAsset",
+      "title": "NCAA Shares Findings with Big Ten",
+      "summary": "The NCAA shared its investigation findings with the Big Ten, noting that the findings do not connect the in-person scouting to Harbaugh.",
+      "byline": "Yahoo Sports",
+      "published": "2023-11-06"
+    },
+    {
+      "@type": "snap:NewsAsset",
+      "title": "Harbaugh Likely to be Suspended",
+      "summary": "The Big Ten might be getting closer to handing down a suspension for Harbaugh.",
+      "byline": "Pete Thamel",
+      "published": "2023-11-04"
+    },
+    {
+      "@type": "snap:NewsAsset",
+      "title": "Suspended Football Analyst Connor Stalions Resigns",
+      "summary": "Michigan football analyst Connor Stalions, the focus of the NCAA's investigation, resigned.",
+      "byline": "Jesse Dougherty",
+      "published": "2023-11-03"
+    }
+  ]
+}
+```

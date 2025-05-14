@@ -1,0 +1,802 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Every movie and show coming to Netflix in November",
+            "author": "Petrana Radulovic",
+            "published": "2023-11-01T12:00:00+00:00",
+            "summary": "Even with Netflix’s recommendation algorithm serving you new movies, new TV shows, and original programming tailored to your viewing habits, the streaming service’s firehose of content makes what’s coming and going difficult to parse.",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Available Now",
+                        "eventSummary": "Slayaway Camp 2: Netflix & Kill (Netflix Games)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available in November",
+                        "eventSummary": "Dead Cells: Netflix Edition (Netflix Games)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available in November",
+                        "eventSummary": "Elena Knows (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available in November",
+                        "eventSummary": "The Railway Men (Netflix Series)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available in November",
+                        "eventSummary": "Replacing Chef Chico (Netflix Series)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Hurricane Season (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Locked In (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Mysteries of the Faith (Netflix Documentary)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Nuovo Olimpo (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Till Murder Do Us Part: Soering vs. Haysom (Netflix Documentary)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Wingwomen (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "13 Going on 30",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "13 Hours: The Secret Soldiers of Benghazi",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "60 Days In: Season 5",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "The Addams Family",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "The Big Lebowski",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "The Change-Up",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Desperado",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Downsizing",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Drag Me to Hell",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Love in the Wild: Season 1",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Madea’s Family Reunion",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "The Mummy (2017)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Paul Blart: Mall Cop",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Paul Blart: Mall Cop 2",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Pitch Perfect",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "The Scorpion King",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Scott Pilgrim vs. the World",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Sherlock Gnomes",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Six Feet Under: Seasons 1-5",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Sixteen Candles",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "The Social Network",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Ted 2",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Victorious: Season 3",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 1",
+                        "eventSummary": "Whiplash",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 2",
+                        "eventSummary": "All the Light We Cannot See (Netflix Series)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 2",
+                        "eventSummary": "Cigarette Girl (Netflix Series)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 2",
+                        "eventSummary": "Higuita: The Way of the Scorpion (Netflix Documentary)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 2",
+                        "eventSummary": "Onimusha (Netflix Anime)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 2",
+                        "eventSummary": "Unicorn Academy (Netflix Family)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 3",
+                        "eventSummary": "Blue Eye Samurai (Netflix Anime)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 3",
+                        "eventSummary": "Daily Dose of Sunshine (Netflix Series)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 3",
+                        "eventSummary": "Erin & Aaron: Season 1",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 3",
+                        "eventSummary": "Ferry: The Series (Netflix Series)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 3",
+                        "eventSummary": "NYAD (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 3",
+                        "eventSummary": "Selling Sunset: Season 7 (Netflix Series)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 3",
+                        "eventSummary": "Sly (Netflix Documentary)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 3",
+                        "eventSummary": "The Tailor: Season 3 (Netflix Series)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 3",
+                        "eventSummary": "Vacaciones de verano (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 4",
+                        "eventSummary": "The Amazing Race: Season 17",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 4",
+                        "eventSummary": "The Amazing Race: Season 31",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 4",
+                        "eventSummary": "Insidious: The Red Door",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 4",
+                        "eventSummary": "Lopez vs. Lopez: Season 1",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 7",
+                        "eventSummary": "Face Off: Seasons 4-5",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 7",
+                        "eventSummary": "The Improv: 60 and Still Standing (Netflix Comedy)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 8",
+                        "eventSummary": "The Billionaire, the Butler and the Boyfriend (Netflix Documentary)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 8",
+                        "eventSummary": "The Claus Family 3 (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 8",
+                        "eventSummary": "Cyberbunker: The Criminal Underworld (Netflix Documentary)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 8",
+                        "eventSummary": "Escaping Twin Flames (Netflix Documentary)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 8",
+                        "eventSummary": "Robbie Williams (Netflix Documentary)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 9",
+                        "eventSummary": "Akuma Kun (Netflix Anime)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 9",
+                        "eventSummary": "Temple of Film: 100 Years of the Egyptian Theatre (Netflix Documentary)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 10",
+                        "eventSummary": "At the Moment (Netflix Series)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 10",
+                        "eventSummary": "The Killer (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 10",
+                        "eventSummary": "Team Ninja Warrior: Season 2",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 11",
+                        "eventSummary": "Laguna Beach: Season 3",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 14",
+                        "eventSummary": "Criminal Code (Netflix Series)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 14",
+                        "eventSummary": "Dubai Bling: Season 2 (Netflix Series)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 14",
+                        "eventSummary": "How to Become a Mob Boss (Netflix Documentary)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 14",
+                        "eventSummary": "The Netflix Cup: Swing to Survive (Netflix Live Event)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 15",
+                        "eventSummary": "Feedback (Netflix Series)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 15",
+                        "eventSummary": "First Wives Club: Seasons 1-3",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 15",
+                        "eventSummary": "Matt Rife: Natural Selection (Netflix Comedy)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 16",
+                        "eventSummary": "Best. Christmas. Ever! (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 16",
+                        "eventSummary": "The Crown: Season 6 Part 1 (Netflix Series)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 16",
+                        "eventSummary": "Downton Abbey",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 16",
+                        "eventSummary": "Harriet",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 16",
+                        "eventSummary": "In Love and Deep Water (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 16",
+                        "eventSummary": "Lone Survivor",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 17",
+                        "eventSummary": "All-Time High (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 17",
+                        "eventSummary": "Believer 2 (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 17",
+                        "eventSummary": "CoComelon Lane (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 17",
+                        "eventSummary": "The Dads (Netflix Documentary)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 17",
+                        "eventSummary": "The Queenstown Kings (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 17",
+                        "eventSummary": "Rustin (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 17",
+                        "eventSummary": "Sagrada Familia: Season 2 (Netflix Series)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 17",
+                        "eventSummary": "Scott Pilgrim Takes Off (Netflix Anime)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 17",
+                        "eventSummary": "Stamped from the Beginning (Netflix Documentary)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 20",
+                        "eventSummary": "Shahs of Sunset: Seasons 1-2",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 21",
+                        "eventSummary": "Leo (Netflix Family)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 22",
+                        "eventSummary": "Crime Diaries: The Celebrity Stylist (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 22",
+                        "eventSummary": "High on the Hog: How African American Cuisine Transformed America: Season 2 — (Netflix Documentary)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 22",
+                        "eventSummary": "Squid Game: The Challenge (Netflix Series)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 23",
+                        "eventSummary": "Love Island USA: Season 3",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 23",
+                        "eventSummary": "My Daemon (Netflix Anime)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 23",
+                        "eventSummary": "My Little Pony: Make Your Mark: Chapter 6 (Netflix Family)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 24",
+                        "eventSummary": "A Nearly Normal Family (Netflix Series)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 24",
+                        "eventSummary": "DOI BOY (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 24",
+                        "eventSummary": "I Don’t Expect Anyone to Believe Me (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 24",
+                        "eventSummary": "Last Call for Istanbul (Netflix Film)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    },
+                    {
+                        "eventTitle": "Available Nov. 24",
+                        "eventSummary": "My Demon (Netflix Series)",
+                        "mentions_persons": [],
+                        "mentions_organizations": [],
+                        "hasLocation": {}
+                    }
+                ]
+            }
+        }
+    ]
+}

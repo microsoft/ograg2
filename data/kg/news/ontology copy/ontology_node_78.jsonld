@@ -1,0 +1,114 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:textAsset",
+            "byline": "Cameron Faulkner",
+            "published": "2023-11-17T13:15:48+00:00",
+            "title": "The best controllers for PC gaming",
+            "summary": "Your time — and money — is precious. Polygon’s What to Buy has rounded up the best in gaming hardware, entertainment, tabletop, merch, and toys, and how to get them for the best value, so you spend less time shopping and more time enjoying.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "title": "Microsoft Xbox controller",
+                "summary": "On the Polygon team, the Xbox controller got the highest number of endorsements of any controller. This speaks to its comfort and value, and that Microsoft has released enough colors to satisfy varying tastes in design. It also helps that it’s usually around $50 (depending on the color), and that it just works with most PC games. Regardless of the Windows PC game client, there are no extra steps for setting it up."
+            },
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "title": "Sony DualSense controller",
+                "summary": "There’s another slice of our staff who swear by Sony’s DualSense, a modern controller that retains the symmetrical analog stick arrangement that PlayStation controllers are known for. Compared directly to the Xbox controller, the DualSense has similar levels of compatibility (both are compatible with Android and iOS, and feature built-in Bluetooth for support on PC). However, the DualSense does have key differences, as well as a few perks that help to justify its higher $69.99 price."
+            },
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "title": "Nintendo Switch Pro controller",
+                "summary": "The Switch Pro controller is another staff favorite. If it’s a great Nintendo Switch and PC controller you’re after, this is the pinnacle in terms of comfort, durability, battery life, and other Switch-specific extras, but we’ll get to those a little later."
+            },
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "title": "8BitDo Ultimate 2.4g controller",
+                "summary": "8BitDo has released a lot of controllers in recent years, but the name for its Ultimate controller is fitting. It has many of the features from its best gamepads, plus some extras that should settle any sticker shock associated with its $49.99 price."
+            }
+        }
+    ]
+}
+```

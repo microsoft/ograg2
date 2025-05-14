@@ -1,0 +1,141 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "NewsAsset",
+            "byline": "Tom Gray",
+            "published": "2023-10-18T21:30:31+00:00",
+            "title": "Showtime Boxing to take final 10-count: Top 5 greatest fights revisited",
+            "summary": "When Cuban super middleweight David Morrell steps between the ropes to defend his WBA \"regular\" super middleweight title against Sena Agbeko at the Armory in Minneapolis, there will be a lump in many ringsider's throats. However, it's not the main event that will elicit this emotional response, it's the fact that December 16, 2023, will be the final broadcast of the beloved Showtime Championship Boxing series. Showtime Boxing began in 1986 and has hosted some of the greatest and most famous fighters of all time, including Marvelous Marvin Hagler, Thomas Hearns, Roberto Duran, Sugar Ray Leonard, Mike Tyson, Evander Holyfield and Floyd Mayweather. Among the elite-level professionals who have contributed in a broadcasting capacity are Tim Ryan, Gil Clancy, Al Bernstein, Steve Farhood, Barry Tompkins, Jim Gray, Mauro Ranallo and many others. The platform has been an institution and will be greatly missed. “The company’s decision is not a reflection of the work we have done in recent years, nor of our long and proud history,” said Showtime Sports executive Stephen Espinoza in a statement to staff. “Unfortunately, in a rapidly evolving media marketplace, the company has had to make difficult choices allocating resources, resetting priorities, and reshaping its content offering. While today’s news is certainly difficult and disappointing, it is entirely out of our control.” MORE: Breakdown of Paramount shutting Showtime Sports Espinoza couldn’t be more right in relation to the “long and proud history” of the company. Thanks to Showtime Boxing, fight fans have been treated to some of the greatest moments in the sport’s history and that should never be forgotten. Just as was the case when HBO departed from boxing in 2018, the achievements of the fighters, as well as the individuals who gave them the platform to perform, should be celebrated. The Sporting News now looks back at Showtime Boxing’s five greatest fights.",
+            "associatedAsset": [
+                {
+                    "@type": "Event",
+                    "eventTitle": "Marvelous Marvin Hagler vs. John Mugabi",
+                    "eventSummary": "Hagler vs. Mugabi was Showtime Boxing’s maiden broadcast and they hit the ground running with one of the greatest middleweight championship fights of the modern era.",
+                    "subEventOf": {
+                        "@type": "Event",
+                        "eventTitle": "Showtime Boxing Greatest Fights"
+                    }
+                },
+                {
+                    "@type": "Event",
+                    "eventTitle": "Roberto Duran vs. Iran Barkley",
+                    "eventSummary": "Duran was 37 years old and hadn’t scored a significant victory since posting an eighth-round stoppage of Davey Moore for the WBA super welterweight title in June 1983.",
+                    "subEventOf": {
+                        "@type": "Event",
+                        "eventTitle": "Showtime Boxing Greatest Fights"
+                    }
+                },
+                {
+                    "@type": "Event",
+                    "eventTitle": "Mike Tyson vs. Evander Holyfield 1",
+                    "eventSummary": "In the early 1990s, this was considered the biggest heavyweight title matchup since Muhammad Ali and Joe Frazier clashed two decades earlier.",
+                    "subEventOf": {
+                        "@type": "Event",
+                        "eventTitle": "Showtime Boxing Greatest Fights"
+                    }
+                },
+                {
+                    "@type": "Event",
+                    "eventTitle": "Diego Corrales vs. Jose Luis Castillo 1",
+                    "eventSummary": "Corrales vs. Castillo was one of the greatest fights in history.",
+                    "subEventOf": {
+                        "@type": "Event",
+                        "eventTitle": "Showtime Boxing Greatest Fights"
+                    }
+                },
+                {
+                    "@type": "Event",
+                    "eventTitle": "Israel Vazquez vs. Rafael Marquez 3",
+                    "eventSummary": "Criminally overlooked, it’s arguable that Mexicans Israel Vazquez and Rafael Marquez turned in the most consistently exciting trilogy in modern boxing history.",
+                    "subEventOf": {
+                        "@type": "Event",
+                        "eventTitle": "Showtime Boxing Greatest Fights"
+                    }
+                }
+            ]
+        }
+    ]
+}
+```

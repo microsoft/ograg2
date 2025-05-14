@@ -1,0 +1,137 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Kyle Bonn",
+      "published": "2023-11-30T21:41:00+00:00",
+      "title": "Inter Miami friendly matches for 2024 preseason: Lionel Messi to play Newell's Old Boys, China tour cancelled",
+      "summary": "With the 2023 MLS season closing earlier than expected for Inter Miami, eliminated from playoff contention, Lionel Messi will have significant time off before the new campaign begins in February 2024. With every new season come preseason friendlies, as the players hope to ramp up their match fitness prior to the start of the coming campaign. Players need game time to build their bodies to the point where they can play full 90-minute matches, especially when they are contesting multiple games a week. Inter Miami's preseason will be watched with extra observation as Messi draws considerable attention wherever he goes, home or abroad. The Argentina star had looked like being part of a tour of China, although that's no longer the case, while the prospect of facing a familiar side from home is a tantalising one. The Sporting News has compiled all the known preseason matches either confirmed or reported prior to the start of Inter Miami's 2024 season.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://www.sportingnews.com/us/soccer/news/inter-miami-friendly-matches-2024-preseason-lionel-messi/4c4d6891ade0c8ddd2512bf7"
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Inter Miami vs Al Nassr",
+      "eventSummary": "Lionel Messi and Cristiano Ronaldo will meet in a club friendly between Inter Miami and Al Nassr in Riyadh, Saudi Arabia on Thursday, February 1 with kickoff at 1 p.m. ET (9 p.m. local time in Saudi Arabia).",
+      "theme": {
+        "@type": "intangibleStuff",
+        "comment": "sports"
+      }
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Inter Miami vs El Salvador",
+      "eventSummary": "Inter Miami's first confirmed friendly of the 2024 preseason will see the club travel to San Sebastian to take on the El Salvador national team on January 19."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Inter Miami vs Hong Kong",
+      "eventSummary": "The club announced in early December that Inter Miami would take a tour of Asia in early February as part of their 2024 preseason slate. The trip will see Inter Miami play a collection of top players from the Hong Kong First Division on February 4 at Hong Kong Stadium."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Inter Miami vs Vissel Kobe",
+      "eventSummary": "Following the match with Hong Kong, Inter Miami will head to Tokyo to take on J1 League champions Vissel Kobe at the Japan National Stadium."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Inter Miami vs Newell's Old Boys",
+      "eventSummary": "After their Asia trip, Inter Miami will host a friendly at DRV PNK Stadium against Newell's Old Boys."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Inter Miami vs River Plate",
+      "eventSummary": "In late November, it was reported that Inter Miami have arranged to contest a friendly against Argentine giants River Plate in Dallas, Texas in late January."
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Inter Miami vs NYCFC",
+      "eventSummary": "Instead of the China tour, Inter Miami met NYCFC in a hastily arranged friendly at DRV PNK Stadium on November 10 to honor Lionel Messi's most recent Ballon d'Or."
+    }
+  ]
+}
+```

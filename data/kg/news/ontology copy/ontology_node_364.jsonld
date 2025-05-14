@@ -1,0 +1,154 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:person1",
+      "@type": "snap:person",
+      "name": "Sinha",
+      "comment": "Victim of online harassment"
+    },
+    {
+      "@id": "snap:person2",
+      "@type": "snap:person",
+      "name": "Sarah Viren",
+      "comment": "Professor and journalist"
+    },
+    {
+      "@id": "snap:person3",
+      "@type": "snap:person",
+      "name": "Shantel Buggs",
+      "comment": "Assistant professor at Florida State University"
+    },
+    {
+      "@id": "snap:person4",
+      "@type": "snap:person",
+      "name": "Victor Ray",
+      "comment": "Associate professor at the University of Iowa"
+    },
+    {
+      "@id": "snap:person5",
+      "@type": "snap:person",
+      "name": "Catherine Tan",
+      "comment": "Professor targeted by cyberstalker"
+    },
+    {
+      "@id": "snap:organization1",
+      "@type": "snap:organization",
+      "name": "Southern Connecticut State University"
+    },
+    {
+      "@id": "snap:organization2",
+      "@type": "snap:organization",
+      "name": "Arizona State University"
+    },
+    {
+      "@id": "snap:organization3",
+      "@type": "snap:organization",
+      "name": "Hofstra University"
+    },
+    {
+      "@id": "snap:organization4",
+      "@type": "snap:organization",
+      "name": "George Mason University"
+    },
+    {
+      "@id": "snap:organization5",
+      "@type": "snap:organization",
+      "name": "Vassar College"
+    },
+    {
+      "@id": "snap:event1",
+      "@type": "snap:event",
+      "eventTitle": "Online Harassment",
+      "eventSummary": "Series of online threats and harassment targeting academics"
+    },
+    {
+      "@id": "snap:event2",
+      "@type": "snap:event",
+      "eventTitle": "Title IX Policy Changes",
+      "eventSummary": "Changes in Title IX policies affecting handling of harassment cases"
+    }
+  ]
+}
+```

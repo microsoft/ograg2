@@ -1,0 +1,123 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Sweet Sorghum",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Oilseeds",
+                "used_for": "Crop Management"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Application of balanced fertilizer at recommended dose in the right stage of the crop will not only improve the productivity but also improve the soil fertility and reduce the environmental pollution."
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Not specified",
+                "disease_symptoms": "Not specified",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Not specified",
+                    "quantity": "Not specified",
+                    "stage": "Not specified"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Not specified",
+                "pest_symptoms": "Not specified",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Not specified",
+                    "quantity": "Not specified",
+                    "stage": "Not specified"
+                }
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Not specified",
+                "avoid_soil_type": "Not specified",
+                "for_water": "Not specified",
+                "for_nutrients": "Not specified"
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Not specified",
+                "for_flowering": "Not specified",
+                "for_grain_filling": "Not specified",
+                "negative_effect": "Not specified"
+            },
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Not specified",
+                "quantity": "Not specified"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Not specified",
+                "value": "Not specified",
+                "depth": "Not specified",
+                "method": "Not specified"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Not specified",
+                "weed_types": [],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Not specified",
+                    "quantity": "Not specified",
+                    "stage": "Not specified"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Not specified",
+                "stage_of_application": "Not specified"
+            },
+            "harvesting_guidelines_are": "Not specified",
+            "storage_guidelines_are": "Not specified"
+        },
+        {
+            "@type": "Fertilization",
+            "nutrient_name": "Balanced Fertilizer",
+            "quantity": "Recommended Dose",
+            "stage_of_application": "Right stage of the crop"
+        }
+    ]
+}

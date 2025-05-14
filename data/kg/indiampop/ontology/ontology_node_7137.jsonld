@@ -1,0 +1,77 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "WeedManagement": {
+            "@id": "cropCult:WeedManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "weed_name": "schema:Text",
+                "weed_types": "schema:List",
+                "herbicides": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "GROUNDNUT (Arachis hypogaea )",
+            "has_types": {
+                "@type": "CropType",
+                "name": "OILSEEDS",
+                "used_for": "CROP MANAGEMENT"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "name": "I. Rainfed",
+                "has_regions": ["I. Irrigated"]
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "EARTHING UP",
+                "weed_types": ["second hand weeding", "late hand weeding"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "herbicide application",
+                    "quantity": "1",
+                    "stage": "12"
+                }
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Accomplish earthing up during second hand weeding/late hand weeding (in herbicide application). NOTE: i) Earthing up provides medium for the peg development. ii) Use the improved hoe with long handle which can be worked more efficiently in a standing position. iii) Do not disturb the soil after the 45th day of sowing as it will affect pod formation adversely.",
+                "with_soil_moisture": "Medium"
+            }
+        }
+    ]
+}

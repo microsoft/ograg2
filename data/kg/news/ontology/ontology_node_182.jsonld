@@ -1,0 +1,135 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Sony Music’s artists aren’t involved in YouTube’s new voice-cloning AI experiment.",
+            "author": "Tim Ingham",
+            "theme": "business",
+            "summary": "Sony Music’s artists are not participating in YouTube's AI voice-cloning experiment, amidst concerns over copyright and artist rights.",
+            "created": "2023-11-23T18:48:48+00:00",
+            "published": "2023-11-23T18:48:48+00:00",
+            "url": "https://www.musicbusinessworldwide.com/sony-musics-artists-arent-involved-in-youtubes-new-cloned-voice-ai-experiment-not-unrelated-googles-recent-filing-with-the-us-copyright-office/",
+            "hasThumbnail": "snap:imageAsset",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "YouTube's 'Dream Track' Experiment Launch",
+                        "eventSummary": "YouTube unveiled a new AI experiment allowing creators to clone vocals of well-known stars.",
+                        "theme": "AI in Music",
+                        "hasLocation": "geo:SpatialThing",
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Charlie Puth"
+                                },
+                                {
+                                    "name": "John Legend"
+                                },
+                                {
+                                    "name": "Demi Lovato"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Sony Music Entertainment"
+                                },
+                                {
+                                    "name": "Universal Music Group"
+                                },
+                                {
+                                    "name": "Warner Music Group"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "followUp": "snap:asset",
+            "derivedFrom": "snap:asset"
+        }
+    ]
+}

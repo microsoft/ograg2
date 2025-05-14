@@ -1,0 +1,136 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Dry Seeded Irrigated Un-Puddled Lowland Rice",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Rice",
+                "used_for": "Cultivation"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Lowland",
+                    "has_regions": ["Un-Puddled"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Dry Seeded"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "Early Season",
+                            "end_date": "Late Season"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "Standard"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Standard",
+                            "quantity": "Standard",
+                            "stage_of_application": "Standard"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Standard",
+                "for_flowering": "Standard",
+                "for_grain_filling": "Standard",
+                "negative_effect": "Standard"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Standard",
+                "avoid_soil_type": "Standard",
+                "for_water": "Standard",
+                "for_nutrients": "Standard"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Standard",
+                "with_soil_moisture": "Standard"
+            },
+            "seed_germination_test_requirements_are": "Standard",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Standard",
+                "quantity": "Standard"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Standard",
+                "value": "Standard",
+                "depth": "Standard",
+                "method": "Standard"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Standard",
+                "weed_types": ["Standard"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Standard",
+                    "quantity": "Standard",
+                    "stage": "Standard"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Standard",
+                "stage_of_application": "Standard"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Standard",
+                "disease_symptoms": "Standard",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Standard",
+                    "quantity": "Standard",
+                    "stage": "Standard"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Standard",
+                "pest_symptoms": "Standard",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Standard",
+                    "quantity": "Standard",
+                    "stage": "Standard"
+                }
+            },
+            "harvesting_guidelines_are": "As that of transplanted rice. This area is more suitable to combine harvester.",
+            "storage_guidelines_are": "Standard"
+        }
+    ]
+}

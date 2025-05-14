@@ -1,0 +1,144 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "title": "New ultrathin materials can pull climate-warming CO2 from the air",
+            "author": "Shi En Kim",
+            "theme": "science",
+            "content": "This is another in our series of stories identifying new technologies and actions that can slow climate change, reduce its impacts or help communities cope with a rapidly changing world. One up-and-coming class of tiny materials could help solve the huge problem of climate change. How? By catching climate-warming carbon dioxide out of the air. The nano-scale materials are called MXenes (MAX-eenz). Their name comes from their structure, which is made up of alternating layers of M and X atoms. “M” layers consist of some transition metal. (Those atoms are bulky and can shed a variable number of electrons.) “X” layers contain atoms of another element, such as carbon or nitrogen. A single MXene sheet contains a few of these alternating M and X layers chemically bound to each other. It may look like MXM or MXMXM. Each sheet is typically only about 1 nanometer thick. For comparison, a sheet of paper is 100,000 times thicker. MXenes normally come as stacks of these individual sheets. The many separate sheets inside a stack add up to a huge overall surface area. It’s like how the combined surface area of all the pages in a book is much larger than that of just the covers. In fact, the total surface area contained in one gram (1/400 ounce) of MXene “can cover a football field,” notes Per Persson. He’s a materials scientist at Linköping University in Sweden. Atoms across MXenes’ large surface areas can interact with their environment. That includes grabbing carbon dioxide, or CO 2, out of the air around them — a process called carbon capture. The white exhaust leaving smokestacks at this coal-fired power plant in Arizona is largely steam. Not visible is the carbon dioxide gas also leaving those stacks. MXene nanomaterials could be installed at or near the top of each stack to collect much of that climate-warming CO 2 before it escapes into the open air. Miguel Sotomayor/Moment/Getty Images Plus MXenes are excellent at snagging CO 2 , Persson says. Some researchers think it’s because CO 2 molecules are just the right size to fit between a MXene’s tight layers. Persson suspects it’s because CO 2 and MXenes like to share electrons, allowing CO 2 to chemically stick to a MXene’s surface. What’s more, MXenes chemically ignore other common gases — such as nitrogen, the most abundant gas in Earth’s atmosphere. This could allow MXenes to suck climate-warming CO 2 out of the air while leaving the rest of the atmosphere alone. Several research groups have been exploring MXenes’ potential to capture CO 2 from the air. In the Linköping experiments, “CO 2 stuck to the MXene surface like refrigerator magnets,” Persson says. “It was absolutely amazing.” His group has shown that MXenes can sponge up as much as half their weight in CO 2 . One large family MXenes don’t exist in nature. Scientists have to make them. This is freshly produced MXene, which normally forms a dark powder when dry. This MXene contains alternating layers of vanadium (M) and carbon (X) atoms. Karamullah Eisawi/Tulane Univ. They do this using other labmade compounds called MAX phases. Like MXenes, MAX phases are layered crystals. But MAX phases have extra sheets of metal “A” that sandwich between their M and X layers. To turn MAX phases into MXenes, scientists must eat away the A layers using a strong acid. A common one is hydrofluoric (Hy-droh-FLOOR-ik) acid. (This acid is so harsh that it can dissolve the minerals in your bones!) The treatment leaves behind just the M and X layers. Since the materials’ discovery, scientists have found safer ways to make MXenes. These techniques use milder acids or bases. One such chemical is sodium hydroxide. That’s an ingredient in soap. Another recent method is to use molten fluoride salts to etch away the A layer in MAX phases. No harsh compounds are needed there, although it does take high temps — up to 750° Celsius (1,380° Fahrenheit). MXenes are the largest group of flat, sheetlike nanomaterials. Scientists refer to them as being largely two-dimensional, or 2-D. Another famous example of a 2-D material is graphene. This diagram depicts a process to convert MAX phase materials into thin sheets of MXenes. An acid etches out all but the M layers (blue) and X layers (purple) to yield thick MXene sheets. The far right panel shows a scanning electron microscope image of the MXene. M. Ozkan et al/Chem. Oct. 4, 2023 ( CC BY 4.0 DEED MXenes have “probably the largest diversity and tunability any 2-D material can offer,” says Michael Naguib. By tunable, this engineering physicist means that MXenes can be tweaked to take on different properties. Naguib works at Tulane University in New Orleans, La. He made the world’s first MXene in 2011, a titanium carbide. Scientists have now made more than 50 MXenes. New ones arise when scientists mix and match different M and X atoms. Each MXene has slightly different properties, from how well it conducts electricity to how strong it is. Scientists can even modify existing MXenes by treating them with different chemicals. This involves covering the MXene’s surface with new atoms, such as oxygen and fluorine, to change its behavior. For more than a decade, scientists have been tailoring different MXenes for use in batteries and other energy storage devices. But tweaking MXenes’ chemistry can also alter their ability to collect CO 2 . In an October 4 paper in Chem, engineers at the University of California, Riverside, reviewed the potential widespread use of MXenes. In a statement, lead author Mihri Ozkan noted, “Their unique properties make them excellent candidates for capturing CO 2 .” Painting on a CO 2 -absorber Freshly prepared MXenes appear as a dark-colored powder. Each fleck contains many MXene sheets. Under a microscope, they look like loose sheets of paper. MXenes become easier to work with when scientists add this powder to water, creating an ink, says Anupma Thakur. She’s a materials scientist that Purdue University in West Lafayette, Ind. Mihri Ozkan, an engineer at the University of California, Riverside, is the lead author of the new study showing that certain MXenes can act like carbon-dioxide sponges. These nano-scale sheets can sop up that climate-warming gas from the air. UC Riverside As ink, Thakur adds, scientists can simply paint MXenes onto desired surfaces, such as fabric, plastic or glass. Or, if a thick enough coat of MXene paint is peeled carefully off a surface, it can even become a free-standing sheet. When toughened with polymers, MXene films can durably separate CO 2 from exhaust gas. For carbon capture, Persson imagines fitting MXene filters atop chimneys where the exhaust from burned materials is rich in CO 2 . To absorb CO 2 from the air elsewhere, Thakur suggests putting stacks of MXene screens out in the open. This method would be less efficient at capturing CO 2 , though, since average levels of CO 2 in the air far from pollution sources are quite low. Keep in mind, trapping CO 2 anywhere is just a first step in managing this pollutant, says Vitalie Stavila. He’s a materials chemist at Sandia National Laboratories in Livermore, Calif. “The problem is, what are you going to do with all that CO 2 ?” he says. Scientists will have to figure out how to retrieve the trapped gas from the MXenes after they’re full. MXenes could be heated up to release their CO 2 for long-term storage somewhere else. Flushing MXenes with a different kind of gas, such as hydrogen, might also remove the CO 2 from them. Then the MXenes could be reused for a new round of carbon capture. MXenes could also help transform the CO 2 they capture into other useful compounds, Stavila says. That’s because MXenes are catalytic. That means they can help drive other chemicals, such as CO 2 , to react. MXenes also conduct electricity. Since they like sharing electrons with CO 2 , they can ferry those electrons to other compounds. As a result, “you can do [transformations of CO 2 ] that may not be otherwise possible,” Stavila says. For instance, with a boost from MXenes, CO 2 can react with hydrogen to form methanol or formic acid. These liquids can be used as fuels to reduce people’s reliance on newly mined fossil fuels, which add new CO 2 to the atmosphere. Or, better yet, these liquids can be stored somewhere to keep their carbon out of the air for good. This diagram (cropped for clarity) shows how a dry MXene (upper left) or wet one (lower left) appear to capture and store carbon dioxide molecules (trio of black and red atoms) within its structure (in right version of each MXene). M. Ozkan et al/Chem. Oct. 4, 2023 ( CC BY 4.0 DEED Challenges ahead Since they’re still fairly new, MXenes today are only used in research. Scientists have to iron out some kinks before these will be ready for use in the real world. And that will take several years, at least. One weakness of MXenes is that they can break down and transform into other solids called oxides in the presence of oxygen. So water and oxygen make MXenes less reactive. But scientists think they can overcome this problem by tweaking MXenes’ structure. Capping the materials’ edges with bulky salts, for instance, could shield MXenes from damage by oxygen. It’s also hard, right now, to make large amounts of MXenes. In the lab, researchers can make only several kilograms (pounds) in a single batch. Several companies are working out how to boost batch sizes. But Thakur points out one irony: Making MXenes for carbon capture can have a big carbon footprint. It takes a lot of electricity to get the heat needed to make them, she notes. Much of that electricity is made using CO 2 -spewing fossil fuels. It’s important to make sure that the energy used to make these materials doesn’t spew more CO 2 than the MXenes can later sop up. Otherwise, that would defeat their use in carbon capture. Educators and Parents, Sign Up for The Cheat Sheet Weekly updates to help you use Science News Explores in the learning environment Client key* E-mail Address* Go Thank you for signing up! There was a problem signing you up. MXenes also cost a lot to make. The high cost of making these materials would be less important if they could withstand thousands of CO 2 capture-and-release cycles. That way, scientists wouldn’t have to keep making new MXenes. So far, no one has tested MXenes’ durability for stored CO 2 removal and reuse. Still, it helps that MXenes are mechanically rugged. Research has shown that certain types can be as strong as steel. The Riverside group’s new paper also points to a related family of nanosheets that may prove good CO 2 sponges. Made from MXenes, they’re known as MBenes, because the “X” layer is made up of boron atoms. These materials are harder to make than MXenes. So most research on them has been done with math or computer models. But MBenes could have unique mechanical and electrical traits, Ozkan’s team finds. And those just might help them last through many, many cycles of CO 2 capture and release. Each year, human activities spew tens of billions of tons of CO 2 into the air. That’s equivalent to the weight of tens of billions of elephants. Carbon absorbers, including MXenes or MBenes, can’t catch it all. As such, they’re never going to replace the need for reducing emissions of CO 2 and other greenhouse gases. Still, given the urgency of climate change, even a quick or partial fix — such as carbon capture — can’t be ignored. “At this point in time,” says Persson, “we need to look at all the possible solutions.” And MXene-like materials are emerging as potentially important candidates.",
+            "published": "2023-12-15T11:30:00+00:00",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "MXenes and Carbon Capture",
+                    "eventSummary": "MXenes are explored for their potential to capture CO2 from the air.",
+                    "theme": "science",
+                    "mentions_persons": [
+                        {
+                            "@type": "snap:person",
+                            "name": "Per Persson"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Michael Naguib"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Mihri Ozkan"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Anupma Thakur"
+                        },
+                        {
+                            "@type": "snap:person",
+                            "name": "Vitalie Stavila"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@type": "snap:organization",
+                            "name": "Linköping University"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Tulane University"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "University of California, Riverside"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Purdue University"
+                        },
+                        {
+                            "@type": "snap:organization",
+                            "name": "Sandia National Laboratories"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,63 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide"
+            }
+        },
+        "Fungicide": {
+            "@id": "cropCult:Fungicide",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "instructions": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "GROUNDNUT",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "organomercurial compound",
+                "instructions": "Treatment with organomercurial compound should not be taken up when the seeds are treated with rhizobium culture."
+            }
+        },
+        {
+            "@type": "Crop",
+            "name": "GROUNDNUT",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "carbendazim 0.1% + thiram 0.15% or vitavax power (0.15%)",
+                "instructions": "Rhizobium culture treatment should be taken up after seven days of the seed treatment with the mixture of carbendazim 0.1% + thiram 0.15% or with vitavax power (0.15%)."
+            }
+        },
+        {
+            "@type": "Crop",
+            "name": "GROUNDNUT",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "sodium or ammonium molybdate",
+                "quantity": "3g/10 kg kernel",
+                "instructions": "Add sodium or ammonium molybdate @ 3g/10 kg kernel along with bacterial culture."
+            }
+        },
+        {
+            "@type": "Crop",
+            "name": "GROUNDNUT",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "rhizobium culture",
+                "quantity": "1.5 kg",
+                "instructions": "About 1.5 kg of rhizobium culture would be required to treat the seeds for one hectare."
+            }
+        }
+    ]
+}

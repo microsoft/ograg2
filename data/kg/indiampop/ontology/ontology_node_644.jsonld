@@ -1,0 +1,116 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "Fertilization": {
+            "@id": "cropCult:Fertilization",
+            "@type": "schema:Thing",
+            "@context": {
+                "nutrient_name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Manuring",
+            "has_types": [
+                {
+                    "@type": "CropType",
+                    "name": "Nendran (irrigated)",
+                    "used_for": "190:115:300"
+                },
+                {
+                    "@type": "CropType",
+                    "name": "Other varieties depending upon soil fertility level",
+                    "used_for": "160-200 : 160-200 : 320-400"
+                },
+                {
+                    "@type": "CropType",
+                    "name": "Palayankodan (rainfed)",
+                    "used_for": "100:200:400"
+                },
+                {
+                    "@type": "CropType",
+                    "name": "Palayankodan (reclaimed alluvial soils of Kuttanad)",
+                    "used_for": "100:200:400"
+                }
+            ],
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Apply the fertilizer 60-75 cm around the plant in two equal split doses; the first, two months after planting and the second, four months after planting. For ratoon crop, the entire fertilizers have to be applied in a single dose immediately after the harvest of the preceding crop. Irrigate immediately after manuring."
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Immediately after manuring"
+            },
+            "has_fertilizer_application_requirements": [
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "N:P2O5:K2O",
+                    "quantity": "40:65:60",
+                    "stage_of_application": "One month after planting"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "N:P2O5:K2O",
+                    "quantity": "30:50:60",
+                    "stage_of_application": "Two months after planting"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "N:P2O5:K2O",
+                    "quantity": "30:00:60",
+                    "stage_of_application": "Three months after planting"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "N:P2O5:K2O",
+                    "quantity": "30:00:60",
+                    "stage_of_application": "Four months after planting"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "N:P2O5:K2O",
+                    "quantity": "30:00:60",
+                    "stage_of_application": "Five months after planting"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "N:P2O5:K2O",
+                    "quantity": "30:00:00",
+                    "stage_of_application": "Just after complete emergence of bunch"
+                },
+                {
+                    "@type": "Fertilization",
+                    "nutrient_name": "N:P2O5:K2O",
+                    "quantity": "190:115:300",
+                    "stage_of_application": "Total"
+                }
+            ]
+        }
+    ]
+}

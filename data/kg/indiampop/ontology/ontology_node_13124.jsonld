@@ -1,0 +1,71 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "CropProtection": {
+            "@id": "cropCult:CropProtection",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_pest_treatements": "cropCult:PestTreatements"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "CropProtection",
+            "name": "KKM 10 D",
+            "has_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_control": [
+                    {
+                        "@type": "PesticideList",
+                        "name": "Malathion 50 EC",
+                        "quantity": "500 ml/ha",
+                        "stage": "Not specified"
+                    },
+                    {
+                        "@type": "PesticideList",
+                        "name": "Neem seed kernel extract 5%",
+                        "quantity": "25 kg/ha",
+                        "stage": "Not specified"
+                    },
+                    {
+                        "@type": "PesticideList",
+                        "name": "Notchi or Ipomoea or Prosopis leaf extract 10%",
+                        "quantity": "Not specified",
+                        "stage": "Not specified"
+                    },
+                    {
+                        "@type": "PesticideList",
+                        "name": "Chopped paddy straw treated with quinalphos 1.5 D",
+                        "quantity": "50 kg/ha",
+                        "stage": "Not specified"
+                    },
+                    {
+                        "@type": "PesticideList",
+                        "name": "Dicofol 18.5 EC",
+                        "quantity": "1250 ml/ha",
+                        "stage": "Not specified"
+                    }
+                ]
+            }
+        }
+    ]
+}

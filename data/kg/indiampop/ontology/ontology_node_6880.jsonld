@@ -1,0 +1,83 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "BENGALGRAM (Cicer arietinum L.)",
+            "needs_pest_treatements": [
+                {
+                    "@type": "PestTreatements",
+                    "pest_name": "Gram caterpillar",
+                    "pest_symptoms": "2 early instar larvae/plant 5-8 eggs/plant",
+                    "pest_control": [
+                        {
+                            "@type": "PesticideList",
+                            "name": "Pheromone traps for Helicoverpa armigera",
+                            "quantity": "12/ha"
+                        }
+                    ]
+                },
+                {
+                    "@type": "PestTreatements",
+                    "pest_name": "Aphids",
+                    "pest_symptoms": "20/2.5 cm shoot length",
+                    "pest_control": [
+                        {
+                            "@type": "PesticideList",
+                            "name": "Methyl demeton 25 EC",
+                            "quantity": "500 ml/ha"
+                        },
+                        {
+                            "@type": "PesticideList",
+                            "name": "Dimethoate 30 EC",
+                            "quantity": "500 ml/ha"
+                        }
+                    ]
+                }
+            ],
+            "storage_guidelines_are": "Dry the seeds adequately to reduce moisture level to 10 %."
+        }
+    ]
+}

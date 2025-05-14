@@ -1,0 +1,164 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "West Indies v England: fifth and deciding men’s T20 cricket international – live",
+      "author": "Rob Smyth",
+      "theme": "sports",
+      "content": "https://www.theguardian.com/sport/live/2023/dec/21/west-indies-v-england-fifth-and-deciding-mens-t20-cricket-international-live",
+      "published": "2023-12-21T19:39:01+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "West Indies win the series 3-2",
+          "eventSummary": "West Indies win the series 3-2 with a six from Shai Hope.",
+          "theme": "sports",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Shai Hope"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Jason Holder"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Jos Buttler"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Phil Salt"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Chris Woakes"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Rehan Ahmed"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Sam Curran"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Adil Rashid"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Rovman Powell"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Reece Topley"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Nicholas Pooran"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Brandon King"
+            },
+            {
+              "@type": "snap:person",
+              "name": "Johnson Charles"
+            }
+          ],
+          "mentions_organizations": [
+            {
+              "@type": "snap:organization",
+              "name": "West Indies Cricket"
+            },
+            {
+              "@type": "snap:organization",
+              "name": "England Cricket"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

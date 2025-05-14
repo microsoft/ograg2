@@ -1,0 +1,61 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Composting": {
+            "@id": "cropCult:Composting",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_technology": "cropCult:Technology",
+                "has_vermiculture_bed": "cropCult:VermicultureBed",
+                "has_layers": "cropCult:Layers",
+                "has_moisture_requirements": "schema:Text"
+            }
+        },
+        "Technology": {
+            "@id": "cropCult:Technology",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name"
+            }
+        },
+        "VermicultureBed": {
+            "@id": "cropCult:VermicultureBed",
+            "@type": "schema:Thing",
+            "@context": {
+                "description": "schema:Text"
+            }
+        },
+        "Layers": {
+            "@id": "cropCult:Layers",
+            "@type": "schema:Thing",
+            "@context": {
+                "has_saw_dust_or_husk_or_coir_waste_or_sugarcane_trash_layer": "schema:Text",
+                "has_fine_sand_layer": "schema:Text",
+                "has_garden_soil_layer": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Composting",
+            "name": "COMPOSTING OF SOLID WASTES",
+            "has_technology": {
+                "@type": "cropCult:Technology",
+                "name": "TNAU Vermi Biocompost Technology"
+            },
+            "has_vermiculture_bed": {
+                "@type": "cropCult:VermicultureBed",
+                "description": "A vermiculture bed or worm bed (3 cm) can be prepared by placing after saw dust or husk or coir waste or sugarcane trash in the bottom of tub / container."
+            },
+            "has_layers": {
+                "@type": "cropCult:Layers",
+                "has_saw_dust_or_husk_or_coir_waste_or_sugarcane_trash_layer": "3 cm",
+                "has_fine_sand_layer": "3 cm",
+                "has_garden_soil_layer": "3 cm"
+            },
+            "has_moisture_requirements": "All layers must be moistened with water."
+        }
+    ]
+}

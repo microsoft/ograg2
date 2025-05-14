@@ -1,0 +1,64 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "DiseaseTreatements": {
+            "@id": "cropCult:DiseaseTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "disease_name": "schema:Text",
+                "disease_symptoms": "schema:Text",
+                "disease_control": "cropCult:HerbicideList"
+            }
+        },
+        "HerbicideList": {
+            "@id": "cropCult:HerbicideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:Crop",
+            "name": "Ginger",
+            "needs_disease_treatements": {
+                "@type": "cropCult:DiseaseTreatements",
+                "disease_name": "Unknown",
+                "disease_symptoms": "Unknown",
+                "disease_control": {
+                    "@type": "cropCult:HerbicideList",
+                    "name": "Pseudomonas fluorescens P1/PGPR mix II",
+                    "quantity": "Unknown",
+                    "stage": "45 days after planting (onset of monsoon)"
+                }
+            },
+            "harvesting_guidelines_are": "For vegetable ginger, the crop can be harvested from sixth month onwards. For dry ginger, harvest the crop between 245-260 days. After harvest, the fibrous roots attached to the rhizomes are trimmed off and soil is removed by washing. Rhizomes are soaked in water overnight and then cleaned. The skin is removed by scrapping with sharp bamboo splits or such other materials. Never use metallic substances since they will discolour the rhizomes. After scrapping, the rhizomes are sun-dried for a week with frequent turnings. They are again well rubbed by hand to remove any outer skin. This is the unbleached ginger of commerce.",
+            "storage_guidelines_are": "Unknown"
+        }
+    ]
+}

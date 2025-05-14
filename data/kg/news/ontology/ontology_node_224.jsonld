@@ -1,0 +1,176 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "Chiefs vs. Jets live score, updates, highlights from NFL 'Sunday Night Football' game",
+            "author": "Kyle Irving",
+            "published": "2023-10-01T23:47:00+00:00",
+            "theme": "sports",
+            "summary": "Just when you thought the Chiefs were going to march into MetLife Stadium and cruise to a victory, the Jets threw a vicious counterpunch to make for an interesting 'Sunday Night Football' game. Trailing by as much as 17 points, New York was able to tie the game at 20 heading into the fourth quarter. The Chiefs took the lead on a field goal early in the final frame and a crucial turnover from Jets QB Zach Wilson eventually decided the fate of the game as Kansas City did not give the ball back to earn the win, 23-20. Chiefs star QB Patrick Mahomes did not have his best game — throwing for just 200 yards and one touchdown to two interceptions — but he made clutch plays in the game's biggest moments to come away with a victory. Wilson had one of his best games as a pro, throwing for 245 yards and two touchdowns. Despite the commotion surrounding Taylor Swift's attendance, Travis Kelce had a relatively quiet game with six receptions for 60 yards. Instead, the Chiefs offense was powered by RB Isiah Pacheco who rushed for 115 yards and a touchdown.",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Chiefs vs. Jets final score",
+                        "eventSummary": "Chiefs 23, Jets 20",
+                        "theme": "NFL",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "MetLife Stadium"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "name": "Patrick Mahomes",
+                                    "dateOfBirth": "1995-09-17",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Texas, USA"
+                                    },
+                                    "alias": "Mahomes"
+                                },
+                                {
+                                    "name": "Zach Wilson",
+                                    "dateOfBirth": "1999-08-03",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Utah, USA"
+                                    },
+                                    "alias": "Wilson"
+                                },
+                                {
+                                    "name": "Travis Kelce",
+                                    "dateOfBirth": "1989-10-05",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "Ohio, USA"
+                                    },
+                                    "alias": "Kelce"
+                                },
+                                {
+                                    "name": "Isiah Pacheco",
+                                    "dateOfBirth": "1999-12-02",
+                                    "placeOfBirth": {
+                                        "@id": "geo:location",
+                                        "name": "New Jersey, USA"
+                                    },
+                                    "alias": "Pacheco"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "name": "Kansas City Chiefs",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "Kansas City, Missouri"
+                                    },
+                                    "alias": "Chiefs"
+                                },
+                                {
+                                    "name": "New York Jets",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "East Rutherford, New Jersey"
+                                    },
+                                    "alias": "Jets"
+                                },
+                                {
+                                    "name": "Sporting News",
+                                    "hasLocation": {
+                                        "@id": "geo:SpatialThing",
+                                        "name": "USA"
+                                    },
+                                    "alias": "Sporting News"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "url": "https://www.sportingnews.com/us/nfl/news/chiefs-jets-score-highlights-nfl-sunday-night-football/3e44364b970dbac0d083948d"
+        }
+    ]
+}

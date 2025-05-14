@@ -1,0 +1,230 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:person",
+      "name": "Archer Reid",
+      "dateOfBirth": "2005-09-19",
+      "height": "203cm",
+      "state": "Victoria Country",
+      "stateLeagueClub": "Gippsland Power",
+      "communityClub": "Inverloch-Kongwak",
+      "weapon": "Height and overhead marking",
+      "aflPlayerComparison": "Ben King (Gold Coast Suns)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Harley Reid",
+      "dateOfBirth": "2005-04-17",
+      "height": "187cm",
+      "state": "Victoria Country",
+      "stateLeagueClub": "Bendigo Pioneers",
+      "communityClub": "Tongala",
+      "weapon": "Power and contested ball-winning ability",
+      "aflPlayerComparison": "Dustin Martin (Richmond)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Archie Roberts",
+      "dateOfBirth": "2005-11-18",
+      "height": "184cm",
+      "state": "Victoria Metro",
+      "stateLeagueClub": "Sandringham Dragons",
+      "communityClub": "Hampton Rovers",
+      "weapon": "Clean hands and ball use",
+      "aflPlayerComparison": "Daniel Rioli (Richmond)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jake Rogers",
+      "dateOfBirth": "2005-03-02",
+      "height": "170cm",
+      "state": "Queensland",
+      "stateLeagueClub": "Gold Coast Suns Academy",
+      "communityClub": "Broadbeach",
+      "weapon": "One-touch hands and creativity",
+      "aflPlayerComparison": "Touk Miller (Gold Coast Suns)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Ryley Sanders",
+      "dateOfBirth": "2005-01-21",
+      "height": "185cm",
+      "state": "Tasmania",
+      "stateLeagueClub": "Sandringham Dragons",
+      "communityClub": "North Launceston",
+      "weapon": "Consistent high-level performances",
+      "aflPlayerComparison": "Andrew Brayshaw (Fremantle)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Ari Schoenmaker",
+      "dateOfBirth": "2005-01-07",
+      "height": "194cm",
+      "state": "Tasmania",
+      "stateLeagueClub": "Tasmania Devils",
+      "communityClub": "Launceston",
+      "weapon": "Intercept ability and long kick",
+      "aflPlayerComparison": "Callum Wilkie (St Kilda)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Cooper Simpson",
+      "dateOfBirth": "2005-02-13",
+      "height": "181cm",
+      "state": "Victoria Country",
+      "stateLeagueClub": "Dandenong Stingrays",
+      "communityClub": "Mt Martha",
+      "weapon": "Composure and step through congestion",
+      "aflPlayerComparison": "Adam Cerra (Carlton)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "George Stevens",
+      "dateOfBirth": "2005-04-14",
+      "height": "189cm",
+      "state": "Victoria Country",
+      "stateLeagueClub": "GWV Rebels",
+      "communityClub": "South Warrnambool",
+      "weapon": "Contested ball-winning and ball use",
+      "aflPlayerComparison": "Tom Green (GWS Giants)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Koltyn Tholstrup",
+      "dateOfBirth": "2005-06-28",
+      "height": "186cm",
+      "state": "Western Australia",
+      "stateLeagueClub": "Subiaco",
+      "communityClub": "Newtown Condingup",
+      "weapon": "Power and clean hands",
+      "aflPlayerComparison": "Cameron Rayner (Brisbane Lions)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Jed Walter",
+      "dateOfBirth": "2005-06-08",
+      "height": "194cm",
+      "state": "Queensland",
+      "stateLeagueClub": "Gold Coast Suns Academy",
+      "communityClub": "Palm Beach Currumbin",
+      "weapon": "Aerial ability and second efforts at ground level",
+      "aflPlayerComparison": "Charlie Curnow (Carlton)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Nick Watson",
+      "dateOfBirth": "2005-02-24",
+      "height": "170cm",
+      "state": "Victoria Metro",
+      "stateLeagueClub": "Eastern Ranges",
+      "communityClub": "Montrose",
+      "weapon": "Speed, agility and leap",
+      "aflPlayerComparison": "Shai Bolton (Richmond)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Darcy Wilson",
+      "dateOfBirth": "2005-08-18",
+      "height": "186cm",
+      "state": "Victoria Country",
+      "stateLeagueClub": "Murray Bushrangers",
+      "communityClub": "Wangaratta Rovers",
+      "weapon": "Elite running and ball-winning ability",
+      "aflPlayerComparison": "Sam Walsh (Carlton)"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Caleb Windsor",
+      "dateOfBirth": "2005-06-09",
+      "height": "184cm",
+      "state": "Victoria Metro",
+      "stateLeagueClub": "Eastern Ranges",
+      "communityClub": "Lysterfield",
+      "weapon": "Elite speed and ball use",
+      "aflPlayerComparison": "Nick Martin (Essendon)"
+    }
+  ]
+}
+```

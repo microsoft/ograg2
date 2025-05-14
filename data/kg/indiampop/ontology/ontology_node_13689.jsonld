@@ -1,0 +1,142 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "PULSES",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Pulses",
+                "used_for": "Food"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical",
+                    "has_regions": ["Africa", "Asia", "South America"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Pigeon Pea", "Chickpea", "Lentil"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-01-01",
+                            "end_date": "2022-02-01"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-02-01",
+                            "end_date": "2022-03-01"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "20",
+                            "unitText": "kg/ha"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "Nitrogen",
+                            "quantity": "50 kg/ha",
+                            "stage_of_application": "At sowing"
+                        }
+                    }
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "20-30°C",
+                "for_flowering": "15-25°C",
+                "for_grain_filling": "15-25°C",
+                "negative_effect": "Below 15°C and above 35°C"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Loamy",
+                "avoid_soil_type": "Clayey",
+                "for_water": "Well-drained",
+                "for_nutrients": "Rich in organic matter"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Plough the field to a fine tilth. Apply well decomposed farmyard manure at the time of land preparation.",
+                "with_soil_moisture": "Moist but not waterlogged"
+            },
+            "seed_germination_test_requirements_are": "Seeds should be viable and free from diseases. Germination rate should be above 80%.",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "Thiram",
+                "quantity": "2 g/kg of seeds"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Early morning or late evening",
+                "value": "30 cm between rows and 10 cm within the row",
+                "depth": "3-5 cm",
+                "method": "Dibbling"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "Grass weeds",
+                "weed_types": ["Barnyard grass", "Foxtail"],
+                "herbicides": {
+                    "@type": "HerbicideList",
+                    "name": "Glyphosate",
+                    "quantity": "1.5 l/ha",
+                    "stage": "Pre-emergence"
+                }
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "500-600 mm per season",
+                "stage_of_application": "At flowering and pod filling stage"
+            },
+            "needs_disease_treatements": {
+                "@type": "DiseaseTreatements",
+                "disease_name": "Fusarium wilt",
+                "disease_symptoms": "Yellowing and wilting of leaves, stunting of plants",
+                "disease_control": {
+                    "@type": "HerbicideList",
+                    "name": "Carbendazim",
+                    "quantity": "2 g/l of water",
+                    "stage": "At first sign of disease"
+                }
+            },
+            "needs_pest_treatements": {
+                "@type": "PestTreatements",
+                "pest_name": "Pod borer",
+                "pest_symptoms": "Holes in pods, damaged seeds",
+                "pest_control": {
+                    "@type": "PesticideList",
+                    "name": "Cypermethrin",
+                    "quantity": "50 ml/15 l of water",
+                    "stage": "At first sign of pest"
+                }
+            },
+            "harvesting_guidelines_are": "Harvest when pods are fully mature and have turned brown. Thresh immediately to avoid damage to seeds.",
+            "storage_guidelines_are": "Store in a cool, dry place. Use airtight containers to prevent insect infestation."
+        }
+    ]
+}

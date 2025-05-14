@@ -1,0 +1,148 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "title": "Fantasy Football RB Rankings Week 12: Who to start, best sleepers at running back",
+            "author": "Sloan Piva",
+            "theme": "sports",
+            "summary": "As we trot into Turkey Day week, only three more regular-season weeks remain until the fantasy football playoffs. Every decision — from the tough starts to the difficult sits; the savvy waiver adds to the costly drops — can ultimately decide whether your team is a contender or a pretender. Our Week 12 fantasy RB rankings for standard leagues will help guide you to the right moves and hopefully land you a big 'W' for which to be thankful.",
+            "created": "2023-11-21T21:33:00+00:00",
+            "published": "2023-11-21T21:33:00+00:00",
+            "has_events": {
+                "@id": "snap:eventList",
+                "@type": "schema:ItemList",
+                "Event": [
+                    {
+                        "@id": "snap:event",
+                        "@type": "schema:Thing",
+                        "eventTitle": "Fantasy Football RB Rankings Week 12",
+                        "eventSummary": "Rankings based on standard, non-PPR scoring",
+                        "theme": "Fantasy Football",
+                        "hasLocation": {
+                            "@id": "geo:location",
+                            "name": "Various NFL Stadiums"
+                        },
+                        "mentions_persons": {
+                            "@id": "snap:personList",
+                            "Person": [
+                                {
+                                    "@id": "snap:person",
+                                    "name": "Sloan Piva"
+                                }
+                            ]
+                        },
+                        "mentions_organizations": {
+                            "@id": "snap:organizationList",
+                            "Organization": [
+                                {
+                                    "@id": "snap:organization",
+                                    "name": "Sporting News"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "Person": [
+                {
+                    "@id": "snap:person",
+                    "name": "Sloan Piva"
+                }
+            ]
+        },
+        {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "Organization": [
+                {
+                    "@id": "snap:organization",
+                    "name": "Sporting News"
+                }
+            ]
+        }
+    ]
+}

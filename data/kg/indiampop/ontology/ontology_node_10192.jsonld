@@ -1,0 +1,63 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WeedManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "IrrigationRequirement": {
+            "@id": "cropCult:IrrigationRequirement",
+            "@type": "schema:Thing",
+            "@context": {
+                "quantity": "schema:Text",
+                "stage_of_application": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "RICE (Oryza sativa)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Azolla",
+                "used_for": "Manuring"
+            },
+            "needs_irrigation_schedule": [
+                {
+                    "@type": "IrrigationRequirement",
+                    "quantity": "Continuous submergence",
+                    "stage_of_application": "Rooting to max.tillering"
+                },
+                {
+                    "@type": "IrrigationRequirement",
+                    "quantity": "Saturation point*",
+                    "stage_of_application": "Max. tillering to heading"
+                },
+                {
+                    "@type": "IrrigationRequirement",
+                    "quantity": "Saturation",
+                    "stage_of_application": "Heading to maturity"
+                }
+            ]
+        }
+    ]
+}

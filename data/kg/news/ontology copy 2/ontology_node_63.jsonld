@@ -1,0 +1,244 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset1",
+            "@type": "snap:asset",
+            "title": "Fantasy Football Week 6",
+            "author": "Sportsline",
+            "theme": "Fantasy Football",
+            "content": "Analysis of player performances and matchups for Week 6.",
+            "created": "2023-10-10T00:00:00Z",
+            "modified": "2023-10-10T00:00:00Z",
+            "published": "2023-10-10T00:00:00Z",
+            "has_events": [
+                {
+                    "@id": "snap:event1",
+                    "@type": "snap:event",
+                    "eventTitle": "Week 1 Performance",
+                    "eventSummary": "Pittman had a season-high 97 yards on eight catches.",
+                    "theme": "Performance",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person1",
+                            "@type": "snap:person",
+                            "name": "Michael Pittman Jr.",
+                            "alias": "Pittman"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization1",
+                            "@type": "snap:organization",
+                            "name": "Jaguars"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event2",
+                    "@type": "snap:event",
+                    "eventTitle": "Minshew's Impact",
+                    "eventSummary": "Minshew's throwing style benefits Pittman.",
+                    "theme": "Player Impact",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person2",
+                            "@type": "snap:person",
+                            "name": "Gardner Minshew",
+                            "alias": "Minshew"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event3",
+                    "@type": "snap:event",
+                    "eventTitle": "Collins vs. Saints",
+                    "eventSummary": "Collins faces a tough matchup against the Saints.",
+                    "theme": "Matchup Analysis",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person3",
+                            "@type": "snap:person",
+                            "name": "Nico Collins",
+                            "alias": "Collins"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization2",
+                            "@type": "snap:organization",
+                            "name": "Saints"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event4",
+                    "@type": "snap:event",
+                    "eventTitle": "Purdy's Performance",
+                    "eventSummary": "Purdy excels against Cowboys' zone coverage.",
+                    "theme": "Performance",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person4",
+                            "@type": "snap:person",
+                            "name": "Brock Purdy",
+                            "alias": "Purdy"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization3",
+                            "@type": "snap:organization",
+                            "name": "Cowboys"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event5",
+                    "@type": "snap:event",
+                    "eventTitle": "Ford's Challenges",
+                    "eventSummary": "Ford faces a tough matchup against the 49ers.",
+                    "theme": "Matchup Analysis",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person5",
+                            "@type": "snap:person",
+                            "name": "Jerome Ford",
+                            "alias": "Ford"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization4",
+                            "@type": "snap:organization",
+                            "name": "49ers"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event6",
+                    "@type": "snap:event",
+                    "eventTitle": "Cooper's Struggles",
+                    "eventSummary": "Cooper's performance is affected by quarterback changes.",
+                    "theme": "Player Impact",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person6",
+                            "@type": "snap:person",
+                            "name": "Amari Cooper",
+                            "alias": "Cooper"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization5",
+                            "@type": "snap:organization",
+                            "name": "Browns"
+                        }
+                    ]
+                },
+                {
+                    "@id": "snap:event7",
+                    "@type": "snap:event",
+                    "eventTitle": "Stevenson's Struggles",
+                    "eventSummary": "Stevenson faces challenges in the Patriots' offense.",
+                    "theme": "Player Impact",
+                    "mentions_persons": [
+                        {
+                            "@id": "snap:person7",
+                            "@type": "snap:person",
+                            "name": "Rhamondre Stevenson",
+                            "alias": "Stevenson"
+                        }
+                    ],
+                    "mentions_organizations": [
+                        {
+                            "@id": "snap:organization6",
+                            "@type": "snap:organization",
+                            "name": "Patriots"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

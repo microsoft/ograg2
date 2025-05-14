@@ -1,0 +1,220 @@
+
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "content": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "title": "The best Black Friday headphone deals from Sony, Apple, Bose, Beats and more",
+            "author": "Jeff Dunn",
+            "theme": "technology",
+            "content": "Engadget has been testing and reviewing consumer tech since 2004. Our stories may include affiliate links; if you buy something through a link, we may earn a commission. Read more about how we evaluate products. Black Friday is often a boon for deals on headphones and earbuds, and this year is no different. The shopping holiday has brought a plethora of deals on all kinds of headphones, include several top picks from our guides to the best wireless headphones, wireless earbuds, budget wireless earbuds and gaming headsets. Other popular models from the likes of Sony, Beats, Bose and Apple are discounted as well. All of this means it's an ideal time to pick up a new set, whether it's to give as a gift to someone on your holiday shopping list or just to replace your own aging cans. To help you get a good bargain, we've rounded up the best Black Friday deals on headphones and earbuds we could find for 2023.",
+            "published": "2023-11-24T14:30:56+00:00",
+            "has_events": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Sony WH-1000XM5 Deal",
+                    "eventSummary": "The Sony WH-1000XM5 is down to $328 at Amazon, B&H and other retailers, which is a $72 drop and ties the lowest price we’ve seen.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Sony WF-1000XM5 Deal",
+                    "eventSummary": "The Sony WF-1000XM5 is on sale for $248 at Amazon, B&H and others.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Sony WH-1000XM4 Deal",
+                    "eventSummary": "Amazon, Adorama and B&H have the older Sony WH-1000XM4 down to $248.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Apple AirPods Pro Deal",
+                    "eventSummary": "Apple’s AirPods Pro are on sale for $190 at Amazon, Walmart, Target and Best Buy.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Apple AirPods (3rd-gen) Deal",
+                    "eventSummary": "The third-gen AirPods are available for $140 at Amazon, Target, Best Buy and others.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Apple AirPods (2nd Gen) Deal",
+                    "eventSummary": "The second-gen AirPods are down to $80 at Amazon and Target.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Apple AirPods Max Deal",
+                    "eventSummary": "Apple’s top-of-the-line headphones, the AirPods Max, are discounted to $450 at Amazon and Best Buy.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Bose QuietComfort Ultra Headphones Deal",
+                    "eventSummary": "Bose’s new QuietComfort Ultra Headphones are $50 off at multiple retailers, bringing the over-ear cans down to $379.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Bose QuietComfort Ultra Earbuds Deal",
+                    "eventSummary": "The new Bose QuietComfort Ultra Earbuds are down to $249 at several stores.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Beats Fit Pro Deal",
+                    "eventSummary": "The Beats Fit Pro is back down to $159.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Beats Studio Pro Deal",
+                    "eventSummary": "The Beats Studio Pro is down to $170 for Black Friday at Amazon, Target and Best Buy.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Amazon Echo Buds (2023) Deal",
+                    "eventSummary": "The Amazon Echo Buds are now down to $35 for Black Friday.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Anker Soundcore Space A40 Deal",
+                    "eventSummary": "The Anker Soundcore Space A40 is down to $54 for Black Friday.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Anker Soundcore Liberty 4 NC Deal",
+                    "eventSummary": "The Anker Soundcore Liberty 4 NC is down to $70 at Amazon, B&H and Best Buy.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Anker Soundcore Space Q45 Deal",
+                    "eventSummary": "Anker’s Soundcore Space Q45 is worth a look at its Black Friday price of $100.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Audio-Technica ATH-M20xBT Deal",
+                    "eventSummary": "The Audio-Technica ATH-M20xBT is a modest $10 off for Black Friday, bringing the wireless headphones down to $69.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "EarFun Free 2S Deal",
+                    "eventSummary": "The EarFun Free 2S is down to $24.59 at Amazon with a Prime-only discount and the checkout code FREE2SPD1.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Samsung Galaxy Buds 2 Pro Deal",
+                    "eventSummary": "The Samsung Galaxy Buds 2 Pro are on sale for $160 for Black Friday, and you can get them with a $10 Amazon gift card for no extra cost.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Jabra Elite 3 Deal",
+                    "eventSummary": "The Jabra Elite 3 is down to $40 at Best Buy.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "JLab Go Air Pop Deal",
+                    "eventSummary": "The JLab Go Air Pop is available for $17 at Amazon.",
+                    "theme": "technology"
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Google Pixel Buds Pro Deal",
+                    "eventSummary": "The Google Pixel Buds Pro are available for a new low of $115 at Wellbots.",
+                    "theme": "technology"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,204 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "title": "From Justin Timberlake to Sam Asghari: A timeline of Britney Spears’ relationships",
+      "author": "Amber Raiken",
+      "theme": "entertainment",
+      "content": "Stay ahead of the trend in fashion and beyond with our free weekly Lifestyle Edit newsletter Stay ahead of the trend in fashion and beyond with our free weekly Lifestyle Edit newsletter Please enter a valid email address Please enter a valid email address SIGN UP I would like to be emailed about offers, events and updates from The Independent. Read our privacy notice Thanks for signing up to the Lifestyle Edit email {{ #verifyErrors }} {{ message }} {{ /verifyErrors }} {{ ^verifyErrors }} Something went wrong. Please try again later {{ /verifyErrors }} In her forthcoming memoir, The Woman in Me, Britney Spears is expected to reflect on some of the most pivotal moments in her life, including her relationships. Over the years, the pop star’s love life has continued to make headlines. Most recently, her ex-husband Sam Asghari filed for divorce after only 14 months of marriage. Spears is also the mother of two children – Sean, 18, and Jayden, 17 – who she shares with her second ex-husband, Kevin Federline. According to a press release for The Woman in Me, Spears’ memoir is “a brave and astonishingly moving story about freedom, fame, motherhood, survival, faith, and hope”. Spears’ book is also expected to cover the high-profile legal battle to end her conservatorship, which was dissolved in November 2021 after 13 years. Throughout her time in the spotlight, specifically during the ‘90s and 2000s, Spears has been in some heavily publicised romances. Unsurprisingly, fans are anticipating that Spears will detail some of her relationships in The Woman in Me, which is set for release on 24 October. From Justin Timberlake to her now ex-husband Sam Asghari, here’s everything we know about Britney Spears’ relationships and rumoured romances.",
+      "published": "2023-10-18T03:46:39+00:00",
+      "has_events": [
+        {
+          "@type": "snap:event",
+          "eventTitle": "Justin Timberlake: 1998 to 2002",
+          "eventSummary": "Spears’ first highly public relationship was with her co-star in the Mickey Mouse Club, Justin Timberlake. The pair made many appearances together while dating, including the iconic moment Spears and Timberlake wore matching, all-denim outfits to the American Music Awards in 2001. They broke up in 2002, shortly after Timberlake and his boy band NSYNC released their hit tune, “Cry Me a River”.",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Justin Timberlake"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Wade Robson: 2001 to 2002",
+          "eventSummary": "Shortly after her breakup from Timberlake, Spears was rumoured to be dating Wade Robson, a dancer and choreographer who appeared in the music video for her 2009 tune, “(You Drive Me) Crazy”.",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Wade Robson"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Colin Farrell: 2003",
+          "eventSummary": "Back in 2003, Farrell and Spears made headlines when they were spotted holding hands at the premiere of The Recruit, sparking speculation that they were dating.",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Colin Farrell"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Jason Alexander: 2004",
+          "eventSummary": "Jason Alexander was Spears’ first husband, tying the knot at a wedding chapel in Las Vegas in 2004. However, only 55 hours after the nuptials, they annulled the marriage.",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Jason Alexander"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Kevin Federline: 2004 to 2007",
+          "eventSummary": "Kevin Federline and the “Gimme More” singer first met at a club in 2004, before they went on to start their relationship. After just three months of dating, the two tied the knot in September of that year during a surprise wedding ceremony.",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Kevin Federline"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Adnan Ghalib: 2007 to 2008",
+          "eventSummary": "Spears met British paparazzo Adnan Ghalib in 2007, shortly after she decided to shave her hair off in front of approximately 70 photographers.",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Adnan Ghalib"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Jason Trawick: 2009 to 2013",
+          "eventSummary": "Spears and Jason Trawick, a Hollywood agent who worked at WME, started dating in 2009 before getting engaged in December 2011.",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Jason Trawick"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "David Lucado: 2013 to 2014",
+          "eventSummary": "Two months after ending her engagement with Trawick, Spears started dating David Lucado, who worked at a legal firm.",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "David Lucado"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Charlie Ebersol: 2014 to 2015",
+          "eventSummary": "Spears and Charlie Ebersol, who is known as the co-founder of Tempus Ex Machina and The Company, started dating in 2014.",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Charlie Ebersol"
+            }
+          ]
+        },
+        {
+          "@type": "snap:event",
+          "eventTitle": "Sam Asghari: 2016 to 2023",
+          "eventSummary": "The pair first met in 2016 when Asghari was cast as Spears’ love interest in the music video for her song, “Slumber Party”.",
+          "mentions_persons": [
+            {
+              "@type": "snap:person",
+              "name": "Sam Asghari"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

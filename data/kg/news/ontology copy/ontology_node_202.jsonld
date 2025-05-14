@@ -1,0 +1,146 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "Travis Pulver",
+            "published": "2023-12-15T20:37:00+00:00",
+            "title": "College Bowl Odds, Spreads, Money Lines and Totals - NCAAF 2023 Bowl Season",
+            "summary": "College Bowl odds are posted at the best college football betting sites. Along with game odds, sportsbooks will offer a wider variety of prop bets to match the hype surrounding College Bowl odds, the College Football Playoff, and National Championship games.",
+            "associatedAsset": [
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Military Bowl Presented by GoBowling.com",
+                    "eventSummary": "Virginia Tech vs. Tulane at Navy-Marine Corps Memorial Stadium, Annapolis, MD. Kickoff at 2 p.m. ET on Dec. 27, broadcast on ESPN."
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Duke’s Mayo Bowl",
+                    "eventSummary": "UNC vs. West Virginia at Bank of America Stadium, Charlotte, NC. Kickoff at 5:30 p.m. ET on Dec. 27, broadcast on ESPN."
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "DIRECTV Holiday Bowl",
+                    "eventSummary": "Louisville vs. USC at Petco Park, San Diego, CA. Kickoff at 8 p.m. ET on Dec. 27, broadcast on FOX."
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "TaxAct Texas Bowl",
+                    "eventSummary": "Texas A&M vs. Oklahoma State at NRG Stadium, Houston, TX. Kickoff at 9 p.m. ET on Dec. 27, broadcast on ESPN."
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Wasabi Fenway Bowl",
+                    "eventSummary": "SMU vs. Boston College at Fenway Park, Boston, MA. Kickoff at 11 a.m. ET on Dec. 28, broadcast on ESPN."
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Bad Boy Mowers Pinstripe Bowl",
+                    "eventSummary": "Rutgers vs. Miami at Yankee Stadium, Bronx, NY. Kickoff at 2:15 p.m. ET on Dec. 28, broadcast on ESPN."
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Pop-Tarts Bowl",
+                    "eventSummary": "North Carolina State vs. Kansas State at Camping World Stadium, Orlando, FL. Kickoff at 5:45 p.m. ET on Dec. 28, broadcast on ESPN."
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Valero Alamo Bowl",
+                    "eventSummary": "Arizona vs. Oklahoma at Alamodome, San Antonio, TX. Kickoff at 9:15 p.m. ET on Dec. 28, broadcast on ESPN."
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Rose Bowl presented by Prudential",
+                    "eventSummary": "Alabama vs. Michigan at Rose Bowl, Pasadena, CA. Kickoff at 5 p.m. ET, broadcast on ESPN."
+                },
+                {
+                    "@type": "snap:event",
+                    "eventTitle": "Allstate Sugar Bowl",
+                    "eventSummary": "Texas vs. Washington at Caesars Superdome, New Orleans, LA. Kickoff at 8:45 p.m. ET, broadcast on ESPN."
+                }
+            ]
+        }
+    ]
+}
+```

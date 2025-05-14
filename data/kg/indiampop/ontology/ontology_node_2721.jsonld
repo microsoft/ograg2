@@ -1,0 +1,96 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        },
+        "WaterManagement": {
+            "@id": "cropCult:WaterManagement",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_water_requirements": "cropCult:WaterRequirements",
+                "has_irrigation_requirements": "cropCult:IrrigationRequirements",
+                "has_drainage_requirements": "cropCult:DrainageRequirements"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "Transplanted Puddled Lowland Rice",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Transplanted Puddled Lowland Rice",
+                "used_for": "Water Management"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Lowland",
+                    "has_regions": ["Lowland"],
+                    "has_seed_recommendations": {
+                        "@type": "SeedList",
+                        "variety_name": ["Transplanted Puddled Lowland Rice"],
+                        "has_early_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-01-01",
+                            "end_date": "2022-12-31"
+                        },
+                        "has_late_sowing_time": {
+                            "@type": "SowingTime",
+                            "start_date": "2022-01-01",
+                            "end_date": "2022-12-31"
+                        },
+                        "has_seeding_rate": {
+                            "@type": "schema:QuantitativeValue",
+                            "value": "1",
+                            "unitText": "kg/ha"
+                        },
+                        "has_fertilizer_application_requirements": {
+                            "@type": "Fertilization",
+                            "nutrient_name": "NPK",
+                            "quantity": "100 kg/ha",
+                            "stage_of_application": "At sowing"
+                        }
+                    }
+                }
+            },
+            "has_water_management": {
+                "@type": "WaterManagement",
+                "name": "Water Management for Transplanted Puddled Lowland Rice",
+                "has_water_requirements": {
+                    "@type": "schema:Text",
+                    "value": "Water is required at all stages of growth."
+                },
+                "has_irrigation_requirements": {
+                    "@type": "schema:Text",
+                    "value": "Irrigation is required at all stages of growth."
+                },
+                "has_drainage_requirements": {
+                    "@type": "schema:Text",
+                    "value": "Drainage is required at all stages of growth."
+                }
+            }
+        }
+    ]
+}

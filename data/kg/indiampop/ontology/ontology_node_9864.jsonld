@@ -1,0 +1,37 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "PestTreatements": {
+            "@id": "cropCult:PestTreatements",
+            "@type": "schema:Thing",
+            "@context": {
+                "pest_name": "schema:Text",
+                "pest_symptoms": "schema:Text",
+                "pest_control": "cropCult:PesticideList"
+            }
+        },
+        "PesticideList": {
+            "@id": "cropCult:PesticideList",
+            "@type": "schema:List",
+            "@context": {
+                "name": "schema:Text",
+                "quantity": "schema:Text",
+                "stage": "schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "cropCult:PestTreatements",
+            "pest_name": "Aphids, Mustard saw fly, Flea beetle",
+            "pest_symptoms": "Not provided",
+            "pest_control": {
+                "@type": "cropCult:PesticideList",
+                "name": "NSKE 4%, Neem oil, Neem cake",
+                "quantity": "NSKE 4%: Not provided, Neem oil: 3.5-5 l/ha, Neem cake: 1 kg/20 litre of water",
+                "stage": "Not provided"
+            }
+        }
+    ]
+}

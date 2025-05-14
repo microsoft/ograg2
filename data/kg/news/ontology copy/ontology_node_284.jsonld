@@ -1,0 +1,151 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:asset",
+      "byline": "Kyle Wiggers",
+      "published": "2023-11-18T20:16:46+00:00",
+      "title": "A timeline of Sam Altman’s firing from OpenAI — and the fallout",
+      "summary": "In a dramatic turn of events late Friday, ex-Y Combinator president Sam Altman was fired as CEO of AI startup OpenAI, the company behind viral AI hits like ChatGPT, GPT-4 and DALL-E 3, by OpenAI’s board of directors. Then, the company’s longtime president and co-founder, Greg Brockman, resigned — as did three senior OpenAI researchers. And the fallout continues.",
+      "associatedAsset": {
+        "@type": "snap:textAsset",
+        "image": "https://techcrunch.com/2023/11/18/a-timeline-of-sam-altmans-firing-from-openai-and-the-fallout/"
+      }
+    },
+    {
+      "@type": "snap:event",
+      "eventTitle": "Timeline of Sam Altman’s firing from OpenAI",
+      "eventSummary": "A detailed timeline of events following the firing of Sam Altman from OpenAI.",
+      "subEventOf": {
+        "@type": "snap:event",
+        "eventTitle": "Sam Altman’s firing from OpenAI"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "OpenAI"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Microsoft"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Sam Altman"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Greg Brockman"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Ilya Sutskever"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Bret Taylor"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Larry Summers"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Adam D’Angelo"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Emmett Shear"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Mira Murati"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Dario Amodei"
+    }
+  ]
+}
+```

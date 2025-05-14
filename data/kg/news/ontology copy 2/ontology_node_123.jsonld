@@ -1,0 +1,115 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "schema:Thing",
+      "title": "California’s privacy watchdog eyes AI rules with opt-out and access rights",
+      "author": "Natasha Lomas",
+      "theme": "technology",
+      "content": "California’s Privacy Protection Agency (CPPA) is preparing for its next trick: Putting guardrails on AI. The state privacy regulator, which has an important role in setting rules of the road for digital giants given how much of Big Tech (and Big AI) is headquartered on its sun-kissed soil, has today published draft regulations for how people’s data can be used for what it refers to as automated decisionmaking technology (ADMT*). Aka AI. The draft represents “by far the most comprehensive and detailed set of rules in the ‘AI space'”, Ashkan Soltani, the CPPA’s exec director, told TechCrunch. The approach takes inspiration from existing rules in the European Union, where the bloc’s General Data Protection Regulation (GDPR) has given individuals rights over automated decisions with a legal or significant impact on them since coming into force back in May 2018 — but aims to build on it with more specific provisions that may be harder for tech giants to wiggle away from. The core of the planned regime — which the Agency intends to work on finalizing next year, after a consultation process — includes opt-out rights, pre-use notice requirements and access rights which would enable state residents to obtain meaningful information on how their data is being used for automation and AI tech. AI-based profiling could even fall in scope of the planned rules, per the draft the CPPA has presented today. So — assuming this provision survives the consultation process and makes it into the hard-baked rules — there could be big implications for US adtech giants like Meta which has a business model that hinges on tracking and profiling users to target them with ads. Such firms could be required to offer California residents the ability to deny their commercial surveillance, with the proposed law stating businesses must provide consumers with the ability to opt-out of their data being processed for behavioral advertising. The current draft further stipulates that behavioral advertising use-cases cannot make use of a number of exemptions to the opt-out right that may apply in other scenarios (such as if ADMT is being used for security or fraud prevention purposes, for example). The CPPA’s approach to regulating ADMT is risk-based, per Soltani. This echoes another piece of in-train EU legislation: the AI Act — a dedicated risk-based framework for regulating applications of artificial intelligence which has been on the table in draft form since 2021 but is now at a delicate stage of co-legislation, with the bloc’s lawmakers clashing over the not-so-tiny-detail of how (or even whether) to regulate Big AI, among several other policy disputes on the file. Given the discord around the EU’s AI Act, as well as the ongoing failure of US lawmakers to pass a comprehensive federal privacy law — since there’s only so much presidential Executive Orders can do — there’s a plausible prospect of California ending up as one of the top global rulemakers on AI. That said, the impact of California’s AI rules is likely to remain local, given its focus on affording protections and controls to state residents. In-scope companies might choose to go further — such as, say, offering the same package of privacy protections to residents of other US states. But that’s up to them. And, bottom line, the CPPA’s reach and enforcement is tied to the California border. Its bid to tackle AI follows the introduction of GDPR-inspired privacy rules, back in 2019, with the California Consumer Privacy Act (CCPA) coming into effect in early 2020. Since then the Agency has been pushing to go further. And, in fall 2020, a ballot measure secured backing from state residents to reinforce and redefine parts of the privacy law. The new measures laid out in draft today to address ADM are part of that effort. “The proposed regulations would implement consumers’ right to opt out of, and access information about, businesses’ uses of ADMT, as provided for by the [CCPA],” the CPPA wrote in a press release. “The Agency Board will provide feedback on these proposed regulations at the December 8, 2023, board meeting, and the Agency expects to begin formal rulemaking next year.” In parallel, the regulator is considering draft risk assessment requirements which are intended to work in tandem with the planned ADMT rules. “Together, these proposed frameworks can provide consumers with control over their personal information while ensuring that automated decisionmaking technologies, including those made from artificial intelligence, are used with privacy in mind and in design,” it suggests. Commenting in a statement, Vinhcent Le, member of the regulator’s board and of the New Rules Subcommittee that drafted the proposed regulations, added: “Once again, California is taking the lead to support privacy-protective innovation in the use of emerging technologies, including those that leverage artificial intelligence. These draft regulations support the responsible use of automated decisionmaking while providing appropriate guardrails with respect to privacy, including employees’ and children’s privacy.” What’s being proposed by the CPPA? The planned regulations deal with access and opt-out rights in relation to businesses’ use of ADMT. Per an overview of the draft regulation, the aim is to establish a regime that will let state residents request an opt-out from their data being used for automated decisionmaking — with a relatively narrow set of exemptions planned where use of the data is necessary (and solely intended) for either: Security purposes (“to prevent, detect, and investigate security incidents”); fraud prevention; safety (“to protect the life and physical safety of consumers”); or for a good or service requested by the consumer. The latter comes with a string of caveats, including that the business “has no reasonable alternative method of processing”; and must demonstrate “(1) the futility of developing or using an alternative method of processing; (2) an alternative method of processing would result in a good or service that is not as valid, reliable, and fair; or (3) the development of an alternative method of processing would impose extreme hardship upon the business”. So — tl;dr — a business that intends to use ADMT and is trying to use a (crude) argument that, simply because the product contains automation/AI users can’t opt-out of their data being processed/fed to the models, looks unlikely to wash. At least not without the company going to extra effort to stand up a claim that, for instance, less intrusive processing would not suffice for their use-case. Basically, then, the aim is for there to be a compliance cost attached to trying to deny consumers the ability to opt-out of automation/AI being applied to their data. Of course a law that lets consumers opt-out of privacy-hostile data processing is only going to work if the people involved are aware how their information is being used. Hence the planned framework also sets out a requirement that businesses wanting to apply ADMT must provide so-called “pre-use notices” to affected consumers — so they can decide whether to opt-out of their data being used (or not); or indeed whether to exercise their access right to get more info about the intended use of automation/AI. This too looks broadly similar to provisions in the EU’s GDPR which put transparency (and fairness) obligations on entities processing personal data — in addition to requiring a valid lawful basis for them to use personal data. Although the European regulation contains some exceptions — such as where info was not directly collected from individuals and fulfilling their right to be informed would be “unreasonably expensive” or “impossible” — which may have undermined EU lawmakers’ intent that data subjects should be kept informed. (Perhaps especially in the realm of AI — and generative AI — where large amounts of personal data have clearly been scraped off the Internet but web users have not been proactively informed about this heist of their info; see, for example, regulatory action against Clearview AI. Or the open investigations of OpenAI’s ChatGPT.) The proposed Californian framework also includes GDPR-esque access rights which will allow state residents to ask a business to provide them with: Details of their use of ADMT; the technology’s output with respect to them; how decisions were made (including details of any human involvement; and whether the use of ADMT was evaluated for “validity, reliability and fairness”); details of the logic of the ADMT, including “key parameters” affecting the output; and how they applied to the individual; information on the range of possible outputs; and info on how the consumer can exercise their other CCPA rights and submit a complaint about the use of ADMT. Again, the GDPR provides a broadly similar right — stipulating that data subjects must be provided with “meaningful information about the logic involved” in automated decisions that have a significant/legal effect on them. But it’s still falling to European courts to interpret where the line lies when it comes to how much (or how specific the) information algorithmic platforms must hand over in response to these GDPR subject access requests (see, for example, litigation against Uber in the Netherlands where a number of drivers have been trying to get details of systems involved in flagging accounts for potential fraud). The CCPA looks to be trying to pre-empt attempts by ADMT companies to evade the transparency intent of providing consumers with access rights — by setting out, in greater detail, what information they must provide in response to these requests. And while the draft framework does include some exemptions to access rights, just three are proposed: Security, fraud prevention and safety — so, again, this looks like an attempt to limit excuses and (consequently) expand algorithmic accountability. Not every use of ADMT will be in-scope of the CCPA’s proposed rules. The draft regulation proposes to set a threshold as follows: For a decision that produces legal or similarly significant effects concerning a consumer (e.g., decisions to provide or deny employment opportunities). Profiling a consumer who is acting in their capacity as an employee, independent contractor, job applicant, or student. Profiling a consumer while they are in a publicly accessible place. The Agency also says the upcoming consultation will discuss whether the rules should also apply to: profiling a consumer for behavioral advertising; profiling a consumer the business has “actual knowledge is under the age of 16” (i.e. profiling children); and processing the personal information of consumers to train ADMT — indicating it’s not yet confirmed how much of the planned regime will apply to (and potentially limit the modus operandi of) adtech and data-scraping generative AI giants. The more expansive list of proposed thresholds would clearly make the law bite down harder on adtech giants and Big AI. But, it being California, the CCPA can probably expect a lot of pushback from local giants like Meta and OpenAI, to name two. The draft proposal marks the start of the CPPA’s rulemaking process, with the aforementioned consultation process — which will include a public component — set to kick off in the coming weeks. So it’s still a ways off a final text. A spokeswoman for the CPPA said it’s unable to comment on a possible timeline for the rulemaking but she noted this is something that will be discussed at the upcoming board meeting, on December 8. If the Agency is able to move quickly it’s possible it could have a regulation finalized in the second half of next year. Although there would obviously need to be a grace period before compliance kicks in for in-scope companies — so 2025 looks like the very earliest for a law to be up and running. And who knows how far developments in AI will have moved on by then. * The CPPA’s proposed definition for ADMT in the draft framework is “any system, software, or process — including one derived from machine-learning, statistics, other data-processing or artificial intelligence — that processes personal information and uses computation as whole or part of a system to make or execute a decision or facilitate human decisionmaking”. Its definition also affirms “ADMT includes profiling” — which is defined as “any form of automated processing of personal information to evaluate certain personal aspects relating to a natural person and in particular to analyze or predict aspects concerning that natural person’s performance at work, economic situation, health, personal preferences, interests, reliability, behavior, location, or movements”",
+      "published": "2023-11-27T17:30:24+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "schema:Thing",
+          "eventTitle": "CPPA Draft Regulations on AI",
+          "eventSummary": "The CPPA has published draft regulations for automated decisionmaking technology.",
+          "theme": "technology",
+          "mentions_organizations": [
+            {
+              "@id": "snap:organization1",
+              "@type": "schema:Thing",
+              "name": "California Privacy Protection Agency",
+              "alias": "CPPA"
+            },
+            {
+              "@id": "snap:organization2",
+              "@type": "schema:Thing",
+              "name": "TechCrunch"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

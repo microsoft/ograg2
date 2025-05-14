@@ -1,0 +1,227 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Jacquelyn Melinek",
+      "published": "2023-10-18T18:00:33+00:00",
+      "title": "Meet Alliance DAO’s latest accelerator cohort of startups building in crypto winter",
+      "summary": "The demo day focuses on an array of crypto subsectors like NFTs, security and wallets.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://techcrunch.com/2023/10/18/alliance-dao-crypto-demo-day/"
+      }
+    },
+    {
+      "@type": "Organization",
+      "name": "TechCrunch"
+    },
+    {
+      "@type": "Event",
+      "eventTitle": "Alliance DAO Demo Day",
+      "eventSummary": "Showcasing startups in the web3 industry during crypto winter."
+    },
+    {
+      "@type": "Organization",
+      "name": "Alliance DAO"
+    },
+    {
+      "@type": "Organization",
+      "name": "Kravata",
+      "comment": "Fiat to crypto on and off-ramp for LatAm",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Felipe Montes"
+        },
+        {
+          "@type": "Person",
+          "name": "Juliana Montes"
+        }
+      ],
+      "stage": "Seed"
+    },
+    {
+      "@type": "Organization",
+      "name": "Thunder",
+      "comment": "Onchain trading terminal",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Jackson Denka"
+        }
+      ],
+      "stage": "Seed"
+    },
+    {
+      "@type": "Organization",
+      "name": "Sleepagotchi",
+      "comment": "NFT-powered Sleep Game",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Anton Kraminkin"
+        }
+      ],
+      "stage": "Seed"
+    },
+    {
+      "@type": "Organization",
+      "name": "Blockcast",
+      "comment": "Decentralized broadcast delivery network",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Omar Ramadan"
+        },
+        {
+          "@type": "Person",
+          "name": "Lisa Li"
+        }
+      ],
+      "stage": "Seed"
+    },
+    {
+      "@type": "Organization",
+      "name": "Tailwind",
+      "comment": "Cosmos-based smart wallet",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Bao Mai"
+        }
+      ],
+      "stage": "Seed"
+    },
+    {
+      "@type": "Organization",
+      "name": "Tazz",
+      "comment": "Debt market for protocols",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Mark Cinali"
+        },
+        {
+          "@type": "Person",
+          "name": "Alan Hampton"
+        },
+        {
+          "@type": "Person",
+          "name": "Anthony Fahden"
+        }
+      ],
+      "stage": "Seed"
+    },
+    {
+      "@type": "Organization",
+      "name": "Upshield",
+      "comment": "Web3 security platform",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Paul Vijender"
+        },
+        {
+          "@type": "Person",
+          "name": "Preston Thornburg"
+        }
+      ],
+      "stage": "Seed"
+    },
+    {
+      "@type": "Organization",
+      "name": "Inco",
+      "comment": "Encrypted Ethereum virtual machine",
+      "founders": [
+        {
+          "@type": "Person",
+          "name": "Remi Gai"
+        }
+      ],
+      "stage": "Seed"
+    }
+  ]
+}
+```

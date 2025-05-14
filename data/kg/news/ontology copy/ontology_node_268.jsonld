@@ -1,0 +1,106 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "NewsAsset",
+      "byline": "Rita Nazareth",
+      "published": "2023-10-24T20:05:06+00:00",
+      "title": "ASX set to rise ahead of inflation report after big tech lifts Wall Street",
+      "summary": "The laggards Real estate investment trusts (REITS, down 2 per cent) dropped further following the latest inflation data, with Mirvac (down 3.7 per cent) and Dexus (down 3.3 per cent) sliding lower. Dexus chief executive Darren Steinberg on Wednesday announced he would step down from the position next year after 11 years at the helm. At the annual meeting in Sydney on Wednesday, the remuneration report received a first strike after failing to pass the 25 per cent voting threshold. Loading Consumer staples (down 1.4 per cent) were also weaker with Woolworths losing 2 per cent despite sales across the company rising 5.3 per cent in the 14 weeks to October, as it vowed to pass on easing costs for protein and fresh produce amid rising mortgage and rental pressures. In other company news, shares in embattled funds manager Magellan dropped 3.5 per cent after the abrupt departure of its chief executive, David George. Infratil (down 3.6 per cent), Meridian Energy (down 2.7 per cent) and Resmed (down 2 per cent) were among the biggest large-cap decliners. The lowdown The Australian sharemarket shook off a positive lead from Wall Street on Wednesday after hotter-than-expected inflation data raised the prospect of another interest rate rise at the Reserve Bank’s next meeting, which would weigh on the equity market. Interest-rate sensitive sectors, including REITS and consumer companies, were among the weakest on the local bourse as investors digested the news. GSFM investment strategist Stephen Miller said the inflation data, taken with the October Reserve Bank board meeting minutes, which revealed the board had “low tolerance for a slower return of inflation to target than currently expected”, made the possibility of an interest rate rise from the central bank in November a “near certainty”. However, commodity prices supported mining companies as iron ore prices increased 2.9 per cent overnight, bolstering Australia’s iron ore giants. It comes as Chinese President Xi Jinping stepped up support for the world’s second-biggest economy and major commodity trading partner for Australia, issuing additional sovereign debt, raising the budget deficit ratio and even making an unprecedented visit to the central bank. Loading Elsewhere, on Wall Street, the benchmark S&P 500 index closed 0.7 per cent higher ahead of tech giants Microsoft and Google’s parent company Alphabet reporting their results after the close. The Dow Jones Industrial Average added 0.6 per cent and the tech-heavy Nasdaq 100 gained 0.9 per cent. Shares in Microsoft climbed 5 per cent in after-hours trading after the tech company said its sales jumped 13 per cent to $US56.5 billion ($88.9 billion) and profits climbed 27 per cent to $US22.3 billion in the three months through September. Meanwhile, shares in Alphabet fell 6 per cent after hours, after the Google parent delivered a mixed result. Google, which is also seeking to capitalise on surging demand for AI technology, saw revenue climb 11 per cent to $US76.7 billion, with net income of $US19.7 billion thanks to a recovery in digital advertising revenue. However, its closely watched cloud division, which houses its data storage business and many of its AI efforts, missed Wall Street expectations. “Investors were disappointed by the relatively weak performance at its Google cloud platform, which is at risk of falling further behind” competitors’ offerings, Jesse Cohen, a senior analyst at Investing.com, wrote in an email. Loading During trading hours, the S&P 500 slipped off session highs, led by losses in energy shares as oil slid below $US84 a barrel, but once again the index found support above the key 4200 mark. Verizon Communications, 3M and General Electric climbed on bullish forecasts. Facebook and Instagram owner Meta dropped after being sued by California and dozen of other US states over harmful youth marketing claims. Bitcoin briefly topped $US35,000, while Treasury 10-year yields edged lower, following Monday’s intense volatility. Investors looking to the earnings season for a dose of good news were hanging their hopes on big tech. The five biggest companies in the S&P 500 — Apple, Microsoft, Alphabet, Amazon and AI chipmaker Nvidia — account for about a quarter of the benchmark’s market capitalisation. Their earnings are projected to jump 34 per cent from a year earlier on average, according to analyst estimates compiled by Bloomberg Intelligence. “As these big tech stocks go, so does the overall market,” David Trainer, chief executive officer of New Constructs, said before Microsoft and Alphabet’s results. “Strong big tech earnings may just be what’s needed to end the stock market correction that started in late July. If big tech companies blow their numbers out of the water and provide strong guidance for future earnings, then we could see the stock market rally strongly through the end of the year.” Rising rates have made already stretched big tech valuations look increasingly expensive, with the group remaining the most-crowded trade among fund managers, according to Bank of America. That’s prompted some investors to pay up for protection against a sell-off in Alphabet and Microsoft — two of the handful of heavyweights responsible for all of the S&P 500 Index’s advance this year. The pain in long-duration growth stocks, fuelled in recent weeks by a relentless surge in Treasury yields, is finally on the verge of subsiding. The yield on 10-year Treasuries was little changed at 4.85 per cent overnight. Oil closed at the lowest in more than a week amid signs the crude market’s tightness has slackened and the Israel-Hamas war will remain contained for the time being. West Texas Intermediate extended Monday’s drop with a 2.2 per cent fall to $US83.59 a barrel, paring most of the gains made after Hamas’ attack on Israel on October 7. Concerns about the conflict spreading more broadly have eased amid growing calls within Israel to rethink a ground invasion of Gaza because of fears about the fate of some 200 hostages held there, the danger of retaliation by Hezbollah and the risk of Israeli military casualties. Tweet of the day Quote of the day “I think when you get to those decisions, you can then sit on them for a while… or you can say let’s just deal with it [and] that’s what we have done today,” said Magellan chairman Andrew Formica as the group’s chief executive stepped down abruptly amid the company’s efforts to turn around its performance.",
+      "associatedAsset": {
+        "@type": "TextAsset",
+        "image": "https://www.smh.com.au/business/markets/asx-set-to-rise-ahead-of-inflation-report-after-big-tech-lifts-wall-street-20231025-p5ees3.html?ref=rss&utm_medium=rss&utm_source=rss_business"
+      }
+    },
+    {
+      "@type": "Organization",
+      "name": "The Sydney Morning Herald"
+    },
+    {
+      "@type": "Person",
+      "name": "Rita Nazareth"
+    }
+  ]
+}
+```

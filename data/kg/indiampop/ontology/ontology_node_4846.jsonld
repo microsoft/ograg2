@@ -1,0 +1,92 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "cropCult": "http://crop-cultivation.org/",
+        "Crop": {
+            "@id": "cropCult:Crop",
+            "@type": "schema:Thing",
+            "@context": {
+                "name": "schema:name",
+                "has_types": "cropCult:CropType",
+                "has_growing_zones": "cropCult:CropGrowingZones",
+                "has_temperature_requirements": "cropCult:TemperatureRequirements",
+                "has_soil_requirements": "cropCult:SoilRequirements",
+                "has_land_preperation_requirements": "cropCult:LandPreparation",
+                "seed_germination_test_requirements_are": "schema:Text",
+                "has_seed_fungicide_requirements": "cropCult:Fungicide",
+                "needs_seed_sowing_spacing": "cropCult:SeedSpacing",
+                "weed_management_needs_are": "cropCult:WheatManagement",
+                "needs_irrigation_schedule": "cropCult:IrrigationRequirement",
+                "needs_disease_treatements": "cropCult:DiseaseTreatements",
+                "needs_pest_treatements": "cropCult:PestTreatements",
+                "harvesting_guidelines_are": "schema:Text",
+                "storage_guidelines_are":"schema:Text"
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@type": "Crop",
+            "name": "MANGO (Mangifera indica)",
+            "has_types": {
+                "@type": "CropType",
+                "name": "Mango",
+                "used_for": "Fruit"
+            },
+            "has_growing_zones": {
+                "@type": "CropGrowingZones",
+                "CropGrowingZone": {
+                    "name": "Tropical and Subtropical",
+                    "has_regions": ["Sea level", "Up to 1500m above mean sea level"]
+                }
+            },
+            "has_temperature_requirements": {
+                "@type": "TemperatureRequirements",
+                "for_germination": "Warm",
+                "for_flowering": "Warm",
+                "for_grain_filling": "Warm",
+                "negative_effect": "Cold"
+            },
+            "has_soil_requirements": {
+                "@type": "SoilRequirements",
+                "soil_type_name": "Wide range",
+                "avoid_soil_type": "None",
+                "for_water": "Withstands both fairly dry conditions and heavy rainfall",
+                "for_nutrients": "Rich in nutrients"
+            },
+            "has_land_preperation_requirements": {
+                "@type": "LandPreparation",
+                "instructions": "Prepare land with good drainage",
+                "with_soil_moisture": "Moist"
+            },
+            "seed_germination_test_requirements_are": "Warm temperature and moist soil",
+            "has_seed_fungicide_requirements": {
+                "@type": "Fungicide",
+                "name": "None",
+                "quantity": "None"
+            },
+            "needs_seed_sowing_spacing": {
+                "@type": "seedSpacing",
+                "sowing_time": "Spring",
+                "value": "8-10 meters",
+                "depth": "Surface sowing",
+                "method": "Direct sowing"
+            },
+            "weed_management_needs_are": {
+                "@type": "WeedManagement",
+                "weed_name": "None",
+                "weed_types": [],
+                "herbicides": []
+            },
+            "needs_irrigation_schedule": {
+                "@type": "IrrigationRequirement",
+                "quantity": "Depends on rainfall",
+                "stage_of_application": "All stages"
+            },
+            "needs_disease_treatements": [],
+            "needs_pest_treatements": [],
+            "harvesting_guidelines_are": "Harvest when fruit is mature but not fully ripe",
+            "storage_guidelines_are":"Store at room temperature until ripe"
+        }
+    ]
+}

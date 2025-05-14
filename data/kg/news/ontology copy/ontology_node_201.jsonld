@@ -1,0 +1,157 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "title": "Merck, Novo Nordisk, Gilead, Biogen and more: Here are the investment opportunities in global Big Pharma",
+      "byline": null,
+      "published": "2023-11-18T14:00:36+00:00",
+      "summary": "The US is the largest pharmaceutical market in the world. By virtue of its size, its ideal IP protection laws, and deep-pocketed insurers, most of the cutting-edge innovation in pharma tends to be concentrated here. For investors and general readers alike, one should be abreast of the latest pharmaceutical innovation taking place overseas. Will a weight loss pill be a reality? When will HIV be cured? What is the future of cancer treatments? Indian investors can access growth in manufacturing, banking, commodity, services or even IT in Indian markets; but for cutting-edge tech and pharmaceutical exposure, the US is the place to look to. Here, we highlight the largest unmet needs in medicine currently being addressed by US Big Pharma, such as Merck, Gilead, Eli Lilly, and also by big players based in Europe — Novo Nordisk and Roche. We also lay down the basic framework for investing in or assessing US pharma and the stocks that are in focus currently.",
+      "associatedAsset": {
+        "asset": "https://www.thehindubusinessline.com/portfolio/big-story/merck-novo-nordisk-gilead-biogen-and-more-here-are-the-investment-opportunities-in-global-big-pharma/article67543437.ece"
+      }
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Merck"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Novo Nordisk"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Gilead"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Biogen"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Eli Lilly"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Roche"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Bristol-Myers Squibb"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Daiichi Sankyo"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Celgene"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Juno Therapeutics"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Kite Pharma"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Pfizer"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Eisai"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Abbvie"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Allergan"
+    }
+  ]
+}
+```

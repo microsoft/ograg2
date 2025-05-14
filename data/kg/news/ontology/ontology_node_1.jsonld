@@ -1,0 +1,163 @@
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "@type": "schema:Thing",
+            "comment": "Generic News Asset Class",
+            "@context": {
+                "title": "xmls:string",
+                "author": "xmls:string",
+                "theme": "xmls:string",
+                "summary": "xmls:string",
+                "created": "xmls:dateTime",
+                "hasThumbnail": "snap:imageAsset",
+                "embargoedUntil": "xmls:dateTime",
+                "modified": "xmls:dateTime",
+                "published": "xmls:dateTime",
+                "has_events": "snap:eventList",
+                "followUp": "snap:asset",
+                "derivedFrom": "snap:asset"
+            }
+        },
+        "EventList": {
+            "@id": "snap:eventList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of events mentioned in the news asset",
+            "Event": {
+                "@id": "snap:event",
+                "@type": "schema:Thing",
+                "comment": "Generic Event Class, that contains events that are tagged within news assets",
+                "@context": {
+                    "eventTitle": "xmls:string",
+                    "eventSummary": "xmls:string",
+                    "theme": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "mentions_persons": "snap:personList",
+                    "mentions_organizations": "snap:organizationList",
+                    "subEventOf": "snap:event",
+                    "notablyAssociatedWith": "snap:event"
+                }
+            }
+        },
+        "PersonList": {
+            "@id": "snap:personList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of persons mentioned in the news asset",
+            "Person": {
+                "@id": "snap:person",
+                "@type": "schema:Thing",
+                "@context": {
+                    "dateOfBirth": "xmls:date",
+                    "dateOfDeath": "xmls:date",
+                    "name": "xmls:string",
+                    "placeOfBirth": "geo:location",
+                    "alias": "xmls:string"
+                }
+            }
+        },
+        "OrganizationList": {
+            "@id": "snap:organizationList",
+            "@type": "schema:ItemList",
+            "@container": "@list",
+            "comment": "List of organizations mentioned in the news asset",
+            "Organization": {
+                "@id": "snap:organization",
+                "@type": "schema:Thing",
+                "@context": {
+                    "name": "xmls:string",
+                    "hasLocation": "geo:SpatialThing",
+                    "alias": "xmls:string",
+                    "notablyAssociatedWith": "snap:organizationList"
+                }
+            }
+        }
+    },
+    "@graph": [
+        {
+            "@id": "snap:asset",
+            "title": "2023 Kentucky online sports betting sites: Best legal sportsbooks, promos, bonuses, mobile apps, how to bet",
+            "author": "CBS Sports Staff",
+            "published": "2023-10-13T21:17:17+00:00",
+            "summary": "Kentucky sports betting has thrived since retail and online sportsbooks launched in September 2023. The governor has announced that roughly one month since the launch, upwards of $250 million has been wagered and that roughly 500,000 mobile accounts have been created for online sportsbooks. Since there are no restrictions on which sports can be wagered on or what kind of prop bets can be placed unlike restrictions on residents in other states, anyone using Kentucky sports betting sites can place bets on everything from football to college basketball games.",
+            "has_events": {
+                "@id": "snap:eventList",
+                "Event": [
+                    {
+                        "eventTitle": "Kentucky Sports Betting Launch",
+                        "eventSummary": "Kentucky became the 34th state to legalize sports betting and the 25th with online/mobile access.",
+                        "hasLocation": {
+                            "@id": "geo:SpatialThing",
+                            "name": "Kentucky"
+                        }
+                    }
+                ]
+            },
+            "modified": "2023-10-13T21:17:17+00:00"
+        },
+        {
+            "@id": "snap:eventList",
+            "Event": [
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "Fanatics Sportsbook Launch",
+                    "eventSummary": "Fanatics Sportsbook opened in 2023 and is establishing itself as the 'most rewarding' sportsbook.",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "Kentucky"
+                    }
+                },
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "FanDuel Sportsbook Popularity",
+                    "eventSummary": "FanDuel was long known for its Daily Fantasy games, but is now a major player in sports betting.",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "Kentucky"
+                    }
+                },
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "DraftKings Sportsbook Growth",
+                    "eventSummary": "DraftKings has emerged to be another popular sportsbook that gives you more ways to 'have skin in the game'.",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "Kentucky"
+                    }
+                },
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "BetMGM Sportsbook Features",
+                    "eventSummary": "BetMGM offers a mobile sportsbook app for all your favorite sports betting games.",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "Kentucky"
+                    }
+                },
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "Caesars Sportsbook Offerings",
+                    "eventSummary": "The Caesars Sportsbook app offers hundreds of ways to wager.",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "Kentucky"
+                    }
+                },
+                {
+                    "@id": "snap:event",
+                    "eventTitle": "Bet365 Entry into US Market",
+                    "eventSummary": "Bet365 has made its entrance into the US with a sports betting app.",
+                    "hasLocation": {
+                        "@id": "geo:SpatialThing",
+                        "name": "Kentucky"
+                    }
+                }
+            ]
+        }
+    ]
+}

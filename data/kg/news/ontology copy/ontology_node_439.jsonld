@@ -1,0 +1,151 @@
+```json
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "comment": "Generic News Asset Class",
+      "associatedAsset": "snap:asset",
+      "byline": "xmls:string",
+      "created": "xmls:dateTime",
+      "derivedFrom": "snap:asset",
+      "embargoedUntil": "xmls:dateTime",
+      "hasThumbnail": "snap:imageAsset",
+      "modified": "xmls:dateTime",
+      "published": "xmls:dateTime",
+      "summary": "xmls:string",
+      "title": "xmls:string"
+    },
+    "ImageAsset": {
+      "@id": "snap:imageAsset",
+      "@type": "snap:asset",
+      "comment": "Image News Asset Class dervies all properties from snap:asset",
+      "image": "schema:image"
+    },
+    "TextAsset": {
+      "@id": "snap:textAsset",
+      "@type": "snap:asset",
+      "comment": "Text News Asset Class dervies all properties from snap:asset",
+      "image": "xmls:string"
+    },
+    "VideoAsset": {
+      "@id": "snap:videoAsset",
+      "@type": "snap:asset",
+      "comment": "Video News Asset Class dervies all properties from snap:asset",
+      "video": "schema:movingImage",
+      "hasTranscript": "snap:videoAsset"
+    },
+    "Stuff": {
+      "@id": "snap:stuff",
+      "@type": "schema:Thing",
+      "alias": "xmls:string",
+      "hasAsset": {
+        "asset": "snap:asset",
+        "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+      },
+      "notablyAssociatedWith": "snap:stuff"
+    },
+    "Event": {
+      "@id": "snap:event",
+      "@type": "snap:stuff",
+      "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+      "subEventOf": "snap:event",
+      "eventSummary": "xmls:string",
+      "theme": "snap:intangibleStuff",
+      "eventTitle": "xmls:string"
+    },
+    "intangibleStuff": {
+      "@id": "snap:intangibleStuff",
+      "@type": "snap:stuff",
+      "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+    },
+    "TangibleStuff": {
+      "@id": "snap:tangibleStuff",
+      "@type": "snap:stuff",
+      "hasLocation": "geo:SpatialThing"
+    },
+    "Person": {
+      "@id": "snap:person",
+      "@type": "snap:tangibleStuff",
+      "dateOfBirth": "xmls:date",
+      "dateOfDeath": "xmls:date",
+      "name": "xmls:string",
+      "placeOfBirth": "geo:location"
+    },
+    "Organization": {
+      "@id": "snap:organization",
+      "@type": "snap:tangibleStuff",
+      "name": "xmls:string"
+    }
+  },
+  "@graph": [
+    {
+      "@type": "snap:textAsset",
+      "byline": "Elizabeth Lopatto",
+      "published": "2023-10-12T23:08:14+00:00",
+      "title": "How is it still getting worse for Sam Bankman-Fried?",
+      "summary": "Sam Bankman-Fried, the founder of failed cryptocurrency exchange FTX, is on trial for seven counts of wire fraud and conspiracy. FTX was a fraud “from the start,” the Securities and Exchange Commission alleges — with a “multi-billion-dollar deficiency caused by his own misappropriation of customer funds.” Follow along for all the latest news and regular updates from the trial.",
+      "associatedAsset": {
+        "@type": "snap:asset",
+        "comment": "Article from The Verge",
+        "url": "https://www.theverge.com/2023/10/12/23915108/sam-bankman-fried-ftx-alameda-caroline-ellison-lawyers"
+      }
+    },
+    {
+      "@type": "snap:person",
+      "name": "Sam Bankman-Fried"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Caroline Ellison"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Barbara Fried"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Christian Everdell"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Mark Cohen"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Danielle Sassoon"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Christian Drappi"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Changpeng Zhao"
+    },
+    {
+      "@type": "snap:person",
+      "name": "Zac Prince"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "FTX"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "Alameda"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "The Verge"
+    },
+    {
+      "@type": "snap:organization",
+      "name": "BlockFi"
+    }
+  ]
+}
+```

@@ -1,0 +1,123 @@
+```json
+{
+    "@context": {
+        "schema": "http://schema.org/",
+        "snap": "http://data.press.net",
+        "xmls": "http://www.w3.org/2001/XMLSchema",
+        "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+        "NewsAsset": {
+            "@id": "snap:asset",
+            "comment": "Generic News Asset Class",
+            "associatedAsset": "snap:asset",
+            "byline": "xmls:string",
+            "created": "xmls:dateTime",
+            "derivedFrom": "snap:asset",
+            "embargoedUntil": "xmls:dateTime",
+            "hasThumbnail": "snap:imageAsset",
+            "modified": "xmls:dateTime",
+            "published": "xmls:dateTime",
+            "summary": "xmls:string",
+            "title": "xmls:string"
+        },
+        "ImageAsset": {
+            "@id": "snap:imageAsset",
+            "@type": "snap:asset",
+            "comment": "Image News Asset Class dervies all properties from snap:asset",
+            "image": "schema:image"
+        },
+        "TextAsset": {
+            "@id": "snap:textAsset",
+            "@type": "snap:asset",
+            "comment": "Text News Asset Class dervies all properties from snap:asset",
+            "image": "xmls:string"
+        },
+        "VideoAsset": {
+            "@id": "snap:videoAsset",
+            "@type": "snap:asset",
+            "comment": "Video News Asset Class dervies all properties from snap:asset",
+            "video": "schema:movingImage",
+            "hasTranscript": "snap:videoAsset"
+        },
+        "Stuff": {
+            "@id": "snap:stuff",
+            "@type": "schema:Thing",
+            "alias": "xmls:string",
+            "hasAsset": {
+                "asset": "snap:asset",
+                "comment": "Property that associates assets directly with domain entities, e.g. official biography, corporate logo"
+            },
+            "notablyAssociatedWith": "snap:stuff"
+        },
+        "Event": {
+            "@id": "snap:event",
+            "@type": "snap:stuff",
+            "comment": "Generic Event Class, it is a Compound domain entity, which means news assets can be tagged with Events",
+            "subEventOf": "snap:event",
+            "eventSummary": "xmls:string",
+            "theme": "snap:intangibleStuff",
+            "eventTitle": "xmls:string"
+        },
+        "intangibleStuff": {
+            "@id": "snap:intangibleStuff",
+            "@type": "snap:stuff",
+            "comment": "A base class for all intangible stuff (eg love, conservatism, fashion)"
+        },
+        "TangibleStuff": {
+            "@id": "snap:tangibleStuff",
+            "@type": "snap:stuff",
+            "hasLocation": "geo:SpatialThing"
+        },
+        "Person": {
+            "@id": "snap:person",
+            "@type": "snap:tangibleStuff",
+            "dateOfBirth": "xmls:date",
+            "dateOfDeath": "xmls:date",
+            "name": "xmls:string",
+            "placeOfBirth": "geo:location"
+        },
+        "Organization": {
+            "@id": "snap:organization",
+            "@type": "snap:tangibleStuff",
+            "name": "xmls:string"
+        }
+    },
+    "@graph": [
+        {
+            "@type": "snap:asset",
+            "byline": "Dean Straka",
+            "published": "2023-10-01T22:41:50+00:00",
+            "title": "College football odds, lines, schedule for Week 6: Texas, Alabama, Notre Dame among favorites in ranked games",
+            "summary": "An eventful first month of the 2023 college football season is in the rearview mirror, and October should provide even more separation between pretenders and contenders in the ongoing College Football Playoff race. Four AP Top 25 matchups are on deck in Week 6, headlined by the annual Red River Rivalry game between No. 3 Texas and No. 12 Oklahoma at the Cotton Bowl Stadium in Dallas. It will be the first time the two rivals have matched up undefeated since 2011, both sitting at 5-0. Saturday will also mark the first time that top-ranked Georgia has squared off against a ranked opponent this season as the Bulldogs welcome No. 20 Kentucky for a matchup of 5-0 squads. It's one of two ranked SEC matchups. No. 21 Missouri is also looking to stay undefeated as the Tigers host No. 23 LSU, which has now lost two games already after opening the year as a playoff contender. The fourth and final AP Top 25 matchup of the day will be contested in ACC territory when No. 25 Louisville, sitting 5-0 in its first season under coach Jeff Brohm, sees No. 10 Notre Dame roll into town. The Fighting Irish are looking to secure a second ranked victory in as many weeks and remain in the playoff hunt after pulling off a comeback win at Duke in Week 5. Betting lines for those battles and other key Week 6 matchups were released on Sunday, so let's dive in on what the oddsmakers have given us.",
+            "associatedAsset": {
+                "@type": "snap:textAsset",
+                "image": "https://www.cbssports.com/college-football/news/college-football-odds-lines-schedule-for-week-6-texas-alabama-notre-dame-among-favorites-in-ranked-games/"
+            }
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Red River Rivalry",
+            "eventSummary": "No. 12 Oklahoma vs. No. 3 Texas (-5.5), Dallas: Always among college football's top spectacles, this year's Red River Rivalry could may serve as the Big 12 Championship Game preview. After one month, the Sooners and Longhorns are the only remaining undefeated Big 12 teams and are also the only ranked schools in the conference. Consider that a dream start for two programs that would love for nothing more than to run the league one more time before heading to the SEC in 2024. While the winner will emerge as the Big 12's clear front-runner, the playoff implications may be even more pressing. Neither team will be eliminated from that conversation Saturday, but the road becomes increasingly more difficult for the loser. A two-loss team has never cracked the playoff, so whoever comes up short in Dallas will likely have to win out to stand a chance."
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Georgia vs. Kentucky",
+            "eventSummary": "No. 20 Kentucky at No. 1 Georgia (-15): The two-time reigning national champs are undefeated so far, but the Bulldogs have looked human at times. Georgia's two SEC victories have both required the Bulldogs to win in comeback fashion -- first at home against South Carolina in Week 3 and then at Auburn in Week 5. Georgia is still the heavy favorite for its first ranked matchup of the season, but coach Kirby Smart and company shouldn't sleep on the Wildcats. Kentucky's win against Florida in Week 5 saw running back Ray Davis take off for 280 yards and three touchdowns rushing, a mark that could have been much more considering Davis eclipsed the 200-yard mark well before halftime."
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "LSU vs. Missouri",
+            "eventSummary": "No. 23 LSU (-6.5) at No. 21 Missouri: While LSU has already gone from a trendy CFP pick to a two-loss team, Mizzou finds itself looking to improve on an impressive start that already includes a win against defending Big 12 champion and longtime former conference-mate Kansas State in Week 3. LSU is looking to right the ship on defense after a pair of shaky defensive performances. The Tigers allowed 426 yards in a 34-31 scare against Arkansas in Week 4 before giving up a whopping 637 yards Saturday in a 55-49 loss at Ole Miss. Mizzou quarterback Brady Cook ranks fourth in passing within the SEC (1,468 yards). He'll bring another test for that unit in Week 6. Through five weeks, Cook has thrown 11 touchdowns and is interception-free."
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Notre Dame vs. Louisville",
+            "eventSummary": "No. 10 Notre Dame (-6.5) at No. 25 Louisville: The Fighting Irish encounter another ranked opponent after being involved in dogfights each of the past two Saturdays. Notre Dame had its hearts broken by Ohio State in Week 4 before playing the role of heartbreaker at Duke in Week 5. Now it's on to Louisville, where the Irish encounter a Cardinals team that remains unbeaten a month into the Jeff Brohm era. While there isn't a ton separating these teams statistically on either side of the ball, Notre Dame is the more battle tested of the two, so it's not a shock to see the Irish checking in as a touchdown favorite. This is Louisville's first time facing ranked competition in 2023. It should give the best idea yet of what Brohm's squad is truly made of."
+        },
+        {
+            "@type": "snap:event",
+            "eventTitle": "Alabama vs. Texas A&M",
+            "eventSummary": "No. 11 Alabama (-3.5) at Texas A&M: The Crimson Tide have seemingly started to find a groove after an uninspiring 2-1 start, beating Ole Miss and Mississippi State a combined 64-27 for a 2-0 start in SEC play. But now comes a Texas A&M team that has caused fits for Alabama in their last two meetings. The Aggies stunned the top-ranked Tide on a walk-off field goal when Alabama last visited Kyle Field in 2021. In last year's meeting at Bryant-Denny Stadium Texas A&M had a chance to win the game on the final play of regulation before the Tide held off the Aggies for a 24-20 victory. An upset victory this weekend would move Texas A&M to 5-1 overall and 3-0 in SEC play. The Aggies have already dealt with the injury bug, losing starting quarterback Conner Weigman for the season. However, backup Max Johnson brings no shortage of SEC experience as the former LSU transfer prepares for his second consecutive start."
+        }
+    ]
+}
+```

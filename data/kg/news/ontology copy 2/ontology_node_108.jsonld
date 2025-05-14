@@ -1,0 +1,124 @@
+
+{
+  "@context": {
+    "schema": "http://schema.org/",
+    "snap": "http://data.press.net",
+    "xmls": "http://www.w3.org/2001/XMLSchema",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos",
+    "NewsAsset": {
+      "@id": "snap:asset",
+      "@type": "schema:Thing",
+      "comment": "Generic News Asset Class",
+      "@context": {
+        "title": "xmls:string",
+        "author": "xmls:string",
+        "theme": "xmls:string",
+        "content": "xmls:string",
+        "created": "xmls:dateTime",
+        "hasThumbnail": "snap:imageAsset",
+        "embargoedUntil": "xmls:dateTime",
+        "modified": "xmls:dateTime",
+        "published": "xmls:dateTime",
+        "has_events": "snap:eventList",
+        "followUp": "snap:asset",
+        "derivedFrom": "snap:asset"
+      }
+    },
+    "EventList": {
+      "@id": "snap:eventList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of events mentioned in the news asset",
+      "Event": {
+        "@id": "snap:event",
+        "@type": "schema:Thing",
+        "comment": "Generic Event Class, that contains events that are tagged within news assets",
+        "@context": {
+          "eventTitle": "xmls:string",
+          "eventSummary": "xmls:string",
+          "theme": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "mentions_persons": "snap:personList",
+          "mentions_organizations": "snap:organizationList",
+          "subEventOf": "snap:event",
+          "notablyAssociatedWith": "snap:event"
+        }
+      }
+    },
+    "PersonList": {
+      "@id": "snap:personList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of persons mentioned in the news asset",
+      "Person": {
+        "@id": "snap:person",
+        "@type": "schema:Thing",
+        "@context": {
+          "dateOfBirth": "xmls:date",
+          "dateOfDeath": "xmls:date",
+          "name": "xmls:string",
+          "placeOfBirth": "geo:location",
+          "alias": "xmls:string"
+        }
+      }
+    },
+    "OrganizationList": {
+      "@id": "snap:organizationList",
+      "@type": "schema:ItemList",
+      "@container": "@list",
+      "comment": "List of organizations mentioned in the news asset",
+      "Organization": {
+        "@id": "snap:organization",
+        "@type": "schema:Thing",
+        "@context": {
+          "name": "xmls:string",
+          "hasLocation": "geo:SpatialThing",
+          "alias": "xmls:string",
+          "notablyAssociatedWith": "snap:organizationList"
+        }
+      }
+    }
+  },
+  "@graph": [
+    {
+      "@id": "snap:asset1",
+      "@type": "schema:Thing",
+      "title": "Martin Scorsese’s late-stage career has proved Quentin Tarantino wrong",
+      "author": "Abe Beame",
+      "theme": "entertainment",
+      "content": "In 2021, Quentin Tarantino defended his intention to make “just” 10 movies and retire, saying, “I know film history, and from here on in, directors do not get better.” That view of both artistry and film is squarely at odds with Martin Scorsese’s historic body of work. Scorsese had already made his 10th feature-length narrative film by 1986. He is now 80 years old, and his 27th, Killers of the Flower Moon, is a strong argument that directors are still capable of groundbreaking greatness late in life — and in Scorsese’s case, continued exhilarating experimentation and discovery. Since the year 2000, Scorsese has curated a 23-year career within a career, and the quality and variety of his films have come not in spite of his age and experience, but because of it. His movies have never been more relevant than they became during the past two decades. With each subsequent release, as his career winds down, critical appreciation for him grows. Scorsese worship is the one remaining form of gerontocracy America is perfectly content with, and with good reason. In the 21st century alone, Scorsese has made nine feature-length narrative films: Gangs of New York, The Aviator, The Departed, Shutter Island, Hugo, The Wolf of Wall Street, Silence, The Irishman, and now, Killers of the Flower Moon. His stretch from 1976’s Taxi Driver through 1990’s Goodfellas is still his peak run, the films that defined his style and his perspective. But decades from now, the nine features he’s made since 2000 won’t be looked back on as half-baked, indulgent afterthoughts from a diminished artist who lost his fastball, a fate some great auteurs suffer in old age. Instead, it’s a fertile, vital body of work, virtuosic in entirely new ways, and as important in contextualizing his greatness as all the incredible work that preceded it.",
+      "created": "2023-10-26T14:02:00+00:00",
+      "published": "2023-10-26T14:02:00+00:00",
+      "has_events": [
+        {
+          "@id": "snap:event1",
+          "@type": "schema:Thing",
+          "eventTitle": "Quentin Tarantino's Statement",
+          "eventSummary": "Quentin Tarantino defended his intention to make 'just' 10 movies and retire.",
+          "theme": "entertainment",
+          "mentions_persons": [
+            {
+              "@id": "snap:person1",
+              "@type": "schema:Thing",
+              "name": "Quentin Tarantino"
+            }
+          ]
+        },
+        {
+          "@id": "snap:event2",
+          "@type": "schema:Thing",
+          "eventTitle": "Martin Scorsese's Career",
+          "eventSummary": "Martin Scorsese's late-stage career challenges Tarantino's view on directors.",
+          "theme": "entertainment",
+          "mentions_persons": [
+            {
+              "@id": "snap:person2",
+              "@type": "schema:Thing",
+              "name": "Martin Scorsese"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
