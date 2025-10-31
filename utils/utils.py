@@ -105,10 +105,10 @@ def load_llm_and_embeds(model_config: Dict[str, Any], embedding_config: Dict[str
         pass
 
     api_type = model_config.get("api_type", "azure")
-    api_version = model_config.get("api_version", "2024-02-15-preview")
-    resource_endpoint = model_config.get("api_base")
-    api_key = model_config.get("api_key")
-    deployment_name = model_config.get('deployment_name') #, deployment_name)
+    api_version = model_config.get("api_version") or os.getenv(model_config.get("api_version_var"), "2024-02-15-preview")
+    resource_endpoint = model_config.get("api_base") or os.getenv(model_config.get("api_base_env_var"))
+    api_key = model_config.get("api_key") or os.getenv("OPENAI_API_KEY")
+    deployment_name = model_config.get('deployment_name') or os.getenv(model_config.get("deployment_name_env_var"))
 
     if api_type in ['azure', 'openai']:
         if not (resource_endpoint and api_key):
@@ -141,23 +141,23 @@ def load_llm_and_embeds(model_config: Dict[str, Any], embedding_config: Dict[str
 
     if embedding_config['api_type'] == 'azure':
         embedding_llm = AzureOpenAIEmbeddings(
-            azure_endpoint=embedding_config.api_base,
-            openai_api_version=embedding_config.api_version,
-            openai_api_key=embedding_config.api_key,
-            model=embedding_config.deployment_name,
+            azure_endpoint=embedding_config.get('api_base') or os.getenv(embedding_config.get('api_base_env_var')),
+            openai_api_version=embedding_config.get('api_version') or os.getenv(embedding_config.get('api_version_var')),
+            openai_api_key=embedding_config.get('api_key') or os.getenv('OPENAI_API_KEY'),
+            model=embedding_config.get('deployment_name') or os.getenv(embedding_config.get('deployment_name_env_var')),
             check_embedding_ctx_length=False,
             chunk_size=1000,
         )
     elif embedding_config['api_type'] == 'openai':
         embedding_llm = OpenAIEmbeddings(
-            openai_api_key=embedding_config.api_key,
-            model=embedding_config.deployment_name,
+            openai_api_key=embedding_config.get('api_key') or os.getenv('OPENAI_API_KEY'),
+            model=embedding_config.get('deployment_name') or os.getenv(embedding_config.get('deployment_name_env_var')),
             check_embedding_ctx_length=False,
             chunk_size=1000,
         )
     else:
         # community embeddings
-        embedding_llm = HuggingFaceEmbeddings(model_name=embedding_config.deployment_name)
+        embedding_llm = HuggingFaceEmbeddings(model_name=embedding_config.get('deployment_name') or os.getenv(embedding_config.get('deployment_name_env_var')))
 
 
     return llm, embedding_llm
@@ -171,10 +171,10 @@ def create_service_context(model_config: Dict[str, Any], embedding_config: Dict[
         pass
 
     api_type = model_config.get("api_type", "azure")
-    api_version = model_config.get("api_version", "2024-02-15-preview")
-    resource_endpoint = model_config.get("api_base")
-    api_key = model_config.get("api_key")
-    deployment_name = model_config.get('deployment_name') #, deployment_name)
+    api_version = model_config.get("api_version") or os.getenv(model_config.get("api_version_var"), "2024-02-15-preview")
+    resource_endpoint = model_config.get("api_base") or os.getenv(model_config.get("api_base_env_var"))
+    api_key = model_config.get("api_key") or os.getenv("OPENAI_API_KEY")
+    deployment_name = model_config.get('deployment_name') or os.getenv(model_config.get("deployment_name_env_var"))
 
     if api_type in ['azure', 'openai']:
         if not (resource_endpoint and api_key):
@@ -207,23 +207,23 @@ def create_service_context(model_config: Dict[str, Any], embedding_config: Dict[
 
     if embedding_config['api_type'] == 'azure':
         embedding_llm = AzureOpenAIEmbeddings(
-            azure_endpoint=embedding_config.api_base,
-            openai_api_version=embedding_config.api_version,
-            openai_api_key=embedding_config.api_key,
-            model=embedding_config.deployment_name,
+            azure_endpoint=embedding_config.get('api_base') or os.getenv(embedding_config.get('api_base_env_var')),
+            openai_api_version=embedding_config.get('api_version') or os.getenv(embedding_config.get('api_version_var')),
+            openai_api_key=embedding_config.get('api_key') or os.getenv('OPENAI_API_KEY'),
+            model=embedding_config.get('deployment_name') or os.getenv(embedding_config.get('deployment_name_env_var')),
             check_embedding_ctx_length=False,
             chunk_size=1000,
         )
     elif embedding_config['api_type'] == 'openai':
         embedding_llm = OpenAIEmbeddings(
-            openai_api_key=embedding_config.api_key,
-            model=embedding_config.deployment_name,
+            openai_api_key=embedding_config.get('api_key') or os.getenv('OPENAI_API_KEY'),
+            model=embedding_config.get('deployment_name') or os.getenv(embedding_config.get('deployment_name_env_var')),
             check_embedding_ctx_length=False,
             chunk_size=1000,
         )
     else:
         # community embeddings
-        embedding_llm = HuggingFaceEmbeddings(model_name=embedding_config.deployment_name)
+        embedding_llm = HuggingFaceEmbeddings(model_name=embedding_config.get('deployment_name') or os.getenv(embedding_config.get('deployment_name_env_var')))
 
     from llama_index.embeddings.langchain import LangchainEmbedding
     lc_embeddings = LangchainEmbedding(embedding_llm)
