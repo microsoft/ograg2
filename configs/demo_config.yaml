@@ -1,0 +1,55 @@
+model:
+  api_base:
+  api_key:
+  deployment_name:
+  api_type: azure
+  api_version_var: LLM_API_VERSION
+	api_base_env_var: LLM_ENDPOINT
+  deployment_name_env_var: LLM_DEPLOYMENT_NAME
+
+embedding_model:
+  api_base: 
+  api_key: 
+  deployment_name: 
+  api_type: azure
+  api_version: 
+  api_version: EMBEDDING_MODEL_VERSION
+	api_base_env_var: EMBEDDING_MODEL_ENDPOINT
+  deployment_name_env_var: EMBEDDING_MODEL_DEPLOYMENT_NAME
+
+data:
+  documents_dir: data/md/soybean
+  ontology_path: data/ontology/farm_cropcultivation_schema_ontology_jsonld.json
+  kg_storage_path: data/kg/soybean
+  index_dir: index_openai/vector_soybean
+  subdir: False
+  smart_pdf: True
+  chunk_size: 8192
+
+query:
+  framework: ontohypergraph-rag
+  batch_size: 10
+  mode: json
+  questions_file:
+
+question_generator:
+  framework: ontodocragas
+  test_size: 100
+  distr:
+    simple: 0
+    reasoning: 1
+    multi_context: 0
+
+evaluator:
+  eval_file:
+  reference_free: True
+  type: single
+  metrics:
+    - answer_correctness
+    - faithfulness
+    - answer_similarity
+    - answer_relevancy
+    - context_relevancy
+    - context_precision
+    - context_recall
+    - context_entity_recall
