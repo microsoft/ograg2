@@ -13,6 +13,7 @@ from azureml.rag.utils.connections import (
 from langchain_openai.chat_models import AzureChatOpenAI, ChatOpenAI
 from langchain_openai.embeddings import AzureOpenAIEmbeddings, OpenAIEmbeddings
 from langchain_community.embeddings import HuggingFaceEmbeddings
+from azure.identity import DefaultAzureCredential, get_bearer_token_provider
 from llama_index.core import download_loader, ServiceContext
 # from llama_index.legacy.embeddings import LangchainEmbedding
 from llama_index.core.schema import Document
@@ -112,13 +113,27 @@ def load_llm_and_embeds(model_config: Dict[str, Any], embedding_config: Dict[str
 
     if api_type in ['azure', 'openai']:
         if not (resource_endpoint and api_key):
-            llm = ChatOpenAI(
-                api_key=api_key,
-                model=deployment_name,
-                temperature=0.0,
-                max_retries=15,
-                max_tokens=MAX_TOKENS,
-            )
+            # Use managed identity if API key is not available but endpoint is
+            if resource_endpoint and not api_key:
+                credential = DefaultAzureCredential()
+                token_provider = get_bearer_token_provider(credential, "https://cognitiveservices.azure.com/.default")
+                llm = AzureChatOpenAI(
+                    azure_endpoint=resource_endpoint,
+                    openai_api_version=api_version,
+                    azure_ad_token_provider=token_provider,
+                    deployment_name=deployment_name,
+                    temperature=0.0,
+                    max_retries=15,
+                    max_tokens=MAX_TOKENS,
+                )
+            else:
+                llm = ChatOpenAI(
+                    api_key=api_key,
+                    model=deployment_name,
+                    temperature=0.0,
+                    max_retries=15,
+                    max_tokens=MAX_TOKENS,
+                )
             
             # raise ValueError("Required connection details are missing.")
         else:
@@ -140,14 +155,31 @@ def load_llm_and_embeds(model_config: Dict[str, Any], embedding_config: Dict[str
         )
 
     if embedding_config['api_type'] == 'azure':
-        embedding_llm = AzureOpenAIEmbeddings(
-            azure_endpoint=embedding_config.get('api_base') or os.getenv(embedding_config.get('api_base_env_var', "")),
-            openai_api_version=embedding_config.get('api_version') or os.getenv(embedding_config.get('api_version_var', "")),
-            openai_api_key=embedding_config.get('api_key') or os.getenv('OPENAI_API_KEY'),
-            model=embedding_config.get('deployment_name') or os.getenv(embedding_config.get('deployment_name_env_var', "")),
-            check_embedding_ctx_length=False,
-            chunk_size=1000,
-        )
+        emb_api_key = embedding_config.get('api_key') or os.getenv('OPENAI_API_KEY')
+        emb_endpoint = embedding_config.get('api_base') or os.getenv(embedding_config.get('api_base_env_var', ""))
+        
+        if emb_api_key:
+            # Use API key authentication
+            embedding_llm = AzureOpenAIEmbeddings(
+                azure_endpoint=emb_endpoint,
+                openai_api_version=embedding_config.get('api_version') or os.getenv(embedding_config.get('api_version_var', "")),
+                openai_api_key=emb_api_key,
+                model=embedding_config.get('deployment_name') or os.getenv(embedding_config.get('deployment_name_env_var', "")),
+                check_embedding_ctx_length=False,
+                chunk_size=1000,
+            )
+        else:
+            # Use managed identity authentication
+            credential = DefaultAzureCredential()
+            token_provider = get_bearer_token_provider(credential, "https://cognitiveservices.azure.com/.default")
+            embedding_llm = AzureOpenAIEmbeddings(
+                azure_endpoint=emb_endpoint,
+                openai_api_version=embedding_config.get('api_version') or os.getenv(embedding_config.get('api_version_var', "")),
+                azure_ad_token_provider=token_provider,
+                model=embedding_config.get('deployment_name') or os.getenv(embedding_config.get('deployment_name_env_var', "")),
+                check_embedding_ctx_length=False,
+                chunk_size=1000,
+            )
     elif embedding_config['api_type'] == 'openai':
         embedding_llm = OpenAIEmbeddings(
             openai_api_key=embedding_config.get('api_key') or os.getenv('OPENAI_API_KEY'),
@@ -178,13 +210,27 @@ def create_service_context(model_config: Dict[str, Any], embedding_config: Dict[
 
     if api_type in ['azure', 'openai']:
         if not (resource_endpoint and api_key):
-            llm = ChatOpenAI(
-                api_key=api_key,
-                model=deployment_name,
-                temperature=0.0,
-                max_retries=15,
-                max_tokens=MAX_TOKENS,
-            )
+            # Use managed identity if API key is not available but endpoint is
+            if resource_endpoint and not api_key:
+                credential = DefaultAzureCredential()
+                token_provider = get_bearer_token_provider(credential, "https://cognitiveservices.azure.com/.default")
+                llm = AzureChatOpenAI(
+                    azure_endpoint=resource_endpoint,
+                    openai_api_version=api_version,
+                    azure_ad_token_provider=token_provider,
+                    deployment_name=deployment_name,
+                    temperature=0.0,
+                    max_retries=15,
+                    max_tokens=MAX_TOKENS,
+                )
+            else:
+                llm = ChatOpenAI(
+                    api_key=api_key,
+                    model=deployment_name,
+                    temperature=0.0,
+                    max_retries=15,
+                    max_tokens=MAX_TOKENS,
+                )
             
             # raise ValueError("Required connection details are missing.")
         else:
@@ -206,14 +252,31 @@ def create_service_context(model_config: Dict[str, Any], embedding_config: Dict[
         )
 
     if embedding_config['api_type'] == 'azure':
-        embedding_llm = AzureOpenAIEmbeddings(
-            azure_endpoint=embedding_config.get('api_base') or os.getenv(embedding_config.get('api_base_env_var', "")),
-            openai_api_version=embedding_config.get('api_version') or os.getenv(embedding_config.get('api_version_var', "")),
-            openai_api_key=embedding_config.get('api_key') or os.getenv('OPENAI_API_KEY'),
-            model=embedding_config.get('deployment_name') or os.getenv(embedding_config.get('deployment_name_env_var', "")),
-            check_embedding_ctx_length=False,
-            chunk_size=1000,
-        )
+        emb_api_key = embedding_config.get('api_key') or os.getenv('OPENAI_API_KEY')
+        emb_endpoint = embedding_config.get('api_base') or os.getenv(embedding_config.get('api_base_env_var', ""))
+        
+        if emb_api_key:
+            # Use API key authentication
+            embedding_llm = AzureOpenAIEmbeddings(
+                azure_endpoint=emb_endpoint,
+                openai_api_version=embedding_config.get('api_version') or os.getenv(embedding_config.get('api_version_var', "")),
+                openai_api_key=emb_api_key,
+                model=embedding_config.get('deployment_name') or os.getenv(embedding_config.get('deployment_name_env_var', "")),
+                check_embedding_ctx_length=False,
+                chunk_size=1000,
+            )
+        else:
+            # Use managed identity authentication
+            credential = DefaultAzureCredential()
+            token_provider = get_bearer_token_provider(credential, "https://cognitiveservices.azure.com/.default")
+            embedding_llm = AzureOpenAIEmbeddings(
+                azure_endpoint=emb_endpoint,
+                openai_api_version=embedding_config.get('api_version') or os.getenv(embedding_config.get('api_version_var', "")),
+                azure_ad_token_provider=token_provider,
+                model=embedding_config.get('deployment_name') or os.getenv(embedding_config.get('deployment_name_env_var', "")),
+                check_embedding_ctx_length=False,
+                chunk_size=1000,
+            )
     elif embedding_config['api_type'] == 'openai':
         embedding_llm = OpenAIEmbeddings(
             openai_api_key=embedding_config.get('api_key') or os.getenv('OPENAI_API_KEY'),
