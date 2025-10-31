@@ -1,7 +1,7 @@
 from concurrent.futures import ThreadPoolExecutor
-from knowledge_graph import create_kg_triples, KGGenerator
+from knowledge_graph import create_kg_triples
 from ontology_mapping import OntologyMapping
-from utils import create_service_context, get_documents, create_or_load_index, get_config, load_llm_and_embeds
+from utils import get_documents, get_config, load_llm_and_embeds
 import os
 import time
 
