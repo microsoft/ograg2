@@ -106,7 +106,7 @@ def load_llm_and_embeds(model_config: Dict[str, Any], embedding_config: Dict[str
         pass
 
     api_type = model_config.get("api_type", "azure")
-    api_version = model_config.get("api_version") or os.getenv(model_config.get("api_version_var", ""), "2024-02-15-preview")
+    api_version = model_config.get("api_version") or os.getenv(model_config.get("api_version_env_var", ""), "2024-02-15-preview")
     resource_endpoint = model_config.get("api_base") or os.getenv(model_config.get("api_base_env_var", ""))
     api_key = model_config.get("api_key") or os.getenv("OPENAI_API_KEY")
     deployment_name = model_config.get('deployment_name') or os.getenv(model_config.get("deployment_name_env_var", ""))
@@ -162,7 +162,7 @@ def load_llm_and_embeds(model_config: Dict[str, Any], embedding_config: Dict[str
             # Use API key authentication
             embedding_llm = AzureOpenAIEmbeddings(
                 azure_endpoint=emb_endpoint,
-                openai_api_version=embedding_config.get('api_version') or os.getenv(embedding_config.get('api_version_var', "")),
+                openai_api_version=embedding_config.get('api_version') or os.getenv(embedding_config.get('api_version_env_var', "")),
                 openai_api_key=emb_api_key,
                 model=embedding_config.get('deployment_name') or os.getenv(embedding_config.get('deployment_name_env_var', "")),
                 check_embedding_ctx_length=False,
@@ -174,7 +174,7 @@ def load_llm_and_embeds(model_config: Dict[str, Any], embedding_config: Dict[str
             token_provider = get_bearer_token_provider(credential, "https://cognitiveservices.azure.com/.default")
             embedding_llm = AzureOpenAIEmbeddings(
                 azure_endpoint=emb_endpoint,
-                openai_api_version=embedding_config.get('api_version') or os.getenv(embedding_config.get('api_version_var', "")),
+                openai_api_version=embedding_config.get('api_version') or os.getenv(embedding_config.get('api_version_env_var', "")),
                 azure_ad_token_provider=token_provider,
                 model=embedding_config.get('deployment_name') or os.getenv(embedding_config.get('deployment_name_env_var', "")),
                 check_embedding_ctx_length=False,
@@ -203,7 +203,7 @@ def create_service_context(model_config: Dict[str, Any], embedding_config: Dict[
         pass
 
     api_type = model_config.get("api_type", "azure")
-    api_version = model_config.get("api_version") or os.getenv(model_config.get("api_version_var", ""), "2024-02-15-preview")
+    api_version = model_config.get("api_version") or os.getenv(model_config.get("api_version_env_var", ""), "2024-02-15-preview")
     resource_endpoint = model_config.get("api_base") or os.getenv(model_config.get("api_base_env_var", ""))
     api_key = model_config.get("api_key") or os.getenv("OPENAI_API_KEY")
     deployment_name = model_config.get('deployment_name') or os.getenv(model_config.get("deployment_name_env_var", ""))
@@ -259,7 +259,7 @@ def create_service_context(model_config: Dict[str, Any], embedding_config: Dict[
             # Use API key authentication
             embedding_llm = AzureOpenAIEmbeddings(
                 azure_endpoint=emb_endpoint,
-                openai_api_version=embedding_config.get('api_version') or os.getenv(embedding_config.get('api_version_var', "")),
+                openai_api_version=embedding_config.get('api_version') or os.getenv(embedding_config.get('api_version_env_var', "")),
                 openai_api_key=emb_api_key,
                 model=embedding_config.get('deployment_name') or os.getenv(embedding_config.get('deployment_name_env_var', "")),
                 check_embedding_ctx_length=False,
@@ -271,7 +271,7 @@ def create_service_context(model_config: Dict[str, Any], embedding_config: Dict[
             token_provider = get_bearer_token_provider(credential, "https://cognitiveservices.azure.com/.default")
             embedding_llm = AzureOpenAIEmbeddings(
                 azure_endpoint=emb_endpoint,
-                openai_api_version=embedding_config.get('api_version') or os.getenv(embedding_config.get('api_version_var', "")),
+                openai_api_version=embedding_config.get('api_version') or os.getenv(embedding_config.get('api_version_env_var', "")),
                 azure_ad_token_provider=token_provider,
                 model=embedding_config.get('deployment_name') or os.getenv(embedding_config.get('deployment_name_env_var', "")),
                 check_embedding_ctx_length=False,
