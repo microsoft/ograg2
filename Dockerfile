@@ -1,6 +1,7 @@
 FROM msrhubroot.azurecr.io/cliwrapper:latest
 
-WORKDIR /app/ograg2
+# This is already true from the base image, but just to be explicit
+WORKDIR /app
 
 # Install build tools needed for compiling Python packages with C extensions
 RUN tdnf update -y && tdnf install -y \
