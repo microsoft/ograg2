@@ -16,8 +16,8 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir --ignore-installed -Ur requirements.txt
 
 # Copy application code
-COPY . .
+COPY . /app/ograg
 
 ENV CLI_COMMAND="bash" \
     APP_TITLE="OG RAG Service" \
-    CLI_WORKING_DIR="/app/ograg2"
+    CLI_WORKING_DIR="/app/ograg"
