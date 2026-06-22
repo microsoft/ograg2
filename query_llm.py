@@ -144,7 +144,8 @@ if __name__ == '__main__':
         if 'hyperparams' in config.query:
             answer_file = os.path.basename(config.query.answers_file)
             answer_fname, answer_ftype = answer_file.split('.')
-            config.query.answers_file = f'{answer_dir}/{answer_fname}_{'_'.join([f'{k}{v}' for k, v in config.query.hyperparams.items()])}.{answer_ftype}' 
+            hyperparams_str = '_'.join(f'{k}{v}' for k, v in config.query.hyperparams.items())
+            config.query.answers_file = f'{answer_dir}/{answer_fname}_{hyperparams_str}.{answer_ftype}'
         if os.path.exists(config.query.answers_file) and not config.rewrite:
             exit(f"Answers file {config.query.answers_file} already exists.")
 
